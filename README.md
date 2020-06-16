@@ -17,6 +17,7 @@ This is for cron logs, and banner uploads.
 ```
 chmod 777 public/img/banners
 chmod 777 crons/cron.log
+chmod -R 777 app/cache
 ```
 
 If install properly you should now have a toplist ready to go!
