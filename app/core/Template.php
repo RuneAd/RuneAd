@@ -34,7 +34,7 @@ class Template extends FilesystemLoader {
                 if (substr($banner, 0, 4) == "http") {
                     return $banner;
                 } else {
-                    return '/public/img/banners/'.$banner;
+                    return web_root.'public/img/banners/'.$banner;
                 }
             }));
             
