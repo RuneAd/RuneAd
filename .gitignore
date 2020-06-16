@@ -3,6 +3,7 @@ composer.phar
 app/cache/*.json
 app/cache/**/*.json
 **/config.php
+app/crons/cron.log
 .idea/*
 .history/*
 **/js/fontawesome.pro.min.js
