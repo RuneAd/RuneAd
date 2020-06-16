@@ -1,6 +1,11 @@
 # RuneNexus
 A new, free, and open source toplist project.
 
+Prerequisites:
+* PHP 7.2+ with mbstring and curl
+* MySQL 5.6+
+* Composer
+
 To install dependencies:
 ```composer install```
 
