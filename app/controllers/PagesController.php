@@ -71,7 +71,7 @@ class PagesController extends Controller {
         } catch (Exception $e) {
             return [
                 'success' => true,
-                'message' => "Failed to load repo. Rate limit reached."
+                'message' => "Failed to load repo."
             ];
         }
     }
