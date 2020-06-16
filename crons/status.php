@@ -1,22 +1,19 @@
 <?php
-    $start = microtime(true);
     include "cron_init.php";
     include DOC_ROOT.'/../app/plugins/ServerPing.php';
-    use Rakit\Validation\Validator;
+    
+    $online  = 0;
+    $offline = 0;
+    $updated = 0;
+
+    $startTime = microtime(true);
 
     $servers = Servers::select([
         'id', 'title', 'is_online', 'server_ip', 'server_port', 'last_ping'
     ])->where('server_ip', '!=', null)->get();
-    
-    $online = 0;
-    $offline = 0;
-
-    $updated = 0;
-    $validator = new Validator;
-    $client    = new GuzzleHttp\Client();
 
     $ping = new ServerPing();
-
+    
     foreach ($servers as $server) {
         try {
             $ping->setAddress($server->server_ip)->setPort($server->server_port);
@@ -42,7 +39,7 @@
         $updated++;
     }
 
-    $end = microtime(true);
-    $elapsed = number_format($end - $start, 4);
+    $endTime = microtime(true);
+    $elapsed = number_format($endTime - $start, 4);
 
     writeLog("Updated $updated server statuses. Online: $online, Offline: $offline. Executed in ".$elapsed."s!");
