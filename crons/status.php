@@ -14,6 +14,10 @@
     
     foreach ($servers as $server) {
         if (!$server->server_ip || !filter_var($server->server_ip, FILTER_VALIDATE_IP)) {
+            $server->is_online = 0;
+            $server->ping = -1;
+            $server->last_ping = time();
+            $server->save();
             continue;
         }
 
