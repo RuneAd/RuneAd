@@ -147,7 +147,7 @@
 
                 {% set start_rank = servers.firstItem() %}
 
-                <table class="table mb-0" style="line-height:.7em;">
+                <table class="table mb-0" style="line-height:1em;">
                     <thead>
                         <tr class="bg-{{ theme == "dark" ? "dark" : "secondary" }}">
                             <th class="text-center py-2 small border-0">Rank</th>
@@ -169,14 +169,13 @@
                         </td>
 
                         <td class="py-4">
-                            <a href="{{ url('details/'~server_url) }}" class="h6 d-inline-block mb-0 truncate-title">
-                                
-                                {% if server.revision %}
-                                <div class="badge badge-primary">
+                            {% if server.revision %}
+                                <div class="badge badge-primary float-left mr-2">
                                     {{ server.revision }}
                                 </div>
-                                {% endif %}
+                            {% endif %}
 
+                            <a href="{{ url('details/'~server_url) }}" class="d-block mb-0 truncate-title">
                                 {{ server.title }}
                             </a>
 
@@ -184,7 +183,7 @@
                             <a href="{{ url('details/'~server_url) }}" class="banner-img">
                                 <img data-src="{{ banner(server.banner_url) }}"
                                     id="banner"
-                                    alt="{{ banner(server.banner_url) }}"
+                                    alt="{{ server.banner_url }}"
                                     style="margin-top:14px;"
                                     class="img-fluid rounded lazy">
                             </a>
