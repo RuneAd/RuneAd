@@ -15,31 +15,31 @@
     $ping = new ServerPing();
     
     foreach ($servers as $server) {
-        try {
-            $ping->setAddress($server->server_ip)->setPort($server->server_port);
-            $time = $ping->connect();
+        if (!$server->server_ip || !filter_var($server->server_ip, FILTER_VALIDATE_IP)) {
+            continue;
+        }
 
-            $server->is_online = $time != -1;
-            $server->ping = $time != -1 ? $time : -1;
-            $server->last_ping = time();
-            $server->save();
+        $ping->setAddress($server->server_ip)->setPort($server->server_port);
+        $ping->connect();
 
-            if ($time > -1) {
-                $online++;
-            } else {
-                $offline++;
-            }
-        } catch (Exception $e) {
-            $server->is_online = 0;
-            $server->ping = -1;
-            $server->last_ping = time();
-            $server->save();
+        $time = $ping->getPing();
+
+        $server->is_online = $time < 1000;
+        $server->ping = $time < 1000 ? $time : -1;
+        $server->last_ping = time();
+        $server->save();
+
+        if ($time < 1000) {
+            $online++;
+        } else {
             $offline++;
         }
+
+        echo "Pinged {$server->server_ip}:{$server->server_port}: $time ms\r\n";
         $updated++;
     }
 
     $endTime = microtime(true);
-    $elapsed = number_format($endTime - $start, 4);
+    $elapsed = number_format($endTime - $startTime, 4);
 
     writeLog("Updated $updated server statuses. Online: $online, Offline: $offline. Executed in ".$elapsed."s!");
