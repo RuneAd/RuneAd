@@ -5,6 +5,8 @@ class ServerPing {
     private $port;
     private $ping;
 
+    private $timeout = 150;
+
     /**
      * @param $server_ip
      * @param $port
@@ -18,21 +20,37 @@ class ServerPing {
     public function connect() {
         $message = "runenexus";
 
-        try {
-            $start  = microtime(true);
-            $socket = socket_create(AF_INET, SOCK_STREAM, getprotobyname('tcp'));
-            socket_connect($socket, $this->address, $this->port);
-            $status = socket_sendto($socket, $message, strlen($message), 0, $this->getAddress(), $this->getPort());
-            $end    = microtime(true);
+        $start   = microtime(true);
+        $socket  = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+       
+        socket_set_nonblock($socket);
 
-            socket_close($socket);
-            return number_format(($end - $start) * 1000, 0);
-        } catch (Exception $e) {
-            echo $e->getMessage();
-            return -1;
+        $con_per_sec = 100;
+
+        for ($attempts = 0; $attempts < ($this->timeout * $con_per_sec); $attempts++) { 
+            @socket_connect($socket, $this->address, $this->port);
+
+            if(socket_last_error($socket) == SOCKET_EISCONN) { 
+                break;
+            }
+            
+            usleep(1000000 / $con_per_sec);
         }
+
+        $end = microtime(true);
+
+        socket_close($socket);
+        return number_format(($end - $start) * 1000, 0);
     }
-    
+
+    /**
+     * Sets a time in seconds to wait for a connection. accepts decimal values (ie. 1.5)
+     * @param $seconds 
+     */
+    public function setTimeout($secs) {
+        $this->timeout = $ecs;
+    }
+
     /**
      * set the ip address to ping.
      * @param $address

@@ -1,14 +1,12 @@
 <?php
     $start = microtime(true);
     include "cron_init.php";
-
+    include DOC_ROOT.'/../app/plugins/ServerPing.php';
     use Rakit\Validation\Validator;
 
     $servers = Servers::select([
-            'id', 'title', 'is_online', 'server_ip', 'server_port', 'last_ping'
-        ])
-        ->where('server_ip', '!=', null)
-        ->get();
+        'id', 'title', 'is_online', 'server_ip', 'server_port', 'last_ping'
+    ])->where('server_ip', '!=', null)->get();
     
     $online = 0;
     $offline = 0;
@@ -17,47 +15,31 @@
     $validator = new Validator;
     $client    = new GuzzleHttp\Client();
 
-    $api_url = "http://api.rune-nexus.com/ping";
+    $ping = new ServerPing();
 
     foreach ($servers as $server) {
-        $data = [
-            'address' => $server->server_ip,
-            'port' => $server->server_port
-        ];
+        try {
+            $ping->setAddress($server->server_ip)->setPort($server->server_port);
+            $time = $ping->connect();
 
-        $validation = $validator->validate($data, [
-            'port'    => 'required|numeric|min:0|max:65535',
-            'address' => 'required|ipv4'
-        ]);
+            $server->is_online = $time != -1;
+            $server->ping = $time != -1 ? $time : -1;
+            $server->last_ping = time();
+            $server->save();
 
-        if (!$validation->fails()) {
-            try {
-                $endpoint = $api_url."?address=".$data['address']."&port=".$data['port'];
-                $res = json_decode($client->request('GET', $endpoint)->getBody(), true);
-
-                $success = $res['success'];
-
-                $server->is_online = $success;
-                $server->ping = $success ? $res['ping'] : -1;
-                $server->last_ping = time();
-                $server->save();
-
-                if ($success) {
-                    $online++;
-                } else {
-                    $offline++;
-                }
-            } catch (Exception $e) {
-                $server->is_online = 0;
-                $server->ping = -1;
-                $server->last_ping = time();
-                $server->save();
-
+            if ($time > -1) {
+                $online++;
+            } else {
                 $offline++;
             }
-
-            $updated++;
+        } catch (Exception $e) {
+            $server->is_online = 0;
+            $server->ping = -1;
+            $server->last_ping = time();
+            $server->save();
+            $offline++;
         }
+        $updated++;
     }
 
     $end = microtime(true);
