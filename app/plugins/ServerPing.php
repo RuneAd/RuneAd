@@ -3,7 +3,6 @@ class ServerPing {
     
     private $address;
     private $port;
-    private $ping = -1;
 
     /**
      * @param $server_ip
@@ -16,27 +15,26 @@ class ServerPing {
     }
 
     public function connect() {
-        $start   = microtime(true);
+        
         $socket  = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-       
         socket_set_nonblock($socket);
 
-        $attempts  = 0;
-        $waitCount = 300; // higher the longer it waits for connection.
+        $attempts   = 0;
+        $waitCount  = 1000; // time to wait in milliseconds
+        $connected  = false;
 
-        while (!($connected = @socket_connect($socket, $this->address, $this->port)) && $attempts++ < $waitCount) {
-            if (socket_last_error($socket) == SOCKET_EISCONN) { 
-                $end = microtime(true);
-                $this->ping = (($end - $start)*1000);
+        while (!(@socket_connect($socket, $this->address, $this->port)) && $attempts++ < $waitCount) {
+            if (socket_last_error($socket) == SOCKET_EISCONN) {
+                $connected = true;
                 break;
             }
-
-            usleep(10000);
+            usleep(1000); // sleep 1ms - corresponds to the $waitCount 
         }
 
         socket_set_block($socket);
         socket_close($socket);
-        return;
+        return $attempts < $waitCount ? $attempts : -1;
+
     }
 
     /**
@@ -69,13 +67,6 @@ class ServerPing {
      */
     public function getPort() {
         return $this->port;
-    }
-
-    /**
-     * @return int the servers ping in ms
-     */
-    public function getPing() {
-        return floor($this->ping);
     }
 
 }

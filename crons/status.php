@@ -6,6 +6,8 @@
     $offline = 0;
     $updated = 0;
 
+    writeLog("Started server status update...");
+
     $startTime = microtime(true);
 
     $servers = Servers::select([
@@ -23,15 +25,12 @@
 
         $ping = new ServerPing();
         $ping->setAddress($server->server_ip)->setPort($server->server_port);
-        $ping->connect();
-
-        $time = $ping->getPing();
+        $time = $ping->connect();
 
         $server->is_online = $time != -1;
         $server->ping = $time;
         $server->last_ping = time();
         $server->save();
-
         $updated++;
     }
 
