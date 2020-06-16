@@ -5,7 +5,7 @@ class ServerPing {
     private $port;
     private $ping;
 
-    private $timeout = 150;
+    private $timeout = 2;
 
     /**
      * @param $server_ip
@@ -36,11 +36,12 @@ class ServerPing {
             
             usleep(1000000 / $con_per_sec);
         }
-
-        $end = microtime(true);
-
+        
+        socket_set_block($socket);
+        
+        $this->ping = floor((microtime(true) - $start) * 1000);
         socket_close($socket);
-        return number_format(($end - $start) * 1000, 0);
+        return;
     }
 
     /**
