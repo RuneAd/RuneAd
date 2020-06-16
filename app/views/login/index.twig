@@ -1,0 +1,66 @@
+{%  extends 'layout.twig' %}
+
+{% block content %}
+
+<div class="container" style="margin-top:-30px;">
+    <div class="row">
+        <div class="col-sm-12">
+
+            <div class="card border-0 shadow-sm">
+                <div class="card-body py-5 text-center">
+                    <i class="fad fa-spinner fa-pulse fa-5x mb-3" id="icon"></i>
+                    <h3 class="mb-0" id="state">Checking Token</h3>
+                    <p id="message">Please wait while we fetch your discord data.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let hash = window.location.hash.substr(1);
+
+    if (hash) {
+        let access_token = getUrlParam('access_token', hash);
+
+        setTimeout(function() {
+            $.post('{{ url("discord/auth") }}', {
+                access_token: access_token
+            }, function(data) {
+                console.log(data);
+    
+                let success = data.success;
+    
+                $('#icon').removeClass("fad fa-spinner fa-pulse")
+                    .addClass(success ? 'fal fa-check-circle' : 'fal fa-exclamation-triangle')
+                    .removeClass("text-discord")
+                    .addClass(success ? 'text-success' : 'text-danger');
+            
+                $('#state').html(success ? data.message : 'An Error Occured');
+                $('#message').html(success ? 'Please wait while you are redirected' : 'An Error Occured');
+    
+                if (success) {
+                    setTimeout(function() {
+                        window.location = "{{ constant('web_root') }}";
+                    }, 1500);
+                }
+            });
+        }, 1000);
+        
+    }
+
+    function getUrlParam(name, url) {
+        if (!url)
+            url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) 
+            return null;
+        if (!results[2]) 
+            return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+</script>
+
+{%  endblock %}

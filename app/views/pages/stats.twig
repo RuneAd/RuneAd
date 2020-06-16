@@ -1,0 +1,161 @@
+{%  extends 'layout.twig' %}
+
+{% block content %}
+<section style="margin-top:-30px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="flex-fill px-4 pr-5 text-center">
+                                <h4 class="mb-0 font-weight-bold text-success">{{ servers|number_format }}</h4>
+                                <p class="text-muted">Servers</p>
+
+                                <hr>
+
+                                <h4 class="mb-0 font-weight-bold text-primary">{{ votes|number_format }}</h4>
+                                <p class="text-muted">Votes</p>
+
+                                <hr>
+
+                                <h4 class="mb-0 font-weight-bold text-danger">{{ users|number_format }}</h4>
+                                <p class="text-muted">Users</p>
+                            </div>
+                            <div class="flex-fill w-100">
+                                <div class="dropdown mb-3">
+                                    <button class="btn btn-outline-primary dropdown-toggle" 
+                                        id="ratebtn" rel="nofollow"
+                                            type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        30 Days
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" rel="nofollow"
+                                            id="days"
+                                            data-days="180"
+                                            href="#">
+                                            180 Days
+                                        </a>
+                                        <a class="dropdown-item" rel="nofollow" 
+                                            id="days"
+                                            data-days="90"
+                                            href="#">
+                                            90 Days
+                                        </a>
+                                        <a class="dropdown-item" rel="nofollow"
+                                            id="days"
+                                            data-days="30"
+                                            href="#">
+                                            30 Days
+                                        </a>
+                                        <a class="dropdown-item" rel="nofollow" 
+                                            id="days"
+                                            data-days="7"
+                                            href="#">
+                                            7 Days
+                                        </a>
+                                    </div>
+    
+                                    <span id="loader">
+                                        <i class="fad fa-spinner fa-pulse"></i> Loading
+                                    </span>
+                                </div>
+
+                                <div style="height:300px;">
+                                    <canvas id="voteChart" height="300px"></canvas>
+                                </div>
+
+                                {% if time_left is defined %}
+                                <small class="text-muted">
+                                    This graph will refresh in {{ time_left }}
+                                </small>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {{ content|raw }}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include 'chart_config.twig' %}
+
+<script>
+    let canvas  = document.getElementById("voteChart"),
+    context = canvas.getContext('2d')
+    cdata = {
+        type: 'line',
+        data: {
+            datasets: [
+                {
+                    label: 'Votes',
+                    borderColor: window.chartColors.purple,
+                    backgroundColor:  window.chartColors.purpleLight,
+                    hoverBackgroundColor: window.chartColors.purpleLight,
+                    barWidth: 2,
+                }
+            ]
+        },
+        options: options
+    };
+
+    let chart = new Chart(context, cdata);
+    let days = 90;
+    let loader = $('#loader');
+    let loader_txt = loader.html();
+    let loading = false;
+
+    $('#ratebtn').html(days+" Days");
+    getChartData(days);
+
+    $('[id="days"]').on('click', function(event) {
+        event.preventDefault();
+
+        if (loading) {
+            return;
+        }
+
+        loading = true;
+        
+        days = $(this).data("days");
+
+        loader.html(loader_txt);
+        $('#ratebtn').html(days+" Days");
+
+        getChartData(days);
+    });
+
+    function getChartData(days) {
+        $.ajaxq('VoteQueue', {
+            url: 'https://api.rune-nexus.com/graph',
+            data: {
+                days: days,
+            },
+            type: 'GET',
+            complete: function (data) {
+
+            },
+            success: function (json) {
+                if (json.chartData) {
+                    let keys   = $.map(json.chartData, function(element,index) {return index});
+                    let values = $.map(json.chartData, function(element,index) {return element});
+
+                    cdata.data.labels = keys;
+                    cdata.data.datasets[0].data = values;
+                    chart.update();
+                    loader.html("");
+        
+                    loading = false;
+                }
+            },
+            error: function(data) {
+                console.log(data.responseText);
+            }
+        });
+    }
+</script>
+
+{%  endblock %}

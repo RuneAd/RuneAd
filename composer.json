@@ -1,0 +1,17 @@
+{
+	"config": {
+        "vendor-dir": "vendor"
+    },
+    "require": {
+        "twig/twig": "^2.0",
+        "ecoal95/php-router": "^1.0",
+        "robthree/twofactorauth": "^1.6",
+        "ext-json": "*",
+		"gilbitron/easycsrf": "^1.0",
+        "guzzlehttp/guzzle": "~6.0",
+		"ezyang/htmlpurifier": "^4.12",
+		"illuminate/database": "^7.14",
+		"illuminate/pagination": "^7.14",
+		"rakit/validation": "^1.2"
+    }
+}

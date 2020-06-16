@@ -1,0 +1,136 @@
+{%  extends 'layout.twig' %}
+
+{% block content %}
+    <script type="text/javascript" src="{{ url('public/js/prism.js?v='~time()) }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url('public/css/prism.css?v='~time()) }}" />
+
+    <script>
+        Prism.plugins.NormalizeWhitespace.setDefaults({
+            'remove-trailing': true,
+            'remove-indent': true,
+            'left-trim': true,
+            'right-trim': true,
+            'spaces-to-tabs': 4
+        });
+    </script>
+
+    <div class="container" style="margin-top:-30px;">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-3">
+                                
+                                
+                                <div class="sticky-top" style="top:20px;">
+                                    <p class="font-weight-bold text-uppercase small mb-1">
+                                        Incentive Voting
+                                    </p>
+
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link text-{{ theme == "dark" ? "white" : "dark" }}" href="#start">Voting</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-{{ theme == "dark" ? "white" : "dark" }}" href="#code">Example Callback</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+
+                            </div>
+                            <div class="col-sm-12 col-lg-8">
+                                <h5 class="mb-0 font-weight-bold" id="start">Incentive Voting</h5>
+
+                                <p>
+                                    Rune-Nexus utilizes a callback feature that will send a <span class="badge text-white bg-success">GET</span>
+                                    request to the callback url you specify when adding your server. It is a string, usually an IP 
+                                    Address, username, or randomly generated string. This string comes from your voting script which 
+                                    is appended at the end of the vote url.
+                                </p>
+
+                                <p class="small mb-0">Vote URL</p>
+                                <p>https://www.rune-nexus.com/vote/<span class="badge bg-info text-white">site_id</span>/<span class="badge bg-info text-white }}">identifier</span></p>
+
+                                <table class="table mb-0 bg-light">
+                                    <tr>
+                                        <td> <span class="badge bg-info text-white">site_id</span></td>
+                                        <td>Integer</td>
+                                        <td>Your site ID. Can be found in your profile page.</td>
+                                    </tr>
+                                    <tr>
+                                        <td> <span class="badge bg-info text-white">identifier</span></td>
+                                        <td>String</td>
+                                        <td>Something your site uses to identify the voter.</td>
+                                    </tr>
+                                </table>
+
+                                <hr>
+
+                                <h5 class="mb-0 font-weight-bold" id="code">Example Callback</h5>
+
+                                <p class="alert alert-warning">For developer use. If you're just setting up your server, this is not relevant.</p>
+                                <p>
+                                   Your voting script should have a callback feature already built in. If you need it, here's some example php code to
+                                   handle callbacks. This will most likely not work for any toplist, but the principal is there :)
+                                </p>
+
+                                <style>
+                                    code[class*="language-"], pre[class*="language-"] {
+                                        font-size: .6rem;
+                                    }
+                                </style>
+                                <span class="badge bg-dark text-white badge-lg badge-pill">PHP</span>
+
+                                <pre class="language-php"><code class="language-php">
+                                &lt;?php
+                                    $log_file = "callbacks.log";
+
+                                    $db_host = 'localhost';
+                                    $db_name = 'voting';
+                                    $db_user = 'root';
+                                    $db_pass = 'password';
+
+                                    if (isset($_POST['callback']) && !empty($_POST['callback']) {
+                                        $callback = filter_var($_POST['callback'], FILTER_SANITIZE_STRING);
+
+                                        #Connect to database
+                                        try {
+                                            $pdo = new PDO("mysql:host=" . $db_host . ";dbname=" . $db_name, $db_user, $db_pass);
+                                            $pdo->exec("SET CHARACTER SET utf8");
+                                            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                            $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+                                        } catch (PDOException $e) {
+                                            error_log(date('[Y-m-d H:i] ')."[Error] Connection failed: {$e->getMessage()} ".PHP_EOL, 3, $log_file);
+                                            exit;
+                                        }
+
+                                        # prepare query for execution
+                                        $stmt = $pdo->prepare("UPDATE votes SET callback_date = UNIX_TIMESTAMP() WHERE code = :code");
+                                        $stmt->bindParam(":code", $callback); # bind the parameters
+                                        $stmt->execute(); # now execute the prepared statement
+                                        $count = $stmt->rowCount(); # counts modified rows
+
+                                        # counts modified rows. if 0, then nothing was changed, Log it to log file.
+                                        if ($stmt->rowCount() > 0) {
+                                            error_log(date('[Y-m-d H:i] ')."[Error] Update query failed! ".PHP_EOL, 3, $log_file);
+                                            exit;
+                                        }
+
+                                        # update successful!
+                                        error_log(date('[Y-m-d H:i] ')."[Success] Callback received and updated! $callback ".PHP_EOL, 3, $log_file);
+                                    }
+                                ?&gt;
+                                </code>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{ content|raw }}
+{%  endblock %}

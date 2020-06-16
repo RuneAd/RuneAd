@@ -1,0 +1,69 @@
+<script type="text/javascript" src="{{ url('public/js/chart.min.js') }}"></script>
+<script type="text/javascript" src="{{ url('public/js/chart.extension.js') }}"></script>
+
+<script>
+    Chart.plugins.register({
+        beforeDraw: function(chartInstance) {
+            var ctx = chartInstance.chart.ctx;
+            ctx.fillStyle = "rgba(0,0,0,0)";
+            ctx.fillRect(0, 0, chartInstance.chart.width, chartInstance.chart.height);
+        }
+    });
+
+    window.chartColors = {
+        red:    'rgb(255, 99, 132)',
+        orange: 'rgb(255, 159, 64)',
+        yellow: 'rgb(255, 205, 86)',
+        green:  'rgb(75, 192, 192)',
+        blue:   'rgb(54, 162, 235)',
+        purple: 'rgb(94, 114, 228)',
+        purpleLight: 'rgba(94, 114, 228, 0.05)',
+        grey:   'rgb(201, 203, 207)'
+    };
+
+    var options = {};
+
+    options.maintainAspectRatio = false;
+    options.response = true;
+    options.elements = {};
+    options.elements.line = {};
+    options.elements.point = {};
+    options.scales = {};
+    options.title = {};
+    options.tooltips = {mode: 'x-axis'};
+    options.tooltips.callbacks = {};
+    options.legend = {};
+    options.legend.labels = {};
+    options.elements.line.fill = true;
+    options.elements.line.borderWidth = 1;
+    options.elements.point.radius = 0;
+    options.title.display = false;
+    options.title.text = "Votes for {{ ''|date('Y') }}";
+    options.legend.display = true;
+    options.legend.position = "bottom";
+    options.animation = false;
+    options.elements.line.tension = 0;
+
+    options.scales.xAxes = [{
+        barPercentage: 0,
+        ticks: {
+            display: false,
+            fontColor: "#AAA"
+        },
+        gridLines: {
+            color: "rgba(0, 255, 0, 0)",
+            drawBorder: false,
+        }
+    }];
+
+    options.scales.yAxes = [{
+        ticks: {
+            display: false,
+            fontColor: "#AAA"
+        },
+        gridLines: {
+            drawBorder: true,
+            color: "rgba(94, 114, 228, 0.1)"
+        }
+    }];
+</script>

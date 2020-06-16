@@ -1,0 +1,50 @@
+<div class="modal fade" id="loginModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="loginModalLabel"
+        aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+
+            <div class="alert-box">
+                <div class="alert mb-0" id="notice">
+                    &nbsp;
+                </div>
+            </div>
+            
+            <div class="modal-body text-center py-5">
+                <i class="fab fa-discord text-primary fa-5x mb-3"></i>
+                <h3 class="mb-0">Login with Discord</h3>
+                <p class="small mb-5">Click below to log in using your Discord Account.</p>
+
+                <a href="" class="btn btn-primary" id="discord">Continue</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#discord').on("click", function(event) {
+        event.preventDefault();
+
+        
+        let button = $(this);
+
+        button.html("<i class=\"fad fa-spinner fa-pulse\"></i>");
+        button.addClass("disabled");
+
+        $.post("{{ url('discord') }}", function(data) {
+            console.log(data);
+
+            let success = data.success;
+
+            if (success) {
+                setTimeout(function() {
+                    let loc = data.message;
+                    window.location = loc;
+                }, 800);
+            }
+        });
+    });
+</script>

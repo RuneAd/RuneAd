@@ -1,0 +1,31 @@
+<script type="text/javascript" src="{{ javascript('jquery-3.3.1.min.js') }}"></script>
+<link rel="stylesheet" type="text/css" href="{{ stylesheet('nyancat.css?v='~time()) }}" />
+<link rel="stylesheet" type="text/css" href="{{ stylesheet('argon.min.css') }}" />
+<div class="position-fixed w-100 vh-100 bg-default" style="z-index:1000;">
+
+<div class="rainbow" style="z-index:1000 !important;">
+    <div class="sprite"style="z-index:1000 !important;"></div></div>
+<ul class="stars" style="z-index:1000 !important;">
+<li><i></i><li><i></i><li><i></i><li><i></i>
+<li><i></i><li><i></i><li><i></i><li><i></i>
+<li><i></i><li><i></i><li><i></i><li><i></i>
+</ul>
+<div class="cat" style="z-index:1000 !important;">
+<div class="tail"><div class="sprite"></div></div>
+<div class="feet"><div class="sprite"></div></div>
+<div class="poptart"></div>
+<div class="head"></div>
+</div>
+</div>
+
+<audio id="awesome-background-music">
+	<source src="/v2/public/sounds/nyancat.mp3">
+</audio>
+
+<script>
+    $(document).ready(function() {
+        $("#awesome-background-music")[0].play();
+        $("#awesome-background-music")[0].loop = true;
+    })
+    
+</script>

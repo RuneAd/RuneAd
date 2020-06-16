@@ -1,0 +1,112 @@
+<div id="paypal-button-container"></div>
+
+<script>
+    var FUNDING_SOURCES = [
+        paypal.FUNDING.PAYPAL
+    ];
+
+    FUNDING_SOURCES.forEach(function(fundingSource) {
+        let buttonConfig = {
+            env: '{{ constant("paypal_mode") }}',
+            style: {
+                layout: 'vertical',
+                shape: 'pill',
+                size: 'large',
+                branding: 'Rune-Nexus',
+                height: 45
+            },
+
+            fundingSource: fundingSource,
+    
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            currency_code: "USD",
+                            value: "{{ package.price|number_format(2) }}",
+                            breakdown: {
+                                item_total: {
+                                    value: '{{ package.price|number_format(2) }}', 
+                                    currency_code: 'USD'
+                                }
+                            }
+                        },
+                        items: [{
+                            name: "{{ package.title }} Package",
+                            unit_amount: { 
+                                value: '{{ package.price|number_format(2) }}',
+                                currency_code: 'USD'
+                            },
+                            quantity: 1,
+                            sku: "{{ package.id }}"
+                        }]
+                    }]
+                });
+            },
+
+            onApprove: function(data, actions) {
+                statusBlock.removeClass("text-danger text-success")
+                    .html("<i class='fad fa-spinner fa-pulse'></i> Verifying...");
+                    
+                return actions.order.get().then(function(orderDetails) {
+                    $.ajaxq('PaymentQueue', {
+                        url: '{{ url("premium/verify") }}',
+                        data: {
+                            orderDetails: orderDetails,
+                            server_id: "{{ server.id }}"
+                        },
+                        type: 'POST',
+                        success: function (json) {
+                            if (!json.success) {
+                                modal.find("#content").html(json.message);
+                                modal.modal('show');
+                                statusBlock.html("");
+                            } else {
+                                let pp_key = json.token;
+
+                                statusBlock.removeClass("text-danger")
+                                    .html("<i class='fad fa-spinner fa-pulse'></i> Processing...");
+    
+                                return actions.order.capture().then(function(orderDetails) {
+                                    console.log(orderDetails);
+
+                                    $.ajaxq('PaymentQueue', {
+                                        url: '{{ url("premium/process") }}',
+                                        data: {
+                                            orderDetails: orderDetails,
+                                            server_id: "{{ server.id }}",
+                                            pp_key: pp_key
+                                        },
+                                        type: 'POST',
+                                        success: function (json) {
+                                            modal.find("#content").html(json.message);
+                                            modal.modal('show');
+                                            statusBlock.html("");
+                                        },
+                                        error: function(data) {
+                                            console.log(data.responseText);
+                                        }
+                                    });
+                                });
+                            }
+                        },
+                        error: function(data) {
+                            console.log(data.responseText);
+                        }
+                    });
+                });
+            },
+
+            onError: function (err) {
+                console.log(err);
+                // Show an error page here, when an error occurs
+            }
+        }
+
+        let button =  paypal.Buttons(buttonConfig);
+
+        if (button.isEligible()) {
+            button.render('#paypal-button-container');
+        }
+    });
+</script>

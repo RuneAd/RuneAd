@@ -1,0 +1,12 @@
+{% for contributor in contributors %}
+    <a href="{{ contributor['html_url'] }}" target="_blank" class="btn btn-link btn-block text-left py-0">
+        <div class="d-flex align-items-center">
+            <div class="flex-fill pr-3">
+                <img src="{{ contributor['avatar_url'] }}" class="rounded-circle" height=24>
+            </div>
+            <div class="flex-fill w-100">
+                {{ contributor['login'] }}
+            </div>
+        </div>
+    </a>
+{% endfor %}
