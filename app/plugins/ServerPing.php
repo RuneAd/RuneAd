@@ -3,9 +3,7 @@ class ServerPing {
     
     private $address;
     private $port;
-    private $ping;
-
-    private $timeout = 2;
+    private $ping = -1;
 
     /**
      * @param $server_ip
@@ -18,38 +16,27 @@ class ServerPing {
     }
 
     public function connect() {
-        $message = "runenexus";
-
         $start   = microtime(true);
         $socket  = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
        
         socket_set_nonblock($socket);
 
-        $con_per_sec = 100;
+        $attempts  = 0;
+        $waitCount = 300; // higher the longer it waits for connection.
 
-        for ($attempts = 0; $attempts < ($this->timeout * $con_per_sec); $attempts++) { 
-            @socket_connect($socket, $this->address, $this->port);
-
-            if(socket_last_error($socket) == SOCKET_EISCONN) { 
+        while (!($connected = @socket_connect($socket, $this->address, $this->port)) && $attempts++ < $waitCount) {
+            if (socket_last_error($socket) == SOCKET_EISCONN) { 
+                $end = microtime(true);
+                $this->ping = (($end - $start)*1000);
                 break;
             }
-            
-            usleep(1000000 / $con_per_sec);
+
+            usleep(10000);
         }
-        
+
         socket_set_block($socket);
-        
-        $this->ping = floor((microtime(true) - $start) * 1000);
         socket_close($socket);
         return;
-    }
-
-    /**
-     * Sets a time in seconds to wait for a connection. accepts decimal values (ie. 1.5)
-     * @param $seconds 
-     */
-    public function setTimeout($secs) {
-        $this->timeout = $ecs;
     }
 
     /**
@@ -88,8 +75,7 @@ class ServerPing {
      * @return int the servers ping in ms
      */
     public function getPing() {
-        return $this->ping;
+        return floor($this->ping);
     }
-
 
 }
