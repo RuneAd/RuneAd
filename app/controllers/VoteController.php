@@ -57,9 +57,14 @@ class VoteController extends Controller {
         $vote = Votes::query()
             ->where("server_id", $server->id)
             ->where(function($query) use ($ip, $incentive) {
+                if ($incentive) {
                 $query
                     ->where("ip_address", $ip)
                     ->orWhere("incentive", $incentive);
+                } else {
+                    $query
+                        ->where("ip_address", $ip);
+                }
             })
             ->whereRaw(time()." - voted_on < 43000")
             ->first(); 
