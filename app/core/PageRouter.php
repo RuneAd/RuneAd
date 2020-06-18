@@ -8,7 +8,7 @@ class PageRouter extends Router {
 
     public static function getInstance() {
         if (!self::$instance) {
-            self::$instance = new PageRouter(web_root);
+            self::$instance = new PageRouter('/var/www/html/');
         }
         return self::$instance;
     }
@@ -32,7 +32,7 @@ class PageRouter extends Router {
         $this->post('servers/upload', function() {
             return $this->setRoute('servers', 'upload');
         });
-        
+
         $this->all('servers/edit/([0-9]+)-([A-Za-z0-9\-]+)', function($id, $title) {
             return $this->setRoute('servers', 'edit', ['id' => $id]);
         });
@@ -55,7 +55,7 @@ class PageRouter extends Router {
         $this->all('stats', function() {
             return $this->setRoute('pages', 'stats');
         });
-        
+
         $this->all('stats/([A-Za-z0-9\-]+)', function($rate) {
             return $this->setRoute('pages', 'stats', ['rate' => $rate]);
         });
@@ -94,7 +94,7 @@ class PageRouter extends Router {
         $this->all('premium/process', function() {
             return $this->setRoute('premium', 'process');
         });
-        
+
         $this->all('premium/verify', function() {
             return $this->setRoute('premium', 'verify');
         });
