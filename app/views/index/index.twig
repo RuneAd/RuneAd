@@ -37,8 +37,8 @@
                             <a href="{{ url('premium') }}" class="btn btn-success btn-lg pulse">Get Premium</a>
                         </div>
                         <div class="col text-sm-left text-md-right">
-                            <a href="{{ url('servers/add') }}" 
-                                class="btn btn-success btn-lg shadow-none {{ user is defined ? '' : 'disabled' }}" 
+                            <a href="{{ url('servers/add') }}"
+                                class="btn btn-success btn-lg shadow-none {{ user is defined ? '' : 'disabled' }}"
                                 data-toggle="tooltip"
                                 data-title="Add Server">
                                 <i class="fal fa-plus fa-fw"></i> Add Server
@@ -52,7 +52,7 @@
                 <div class="card-header bg-gradient-primary text-white py-3">
                     <h5 class="mb-0 text-white">Sponsored Servers</h5>
                     <p class="text-white-50 mb-0">
-                        The best of the best. Even though paid, each server is vetted to 
+                        The best of the best. Even though paid, each server is vetted to
                         assure good quality beforehand.</p>
                 </div>
 
@@ -204,7 +204,7 @@
                             {% if server.ping >= 0 and server.ping <= 100  %}
                             <i class="fad fa-signal-alt text-success fa-fw"></i>
                             {% endif %}
-                            
+
                             {% if server.ping > 100 and server.ping <= 300  %}
                             <i class="fad fa-signal-alt-3 text-warning fa-fw"></i>
                             {% endif %}
@@ -246,7 +246,7 @@
                                 </div>
                             </div>
                         </td>
-                        
+
                     </tr>
                     {% set start_rank = start_rank + 1 %}
                     {% else %}
@@ -267,7 +267,7 @@
 
             {% set pageUrl = revision is defined ? url('rev-'~revision.revision~'/') : url('')  %}
 
-            
+
             <nav aria-label="servernav" class="mt-5">
                 <ul class="pagination justify-content-center">
                     <li class="page-item {{ servers.onFirstPage() ? 'disabled' : '' }}">
@@ -279,7 +279,7 @@
                     </li>
 
                     <li class="page-item {{ servers.onFirstPage() ? 'disabled' : '' }}">
-                        <a class="page-link" 
+                        <a class="page-link"
                             href="{{ pageUrl ~ (current == 1 ? 1 : current - 1) }}" tabindex="-1">
                             <i class="fal fa-angle-left"></i>
                             <span class="sr-only">Previous</span>
@@ -311,7 +311,7 @@
                     {% endfor %}
 
                     <li class="page-item {{ current >= totalPages ? 'disabled' : '' }}">
-                        <a class="page-link" 
+                        <a class="page-link"
                             href="{{ pageUrl~(current == totalPages ? totalPages : current + 1) }}">
                             <i class="fal fa-angle-right"></i>
                             <span class="sr-only">Next</span>
@@ -319,7 +319,7 @@
                     </li>
 
                     <li class="page-item {{ current >= totalPages ? 'disabled' : '' }}">
-                        <a class="page-link" 
+                        <a class="page-link"
                             href="{{ pageUrl ~ totalPages }}">
                             <i class="fal fa-angle-double-right"></i>
                             <span class="sr-only">Next</span>
@@ -340,11 +340,11 @@
 <script>
     $('.vote-btn').click(function(event) {
         event.preventDefault();
-        
+
         let btn = $(this);
         let txt = $(this).text();
         let id  = $(this).data("id");
-        
+
         btn.html("<i class=\"fad fa-spinner fa-pulse\"></i>");
 
         btn.addClass("disabled");
@@ -362,20 +362,19 @@
                     },
                     type: 'POST',
                     complete: function (data) {
-        
+
                     },
                     success: function (json) {
-                        if (json.success) {
                             let votes = json.votes;
                             let votecnt = btn.closest("td").find("#votes");
                             votecnt.html(votes);
-                        }
-                        
+
+
                         btn.removeClass("btn-primary btn-danger btn-success")
                             .addClass("btn-"+(json.success ? 'success' : 'danger'));
-        
+
                         btn.html("<i class=\"fal fa-"+(json.success ? "check" : "times")+" fa-fw\"></i>");
-        
+
                         setTimeout(function() {
                             btn.removeClass("btn-success btn-danger disabled")
                                 .addClass("btn-primary");

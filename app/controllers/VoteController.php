@@ -5,7 +5,7 @@ class VoteController extends Controller {
 
     public function index($serverId, $incentive) {
         $server = Servers::getServer($serverId);
-        
+
         if (!$server) {
            $this->setView("errors", "show404");
            return false;
@@ -21,7 +21,7 @@ class VoteController extends Controller {
                     ->orWhere("incentive", $incentive);
             })
             ->whereRaw(time()." - voted_on < 43000")
-            ->first(); 
+            ->first();
 
         $this->set("incentive", $incentive);
         $this->set("vote", $vote);
@@ -44,7 +44,7 @@ class VoteController extends Controller {
         }
 
         $server = Servers::getServer($id);
-        
+
         if (!$server) {
             return [
                 'success' => false,
@@ -67,12 +67,13 @@ class VoteController extends Controller {
                 }
             })
             ->whereRaw(time()." - voted_on < 43000")
-            ->first(); 
-        
+            ->first();
+
         if ($vote) {
             return [
                 'success' => false,
-                'message' => 'You have already voted within the last 12 hours!'
+                'message' => 'You have already voted within the last 12 hours!',
+                'votes'   => $server->votes
             ];
         }
 
@@ -91,6 +92,7 @@ class VoteController extends Controller {
             return [
                 'success' => false,
                 'message' => 'Vote failed to register.',
+                'votes' => $server->votes
             ];
         }
 
@@ -134,7 +136,7 @@ class VoteController extends Controller {
                 'Accept' => 'application/json'
             ],
             'form_params' => [
-                "secret"   => recaptcha['private'], 
+                "secret"   => recaptcha['private'],
                 "response" => $token
             ]
         ]);
@@ -161,7 +163,7 @@ class VoteController extends Controller {
 	    		$url = $url.($hasSep ? '' : '/').$incentive;
 	    	}
         }
-        
+
         try {
             $client = new GuzzleHttp\Client();
 
@@ -188,7 +190,7 @@ class VoteController extends Controller {
 
     /**
      * @var $url
-     * return bool 
+     * return bool
      * Returns true if url contains a get query.
      */
     private function hasQuery($url) {
@@ -209,14 +211,14 @@ class VoteController extends Controller {
 
 	    return substr($string, $length - 1, $length) == $search;
     }
-    
+
     public function beforeExecute() {
         if ($this->getActionName() == "addvote") {
             $this->request = Request::getInstance();
             $this->disableView(true);
             return true;
         }
-        
+
         return parent::beforeExecute();
     }
 }

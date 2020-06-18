@@ -24,9 +24,9 @@ class ServersController extends Controller {
                 'description'   => $this->purify($this->request->getPost("info")),
                 'date_created'  => time()
             ];
-            
+
             $validation = Servers::validate($data);
-            
+
             if ($validation->fails()) {
                 $errors = $validation->errors();
                 $this->set("errors", $errors->firstOfAll());
@@ -40,9 +40,9 @@ class ServersController extends Controller {
 
                         $endpoint = $api_url."?address=".$data['server_ip']."&port=".$data['server_port'];
                         $res      = json_decode($client->request('GET', $endpoint)->getBody(), true);
-        
+
                         $success = $res['success'];
-        
+
                         $create->is_online = $success;
                         $create->ping = $success ? $res['ping'] : -1;
                         $create->save();
@@ -56,7 +56,7 @@ class ServersController extends Controller {
                         'title'      => 'New Server!',
                         'message'    => "{$this->user->username} has listed a new server: $link",
                     ]))->send();
-                    
+
                     $this->redirect("details/".$seo);
                     exit;
                 }
@@ -81,7 +81,7 @@ class ServersController extends Controller {
             $this->setView("errors/show401");
             return false;
         }*/
-        
+
         if ($this->request->isPost()) {
             $data = [
                 'revision'      => $this->request->getPost("revision", "string"),
@@ -96,9 +96,9 @@ class ServersController extends Controller {
                 'meta_info'     => $this->request->getPost("meta_info", "string"),
                 'description'   => $this->purify($this->request->getPost("info")),
             ];
-            
+
             $validation = Servers::validate($data);
-            
+
             if ($validation->fails()) {
                 $errors = $validation->errors();
                 $this->set("errors", $errors->firstOfAll());
@@ -110,7 +110,7 @@ class ServersController extends Controller {
 
                 if ($saved) {
                     $seo  = Functions::friendlyTitle($server->id.'-'.$server->title);
-                    $link = "[{$data['title']}](https://rune-nexus.com/details/{$seo})";
+                    $link = "[{$data['title']}](https://runead.com/details/{$seo})";
 
                     (new DiscordMessage([
                         'channel_id' => '610038623743639559',
@@ -155,7 +155,7 @@ class ServersController extends Controller {
 
         $width  = $dims[0];
         $height = $dims[1];
-        
+
         $maxDims = [468, 60];
         $maxSize = (1024 * 1024 * 5);
 
