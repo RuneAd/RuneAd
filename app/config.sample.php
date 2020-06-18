@@ -26,7 +26,7 @@ define("per_page", 25);
 /**
  * Imgur api key for uploading images
  */
-define("imgur_key", "e41812326e69a80");
+define("imgur_key", "");
 
 /**
  * Paypal configuration for smart buttons
@@ -53,8 +53,8 @@ const discord = [
  * Google recaptcha v3 keys
  */
 const recaptcha = [
-    'public'  => '6LcEsrAUAAAAAPjW2p3cYx-uI8VO5GfQDGcSBeNe',
-    'private' => '6LcEsrAUAAAAAE9pC6ThHm14VRZYbEScfisIaesW'
+    'public'  => '',
+    'private' => ''
 ];
 
 /**
