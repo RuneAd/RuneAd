@@ -3,6 +3,15 @@
 {% block content %}
 
 
+.gradient-text {
+	text-transform: uppercase;
+	background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-size: 20vw;
+  font-family: 'Poppins', sans-serif;
+	};
+
 <div class="container" style="margin-top:-30px;">
     <div class="row">
         <div class="col-sm-12">
@@ -21,7 +30,7 @@
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" href="{{ url('') }}">
-                                        All Versions
+                                        All Revisions
                                     </a>
 
                                     <div class="dropdown-divider"></div>
@@ -34,7 +43,7 @@
                                 </div>
                             </div>
 
-                            <a href="{{ url('premium') }}" class="btn btn-success btn-lg pulse">Get Premium</a>
+                            <a href="{{ url('premium') }}" class="btn btn-success btn-lg pulse">Go Premium</a>
                         </div>
                         <div class="col text-sm-left text-md-right">
                             <a href="{{ url('servers/add') }}"
@@ -49,7 +58,7 @@
             </div>
 
             <div class="card border-0 shadow-sm overflow-hidden mb-5">
-                <div class="card-header bg-gradient-primary text-white py-3">
+                <div class="card-header bg-gradient-info text-white py-3">
                     <h5 class="mb-0 text-white">Sponsored Servers</h5>
                     <p class="text-white-50 mb-0">
                         The best of the best. Even though paid, each server is vetted to

@@ -31,8 +31,7 @@
                     </li>
                 </ul>
                 <p class="lead mt-0">
-                    Instant votes on all packages will also be applied at the beginning of every 
-                    month after reset.
+                    *Servers that use premium packages are twice as likely to be viewed. We encourage every server to give premium a chance!
                 </p>
             </div>
             <div class="col-lg-7 col-md-8 ml-auto ">
@@ -63,7 +62,7 @@
                                         </ul>
                                     </div>
                                     <div class="card-footer bg-transparent">
-                                        <a href="#" 
+                                        <a href="#"
                                             id="package-select"
                                             data-package="{{ package['id'] }}"
                                             class="btn btn-primary {{ user is defined ? '' : 'disabled' }}">Select</a>
@@ -99,7 +98,7 @@
                                         </ul>
                                     </div>
                                     <div class="card-footer bg-transparent">
-                                        <a href="#" 
+                                        <a href="#"
                                             id="package-select"
                                             data-package="{{ package['id'] }}"
                                             class="btn btn-primary {{ user is defined ? '' : 'disabled' }}">Select</a>
@@ -114,6 +113,10 @@
         </div>
     </div>
 </section>
+
+<p class="small text-muted">
+    * Every server will see a different result based on individual server uniqueness.
+</p>
 
 {% if user is defined and user is not null %}
 <section id="servers" class="pricing-5 py-5">
@@ -185,7 +188,7 @@
                 </div>
 
                 <div id="paypal-btn" style="height:60px; width:400px;" class="mx-auto mb-5">
-                    <div class="rounded-pill" 
+                    <div class="rounded-pill"
                         style="height:45px;background-color: rgba(0,0,0,0.1)">
                     </div>
                 </div>
@@ -199,7 +202,7 @@
         <div class="modal-content">
             <div class="modal-body py-5">
                 <div id="content">
-                    
+
                 </div>
             </div>
         </div>
@@ -244,7 +247,7 @@
 
         if ((typeof package !== "undefined") && (typeof server != "undefined")) {
             $(this).closest(".card").addClass("border-primary");
-        
+
             //$('#paypal-btn').removeClass("text-danger").html("<i class='fad fa-spinner fa-pulse fa-3x mb-3'></i>");
             $('#checkout').removeClass("d-none");
 
@@ -270,7 +273,7 @@
             },
             type: 'POST',
             success: function (json) {
-                
+
                 if (json.success) {
                     statusBlock.html("");
                     paypalBtn.html(json.message);

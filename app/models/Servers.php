@@ -58,11 +58,11 @@ class Servers extends Model {
 
         return Servers::where('revision', '=', $revision->revision)
             ->select(
-                'id', 
-                'title', 
-                'revision', 
+                'id',
+                'title',
+                'revision',
                 'website',
-                'banner_url', 
+                'banner_url',
                 'is_online',
                 'ping',
                 'last_ping',
@@ -70,7 +70,7 @@ class Servers extends Model {
                 'website'
             )
             ->selectRaw(
-                'IF(premium_expires > '.time().', votes + (premium_level * 100), votes) as votes')
+                'IF(premium_expires > '.time().', votes + (premium_level * 1), votes) as votes')
             ->where('website', '!=', null)
             ->orderBy('is_online', 'DESC')
             ->orderBy('votes', 'DESC')
@@ -85,10 +85,10 @@ class Servers extends Model {
 
         return Servers::where('website', '!=', null)
             ->select(
-                'id', 
-                'title', 
-                'revision', 
-                'banner_url', 
+                'id',
+                'title',
+                'revision',
+                'banner_url',
                 'is_online',
                 'ping',
                 'last_ping',
@@ -96,7 +96,7 @@ class Servers extends Model {
                 'website'
             )
             ->selectRaw(
-                'IF(premium_expires > '.time().', votes + (premium_level * 100), votes) as votes')
+                'IF(premium_expires > '.time().', votes + (premium_level * 1), votes) as votes')
             ->where('website', '!=', null)
             ->orderBy('is_online', 'DESC')
             ->orderBy('votes', 'DESC')
@@ -107,7 +107,7 @@ class Servers extends Model {
     public static function getServer($id) {
         return Servers::where('id', $id)
             ->select('*')
-            
+
             ->leftJoin('users', 'users.user_id', '=', 'servers.owner')
             ->first();
     }
@@ -116,7 +116,7 @@ class Servers extends Model {
         return Servers::where('owner', $ownerId)
             ->select('*')
             ->selectRaw(
-                'IF(premium_expires > '.time().', votes + (premium_level * 100), votes) as votes')
+                'IF(premium_expires > '.time().', votes + (premium_level * 1), votes) as votes')
             ->get();
     }
 

@@ -26,7 +26,7 @@ class Controller {
 
 	/** @var Cookies $cookies */
     protected $cookies;
-    
+
     /** @var Session $session */
     protected $session;
 
@@ -40,7 +40,7 @@ class Controller {
         'login_required' => false,
         'roles'  => []
     ];
-    
+
     public function beforeExecute() {
         $this->request  = Request::getInstance();
         $this->cookies  = Cookies::getInstance();
@@ -52,7 +52,7 @@ class Controller {
                 $token   = $this->filter($this->cookies->get("access_token"));
                 $discord = new Discord($token);
 
-                $discord->setEndpoint("/users/@me"); 
+                $discord->setEndpoint("/users/@me");
                 $me = $discord->get();
 
                 if (!$me || isset($me['code'])) {
@@ -93,7 +93,7 @@ class Controller {
             $this->setView("errors/show401");
             return false;
         }
-        
+
         $darkMode = false;
 
         if ($this->cookies->has("darkmode")) {
@@ -112,7 +112,7 @@ class Controller {
 
         $this->set("page_title", $meta['title']);
         $this->set("meta_info", $meta['meta']);
-        
+
         $this->set("theme", $darkMode ? "dark" : "light");
         $this->set("controller", $this->router->getController());
         $this->set("route", $this->router->getCanonical());
@@ -124,7 +124,7 @@ class Controller {
             'premium' => [
                 'index' => [
                     'title' => 'Premium',
-                    'meta'  => 'Buy premium on RuneNexus to give your server a nice boost, which will increase traffic and visibility for your server!'
+                    'meta'  => 'Buy premium on RuneAd to give your server a nice boost, which will increase traffic and visibility for your server!'
                 ]
             ],
             'pages' => [
@@ -184,10 +184,10 @@ class Controller {
             $template = $loader->load($this->view);
             echo $template->render($this->viewVars);
         } catch (Exception $e) {
-            
+
         }
     }
-    
+
     /**
      * Gets the name of the action
      * @return mixed
@@ -228,7 +228,7 @@ class Controller {
 	public function setView($view) {
 		$this->view = $view;
     }
-    
+
     public function getView() {
         return $this->view;
     }
@@ -318,7 +318,7 @@ class Controller {
     }
 
     public function getPurifier() {
-        
+
         $allowed_html = [
             'div[class]',
             'span[style]',
