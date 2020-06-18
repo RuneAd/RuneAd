@@ -31,7 +31,7 @@ class IndexController extends Controller {
 
         $this->set("servers", $servers);
         $this->set("revisions", $revisions);
-        
+
     	return true;
     }
 
@@ -42,53 +42,10 @@ class IndexController extends Controller {
             $this->setView("errors/show404");
             return false;
         }
-        
-        if ($rate == "year") {
-            $start = time() - (60 * 60 * 24 * 365);
-        } else if ($rate == "month") {
-            $start = time() - (60 * 60 * 24 * 30);
-        } else if ($rate == "week") {
-            $start = time() - (60 * 60 * 24 * 7);
-        } else {
-            $rate  = "week";
-            $start = time() - (60 * 60 * 24 * 7);
-        }
 
-
-
-        $cache = new Cache('servers/server_'.$server->id.'_'.$rate.'_chart', 0);
-        $cacheData = $cache->get();
-
-        if (!$cacheData) {
-            $votes = Votes::where("voted_on", ">", $start)
-                ->where("server_id", $server->id)
-                ->orderBy("voted_on", "ASC")->get();
-
-            $cacheData = [];
-
-            foreach ($votes as $vote) {
-                $date  = date("m-d-y", $vote->voted_on);
-                $votes = 0;
-
-                if (isset($cacheData[$date])) {
-                    $cacheData[$date] += 1;
-                } else {
-                    $cacheData[$date] = 1;
-                }
-            }
-
-            $cache->save($cacheData);
-        } else {
-            $this->set("time_left", $cache->getTimeLeft());
-        }
-
-        $columns = '\''.implode('\',\'', array_keys($cacheData)).'\'';
-        $data    = implode(',', array_values($cacheData));
-        $seo     = Functions::friendlyTitle($server->id.'-'.$server->title);
+        $seo  = Functions::friendlyTitle($server->id.'-'.$server->title);
 
         $this->set("rate", $rate);
-        $this->set("chart_columns", $columns);
-        $this->set("chart_data", $data);
         $this->set("server", $server);
         $this->set("purifier", $this->getPurifier());
         $this->set("page_title", $server->title);
