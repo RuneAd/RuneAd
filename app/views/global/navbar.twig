@@ -2,11 +2,11 @@
     <div class="container">
 
         <button class="btn btn-link text-white d-lg-none p-2 px-3 shadow-none"
-                type="button" 
-                data-toggle="collapse" 
+                type="button"
+                data-toggle="collapse"
                 data-target="#global-nav"
-                aria-controls="navbarSupportedContent" 
-                aria-expanded="false" 
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
                 aria-label="Toggle navigation">
             <i class="fal fa-bars fa-lg"></i>
         </button>
@@ -15,15 +15,15 @@
             <div class="navbar-collapse-header">
                 <div class="row">
                     <div class="col-6 collapse-brand">
-                        Rune Nexus
+                        RuneAd
                     </div>
                     <div class="col-6 collapse-close">
-                        <button type="button" 
-                                class="navbar-toggler" 
-                                data-toggle="collapse" 
+                        <button type="button"
+                                class="navbar-toggler"
+                                data-toggle="collapse"
                                 data-target="#global-nav"
-                                aria-controls="navbar-primary" 
-                                aria-expanded="true" 
+                                aria-controls="navbar-primary"
+                                aria-expanded="true"
                                 aria-label="Toggle navigation">
                             <span></span>
                             <span></span>
@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('') }}">Home</a>
@@ -47,6 +47,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('stats') }}">Stats</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://probemas.com/Buy-OSRS-Gold" target="_blank" class="nav-link">Buy OSRS Gold</a>
                 </li>
             </ul>
 
@@ -71,7 +74,7 @@
                         {% if user.isRole("owner") %}
                         <a class="dropdown-item" href="{{ url('admin') }}">Admin Panel</a>
                         {% endif %}
-                        
+
                         <div class="dropdown-divider"></div>
 
                         <a class="dropdown-item text-danger" href="{{ url('logout') }}">Sign Out</a>
