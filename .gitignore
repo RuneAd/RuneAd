@@ -17,3 +17,5 @@ app/crons/cron.log
 # You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
 # composer.lock
 crons/cron.log
+app/.DS_Store
+.DS_Store
