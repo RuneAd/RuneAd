@@ -18,6 +18,12 @@ a.text-primary:hover {
 .navbar-dark .navbar-nav .nav-link {
     font-family: "OpenSans-Regular" !important;
 }
+.text-gradient {
+	text-transform: uppercase;
+	background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	}
 .header h1 {
     font-family: "Montserrat-Bold";
     font-size: 60px;
@@ -125,7 +131,7 @@ ul {
     border-radius: 50%;
     position: relative;
 }
-.user_avatar.large { 
+.user_avatar.large {
     width: 64px;
     height:64px;
 }
@@ -178,13 +184,13 @@ ul {
     position: relative;
     animation: animatebottom 0.4s;
 }
-  
+
 @keyframes animatebottom {
     from {
         bottom: -200px;
         opacity: 0;
     }
-  
+
     to {
         bottom: 0;
         opacity: 1;
