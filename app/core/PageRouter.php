@@ -8,8 +8,7 @@ class PageRouter extends Router {
 
     public static function getInstance() {
         if (!self::$instance) {
-            self::$instance = new PageRouter('/var/www/html/');
-            self::$instance = new PageRouter('web_root');
+            self::$instance = new PageRouter(web_root);
         }
         return self::$instance;
     }
