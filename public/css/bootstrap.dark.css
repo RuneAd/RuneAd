@@ -29,7 +29,21 @@ table {
     background-color: rgba(0,0,0,.075);
 }
 .bg-dark {
-    background-color: #202225 !important;
+	background: linear-gradient(-45deg, #5bc0de, #0275d8, #5bc0de, #0275d8);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 input.form-control, select.form-control {
     background-color: #484C52 !important;
