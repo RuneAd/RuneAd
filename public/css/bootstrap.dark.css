@@ -29,11 +29,7 @@ table {
     background-color: rgba(0,0,0,.075);
 }
 .bg-dark {
-  background-image: url(https://i.imgur.com/iNO0I1K.jpg);
-  background-size: 100% 100%;
-  background-position: center;
-  position: absolute;
-  overflow: hidden;
+    background-color: #202225 !important;
 }
 input.form-control, select.form-control {
     background-color: #484C52 !important;
