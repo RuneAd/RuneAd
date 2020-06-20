@@ -146,6 +146,7 @@ class Controller {
 		                     'meta' => 'Sponsored ad spots that place you above all other on every page of the main listing.'
 		                 ]
 		             ]
+							 ]
 		         ];
 
         if (in_array($controller, array_keys($pages))) {
