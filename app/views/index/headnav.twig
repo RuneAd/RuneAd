@@ -1,0 +1,40 @@
+<div class="card border-0 shadow-sm mb-3">
+     <div class="card-body">
+         <div class="row flex-md-row flex-column">
+             <div class="col mb-sm-3 mb-md-0">
+                 <div class="dropdown">
+                     <button class="btn btn-primary btn-lg dropdown-toggle shadow-none" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                         {% if revision is defined %}
+                             Rev: {{ revision.revision }}
+                         {% else %}
+                             All Versions
+                         {% endif %}
+                     </button>
+                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                         <a class="dropdown-item" href="{{ url('') }}">
+                             All Versions
+                         </a>
+
+                         <div class="dropdown-divider"></div>
+
+                         {% for revision in revisions %}
+                         <a class="dropdown-item" href="{{ url('rev-'~revision.revision~'/1') }}">
+                             {{ revision.revision }}
+                         </a>
+                         {% endfor %}
+                     </div>
+                 </div>
+
+                 <a href="{{ url('premium') }}" class="btn btn-success btn-lg pulse">Get Premium</a>
+             </div>
+             <div class="col text-sm-left text-md-right">
+                 <a href="{{ url('servers/add') }}"
+                     class="btn btn-success btn-lg shadow-none {{ user is defined ? '' : 'disabled' }}"
+                     data-toggle="tooltip"
+                     data-title="Add Server">
+                     <i class="fal fa-plus fa-fw"></i> Add Server
+                 </a>
+             </div>
+         </div>
+     </div>
+ </div> 

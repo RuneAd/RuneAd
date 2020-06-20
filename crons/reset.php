@@ -1,18 +1,21 @@
 <?php
-    include "cron_init.php";
-    include DOC_ROOT.'/../app/plugins/ServerPing.php';
+     include "cron_init.php";
 
-    writeLog("Started server status update...");
+     $updated = 0;
 
-    $startTime = microtime(true);
-    $updated   = 0;
-    $servers   = Servers::get();
+     writeLog("Started vote reset...");
 
-    foreach ($servers as $server) {
-        $server->votes = 0;
-        $server->save();
+     $startTime = microtime(true);
 
-        $updated++;
-    }
+     $servers = Servers::get();
 
-    writeLog("Finished vote reset cron.");
+     foreach ($servers as $server) {
+         $server->votes = 0;
+         $server->save();
+         $updated++;
+     }
+
+     $endTime = microtime(true);
+     $elapsed = number_format($endTime - $startTime, 4);
+
+     writeLog("Reset $updated servers' vote counts. Executed in ".$elapsed."s!");

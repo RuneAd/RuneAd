@@ -21,7 +21,7 @@ class PremiumController extends Controller {
         $serverId  = $this->request->getPost("server", "int");
 
         $package  = Premium::where('id', $packageId)->first();
-        
+
         if (!$package) {
             return [
                 'success' => false,
@@ -84,7 +84,7 @@ class PremiumController extends Controller {
         }
 
         $package = Premium::where('id', $sku)->first();
-        
+
         if (!$package) {
             return [
                 'success' => false,
@@ -115,7 +115,7 @@ class PremiumController extends Controller {
                 ])
             ];
         }
-        
+
         $token = Functions::generateString(15);
         $this->session->set("pp_key", $token);
 
@@ -129,7 +129,7 @@ class PremiumController extends Controller {
     public function process() {
         $pp_key   = $this->request->getPost("pp_key", "string");
         $sess_key = $this->session->get("pp_key");
-        
+
         if (!$pp_key || !$sess_key || $pp_key != $sess_key) {
             return [
                 'success' => false,
@@ -138,7 +138,7 @@ class PremiumController extends Controller {
         }
 
         $this->session->delete("pp_key");
-        
+
         $order_info = $this->request->getPost("orderDetails");
         $server_id  = $this->request->getPost("server_id", "int");
 
@@ -177,7 +177,7 @@ class PremiumController extends Controller {
         }
 
         $package = Premium::where('id', $sku)->first();
-        
+
         if (!$package) {
             return [
                 'success' => false,
@@ -246,7 +246,7 @@ class PremiumController extends Controller {
                 ])
             ];
         }
-        
+
         return [
             'success' => true,
             'message' => $this->getViewContents("premium/success", [
@@ -256,21 +256,10 @@ class PremiumController extends Controller {
         ];
     }
 
-    public $access =  [
-        'login_required' => true,
-        'roles'  => ['member', 'moderator', 'admin']
-    ];
-
     public function beforeExecute() {
         if ($this->getActionName() == "button" || $this->getActionName() == "process" || $this->getActionName() == "verify") {
             $this->disableView(true);
-        } else {
-            $this->access = [
-                'login_required' => false,
-                'roles'  => []
-            ];
         }
-
         return parent::beforeExecute();
     }
 }

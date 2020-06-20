@@ -425,3 +425,18 @@ tr.bg-primary, .bg-premium {
  .bg-default {
      background-color: #3c4d69 !important;
    }
+    .search-box {
+        max-width: 550px;
+        margin:auto;
+    }
+    .search-box .inline-form {
+        position: relative;
+    }
+    .search-box .inline-form input.form-control {
+        padding-right: 120px;
+    }
+    .search-box .inline-form .btn {
+        position: absolute;
+        top: 3.7px;
+        right: 3.7px;
+      }

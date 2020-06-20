@@ -44,6 +44,7 @@ class PageRouter extends Router {
         $this->all('vote/([0-9]+)/([A-Za-z0-9\-_]+)', function($serverId, $incentive) {
             return $this->setRoute('vote', 'index', ['serverId' => $serverId, 'incentive' => $incentive]);
         });
+
         $this->all('vote/([0-9]+)-([A-Za-z0-9\-]+)/([A-Za-z0-9\-_]+)', function($serverId, $title, $incentive) {
             return $this->setRoute('vote', 'index', ['serverId' => $serverId, 'incentive' => $incentive]);
         });
@@ -159,6 +160,10 @@ class PageRouter extends Router {
             return $this->setRoute('index', 'details', ['serverId' => $id, 'rate' => $rate]);
         });
 
+        $this->all('servers/view/([0-9]+)-([A-Za-z0-9\-]+)', function($id, $title) {
+            return $this->setRoute('index', 'details',  ['serverId' => $id, 'page' => 1]);
+        });
+
         /**
          * Profile
          */
@@ -177,13 +182,41 @@ class PageRouter extends Router {
             return $this->setRoute('pages', 'privacy');
         });
 
-        $this->get("map", function() {
-            return $this->setRoute('pages', 'map');
+        $this->get("nyan", function() {
+            return $this->setRoute('pages', 'nyan');
         });
 
+        /**
+         * Sponsor Spots
+         */
         $this->get("sponsor", function() {
             return $this->setRoute('sponsor', 'index');
-                 });
+        });
+        $this->all('sponsor/button', function() {
+            return $this->setRoute('sponsor', 'button');
+        });
+
+        $this->all('sponsor/process', function() {
+            return $this->setRoute('sponsor', 'process');
+        });
+
+        $this->all('sponsor/verify', function() {
+            return $this->setRoute('sponsor', 'verify');
+        });
+
+        /**
+         * Tools
+         */
+        $this->all('itemdb', function() {
+            return $this->setRoute('tools', 'itemdb');
+        });
+        $this->all('tools/itemdb', function() {
+            return $this->setRoute('tools', 'itemdb');
+        });
+
+        $this->all('tools/itemdb/search', function() {
+            return $this->setRoute('tools', 'search');
+        });
     }
 
     public function setRoute($controller, $method, $params = []) {

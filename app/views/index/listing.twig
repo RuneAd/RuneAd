@@ -1,0 +1,252 @@
+<div class="card border-0 shadow-sm overflow-hidden mb-2">
+     <div class="card-header bg-gradient-primary text-white py-3">
+         Runescape Private Servers
+     </div>
+
+     {% set start_rank = servers.firstItem() %}
+
+     <table class="table mb-0" style="line-height:1em;">
+         <thead>
+             <tr class="bg-{{ theme == "dark" ? "dark" : "secondary" }}">
+                 <th class="text-center py-2 small border-0">Rank</th>
+                 <th class="py-2 small border-0">Server</th>
+                 <th class="py-2 small border-0 px-0 d-none d-lg-table-cell" style="width:100px;">
+                     Ping *
+                 </th>
+                 <th class="py-2 border-0">&nbsp;</th>
+             </tr>
+         </thead>
+         {% for server in servers.items() %}
+         {% set server_url = friendlyTitle(server.id~' '~server.title) %}
+
+         {% set class = server.premium_expires > time() ? 'bg-primary' : '' %}
+
+         <tr id="server" class="{{ class }}">
+             <td class="text-center rank-col">
+                 {{ start_rank }}
+             </td>
+
+             <td class="py-4">
+                 {% if server.revision %}
+                     <div class="badge badge-primary float-left mr-2">
+                         {{ server.revision }}
+                     </div>
+                 {% endif %}
+
+                 <a href="{{ url('details/'~server_url) }}">
+                     {% if server.title|length > 40 %}
+                     {{ substr(server.title, 0, 40)~'...' }}
+                     {% else %}
+                     {{ server.title }}
+                     {% endif %}
+                 </a>
+
+                 {% if server.banner_url %}
+                 <a href="{{ url('details/'~server_url) }}" class="banner-img">
+                     <img data-src="{{ banner(server.banner_url) }}"
+                     src="{{ url('public/img/banner-loading.png') }}"
+                         id="banner"
+                         alt="{{ server.banner_url }}"
+                         style="margin-top:14px;"
+                         class="img-fluid rounded lazy">
+                 </a>
+                 {% else %}
+                 <a href="{{ url('details/'~server_url) }}" class="banner-img">
+                     <img src="{{ url('public/img/banner-'~theme~'.png') }}"
+                         id="banner"
+                         alt="{{ url('public/img/banner-'~theme~'.png') }}"
+                         style="margin-top:14px;"
+                         class="img-fluid rounded lazy">
+                 </a>
+                 {% endif %}
+             </td>
+
+             <td class="d-none d-lg-table-cell small" id="server-ping" data-server="{{ server.id }}">
+
+                 {% if server.ping >= 0 and server.ping <= 100  %}
+                 <i class="fad fa-signal-alt text-success fa-fw"></i>
+                 {% endif %}
+
+                 {% if server.ping > 100 and server.ping <= 300  %}
+                 <i class="fad fa-signal-alt-3 text-warning fa-fw"></i>
+                 {% endif %}
+
+                 {% if server.ping > 300 and server.ping <= 400  %}
+                 <i class="fad fa-signal-alt-2 text-danger fa-fw"></i>
+                 {% endif %}
+
+                 {% if server.ping > 500 %}
+                 <i class="fad fa-signal-alt-1 text-danger fa-fw"></i>
+                 {% endif %}
+
+
+                 {% if server.ping == -1  %}
+                     <i class="fad fa-signal-alt-1 text-muted fa-fw"></i>
+                 {% else %}
+                     <span data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
+                         {{ server.ping }}
+                     </span>
+                 {% endif %}
+             </td>
+
+             <td class="text-right">
+                 <div class="d-flex align-items-center justify-content-end">
+                     <div class="pr-3">
+                         <p class="mb-0" id="votes">{{ server.votes|number_format }}</p>
+                         <span class="small text-muted mb-0">Votes</span>
+                     </div>
+                     <div class="pr-1">
+                         <a href="{{ url('vote/'~server_url) }}" rel="nofollow"
+                             data-id="{{ server.id }}" class="btn btn-primary vote-btn">
+                             Vote
+                         </a>
+                     </div>
+                     <div class="">
+                         <a href="{{ server.website }}" target="_blank" rel="nofollow"
+                             data-id="{{ server.id }}" class="btn btn-primary float-right {{ server.website ? '' : 'disabled' }}">
+                         <i class="far fa-link"></i></a>
+                     </div>
+                 </div>
+             </td>
+
+         </tr>
+         {% set start_rank = start_rank + 1 %}
+         {% else %}
+         <tr>
+             <td colspan=5 class="p-4">Nothing to see here.</td>
+         </tr>
+         {% endfor %}
+     </table>
+ </div>
+
+ <p class="small text-muted">
+     * Ping is relative to the server, not yourself, and may not be accurate depending on your location.<br>
+     ** Status updates occur every 30 minutes on the clock. (ie 9, 9:30, 10, 10:30, etc.)
+ </p>
+
+ {% set totalPages = servers.lastPage() %}
+ {% set current = servers.currentPage() %}
+
+ {% set pageUrl = revision is defined ? url('rev-'~revision.revision~'/') : url('')  %}
+
+
+ <nav aria-label="servernav" class="mt-5">
+     <ul class="pagination justify-content-center">
+         <li class="page-item {{ servers.onFirstPage() ? 'disabled' : '' }}">
+             <a class="page-link"
+                  href="{{ pageUrl~'1' }}" tabindex="-1">
+                 <i class="fal fa-angle-double-left"></i>
+                 <span class="sr-only">Previous</span>
+             </a>
+         </li>
+
+         <li class="page-item {{ servers.onFirstPage() ? 'disabled' : '' }}">
+             <a class="page-link"
+                 href="{{ pageUrl ~ (current == 1 ? 1 : current - 1) }}" tabindex="-1">
+                 <i class="fal fa-angle-left"></i>
+                 <span class="sr-only">Previous</span>
+             </a>
+         </li>
+
+         {% if totalPages > 5 %}
+             {% set start = current < 3 ? 1 : current - 2 %}
+             {% set end   = start < 4 ? start + 4 : current + 2 %}
+
+             {% if end > totalPages %}
+                 {% set end = totalPages %}
+             {% endif %}
+
+             {% if start + 4 >= totalPages %}
+                 {% set start = totalPages - 4 %}
+             {% endif %}
+         {% else %}
+             {% set start = 1 %}
+             {% set end   = servers.lastPage() %}
+         {% endif %}
+
+         {% for p in start..end %}
+         <li class="page-item {{ current == p ? ' active' : ''}}">
+             <a class="page-link" href="{{ pageUrl ~ p }}">
+                 {{ p }}
+             </a>
+         </li>
+         {% endfor %}
+
+         <li class="page-item {{ current >= totalPages ? 'disabled' : '' }}">
+             <a class="page-link"
+                 href="{{ pageUrl~(current == totalPages ? totalPages : current + 1) }}">
+                 <i class="fal fa-angle-right"></i>
+                 <span class="sr-only">Next</span>
+             </a>
+         </li>
+
+         <li class="page-item {{ current >= totalPages ? 'disabled' : '' }}">
+             <a class="page-link"
+                 href="{{ pageUrl ~ totalPages }}">
+                 <i class="fal fa-angle-double-right"></i>
+                 <span class="sr-only">Next</span>
+             </a>
+         </li>
+     </ul>
+ </nav>
+
+
+ {% set recaptcha_key = constant('recaptcha')['public'] %}
+
+ <script src="https://www.google.com/recaptcha/api.js?render={{ recaptcha_key }}" defer></script>
+
+ <script>
+ $(document).ready(function() {
+     $('.vote-btn').click(function(event) {
+         event.preventDefault();
+
+         let btn = $(this);
+         let txt = $(this).text();
+         let id  = $(this).data("id");
+
+         btn.html("<i class=\"fad fa-spinner fa-pulse\"></i>");
+
+         btn.addClass("disabled");
+         btn.removeClass("btn-success btn-danger").addClass("btn-primary");
+
+         grecaptcha.ready(function() {
+             grecaptcha.execute("{{ recaptcha_key }}", {
+                 action: 'homepage'
+             }).then(function(token) {
+                 $.ajaxq('VoteQueue', {
+                     url: '{{ url("servers/addvote") }}',
+                     data: {
+                         server_id: id,
+                         token: token
+                     },
+                     type: 'POST',
+                     complete: function (data) {
+
+                     },
+                     success: function (json) {
+                         if (json.success) {
+                             let votes = json.votes;
+                             let votecnt = btn.closest("td").find("#votes");
+                             votecnt.html(votes);
+                         }
+
+                         btn.removeClass("btn-primary btn-danger btn-success")
+                             .addClass("btn-"+(json.success ? 'success' : 'danger'));
+
+                         btn.html("<i class=\"fal fa-"+(json.success ? "check" : "times")+" fa-fw\"></i>");
+
+                         setTimeout(function() {
+                             btn.removeClass("btn-success btn-danger disabled")
+                                 .addClass("btn-primary");
+                             btn.html("Vote");
+                         }, 1000);
+                     },
+                     error: function(data) {
+                         console.log(data.responseText);
+                     }
+                 });
+             });
+         });
+     });
+ });
+ </script>

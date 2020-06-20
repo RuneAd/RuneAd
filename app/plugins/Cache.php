@@ -21,7 +21,8 @@ class Cache {
             return null;
         }
 
-        return json_decode(file_get_contents($this->getFilePath()), $this->assoc);
+        $this->data = json_decode(file_get_contents($this->getFilePath()), $this->assoc);
+        return $this->data;
     }
 
     public function isExpired() {
@@ -40,6 +41,10 @@ class Cache {
 
     public function getFilePath() {
         return 'app/cache/'.$this->file.'.json';
+    }
+
+    public function getData() {
+        return empty($this->data) ? [] : $this->data;
     }
 
     public function getTimeLeft() {

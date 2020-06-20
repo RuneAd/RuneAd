@@ -8,14 +8,17 @@ app/crons/cron.log
 .history/*
 **/js/fontawesome.pro.min.js
 **/webfonts/*
-/public/sounds/
-/public/img/banners/*.png
-/public/img/banners/*.gif
-/public/img/banners/*.jpg
+**/sounds/
+ **/banners/*.png
+ **/banners/*.gif
+ **/banners/*.jpg
+ **/img/items/*.png
 
 # Commit your application's lock file https://getcomposer.org/doc/01-basic-usage.md#commit-your-composer-lock-file-to-version-control
 # You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
 # composer.lock
 crons/cron.log
+sitemap.xml
+robots.txt
 app/.DS_Store
 .DS_Store

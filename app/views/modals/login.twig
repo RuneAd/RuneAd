@@ -12,13 +12,19 @@
                     &nbsp;
                 </div>
             </div>
-            
-            <div class="modal-body text-center py-5">
+
+            <div class="modal-body text-center  pt-5 py-3">
                 <i class="fab fa-discord text-primary fa-5x mb-3"></i>
                 <h3 class="mb-0">Login with Discord</h3>
                 <p class="small mb-5">Click below to log in using your Discord Account.</p>
 
-                <a href="" class="btn btn-primary" id="discord">Continue</a>
+                <p><a href="" class="btn btn-primary rounded-pill px-5 mb-4" id="discord">Continue</a></p>
+
+ <p class="small text-muted mb-0">
+     By signing in and using our service you agree to our<br>
+     <a href="{{ url('terms') }}" target="_blank">Terms of Service</a> and
+     <a href="{{ url('privacy') }}" target="_blan">Privacy Policy</a>.
+ </p>
             </div>
         </div>
     </div>
@@ -28,7 +34,7 @@
     $('#discord').on("click", function(event) {
         event.preventDefault();
 
-        
+
         let button = $(this);
 
         button.html("<i class=\"fad fa-spinner fa-pulse\"></i>");

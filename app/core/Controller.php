@@ -84,16 +84,14 @@ class Controller {
         $controller = $this->router->getController();
         $action = $this->getActionName();
 
-				$canAccess = Security::canAccess($controller, $action, $roles);
+        $canAccess = Security::canAccess($controller, $action, $roles);
 
-         if (!$canAccess) {
+        if (!$canAccess) {
+            $this->setView("errors/show401");
+            return true;
+        }
 
-
-             $this->setView("errors/show401");
-             return true;
-         }
-
-         $darkMode = false;
+        $darkMode = false;
 
         if ($this->cookies->has("darkmode")) {
             $this->set("darkmode", true);
@@ -140,14 +138,24 @@ class Controller {
                     'title' => 'Terms of Service',
                     'meta'  => 'Our terms of service.'
                 ],
-								'sponsor' => [
-		                 'index' => [
-		                     'title' => 'Sponsored Ads',
-		                     'meta' => 'Sponsored ad spots that place you above all other on every page of the main listing.'
-		                 ]
-		             ]
-							 ]
-		         ];
+                'privacy' => [
+                    'title' => 'Privacy Policy',
+                    'meta'  => 'Our privacy policy.'
+                ]
+            ],
+            'sponsor' => [
+                'index' => [
+                    'title' => 'Sponsored Ads',
+                    'meta' => 'Sponsored ad spots that place you above all other on every page of the main listing.'
+                ]
+            ],
+            'tools' => [
+                'itemdb' => [
+                    'title' => 'Osrs Item DB',
+                    'meta' => 'An easy to use oldschool runescape item db that\'s always up to date.'
+                ]
+            ]
+        ];
 
         if (in_array($controller, array_keys($pages))) {
             $actions = $pages[$controller];

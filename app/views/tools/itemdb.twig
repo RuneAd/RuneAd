@@ -1,0 +1,78 @@
+{%  extends 'layout.twig' %}
+
+ {% block content %}
+
+ <div class="container" style="margin-top:-30px;">
+     <div class="row">
+         <div class="col-sm-12">
+             <div class="card border-0 shadow-sm mb-3">
+                 <div class="card-body">
+                     <div class="search-box">
+                         <form action="{{ url('tools/itemdb') }}" method="post" class="form-inline" id="searchform">
+                             <input type="text" class="form-control" name="search" placeholder="search by item name">
+                             <input type="submit" class="btn btn-primary rounded-pill" value="search">
+                         </form>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+
+     <div class="row">
+         <div class="col-sm-12">
+             <div class="card border-0 shadow-sm" id="results">
+                 <div class="card-body">
+                     <i class="fad fa-spinner fa-pulse"></i> Loading...
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+
+ <script>
+ $(document).ready(function() {
+
+ });
+     /*let page = 1;
+     let search = '';
+     let locked = true;
+
+     loadItems(search, page);
+
+     $('#searchform').submit(function(event) {
+         event.preventDefault();
+
+         if (locked) {
+             return;
+         }
+
+         locked = true;
+         search = $(this).find("#search").val();
+         page   = 1;
+
+         loadItems(search, page);
+     });
+
+     $(document).on('click', '#pageBtn', function(event) {
+         event.preventDefault();
+
+         if (locked) {
+             return;
+         }
+
+         locked = true;
+         page   = $(this).data('page');
+         loadItems(search, page);
+     });
+
+     function loadItems(search, page) {
+         $.post("{{ url('tools/search') }}", {
+             search: search,
+             page: page
+         }, function(data) {
+             $('#results').html(data);
+             locked = false;
+         });
+     }*/
+ </script>
+ {%  endblock %}
