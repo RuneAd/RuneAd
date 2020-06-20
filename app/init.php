@@ -8,6 +8,7 @@
 
     $dirs = [
         "app/core/",
+        "app/core/acl/",
         "app/controllers/",
         "app/models/",
         "app/models/forums/",
