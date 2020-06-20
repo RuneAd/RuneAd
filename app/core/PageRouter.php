@@ -177,6 +177,10 @@ class PageRouter extends Router {
             return $this->setRoute('pages', 'privacy');
         });
 
+        $this->get("map", function() {
+            return $this->setRoute('pages', 'map');
+        });
+
         $this->get("nyan", function() {
             return $this->setRoute('pages', 'nyan');
         });
