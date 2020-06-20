@@ -1,13 +1,15 @@
-<script type="text/javascript" src="{{ url('public/js/chart.min.js') }}"></script>
-<script type="text/javascript" src="{{ url('public/js/chart.extension.js') }}"></script>
+<script type="text/javascript" src="{{ url('public/js/chart.min.js') }}" defer></script>
+ <script type="text/javascript" src="{{ url('public/js/chart.extension.js') }}" defer></script>
 
 <script>
-    Chart.plugins.register({
-        beforeDraw: function(chartInstance) {
-            var ctx = chartInstance.chart.ctx;
-            ctx.fillStyle = "rgba(0,0,0,0)";
-            ctx.fillRect(0, 0, chartInstance.chart.width, chartInstance.chart.height);
-        }
+$(document).ready(function() {
+        Chart.plugins.register({
+            beforeDraw: function(chartInstance) {
+                var ctx = chartInstance.chart.ctx;
+                ctx.fillStyle = "rgba(0,0,0,0)";
+                ctx.fillRect(0, 0, chartInstance.chart.width, chartInstance.chart.height);
+            }
+        });
     });
 
     window.chartColors = {

@@ -258,7 +258,7 @@
      </div>
  </section>
 
-{% if user is defined %}
+{% if user is defined and page_disabled is not defined %}
  <script src="https://www.paypal.com/sdk/js?client-id={{ constant('paypal_production') }}"></script>
 
  <script>
@@ -270,11 +270,6 @@
 
      let paypalBtn = $('#paypal-btn');
      let statusBlock = $('#pp-notice');
-
-     $('#showprev').on('click', function(event) {
-        event.preventDefault();
-        $('#preview-block').t
-     });
 
      $('[id="package-select"]').on("click", function(event) {
          event.preventDefault();

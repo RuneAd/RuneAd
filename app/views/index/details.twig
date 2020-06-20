@@ -17,23 +17,23 @@
                         </div>
                         <div class="col text-lg-right">
                             {% if user is defined and user.user_id == server.owner %}
-                                <a href="{{ url('servers/edit/'~seo_link) }}" 
+                                <a href="{{ url('servers/edit/'~seo_link) }}"
                                     class="btn btn-outline-primary">Edit Server</a>
                             {% endif %}
-                            <a href="{{ server.website }}" 
+                            <a href="{{ server.website }}"
                                 data-toggle="tooltip" data-title="Website" rel="nofollow"
                                 class="btn btn-primary {{ server.website ? '' : 'disabled' }}" target="_blank">
                                 <i class="fas fa-link fa-lg fa-fw"></i>
                             </a>
-                            
-                            <a href="{{ server.discord_link }}" 
+
+                            <a href="{{ server.discord_link }}"
                                 data-toggle="tooltip" data-title="Discord" rel="nofollow"
-                                class="btn btn-primary {{ server.discord_link ? '' : 'disabled' }}" 
+                                class="btn btn-primary {{ server.discord_link ? '' : 'disabled' }}"
                                 target="_blank">
                                 <i class="fab fa-discord fa-lg fa-fw"></i>
                             </a>
 
-                            <a 
+                            <a
                                 data-toggle="tooltip" data-title="Report Server"
                                 href="{{ url('report/'~seo_link) }}" class="btn btn-danger">
                                 <i class="fas fa-flag fa-lg fa-fw"></i>
@@ -89,7 +89,7 @@
                 <div class="col-sm-12 col-lg-8">
 
                     <div class="alert alert-default border-info shadow-sm">
-                        <a href="#" id="vote" 
+                        <a href="#" id="vote"
                             data-id="{{ server.id }}" rel="nofollow"
                             class="btn btn-outline-white mt-2 float-right vote-btn">
                             Vote Now
@@ -101,7 +101,7 @@
                     <div class="card border-0 shadow-sm mb-3">
                         <div class="card-body pb-2">
                             <div class="dropdown mb-3">
-                                <button class="btn btn-outline-primary dropdown-toggle" 
+                                <button class="btn btn-outline-primary dropdown-toggle"
                                     id="ratebtn"  rel="nofollow"
                                         type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     30 Days
@@ -162,19 +162,19 @@
 
 {% set recaptcha_key = constant('recaptcha')['public'] %}
 
-<script src="https://www.google.com/recaptcha/api.js?render={{ recaptcha_key }}"></script>
+<script src="https://www.google.com/recaptcha/api.js?render={{ recaptcha_key }}" defer></script>
 
 <script>
+$(document).ready(function() {
     $('.vote-btn').click(function(event) {
         event.preventDefault();
-        
+
         let btn = $(this);
         let txt = $(this).text();
         let id  = $(this).data("id");
-        
+
         btn.html("<i class=\"fad fa-spinner fa-pulse\"></i>");
         btn.addClass("disabled");
-
         grecaptcha.ready(function() {
             grecaptcha.execute("{{ recaptcha_key }}", {
                 action: 'homepage'
@@ -187,19 +187,19 @@
                     },
                     type: 'POST',
                     complete: function (data) {
-        
+
                     },
                     success: function (json) {
                         console.log(json);
-                        
+
                         if (json.success) {
                             let votes = json.votes;
                             let votecnt = btn.closest("td").find("#votes");
                             votecnt.html(votes);
                         }
-        
+
                         btn.html("<i class=\"fal fa-"+(json.success ? "check" : "times")+" fa-fw\"></i>");
-        
+
                         setTimeout(function() {
                             btn.html("Vote Now").removeClass("disabled");
                         }, 700);
@@ -211,7 +211,6 @@
             });
         });
     });
-
     let canvas  = document.getElementById("voteChart"),
     context = canvas.getContext('2d')
     cdata = {
@@ -229,33 +228,25 @@
         },
         options: options
     };
-
     let chart = new Chart(context, cdata);
     let days = 90;
     let loader = $('#loader');
     let loader_txt = loader.html();
     let loading = false;
-
     $('#ratebtn').html(days+" Days");
     getChartData(days);
-
     $('[id="days"]').on('click', function(event) {
         event.preventDefault();
-
         if (loading) {
             return;
         }
-
         loading = true;
-        
-        days = $(this).data("days");
 
+        days = $(this).data("days");
         loader.html(loader_txt);
         $('#ratebtn').html(days+" Days");
-
         getChartData(days);
     });
-
     function getChartData(days) {
         $.ajaxq('VoteQueue', {
             url: 'https://api.rune-nexus.com/graph',
@@ -265,18 +256,16 @@
             },
             type: 'GET',
             complete: function (data) {
-
             },
             success: function (json) {
                 if (json.chartData) {
                     let keys   = $.map(json.chartData, function(element,index) {return index});
                     let values = $.map(json.chartData, function(element,index) {return element});
-
                     cdata.data.labels = keys;
                     cdata.data.datasets[0].data = values;
                     chart.update();
                     loader.html("");
-        
+
                     loading = false;
                 }
             },
@@ -285,6 +274,7 @@
             }
         });
     }
+});
 </script>
 
 
