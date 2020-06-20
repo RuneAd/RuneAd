@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	$('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="tooltip"]').tooltip();
 
 	$('#toTop').on('click',function (e) {
 		e.preventDefault();
@@ -12,7 +12,7 @@ $(document).ready(function() {
 			'scrollTop': 0
 		}, 900, 'swing');
     });
-    
+
     let dropdown = $('.navbar .dropdown');
 
     dropdown.mouseenter(function() {
@@ -40,7 +40,7 @@ $(document).ready(function() {
 
         window.location.reload();
     });
-    
+
     $(document).find('img').each(function(index, element) {
         let pc = $(this).closest(".card");
         if (pc) {
@@ -48,75 +48,23 @@ $(document).ready(function() {
         }
     });
 
-    !function(window){
-        var $q = function(q, res){
-            if (document.querySelectorAll) {
-                res = document.querySelectorAll(q);
-            } else {
-                var d=document
-                , a=d.styleSheets[0] || d.createStyleSheet();
-                a.addRule(q,'f:b');
-                for(var l=d.all,b=0,c=[],f=l.length;b<f;b++)
-                l[b].currentStyle.f && c.push(l[b]);
-    
-                a.removeRule(0);
-                res = c;
+    refresh_handler = function(e) {
+        var elements = document.querySelectorAll("img");
+
+        for (var i = 0; i < elements.length; i++) {
+            var boundingClientRect = elements[i].getBoundingClientRect();
+            var inViewport = boundingClientRect.top < window.innerHeight;
+
+            if (elements[i].hasAttribute("data-src") && inViewport) {
+                let src = elements[i].getAttribute("data-src");
+
+                elements[i].setAttribute("src", src);
+                elements[i].removeAttribute("data-src");
             }
-            return res;
-            }
-        , addEventListener = function(evt, fn){
-            window.addEventListener
-                ? this.addEventListener(evt, fn, false)
-                : (window.attachEvent)
-                ? this.attachEvent('on' + evt, fn)
-                : this['on' + evt] = fn;
-            }
-        , _has = function(obj, key) {
-            return Object.prototype.hasOwnProperty.call(obj, key);
-            }
-        ;
-    
-        function loadImage (el, fn) {
-        var img = new Image()
-            , src = el.getAttribute('data-src');
-        img.onload = function() {
-            if (!! el.parent)
-            el.parent.replaceChild(img, el)
-            else
-            el.src = src;
-    
-            fn? fn() : null;
         }
-        img.src = src;
-        }
-    
-        function elementInViewport(el) {
-        var rect = el.getBoundingClientRect()
-    
-        return (rect.top >= 0
-            && rect.left >= 0
-            && rect.top <= (window.innerHeight || document.documentElement.clientHeight))
-        }
-    
-        var images = new Array()
-            , query = $q('img')
-            , processScroll = function(){
-                for (var i = 0; i < images.length; i++) {
-                if (elementInViewport(images[i])) {
-                    loadImage(images[i], function () {
-                    images.splice(i, i);
-                    });
-                }
-                };
-            }
-            ;
-        // Array.prototype.slice.call is not callable under our lovely IE8 
-        for (var i = 0; i < query.length; i++) {
-            images.push(query[i]);
-        };
-    
-        processScroll();
-        addEventListener('scroll',processScroll);
-    
-    }(this);
+    };
+
+    window.addEventListener('scroll', refresh_handler);
+    window.addEventListener('load', refresh_handler);
+    window.addEventListener('resize', refresh_handler);
 });

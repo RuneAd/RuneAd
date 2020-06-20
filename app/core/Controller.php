@@ -47,10 +47,12 @@ class Controller {
         $this->csrf     = new EasyCSRF(new NativeSessionProvider());
         $this->session  = Session::getInstance();
 
-        if ($this->cookies->has("access_token")) {
+        $token = $this->cookies->get("access_token");
+        $roles = ["Guest"];
+
+        if ($token) {
             try {
-                $token   = $this->filter($this->cookies->get("access_token"));
-                $discord = new Discord($token);
+                $discord = new Discord($this->filter($token));
 
                 $discord->setEndpoint("/users/@me");
                 $me = $discord->get();
@@ -71,17 +73,7 @@ class Controller {
 
                 $this->set("user", $user);
                 $this->user = $user;
-
-                $user_roles = json_decode($user->roles, true);
-
-                if (!empty($this->access['roles'])) {
-                    $hasAccess = $user->isRole($this->access['roles']);
-
-                    if (!$hasAccess) {
-                        $this->setView("errors/show401");
-                        return false;
-                    }
-                }
+                $roles = json_decode($user->roles, true);
             } catch (Exception $e) {
                 $this->cookies->delete("access_token");
                 $this->redirect("");
@@ -89,9 +81,14 @@ class Controller {
             }
         }
 
-        if ($this->access['login_required'] && $this->user == null) {
-            $this->setView("errors/show401");
-            return false;
+        $controller = $this->router->getController();
+        $action = $this->getActionName();
+
+        $canAccess = Security::canAccess($controller, $action, $roles);
+
+        if (!$canAccess) {
+
+
         }
 
         $darkMode = false;
@@ -105,16 +102,13 @@ class Controller {
             $this->set("hide_sponsor", true);
         }
 
-        $controller = $this->router->getController();
-        $action = $this->getActionName();
-
         $meta = $this->getPageMeta($controller, $action);
 
         $this->set("page_title", $meta['title']);
         $this->set("meta_info", $meta['meta']);
 
         $this->set("theme", $darkMode ? "dark" : "light");
-        $this->set("controller", $this->router->getController());
+        $this->set("controller", $controller);
         $this->set("route", $this->router->getCanonical());
         return true;
     }
@@ -160,7 +154,7 @@ class Controller {
 
         return [
             'title' => 'Servers',
-            'meta'  => 'The most modern top-list built to-date. Completely free, feature rich, and easy to use!'
+            'meta'  => 'The most modern runescape private server toplist built to-date. Come join your favorite RSPS, or add your server today to start advertising with us!'
         ];
     }
 
