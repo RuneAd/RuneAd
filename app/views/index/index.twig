@@ -181,7 +181,7 @@
 
                         <td class="py-4">
                             {% if server.revision %}
-                                <div class="badge badge-primary float-left mr-2">
+                                <div class="badge badge-info float-left mr-2">
                                     {{ server.revision }}
                                 </div>
                             {% endif %}
@@ -254,13 +254,13 @@
                                 </div>
                                 <div class="pr-1">
                                     <a href="{{ url('vote/'~server_url) }}" rel="nofollow"
-                                        data-id="{{ server.id }}" class="btn btn-primary vote-btn">
+                                        data-id="{{ server.id }}" class="btn btn-info vote-btn">
                                         Vote
                                     </a>
                                 </div>
                                 <div class="">
                                     <a href="{{ server.website }}" target="_blank" rel="nofollow"
-                                        data-id="{{ server.id }}" class="btn btn-primary float-right {{ server.website ? '' : 'disabled' }}">
+                                        data-id="{{ server.id }}" class="btn btn-info float-right {{ server.website ? '' : 'disabled' }}">
                                     <i class="far fa-link"></i></a>
                                 </div>
                             </div>
