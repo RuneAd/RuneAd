@@ -18,6 +18,19 @@ a.text-primary:hover {
 .navbar-dark .navbar-nav .nav-link {
     font-family: "OpenSans-Regular" !important;
 }
+
+.myiFrame {
+display:block;
+height: 100%;
+width: 100%;
+}
+
+.iframe {
+display:block;
+height: 100%;
+width: 100%;
+}
+
 .header h1 {
     font-family: "Montserrat-Bold";
     font-size: 60px;
