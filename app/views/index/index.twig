@@ -164,7 +164,7 @@
                             <th class="text-center py-2 small border-0">Rank</th>
                             <th class="py-2 small border-0">Server</th>
                             <th class="py-2 small border-0 px-0 d-none d-lg-table-cell" style="width:100px;">
-                                <!-- Ping * -->
+                                Status
                             </th>
                             <th class="py-2 border-0">&nbsp;</th>
                         </tr>
@@ -220,27 +220,17 @@
 
                       <!--  <td class="d-none d-lg-table-cell small" id="server-ping" data-server="{{ server.id }}">
 
-                            {% if server.ping >= 0 and server.ping <= 100  %}
+                            {% if server.ping >= 0 and server.ping <= 500  %}
                             <i class="fad fa-signal-alt text-success fa-fw"></i>
                             {% endif %}
 
-                            {% if server.ping > 100 and server.ping <= 300  %}
-                            <i class="fad fa-signal-alt-3 text-warning fa-fw"></i>
-                            {% endif %}
-
-                            {% if server.ping > 300 and server.ping <= 400  %}
-                            <i class="fad fa-signal-alt-2 text-danger fa-fw"></i>
-                            {% endif %}
-
-                            {% if server.ping > 500 %}
-                            <i class="fad fa-signal-alt-1 text-danger fa-fw"></i>
-                            {% endif %}
-
-
                             {% if server.ping == -1  %}
                                 <i class="fad fa-signal-alt-1 text-muted fa-fw"></i>
+                                <span data-toggle="tooltip" data-title="Offline">
+                                    {{ server.ping }}
+                                </span>
                             {% else %}
-                                <span data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
+                                <span data-toggle="tooltip" data-title="Online">
                                     {{ server.ping }}
                                 </span>
                             {% endif %}
