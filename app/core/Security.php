@@ -22,7 +22,7 @@ class Security {
            'sponsor' => ['index'],
            'login'   => ['index', 'discord', 'auth', 'dauth'],
            'errors'  => ['show404', 'show500', 'show401', 'missing'],
-           'pages'   => ['docs', 'updates', 'stats', 'map'],
+           'pages'   => ['docs', 'updates', 'stats', 'map', 'terms', 'privacy'],
         ];
 
         $private = [
