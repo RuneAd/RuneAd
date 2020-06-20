@@ -14,7 +14,7 @@
                                         Contributors
                                     </p>
                                     <div id="contributors">
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -33,32 +33,34 @@
     </div>
 
     <script>
-        $.ajaxq('UpdateQueue', {
-            url: '{{ url("commits") }}',
-            type: 'POST',
-            complete: function (data) {
-                
-            },
-            success: function (json) {
-                $('#updates').html(json.message);
-            },
-            error: function(data) {
-                console.log(data.responseText);
-            }
-        });
+    $(document).ready(function() {
+         $.ajaxq('UpdateQueue', {
+             url: '{{ url("commits") }}',
+             type: 'POST',
+             complete: function (data) {
 
-        $.ajaxq('UpdateQueue', {
-            url: '{{ url("contributors") }}',
-            type: 'POST',
-            complete: function (data) {
-                
-            },
-            success: function (json) {
-                $('#contributors').html(json.message);
-            },
-            error: function(data) {
-                console.log(data.responseText);
-            }
+             },
+             success: function (json) {
+                 $('#updates').html(json.message);
+             },
+             error: function(data) {
+                 console.log(data.responseText);
+             }
+         });
+
+         $.ajaxq('UpdateQueue', {
+             url: '{{ url("contributors") }}',
+             type: 'POST',
+             complete: function (data) {
+
+             },
+             success: function (json) {
+                 $('#contributors').html(json.message);
+             },
+             error: function(data) {
+                 console.log(data.responseText);
+             }
+         });
         });
     </script>
 

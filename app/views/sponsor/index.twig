@@ -57,130 +57,7 @@
      </div>
  </section>
 
- <section id="preview" class="pricing-5 py-5">
-     <div class="container">
-
-         <div class="row text-center">
-             <div class="col-sm-12">
-                 <a href="#" class="btn btn-primary rounded-pill px-5 mb-3"
-                     id="showprev">See Sponsor Preview</a>
-             </div>
-         </div>
-
-         <div class="row" id="preview-block" style="display: none;">
-             <div class="col-sm-12 col-lg-12">
-                 <div class="card border-0 shadow-sm mb-5">
-
-                     <div class="card-header bg-gradient-primary text-white py-3">
-                         <h5 class="mb-0 text-white">Sponsored Servers</h5>
-                         <p class="text-white-50 mb-0 small">
-                            This shows on the main listing, at the top of every page.
-                         </p>
-                     </div>
-
-                     <div class="d-flex align-items-center pr-3 py-4 overlay shadow-inset-bottom">
-                         <div class="flex-fill text-center px-3">
-                             <i class="fad fa-ad fa-2x text-muted"></i>
-                         </div>
-                         <div class="flex-fill">
-                             <img
-                                 src="{{ url('public/img/banner-loading.png') }}"
-                                 alt="default-banner.png"
-                                 class="img-fluid rounded">
-                         </div>
-                         <div class="flex-fill">
-                             <div class="d-flex align-items-center justify-content-end">
-                                 <div class="pr-1">
-                                     <a href="" class="btn btn-lg btn-link disabled" rel="nofollow">
-                                         <i class="fab fa-discord fa-2x"></i>
-                                     </a>
-                                 </div>
-                                 <div class="">
-                                     <a href="#" class="btn btn-primary btn-lg disabled" rel="nofollow">
-                                         <i class="fas fa-gamepad-alt rotate-45 mr-lg-3 mr-0"></i>
-                                         Play Now
-                                     </a>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-
-                     <div class="d-flex align-items-center pr-3 py-4 enlarge">
-                         <div class="flex-fill text-center px-3">
-                             <i class="fad fa-ad fa-2x text-muted"></i>
-                         </div>
-                         <div class="flex-fill">
-                             <img
-                                 src="{{ url('public/img/banner-loading.png') }}"
-                                 alt="default-banner.png"
-                                 class="img-fluid rounded">
-                         </div>
-                         <div class="flex-fill">
-                             <div class="d-flex align-items-center justify-content-end">
-                                 <div class="pr-1">
-                                     <a href="" class="btn btn-lg btn-link disabled" rel="nofollow">
-                                         <i class="fab fa-discord fa-2x"></i>
-                                     </a>
-                                 </div>
-                                 <div class="">
-                                     <a href="#" class="btn btn-primary btn-lg disabled" rel="nofollow">
-                                         <i class="fas fa-gamepad-alt rotate-45 mr-lg-3 mr-0"></i>
-                                         Play Now
-                                     </a>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-
-                     <div class="d-flex align-items-center pr-3 py-4 overlay  shadow-inset-top">
-                         <div class="flex-fill text-center px-3">
-                             <i class="fad fa-ad fa-2x text-muted"></i>
-                         </div>
-                         <div class="flex-fill">
-                             <img
-                                 src="{{ url('public/img/banner-loading.png') }}"
-                                 alt="default-banner.png"
-                                 class="img-fluid rounded">
-                         </div>
-                         <div class="flex-fill">
-                             <div class="d-flex align-items-center justify-content-end">
-                                 <div class="pr-1">
-                                     <a href="" class="btn btn-lg btn-link disabled" rel="nofollow">
-                                         <i class="fab fa-discord fa-2x"></i>
-                                     </a>
-                                 </div>
-                                 <div class="">
-                                     <a href="#" class="btn btn-primary btn-lg disabled" rel="nofollow">
-                                         <i class="fas fa-gamepad-alt rotate-45 mr-lg-3 mr-0"></i>
-                                         Play Now
-                                     </a>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div>
- </section>
-
- <script>
-     let hidden = true;
-
-     $('#showprev').on('click', function(event) {
-         event.preventDefault();
-
-         if (hidden) {
-             $('#preview-block').stop().slideDown();
-         } else {
-             $('#preview-block').stop().slideUp();
-         }
-
-         hidden = !hidden;
-     });
- </script>
-
- {% if user is not defined  %}
+ {% if user is defined  %}
  <section id="servers" class="pricing-5 py-5">
      <div class="container">
          <div class="row text-center">
@@ -270,20 +147,134 @@
          </div>
      </div>
  </div>
+ {% endif %}
 
  {{ content|raw }}
 
+ <section id="preview" class="pricing-5 py-5">
+     <div class="container">
+
+         <div class="row text-center mb-5">
+             <div class="col-sm-12">
+             <h3 class="display-3 mt-3 mb-0">Sponsor Preview</h3>
+              <p>See how your ad will look on our page</p>
+             </div>
+         </div>
+
+         <div class="row" id="preview-block" style="display: none;">
+             <div class="col-sm-12 col-lg-12">
+                 <div class="card border-0 shadow-sm mb-5">
+
+                     <div class="card-header bg-gradient-primary text-white py-3">
+                         <h5 class="mb-0 text-white">Sponsored Servers</h5>
+                         <p class="text-white-50 mb-0 small">
+                          This shows on the main listing, at the top of every page.
+                         </p>
+                     </div>
+
+                     <div class="d-flex align-items-center pr-3 py-4 overlay shadow-inset-bottom">
+                         <div class="flex-fill text-center px-3">
+                             <i class="fad fa-ad fa-2x text-muted"></i>
+                         </div>
+                         <div class="flex-fill">
+                             <img
+                                 src="{{ url('public/img/banner-loading.png') }}"
+                                 alt="default-banner.png"
+                                 class="img-fluid rounded">
+                         </div>
+                         <div class="flex-fill">
+                             <div class="d-flex align-items-center justify-content-end">
+                                 <div class="pr-1">
+                                     <a href="" class="btn btn-lg btn-link disabled" rel="nofollow">
+                                         <i class="fab fa-discord fa-2x"></i>
+                                     </a>
+                                 </div>
+                                 <div class="">
+                                     <a href="#" class="btn btn-primary btn-lg disabled" rel="nofollow">
+                                         <i class="fas fa-gamepad-alt rotate-45 mr-lg-3 mr-0"></i>
+                                         Play Now
+                                     </a>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+
+                     <div class="d-flex align-items-center pr-3 py-4 enlarge">
+                         <div class="flex-fill text-center px-3">
+                             <i class="fad fa-ad fa-2x text-muted"></i>
+                         </div>
+                         <div class="flex-fill">
+                             <img
+                                 src="{{ url('public/img/banner-loading.png') }}"
+                                 alt="default-banner.png"
+                                 class="img-fluid rounded">
+                         </div>
+                         <div class="flex-fill">
+                             <div class="d-flex align-items-center justify-content-end">
+                                 <div class="pr-1">
+                                     <a href="" class="btn btn-lg btn-link disabled" rel="nofollow">
+                                         <i class="fab fa-discord fa-2x"></i>
+                                     </a>
+                                 </div>
+                                 <div class="">
+                                     <a href="#" class="btn btn-primary btn-lg disabled" rel="nofollow">
+                                         <i class="fas fa-gamepad-alt rotate-45 mr-lg-3 mr-0"></i>
+                                         Play Now
+                                     </a>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+
+                     <div class="d-flex align-items-center pr-3 py-4 overlay  shadow-inset-top">
+                         <div class="flex-fill text-center px-3">
+                             <i class="fad fa-ad fa-2x text-muted"></i>
+                         </div>
+                         <div class="flex-fill">
+                             <img
+                                 src="{{ url('public/img/banner-loading.png') }}"
+                                 alt="default-banner.png"
+                                 class="img-fluid rounded">
+                         </div>
+                         <div class="flex-fill">
+                             <div class="d-flex align-items-center justify-content-end">
+                                 <div class="pr-1">
+                                     <a href="" class="btn btn-lg btn-link disabled" rel="nofollow">
+                                         <i class="fab fa-discord fa-2x"></i>
+                                     </a>
+                                 </div>
+                                 <div class="">
+                                     <a href="#" class="btn btn-primary btn-lg disabled" rel="nofollow">
+                                         <i class="fas fa-gamepad-alt rotate-45 mr-lg-3 mr-0"></i>
+                                         Play Now
+                                     </a>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </section>
+
+{% if user is defined %}
  <script src="https://www.paypal.com/sdk/js?client-id={{ constant('paypal_production') }}"></script>
 
  <script>
      let modal = $('#preModal');
-    // modal.modal('show');
+     // modal.modal('show');
 
      let package;
      let server;
 
      let paypalBtn = $('#paypal-btn');
      let statusBlock = $('#pp-notice');
+
+     $('#showprev').on('click', function(event) {
+        event.preventDefault();
+        $('#preview-block').t
+     });
 
      $('[id="package-select"]').on("click", function(event) {
          event.preventDefault();
@@ -309,11 +300,7 @@
 
          if ((typeof package !== "undefined") && (typeof server != "undefined")) {
              $(this).closest(".card").addClass("border-primary");
-
-             //$('#paypal-btn').removeClass("text-danger").html("<i class='fad fa-spinner fa-pulse fa-3x mb-3'></i>");
              $('#checkout').removeClass("d-none");
-
-             //scrollTo($("[id='checkout']"));
              loadButton(package, server);
          }
      });

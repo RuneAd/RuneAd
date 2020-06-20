@@ -36,7 +36,7 @@
             </div>
 
         </div>
-        
+
 
         <div class="col-sm-12 col-lg-8">
             <div class="card border-0 shadow-sm mb-3 overflow-hidden">
@@ -73,33 +73,33 @@
                             <button type="submit" class="btn btn-success shadow-none {{ disable_form is defined ? "disabled" : "" }}" id="submit">
                                Send Report
                             </button>
-                
+
                             <div id="toolbar" class="d-inline-block">
                                 <span class="ql-formats">
-                                    <button class="ql-bold" 
+                                    <button class="ql-bold"
                                         data-toggle="tooltip" data-title="Bold"></button>
-                                    <button class="ql-italic" 
+                                    <button class="ql-italic"
                                         data-toggle="tooltip" data-title="Italic"></button>
-                                    <button class="ql-underline" 
+                                    <button class="ql-underline"
                                         data-toggle="tooltip" data-title="Underline"></button>
-                                    <button class="ql-strike" 
+                                    <button class="ql-strike"
                                         data-toggle="tooltip" data-title="Strikethrough"></button>
                                 </span>
-                               
+
                                 <span class="ql-formats">
-                                    <button class="ql-list" value="ordered" 
+                                    <button class="ql-list" value="ordered"
                                         data-toggle="tooltip" data-title="Ordered List"></button>
-                                    <button class="ql-list" value="bullet" 
+                                    <button class="ql-list" value="bullet"
                                         data-toggle="tooltip" data-title="Bullet List"></button>
                                 </span>
-                
+
                                 <span class="ql-formats">
-                                    <button class="ql-link" 
+                                    <button class="ql-link"
                                         data-toggle="tooltip" data-title="Link"></button>
-                                    <button class="ql-image" 
+                                    <button class="ql-image"
                                         data-toggle="tooltip" data-title="Image"></button>
                                 </span>
-                
+
                                 <span class="ql-formats">
                                     <button class="ql-clean"  data-toggle="tooltip" data-title="Clear Formatting"></button>
                                 </span>
@@ -121,6 +121,7 @@
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
 <script>
+  $(document).ready(function() {
     var apiUrl = 'https://api.imgur.com/3/image';
     var apiKey = '{{ constant("imgur_key") }}';
 
@@ -134,7 +135,7 @@
 
     quill.getModule("toolbar").addHandler("image", function (a) {
         var input = document.createElement('input');
-        
+
         input.setAttribute('type', 'file');
         input.click();
 
@@ -199,13 +200,16 @@
         $(this).find("#editor-form").html(body);
         return true;
     });
+  });
 </script>
 {% else %}
 <script>
+$(document).ready(function() {
     $("#postform").on("submit", function (event) {
         event.preventDefault();
         return false;
     });
+  });
 </script>
 {% endif %}
 {%  endblock %}

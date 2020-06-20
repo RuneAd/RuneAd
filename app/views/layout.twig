@@ -32,7 +32,24 @@
     {% endif %}
 
     <script type="text/javascript" src="{{ javascript('jquery-3.3.1.min.js') }}"></script>
-    <script type="text/javascript" src="{{ javascript('bootstrap.bundle.min.js') }}"></script>
+</head>
+<body>
+
+    <div class="bg-dark">
+        {% include 'global/navbar.twig' %}
+        {% include 'global/header.twig' %}
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+    {% if user is not defined and controller != "login" %}
+        {% include 'modals/login.twig' %}
+    {% endif %}
+
+    {% include 'global/footer.twig' %}
+
+    <script type="text/javascript" src="{{ javascript('bsootstrap.bundle.min.js') }}"></script>
     <script type="text/javascript" src="{{ javascript('fontawesome.pro.min.js') }}"></script>
     <script type="text/javascript" src="{{ javascript('queue.js') }}"></script>
     <script type="text/javascript" src="{{ javascript('custom.js') }}"></script>
@@ -51,22 +68,6 @@
 
   gtag('config', 'UA-163957784-1');
 </script>
-</head>
-<body>
-
-    <div class="bg-dark">
-        {% include 'global/navbar.twig' %}
-        {% include 'global/header.twig' %}
-    </div>
-
-    {% block content %}
-    {% endblock %}
-
-    {% if user is not defined and controller != "login" %}
-        {% include 'modals/login.twig' %}
-    {% endif %}
-
-    {% include 'global/footer.twig' %}
 
 
 </body>
