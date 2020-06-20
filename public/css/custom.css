@@ -12,6 +12,13 @@ body {
     color: #7c7c7c;
     font-family: "OpenSans-Regular" !important;
 }
+.pricing {
+     font-family: "Montserrat-Bold";
+ }
+ .pricing span {
+     font-size: 16px;
+     font-family: "Montserrat-Light";
+ }
 a.text-primary:hover {
     color: #8294ff !important;
 }
@@ -377,3 +384,44 @@ tr.bg-primary, .bg-premium {
     overflow:hidden;
     text-overflow:ellipsis;
 }
+
+ table.blur-table tr {
+     position: relative !important;
+     filter: blur(0);
+ }
+ .overlay {
+     position: relative;
+ }
+ .overlay:after {
+     position: absolute;
+     content: ' ';
+     width:100%;
+     background-color: rgba(0,0,0,0.02);
+     top: 0;
+     bottom: 0;
+     height:100%;
+     backdrop-filter: blur(2px);
+ }
+ .enlarge {
+     transform: scale(1.02);
+     z-index:1;
+     background-color: white;
+ }
+ @media(min-width: 992px) {
+ .enlarge-2 {
+     transform: scale(1.05);
+     z-index:1;
+ }
+ }
+ .rotate-45 {
+     transform:rotate(-45deg);
+ }
+ .shadow-inset-bottom {
+     box-shadow: inset 0 -20px 20px -20px rgba(0,0,0,0.1);
+ }
+ .shadow-inset-top {
+     box-shadow: inset 0 20px 20px -20px rgba(0,0,0,0.1);
+ }
+ .bg-default {
+     background-color: #3c4d69 !important;
+   }

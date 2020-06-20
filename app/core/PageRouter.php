@@ -181,9 +181,9 @@ class PageRouter extends Router {
             return $this->setRoute('pages', 'map');
         });
 
-        $this->get("nyan", function() {
-            return $this->setRoute('pages', 'nyan');
-        });
+        $this->get("sponsor", function() {
+            return $this->setRoute('sponsor', 'index');
+                 });
     }
 
     public function setRoute($controller, $method, $params = []) {

@@ -9,6 +9,21 @@ a:hover, a:active, a:focus {
 .card{
     background-color: #36393F
 }
+.enlarge {
+     transform: scale(1.02);
+     z-index:1;
+     background-color: #36393F;
+ }
+ .overlay:after {
+     position: absolute;
+     content: ' ';
+     width:100%;
+     background-color: rgba(0,0,0,0.06);
+     top: 0;
+     bottom: 0;
+     height:100%;
+     backdrop-filter: blur(2px);
+ }
 .card .list-group-item {
     background-color: transparent;
 }

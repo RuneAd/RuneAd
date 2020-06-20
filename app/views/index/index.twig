@@ -177,8 +177,12 @@
                                 </div>
                             {% endif %}
 
-                            <a href="{{ url('details/'~server_url) }}" class="d-block mb-0 truncate-title">
+                            <a href="{{ url('details/'~server_url) }}">
+                                {% if server.title|length > 40 %}
+                                {{ substr(server.title, 0, 40)~'...' }}
+                                {% else %}
                                 {{ server.title }}
+                                {% endif %}
                             </a>
 
                             {% if server.banner_url %}

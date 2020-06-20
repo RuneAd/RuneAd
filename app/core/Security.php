@@ -16,28 +16,44 @@ class Security {
 
         // define controlsl and actions for a group
         $public = [
-            'index'  => ['index', 'logout', 'details'],
-            'login'  => ['index', 'discord', 'auth', 'dauth'],
-            'topic'  => ['view'],
-            'errors' => ['show404', 'show500', 'show401']
+          'index'   => ['index', 'logout', 'details'],
+           'vote'    => ['index', 'addvote'],
+           'premium' => ['index'],
+           'sponsor' => ['index'],
+           'login'   => ['index', 'discord', 'auth', 'dauth'],
+           'errors'  => ['show404', 'show500', 'show401', 'missing'],
+           'pages'   => ['docs', 'updates', 'stats'],
         ];
 
         $private = [
-            'topic'  => ['edit'],
-        ];
-
-        $moderator = [
-            'topic'  => ['deletetopic'],
+          'servers' => ['add', 'edit', 'delete'],
+           'premium' => ['button', 'verify', 'process'],
+           'profile' => ['index']
         ];
 
         foreach ($public as $controller => $actions) {
             $resource = new Resource($controller, $actions);
 
-            $resource->allow($acl->getRole('Owner'));
-            $resource->allow($acl->getRole('Administrator'));
-            $resource->allow($acl->getRole('Member'));
-            $resource->allow($acl->getRole('Server Owner'));
-            $resource->allow($acl->getRole('Guest'));
+            $resource->allow([
+                 $acl->getRole('Owner'),
+                 $acl->getRole('Administrator'),
+                 $acl->getRole('Member'),
+                 $acl->getRole('Server Owner'),
+                 $acl->getRole('Guest'),
+             ]);
+
+             $acl->addResource($controller, $resource);
+         }
+
+         foreach ($private as $controller => $actions) {
+             $resource = new Resource($controller, $actions);
+
+             $resource->allow([
+                 $acl->getRole('Owner'),
+                 $acl->getRole('Administrator'),
+                 $acl->getRole('Member'),
+                 $acl->getRole('Server Owner')
+             ]);
 
             $acl->addResource($controller, $resource);
         }
@@ -70,7 +86,6 @@ class Security {
 
         foreach ($resources as $resource) {
             if ($resource->isAllowed($roleList, $action)) {
-                echo "can access $controller $action";
                 return true;
             }
         }

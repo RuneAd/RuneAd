@@ -1,4 +1,4 @@
-# RuneNexus
+# RuneAd
 A new, free, and open source toplist project.
 
 Prerequisites:
@@ -12,7 +12,7 @@ To install dependencies:
 Copy file `config.sample.php` to `config.php` in the app folder.
 Edit `config.php` with appropriate settings.
 
-A file and folder needs to have read/write access, so chmod them to 777. 
+A file and folder needs to have read/write access, so chmod them to 777.
 This is for cron logs, and banner uploads.
 ```
 chmod 777 public/img/banners

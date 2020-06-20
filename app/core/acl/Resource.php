@@ -44,7 +44,8 @@ class Resource {
      */
     public function isAllowed($roles, $action) {
         if (is_array($roles)) {
-            return !empty(array_intersect($this->allowed, $roles)) && in_array($action, $this->actions);
+          return !empty(array_intersect($this->allowed, $roles))
+          && in_array($action, $this->actions);
         }
         return in_array($roles, $this->allowed) && in_array($action, $this->actions);
     }
