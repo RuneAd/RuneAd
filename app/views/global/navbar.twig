@@ -33,24 +33,40 @@
             </div>
 
             <ul class="navbar-nav mr-auto">
+
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('') }}">Home</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('premium') }}">Premium</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('docs') }}">Documentation</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('updates') }}">Update Log</a>
-                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Tools
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ url('profile') }}">My Profile</a>
+
+                        <a class="dropdown-item" href="{{ url('#') }}">OSRS Interactive Map</a>
+
+
+                    </div>
+                  </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('stats') }}">Stats</a>
                 </li>
+
                 <li class="nav-item">
                     <a href="https://probemas.com/Buy-OSRS-Gold" target="_blank" class="nav-link">Buy OSRS Gold</a>
                 </li>
+
             </ul>
 
             <ul class="navbar-nav">
