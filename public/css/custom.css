@@ -19,16 +19,11 @@ a.text-primary:hover {
     font-family: "OpenSans-Regular" !important;
 }
 
-.myiFrame {
-display:block;
-height: 100%;
-width: 100%;
-}
-
-.iframe {
-display:block;
-height: 100%;
-width: 100%;
+.Absolute-Center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .header h1 {
