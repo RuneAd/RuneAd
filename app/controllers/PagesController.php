@@ -6,11 +6,15 @@ class PagesController extends Controller {
     }
 
     public function updates() {
-        
+
     }
 
     public function terms() {
         
+    }
+
+    public function map() {
+
     }
 
     public function privacy() {
@@ -20,7 +24,7 @@ class PagesController extends Controller {
     public function nyan() {
 
     }
-    
+
     public function stats() {
         $servers = Servers::count();
         $votes   = Votes::count();
@@ -50,11 +54,11 @@ class PagesController extends Controller {
                     'Accept' => 'application/json'
                 ],
                 'auth' => [
-                    github['client_id'], 
+                    github['client_id'],
                     github['client_secret']
                 ]
             ])->getBody();
-                
+
             if (!$commits) {
                 return [
                     'success' => false,
@@ -79,13 +83,13 @@ class PagesController extends Controller {
     public function contributors() {
         try {
             $client = new GuzzleHttp\Client();
-            
+
             $contributors = $client->request('GET', github['api_url'].github['username']."/".github['repo']."/contributors", [
                 'headers' => [
                     'Accept' => 'application/json'
                 ],
                 'auth' => [
-                    github['client_id'], 
+                    github['client_id'],
                     github['client_secret']
                 ]
             ])->getBody();
