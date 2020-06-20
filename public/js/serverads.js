@@ -5,17 +5,17 @@ $(document).ready(function() {
 
     ];
 
-    let AdBanner1 = $('#AdBanner1');
+    let AdBanner = $('#AdBanner');
 
     let random = Math.floor(Math.random() * (Ads.length - 0)) + 0;
 
-    AdBanner1.html(Ads[random]);
+    AdBanner.html(Ads[random]);
 
     setInterval(function() {
         random = Math.floor(Math.random() * (Ads.length - 0)) + 0;
         $('#factBox div').fadeOut(function() {
             $(this).fadeIn();
-            AdBanner1.html(Ads[random]);
+            AdBanner.html(Ads[random]);
         })
     }, 6500);
 
