@@ -16,46 +16,47 @@ class Security {
 
         // define controlsl and actions for a group
         $public = [
-          'index'   => ['index', 'logout', 'details'],
-           'vote'    => ['index', 'addvote'],
-           'premium' => ['index'],
-           'sponsor' => ['index'],
-           'login'   => ['index', 'discord', 'auth', 'dauth'],
-           'errors'  => ['show404', 'show500', 'show401', 'missing'],
-           'pages'   => ['docs', 'updates', 'stats', 'map', 'terms', 'privacy'],
-            'tools'  => ['itemdb']
+            'index'   => ['index', 'logout', 'details'],
+            'vote'    => ['index', 'addvote'],
+            'premium' => ['index'],
+            'sponsor' => ['index'],
+            'login'   => ['index', 'discord', 'auth', 'dauth'],
+            'errors'  => ['show404', 'show500', 'show401', 'missing'],
+            'pages'   => ['docs', 'updates', 'stats', 'terms', 'privacy'],
+            'tools'   => ['itemdb', 'search']
         ];
 
         $private = [
-          'servers' => ['add', 'edit', 'delete'],
-           'premium' => ['button', 'verify', 'process'],
-           'sponsor' => ['button', 'verify', 'process'],
-           'profile' => ['index'],
+            'servers' => ['add', 'edit', 'delete'],
+            'premium' => ['button', 'verify', 'process'],
+            'sponsor' => ['button', 'verify', 'process'],
+            'profile' => ['index'],
+
         ];
 
         foreach ($public as $controller => $actions) {
             $resource = new Resource($controller, $actions);
 
             $resource->allow([
-                 $acl->getRole('Owner'),
-                 $acl->getRole('Administrator'),
-                 $acl->getRole('Member'),
-                 $acl->getRole('Server Owner'),
-                 $acl->getRole('Guest'),
-             ]);
+                $acl->getRole('Owner'),
+                $acl->getRole('Administrator'),
+                $acl->getRole('Member'),
+                $acl->getRole('Server Owner'),
+                $acl->getRole('Guest'),
+            ]);
 
-             $acl->addResource($controller, $resource);
-         }
+            $acl->addResource($controller, $resource);
+        }
 
-         foreach ($private as $controller => $actions) {
-             $resource = new Resource($controller, $actions);
+        foreach ($private as $controller => $actions) {
+            $resource = new Resource($controller, $actions);
 
-             $resource->allow([
-                 $acl->getRole('Owner'),
-                 $acl->getRole('Administrator'),
-                 $acl->getRole('Member'),
-                 $acl->getRole('Server Owner')
-             ]);
+            $resource->allow([
+                $acl->getRole('Owner'),
+                $acl->getRole('Administrator'),
+                $acl->getRole('Member'),
+                $acl->getRole('Server Owner')
+            ]);
 
             $acl->addResource($controller, $resource);
         }
