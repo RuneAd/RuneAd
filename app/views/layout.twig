@@ -46,17 +46,123 @@
         {% include 'modals/login.twig' %}
     {% endif %}
 
-    {% include 'global/footer.twig' %}
-    <script src="cookieconsent.js"></script>
+    {% include 'global/footer.twig'
+
     <script type="text/javascript" src="{{ javascript('bootstrap.bundle.min.js') }}"></script>
     <script type="text/javascript" src="{{ javascript('fontawesome.pro.min.js') }}"></script>
     <script type="text/javascript" src="{{ javascript('serverads.js') }}"></script>
     <script type="text/javascript" src="{{ javascript('voteads.js') }}"></script>
     <script type="text/javascript" src="{{ javascript('cookieconsent.js') }}"></script>
+    <script type="text/javascript" src="{{ javascript('cookieconsent.min.js') }}"></script>
     <script type="text/javascript" src="{{ javascript('queue.js') }}"></script>
     <script type="text/javascript" src="{{ javascript('custom.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js" defer></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121807671-2"></script>
+    <script>
+        window.CookieConsent.init({
+          language: {
+            current: 'en'
+          },
+          categories: {
+            necessary: {
+              needed: true,
+              wanted: true,
+              checked: true,
+              language: {
+                locale: {
+                  en: {
+                    name: 'Strictly Necessary Cookies',
+                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eu commodo est, nec gravida odio. Suspendisse scelerisque a ex nec semper.',
+                  },
+                  hu: {
+                    name: 'Szükséges sütik',
+                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eu commodo est, nec gravida odio. Suspendisse scelerisque a ex nec semper.',
+                  }
+                }
+              }
+            },
+            various: {
+              needed: false,
+              wanted: false,
+              checked: false,
+              language: {
+                locale: {
+                  en: {
+                    name: 'Various Cookies',
+                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                  },
+                  hu: {
+                    name: 'Egyéb sütik',
+                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eu commodo est, nec gravida odio. Suspendisse scelerisque a ex nec semper.',
+                  }
+                }
+              }
+            }
+          },
+          services: {
+            facebook: {
+              category: 'various',
+              type: 'dynamic-script', // dynamic-script, script-tag, wrapped, localcookie
+              search: 'facebook',
+              language: {
+                locale: {
+                  en: {
+                    name: 'Facebook'
+                  },
+                  hu: {
+                    name: 'Facebook'
+                  }
+                }
+              }
+            },
+            azalead: {
+              category: 'various',
+              type: 'script-tag',
+              search: 'azalead',
+              language: {
+                locale: {
+                  en: {
+                    name: 'Azalead'
+                  },
+                  hu: {
+                    name: 'Azalead'
+                  }
+                }
+              }
+            },
+            wrapped: {
+              category: 'various',
+              type: 'wrapped',
+              search: 'wrapped',
+              language: {
+                locale: {
+                  en: {
+                    name: 'Wrapped'
+                  },
+                  hu: {
+                    name: 'Csomagolt süti'
+                  }
+                }
+              }
+            },
+            localcookie: {
+              category: 'various',
+              type: 'localcookie',
+              search: 'localcookie',
+              language: {
+                locale: {
+                  en: {
+                    name: 'Local cookie'
+                  },
+                  hu: {
+                    name: 'Helyi süti'
+                  }
+                }
+              }
+            }
+          }
+        });
+      </script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
