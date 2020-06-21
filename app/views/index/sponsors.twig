@@ -7,12 +7,19 @@
     </div>
 
     <table class="table mb-0" style="line-height:.7em;">
-      
+
         {% for sponsor in sponsors %}
         <tr id="server">
             <td class="text-center rank-col">
                 <i class="fad fa-crown fa-lg text-primary"></i>
             </td>
+            <td class="py-4">
+                {% if server.revision %}
+                    <div class="badge badge-primary float-left mr-2">
+                        {{ server.revision }}
+                    </div>
+                {% endif %}
+                </td>
             <td class="py-4">
                 <a href="{{ url('details/'~server_url) }}" class="banner-img">
                     <img
