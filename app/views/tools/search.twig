@@ -1,0 +1,39 @@
+<div class="card border-0 shadow-sm mb-3">
+    <table class="table mb-0">
+        <thead>
+        <tr>
+            <th class="text-center" style="width:80px">Id</th>
+            <th class="text-center" style="width:34px;"></th>
+            <th>Name</th>
+        </tr>
+        </thead>
+        {% for item in results['items'] %}
+        <tr>
+            <td class="text-center">{{ item['id'] }}</td>
+            <td class="text-center">
+                <img src="{{ url('public/img/items/'~item['id']~'.png') }}" height="32">
+            </td>
+            <td style="line-height:1em;">{{ item['name'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<div class="m-auto text-center">
+    <a href="#search" class="btn btn-link" id="pageBtn" data-page="{{ results['first'] }}">
+        <i class="far fa-angle-double-left fa-fw"></i>
+    </a>
+    <a href="#search" class="btn btn-link" id="pageBtn" data-page="{{ results['before'] }}">
+        <i class="far fa-angle-left fa-fw"></i>
+    </a>
+
+    Page {{ results['current'] }} of {{ results['total_pages'] }}
+
+    <a href="#search" class="btn btn-link ml-2" id="pageBtn" data-page="{{ results['next'] }}">
+        <i class="far fa-angle-right fa-fw"></i>
+    </a>
+    <a href="#search" class="btn btn-link" id="pageBtn" data-page="{{ results['last'] }}">
+        <i class="far fa-angle-double-right fa-fw"></i>
+    </a>
+
+</div>
