@@ -1,336 +1,322 @@
 {%  extends 'layout.twig' %}
 
- {% block content %}
+{% block content %}
 
- <div class="container mt-5">
-     <div class="row text-center">
-         <div class="col-sm-12">
-             <h3 class="display-3 mt-3 mb-0">
-                 Sponsored Ads
-             </h3>
-             <p>
-                 Get the most bang for your buck with our sponsor slots.
-                 You'll be placed at the top of every page of the main listing<br>
-                 in which viewers will have quick access to your server.
-             </p>
-         </div>
-     </div>
- </div>
+<div class="container mt-5">
+    <div class="row text-center">
+        <div class="col-sm-12">
+            <h3 class="display-3 mt-3 mb-0">
+                Sponsored Ads
+            </h3>
+            <p>
+                Get the most bang for your buck with our sponsor slots.
+                You'll be placed at the top of every page of the main listing<br>
+                in which viewers will have quick access to your server.
+            </p>
+        </div>
+    </div>
+</div>
 
- <section class="mt-5">
-     <div class="container">
-         <div class="row">
-             {% for pkg in packages %}
-             <div class="col-sm-12 col-lg-4">
-                 <div class="card card-pricing text-center mb-4 shadow-sm {{ pkg.highlight ? 'enlarge-2 bg-gradient-primary text-white' : '' }}">
-                     <div class="card-header bg-transparent">
-                         <h6 class="text-uppercase ls-1 py-3 mb-0 {{ pkg.highlight ? 'text-white' : '' }}">
-                             {{ pkg.title }}
-                         </h6>
-                     </div>
-                     <div class="card-body">
-                         <i class="fal fa-{{ pkg.icon }} fa-5x my-4"></i>
-                         <div class="pricing display-2 {{ pkg.highlight ? 'text-white' : '' }}">
-                             ${{ pkg.price }}
-                         </div>
-                         <span>
-                             {{ pkg.duration/60/60/24 }} Days
-                         </span>
-                     </div>
-                     <div class="card-footer bg-transparent">
-                         {% if user is defined %}
-                         <a href="#" id="package-select" data-package="{{ pkg.id }}"
-                             class="btn {{ pkg.highlight ? 'btn-outline-white' : 'btn-primary' }} rounded-pill px-5">
-                             Select
-                         </a>
-                         {% else %}
-                         <a href="#" id="package-select"
-                             class="btn {{ pkg.highlight ? 'btn-outline-white' : 'btn-primary' }} rounded-pill px-5 disabled">
-                             Select
-                         </a>
-                         {% endif %}
-                     </div>
-                 </div>
-             </div>
-             {% endfor %}
-         </div>
-     </div>
- </section>
+<section class="mt-5">
+    <div class="container">
+        <div class="row">
+            {% for pkg in packages %}
+            <div class="col-sm-12 col-lg-4">
+                <div class="card card-pricing text-center mb-4 shadow-sm {{ pkg.highlight ? 'enlarge-2 bg-gradient-primary text-white' : '' }}">
+                    <div class="card-header bg-transparent">
+                        <h6 class="text-uppercase ls-1 py-3 mb-0 {{ pkg.highlight ? 'text-white' : '' }}">
+                            {{ pkg.title }}
+                        </h6>
+                    </div>
+                    <div class="card-body">
+                        <i class="fal fa-{{ pkg.icon }} fa-5x my-4"></i>
+                        <div class="pricing display-2 {{ pkg.highlight ? 'text-white' : '' }}">
+                            ${{ pkg.price }}
+                        </div>
+                        <span>
+                            {{ pkg.duration/60/60/24 }} Days
+                        </span>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        {% if user is defined %}
+                        <a href="#" id="package-select" data-package="{{ pkg.id }}"
+                            class="btn {{ pkg.highlight ? 'btn-outline-white' : 'btn-primary' }} rounded-pill px-5">
+                            Select
+                        </a>
+                        {% else %}
+                        <a href="#" id="package-select"
+                            class="btn {{ pkg.highlight ? 'btn-outline-white' : 'btn-primary' }} rounded-pill px-5 disabled">
+                            Select
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 
- {% if user is defined  %}
- <section id="servers" class="pricing-5 py-5">
-     <div class="container">
-         <div class="row text-center">
-             <div class="col-sm-12">
-                 <h3 class="display-3 mt-3 mb-0">Choose a Server</h3>
-                 <p>Select a server in which you want the boost.</p>
-             </div>
-         </div>
-     </div>
+{% if user is defined  %}
+<section id="servers" class="pricing-5 py-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-sm-12">
+                <h3 class="display-3 mt-3 mb-0">Choose a Server</h3>
+                <p>Select a server in which you want the boost.</p>
+            </div>
+        </div>
+    </div>
 
-     <div class="container mt-5">
-         <div class="row">
-             <div class="col-sm-12 col-lg-12">
-                 {% for server in servers %}
-                 <div class="card shadow-sm mb-0 mb-3 {{ server.premium_expires > time() ? 'bg-premium' : '' }}">
-                     <div class="card-body">
-                         <div class="d-flex align-items-center">
-                             <div class="flex-fill" style="width:300px;">
-                                 <p class="mb-0">{{ server.title }}</p>
-                                 <p class="small">Revision: {{ server.revision }}</p>
-                             </div>
-                             <div class="flex-fill">
-                                 {% if server.banner_url %}
-                                 <a href="{{ url('details/'~server_url) }}" class="banner-img">
-                                     <img data-src="{{ banner(server.banner_url) }}"
-                                         id="banner"
-                                         class="img-fluid rounded lazy">
-                                 </a>
-                                 {% else %}
-                                 <a href="{{ url('details/'~server_url) }}" class="banner-img">
-                                     <img data-src="{{ url('public/img/banner-'~theme~'.png') }}"
-                                         id="banner"
-                                         class="img-fluid rounded lazy">
-                                 </a>
-                                 {% endif %}
-                             </div>
-                             <div class="flex-fill text-right px-3">
-                                 <p class="mb-0">{{ server.votes }}</p>
-                                 <p class="small mb-0">Votes</p>
-                             </div>
-                             <div class="flex-fill text-right">
-                                 <a href="#" id="server-select" class="btn btn-primary" data-server="{{ server.id }}">
-                                     Select
-                                 </a>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-                 {% endfor %}
-             </div>
-         </div>
-     </div>
- </section>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-sm-12 col-lg-12">
+                {% for server in servers %}
+                <div class="card shadow-sm mb-0 mb-3 {{ server.premium_expires > time() ? 'bg-premium' : '' }}">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-fill" style="width:300px;">
+                                <p class="mb-0">{{ server.title }}</p>
+                                <p class="small">Revision: {{ server.revision }}</p>
+                            </div>
+                            <div class="flex-fill">
+                                {% if server.banner_url %}
+                                <a href="{{ url('details/'~server_url) }}" class="banner-img">
+                                    <img data-src="{{ banner(server.banner_url) }}"
+                                        id="banner"
+                                        class="img-fluid rounded lazy">
+                                </a>
+                                {% else %}
+                                <a href="{{ url('details/'~server_url) }}" class="banner-img">
+                                    <img data-src="{{ url('public/img/banner-'~theme~'.png') }}"
+                                        id="banner"
+                                        class="img-fluid rounded lazy">
+                                </a>
+                                {% endif %}
+                            </div>
+                            <div class="flex-fill text-right px-3">
+                                <p class="mb-0">{{ server.votes }}</p>
+                                <p class="small mb-0">Votes</p>
+                            </div>
+                            <div class="flex-fill text-right">
+                                <a href="#" id="server-select" class="btn btn-primary" data-server="{{ server.id }}">
+                                    Select
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
 
- <section class="pricing-5 text-center" id="checkout">
-     <div class="container">
-         <div class="row">
-             <div class="col-sm-12 offset-lg-3 col-lg-6">
-                 <div class="d-flex align-items-center text-center" style="height:50px;"
-                     <div class="flex-fill w-100">
-                         <div id="pp-notice" class="w-100">
-                             <span class="small text-muted">
-                                 Select a package and server above to continue.
-                             </span>
-                         </div>
-                     </div>
-                 </div>
+<section class="pricing-5 text-center" id="checkout">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 offset-lg-3 col-lg-6">
+                <div class="d-flex align-items-center text-center" style="height:50px;"
+                    <div class="flex-fill w-100">
+                        <div id="pp-notice" class="w-100">
+                            <span class="small text-muted">
+                                Select a package and server above to continue.
+                            </span>
+                        </div>
+                    </div>
+                </div>
 
-                 <div id="paypal-btn" style="height:60px; width:400px;" class="mx-auto mb-5">
-                     <div class="rounded-pill"
-                         style="height:45px;background-color: rgba(0,0,0,0.1)">
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div>
- </div>
+                <div id="paypal-btn" style="height:60px; width:400px;" class="mx-auto mb-5">
+                    <div class="rounded-pill"
+                        style="height:45px;background-color: rgba(0,0,0,0.1)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
- <div class="modal" id="preModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-hidden="true">
-     <div class="modal-dialog modal-dialog-centered">
-         <div class="modal-content">
-             <div class="modal-body py-5">
-                 <div id="content">
+<div class="modal" id="preModal" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body py-5">
+                <div id="content">
 
-                 </div>
-             </div>
-         </div>
-     </div>
- </section>
- {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
 
- {{ content|raw }}
+{{ content|raw }}
 
- <section id="preview" class="pricing-5 py-5">
-     <div class="container">
+<section id="preview" class="pricing-5 py-5">
+    <div class="container">
 
-          <div class="row mb-5 text-center">
-             <div class="col-sm-12">
-             <h3 class="display-3 mt-3 mb-0">Sponsor Preview</h3>
-              <p>See how your ad will look on our page</p>
-             </div>
-         </div>
+        <div class="row mb-5 text-center">
+            <div class="col-sm-12">
+                <h3 class="display-3 mt-3 mb-0">Sponsor Preview</h3>
+                <p>See how your ad will look on our page</p>
+            </div>
+        </div>
 
-         <div class="row" id="preview-block" style="display: none;">
-             <div class="col-sm-12 col-lg-12">
-                 <div class="card border-0 shadow-sm mb-5">
+        <div class="row" id="preview-block">
+            <div class="col-sm-12 col-lg-12">
+                <div class="card border-0 shadow-sm mb-5">
 
-                     <div class="card-header bg-gradient-primary text-white py-3">
-                         <h5 class="mb-0 text-white">Sponsored Servers</h5>
-                         <p class="text-white-50 mb-0 small">
-                          This shows on the main listing, at the top of every page.
-                         </p>
-                     </div>
+                    <div class="card-header bg-gradient-primary text-white py-3">
+                        <h5 class="mb-0 text-white">Sponsored Servers</h5>
+                        <p class="text-white-50 mb-0 small">
+                        This shows on the main listing, at the top of every page.
+                        </p>
+                    </div>
 
-                     <div class="d-flex align-items-center pr-3 py-4 overlay shadow-inset-bottom">
-                         <div class="flex-fill text-center px-3">
-                             <i class="fad fa-ad fa-2x text-muted"></i>
-                         </div>
-                         <div class="flex-fill">
-                             <img
-                                 src="{{ url('public/img/banner-loading.png') }}"
-                                 alt="default-banner.png"
-                                 class="img-fluid rounded">
-                         </div>
-                         <div class="flex-fill">
-                             <div class="d-flex align-items-center justify-content-end">
-                                 <div class="pr-1">
-                                    <a href="" class="btn btn-lg btn-link text-primary disabled" rel="nofollow">                                         <i class="fab fa-discord fa-2x"></i>
-                                     </a>
-                                 </div>
-                                 <div class="">
-                                     <a href="#" class="btn btn-primary btn-lg disabled" rel="nofollow">
-                                         <i class="fas fa-gamepad-alt rotate-45 mr-lg-3 mr-0"></i>
-                                         Play Now
-                                     </a>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
+                    <div class="d-flex align-items-center pr-3 py-4 overlay shadow-inset-bottom">
+                        <div class="flex-fill text-center px-3">
+                            <i class="fad fa-ad fa-2x text-muted"></i>
+                        </div>
+                        <div class="flex-fill">
+                            <img
+                                src="{{ url('public/img/banner-loading.png') }}"
+                                alt="default-banner.png"
+                                class="img-fluid rounded">
+                        </div>
+                        <div class="flex-fill">
+                            <div class="d-flex align-items-center justify-content-end">
+                                <div class="pr-1">
+                                    <a href="" class="btn btn-lg btn-link text-primary disabled" rel="nofollow">
+                                        <i class="fab fa-discord fa-2x"></i>
+                                    </a>
+                                </div>
+                                <div class="">
+                                    <a href="#" class="btn btn-primary btn-lg disabled" rel="nofollow">
+                                        <i class="fas fa-gamepad-alt rotate-45 mr-lg-3 mr-0"></i>
+                                        Play Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                     <div class="d-flex align-items-center pr-3 py-4 enlarge">
-                         <div class="flex-fill text-center px-3">
-                             <i class="fad fa-ad fa-2x text-muted"></i>
-                         </div>
-                         <div class="flex-fill">
-                             <img
-                                 src="{{ url('public/img/banner-loading.png') }}"
-                                 alt="default-banner.png"
-                                 class="img-fluid rounded">
-                         </div>
-                         <div class="flex-fill">
-                             <div class="d-flex align-items-center justify-content-end">
-                                 <div class="pr-1">
-                                      <a href="" class="btn btn-lg btn-link text-primary disabled" rel="nofollow">
-                                         <i class="fab fa-discord fa-2x"></i>
-                                     </a>
-                                 </div>
-                                 <div class="">
+                    <div class="d-flex align-items-center pr-3 py-4 enlarge">
+                        <div class="flex-fill text-center px-3">
+                            <i class="fad fa-ad fa-2x text-muted"></i>
+                        </div>
+                        <div class="flex-fill">
+                            <img
+                                src="{{ url('public/img/banner-loading.png') }}"
+                                alt="default-banner.png"
+                                class="img-fluid rounded">
+                        </div>
+                        <div class="flex-fill">
+                            <div class="d-flex align-items-center justify-content-end">
+                                <div class="pr-1">
+                                    <a href="" class="btn btn-lg btn-link text-primary disabled" rel="nofollow">
+                                        <i class="fab fa-discord fa-2x"></i>
+                                    </a>
+                                </div>
+                                <div class="">
                                     <a href="#" class="btn btn-primary btn-lg" rel="nofollow">
-                                         <i class="fas fa-gamepad-alt rotate-45 mr-lg-3 mr-0"></i>
-                                         Play Now
-                                     </a>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
+                                        <i class="fas fa-gamepad-alt rotate-45 mr-lg-3 mr-0"></i>
+                                        Play Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                     <div class="d-flex align-items-center pr-3 py-4 overlay  shadow-inset-top">
-                         <div class="flex-fill text-center px-3">
-                             <i class="fad fa-ad fa-2x text-muted"></i>
-                         </div>
-                         <div class="flex-fill">
-                             <img
-                                 src="{{ url('public/img/banner-loading.png') }}"
-                                 alt="default-banner.png"
-                                 class="img-fluid rounded">
-                         </div>
-                         <div class="flex-fill">
-                             <div class="d-flex align-items-center justify-content-end">
-                                 <div class="pr-1">
-                                     <a href="" class="btn btn-lg btn-link text-primary disabled" rel="nofollow">
-                                         <i class="fab fa-discord fa-2x"></i>
-                                     </a>
-                                 </div>
-                                 <div class="">
-                                     <a href="#" class="btn btn-primary btn-lg disabled" rel="nofollow">
-                                         <i class="fas fa-gamepad-alt rotate-45 mr-lg-3 mr-0"></i>
-                                         Play Now
-                                     </a>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div>
- </section>
+                    <div class="d-flex align-items-center pr-3 py-4 overlay  shadow-inset-top">
+                        <div class="flex-fill text-center px-3">
+                            <i class="fad fa-ad fa-2x text-muted"></i>
+                        </div>
+                        <div class="flex-fill">
+                            <img
+                                src="{{ url('public/img/banner-loading.png') }}"
+                                alt="default-banner.png"
+                                class="img-fluid rounded">
+                        </div>
+                        <div class="flex-fill">
+                            <div class="d-flex align-items-center justify-content-end">
+                                <div class="pr-1">
+                                    <a href="" class="btn btn-lg btn-link text-primary disabled" rel="nofollow">
+                                        <i class="fab fa-discord fa-2x"></i>
+                                    </a>
+                                </div>
+                                <div class="">
+                                    <a href="#" class="btn btn-primary btn-lg disabled" rel="nofollow">
+                                        <i class="fas fa-gamepad-alt rotate-45 mr-lg-3 mr-0"></i>
+                                        Play Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 {% if user is defined and page_disabled is not defined %}
 <script src="https://www.paypal.com/sdk/js?client-id={{ constant('paypal_production') }}"></script>
 
- <script>
-     let modal = $('#preModal');
-     // modal.modal('show');
+<script>
+    let modal = $('#preModal');
+    // modal.modal('show');
+    let package;
+    let server;
+    let paypalBtn = $('#paypal-btn');
+    let statusBlock = $('#pp-notice');
+    $('[id="package-select"]').on("click", function(event) {
+        event.preventDefault();
+        package = $(this).data("package");
+        $(document).find("[id='package-select']").closest(".card").each(function(index, element) {
+            $(this).removeClass("border-primary");
+        })
+        $(this).closest(".card").addClass("border-primary");
+        scrollTo($('#servers'));
+    });
+    $('[id="server-select"]').on("click", function(event) {
+        event.preventDefault();
+        server = $(this).data("server");
+        $(document).find("[id='server-select']").each(function(index, element) {
+            $(this).closest(".card").removeClass("border-primary");
+        })
+        if ((typeof package !== "undefined") && (typeof server != "undefined")) {
+            $(this).closest(".card").addClass("border-primary");
+            $('#checkout').removeClass("d-none");
+            loadButton(package, server);
+        }
+    });
+    function scrollTo(element) {
+        $('html, body').stop().animate({
+            'scrollTop': element.offset().top
+        }, 800, 'swing');
+    }
+    function loadButton(package, server) {
+        statusBlock.removeClass("text-danger").html("<i class='fad fa-spinner fa-pulse'></i>");
+        $.ajaxq('PaymentQueue', {
+            url: '{{ url("sponsor/button") }}',
+            data: {
+                package: package,
+                server: server
+            },
+            type: 'POST',
+            success: function (json) {
+                if (json.success) {
+                    statusBlock.html("");
+                    paypalBtn.html(json.message);
+                } else {
+                    statusBlock.addClass("text-danger").html(json.message);
+                }
+            },
+            error: function(data) {
+                console.log(data.responseText);
+            }
+        });
+    }
+</script>
+{% endif %}
 
-     let package;
-     let server;
-
-     let paypalBtn = $('#paypal-btn');
-     let statusBlock = $('#pp-notice');
-
-     $('[id="package-select"]').on("click", function(event) {
-         event.preventDefault();
-
-         package = $(this).data("package");
-
-         $(document).find("[id='package-select']").closest(".card").each(function(index, element) {
-             $(this).removeClass("border-primary");
-         })
-
-         $(this).closest(".card").addClass("border-primary");
-         scrollTo($('#servers'));
-     });
-
-     $('[id="server-select"]').on("click", function(event) {
-         event.preventDefault();
-
-         server = $(this).data("server");
-
-         $(document).find("[id='server-select']").each(function(index, element) {
-             $(this).closest(".card").removeClass("border-primary");
-         })
-
-         if ((typeof package !== "undefined") && (typeof server != "undefined")) {
-             $(this).closest(".card").addClass("border-primary");
-             $('#checkout').removeClass("d-none");
-             loadButton(package, server);
-         }
-     });
-
-     function scrollTo(element) {
-         $('html, body').stop().animate({
-             'scrollTop': element.offset().top
-         }, 800, 'swing');
-     }
-
-     function loadButton(package, server) {
-         statusBlock.removeClass("text-danger").html("<i class='fad fa-spinner fa-pulse'></i>");
-
-         $.ajaxq('PaymentQueue', {
-             url: '{{ url("sponsor/button") }}',
-             data: {
-                 package: package,
-                 server: server
-             },
-             type: 'POST',
-             success: function (json) {
-
-                 if (json.success) {
-                     statusBlock.html("");
-                     paypalBtn.html(json.message);
-                 } else {
-                     statusBlock.addClass("text-danger").html(json.message);
-                 }
-             },
-             error: function(data) {
-                 console.log(data.responseText);
-             }
-         });
-     }
-
- </script>
- {% endif %}
-
- {% endblock %}
+{% endblock %}
