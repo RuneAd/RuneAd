@@ -204,19 +204,10 @@
                             <i class="fad fa-crown fa-2x text-primary"></i>
                         </div>
                         <div class="flex-fill">
-                        {% if server.banner_url %}
-                        <a href="{{ url('details/'~server_url) }}" class="banner-img">
-                            <img data-src="{{ banner(server.banner_url) }}"
-                                id="banner"
-                                class="img-fluid rounded lazy">
-                        </a>
-                        {% else %}
-                        <a href="{{ url('details/'~server_url) }}" class="banner-img">
-                            <img data-src="{{ url('public/img/banner-'~theme~'.png') }}"
-                                id="banner"
-                                class="img-fluid rounded lazy">
-                        </a>
-                        {% endif %}
+                            <img
+                                src="{{ url('public/img/banner-loading.png') }}"
+                                alt="default-banner.png"
+                                class="img-fluid rounded">
                         </div>
                         <div class="flex-fill">
                             <div class="d-flex align-items-center justify-content-end">
