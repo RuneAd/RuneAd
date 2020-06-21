@@ -8,6 +8,8 @@
 
     include DOC_ROOT.'/../vendor/autoload.php';
     include DOC_ROOT.'/../app/config.php';
+    include 'cron_lock.php';
+
     require_once DOC_ROOT.'/../app/Functions.php';
 
     $model_dir = DOC_ROOT."/../app/models/";

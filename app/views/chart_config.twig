@@ -1,8 +1,8 @@
 <script type="text/javascript" src="{{ url('public/js/chart.min.js') }}" defer></script>
- <script type="text/javascript" src="{{ url('public/js/chart.extension.js') }}" defer></script>
+<script type="text/javascript" src="{{ url('public/js/chart.extension.js') }}" defer></script>
 
 <script>
-$(document).ready(function() {
+    $(document).ready(function() {
         Chart.plugins.register({
             beforeDraw: function(chartInstance) {
                 var ctx = chartInstance.chart.ctx;
@@ -11,7 +11,6 @@ $(document).ready(function() {
             }
         });
     });
-
     window.chartColors = {
         red:    'rgb(255, 99, 132)',
         orange: 'rgb(255, 159, 64)',
@@ -22,9 +21,7 @@ $(document).ready(function() {
         purpleLight: 'rgba(94, 114, 228, 0.05)',
         grey:   'rgb(201, 203, 207)'
     };
-
     var options = {};
-
     options.maintainAspectRatio = false;
     options.response = true;
     options.elements = {};
@@ -45,7 +42,6 @@ $(document).ready(function() {
     options.legend.position = "bottom";
     options.animation = false;
     options.elements.line.tension = 0;
-
     options.scales.xAxes = [{
         barPercentage: 0,
         ticks: {
@@ -57,7 +53,6 @@ $(document).ready(function() {
             drawBorder: false,
         }
     }];
-
     options.scales.yAxes = [{
         ticks: {
             display: false,

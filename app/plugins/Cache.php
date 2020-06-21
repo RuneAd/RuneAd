@@ -34,7 +34,7 @@ class Cache {
     }
 
     public function save($data) {
-        $cached = fopen($this->getFIlePath(), 'w');
+        $cached = fopen($this->getFilePath(), 'w');
         fwrite($cached, json_encode($data));
         fclose($cached);
     }
