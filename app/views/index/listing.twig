@@ -79,13 +79,10 @@
                  <i class="fad fa-signal-alt text-success fa-fw"></i>
                  {% endif %}
 
-
                  {% if server.ping == -1  %}
                      <i class="fad fa-signal-alt-1 text-muted fa-fw"></i>
                  {% else %}
-                     <span data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
-
-                     </span>
+                     <span data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}"></span>
                  {% endif %}
              </td>
 

@@ -7,7 +7,7 @@
     </div>
 
     <table class="table mb-0" style="line-height:.7em;">
-
+        {% for server in servers.items() %}
         {% for sponsor in sponsors %}
         <tr id="server">
             <td class="text-center rank-col">
@@ -44,7 +44,7 @@
         </tr>
         {% endfor %}
 
-
+  {% endfor %}
         {% set remaining = (3 - sponsors|length) - 1 %}
 
         {% for i in 0..remaining %}
