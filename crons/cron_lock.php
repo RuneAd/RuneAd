@@ -1,7 +1,7 @@
 <?php
 /**
  * prevents cron jobs from overlapping
- */
+ **/
 class CronLock {
 
     private $delay = (60 * 60 * 1);
