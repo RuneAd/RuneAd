@@ -24,7 +24,7 @@
                             </div>
                             <div class="flex-fill w-100">
                                 <div class="dropdown mb-3">
-                                    <button class="btn btn-outline-primary dropdown-toggle" 
+                                    <button class="btn btn-outline-primary dropdown-toggle"
                                         id="ratebtn" rel="nofollow"
                                             type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         30 Days
@@ -36,7 +36,7 @@
                                             href="#">
                                             180 Days
                                         </a>
-                                        <a class="dropdown-item" rel="nofollow" 
+                                        <a class="dropdown-item" rel="nofollow"
                                             id="days"
                                             data-days="90"
                                             href="#">
@@ -48,14 +48,14 @@
                                             href="#">
                                             30 Days
                                         </a>
-                                        <a class="dropdown-item" rel="nofollow" 
+                                        <a class="dropdown-item" rel="nofollow"
                                             id="days"
                                             data-days="7"
                                             href="#">
                                             7 Days
                                         </a>
                                     </div>
-    
+
                                     <span id="loader">
                                         <i class="fad fa-spinner fa-pulse"></i> Loading
                                     </span>
@@ -84,6 +84,7 @@
 {% include 'chart_config.twig' %}
 
 <script>
+    $(document).ready(function() {
     let canvas  = document.getElementById("voteChart"),
     context = canvas.getContext('2d')
     cdata = {
@@ -119,7 +120,7 @@
         }
 
         loading = true;
-        
+
         days = $(this).data("days");
 
         loader.html(loader_txt);
@@ -147,7 +148,7 @@
                     cdata.data.datasets[0].data = values;
                     chart.update();
                     loader.html("");
-        
+
                     loading = false;
                 }
             },
@@ -156,6 +157,7 @@
             }
         });
     }
+});
 </script>
 
 {%  endblock %}

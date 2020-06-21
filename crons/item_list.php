@@ -27,7 +27,7 @@ if (!$json || empty($json)) {
 
 try {
     $cached = fopen("../app/cache/osrs-item-db.json", 'w');
-    fwrite($cached, json_encode($content, JSON_PRETTY_PRINT));
+    fwrite($cached, json_encode($json, JSON_PRETTY_PRINT));
     fclose($cached);
 } catch(Exception $e) {
     exit;
