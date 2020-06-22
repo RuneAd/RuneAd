@@ -1,9 +1,17 @@
+<style>
+    .popover {
+        min-width:400px !important;
+        line-height: 1em;
+        backdrop-filter: blur(5px);
+    }
+</style>
 <div class="card border-0 shadow-sm mb-3">
     <table class="table mb-0">
         <thead>
         <tr>
             <th class="text-center" style="width:80px">Id</th>
-            <th class="text-center" style="width:34px;"></th>
+            <th class="text-center" style="width:75px;"></th>
+            <th class="text-center" style="width:70px;"></th>
             <th>Name</th>
         </tr>
         </thead>
@@ -13,27 +21,63 @@
             <td class="text-center">
                 <img src="{{ url('public/img/items/'~item['id']~'.png') }}" height="32">
             </td>
-            <td style="line-height:1em;">{{ item['name'] }}</td>
+            <td class="text-center">
+                {% if item['members'] %}
+                <img src="{{ url('public/img/members.png') }}" data-toggle="tooltip" data-title="Members">
+                {% endif %}
+            </td>
+            <td style="line-height:1em;">
+                <a href="" id="item-tooltip"
+                    data-toggle="popover"
+                    data-trigger="focus"
+                    data-placement="right"
+                    data-html="true"
+                    data-content='{% include 'tools/item_tooltip.twig' %}'>
+                    {{ item['name'] }}
+                </a>
+
+                <br>
+
+                <small class="text-muted">
+                    {{ item['examine'] ? item['examine'] : 'This item has no examine.' }}
+                </small>
+            </td>
         </tr>
         {% endfor %}
     </table>
 </div>
 
+<span class="osrstooltip" id='2615' data-type="full" title='Please wait ...'>
+    [Rune platebody (g)]
+</span>
+
 <div class="m-auto text-center">
-    <a href="#search" class="btn btn-link" id="pageBtn" data-page="{{ results['first'] }}">
+    <a href="#" class="btn btn-link" id="pageBtn" data-page="{{ results['first'] }}">
         <i class="far fa-angle-double-left fa-fw"></i>
     </a>
-    <a href="#search" class="btn btn-link" id="pageBtn" data-page="{{ results['before'] }}">
+
+    <a href="#" class="btn btn-link" id="pageBtn" data-page="{{ results['before'] }}">
         <i class="far fa-angle-left fa-fw"></i>
     </a>
 
     Page {{ results['current'] }} of {{ results['total_pages'] }}
 
-    <a href="#search" class="btn btn-link ml-2" id="pageBtn" data-page="{{ results['next'] }}">
+    <a href="#" class="btn btn-link ml-2" id="pageBtn" data-page="{{ results['next'] }}">
         <i class="far fa-angle-right fa-fw"></i>
     </a>
-    <a href="#search" class="btn btn-link" id="pageBtn" data-page="{{ results['last'] }}">
+
+    <a href="#" class="btn btn-link" id="pageBtn" data-page="{{ results['last'] }}">
         <i class="far fa-angle-double-right fa-fw"></i>
     </a>
 
 </div>
+
+<script>
+    $('[data-toggle="popover"]').popover();
+    $('[id="item-tooltip"]').on('click', function(e) {
+        e.preventDefault();
+    });
+    $('[id="pageBtn"]').on('click', function(e) {
+        e.preventDefault();
+    });
+</script>

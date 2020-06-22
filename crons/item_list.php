@@ -1,8 +1,10 @@
 <?php
 include "cron_init.php";
+use GuzzleHttp\Psr7\StreamWrapper;
 
 $delay = 600; // 10 minutes in between runs.
 $lock  = new CronLock("item_cron", $delay);
+$start = microtime(true);
 
 if ($lock->isLocked()) {
     exit;
@@ -10,24 +12,39 @@ if ($lock->isLocked()) {
 
 $lock->writeLock();
 
-$json  = null;
-$start = microtime(true);
+$file_url = "https://www.osrsbox.com/osrsbox-db/items-complete.json";
+$data = [];
 
 try {
-    $client = new GuzzleHttp\Client();
-    $content = $client->get('https://www.osrsbox.com/osrsbox-db/items-summary.json');
-    $json    = array_values(json_decode($content->getBody(), true));
+    $client   = new GuzzleHttp\Client();
+    $response = $client->get($file_url);
+    $stream   = StreamWrapper::getResource($response->getBody());
+
+    foreach (\JsonMachine\JsonMachine::fromStream($stream) as $key => $value) {
+        $data[] = [
+            'id'           => $value['id'],
+            'name'         => $value['name'],
+            'members'      => $value['members'],
+            'cost'         => $value['cost'],
+            'examine'      => $value['examine'],
+            'tradeable'    => $value['tradeable'],
+            'equipment'    => $value['equipment'],
+            'weapon'       => $value['weapon'],
+            'release_date' => $value['release_date'],
+            'wiki_url'     => $value['wiki_url']
+        ];
+    }
 } catch(Exception $e) {
     exit;
 }
 
-if (!$json || empty($json)) {
+if (!$data || empty($data)) {
     exit;
 }
 
 try {
     $cached = fopen(DOC_ROOT."/../app/cache/osrs-item-db.json", 'w');
-    fwrite($cached, json_encode($json, JSON_PRETTY_PRINT));
+    fwrite($cached, json_encode($data));
     fclose($cached);
 } catch(Exception $e) {
     exit;
@@ -36,7 +53,7 @@ try {
 $item_path = DOC_ROOT."/../public/img/items";
 $image_url = "https://www.osrsbox.com/osrsbox-db/items-icons";
 
-foreach($json as $item) {
+foreach($data as $item) {
     if (file_exists($item_path."/{$item['id']}.png")) {
         continue;
     }
@@ -52,6 +69,5 @@ foreach($json as $item) {
 
 $end = microtime(true);
 $elapsed = number_format($end - $start, 4);
-
-writeLog("Done updating item database. Took {$elapsed}s.");
-$lock->writeLock(); // write lock again so next one is delayed
+echo("Done updating item database. Took {$elapsed}s.");
+$lock->writeLock();

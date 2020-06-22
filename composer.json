@@ -12,6 +12,7 @@
 		"ezyang/htmlpurifier": "^4.12",
 		"illuminate/database": "^7.14",
 		"illuminate/pagination": "^7.14",
-		"rakit/validation": "^1.2"
+		"rakit/validation": "^1.2",
+		"halaxa/json-machine": "^0.3.3"
     }
 }
