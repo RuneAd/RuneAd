@@ -25,17 +25,9 @@ a.text-primary:hover {
 .navbar-dark .navbar-nav .nav-link {
     font-family: "OpenSans-Regular" !important;
 }
-.px-6 {
+.sublogo {
   padding-left: ($spacer * 3.5) !important;
   padding-right: ($spacer * 3.5) !important;
-}
-.px-7 {
-  padding-left: ($spacer * 4) !important;
-  padding-right: ($spacer * 4) !important;
-}
-.px-8 {
-  padding-left: ($spacer * 4.5) !important;
-  padding-right: ($spacer * 4.5) !important;
 }
 .header h1 {
     font-family: "Montserrat-Bold";
