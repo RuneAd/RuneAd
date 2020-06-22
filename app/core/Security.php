@@ -22,8 +22,8 @@ class Security {
             'sponsor' => ['index'],
             'login'   => ['index', 'discord', 'auth', 'dauth'],
             'errors'  => ['show404', 'show500', 'show401', 'missing'],
-            'pages'   => ['docs', 'updates', 'stats', 'terms', 'privacy', 'map'],
-            'tools'   => ['itemdb', 'search']
+            'pages'   => ['docs', 'updates', 'stats', 'terms', 'privacy'],
+            'tools'   => ['itemdb', 'search', 'map']
         ];
 
         $private = [
