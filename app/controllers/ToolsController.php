@@ -26,53 +26,20 @@ class ToolsController extends Controller {
         $pageNum   = $this->request->getPost("page", "int");
         $paginator = (new Paginator($found, $pageNum, 20))->paginate();
         $results   = $paginator->getResults();
-
-        foreach($results['items'] as $item) {
-            if (!file_exists('public/img/items/'.$item['id'].'.png')) {
-                $this->getImage($item['id']);
-            }
-        }
-
         $this->set("results", $results);
     }
 
     private function getItemList() {
-        $cache    = new Cache("osrs-item-db", 86400);
-        $itemList = $cache->get();
+        $file_name = "app/cache/osrs-item-db.json";
+
+        $file     = file_get_contents($file_name);
+        $itemList = json_decode($file, true);
 
         if (!$itemList) {
-            $itemList = array_values($this->getFile());
-
-            if (!$itemList) {
-                return $cache->getData();
-            }
-
-            $cache->save($itemList);
+            return [];
         }
 
         return $itemList;
-    }
-
-    private function getFile() {
-        try {
-            $client = new GuzzleHttp\Client();
-            $resp   = $client->get('https://www.osrsbox.com/osrsbox-db/items-summary.json');
-            return array_values(json_decode($resp->getBody(), true));
-        } catch(Exception $e) {
-            return null;
-        }
-    }
-
-    public function getImage($itemId) {
-        try {
-            $client = new GuzzleHttp\Client();
-            $resp   = $client->get("https://www.osrsbox.com/osrsbox-db/items-icons/{$itemId}.png", [
-                'save_to' => 'public/img/items/'.$itemId.'.png'
-            ]);
-            return true;
-        } catch(Exception $e) {
-            return null;
-        }
     }
 
 }
