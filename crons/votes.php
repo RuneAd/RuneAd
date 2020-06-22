@@ -2,6 +2,7 @@
 $start = microtime(true);
 include "cron_init.php";
 
+
 $delay = 1800; // 30 minutes in between runs.
 $lock  = new CronLock("votes_cron", $delay);
 
