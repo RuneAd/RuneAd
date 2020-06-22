@@ -160,7 +160,7 @@ class Controller {
 										'title' => 'OSRS Interactive Map',
 										'meta' => 'An easy to use oldschool runescape map that\'s always up to date.'
 								]
-						]
+						],
         ];
 
         if (in_array($controller, array_keys($pages))) {

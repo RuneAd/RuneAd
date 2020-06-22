@@ -11,7 +11,7 @@ class PageRouter extends Router {
             self::$instance = new PageRouter(web_root);
         }
         return self::$instance;
-    }
+    }sudo git pull
 
     private $controller;
     private $method;
