@@ -151,16 +151,10 @@ class Controller {
             ],
             'tools' => [
                 'itemdb' => [
-                    'title' => 'OSRS Item DB',
+                    'title' => 'Osrs Item DB',
                     'meta' => 'An easy to use oldschool runescape item db that\'s always up to date.'
                 ]
-            ],
-						'tools' => [
-								'map' => [
-										'title' => 'OSRS Interactive Map',
-										'meta' => 'An easy to use oldschool runescape map that\'s always up to date.'
-								]
-						],
+            ]
         ];
 
         if (in_array($controller, array_keys($pages))) {
