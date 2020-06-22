@@ -26,8 +26,7 @@ a.text-primary:hover {
     font-family: "OpenSans-Regular" !important;
 }
 .sublogo {
-  padding-left: ($spacer * 3.5) !important;
-  padding-right: ($spacer * 3.5) !important;
+padding-left:50px;
 }
 .header h1 {
     font-family: "Montserrat-Bold";
