@@ -1,14 +1,14 @@
 <?php
 /**
  * prevents cron jobs from overlapping
- **/
+ */
 class CronLock {
 
     private $delay = (60 * 60 * 1);
     private $file_path;
 
     public function __construct($name, $delay = (60 * 60 * 1)) {
-        $this->file_path = "cron_locks/".strtolower($name).".lock";
+        $this->file_path =  DOC_ROOT."/cron_locks/".strtolower($name).".lock";
         $this->delay = $delay;
     }
 
@@ -26,13 +26,11 @@ class CronLock {
     }
 
     public function setFile($file_path) {
-        $this->file_path = "cron_locks/".strtolower($file_path).".lock";
+        $this->file_path =  DOC_ROOT."/cron_locks/".strtolower($file_path).".lock";
     }
 
     public function writeLock() {
-        $file = fopen($this->file_path, 'w');
-        fwrite($file, json_encode(['last_write' => time()]));
-        fclose($file);
+        file_put_contents($this->file_path, json_encode(['last_write' => time()]));
     }
 
 }
