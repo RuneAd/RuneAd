@@ -48,6 +48,7 @@ $(document).ready(function() {
         }
     });
 
+
     refresh_handler = function(e) {
         var elements = document.querySelectorAll("img");
 
@@ -67,4 +68,5 @@ $(document).ready(function() {
     window.addEventListener('scroll', refresh_handler);
     window.addEventListener('load', refresh_handler);
     window.addEventListener('resize', refresh_handler);
+
 });
