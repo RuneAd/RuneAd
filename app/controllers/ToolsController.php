@@ -7,6 +7,10 @@ class ToolsController extends Controller {
 
     }
 
+    public function map() {
+
+    }
+
     public function search() {
         $data   = $this->getItemList();
         $search = $this->request->getPost("search", "string");
