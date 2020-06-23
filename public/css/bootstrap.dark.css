@@ -44,7 +44,10 @@ table {
     background-color: rgba(0,0,0,.075);
 }
 .bg-dark {
-    background-color: #202225 !important;
+        background-image: url("https://i.imgur.com/q5O6k9i.png") !important;
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
 }
 input.form-control, select.form-control {
     background-color: #484C52 !important;
