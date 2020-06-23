@@ -18,17 +18,17 @@
                         <div class="col text-lg-right">
                             {% if user is defined and user.user_id == server.owner %}
                                 <a href="{{ url('servers/edit/'~seo_link) }}"
-                                    class="btn btn-outline-info">Edit Server</a>
+                                    class="btn btn-outline-primary">Edit Server</a>
                             {% endif %}
                             <a href="{{ server.website }}"
                                 data-toggle="tooltip" data-title="Website" rel="nofollow"
-                                class="btn btn-info {{ server.website ? '' : 'disabled' }}" target="_blank">
+                                class="btn btn-primary {{ server.website ? '' : 'disabled' }}" target="_blank">
                                 <i class="fas fa-link fa-lg fa-fw"></i>
                             </a>
 
                             <a href="{{ server.discord_link }}"
                                 data-toggle="tooltip" data-title="Discord" rel="nofollow"
-                                class="btn btn-info {{ server.discord_link ? '' : 'disabled' }}"
+                                class="btn btn-primary {{ server.discord_link ? '' : 'disabled' }}"
                                 target="_blank">
                                 <i class="fab fa-discord fa-lg fa-fw"></i>
                             </a>
@@ -101,7 +101,7 @@
                     <div class="card border-0 shadow-sm mb-3">
                         <div class="card-body pb-2">
                             <div class="dropdown mb-3">
-                                <button class="btn btn-outline-info dropdown-toggle"
+                                <button class="btn btn-outline-primary dropdown-toggle"
                                     id="ratebtn"  rel="nofollow"
                                         type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     30 Days

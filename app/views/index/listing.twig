@@ -1,5 +1,5 @@
 <div class="card border-0 shadow-sm overflow-hidden mb-2">
-     <div class="card-header bg-gradient-info text-white py-3">
+     <div class="card-header bg-gradient-primary text-white py-3">
          Runescape Private Servers
      </div>
 
@@ -94,13 +94,13 @@
                      </div>
                      <div class="pr-1">
                          <a href="{{ url('vote/'~server_url) }}" rel="nofollow"
-                             data-id="{{ server.id }}" class="btn btn-info vote-btn">
+                             data-id="{{ server.id }}" class="btn btn-primary vote-btn">
                              Vote
                          </a>
                      </div>
                      <div class="">
                          <a href="{{ server.website }}" target="_blank" rel="nofollow"
-                             data-id="{{ server.id }}" class="btn btn-info float-right {{ server.website ? '' : 'disabled' }}">
+                             data-id="{{ server.id }}" class="btn btn-primary float-right {{ server.website ? '' : 'disabled' }}">
                          <i class="far fa-link"></i></a>
                      </div>
                  </div>
@@ -203,7 +203,7 @@
          btn.html("<i class=\"fad fa-spinner fa-pulse\"></i>");
 
          btn.addClass("disabled");
-         btn.removeClass("btn-success btn-danger").addClass("btn-info");
+         btn.removeClass("btn-success btn-danger").addClass("btn-primary");
 
          grecaptcha.ready(function() {
              grecaptcha.execute("{{ recaptcha_key }}", {
@@ -226,14 +226,14 @@
                              votecnt.html(votes);
                          }
 
-                         btn.removeClass("btn-info btn-danger btn-success")
+                         btn.removeClass("btn-primary btn-danger btn-success")
                              .addClass("btn-"+(json.success ? 'success' : 'danger'));
 
                          btn.html("<i class=\"fal fa-"+(json.success ? "check" : "times")+" fa-fw\"></i>");
 
                          setTimeout(function() {
                              btn.removeClass("btn-success btn-danger disabled")
-                                 .addClass("btn-info");
+                                 .addClass("btn-primary");
                              btn.html("Vote");
                          }, 1000);
                      },
