@@ -45,4 +45,4 @@ class Payments extends Model {
 
         return $data;
     }
-}s
+}
