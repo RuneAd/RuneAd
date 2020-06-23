@@ -14,7 +14,7 @@
                 <i class="fad fa-crown fa-lg text-primary"></i>
             </td>
             <td class="py-4">
-                <a href="{{ sponsor.website }}" class="banner-img">
+                <a href="{{ sponsor.website }}" target="_blank" class="banner-img">
                     <img
                         src="{{ url('public/img/banner-loading.png') }}"
                         data-src="{{ banner(sponsor.banner_url) }}"
@@ -28,7 +28,7 @@
                     <div class="pr-1">
                         <a href="{{ sponsor.discord_link }}"
                             class="btn btn-lg btn-link {{ sponsor.discord_link ? '' : 'disabled' }}"
-                            target="_blank" rel="nofollow">
+                            rel="nofollow">
                             <i class="fab fa-discord fa-2x"></i>
                         </a>
                     </div>
