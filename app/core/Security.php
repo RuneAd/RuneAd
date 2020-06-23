@@ -23,7 +23,7 @@ class Security {
             'login'   => ['index', 'discord', 'auth', 'dauth'],
             'errors'  => ['show404', 'show500', 'show401', 'missing'],
             'pages'   => ['docs', 'updates', 'stats', 'terms', 'privacy'],
-            'tools'   => ['itemdb', 'search', 'map']
+            'tools'   => ['itemdb', 'search']
         ];
 
         $private = [
@@ -31,7 +31,10 @@ class Security {
             'premium' => ['button', 'verify', 'process'],
             'sponsor' => ['button', 'verify', 'process'],
             'profile' => ['index'],
+        ];
 
+        $admin = [
+            'admin' => ['index'],
         ];
 
         foreach ($public as $controller => $actions) {
@@ -60,6 +63,17 @@ class Security {
 
             $acl->addResource($controller, $resource);
         }
+
+        foreach ($admin as $controller => $actions) {
+            $resource = new Resource($controller, $actions);
+
+            $resource->allow([
+                $acl->getRole('Owner'),
+                $acl->getRole('Administrator')
+            ]);
+
+            $acl->addResource($controller, $resource);
+        }
         return $acl;
     }
 
@@ -80,7 +94,7 @@ class Security {
             return false;
         }
 
-        // iterate user's roles and build of roles
+        // iterate user's roles and build roles list
         foreach ($roles as $user_role) {
             if ($role = $accessList->getRole($user_role)) {
                 $roleList[] = $role;

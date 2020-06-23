@@ -218,8 +218,11 @@ class PageRouter extends Router {
             return $this->setRoute('tools', 'search');
         });
 
-        $this->all('tools/map', function() {
-            return $this->setRoute('tools', 'map');
+        /**
+         * Admin
+         */
+        $this->all('admin', function() {
+            return $this->setRoute('admin', 'index');
         });
     }
 

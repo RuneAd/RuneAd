@@ -20,9 +20,9 @@ class LoginController extends Controller {
             $client  = new GuzzleHttp\Client();
             $discord = new Discord($access_token);
 
-            $discord->setEndpoint("/users/@me"); 
+            $discord->setEndpoint("/users/@me");
             $me = $discord->get();
-            
+
             if (!$me || isset($me['code'])) {
                 $this->cookies->remove("access_token");
                 return [
@@ -34,11 +34,12 @@ class LoginController extends Controller {
             $user = Users::firstOrCreate(
                 ['user_id' => $me['id']],
                 [
-                    'discriminator' => $me['discriminator'], 
+                    'discriminator' => $me['discriminator'],
                     'username'      => $me['username'],
                     'email'         => $me['email'],
                     'avatar'        => $me['avatar'],
-                    'roles'         => ['Member']
+                    'roles'         => ['Member'],
+                    'join_date'     => time()
                 ]
             );
 
@@ -49,15 +50,15 @@ class LoginController extends Controller {
                 $user->avatar        = $me['avatar'];
                 $user->update();
             }
-        
+
             if ($me['avatar'] != $user->avatar) {
                 $user->avatar = $me['avatar'];
             }
 
-            $discord->setEndpoint('/guilds/'.discord['guild_id'].'/members/'.$user['user_id']); 
+            $discord->setEndpoint('/guilds/'.discord['guild_id'].'/members/'.$user['user_id']);
             $discord->setIsBot(true);
             $userInfo = $discord->get();
-            
+
             if (!$userInfo || isset($userInfo['code'])) {
                 $user->roles = ["Member"];
                 $user->save();
@@ -67,8 +68,8 @@ class LoginController extends Controller {
                     'message' => 'You have successfully logged in!'
                 ];
             }
-            
-            $discord->setEndpoint('/guilds/'.discord['guild_id']); 
+
+            $discord->setEndpoint('/guilds/'.discord['guild_id']);
             $discord->setIsBot(true);
             $server = $discord->get();
 
@@ -83,7 +84,7 @@ class LoginController extends Controller {
 
             $user->roles = $roles;
             $user->save();
-            
+
             $this->cookies->set("access_token", $access_token, 86400 * 7);
 
             return [

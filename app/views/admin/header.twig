@@ -1,0 +1,18 @@
+<nav class="navbar navbar-top navbar-expand-md navbar-dark bg-gradient-primary mt-0" id="navbar-main">
+    <div class="container-fluid">
+        <!-- Brand -->
+        <a class="h4 mb-0 text-white text-uppercase text--sm-center text-md-left pl-sm-4 pl-md-0"
+            href="{{ url('admin') }}">
+            Admin Panel
+        </a>
+
+        <ul class="navbar-nav align-items-center d-none d-md-flex">
+            <li class="nav-item">
+                <span class="mb-0 text-sm font-weight-bold text-white">
+                    <i class="fas fa-user-circle"></i>
+                    {{ user.username|capitalize }}
+                </span>
+            </li>
+        </ul>
+    </div>
+</nav>
