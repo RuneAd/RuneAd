@@ -1,7 +1,7 @@
 <div class="card border-0 shadow-sm overflow-hidden mb-3">
-    <div class="card-header bg-gradient-primary text-white py-3">
+    <div class="card-header bg-default text-white py-3">
         <h5 class="mb-0 text-white">Sponsored Servers</h5>
-        <p class="text-white-50 mb-0">
+        <p class="text-white-50 mb-0 small">
             The best of the best. Even though paid, each server is vetted to
             assure good quality beforehand.</p>
     </div>
@@ -10,10 +10,10 @@
         {% for sponsor in sponsors %}
         <tr id="server">
             <td class="text-center rank-col">
-                <i class="fad fa-crown fa-lg text-primary"></i>
+                <i class="fas fa-star fa-lg" style="color:gold;"></i>
             </td>
             <td class="py-4">
-                <a href="{{ sponsor.website }}" target="_blank "class="banner-img">
+                <a href="{{ sponsor.website }}" class="banner-img">
                     <img
                         src="{{ url('public/img/banner-loading.png') }}"
                         data-src="{{ banner(sponsor.banner_url) }}"
@@ -25,7 +25,7 @@
             <td class="text-right">
                 <div class="d-flex align-items-center justify-content-end">
                     <div class="pr-1">
-                        <a href="{{ sponsor.discord_link }}" target="_blank
+                        <a href="{{ sponsor.discord_link }}"
                             class="btn btn-lg btn-link {{ sponsor.discord_link ? '' : 'disabled' }}"
                             rel="nofollow">
                             <i class="fab fa-discord fa-2x"></i>
@@ -33,7 +33,7 @@
                     </div>
                     <div>
                         <a href="{{ sponsor.website }}"
-                            class="btn btn-primary btn-lg" target="_blank rel="nofollow">
+                            class="btn btn-default btn-lg" rel="nofollow">
                             <i class="fas fa-gamepad-alt rotate-45 mr-lg-3 mr-0"></i>
                             <span class="d-none d-lg-inline-block">Play Now</span>
                         </a>
@@ -49,7 +49,7 @@
         {% for i in 0..remaining %}
         <tr id="server" class="{{ class }}">
             <td class="text-center rank-col">
-                <i class="fad fa-crown fa-lg text-primary"></i>
+                <i class="fas fa-star fa-lg" style="color:gold;"></i>
             </td>
             <td class="py-4">
                 <a href="#" class="banner-img">
@@ -63,12 +63,12 @@
             <td class="text-right">
                 <div class="d-flex align-items-center justify-content-end">
                     <div class="pr-1">
-                        <a href="#" class="btn btn-lg btn-link" rel="nofollow">
+                        <a href="#" class="btn btn-lg btn-link text-primary" rel="nofollow">
                             <i class="fab fa-discord fa-2x"></i>
                         </a>
                     </div>
                     <div class="">
-                        <a href="#" class="btn btn-primary btn-lg" rel="nofollow">
+                        <a href="#" class="btn btn-default btn-lg" rel="nofollow">
                             <i class="fas fa-gamepad-alt rotate-45 mr-lg-3 mr-0"></i>
                             <span class="d-none d-lg-inline-block">Play Now</span>
                         </a>
