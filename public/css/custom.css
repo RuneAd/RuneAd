@@ -12,6 +12,12 @@ body {
     color: #7c7c7c;
     font-family: "OpenSans-Regular" !important;
 }
+.bg-dark {
+        background-image: url("https://i.imgur.com/q5O6k9i.png") !important;
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+}
 .pricing {
     font-family: "Montserrat-Bold";
 }
