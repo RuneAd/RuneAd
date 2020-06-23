@@ -1,5 +1,5 @@
 <div class="card border-0 shadow-sm overflow-hidden mb-3">
-    <div class="card-header bg-gradient-primary text-white py-3">
+    <div class="card-header bg-gradient-info text-white py-3">
         <h5 class="mb-0 text-white">Sponsored Servers</h5>
         <p class="text-white-50 mb-0">
             The best of the best. Even though paid, each server is vetted to
@@ -10,7 +10,7 @@
         {% for sponsor in sponsors %}
         <tr id="server">
             <td class="text-center rank-col">
-                <i class="fad fa-crown fa-lg text-primary"></i>
+                <i class="fad fa-crown fa-lg text-info"></i>
             </td>
             <td class="py-4">
                 <a href="{{ sponsor.website }}" target="_blank "class="banner-img">
@@ -33,7 +33,7 @@
                     </div>
                     <div>
                         <a href="{{ sponsor.website }}"
-                            class="btn btn-primary btn-lg" target="_blank rel="nofollow">
+                            class="btn btn-info btn-lg" target="_blank rel="nofollow">
                             <i class="fas fa-gamepad-alt rotate-45 mr-lg-3 mr-0"></i>
                             <span class="d-none d-lg-inline-block">Play Now</span>
                         </a>
@@ -49,7 +49,7 @@
         {% for i in 0..remaining %}
         <tr id="server" class="{{ class }}">
             <td class="text-center rank-col">
-                <i class="fad fa-crown fa-lg text-primary"></i>
+                <i class="fad fa-crown fa-lg text-info"></i>
             </td>
             <td class="py-4">
                 <a href="#" class="banner-img">
@@ -68,7 +68,7 @@
                         </a>
                     </div>
                     <div class="">
-                        <a href="#" class="btn btn-primary btn-lg" rel="nofollow">
+                        <a href="#" class="btn btn-info btn-lg" rel="nofollow">
                             <i class="fas fa-gamepad-alt rotate-45 mr-lg-3 mr-0"></i>
                             <span class="d-none d-lg-inline-block">Play Now</span>
                         </a>

@@ -3,7 +3,7 @@
          <div class="row flex-md-row flex-column">
              <div class="col mb-sm-3 mb-md-0">
                  <div class="dropdown">
-                     <button class="btn btn-primary btn-lg dropdown-toggle shadow-none" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     <button class="btn btn-info btn-lg dropdown-toggle shadow-none" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                          {% if revision is defined %}
                              Rev: {{ revision.revision }}
                          {% else %}
@@ -25,11 +25,11 @@
                      </div>
                  </div>
 
-                 <a href="{{ url('premium') }}" class="btn btn-success btn-lg pulse">Get Premium</a>
+                 <a href="{{ url('premium') }}" class="btn btn-primary btn-lg pulse">Go Premium</a>
              </div>
              <div class="col text-sm-left text-md-right">
                  <a href="{{ url('servers/add') }}"
-                     class="btn btn-success btn-lg shadow-none {{ user is defined ? '' : 'disabled' }}"
+                     class="btn btn-primary btn-lg shadow-none {{ user is defined ? '' : 'disabled' }}"
                      data-toggle="tooltip"
                      data-title="Add Server">
                      <i class="fal fa-plus fa-fw"></i> Add Server
@@ -37,4 +37,4 @@
              </div>
          </div>
      </div>
- </div> 
+ </div>
