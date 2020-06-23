@@ -11,9 +11,21 @@ class SponsorController extends Controller {
             $this->set("servers", $servers);
         }
 
+        $sponsors = Sponsors::where("expires", ">", time())->count();
+
         if (self::$disabled)
             $this->set("page_disabled", self::$disabled);
+
         $this->set("packages", $packages);
+        $this->set("sponsors", $sponsors);
+
+        if ($sponsors == 3) {
+            $nextSlot = Sponsors::select("expires")
+                ->where("expires", ">", time())
+                ->orderBy("expires", "ASC")
+                ->first();
+            $this->set("nextslot", $nextSlot);
+        }
         return true;
     }
 
@@ -21,7 +33,17 @@ class SponsorController extends Controller {
         $packageId = $this->request->getPost("package", "int");
         $serverId  = $this->request->getPost("server", "int");
 
+        $sponsors = Sponsors::where("expires", ">", time())->count();
+
+        if ($sponsors == 3) {
+            return [
+                'success' => false,
+                'message' => "There is currently no available slots. Please check back later."
+            ];
+        }
+
         $package  = SponsorPackages::where('id', $packageId)->first();
+
 
         if (!$package) {
             return [
@@ -53,6 +75,15 @@ class SponsorController extends Controller {
     public function verify() {
         $order_info = $this->request->getPost("orderDetails");
         $server_id  = $this->request->getPost("server_id", "int");
+
+        $sponsors = Sponsors::where("expires", ">", time())->count();
+
+        if ($sponsors == 3) {
+            return [
+                'success' => false,
+                'message' => "There is currently no available slots. Please check back later."
+            ];
+        }
 
         if (empty($order_info)) {
             return [
@@ -142,6 +173,15 @@ class SponsorController extends Controller {
     public function process() {
         $pp_key   = $this->request->getPost("pp_key", "string");
         $sess_key = $this->session->get("pp_key");
+
+        $sponsors = Sponsors::where("expires", ">", time())->count();
+
+        if ($sponsors == 3) {
+            return [
+                'success' => false,
+                'message' => "There is currently no available slots. If you were charged please contact us on discord."
+            ];
+        }
 
         if (!$pp_key || !$sess_key || $pp_key != $sess_key) {
             return [

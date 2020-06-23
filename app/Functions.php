@@ -16,7 +16,7 @@ class Functions {
         $base_url   = "https://cdn.discordapp.com/avatars/";
         return $base_url.$user_id.'/'.$avatar_hash.'.'.($isGif ? 'gif' : 'png').'';
     }
-    
+
     public static function friendlyTitle($string, $wordLimit = 0){
         $separator = '-';
 
@@ -43,7 +43,7 @@ class Functions {
 
         return trim(trim($string, $separator));
     }
-    
+
     public static function generateString($n = 15) {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $randomString = '';
@@ -89,48 +89,56 @@ class Functions {
         }
     }
 
+    public static function getTimeLeft($expires) {
+        $now = new DateTime();
+        $future_date = new DateTime(date("Y-m-d g:i:s", $expires));
+        $interval = $future_date->diff($now);
+        $timeFormat = $interval->format("%a days, %h hrs, %i mins, %s secs");
+        return $timeFormat;
+    }
+
     public static function formatSeconds($secondsLeft) {
         $minuteInSeconds = 60;
         $hourInSeconds = $minuteInSeconds * 60;
         $dayInSeconds = $hourInSeconds * 24;
-      
+
         $days = floor($secondsLeft / $dayInSeconds);
         $secondsLeft = $secondsLeft % $dayInSeconds;
-      
+
         $hours = floor($secondsLeft / $hourInSeconds);
         $secondsLeft = $secondsLeft % $hourInSeconds;
-      
+
         $minutes= floor($secondsLeft / $minuteInSeconds);
-      
+
         $seconds = $secondsLeft % $minuteInSeconds;
-      
+
         $timeComponents = array();
-      
+
         if ($days > 0) {
           $timeComponents[] = $days . " day" . ($days > 1 ? "s" : "");
         }
-      
+
         if ($hours > 0) {
-          $timeComponents[] = $hours . " hour" . ($hours > 1 ? "s" : "");
+          $timeComponents[] = $hours . " hr" . ($hours > 1 ? "s" : "");
         }
-      
+
         if ($minutes > 0) {
-          $timeComponents[] = $minutes . " minute" . ($minutes > 1 ? "s" : "");
+          $timeComponents[] = $minutes . " min" . ($minutes > 1 ? "s" : "");
         }
-      
+
         if ($seconds > 0) {
-          $timeComponents[] = $seconds . " second" . ($seconds > 1 ? "s" : "");
+          $timeComponents[] = $seconds . " sec" . ($seconds > 1 ? "s" : "");
         }
-      
+
         if (count($timeComponents) > 0) {
           $formattedTimeRemaining = implode(", ", $timeComponents);
           $formattedTimeRemaining = trim($formattedTimeRemaining);
         } else {
           $formattedTimeRemaining = "No time remaining.";
         }
-      
+
         return $formattedTimeRemaining;
-      
+
       }
 
     public static function getLastNDays($days, $format = 'n j'){

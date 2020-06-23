@@ -37,7 +37,7 @@ class Template extends FilesystemLoader {
                     return web_root.'public/img/banners/'.$banner;
                 }
             }));
-            
+
             $twig->addFunction(new \Twig\TwigFunction('api', function ($string) {
                 return api_url.'/'.$string;
             }));
@@ -94,13 +94,17 @@ class Template extends FilesystemLoader {
             $twig->addFunction(new \Twig\TwigFunction('avatar', function ($user_id, $avatar_hash) {
                 return Functions::getAvatarUrl($user_id, $avatar_hash);
             }));
-            
+
             $twig->addFunction(new \Twig\TwigFunction('friendlyTitle', function ($title) {
                 return Functions::friendlyTitle($title);
             }));
 
             $twig->addFunction(new \Twig\TwigFunction('elapsed', function ($int) {
                 return Functions::elapsed($int);
+            }));
+
+            $twig->addFunction(new \Twig\TwigFunction('timeLeft', function ($int) {
+                return Functions::getTimeLeft($int);
             }));
 
             return $twig->load($path . '.twig');
