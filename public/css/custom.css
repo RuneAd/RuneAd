@@ -18,6 +18,9 @@ body {
         background-repeat: no-repeat !important;
         background-position: center !important;
 }
+.bg-dark-footer {
+    background-color: #202225 !important;
+}
 .pricing {
     font-family: "Montserrat-Bold";
 }
