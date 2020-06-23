@@ -7,34 +7,33 @@
     </div>
 
     <table class="table mb-0" style="line-height:.7em;">
-
         {% for sponsor in sponsors %}
         <tr id="server">
             <td class="text-center rank-col">
-                <i class="fad fa-crown fa-lg text-primary"></i>
+                <i class="fad fa-ad fa-lg text-muted"></i>
             </td>
             <td class="py-4">
-                <a href="{{ sponsor.website }}" target="_blank" class="banner-img">
+                <a href="{{ sponsor.website }}" target="_blank "class="banner-img">
                     <img
                         src="{{ url('public/img/banner-loading.png') }}"
                         data-src="{{ banner(sponsor.banner_url) }}"
                         id="banner"
-                        alt="{{ url(theme~'.png') }}"
+                        alt="{{ sponsor.banner_url }}"
                         class="img-fluid rounded lazy">
                 </a>
             </td>
             <td class="text-right">
                 <div class="d-flex align-items-center justify-content-end">
                     <div class="pr-1">
-                        <a href="{{ sponsor.discord_link }}"
+                        <a href="{{ sponsor.discord_link }}" target="_blank
                             class="btn btn-lg btn-link {{ sponsor.discord_link ? '' : 'disabled' }}"
                             rel="nofollow">
                             <i class="fab fa-discord fa-2x"></i>
                         </a>
                     </div>
-                    <div class="">
+                    <div>
                         <a href="{{ sponsor.website }}"
-                            class="btn btn-primary btn-lg" target="_blank" rel="nofollow">
+                            class="btn btn-primary btn-lg" target="_blank rel="nofollow">
                             <i class="fas fa-gamepad-alt rotate-45 mr-lg-3 mr-0"></i>
                             <span class="d-none d-lg-inline-block">Play Now</span>
                         </a>
@@ -50,7 +49,7 @@
         {% for i in 0..remaining %}
         <tr id="server" class="{{ class }}">
             <td class="text-center rank-col">
-                <i class="fad fa-crown fa-lg text-primary"></i>
+                <i class="fad fa-ad fa-lg text-muted"></i>
             </td>
             <td class="py-4">
                 <a href="#" class="banner-img">
