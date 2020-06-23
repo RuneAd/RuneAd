@@ -13,6 +13,31 @@
                 You'll be placed at the top of every page of the main listing<br>
                 in which viewers will have quick access to your server.
             </p>
+
+            {% set slots = 3 - sponsors %}
+
+            {% if slots > 0 %}
+            <p class="font-weight-bold">
+                Slots Available:
+
+                {% if slots == 3 %}
+                <span class="text-success">{{ slots }}</span>
+                {% elseif slots == 2 %}
+                <span class="text-warning">{{ slots }}</span>
+                {% elseif slots == 1 %}
+                <span class="text-danger">{{ slots }}</span>
+                {% elseif slots == 0 %}
+                <span class="text-danger">{{ slots }}</span>
+                {% endif %}
+            </p>
+            {% else %}
+            <div class="text-danger">
+                There are no slots available right now. A slot will be available in:<br>
+                <span class="font-weight-bold">
+                    {{ timeLeft(nextslot.expires) }}
+                </span>
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>
@@ -40,7 +65,7 @@
                     <div class="card-footer bg-transparent">
                         {% if user is defined %}
                         <a href="#" id="package-select" data-package="{{ pkg.id }}"
-                            class="btn {{ pkg.highlight ? 'btn-outline-white' : 'btn-primary' }} rounded-pill px-5">
+                            class="btn {{ pkg.highlight ? 'btn-outline-white' : 'btn-primary' }} rounded-pill px-5 {{ slots == 0 ? "disabled" : "" }}">
                             Select
                         </a>
                         {% else %}
@@ -57,7 +82,7 @@
     </div>
 </section>
 
-{% if user is defined  %}
+{% if user is defined and slots > 0 %}
 <section id="servers" class="pricing-5 py-5">
     <div class="container">
         <div class="row text-center">
@@ -174,7 +199,7 @@
 
                     <div class="d-flex align-items-center pr-3 py-4 overlay shadow-inset-bottom">
                         <div class="flex-fill text-center px-3">
-                            <i class="fad fa-crown fa-2x text-primary"></i>
+                            <i class="fad fa-ad fa-2x text-muted"></i>
                         </div>
                         <div class="flex-fill">
                             <img
@@ -201,7 +226,7 @@
 
                     <div class="d-flex align-items-center pr-3 py-4 enlarge">
                         <div class="flex-fill text-center px-3">
-                            <i class="fad fa-crown fa-2x text-primary"></i>
+                            <i class="fad fa-ad fa-2x text-muted"></i>
                         </div>
                         <div class="flex-fill">
                             <img
@@ -217,7 +242,7 @@
                                     </a>
                                 </div>
                                 <div class="">
-                                    <a href="#" class="btn btn-primary btn-lg" rel="nofollow">
+                                    <a href="#" class="btn btn-primary btn-lg disabled" rel="nofollow">
                                         <i class="fas fa-gamepad-alt rotate-45 mr-lg-3 mr-0"></i>
                                         Play Now
                                     </a>
@@ -228,7 +253,7 @@
 
                     <div class="d-flex align-items-center pr-3 py-4 overlay  shadow-inset-top">
                         <div class="flex-fill text-center px-3">
-                            <i class="fad fa-crown fa-2x text-primary"></i>
+                            <i class="fad fa-ad fa-2x text-muted"></i>
                         </div>
                         <div class="flex-fill">
                             <img
