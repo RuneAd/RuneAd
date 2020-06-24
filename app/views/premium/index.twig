@@ -31,7 +31,8 @@
                     </li>
                 </ul>
                 <p class="lead mt-0">
-                    *Servers that use premium packages are twice as likely to be viewed. We encourage every server to give premium a chance!
+                    Instant votes on all packages will also be applied at the beginning of every
+                    month after reset.
                 </p>
             </div>
             <div class="col-lg-7 col-md-8 ml-auto ">
@@ -65,7 +66,7 @@
                                         <a href="#"
                                             id="package-select"
                                             data-package="{{ package['id'] }}"
-                                            class="btn btn-primary {{ user is defined ? '' : 'disabled' }}">Select</a>
+                                            class="btn btn-default {{ user is defined ? '' : 'disabled' }}">Select</a>
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +102,7 @@
                                         <a href="#"
                                             id="package-select"
                                             data-package="{{ package['id'] }}"
-                                            class="btn btn-primary {{ user is defined ? '' : 'disabled' }}">Select</a>
+                                            class="btn btn-default {{ user is defined ? '' : 'disabled' }}">Select</a>
                                     </div>
                                 </div>
                             </div>
@@ -113,10 +114,6 @@
         </div>
     </div>
 </section>
-
-<p class="text-center small text-muted">
-    * Every server will see a different result based on individual server uniqueness.
-</p>
 
 {% if user is defined and user is not null %}
 <section id="servers" class="pricing-5 py-5">
@@ -133,7 +130,9 @@
         <div class="row">
             <div class="col-sm-12 col-lg-12">
                 {% for server in servers %}
-                <div class="card shadow-sm mb-0 mb-3 {{ server.premium_expires > time() ? 'bg-premium' : '' }}">
+                {% set class = server.premium_expires > time() ? 'bg-primary' : '' %}
+
+                <div id="server" class="card shadow-sm mb-0 mb-3 ">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div class="flex-fill" style="width:300px;">
@@ -216,55 +215,41 @@
 <script>
     let modal = $('#preModal');
    // modal.modal('show');
-
     let package;
     let server;
-
     let paypalBtn = $('#paypal-btn');
     let statusBlock = $('#pp-notice');
-
     $('[id="package-select"]').on("click", function(event) {
         event.preventDefault();
-
         package = $(this).data("package");
-
         $(document).find("[id='package-select']").closest(".card").each(function(index, element) {
             $(this).removeClass("border-primary");
         })
-
         $(this).closest(".card").addClass("border-primary");
         scrollTo($('#servers'));
     });
-
     $('[id="server-select"]').on("click", function(event) {
         event.preventDefault();
-
         server = $(this).data("server");
-
         $(document).find("[id='server-select']").each(function(index, element) {
             $(this).closest(".card").removeClass("border-primary");
         })
-
         if ((typeof package !== "undefined") && (typeof server != "undefined")) {
             $(this).closest(".card").addClass("border-primary");
 
             //$('#paypal-btn').removeClass("text-danger").html("<i class='fad fa-spinner fa-pulse fa-3x mb-3'></i>");
             $('#checkout').removeClass("d-none");
-
             //scrollTo($("[id='checkout']"));
             loadButton(package, server);
         }
     });
-
     function scrollTo(element) {
         $('html, body').stop().animate({
             'scrollTop': element.offset().top
         }, 800, 'swing');
     }
-
     function loadButton(package, server) {
         statusBlock.removeClass("text-danger").html("<i class='fad fa-spinner fa-pulse'></i>");
-
         $.ajaxq('PaymentQueue', {
             url: '{{ url("premium/button") }}',
             data: {
@@ -286,7 +271,6 @@
             }
         });
     }
-
 </script>
 {% endif %}
 {% endblock %}

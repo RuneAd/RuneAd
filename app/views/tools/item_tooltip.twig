@@ -31,18 +31,19 @@
 
 {% if item['equipment'] %}
 
+{% set badge = theme == "dark" ? "badge-white" : "badge-dark" %}
 <div class="card mb-3 border-0">
-    <div class="card-header py-2 pl-2 bg-white">
+    <div class="card-header py-2 pl-2 bg-transparent text-{{ theme == "dark" ? "white" : "dark" }}">
         Main Bonuses
     </div>
     <div class="d-flex text-center py-2">
         <div class="flex-fill px-2">
             <p class="mb-2"><img src="{{ url('public/img/item_icons/stab.png') }}"></p>
             <p class="mb-0">
-                <span class="badge badge-light w-100">
+                <span class="badge bg-transparent {{ badge }} w-100">
                     <i class="fas fa-sword"/> {{ item['equipment']['attack_stab'] }}
                 </span>
-                <span class="badge badge-light w-100">
+                <span class="badge bg-transparent {{ badge }} w-100">
                     <i class="fas fa-shield-alt"/> {{ item['equipment']['defence_stab'] }}
                 </span>
             </p>
@@ -50,10 +51,10 @@
         <div class="flex-fill border-left px-2">
             <p class="mb-2"><img src="{{ url('public/img/item_icons/slash.png') }}"></p>
             <p class="mb-0">
-                <span class="badge badge-light w-100">
+                <span class="badge bg-transparent {{ badge }} w-100">
                     <i class="fas fa-sword"/> {{ item['equipment']['attack_slash'] }}
                 </span>
-                <span class="badge badge-light w-100">
+                <span class="badge bg-transparent {{ badge }} w-100">
                     <i class="fas fa-shield-alt"/> {{ item['equipment']['defence_slash'] }}
                 </span>
             </p>
@@ -61,10 +62,10 @@
         <div class="flex-fill border-left px-2">
             <p class="mb-2"><img src="{{ url('public/img/item_icons/crush.png') }}"></p>
             <p class="mb-0">
-                <span class="badge badge-light w-100">
+                <span class="badge bg-transparent {{ badge }} w-100">
                     <i class="fas fa-sword"/> {{ item['equipment']['attack_crush'] }}
                 </span>
-                <span class="badge badge-light w-100">
+                <span class="badge bg-transparent {{ badge }} w-100">
                     <i class="fas fa-shield-alt"/> {{ item['equipment']['defence_crush'] }}
                 </span>
             </p>
@@ -72,10 +73,10 @@
         <div class="flex-fill border-left  px-2">
             <p class="mb-2"><img src="{{ url('public/img/item_icons/magic.png') }}"></p>
             <p class="mb-0">
-                <span class="badge badge-light w-100">
+                <span class="badge bg-transparent {{ badge }} w-100">
                     <i class="fas fa-sword"/> {{ item['equipment']['attack_magic'] }}
                 </span>
-                <span class="badge badge-light w-100">
+                <span class="badge bg-transparent {{ badge }} w-100">
                     <i class="fas fa-shield-alt"/> {{ item['equipment']['defence_magic'] }}
                 </span>
             </p>
@@ -83,10 +84,10 @@
         <div class="flex-fill border-left px-2">
             <p class="mb-2"><img src="{{ url('public/img/item_icons/ranged.png') }}"></p>
             <p class="mb-0">
-                <span class="badge badge-light w-100">
+                <span class="badge bg-transparent {{ badge }} w-100">
                     <i class="fas fa-sword"/> {{ item['equipment']['attack_ranged'] }}
                 </span>
-                <span class="badge badge-light w-100">
+                <span class="badge bg-transparent {{ badge }} w-100">
                     <i class="fas fa-shield-alt"/> {{ item['equipment']['defence_ranged'] }}
                 </span>
             </p>
@@ -94,40 +95,50 @@
     </div>
 </div>
 
-<div class="card border-0">
-    <div class="card-header py-2 pl-2 bg-white">
+<div class="card border-0 mb-3">
+    <div class="card-header py-2 pl-2 bg-transparent text-{{ theme == "dark" ? "white" : "dark" }}">
         Other Bonuses
     </div>
     <div class="d-flex text-center py-2">
         <div class="flex-fill px-2">
             <p class="mb-2"><img src="{{ url('public/img/item_icons/melee_strength.png') }}"></p>
             <p class="mb-0">
-                <span class="badge badge-light w-100">
-                    <i class="fas fa-sword"/> {{ item['equipment']['attack_stab'] }}
+                <span class="badge bg-transparent {{ badge }} w-100">
+                    {% set stat = item['equipment']['melee_strength'] %}
+                    <i class="fas fa-sword"/>
+                    <span class="text-{{ stat > 0 ? "success" : "danger" }}">
+                        {% if stat > 0 %}
+                            +
+                        {% elseif stat < 0 %}
+                        -
+                        {% endif %}
+
+                        {{ stat }}
+                    </span>
                 </span>
             </p>
         </div>
         <div class="flex-fill border-left px-2">
             <p class="mb-2"><img src="{{ url('public/img/item_icons/ranged_strength.png') }}"></p>
             <p class="mb-0">
-                <span class="badge badge-light w-100">
-                    <i class="fas fa-sword"/> {{ item['equipment']['attack_slash'] }}
+                <span class="badge bg-transparent {{ badge }} w-100">
+                    <i class="fas fa-sword"/> {{ item['equipment']['ranged_strength'] }}
                 </span>
             </p>
         </div>
         <div class="flex-fill border-left px-2">
             <p class="mb-2"><img src="{{ url('public/img/item_icons/magic_damage.png') }}"></p>
             <p class="mb-0">
-                <span class="badge badge-light w-100">
-                    <i class="fas fa-sword"/> {{ item['equipment']['attack_crush'] }}
+                <span class="badge bg-transparent {{ badge }} w-100">
+                    <i class="fas fa-sword"/> {{ item['equipment']['magic_damage'] }}
                 </span>
             </p>
         </div>
         <div class="flex-fill border-left  px-2">
             <p class="mb-2"><img src="{{ url('public/img/item_icons/prayer.png') }}"></p>
             <p class="mb-0">
-                <span class="badge badge-light w-100">
-                    <i class="fas fa-sword"/> {{ item['equipment']['attack_magic'] }}
+                <span class="badge bg-transparent {{ badge }} w-100">
+                    <i class="fas fa-sword"/> {{ item['equipment']['prayer'] }}
                 </span>
             </p>
         </div>
@@ -135,4 +146,4 @@
 </div>
 {% endif %}
 
-<a href="{{ item['wiki_url'] }}" target="_blank" class="btn btn-block btn-primary">View on Wiki</a>
+<a href="{{ item['wiki_url'] }}" target="_blank" class="btn btn-block btn-default">View on Wiki</a>
