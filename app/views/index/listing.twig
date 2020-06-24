@@ -1,5 +1,5 @@
 <div class="card border-0 shadow-sm overflow-hidden mb-2">
-    <div class="card-header bg-default text-white py-3">
+    <div class="card-header bg-primary text-white py-3">
         Runescape Private Servers
     </div>
 
@@ -76,7 +76,7 @@
             </td>
 
             <td class="text-right">
-                {% set btnclass = server.premium_expires > time() and theme == "dark" ? 'btn-primary' : 'btn-default' %}
+                {% set btnclass = server.premium_expires > time() and theme == "dark" ? 'btn-primary' : 'btn-primary' %}
 
                 <div class="d-flex align-items-center justify-content-end">
                     <div class="pr-3">
@@ -195,7 +195,7 @@ $(document).ready(function() {
 
         btn.html("<i class=\"fad fa-spinner fa-pulse\"></i>");
         btn.addClass("disabled");
-        btn.removeClass("btn-success btn-danger").addClass("btn-default");
+        btn.removeClass("btn-success btn-danger").addClass("btn-primary");
         grecaptcha.ready(function() {
             grecaptcha.execute("{{ recaptcha_key }}", {
                 action: 'homepage'
@@ -217,14 +217,14 @@ $(document).ready(function() {
                             votecnt.html(votes);
                         }
 
-                        btn.removeClass("btn-default btn-danger btn-success")
+                        btn.removeClass("btn-primary btn-danger btn-success")
                             .addClass("btn-"+(json.success ? 'success' : 'danger'));
 
                         btn.html("<i class=\"fal fa-"+(json.success ? "check" : "times")+" fa-fw\"></i>");
 
                         setTimeout(function() {
-                            btn.removeClass("btn-default btn-danger disabled")
-                                .addClass("btn-default");
+                            btn.removeClass("btn-primary btn-danger disabled")
+                                .addClass("btn-primary");
                             btn.html("Vote");
                             locked = false;
                         }, 1000);
