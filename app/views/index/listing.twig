@@ -195,7 +195,7 @@ $(document).ready(function() {
 
         btn.html("<i class=\"fad fa-spinner fa-pulse\"></i>");
         btn.addClass("disabled");
-        btn.removeClass("btn-success btn-danger").addClass("btn-primary");
+        btn.removeClass("btn-primary btn-danger").addClass("btn-primary");
         grecaptcha.ready(function() {
             grecaptcha.execute("{{ recaptcha_key }}", {
                 action: 'homepage'
