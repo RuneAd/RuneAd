@@ -1,0 +1,120 @@
+<div class="card border-0 shadow-sm mb-3">
+    <div class="card-body text-center">
+        <p class="small text-muted mb-0">Vote for</p>
+        <h2 class="mb-4">{{ server.title }}</h2>
+
+        <div class="mb-5">
+        {% if server.banner_url %}
+            <a href="{{ url('details/'~server_url) }}" class="banner-img mx-auto">
+                <img data-src="{{ banner(server.banner_url) }}"
+                    id="banner"
+                    style="margin-top:14px;"
+                    class="img-fluid rounded lazy">
+            </a>
+            {% else %}
+            <a href="{{ url('details/'~server_url) }}" class="banner-img mx-auto">
+                <img data-src="{{ url('public/img/banner.png') }}"
+                    id="banner"
+                    style="margin-top:14px;"
+                    class="img-fluid rounded lazy">
+            </a>
+        {% endif %}
+        </div>
+
+        <p id="status" class="{{ vote is null ? '' : 'text-danger' }}">
+            {% if vote is not null %}
+            You've already voted for this server. Your last vote was {{ elapsed(vote.voted_on) }}
+            {% else %}
+            &nbsp;
+            {% endif %}
+        </p>
+
+
+        {% set disabled = vote is null ? '' : 'disabled' %}
+
+        <div class="mb-4">
+            <a href="" class="btn btn-primary vote" data-id="{{ server.id }}">
+                Vote Now
+            </a>
+            <a href="{{ url('details/'~server_url) }}" class="btn btn-outline-primary">
+                View Server
+            </a>
+        </div>
+
+        <p class="text-muted small">You can vote once per 12 hours, per server</p>
+        <p>Have an issue with this server?
+            <a href="{{ url('report/'~server_url) }}">
+                File a report
+            </a>
+        </p>
+    </div>
+</div>
+
+{% set recaptcha_key = constant('recaptcha')['public'] %}
+
+<script src="https://www.google.com/recaptcha/api.js?render={{ recaptcha_key }}"></script>
+<script src="{{ url('public/js/rsfacts.js')}}"></script>
+
+<script>
+    setTimeout(function() {
+        $('#videoModal').modal('show');
+    }, 1500);
+
+    $('.vote').click(function(event) {
+        event.preventDefault();
+
+        let btn = $(this);
+        let txt = $(this).text();
+        let id  = $(this).data("id");
+        let status = $('#status');
+
+        btn.html("<i class=\"fad fa-spinner fa-pulse\"></i>");
+
+        btn.addClass("disabled");
+        btn.removeClass("btn-success btn-danger").addClass("btn-primary");
+
+        status.html("&nbsp;").removeClass("text-danger text-success");
+
+        grecaptcha.ready(function() {
+            grecaptcha.execute("{{ recaptcha_key }}", {
+                action: 'homepage'
+            }).then(function(token) {
+                $.ajaxq('VoteQueue', {
+                    url: '{{ url("servers/addvote") }}',
+                    data: {
+                        server_id: id,
+                        token: token,
+                        incentive: '{{ incentive }}'
+                    },
+                    type: 'POST',
+                    complete: function (data) {
+
+                    },
+                    success: function (json) {
+                        console.log(json);
+
+                        $('#status').removeClass("text-danger text-success")
+                            .addClass(json.success ? "text-success" : "text-danger")
+                            .html(json.message);
+
+                        btn.removeClass("btn-primary btn-danger btn-success")
+                            .addClass("btn-"+(json.success ? 'success' : 'danger'));
+
+                        btn.html("<i class=\"fal fa-"+(json.success ? "check" : "times")+" fa-fw\"></i>");
+
+                        setTimeout(function() {
+                            btn.removeClass("btn-success btn-danger disabled")
+                                .addClass("btn-primary");
+                            btn.html("Vote Now");
+                        }, 700);
+                    },
+                    error: function(data) {
+                        console.log(data.responseText);
+                    }
+                });
+            });
+        });
+
+
+    });
+</script>
