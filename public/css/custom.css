@@ -12,12 +12,6 @@ body {
     color: #7c7c7c;
     font-family: "OpenSans-Regular" !important;
 }
-.bg-dark {
-        background-image: url("https://i.imgur.com/q5O6k9i.png") !important;
-        background-size: cover !important;
-        background-repeat: no-repeat !important;
-        background-position: center !important;
-}
 .bg-dark-footer {
     background-color: #202225 !important;
 }
@@ -35,7 +29,7 @@ body {
  }
  .text-default {
      color: #3c4d69 !important;
- } 
+ }
  .btn-default {
      border-color: #3c4d69 !important;
      background-color: #3c4d69 !important;
