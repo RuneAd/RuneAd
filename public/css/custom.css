@@ -33,6 +33,9 @@ body {
  .custom-header {
      background: url('../img/header1.png') top center no-repeat #3c4d69;
  }
+ .text-default {
+     color: #3c4d69 !important;
+ } 
  .btn-default {
      border-color: #3c4d69 !important;
      background-color: #3c4d69 !important;
