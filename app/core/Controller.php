@@ -151,7 +151,7 @@ class Controller {
             ],
             'tools' => [
                 'itemdb' => [
-                    'title' => 'Osrs Item DB',
+                    'title' => 'OSRS Item DB',
                     'meta' => 'An easy to use oldschool runescape item db that\'s always up to date.'
                 ]
             ]
@@ -166,7 +166,7 @@ class Controller {
 
         return [
             'title' => 'RSPS Toplist',
-            'meta'  => 'The most modern runescape private server toplist built to-date. Come join your favorite RSPS, or add your server today to start advertising with us!'
+            'meta'  => 'The modern runescape private server toplist built to-date. Come join your favorite RSPS, or add your server today to start advertising with us!'
         ];
     }
 
