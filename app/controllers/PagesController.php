@@ -10,7 +10,7 @@ class PagesController extends Controller {
     }
 
     public function terms() {
-        
+
     }
 
     public function map() {
@@ -18,10 +18,6 @@ class PagesController extends Controller {
     }
 
     public function privacy() {
-
-    }
-
-    public function nyan() {
 
     }
 

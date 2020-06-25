@@ -256,7 +256,7 @@ class PageRouter extends Router {
     }
 
     public function getViewPath() {
-      $admin = ['payments', 'sponsors', 'premium', 'banners', 'servers'];
+      $admin = ['payments', 'sponsors', 'premium', 'banners'];
   if (in_array($this->getController(), $admin)) {
       return "admin/{$this->getController()}/{$this->getMethod()}";
         }
