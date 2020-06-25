@@ -28,9 +28,8 @@ class AdminController extends Controller {
     }
 
     public function beforeExecute() {
-        parent::beforeExecute();
         $this->set("page_title", "Admin");
-        return true;
+        return parent::beforeExecute();
     }
 
 }

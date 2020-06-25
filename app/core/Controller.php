@@ -60,7 +60,7 @@ class Controller {
                 if (!$me || isset($me['code'])) {
                     $this->cookies->delete("access_token");
                     $this->redirect("");
-                    return;
+                    exit;
                 }
 
                 $user = Users::where('user_id', $me['id'])->first();
@@ -88,7 +88,7 @@ class Controller {
 
         if (!$canAccess) {
             $this->setView("errors/show401");
-            return true;
+            return false;
         }
 
         $darkMode = false;
