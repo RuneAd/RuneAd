@@ -48,24 +48,21 @@ class App {
         if (method_exists($this->controller, "beforeExecute")) {
             $before = call_user_func_array([$this->controller, "beforeExecute"], []);
 
-            if ($before == false) {
+              if (!$before) {
                 return true;
             }
         }
 
-        $output = call_user_func_array([
-            $this->controller, 
-            $this->router->getMethod()
-        ], $this->router->getParams());
+        $controller = $this->controller;
+         $method     = $this->router->getMethod();
+         $params     = $this->router->getParams();
+
+         $output = call_user_func_array([$controller, $method], $params);
 
         if ($this->controller->isJson()) {
             header('Content-Type: application/json');
             echo json_encode($output);
             return;
-        }
-
-        if (!$output) {
-            return true;
         }
 
         $content = ob_get_contents();

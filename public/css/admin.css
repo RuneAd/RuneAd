@@ -1,0 +1,63 @@
+@font-face { font-family: "Montserrat-Bold"; src: url('../fonts/Montserrat-Bold.otf'); }
+ @font-face { font-family: "Montserrat-Light"; src: url('../fonts/Montserrat-Light.otf'); }
+ @font-face { font-family: "OpenSans-Light"; src: url('../fonts/OpenSans-Light.ttf'); }
+ @font-face { font-family: "OpenSans-Regular"; src: url('../fonts/OpenSans-Regular.ttf'); }
+
+
+ body {
+     background-color: #f3f3f3;
+     color: #7c7c7c;
+     font-family: "OpenSans-Regular" !important;
+ }
+
+ .navbar-vertical {
+     background-color:#FEFEFE !important;
+ }
+
+ .navbar-vertical .navbar-nav .nav-link.active {
+     background-color: transparent !important;
+ }
+
+ @media (min-width: 768px) {
+     .navbar-vertical.navbar-expand-md .navbar-nav .nav-link.active:before {
+         top:18px;
+         bottom: 0rem;
+         left: 12px;
+         right:auto;
+         transform: rotate(45deg);
+         width: 6px;
+         height: 6px;
+         background-color:#3c4d69;
+     }
+ }
+
+ .bg-default {
+     background-color: #3c4d69 !important;
+ }
+
+ .btn-default {
+     border-color: #3c4d69 !important;
+     background-color: #3c4d69 !important;
+ }
+
+ .btn-outline-default {
+     border-color: #3c4d69 !important;
+     color: #3c4d69 !important;
+ }
+
+ .btn-outline-default:hover, .btn-outline-default:focus, .btn-outline-default:active {
+     background-color: #3c4d69 !important;
+     color: white !important;
+ }
+
+ .navbar-brand svg {
+     fill: #3c4d69 !important;
+     max-width: 100px;
+     height:75px;
+     width: 75px;
+   }
+
+.table td, .table th {
+   vertical-align: middle;
+   border-top: 1px solid #e9ecef;
+ }

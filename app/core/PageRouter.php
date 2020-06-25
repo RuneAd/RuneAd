@@ -107,6 +107,23 @@ class PageRouter extends Router {
             return $this->setRoute('report', 'index', ['id' => $id]);
         });
 
+
+         /**
+          * Admin Payments
+          */
+         $this->all('admin/payments', function() {
+             return $this->setRoute('payments', 'index', [ 'search' => null, 'page' => 1 ]);
+         });
+         $this->all('admin/payments/([0-9]+)', function($page) {
+      return $this->setRoute('payments', 'index', [ 'search' => null, 'page' => $page]);
+  });
+  $this->all('admin/payments/([A-Za-z0-9\-_\@]+)', function($search) {
+             return $this->setRoute('payments', 'index', ['search' => $search, 'page' => 1]);
+         });
+         $this->all('admin/payments/([A-Za-z0-9\-_]+)/([0-9]+)', function($search, $page) {
+             return $this->setRoute('payments', 'index', ['search' => $search, 'page' => $page]);
+         });
+
         /**
          * Discord OAuth
          */
@@ -239,6 +256,10 @@ class PageRouter extends Router {
     }
 
     public function getViewPath() {
+      $admin = ['payments', 'sponsors', 'premium', 'banners', 'servers'];
+  if (in_array($this->getController(), $admin)) {
+      return "admin/{$this->getController()}/{$this->getMethod()}";
+        }
         return $this->getController().'/'.$this->getMethod();
     }
 
