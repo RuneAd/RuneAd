@@ -49,7 +49,7 @@ class ServersController extends Controller {
                     }
 
                     $seo  = Functions::friendlyTitle($create->id.'-'.$create->title);
-                    $link = "[{$data['title']}](https://rune-nexus.com/details/{$seo})";
+                    $link = "[{$data['title']}](https://runead.com/details/{$seo})";
 
                     (new DiscordMessage([
                         'channel_id' => '607320502268330016',
