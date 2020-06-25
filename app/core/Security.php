@@ -20,6 +20,7 @@ class Security {
             'vote'    => ['index', 'addvote'],
             'premium' => ['index'],
             'sponsor' => ['index'],
+            'report'  => ['index'],
             'login'   => ['index', 'discord', 'auth', 'dauth'],
             'errors'  => ['show404', 'show500', 'show401', 'missing'],
             'pages'   => ['docs', 'updates', 'stats', 'terms', 'privacy'],
