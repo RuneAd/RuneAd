@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="{{ stylesheet('bootstrap.dark.css') }}" />
     {% endif %}
 
-    <script type="text/javascript" src="{{ javascript('jquery-3.3.1.min.js') }}"></script>
+   <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body>
     <div class="custom-header">
@@ -53,10 +53,9 @@
     {% include 'global/footer.twig' %}
     <script>CookieBoxConfig = { cookiesDomain: 'runead.com', backgroundColor: '#0275d8', linkTarget: '_self', cookieExpireInDays: '365', url: '/privacy' }</script>
     <script type="text/javascript" src="{{ javascript('bootstrap.bundle.min.js') }}"></script>
-    <script type="text/javascript" src="{{ javascript('fontawesome.pro.min.js') }}"></script>
+    <script type="text/javascript" src="{{ javascript('fontawesome.pro.min.js') }}" defer></script>
     <script type="text/javascript" src="{{ javascript('voteads.js') }}"></script>
     <script type="text/javascript" src="{{ javascript('serverads.js') }}"></script>
-    <script type="text/javascript" src="{{ javascript('queue.js') }}"></script>
     <script type="text/javascript" src="{{ javascript('custom.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js" defer></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121807671-2"></script>

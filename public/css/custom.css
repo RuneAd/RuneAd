@@ -460,4 +460,15 @@ table.blur-table tr {
     position: absolute !important;
     top: 2.5px !important;
     right: 2.5px !important;
+  }
+   .alert-info {
+       color: #11cdef !important;
+       background-color: rgba(55, 213,242, 0.3);
+       border-color: #b8e3f5;
+   }
+   .alert-info h4 {
+       color: #11cdef !important;
+   }
+   .text-info {
+
 }
