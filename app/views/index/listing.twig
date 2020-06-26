@@ -77,7 +77,7 @@
 
             <td class="text-right">
             {% set btnclass = server.premium_expires > time()
-                                and theme == "dark" ? 'btn-primary' : 'btn-default' %}
+                                and theme == "dark" ? 'btn-primary' : 'btn-primary' %}
                 <div class="d-flex align-items-center justify-content-end">
                     <div class="pr-3">
                         <p class="mb-0" id="votes">{{ server.votes|number_format }}</p>
