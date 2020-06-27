@@ -9,6 +9,8 @@ try {
         exit;
     }
 
+    // write the lock so initially so it can't start again
+    // until it's finished
     $lock->writeLock();
 
     include DOC_ROOT.'/../app/plugins/ServerPing.php';
