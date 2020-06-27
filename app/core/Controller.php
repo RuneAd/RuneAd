@@ -109,6 +109,7 @@ class Controller {
 
         $this->set("theme", $darkMode ? "dark" : "light");
         $this->set("controller", $controller);
+        $this->set("action", $action);
         $this->set("route", $this->router->getCanonical());
         return true;
     }
@@ -165,8 +166,8 @@ class Controller {
         }
 
         return [
-            'title' => 'RSPS Toplist',
-            'meta'  => 'The modern runescape private server toplist built to-date. Come join your favorite RSPS, or add your server today to start advertising with us!'
+            'title' => 'Servers',
+            'meta'  => 'The most modern runescape private server toplist built to-date. Come join your favorite RSPS, or add your server today to start advertising with us!'
         ];
     }
 
