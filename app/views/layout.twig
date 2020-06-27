@@ -12,7 +12,7 @@
     {% if meta_tags is defined and meta_tags is not empty %}
     <meta name="keywords" content="{{ meta_tags }}">
     {% else %}
-    <meta name="keywords" content="toplist,topg,rspslist,best rsps,top rsps,mmo,runescape,rsps,rsps toplist,private,server,runelocus,rune-server,rune-list,runelist,top100,arena,everythingrs,moparscape,rsps-page,best-rsps,runescape private server">
+    <meta name="keywords" content="osrs,itemdb,toplist,rsps list,topg,rspslist,best rsps,top rsps,mmo,runescape,rsps,rsps toplist,private,server,runelocus,rune-server,rune-list,runelist,top100,arena,everythingrs,moparscape,rsps-page,best-rsps,runescape private server">
     {% endif %}
     {% if meta_info is defined and meta_info is not empty %}
     <meta name="description" content="{{ meta_info }}">
@@ -23,7 +23,6 @@
     <link rel="shortcut icon" type="image/png" href="favicon.ico"/>
     <meta name="viewport" content="width=device-width, initial-scale=0.87, shrink-to-fit=no">
     <link rel="dns-prefetch" href="//www.google.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookie-consent-box@2.4.0/dist/cookie-consent-box.min.css" />
     <script defer src="https://cdn.jsdelivr.net/npm/cookie-consent-box@2.4.0/dist/cookie-consent-box.min.js"></script>
@@ -53,11 +52,11 @@
 
     {% include 'global/footer.twig' %}
     <script>CookieBoxConfig = { cookiesDomain: 'runead.com', backgroundColor: '#0275d8', linkTarget: '_self', cookieExpireInDays: '365', url: '/privacy' }</script>
-    <script type="text/javascript" src="{{ javascript('bootstrap.bundle.min.js') }}"></script>
+    <script type="text/javascript" src="{{ javascript('bootstrap.bundle.min.js') }}" defer></script>
     <script type="text/javascript" src="{{ javascript('fontawesome.pro.min.js') }}" defer></script>
     <script type="text/javascript" src="{{ javascript('voteads.js') }}"></script>
     <script type="text/javascript" src="{{ javascript('serverads.js') }}"></script>
-    <script type="text/javascript" src="{{ javascript('custom.js') }}"></script>
+    <script type="text/javascript" src="{{ javascript('custom.js') }}" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js" defer></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121807671-2"></script>
     <script>

@@ -32,6 +32,7 @@
 {% if item['equipment'] %}
 
 {% set badge = theme == "dark" ? "badge-white" : "badge-dark" %}
+
 <div class="card mb-3 border-0">
     <div class="card-header py-2 pl-2 bg-transparent text-{{ theme == "dark" ? "white" : "dark" }}">
         Main Bonuses
@@ -41,10 +42,10 @@
             <p class="mb-2"><img src="{{ url('public/img/item_icons/stab.png') }}"></p>
             <p class="mb-0">
                 <span class="badge bg-transparent {{ badge }} w-100">
-                    <i class="fas fa-sword"/> {{ item['equipment']['attack_stab'] }}
+                    <i class="fas fa-sword"></i> {{ item['equipment']['attack_stab'] }}
                 </span>
                 <span class="badge bg-transparent {{ badge }} w-100">
-                    <i class="fas fa-shield-alt"/> {{ item['equipment']['defence_stab'] }}
+                    <i class="fas fa-shield-alt"></i> {{ item['equipment']['defence_stab'] }}
                 </span>
             </p>
         </div>
@@ -52,10 +53,10 @@
             <p class="mb-2"><img src="{{ url('public/img/item_icons/slash.png') }}"></p>
             <p class="mb-0">
                 <span class="badge bg-transparent {{ badge }} w-100">
-                    <i class="fas fa-sword"/> {{ item['equipment']['attack_slash'] }}
+                    <i class="fas fa-sword"></i> {{ item['equipment']['attack_slash'] }}
                 </span>
                 <span class="badge bg-transparent {{ badge }} w-100">
-                    <i class="fas fa-shield-alt"/> {{ item['equipment']['defence_slash'] }}
+                    <i class="fas fa-shield-alt"></i> {{ item['equipment']['defence_slash'] }}
                 </span>
             </p>
         </div>
@@ -63,10 +64,10 @@
             <p class="mb-2"><img src="{{ url('public/img/item_icons/crush.png') }}"></p>
             <p class="mb-0">
                 <span class="badge bg-transparent {{ badge }} w-100">
-                    <i class="fas fa-sword"/> {{ item['equipment']['attack_crush'] }}
+                    <i class="fas fa-sword"></i> {{ item['equipment']['attack_crush'] }}
                 </span>
                 <span class="badge bg-transparent {{ badge }} w-100">
-                    <i class="fas fa-shield-alt"/> {{ item['equipment']['defence_crush'] }}
+                    <i class="fas fa-shield-alt"></i> {{ item['equipment']['defence_crush'] }}
                 </span>
             </p>
         </div>
@@ -74,10 +75,10 @@
             <p class="mb-2"><img src="{{ url('public/img/item_icons/magic.png') }}"></p>
             <p class="mb-0">
                 <span class="badge bg-transparent {{ badge }} w-100">
-                    <i class="fas fa-sword"/> {{ item['equipment']['attack_magic'] }}
+                    <i class="fas fa-sword"></i> {{ item['equipment']['attack_magic'] }}
                 </span>
                 <span class="badge bg-transparent {{ badge }} w-100">
-                    <i class="fas fa-shield-alt"/> {{ item['equipment']['defence_magic'] }}
+                    <i class="fas fa-shield-alt"></i> {{ item['equipment']['defence_magic'] }}
                 </span>
             </p>
         </div>
@@ -85,10 +86,10 @@
             <p class="mb-2"><img src="{{ url('public/img/item_icons/ranged.png') }}"></p>
             <p class="mb-0">
                 <span class="badge bg-transparent {{ badge }} w-100">
-                    <i class="fas fa-sword"/> {{ item['equipment']['attack_ranged'] }}
+                    <i class="fas fa-sword"></i> {{ item['equipment']['attack_ranged'] }}
                 </span>
                 <span class="badge bg-transparent {{ badge }} w-100">
-                    <i class="fas fa-shield-alt"/> {{ item['equipment']['defence_ranged'] }}
+                    <i class="fas fa-shield-alt"></i> {{ item['equipment']['defence_ranged'] }}
                 </span>
             </p>
         </div>
@@ -105,7 +106,7 @@
             <p class="mb-0">
                 <span class="badge bg-transparent {{ badge }} w-100">
                     {% set stat = item['equipment']['melee_strength'] %}
-                    <i class="fas fa-sword"/>
+                    <i class="fas fa-sword"></i>
                     <span class="text-{{ stat > 0 ? "success" : "danger" }}">
                         {% if stat > 0 %}
                             +
@@ -122,7 +123,7 @@
             <p class="mb-2"><img src="{{ url('public/img/item_icons/ranged_strength.png') }}"></p>
             <p class="mb-0">
                 <span class="badge bg-transparent {{ badge }} w-100">
-                    <i class="fas fa-sword"/> {{ item['equipment']['ranged_strength'] }}
+                    <i class="fas fa-sword"></i> {{ item['equipment']['ranged_strength'] }}</
                 </span>
             </p>
         </div>
@@ -130,7 +131,7 @@
             <p class="mb-2"><img src="{{ url('public/img/item_icons/magic_damage.png') }}"></p>
             <p class="mb-0">
                 <span class="badge bg-transparent {{ badge }} w-100">
-                    <i class="fas fa-sword"/> {{ item['equipment']['magic_damage'] }}
+                    <i class="fas fa-sword"></i> {{ item['equipment']['magic_damage'] }}
                 </span>
             </p>
         </div>
@@ -138,7 +139,7 @@
             <p class="mb-2"><img src="{{ url('public/img/item_icons/prayer.png') }}"></p>
             <p class="mb-0">
                 <span class="badge bg-transparent {{ badge }} w-100">
-                    <i class="fas fa-sword"/> {{ item['equipment']['prayer'] }}
+                    <i class="fas fa-sword"></i> {{ item['equipment']['prayer'] }}
                 </span>
             </p>
         </div>

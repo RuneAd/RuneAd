@@ -2,10 +2,10 @@
     --toggler-color: rgba(0, 0, 0, 0.4);
 }
 
-@font-face { font-family: "Montserrat-Bold"; src: url('../fonts/Montserrat-Bold.otf'); }
-@font-face { font-family: "Montserrat-Light"; src: url('../fonts/Montserrat-Light.otf'); }
-@font-face { font-family: "OpenSans-Light"; src: url('../fonts/OpenSans-Light.ttf'); }
-@font-face { font-family: "OpenSans-Regular"; src: url('../fonts/OpenSans-Regular.ttf'); }
+@font-face { font-family: "Montserrat-Bold"; src: url('../fonts/Montserrat-Bold.otf'); font-display: swap; }
+ @font-face { font-family: "Montserrat-Light"; src: url('../fonts/Montserrat-Light.otf'); font-display: swap; }
+ @font-face { font-family: "OpenSans-Light"; src: url('../fonts/OpenSans-Light.ttf'); font-display: swap;}
+ @font-face { font-family: "OpenSans-Regular"; src: url('../fonts/OpenSans-Regular.ttf'); font-display: swap; }
 
 body {
     background-color: #f3f3f3;
