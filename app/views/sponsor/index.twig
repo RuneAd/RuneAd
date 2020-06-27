@@ -287,6 +287,7 @@
 <script src="https://www.paypal.com/sdk/js?client-id={{ constant('paypal_production') }}"></script>
 
 <script>
+document.addEventListener('DOMContentLoaded', function(event) {
     let modal = $('#preModal');
     // modal.modal('show');
     let package;
@@ -341,6 +342,7 @@
             }
         });
     }
+});
 </script>
 {% endif %}
 

@@ -27,10 +27,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookie-consent-box@2.4.0/dist/cookie-consent-box.min.css" />
     <script defer src="https://cdn.jsdelivr.net/npm/cookie-consent-box@2.4.0/dist/cookie-consent-box.min.js"></script>
 
-    <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="{{ stylesheet('argon.min.css') }}" />
-    <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="{{ stylesheet('quill.snow.css') }}" />
-    <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="{{ stylesheet('all.min.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ stylesheet('custom.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ stylesheet('argon.min.css') }}" />
+
+     {% if controller == "servers" %}
+     <link rel="stylesheet" type="text/css" href="{{ stylesheet('quill.snow.css') }}" />
+     {% endif %}
+
+     <link rel="stylesheet" type="text/css" href="{{ stylesheet('custom.css') }}" />
 
     {% if darkmode is defined and darkmode %}
     <link rel="stylesheet" type="text/css" href="{{ stylesheet('bootstrap.dark.css') }}" />

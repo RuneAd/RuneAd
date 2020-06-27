@@ -33,21 +33,23 @@
                             <div class="flex-fill pr-1">
                                 <a href="{{ server.website }}"
                                     class="btn btn-default btn-block mb-3 {{ server.website ? '' : 'disabled' }}" target="_blank">
-                                    <i class="fas fa-link fa-lg fa-fw"></i> Website
+                                    {{ icon('link-45deg', 20, 20) }}
+                                     Website
                                 </a>
                             </div>
                             <div class="flex-fill pr-1">
                                 <a href="{{ server.discord_link }}"
                                     rel="nofollow"
                                     class="btn btn-default btn-block mb-3 {{ server.discord_link ? '' : 'disabled' }}" target="_blank">
-                                    <i class="fab fa-discord fa-lg fa-fw"></i> Discord
+                                    {{ icon('discord', 20, 20) }} Discord
                                 </a>
                             </div>
                             <div class="flex-fill">
                                 <a href="{{ url('report/'~seo_link) }}"
                                     rel="nofollow"
                                     class="btn btn-danger btn-block mb-3" target="_blank">
-                                    <i class="fas fa-flag fa-lg fa-fw"></i> Report
+                                    {{ icon('flag', 20, 20) }}
+                                    Report
                                 </a>
                             </div>
                         </div>

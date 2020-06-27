@@ -33,7 +33,7 @@
     </div>
 
     <script>
-    $(document).ready(function() {
+    document.addEventListener('DOMContentLoaded', function(event) {
          $.ajaxq('UpdateQueue', {
              url: '{{ url("commits") }}',
              type: 'POST',

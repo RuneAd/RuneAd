@@ -9,7 +9,7 @@
                 <div class="card-body" style="line-height:.8em;">
                     <div class="d-flex align-items-center">
                         <div class="flex-fill pr-3">
-                            <img src="{{ avatar(user.user_id, user.avatar) }}" 
+                            <img src="{{ avatar(user.user_id, user.avatar) }}"
                             class="rounded-circle mr-3"
                             height="60">
                         </div>
@@ -56,7 +56,7 @@
                 </div>
             </div>
         </div>
-        
+
 
         <div class="col-sm-12 col-lg-8">
             <div class="card border-0 shadow-sm mb-3">
@@ -97,8 +97,8 @@
                             <a href="{{ url('servers/edit/'~seo) }}" class="btn btn-outline-primary btn-sm">
                                 Edit
                             </a>
-                            <a href="{{ url('servers/delete/'~seo) }}" class="btn btn-danger btn-sm">
-                                <i class="fas fa-trash-alt"></i>
+                            <a href="{{ url('servers/delete/'~seo) }}" class="btn btn-link text-danger btn-sm">
+                                 {{ icon('trash', 16, 16) }}
                             </a>
                         </td>
                     </tr>
