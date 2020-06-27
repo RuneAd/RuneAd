@@ -73,25 +73,38 @@
     </div>
 </div>
 
-<div class="text-center card-body">
-              <div class="container">
-                <table class="table mt-0 mb-0 tab " style="line-height: 0.0em">
-                  <p id="AdVotePage"></p>
-                </table>
-              </div>
-          </div>
+{#
+<div class="modal" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content bg-dark">
+            <div class="modal-body px-0 py-0">
+                <div class="pl-3 py-3">
+                        <button type="button" class="btn btn-link text-white py-0 float-right" data-dismiss="modal" aria-label="Close">
+                            Close Player
+                        </button>
+                    Sponsor
+                </div>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item"
+                    src="https://player.twitch.tv/?channel=keziatv&parent=rune-nexus.com&muted=true"
+                    allowfullscreen="false" class="mb-0"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+#}
 
 {% set recaptcha_key = constant('recaptcha')['public'] %}
 
-<script src="https://www.google.com/recaptcha/api.js?render={{ recaptcha_key }}"></script>
+<script src="https://www.google.com/recaptcha/api.js?render={{ recaptcha_key }}" defer async></script>
 <script src="{{ url('public/js/rsfacts.js')}}"></script>
-<script src="{{ url('public/js/voteads.js')}}"></script>
 
 <script>
-    setTimeout(function() {
+    /*setTimeout(function() {
         $('#videoModal').modal('show');
-    }, 1500);
-
+    }, 1500);*/
+document.addEventListener('DOMContentLoaded', function( event) {
     $('.vote').click(function(event) {
         event.preventDefault();
 
@@ -99,14 +112,10 @@
         let txt = $(this).text();
         let id  = $(this).data("id");
         let status = $('#status');
-
         btn.html("<i class=\"fad fa-spinner fa-pulse\"></i>");
-
         btn.addClass("disabled");
         btn.removeClass("btn-success btn-danger").addClass("btn-primary");
-
         status.html("&nbsp;").removeClass("text-danger text-success");
-
         grecaptcha.ready(function() {
             grecaptcha.execute("{{ recaptcha_key }}", {
                 action: 'homepage'
@@ -128,7 +137,6 @@
                         $('#status').removeClass("text-danger text-success")
                             .addClass(json.success ? "text-success" : "text-danger")
                             .html(json.message);
-
                         btn.removeClass("btn-primary btn-danger btn-success")
                             .addClass("btn-"+(json.success ? 'success' : 'danger'));
 
@@ -146,9 +154,8 @@
                 });
             });
         });
-
-
     });
+});
 </script>
 
 {%  endblock %}
