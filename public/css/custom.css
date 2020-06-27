@@ -63,8 +63,8 @@ a.text-primary:hover {
     max-width:400px;
     height:100vh;
 }
-.dark {
-    color: #262729 !important;
+.dark-bg {
+    color: #262729;
 }
 .navbar-vertical .navbar-nav .nav-link.active {
     background-color:rgba(94, 114, 228, 0.1) !important;
