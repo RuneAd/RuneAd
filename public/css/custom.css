@@ -509,4 +509,18 @@ table.blur-table tr {
 }
 .alert-info h4 {
     color: #11cdef !important;
+  }
+   .bi-spin svg {
+       animation-name: spin;
+       animation-duration: 2000ms;
+       animation-iteration-count: infinite;
+       animation-timing-function: linear;
+   }
+   @keyframes spin {
+       from {
+           transform:rotate(0deg);
+       }
+       to {
+           transform:rotate(360deg);
+       }
 }

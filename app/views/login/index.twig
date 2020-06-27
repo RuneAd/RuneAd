@@ -8,6 +8,9 @@
 
             <div class="card border-0 shadow-sm">
                 <div class="card-body py-5 text-center">
+                <p id="icon" class="text-muted">
+                        {{ icon("shield", 128, 128) }}
+                    </p>
                     <i class="fad fa-spinner fa-pulse fa-5x mb-3" id="icon"></i>
                     <h3 class="mb-0" id="state">Checking Token</h3>
                     <p id="message">Please wait while we fetch your discord data.</p>
@@ -28,17 +31,18 @@
                 access_token: access_token
             }, function(data) {
                 console.log(data);
-    
+
                 let success = data.success;
-    
-                $('#icon').removeClass("fad fa-spinner fa-pulse")
-                    .addClass(success ? 'fal fa-check-circle' : 'fal fa-exclamation-triangle')
-                    .removeClass("text-discord")
+
+                $('#icon').removeClass("text-muted")
+                    .html(success
+                    ? '{{ icon("shield-check", 128, 128) }}'
+                    : '{{ icon("shield-exclamation", 128, 128) }}')
                     .addClass(success ? 'text-success' : 'text-danger');
-            
+
                 $('#state').html(success ? data.message : 'An Error Occured');
                 $('#message').html(success ? 'Please wait while you are redirected' : 'An Error Occured');
-    
+
                 if (success) {
                     setTimeout(function() {
                         window.location = "{{ constant('web_root') }}";
@@ -46,7 +50,7 @@
                 }
             });
         }, 1000);
-        
+
     }
 
     function getUrlParam(name, url) {
@@ -55,9 +59,9 @@
         name = name.replace(/[\[\]]/g, '\\$&');
         var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
             results = regex.exec(url);
-        if (!results) 
+        if (!results)
             return null;
-        if (!results[2]) 
+        if (!results[2])
             return '';
         return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }

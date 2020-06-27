@@ -39,7 +39,7 @@
 
         let button = $(this);
 
-        button.html("<i class=\"fad fa-spinner fa-pulse\"></i>");
+        button.html('{{ icon("three-dots", 18, 18) }}');
         button.addClass("disabled");
 
         $.post("{{ url('discord') }}", function(data) {

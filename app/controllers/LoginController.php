@@ -55,11 +55,22 @@ class LoginController extends Controller {
                 $user->avatar = $me['avatar'];
             }
 
-            $discord->setEndpoint('/guilds/'.discord['guild_id'].'/members/'.$user['user_id']);
-            $discord->setIsBot(true);
-            $userInfo = $discord->get();
+            try {
+                             $discord->setEndpoint('/guilds/'.discord['guild_id'].'/members/'.$user['user_id']);
+                             $discord->setIsBot(true);
+                             $userInfo = $discord->get();
 
-            if (!$userInfo || isset($userInfo['code'])) {
+                             if (!$userInfo || isset($userInfo['code'])) {
+                                 $user->roles = ["Member"];
+                                 $user->save();
+                                 $this->cookies->set("access_token", $access_token, 86400 * 7);
+                                 return [
+                                     'success' => true,
+                                     'message' => 'You have successfully logged in!'
+                                 ];
+                             }
+
+                         } catch(Exception $e) {
                 $user->roles = ["Member"];
                 $user->save();
                 $this->cookies->set("access_token", $access_token, 86400 * 7);
