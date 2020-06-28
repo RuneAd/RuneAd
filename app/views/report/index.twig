@@ -121,7 +121,7 @@
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
 <script>
-  $(document).ready(function() {
+    document.addEventListener('DOMContentLoaded', function(event) {
     var apiUrl = 'https://api.imgur.com/3/image';
     var apiKey = '{{ constant("imgur_key") }}';
 

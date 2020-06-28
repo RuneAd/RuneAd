@@ -44,7 +44,7 @@
              },
 
              onApprove: function(data, actions) {
-                 statusBlock.removeClass("text-danger text-success")
+                 $('#pp-notice').removeClass("text-danger text-success")
                      .html("<i class='fad fa-spinner fa-pulse'></i> Verifying...");
 
                  return actions.order.get().then(function(orderDetails) {
@@ -59,11 +59,11 @@
                              if (!json.success) {
                                  modal.find("#content").html(json.message);
                                  modal.modal('show');
-                                 statusBlock.html("");
+                                  $('#pp-notice').html("");
                              } else {
                                  let pp_key = json.token;
 
-                                 statusBlock.removeClass("text-danger")
+                                 $('#pp-notice').removeClass("text-danger")
                                      .html("<i class='fad fa-spinner fa-pulse'></i> Processing...");
 
                                  return actions.order.capture().then(function(orderDetails) {
@@ -81,7 +81,7 @@
                                              console.log(json);
                                              modal.find("#content").html(json.message);
                                              modal.modal('show');
-                                             statusBlock.html("");
+                                              $('#pp-notice').html("");
                                          },
                                          error: function(data) {
                                              console.log(data.responseText);
