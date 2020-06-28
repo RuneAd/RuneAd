@@ -23,6 +23,7 @@
     <link rel="shortcut icon" type="image/png" href="favicon.ico"/>
     <meta name="viewport" content="width=device-width, initial-scale=0.87, shrink-to-fit=no">
 
+    <link rel="dns-prefetch" href="//www.google.com">
     <script defer src="https://kit.fontawesome.com/a076d05399.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookie-consent-box@2.4.0/dist/cookie-consent-box.min.css" />
     <script defer src="https://cdn.jsdelivr.net/npm/cookie-consent-box@2.4.0/dist/cookie-consent-box.min.js"></script>
@@ -55,6 +56,7 @@
     {% endif %}
 
     {% include 'global/footer.twig' %}
+<script>CookieBoxConfig = { cookiesDomain: 'runead.com', backgroundColor: '#0275d8', linkTarget: '_self', cookieExpireInDays: '365', url: '/privacy' }</script>
 </body>
 <script defer type="text/javascript" src="{{ javascript('voteads.js') }}"></script>
 <script defer type="text/javascript" src="{{ javascript('serverads.js') }}"></script>
