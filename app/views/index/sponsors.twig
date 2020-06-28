@@ -23,15 +23,6 @@
                 <i class="fas fa-crown" style="color:gold"></i>
             </td>
             <td class="py-4">
-
-            <a href="{{ url('details/'~server_url) }}">
-                {% if server.title|length > 40 %}
-                {{ substr(server.title, 0, 40)~'...' }}
-                {% else %}
-                {{ server.title }}
-                {% endif %}
-            </a>
-
                 <a href="{{ sponsor.website }}" target="_blank" class="banner-img">
                     <img
                         src="{{ url('public/img/banner-loading.png') }}"
@@ -70,11 +61,11 @@
                   <i class="fas fa-crown" style="color:gold"></i>
             </td>
             <td class="py-4">
-                <a href="#" class="banner-img">
+                <a href="https://runead.com/sponsor" class="banner-img">
                     <img
-                        src="{{ url('public/img/banner-loading.png') }}"
+                        src="{{ url('public/img/sponsor-holder.png') }}"
                         id="banner"
-                        alt="{{ url('banner-loading.png') }}"
+                        alt="{{ url('sponsor-holder.png') }}"
                         class="img-fluid rounded">
                 </a>
             </td>
