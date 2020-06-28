@@ -25,6 +25,9 @@ a.text-primary:hover {
 .bg-dark-footer {
     background-color: #202225 !important;
 }
+.sponsor-gold {
+    background-color: #FFD700 !important;
+}
 .dropdown-item.active, .dropdown-item:active {
     text-decoration: none;
     color: #fff;
