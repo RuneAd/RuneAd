@@ -22,6 +22,9 @@ body {
 a.text-primary:hover {
     color: #8294ff !important;
 }
+.bg-dark-footer {
+    background-color: #202225 !important;
+}
 .dropdown-item.active, .dropdown-item:active {
     text-decoration: none;
     color: #fff;
