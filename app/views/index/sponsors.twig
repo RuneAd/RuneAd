@@ -18,8 +18,6 @@
 
     <table class="table mb-0" style="line-height:.7em;">
         {% for sponsor in sponsors %}
-        {% for server in servers.items() %}
-        {% set server_url = friendlyTitle(server.id~' '~server.title) %}
         <tr id="server">
             <td class="text-center rank-col">
                 {{ icon('award-fill', 18, 18) }}
@@ -62,7 +60,7 @@
             </td>
         </tr>
         {% endfor %}
-        {% endfor %}
+
 
         {% set remaining = (3 - sponsors|length) - 1 %}
 
