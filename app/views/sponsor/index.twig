@@ -47,14 +47,13 @@
         <div class="row">
             {% for pkg in packages %}
             <div class="col-sm-12 col-lg-4">
-                <div class="card card-pricing text-center mb-4 shadow-sm {{ pkg.highlight ? 'enlarge-2 bg-default text-white' : '' }}">
+                <div class="card card-pricing text-center mb-4 shadow-sm {{ pkg.highlight ? 'enlarge-2 bg-primary text-white' : '' }}">
                     <div class="card-header bg-transparent">
                         <h6 class="text-uppercase ls-1 py-3 mb-0 {{ pkg.highlight ? 'text-white' : '' }}">
                             {{ pkg.title }}
                         </h6>
                     </div>
                     <div class="card-body">
-                        <i class="fal fa-{{ pkg.icon }} fa-5x my-4"></i>
                         <div class="pricing display-2 {{ pkg.highlight ? 'text-white' : '' }}">
                             ${{ pkg.price }}
                         </div>
@@ -65,12 +64,12 @@
                     <div class="card-footer bg-transparent">
                         {% if user is defined %}
                         <a href="#" id="package-select" data-package="{{ pkg.id }}"
-                            class="btn {{ pkg.highlight ? 'btn-outline-white' : 'btn-default' }} rounded-pill px-5 {{ slots == 0 ? "disabled" : "" }}">
+                            class="btn {{ pkg.highlight ? 'btn-outline-white' : 'btn-primary' }} rounded-pill px-5 {{ slots == 0 ? "disabled" : "" }}">
                             Select
                         </a>
                         {% else %}
                         <a href="#" id="package-select"
-                            class="btn {{ pkg.highlight ? 'btn-outline-white' : 'btn-default' }} rounded-pill px-5 disabled">
+                            class="btn {{ pkg.highlight ? 'btn-outline-white' : 'btn-primary' }} rounded-pill px-5 disabled">
                             Select
                         </a>
                         {% endif %}
