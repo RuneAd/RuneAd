@@ -24,7 +24,7 @@
             </td>
             <td class="py-4">
             <a href="{{ url('details/'~server_url) }}">
-                {% if server.title|length > 40 %}
+                {% if sponsor.title|length > 40 %}
                 {{ substr(sponsor.title, 0, 40)~'...' }}
                 {% else %}
                 {{ sponsor.title }}
