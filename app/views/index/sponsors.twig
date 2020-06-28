@@ -23,6 +23,14 @@
                 {{ icon('award-fill', 18, 18) }}
             </td>
             <td class="py-4">
+            <a href="{{ url('details/'~server_url) }}">
+                {% if server.title|length > 40 %}
+                {{ substr(server.title, 0, 40)~'...' }}
+                {% else %}
+                {{ server.title }}
+                {% endif %}
+            </a>
+
                 <a href="{{ sponsor.website }}" target="_blank" class="banner-img">
                     <img
                         src="{{ url('public/img/banner-loading.png') }}"
