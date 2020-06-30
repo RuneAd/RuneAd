@@ -8,9 +8,10 @@
 
             <div class="card border-0 shadow-sm">
                 <div class="card-body py-5 text-center">
-                <p id="icon" class="text-muted">
+                    <p id="icon" class="text-muted">
                         {{ icon("shield", 128, 128) }}
                     </p>
+
                     <i class="fad fa-spinner fa-pulse fa-5x mb-3" id="icon"></i>
                     <h3 class="mb-0" id="state">Checking Token</h3>
                     <p id="message">Please wait while we fetch your discord data.</p>
@@ -21,11 +22,10 @@
 </div>
 
 <script>
+document.addEventListener('DOMContentLoaded', function(event) {
     let hash = window.location.hash.substr(1);
-
     if (hash) {
         let access_token = getUrlParam('access_token', hash);
-
         setTimeout(function() {
             $.post('{{ url("discord/auth") }}', {
                 access_token: access_token
@@ -36,15 +36,15 @@
 
                 $('#icon').removeClass("text-muted")
                     .html(success
-                    ? '{{ icon("shield-check", 128, 128) }}'
-                    : '{{ icon("shield-exclamation", 128, 128) }}')
+                         ? '{{ icon("shield-check", 128, 128) }}'
+                         : '{{ icon("shield-exclamation", 128, 128) }}')
                     .addClass(success ? 'text-success' : 'text-danger');
 
                 $('#state').html(success ? data.message : 'An Error Occured');
                 $('#message').html(success ? 'Please wait while you are redirected' : 'An Error Occured');
 
                 if (success) {
-                    setTimeout(function() {
+                   setTimeout(function() {
                         window.location = "{{ constant('web_root') }}";
                     }, 1500);
                 }
@@ -52,7 +52,6 @@
         }, 1000);
 
     }
-
     function getUrlParam(name, url) {
         if (!url)
             url = window.location.href;
@@ -65,6 +64,7 @@
             return '';
         return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
+});
 </script>
 
 {%  endblock %}
