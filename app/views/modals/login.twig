@@ -14,39 +14,37 @@
             </div>
 
             <div class="modal-body text-center pt-5 py-3">
-                 <div class="text-primary text-center">
-                     {{ icon('discord', 96, 96) }}
-                 </div>
-                 <h3 class="mb-0 text-dark">Login with Discord</h3>
-                <p class="small mb-5">Click below to log in using your Discord Account.</p>
+                <div class="text-primary text-center">
+                    {{ icon('discord', 96, 96) }}
+                </div>
+                <h3 class="mb-0 text-dark">Login with Discord</h3>
+                <p class="small mb-5">
+                    Click below to log in using your Discord Account.<br>Registration is not required.
+                </p>
 
-                <p><a href="" class="btn btn-primary rounded-pill px-5 mb-4" id="discord">Continue</a></p>
+                <p><a href="" class="btn btn-default rounded-pill px-5 mb-4" id="discord">Continue</a></p>
 
- <p class="small text-muted mb-0">
-     By signing in and using our service you agree to our<br>
-     <a href="{{ url('terms') }}" target="_blank">Terms of Service</a> and
-     <a href="{{ url('privacy') }}" target="_blan">Privacy Policy</a>.
- </p>
+                <p class="small text-muted mb-0">
+                    By signing in and using our service you agree to our<br>
+                    <a href="{{ url('terms') }}" target="_blank">Terms of Service</a> and
+                    <a href="{{ url('privacy') }}" target="_blan">Privacy Policy</a>.
+                </p>
             </div>
         </div>
     </div>
 </div>
 
 <script>
+document.addEventListener('DOMContentLoaded', function( event) {
     $('#discord').on("click", function(event) {
         event.preventDefault();
 
-
         let button = $(this);
-
         button.html('{{ icon("three-dots", 18, 18) }}');
         button.addClass("disabled");
-
         $.post("{{ url('discord') }}", function(data) {
             console.log(data);
-
             let success = data.success;
-
             if (success) {
                 setTimeout(function() {
                     let loc = data.message;
@@ -55,4 +53,5 @@
             }
         });
     });
+});
 </script>
