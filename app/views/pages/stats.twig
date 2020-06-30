@@ -84,7 +84,7 @@
 {% include 'chart_config.twig' %}
 
 <script>
-    $(document).ready(function() {
+    document.addEventListener('DOMContentLoaded', function(event) {
     let canvas  = document.getElementById("voteChart"),
     context = canvas.getContext('2d')
     cdata = {

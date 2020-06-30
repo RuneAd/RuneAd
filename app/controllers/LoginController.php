@@ -56,52 +56,53 @@ class LoginController extends Controller {
             }
 
             try {
-                             $discord->setEndpoint('/guilds/'.discord['guild_id'].'/members/'.$user['user_id']);
-                             $discord->setIsBot(true);
-                             $userInfo = $discord->get();
+                $discord->setEndpoint('/guilds/'.discord['guild_id'].'/members/'.$user['user_id']);
+                $discord->setIsBot(true);
+                $userInfo = $discord->get();
 
-                             if (!$userInfo || isset($userInfo['code'])) {
-                                 $user->roles = ["Member"];
-                                 $user->save();
-                                 $this->cookies->set("access_token", $access_token, 86400 * 7);
-                                 return [
-                                     'success' => true,
-                                     'message' => 'You have successfully logged in!'
-                                 ];
-                             }
+                if (!$userInfo || isset($userInfo['code'])) {
+                    $user->roles = ["Member"];
+                    $user->save();
+                    $this->cookies->set("access_token", $access_token, 86400 * 7);
+                    return [
+                        'success' => true,
+                        'message' => 'You have successfully logged in!'
+                    ];
+                }
 
-                         } catch(Exception $e) {
+                $discord->setEndpoint('/guilds/'.discord['guild_id']);
+                $discord->setIsBot(true);
+                $server = $discord->get();
+
+                $server_roles = $server['roles'];
+                $roles = ['Member'];
+
+                foreach ($server_roles as $sr) {
+                    if (in_array($sr['id'], $userInfo['roles'])) {
+                        $roles[] = $sr['name'];
+                    }
+                }
+
+                $user->roles = $roles;
+                $user->save();
+                $this->cookies->set("access_token", $access_token, 86400 * 7);
+
+                return [
+                    'success' => true,
+                    'message' => 'You have successfully logged in!'
+                ];
+            } catch(Exception $e) {
                 $user->roles = ["Member"];
                 $user->save();
                 $this->cookies->set("access_token", $access_token, 86400 * 7);
+
                 return [
                     'success' => true,
                     'message' => 'You have successfully logged in!'
                 ];
             }
 
-            $discord->setEndpoint('/guilds/'.discord['guild_id']);
-            $discord->setIsBot(true);
-            $server = $discord->get();
 
-            $server_roles = $server['roles'];
-            $roles = ['Member'];
-
-            foreach ($server_roles as $sr) {
-                if (in_array($sr['id'], $userInfo['roles'])) {
-                    $roles[] = $sr['name'];
-                }
-            }
-
-            $user->roles = $roles;
-            $user->save();
-
-            $this->cookies->set("access_token", $access_token, 86400 * 7);
-
-            return [
-                'success' => true,
-                'message' => 'You have successfully logged in!'
-            ];
         } catch (Exception $e) {
             return [
                 'success' => false,
