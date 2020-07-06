@@ -96,7 +96,7 @@ class VoteController extends Controller {
             ];
         }
 
-        $server->votes += ($server->premium_expires > time() ? 2 : 1);
+        $server->votes += ($server->premium_expires > time() ? 1 : 1);
         $server->save();
 
         $votes = $server->votes;
