@@ -77,6 +77,10 @@ class PageRouter extends Router {
             return $this->setRoute('pages', 'contributors');
         });
 
+        $this->post('forums', function() {
+            return $this->setRoute('pages', 'forums');
+        });
+
         /**
          * Premium
          */
