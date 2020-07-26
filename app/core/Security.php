@@ -19,6 +19,7 @@ class Security {
             'index'   => ['index', 'logout', 'details'],
             'vote'    => ['index', 'addvote'],
             'premium' => ['index'],
+            'forums' => ['index'],
             'sponsor' => ['index'],
             'report'  => ['index'],
             'login'   => ['index', 'discord', 'auth', 'dauth'],
