@@ -17,6 +17,10 @@ class PagesController extends Controller {
 
     }
 
+    public function forums() {
+
+    }
+
     public function privacy() {
 
     }
