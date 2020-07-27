@@ -56,34 +56,6 @@
         {% set remaining = (3 - sponsors|length) - 1 %}
 
         {% for i in 0..remaining %}
-        <tr id="server" class="{{ class }}">
-            <td class="text-center rank-col">
-                  <i class="fas fa-crown" style="color:gold"></i>
-            </td>
-            <td class="py-4">
-                <a href="https://runead.com/sponsor" class="banner-img">
-                    <img
-                        src="{{ url('public/img/sponsor-holder.png') }}"
-                        id="banner"
-                        alt="{{ url('sponsor-holder.png') }}"
-                        class="img-fluid rounded">
-                </a>
-            </td>
-            <td class="text-right">
-                <div class="d-flex align-items-center justify-content-end">
-                    <div class="pr-1">
-                        <a href="#" class="btn btn-lg btn-link text-primary" rel="nofollow">
-                            {{ icon('discord', 24, 24) }}
-                        </a>
-                    </div>
-                    <div class="">
-                        <a href="#" class="btn btn-primary btn-lg" rel="nofollow">
-                            <span class="d-none d-lg-inline-block">Play Now</span>
-                        </a>
-                    </div>
-                </div>
-            </td>
-        </tr>
-        {% endfor %}
+
     </table>
 </div>
