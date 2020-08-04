@@ -97,9 +97,12 @@
                             <a href="{{ url('servers/edit/'~seo) }}" class="btn btn-outline-primary btn-sm">
                                 Edit
                             </a>
-                            <a href="{{ url('servers/delete/'~seo) }}" class="btn btn-link text-danger btn-sm">
+
+                            <!-- Toggled out delete server for the time being -->
+                           <!-- <a href="{{ url('servers/delete/'~seo) }}" class="btn btn-link text-danger btn-sm">
                                  {{ icon('trash', 16, 16) }}
-                            </a>
+                            </a> -->
+                            
                         </td>
                     </tr>
                     {% else %}

@@ -25,10 +25,6 @@ class PageRouter extends Router {
             return $this->setRoute('index', 'index');
         });
 
-        $this->all('forums', function() {
-            return $this->setRoute('forums', 'index');
-        });
-
         $this->all('servers/add', function() {
             return $this->setRoute('servers', 'add');
         });
