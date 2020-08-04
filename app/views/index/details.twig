@@ -34,7 +34,7 @@
                                 <a href="{{ server.website }}"
                                     class="btn btn-default btn-block mb-3 {{ server.website ? '' : 'disabled' }}" target="_blank">
                                     {{ icon('link-45deg', 20, 20) }}
-                                     Website
+                                    Website
                                 </a>
                             </div>
                             <div class="flex-fill pr-1">
@@ -49,7 +49,7 @@
                                     rel="nofollow"
                                     class="btn btn-danger btn-block mb-3" target="_blank">
                                     {{ icon('flag', 20, 20) }}
-                                    Report
+                                     Report
                                 </a>
                             </div>
                         </div>
@@ -96,8 +96,8 @@
                 </div>
 
                 <div class="col-sm-12 col-lg-8">
-
-                    <div class="alert alert-default border-info shadow-sm">
+                    {% if is_mobile == false %}
+                    <div class="alert alert-default border-info shadow-sm d-none d-lg-block">
                         <a href="#" id="vote"
                             data-id="{{ server.id }}" rel="nofollow"
                             class="btn btn-outline-white mt-2 float-right vote-btn">
@@ -106,11 +106,11 @@
                         <h5 class="mb-0 text-white">Like this server?</h5>
                         <p class="mb-0">Consider giving it a vote to show your support!</p>
                     </div>
-
-                  <!--  <div class="card border-0 shadow-sm mb-3">
+                    {% endif %}
+                    <div class="card border-0 shadow-sm mb-3">
                         <div class="card-body pb-2">
                             <div class="dropdown mb-3">
-                                <button class="btn btn-outline-primary dropdown-toggle"
+                                <button class="btn btn-outline-default dropdown-toggle"
                                     id="ratebtn"  rel="nofollow"
                                         type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     30 Days
@@ -151,7 +151,7 @@
                                 <canvas id="voteChart" height="200px"></canvas>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
 
                     <div class="card border-0 shadow-sm mb-3">
                         <div class="card-body">
@@ -174,7 +174,7 @@
 <script src="https://www.google.com/recaptcha/api.js?render={{ recaptcha_key }}" defer></script>
 
 <script>
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function(event) {
     $('.vote-btn').click(function(event) {
         event.preventDefault();
 
@@ -228,10 +228,11 @@ $(document).ready(function() {
             datasets: [
                 {
                     label: 'Votes',
-                    borderColor: window.chartColors.purple,
-                    backgroundColor:  window.chartColors.purpleLight,
-                    hoverBackgroundColor: window.chartColors.purpleLight,
+                    borderColor: window.chartColors.blue,
+                    backgroundColor:  window.chartColors.blue,
+                    hoverBackgroundColor: window.chartColors.blue,
                     barWidth: 2,
+                    fill: false
                 }
             ]
         },
