@@ -161,14 +161,14 @@ class ServersController extends Controller {
 
         if (!in_array($type, array_values($mimes))) {
             return [
-                'success' => false,
+                'success' => true,
                 'message' => 'Invalid file mime type.'
             ];
         }
 
         if (!in_array($ext, array_keys($mimes))) {
             return [
-                'success' => false,
+                'success' => true,
                 'message' => 'Invalid file extension. Allowed: '.implode(', ', array_keys($mimes))
             ];
         }
