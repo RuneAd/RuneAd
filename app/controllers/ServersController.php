@@ -147,7 +147,7 @@ class ServersController extends Controller {
             ];
         }
 
-        $mimes = ['jpg' => 'image/jpeg', 'png' => 'image/png', 'gif' => 'image/gif'];
+        $mimes = ['jpg' => 'image/jpeg', 'gif' => 'image/gif', 'png' => 'image/png'];
 
         $type   = mime_content_type($file['tmp_name']);
         $ext    = pathinfo($file['name'])['extension'];
