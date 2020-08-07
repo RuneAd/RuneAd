@@ -156,7 +156,7 @@ class ServersController extends Controller {
         $width  = $dims[0];
         $height = $dims[1];
 
-        $maxDims = [500, 70];
+        $maxDims = [468, 60];
         $maxSize = (1024 * 1024 * 5);
 
         if (!in_array($type, array_values($mimes))) {
