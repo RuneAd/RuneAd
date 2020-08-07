@@ -191,7 +191,7 @@ class ServersController extends Controller {
 
         if (!move_uploaded_file($file['tmp_name'], 'public/img/banners/'.$newname)) {
             return [
-                'success' => false,
+                'success' => true,
                 'message' => 'Failed uploading file...'
             ];
         }
