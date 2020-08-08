@@ -53,12 +53,30 @@
         {% endfor %}
 
 
-        {% set remaining = (3 - sponsors|length) - 1 %}
+        {% set remaining = (3 - sponsors|length) %}
 
-        {% for i in 0..remaining %}
-        <tr id="server" class="{{ class }}">
-          
-        </tr>
-        {% endfor %}
-    </table>
-</div>
+          {% if remaining > 0 %}
+          {% for i in 0..remaining-1 %}
+          <div class="list-group-item bg-transparent border-0">
+              <div class="d-flex align-items-center flex-column flex-lg-row">
+                  <div class="flex-fill px-4 d-none d-lg-flex" style="color:gold;max-width:80px;">
+                      {{ icon('star', 18, 18) }}
+                  </div>
+                  <div class="flex-fill" style="max-width: 468px;">
+                      <a href="{{ url('sponsor') }}">
+                          <img
+                              src="{{ url('public/img/banner-loading.png') }}"
+                              id="banner"
+                              alt="banner-loading.png"
+                              class="img-fluid rounded">
+                      </a>
+                  </div>
+                  <div class="flex-fill text-center">
+                      <a class="mb-0" href="{{ url('sponsor') }}">- Spot Available -</a>
+                  </div>
+              </div>
+          </div>
+          {% endfor %}
+          {% endif %}
+      </div>
+  </div>
