@@ -102,7 +102,7 @@ class VoteController extends Controller {
         $votes = $server->votes;
 
         if ($server->premium_expires > time()) {
-            $votes = ($votes + ($server->premium_level * 100));
+            $votes = ($votes + ($server->premium_level * 1));
         }
 
         if ($incentive != null && $server->callback_url) {
