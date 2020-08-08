@@ -17,7 +17,7 @@ class PagesController extends Controller {
 
     }
 
-    public function ad-info() {
+    public function adinfo() {
 
     }
 
