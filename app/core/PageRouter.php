@@ -65,7 +65,7 @@ class PageRouter extends Router {
             return $this->setRoute('pages', 'docs');
         });
 
-        $this->all('ad-info', function() {
+        $this->all('adinfo', function() {
             return $this->setRoute('pages', 'adinfo');
         });
 
@@ -220,6 +220,10 @@ class PageRouter extends Router {
 
         $this->all('tools/itemdb/search', function() {
             return $this->setRoute('tools', 'search');
+        });
+
+        $this->all('tools/map', function() {
+            return $this->setRoute('tools', 'map');
         });
 
         /**
