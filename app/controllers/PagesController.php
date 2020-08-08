@@ -13,10 +13,6 @@ class PagesController extends Controller {
 
     }
 
-    public function map() {
-
-    }
-
     public function adinfo() {
 
     }
