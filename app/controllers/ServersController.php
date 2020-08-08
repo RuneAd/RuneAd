@@ -142,7 +142,7 @@ class ServersController extends Controller {
 
         if ($dims === false) {
             return [
-                'success' => false,
+                'success' => true,
                 'message' => 'File must be an image.'
             ];
         }
@@ -175,14 +175,14 @@ class ServersController extends Controller {
 
         if ($size > $maxSize) {
             return [
-                'success' => false,
+                'success' => true,
                 'message' => "Image can not exceed ".(($maxSize/1024)/1024)."MB."
             ];
         }
 
         if ($width != $maxDims[0] && $height != $maxDims[1]) {
             return [
-                'success' => false,
+                'success' => true,
                 'message' => "Image must be $maxDims[0]px x $maxDims[1]px."
             ];
         }
