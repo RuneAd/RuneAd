@@ -17,6 +17,14 @@ class PagesController extends Controller {
 
     }
 
+    public function ad-info() {
+
+    }
+
+    public function ads() {
+
+    }
+
     public function forums() {
 
     }
