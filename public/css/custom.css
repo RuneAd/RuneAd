@@ -19,6 +19,12 @@ body {
     font-size: 16px;
     font-family: "Montserrat-Light";
 }
+
+.map-package {
+    display:block;
+    width:100%;
+}
+
 a.text-primary:hover {
     color: #8294ff !important;
 }
