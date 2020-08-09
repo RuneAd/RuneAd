@@ -38,7 +38,6 @@
                         </a>
                     {% endif %}
                     </div>
-
                     <p id="status" class="{{ vote is null ? '' : 'text-danger' }}">
                         {% if vote is not null %}
                         You've already voted for this server. Your last vote was {{ elapsed(vote.voted_on) }}
@@ -57,7 +56,7 @@
                         <a href="" class="btn btn-primary vote" data-id="{{ server.id }}">
                             Vote Now
                         </a>
-                        
+
                         <a href="{{ url('details/'~server_url) }}" class="btn btn-outline-primary">
                             View Server
                         </a>
