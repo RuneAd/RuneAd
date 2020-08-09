@@ -144,7 +144,7 @@ class Controller {
                     'meta'  => 'Our privacy policy.'
                 ],
 								'ads' => [
-                    'title' => 'RuneAd Advertisements',
+                    'title' => 'Advertisements',
                     'meta'  => 'Infomation about Advertisements on RuneAd'
                 ]
             ],
