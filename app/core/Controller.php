@@ -142,6 +142,10 @@ class Controller {
                 'privacy' => [
                     'title' => 'Privacy Policy',
                     'meta'  => 'Our privacy policy.'
+                ],
+								'ads' => [
+                    'title' => 'RuneAd Advertisements',
+                    'meta'  => 'Infomation about Advertisements on RuneAd'
                 ]
             ],
             'sponsor' => [
@@ -154,7 +158,11 @@ class Controller {
                 'itemdb' => [
                     'title' => 'OSRS Item DB',
                     'meta' => 'An easy to use oldschool runescape item db that\'s always up to date.'
-                ]
+                ],
+								'map' => [
+                    'title' => 'OSRS Interactive Map',
+                    'meta'  => 'An easy to use oldschool runescape map that\'s always up to date.'
+                ],
             ]
         ];
 
