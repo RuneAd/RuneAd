@@ -57,6 +57,14 @@
                         <a href="{{ url('details/'~server_url) }}" class="btn btn-outline-primary">
                             View Server
                         </a>
+
+                            <a href="{{ server.discord_link }}"
+                                rel="nofollow"
+                                class="btn btn-default btn-block mb-3 {{ server.discord_link ? '' : 'disabled' }}" target="_blank">
+                                {{ icon('discord', 20, 20) }} Discord
+                            </a>
+
+
                     </div>
 
                     <p class="text-muted small">You can vote once per 12 hours, per server</p>
