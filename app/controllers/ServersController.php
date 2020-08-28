@@ -138,9 +138,8 @@ class ServersController extends Controller {
 
     public function upload() {
         $file = $_FILES['image'];
-        print_r($file);
-        exit;
-        $dims = getimagesize($file['tmp_name']);
+
+        $dims = getimagesize($file['name']);
 
         if ($dims === false) {
             return [
@@ -151,7 +150,7 @@ class ServersController extends Controller {
 
         $mimes = ['jpg' => 'image/jpeg', 'gif' => 'image/gif', 'png' => 'image/png'];
 
-        $type   = mime_content_type($file['tmp_name']);
+        $type   = mime_content_type($file['name']);
         $ext    = pathinfo($file['name'])['extension'];
         $size   = $file['size'];
 
@@ -191,7 +190,7 @@ class ServersController extends Controller {
 
         $newname = md5($file['name'] . microtime()).'.'.$ext;
 
-        if (!move_uploaded_file($file['tmp_name'], 'public/img/banners/'.$newname)) {
+        if (!move_uploaded_file($file['name'], 'public/img/banners/'.$newname)) {
             return [
                 'success' => true,
                 'message' => 'Failed uploading file...'
