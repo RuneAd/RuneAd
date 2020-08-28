@@ -46,12 +46,7 @@
                         {% endif %}
                     </p>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> c72bffe23114dfd2c7abfc5a12a11d704fe81949
                     {% set disabled = vote is null ? '' : 'disabled' %}
-
                     <div class="mb-4">
                         <a href="" class="btn btn-primary vote" data-id="{{ server.id }}">
                             Vote Now
@@ -60,17 +55,6 @@
                         <a href="{{ url('details/'~server_url) }}" class="btn btn-outline-primary">
                             View Server
                         </a>
-
-<<<<<<< HEAD
-                            <a href="{{ server.discord_link }}"
-                                rel="nofollow"
-                                class="btn btn-default btn-block mb-3 {{ server.discord_link ? '' : 'disabled' }}" target="_blank">
-                                {{ icon('discord', 20, 20) }} Discord
-                            </a>
-
-=======
->>>>>>> 15e8238f17effc7d42652f534b30bf023e5cfac1
-
                     </div>
 
                     <p class="text-muted small">You can vote once per 12 hours, per server</p>
