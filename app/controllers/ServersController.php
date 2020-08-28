@@ -137,8 +137,7 @@ class ServersController extends Controller {
     }
 
     public function upload() {
-        $file = $_FILES['image'];
-       
+        $file = $_FILES['image']; 
         $dims = getimagesize($file['tmp_name']);
         if ($dims === false) {
             return [
