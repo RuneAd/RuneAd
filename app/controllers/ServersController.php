@@ -140,7 +140,6 @@ class ServersController extends Controller {
         $file = $_FILES['image'];
        
         $dims = getimagesize($file['tmp_name']);
-
         if ($dims === false) {
             return [
                 'success' => true,
@@ -157,7 +156,7 @@ class ServersController extends Controller {
         $width  = $dims[0];
         $height = $dims[1];
 
-        $maxDims = [600, 100];
+        $maxDims = [468, 60];
         $maxSize = (1024 * 1024 * 5);
 
         if (!in_array($type, array_values($mimes))) {
