@@ -141,7 +141,6 @@ class ServersController extends Controller {
         print_r($file);
         exit;
         $dims = getimagesize($file['tmp_name']);
-
         if ($dims === false) {
             return [
                 'success' => true,
