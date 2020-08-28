@@ -1,6 +1,6 @@
 $(document).ready(function() {
     let Servers = [
-      '<a href="https://runead.com/ads" target="_self"><img alt="RuneAd Ad network" class="responsive-ad" src="https://i.imgur.com/PMtnbjR.png"></a>',
+      '<a href="http://nefariouspkz.com/" target="_self"><img alt="nefariouspkz" class="responsive-ad" src="https://cdn.discordapp.com/attachments/748349075287441478/749007417035063406/image0.gif"></a>',
 
     ];
 
