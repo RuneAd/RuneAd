@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
         btn.html('{{ icon("three-dots", 16, 16) }}');
         btn.addClass("disabled");
-        btn.removeClass("btn-success btn-danger").addClass("btn-primary");
+        btn.removeClass("btn-success btn-danger").addClass("btn-default");
         grecaptcha.ready(function() {
             grecaptcha.execute("{{ recaptcha_key }}", {
                 action: 'homepage'
