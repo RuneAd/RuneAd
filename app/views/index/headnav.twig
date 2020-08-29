@@ -25,6 +25,31 @@
                      </div>
                  </div>
 
+
+                 <div class="dropdown">
+                     <button class="btn btn-primary btn-lg dropdown-toggle shadow-none" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                         {% if servers.premium_level is defined %}
+                             Rev: {{ servers.premium_level }}
+                         {% else %}
+                             All Servers
+                         {% endif %}
+                     </button>
+                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                         <a class="dropdown-item" href="{{ url('') }}">
+                             All Servers
+                         </a>
+
+                         <div class="dropdown-divider"></div>
+
+                         {% for premium_level in servers %}
+                         <a class="dropdown-item" href="{{ url('rev-'~servers.premium_level~'/1') }}">
+                             {{ servers.premium_level }}
+                         </a>
+                         {% endfor %}
+                     </div>
+                 </div>
+
+
                  <a href="{{ url('premium') }}" class="btn btn-success btn-lg pulse">Go Premium</a>
                  <a href="{{ url('sponsor') }}" class="btn btn-info btn-lg pulse-sponsor">Sponsor Info</a>
              </div>
