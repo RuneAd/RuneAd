@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
                             votecnt.html(votes);
                         }
 
-                        btn.removeClass("btn-primary btn-danger btn-success")
+                        btn.removeClass("btn-default btn-danger btn-success")
                             .addClass("btn-"+(json.success ? 'success' : 'danger'));
 
                             btn.html(json.success
@@ -192,8 +192,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
                                   : '{{ icon("x", 16, 16) }}');
 
                         setTimeout(function() {
-                            btn.removeClass("btn-primary btn-danger disabled")
-                                .addClass("btn-primary");
+                            btn.removeClass("btn-default btn-danger disabled")
+                                .addClass("btn-default");
                             btn.html('{{ icon("check2-square", 16, 16) }}');
                             locked = false;
                         }, 1000);
