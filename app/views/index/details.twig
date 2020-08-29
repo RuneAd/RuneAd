@@ -105,6 +105,15 @@
                         </a>
                         <h5 class="mb-0 text-white">Like this server?</h5>
                         <p class="mb-0">Consider giving it a vote to show your support!</p>
+
+                        <a href="{{ url('details/'~server_url) }}" class="banner-img mx-auto">
+                            <img data-src="{{ url('public/img/banner.png') }}"
+                                id="banner"
+                                style="margin-top:14px;"
+                                class="img-fluid rounded lazy">
+                        </a>
+
+
                     </div>
                     {% endif %}
 
