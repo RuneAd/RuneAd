@@ -110,8 +110,7 @@
                     </div>
                     {% endif %}
 
-                    <div class="card border-0 shadow-sm mb-3">
-                        <div class="card-body align-items-center">
+                  <div class="alert alert-primary border-info shadow-sm d-none d-lg-block">
                         {% if server.banner_url %}
                         <a href="{{ url('details/'~server_url) }}" class="banner-img">
                             <img data-src="{{ banner(server.banner_url) }}"
@@ -131,7 +130,7 @@
                         </a>
                         {% endif %}
                         </div>
-                    </div>
+                  
 
 
                     <div class="card border-0 shadow-sm mb-3">
