@@ -6,6 +6,7 @@
             <th class="text-center" style="width:75px;"></th>
             <th class="text-center" style="width:70px;"></th>
             <th>Name</th>
+            <th>Value</th>
         </tr>
         </thead>
         {% for item in results['items'] %}
@@ -34,6 +35,9 @@
                 <small class="text-muted">
                     {{ item['examine'] ? item['examine'] : 'This item has no examine.' }}
                 </small>
+            </td>
+            <td>
+            <i class="fal fa-coins fa-fw"></i> {{ item['cost']|number_format }}
             </td>
         </tr>
         {% endfor %}
