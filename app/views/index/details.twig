@@ -151,127 +151,62 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function(event) {
-$('.vote-btn').click(function(event) {
-    event.preventDefault();
-    locked = true;
-
-    let btn = $(this);
-    let txt = $(this).text();
-    let id  = $(this).data("id");
-
-    btn.html('{{ icon("three-dots", 16, 16) }}');
-    btn.addClass("disabled");
-    btn.removeClass("btn-success btn-danger").addClass("btn-primary");
-    grecaptcha.ready(function() {
-        grecaptcha.execute("{{ recaptcha_key }}", {
-            action: 'homepage'
-        }).then(function(token) {
-            $.ajaxq('VoteQueue', {
-                url: '{{ url("servers/addvote") }}',
-                data: {
-                    server_id: id,
-                    token: token
-                },
-                type: 'POST',
-                complete: function (data) {
-
-                },
-                success: function (json) {
-                    if (json.success) {
-                        let votes = json.votes;
-                        let votecnt = btn.closest("td").find("#votes");
-                        votecnt.html(votes);
-                    }
-
-                    btn.removeClass("btn-primary btn-danger btn-success")
-                        .addClass("btn-"+(json.success ? 'success' : 'danger'));
-
-                        btn.html(json.success
-                              ? '{{ icon("check", 16, 16) }}'
-                              : '{{ icon("x", 16, 16) }}');
-
-                    setTimeout(function() {
-                        btn.removeClass("btn-primary btn-danger disabled")
-                            .addClass("btn-primary");
-                        btn.html('{{ icon("check2-square", 16, 16) }}');
-                        locked = false;
-                    }, 1000);
-                },
-                error: function(data) {
-                    locked = false;
-                    console.log(data.responseText);
-                    }
-                    });
-                    });
-                    });
-                    });
-                    });
-                    
-    let canvas  = document.getElementById("voteChart"),
-    context = canvas.getContext('2d')
-    cdata = {
-        type: 'line',
-        data: {
-            datasets: [
-                {
-                    label: 'Votes',
-                    borderColor: window.chartColors.blue,
-                    backgroundColor:  window.chartColors.blue,
-                    hoverBackgroundColor: window.chartColors.blue,
-                    barWidth: 2,
-                    fill: false
-                }
-            ]
-        },
-        options: options
-    };
-    let chart = new Chart(context, cdata);
-    let days = 90;
-    let loader = $('#loader');
-    let loader_txt = loader.html();
-    let loading = false;
-    $('#ratebtn').html(days+" Days");
-    getChartData(days);
-    $('[id="days"]').on('click', function(event) {
+    let locked = false;
+    $('.vote-btn').click(function(event) {
         event.preventDefault();
-        if (loading) {
-            return;
-        }
-        loading = true;
+        locked = true;
 
-        days = $(this).data("days");
-        loader.html(loader_txt);
-        $('#ratebtn').html(days+" Days");
-        getChartData(days);
-    });
-    function getChartData(days) {
-        $.ajaxq('VoteQueue', {
-            url: 'https://api.rune-nexus.com/server/graph',
-            data: {
-                days: days,
-                server: "{{ server.id }}"
-            },
-            type: 'GET',
-            complete: function (data) {
-            },
-            success: function (json) {
-                if (json.chartData) {
-                    let keys   = $.map(json.chartData, function(element,index) {return index});
-                    let values = $.map(json.chartData, function(element,index) {return element});
-                    cdata.data.labels = keys;
-                    cdata.data.datasets[0].data = values;
-                    chart.update();
-                    loader.html("");
-                    loading = false;
-                }
-            },
-            error: function(data) {
-                console.log(data.responseText);
-            }
+        let btn = $(this);
+        let txt = $(this).text();
+        let id  = $(this).data("id");
+
+        btn.html('{{ icon("three-dots", 16, 16) }}');
+        btn.addClass("disabled");
+        btn.removeClass("btn-success btn-danger").addClass("btn-primary");
+        grecaptcha.ready(function() {
+            grecaptcha.execute("{{ recaptcha_key }}", {
+                action: 'homepage'
+            }).then(function(token) {
+                $.ajaxq('VoteQueue', {
+                    url: '{{ url("servers/addvote") }}',
+                    data: {
+                        server_id: id,
+                        token: token
+                    },
+                    type: 'POST',
+                    complete: function (data) {
+
+                    },
+                    success: function (json) {
+                        if (json.success) {
+                            let votes = json.votes;
+                            let votecnt = btn.closest("td").find("#votes");
+                            votecnt.html(votes);
+                        }
+
+                        btn.removeClass("btn-primary btn-danger btn-success")
+                            .addClass("btn-"+(json.success ? 'success' : 'danger'));
+
+                            btn.html(json.success
+                                  ? '{{ icon("check", 16, 16) }}'
+                                  : '{{ icon("x", 16, 16) }}');
+
+                        setTimeout(function() {
+                            btn.removeClass("btn-primary btn-danger disabled")
+                                .addClass("btn-primary");
+                            btn.html('{{ icon("check2-square", 16, 16) }}');
+                            locked = false;
+                        }, 1000);
+                    },
+                    error: function(data) {
+                        locked = false;
+                        console.log(data.responseText);
+                    }
+                });
+            });
         });
-    }
+    });
 });
 </script>
-
 
 {%  endblock %}
