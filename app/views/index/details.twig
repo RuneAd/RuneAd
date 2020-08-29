@@ -151,57 +151,62 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function(event) {
-    $('.vote-btn').click(function(event) {
-        event.preventDefault();
+$('.vote-btn').click(function(event) {
+    event.preventDefault();
+    locked = true;
 
-        let btn = $(this);
-        let txt = $(this).text();
-        let id  = $(this).data("id");
+    let btn = $(this);
+    let txt = $(this).text();
+    let id  = $(this).data("id");
 
-        btn.html("<i class=\"fad fa-spinner fa-pulse\"></i>");
-        btn.addClass("disabled");
-        grecaptcha.ready(function() {
-            grecaptcha.execute("{{ recaptcha_key }}", {
-                action: 'homepage'
-            }).then(function(token) {
-                $.ajaxq('VoteQueue', {
+    btn.html('{{ icon("three-dots", 16, 16) }}');
+    btn.addClass("disabled");
+    btn.removeClass("btn-success btn-danger").addClass("btn-primary");
+    grecaptcha.ready(function() {
+        grecaptcha.execute("{{ recaptcha_key }}", {
+            action: 'homepage'
+        }).then(function(token) {
+            $.ajaxq('VoteQueue', {
                 url: '{{ url("servers/addvote") }}',
-              data: {
-                  server_id: id,
-                  token: token
-              },
-              type: 'POST',
-              complete: function (data) {
+                data: {
+                    server_id: id,
+                    token: token
+                },
+                type: 'POST',
+                complete: function (data) {
 
-              },
-              success: function (json) {
-                  console.log(json);
+                },
+                success: function (json) {
+                    if (json.success) {
+                        let votes = json.votes;
+                        let votecnt = btn.closest("td").find("#votes");
+                        votecnt.html(votes);
+                    }
 
-                  if (json.success) {
-                      let votes = json.votes;
-                      let votecnt = btn.closest("td").find("#votes");
-                      votecnt.html(votes);
-                  }
+                    btn.removeClass("btn-primary btn-danger btn-success")
+                        .addClass("btn-"+(json.success ? 'success' : 'danger'));
 
-                  btn.removeClass("btn-outline-white btn-outline-danger btn-outline-success")
-                      .addClass("btn-outline-"+(json.success ? 'success' : 'danger'));
-                  btn.html(json.success
-                      ? '{{ icon("check", 16, 16) }}'
-                      : '{{ icon("x", 16, 16) }}');
+                        btn.html(json.success
+                              ? '{{ icon("check", 16, 16) }}'
+                              : '{{ icon("x", 16, 16) }}');
 
-                  setTimeout(function() {
-                      btn.removeClass("btn-outline-success btn-outline-danger disabled")
-                          .addClass("btn-outline-white");
-                      btn.html("Vote Now");
-                  }, 700);
-              },
-              error: function(data) {
-                  console.log(data.responseText);
-              }
-          });
-      });
-  });
-});
+                    setTimeout(function() {
+                        btn.removeClass("btn-primary btn-danger disabled")
+                            .addClass("btn-primary");
+                        btn.html('{{ icon("check2-square", 16, 16) }}');
+                        locked = false;
+                    }, 1000);
+                },
+                error: function(data) {
+                    locked = false;
+                    console.log(data.responseText);
+                    }
+                    });
+                    });
+                    });
+                    });
+                    });
+                    
     let canvas  = document.getElementById("voteChart"),
     context = canvas.getContext('2d')
     cdata = {
