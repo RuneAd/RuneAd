@@ -100,7 +100,7 @@
                     <div class="alert alert-default border-info shadow-sm d-none d-lg-block">
                         <a href="#" id="vote"
                             data-id="{{ server.id }}" rel="nofollow"
-                            class="btn btn-primary btn-outline-white mt-2 float-right vote-btn">
+                            class="btn btn-outline-white mt-2 float-right vote-btn">
                             Vote Now
                         </a>
                         <h5 class="mb-0 text-white">Like this server?</h5>
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
         btn.html('{{ icon("three-dots", 16, 16) }}');
         btn.addClass("disabled");
-        btn.removeClass("btn-success btn-danger").addClass("btn-default");
+        btn.removeClass("btn-success btn-danger").addClass("btn-primary");
         grecaptcha.ready(function() {
             grecaptcha.execute("{{ recaptcha_key }}", {
                 action: 'homepage'
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
                             votecnt.html(votes);
                         }
 
-                        btn.removeClass("btn-default btn-danger btn-success")
+                        btn.removeClass("btn-primary btn-danger btn-success")
                             .addClass("btn-"+(json.success ? 'success' : 'danger'));
 
                             btn.html(json.success
@@ -192,8 +192,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
                                   : '{{ icon("x", 16, 16) }}');
 
                         setTimeout(function() {
-                            btn.removeClass("btn-default btn-danger disabled")
-                                .addClass("btn-default");
+                            btn.removeClass("btn-primary btn-danger disabled")
+                                .addClass("btn-primary");
                             btn.html('{{ icon("check2-square", 16, 16) }}');
                             locked = false;
                         }, 1000);
