@@ -165,37 +165,43 @@ document.addEventListener('DOMContentLoaded', function(event) {
                 action: 'homepage'
             }).then(function(token) {
                 $.ajaxq('VoteQueue', {
-                    url: '{{ url("servers/addvote") }}',
-                    data: {
-                        server_id: id,
-                        token: token
-                    },
-                    type: 'POST',
-                    complete: function (data) {
+                url: '{{ url("servers/addvote") }}',
+              data: {
+                  server_id: id,
+                  token: token
+              },
+              type: 'POST',
+              complete: function (data) {
 
-                    },
-                    success: function (json) {
-                        console.log(json);
+              },
+              success: function (json) {
+                  console.log(json);
 
-                        if (json.success) {
-                            let votes = json.votes;
-                            let votecnt = btn.closest("td").find("#votes");
-                            votecnt.html(votes);
-                        }
+                  if (json.success) {
+                      let votes = json.votes;
+                      let votecnt = btn.closest("td").find("#votes");
+                      votecnt.html(votes);
+                  }
 
-                        btn.html("<i class=\"fal fa-"+(json.success ? "check" : "times")+" fa-fw\"></i>");
+                  btn.removeClass("btn-outline-white btn-outline-danger btn-outline-success")
+                      .addClass("btn-outline-"+(json.success ? 'success' : 'danger'));
+                  btn.html(json.success
+                      ? '{{ icon("check", 16, 16) }}'
+                      : '{{ icon("x", 16, 16) }}');
 
-                        setTimeout(function() {
-                            btn.html("Vote Now").removeClass("disabled");
-                        }, 700);
-                    },
-                    error: function(data) {
-                        console.log(data.responseText);
-                    }
-                });
-            });
-        });
-    });
+                  setTimeout(function() {
+                      btn.removeClass("btn-outline-success btn-outline-danger disabled")
+                          .addClass("btn-outline-white");
+                      btn.html("Vote Now");
+                  }, 700);
+              },
+              error: function(data) {
+                  console.log(data.responseText);
+              }
+          });
+      });
+  });
+});
     let canvas  = document.getElementById("voteChart"),
     context = canvas.getContext('2d')
     cdata = {
