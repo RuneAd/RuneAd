@@ -1,5 +1,5 @@
 {% block admin_sidebar %}
-<nav class="navbar navbar-main navbar-vertical fixed-left navbar-expand-md navbar-light shadow-sm" id="sidenav-main">
+<nav class="navbar navbar-main navbar-vertical fixed-left navbar-expand-md navbar-dark shadow-sm" id="sidenav-main">
     <div class="container-fluid">
         <!-- Toggler -->
         <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -9,8 +9,8 @@
         </button>
 
         <!-- Brand -->
-        <a class="navbar-brand pt-0" href="{{ url('admin') }}">
-            RuneAd
+        <a class="navbar-brand pt-0 text-white-50" href="{{ url('admin') }}">
+           {% include 'global/logo_svg.twig' %}
         </a>
 
         <!-- User -->
@@ -50,15 +50,15 @@
                 </li>
 
                 <li class="nav-item">
-                <a class="nav-link {{ controller == "payments" and action == 'index' ? "active" : "" }}"
-                    href="{{ url('admin/payments') }}">
-                     <i class="fal fa-dollar-sign text-primary fa-fw mr-2"></i>
-                     Payments
-                 </a>
-             </li>
+                    <a class="nav-link {{ controller == "payments" and action == 'index' ? "active" : "" }}"
+                       href="{{ url('admin/payments') }}">
+                        <i class="fal fa-dollar-sign text-primary fa-fw mr-2"></i>
+                        Payments
+                    </a>
+                </li>
 
-             <li class="nav-item">
-                 <a class="nav-link {{ controller == "sponsor" and action == 'index' ? "active" : "" }}"
+                <li class="nav-item">
+                    <a class="nav-link {{ controller == "sponsor" and action == 'index' ? "active" : "" }}"
                        href="{{ url('admin/sponsor') }}">
                         <i class="fal fa-crown text-primary fa-fw mr-2"></i>
                         Sponsor Slots
@@ -66,7 +66,7 @@
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link {{ controller == "premium" and action == 'index' ? "active" : "" }}"
+                    <a class="nav-link {{ controller == "premium" and action == 'index' ? "active" : "" }}"
                        href="{{ url('admin/sponsor') }}">
                         <i class="fal fa-star text-primary fa-fw mr-2"></i>
                         Premium
