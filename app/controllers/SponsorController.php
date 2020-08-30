@@ -38,7 +38,7 @@ class SponsorController extends Controller {
         if ($sponsors == 3) {
             return [
                 'success' => false,
-                'message' => "There are currently no available slots. Please check back later."
+                'message' => "There is currently no available slots. Please check back later."
             ];
         }
 
@@ -81,7 +81,7 @@ class SponsorController extends Controller {
         if ($sponsors == 3) {
             return [
                 'success' => false,
-                'message' => "There are currently no available slots. Please check back later."
+                'message' => "There is currently no available slots. Please check back later."
             ];
         }
 
@@ -179,7 +179,7 @@ class SponsorController extends Controller {
         if ($sponsors == 3) {
             return [
                 'success' => false,
-                'message' => "There are currently no available slots. If you were charged please contact us on discord."
+                'message' => "There is currently no available slots. If you were charged please contact us on discord."
             ];
         }
 
