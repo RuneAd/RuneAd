@@ -38,6 +38,10 @@ class Template extends FilesystemLoader {
                 }
             }));
 
+            $twig->addFunction(new \Twig\TwigFunction('icon', function ($name, $width = 16, $height = 16) {
+                return '<svg class="bi" width="'.$width.'" height="'.$height.'" fill="currentColor"><use xlink:href="'.web_root.'public/img/bootstrap-icons.svg#'.$name.'"/></svg>';
+            }, ['is_safe' => ['html']]));
+
             $twig->addFunction(new \Twig\TwigFunction('api', function ($string) {
                 return api_url.'/'.$string;
             }));

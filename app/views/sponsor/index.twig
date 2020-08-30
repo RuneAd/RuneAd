@@ -47,15 +47,14 @@
         <div class="row">
             {% for pkg in packages %}
             <div class="col-sm-12 col-lg-4">
-                <div class="card card-pricing text-center mb-4 shadow-sm {{ pkg.highlight ? 'enlarge-2 bg-gradient-primary text-white' : '' }}">
+                <div class="card card-pricing text-center mb-4 shadow-sm {{ pkg.highlight ? 'enlarge-2 bg-primary text-white' : '' }}">
                     <div class="card-header bg-transparent">
                         <h6 class="text-uppercase ls-1 py-3 mb-0 {{ pkg.highlight ? 'text-white' : '' }}">
                             {{ pkg.title }}
                         </h6>
                     </div>
                     <div class="card-body">
-                        <i class="fal fa-{{ pkg.icon }} fa-5x my-4"></i>
-                        <div class="pricing display-2 {{ pkg.highlight ? 'text-white' : '' }}">
+                        <div class="pricing display-2 {{ pkg.highlight ? 'text-white' : 'sponsor-blue' }}">
                             ${{ pkg.price }}
                         </div>
                         <span>
@@ -190,7 +189,7 @@
             <div class="col-sm-12 col-lg-12">
                 <div class="card border-0 shadow-sm mb-5">
 
-                    <div class="card-header bg-gradient-primary text-white py-3">
+                    <div class="card-header bg-primary text-white py-3">
                         <h5 class="mb-0 text-white">Sponsored Servers</h5>
                         <p class="text-white-50 mb-0 small">
                         This shows on the main listing, at the top of every page.
@@ -199,7 +198,7 @@
 
                     <div class="d-flex align-items-center pr-3 py-4 overlay shadow-inset-bottom">
                         <div class="flex-fill text-center px-3">
-                            <i class="fad fa-ad fa-2x text-muted"></i>
+                            <i class="fas fa-crown fa-lg" style="color:gold;"></i>
                         </div>
                         <div class="flex-fill">
                             <img
@@ -226,7 +225,7 @@
 
                     <div class="d-flex align-items-center pr-3 py-4 enlarge">
                         <div class="flex-fill text-center px-3">
-                            <i class="fad fa-ad fa-2x text-muted"></i>
+                            <i class="fas fa-crown fa-lg" style="color:gold;"></i>
                         </div>
                         <div class="flex-fill">
                             <img
@@ -253,7 +252,7 @@
 
                     <div class="d-flex align-items-center pr-3 py-4 overlay  shadow-inset-top">
                         <div class="flex-fill text-center px-3">
-                            <i class="fad fa-ad fa-2x text-muted"></i>
+                          <i class="fas fa-crown fa-lg" style="color:gold;"></i>
                         </div>
                         <div class="flex-fill">
                             <img
@@ -287,6 +286,7 @@
 <script src="https://www.paypal.com/sdk/js?client-id={{ constant('paypal_production') }}"></script>
 
 <script>
+document.addEventListener('DOMContentLoaded', function(event) {
     let modal = $('#preModal');
     // modal.modal('show');
     let package;
@@ -341,6 +341,7 @@
             }
         });
     }
+});
 </script>
 {% endif %}
 

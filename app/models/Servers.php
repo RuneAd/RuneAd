@@ -120,18 +120,4 @@ class Servers extends Model {
             ->get();
     }
 
-    public static function getChartData($data) {
-        $query = self::select("date_created")
-            ->where('date_created', '>=', $data['start'])
-            ->orderby("date_created", "ASC")
-            ->get();
-
-        foreach ($query as $user) {
-            $date = date($data['format'], $user->date_created);
-            $data['chart'][$date]++;
-        }
-
-        return array_values($data['chart']);
-    }
-
 }

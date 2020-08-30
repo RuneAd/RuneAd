@@ -2,7 +2,7 @@
 <script type="text/javascript" src="{{ url('public/js/chart.extension.js') }}" defer></script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function(event) {
+    $(document).ready(function() {
         Chart.plugins.register({
             beforeDraw: function(chartInstance) {
                 var ctx = chartInstance.chart.ctx;
@@ -15,7 +15,7 @@
         red:    'rgb(255, 99, 132)',
         orange: 'rgb(255, 159, 64)',
         yellow: 'rgb(255, 205, 86)',
-        green:  'rgb(45, 206, 137)',
+        green:  'rgb(75, 192, 192)',
         blue:   'rgb(54, 162, 235)',
         purple: 'rgb(94, 114, 228)',
         purpleLight: 'rgba(94, 114, 228, 0.05)',
@@ -37,7 +37,7 @@
     options.elements.line.borderWidth = 1;
     options.elements.point.radius = 0;
     options.title.display = false;
-    options.title.text = "Data for {{ ''|date('Y') }}";
+    options.title.text = "Votes for {{ ''|date('Y') }}";
     options.legend.display = true;
     options.legend.position = "bottom";
     options.animation = false;

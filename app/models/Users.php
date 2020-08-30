@@ -28,18 +28,4 @@ class Users extends Model {
         return in_array(strtolower($search), $user_roles);
     }
 
-    public static function getChartData($data) {
-        $query = self::select("join_date")
-            ->where('join_date', '>=', $data['start'])
-            ->orderby("join_date", "ASC")
-            ->get();
-
-        foreach ($query as $user) {
-            $date = date($data['format'], $user->join_date);
-            $data['chart'][$date]++;
-        }
-
-        return array_values($data['chart']);
-    }
-
 }
