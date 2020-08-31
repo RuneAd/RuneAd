@@ -139,6 +139,10 @@ class Controller {
                     'title' => 'Terms of Service',
                     'meta'  => 'Our terms of service.'
                 ],
+								'contact' => [
+                    'title' => 'Contact Us',
+                    'meta'  => 'Contact RuneAd.'
+                ],
                 'privacy' => [
                     'title' => 'Privacy Policy',
                     'meta'  => 'Our privacy policy.'

@@ -21,6 +21,10 @@ class PagesController extends Controller {
 
     }
 
+    public function contact() {
+
+    }
+
     public function forums() {
 
     }
