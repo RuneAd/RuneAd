@@ -8,6 +8,11 @@
             <h3 class="display-3 mt-3 mb-0">
                 Sponsored Ads
             </h3>
+            {% if user is defined %}
+            <p>
+            <span class="text-danger">Please login RuneAd to order a Sponsored Ad slot!</span>
+            </p>
+            {% endif %}
             <p>
                 Get the most bang for your buck with our sponsor slots.
                 You'll be placed at the top of every page of the main listing<br>
