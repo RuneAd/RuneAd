@@ -35,19 +35,19 @@
                                 </select>
                             </div>
                             <div class="col">
-                                <label>Server Name</label>
+                                <label>Server Name*</label>
                                 <input type="text" class="form-control {{ errors['title'] is defined ? 'border-danger' : '' }}" name="title">
                             </div>
                         </div>
 
                         <div class="form-row form-group mb-0">
                             <div class="col">
-                                <label>Server Port</label>
+                                <label>Server Port*</label>
                                 <input type="number" class="form-control {{ errors['server_port'] is defined ? 'border-danger' : '' }}" name="server_port"
                                     min="0" max="65535" value="43594">
                             </div>
                             <div class="col">
-                                <label>Server IP</label>
+                                <label>Server IP*</label>
                                 <input type="text" class="form-control {{ errors['server_ip'] is defined ? 'border-danger' : '' }}" name="server_ip">
                             </div>
                         </div>

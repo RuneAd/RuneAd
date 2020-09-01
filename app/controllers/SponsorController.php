@@ -110,7 +110,7 @@ class SponsorController extends Controller {
             return [
                 'success' => false,
                 'message' => $this->getViewContents("sponsor/error", [
-                    "message" => "Payment was not approved."
+                    "message" => "Payment was not approved. For additional payment methods please contact us."
                 ])
             ];
         }
