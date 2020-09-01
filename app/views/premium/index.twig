@@ -258,7 +258,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
         }, 800, 'swing');
     }
     function loadButton(package, server) {
-        statusBlock.removeClass("text-danger").html("<img src="https://i.imgur.com/dMO6dSf.gif">");
+        statusBlock.removeClass("text-danger").html("<i class='fad fa-spinner fa-pulse'></i>");
         $.ajaxq('PaymentQueue', {
             url: '{{ url("premium/button") }}',
             data: {
