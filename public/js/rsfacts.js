@@ -39,6 +39,12 @@ $(document).ready(function() {
         "When you ask Sir Amik Varze for your quest, he will tell you: \"Your Mission, if you decide to accept it\", and when he gives you the dossier it self-destructs, reference to Mission: Impossible",
         "Vinesweeper: The house in the farm is similar to that of the Hobbit holes in The Lord of the Rings",
         "If you take all the first letters from the wilderness cape merchant's names it will spell the word \"Wilderness\".",
+        "After an update on 28 February 2019 there was a Twisted Bow spawn, which was hot fixed in 32 minutes!",
+        "Mahogany Homes were released on 26 August 2020!",
+        "The Rune scimitar was released on 13 August 2001!",
+        "The Dragon scimitar was released on 29 March 2005, about 4 YEARS after the Rune scimitar!",
+        "Monkey Madness I was released on 6 December 2004!",
+
     ];
 
     let factNum = $('#factNum');
