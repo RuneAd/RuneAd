@@ -330,7 +330,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
         }, 800, 'swing');
     }
     function loadButton(package, server) {
-        statusBlock.removeClass("text-danger").html("<i class='fad fa-spinner fa-pulse'></i>");
+        statusBlock.removeClass("text-danger").html("<i class="fi-xnsrsl-loading"></i>");
         $.ajaxq('PaymentQueue', {
             url: '{{ url("sponsor/button") }}',
             data: {
