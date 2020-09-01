@@ -19,6 +19,10 @@
                             {% if user is defined and user.user_id == server.owner %}
                                 <a href="{{ url('servers/edit/'~seo_link) }}"
                                     class="btn btn-default">Edit Server</a>
+                                <a href="{{ url('premium') }}"
+                                    class="btn btn-success pulse">Go Premium</a>
+                                <a href="{{ url('sponsor') }}"
+                                    class="btn btn-info pulse">Go Sponsored</a>
                             {% endif %}
                         </div>
                     </div>
