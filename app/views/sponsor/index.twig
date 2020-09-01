@@ -8,6 +8,11 @@
             <h3 class="display-3 mt-3 mb-0">
                 Sponsored Ads
             </h3>
+            {% if user is defined %}
+            <p>
+            <span class="text-info">Welcome, {{ user.username }}!</span>
+            </p>
+            {% endif %}
             {% if user is not defined %}
             <p>
             <span class="text-danger">Please login RuneAd to order a Sponsored Ad slot!</span>
