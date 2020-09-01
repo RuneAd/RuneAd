@@ -99,7 +99,7 @@
                             <br>
                             <span class="small text-muted">
                             {% if server.banner_url %}
-                            <a href="{{ url('details/'~server_url) }}" class="banner-img">
+                            <a href="{{ url('servers/edit/'~seo) }}" class="banner-img">
                                 <img data-src="{{ banner(server.banner_url) }}"
                                 src="{{ url('public/img/banner-loading.png') }}"
                                     id="banner"
@@ -108,7 +108,7 @@
                                     class="img-fluid rounded lazy">
                             </a>
                             {% else %}
-                            <a href="{{ url('details/'~server_url) }}" class="banner-img">
+                            <a href="{{ url('servers/edit/'~seo) }}" class="banner-img">
                                 <img src="{{ url('public/img/banner-'~theme~'.png') }}"
                                     id="banner"
                                     alt="{{ url('public/img/banner-'~theme~'.png') }}"
