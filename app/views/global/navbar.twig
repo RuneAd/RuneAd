@@ -109,12 +109,12 @@
                         <a class="dropdown-item" href="{{ url('profile') }}">My Profile</a>
 
                         {% if user.isRole("owner") %}
-                        <a class="dropdxown-item" href="{{ url('admin') }}">Admin Panel</a>
+                        <a class="dropdown-item" href="{{ url('admin') }}">Admin Panel</a>
                         {% endif %}
 
                         <div class="dropdown-divider"></div>
 
-                        <a class="dropdown-item text-danger" href="{{ url('logout') }}"> <i class="fi-xnsuxs-sign-out-solid"></i> Sign Out</a>
+                        <a class="dropdown-item text-danger" href="{{ url('logout') }}"> <i class="fi-xnsums-sign-out-solid"></i> Sign Out</a>
                     </div>
                 </li>
                 {% else %}
