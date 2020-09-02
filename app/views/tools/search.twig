@@ -1,3 +1,25 @@
+
+<div class="m-auto text-center">
+    <a href="#" class="btn btn-link" id="pageBtn" data-page="{{ results['first'] }}">
+       First
+    </a>
+
+    <a href="#" class="btn btn-link" id="pageBtn" data-page="{{ results['before'] }}">
+        Previous
+    </a>
+
+    Page {{ results['current'] }} of {{ results['total_pages'] }}
+
+    <a href="#" class="btn btn-link ml-2" id="pageBtn" data-page="{{ results['next'] }}">
+        Next
+    </a>
+
+    <a href="#" class="btn btn-link" id="pageBtn" data-page="{{ results['last'] }}">
+        Last
+    </a>
+
+</div>
+
 <div class="card border-0 shadow-sm mb-3">
     <table class="table mb-0">
         <thead>
