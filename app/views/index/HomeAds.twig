@@ -1,23 +1,14 @@
-<style>
-#content-desktop {display: block;}
-#content-mobile {display: none;}
+.hide {
 
-@media screen and (max-width: 768px) {
+  display: none;
 
-#content-desktop {display: none;}
-#content-mobile {display: block;}
-
+  @media (min-width: 700px) {
+    display: block;
+  }
 }
-</style>
-
-<div id=”content-desktop”>
-  <div class="text-center card-body">
-              <div class="container">
+              <div class="hide container">
                 <table class="table mt-0 mb-0 tab " style="line-height: 0.0em">
                   <p id="HomeAds"></p>
                 </table>
               </div>
-</div>
-<div id=”content-mobile”>
-Mobile Ad Test - In development
 </div>
