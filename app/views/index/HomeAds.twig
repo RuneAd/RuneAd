@@ -1,7 +1,34 @@
-<div class="desk text-center card-body">
+<style>
+
+.desk{
+  width:400px;
+  height:200px;
+}
+.div-only-mobile{
+  width:400px;
+  height:200px;
+}
+@media screen and (max-width : 1920px){
+  .div-only-mobile{
+  visibility:hidden;
+  }
+}
+@media screen and (max-width : 906px){
+ .desk{
+  visibility:hidden;
+  }
+ .div-only-mobile{
+  visibility:visible;
+  }
+}
+
+</style>
+<div class="desk">
+<div class="text-center card-body">
               <div class="container">
                 <table class="table mt-0 mb-0 tab " style="line-height: 0.0em">
                   <p id="HomeAds"></p>
                 </table>
               </div>
           </div>
+        </div>
