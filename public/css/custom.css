@@ -34,6 +34,26 @@ body {
   }
 }
 
+.desk-text{
+    font-size: 25px;
+}
+.div-only-mobile-text{
+    font-size: 25px;
+}
+@media screen and (max-width : 1920px){
+  .div-only-mobile-text{
+  visibility:hidden;
+  }
+}
+@media screen and (max-width : 906px){
+ .desk-text{
+  visibility:hidden;
+  }
+ .div-only-mobile-text{
+  visibility:visible;
+  }
+}
+
 .resp-container {
     position: relative;
     overflow: hidden;
