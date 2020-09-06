@@ -1,0 +1,31 @@
+{%  extends 'layout.twig' %}
+
+{% block content %}
+<section style="margin-top:-30px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <h2 class="mb-0">Banner Advertisement Information</h2>
+                        <p>Last Updated August 8, 2020. </p>
+                        <p><a href="https://runead.com/terms">Terms of Service</a> | <a href="https://runead.com/privacy">Privacy policy</a>
+                        <hr>
+                        <h5><strong>Sizes and locations of ads</strong></h5>
+                        <p>Size: 728x90</p>
+                        <p>Locations:</br>
+                        Homepage - (Runead.com)</br>
+                        Voting Page - (RuneAd.com/vote/*ID*/*key*) - Displays on ALL server voting pages.</p>
+                        <h5><strong>How to get a banner ad?</strong></h5>
+                        <p>Contact me on discord: Aaron (RuneAd Owner)#6913</p>
+                        <p>Join our discord: <a href="https://discord.gg/XH5keGQ">Discord</a></p>
+                        <p>Email me at (Voltno@yahoo.com)</p>
+                    </div>
+                </div>
+
+                {{ content|raw }}
+            </div>
+        </div>
+    </div>
+</section>
+{%  endblock %}

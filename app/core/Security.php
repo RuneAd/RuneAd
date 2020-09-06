@@ -24,7 +24,7 @@ class Security {
             'report'  => ['index'],
             'login'   => ['index', 'discord', 'auth', 'dauth'],
             'errors'  => ['show404', 'show500', 'show401', 'missing'],
-            'pages'   => ['docs', 'stats', 'terms', 'privacy', 'adinfo', 'ads', 'contact'],
+            'pages'   => ['docs', 'stats', 'terms', 'privacy', 'adinfo', 'ads', 'contact', 'adbenners'],
             'tools'   => ['itemdb', 'search', 'map']
         ];
 

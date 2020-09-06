@@ -17,6 +17,10 @@ class PagesController extends Controller {
 
     }
 
+    public function adbenners() {
+
+    }
+
     public function ads() {
 
     }
