@@ -20,6 +20,28 @@ body {
     font-family: "Montserrat-Light";
 }
 
+.desk{
+  width:400px;
+  height:200px;
+}
+.div-only-mobile{
+  width:400px;
+  height:200px;
+}
+@media screen and (max-width : 1920px){
+  .div-only-mobile{
+  visibility:hidden;
+  }
+}
+@media screen and (max-width : 906px){
+ .desk{
+  visibility:hidden;
+  }
+ .div-only-mobile{
+  visibility:visible;
+  }
+}
+
 .resp-container {
     position: relative;
     overflow: hidden;
