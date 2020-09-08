@@ -5,22 +5,23 @@ $password = "IKRd3sZ7dK";
 $dbname = "admin_runead";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 // Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
 }
 
 $sql = "SELECT player, mode, kills FROM counter";
-$result = $conn->query($sql);
+$result = mysqli_query($conn, $sql);
 
-if ($result->num_rows > 0) {
+if (mysqli_num_rows($result) > 0) {
   // output data of each row
-  while($row = $result->fetch_assoc()) {
+  while($row = mysqli_fetch_assoc($result)) {
     echo "id: " . $row["player"]. " - Name: " . $row["mode"]. " " . $row["kills"]. "<br>";
   }
 } else {
   echo "0 results";
 }
-$conn->close();
+
+mysqli_close($conn);
 ?>
