@@ -1,41 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Janus RSPS PK Record for players</title>
+<style>
+table {
+border-collapse: collapse;
+width: 100%;
+color: #588c7e;
+font-family: monospace;
+font-size: 25px;
+text-align: left;
+}
+th {
+background-color: #588c7e;
+color: white;
+}
+tr:nth-child(even) {background-color: #f2f2f2}
+</style>
+</head>
+<body>
+<table>
+<tr>
+<th>Id</th>
+<th>Username</th>
+<th>Password</th>
+</tr>
 <?php
-/* Attempt MySQL server connection. Assuming you are running MySQL
-server with default setting (user 'root' with no password) */
-$link = mysqli_connect("localhost", "admin_runead", "IKRd3sZ7dK", "admin_runead");
-
+$conn = mysqli_connect("localhost", "admin_runead", "IKRd3sZ7dK", "admin_runead");
 // Check connection
-if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
+if ($conn->connect_error) {
+die("Connection failed: " . $conn->connect_error);
 }
-
-// Attempt select query execution
-$sql = "SELECT * FROM counter";
-if($result = mysqli_query($link, $sql)){
-    if(mysqli_num_rows($result) > 0){
-        echo "<table>";
-            echo "<tr>";
-                echo "<th>Name:</th>";
-                echo "<th>Game Mode:</th>";
-                echo "<th>Kills:</th>";
-                echo "<th>K/d</th>";
-            echo "</tr>";
-        while($row = mysqli_fetch_array($result)){
-            echo "<tr>";
-                echo "<td>" . $row['USERNAME'] . "</td>";
-                echo "<td>" . $row['GAMEMODE'] . "</td>";
-                echo "<td>" . $row['KILLS'] . "</td>";
-            echo "</tr>";
-        }
-        echo "</table>";
-        // Free result set
-        mysqli_free_result($result);
-    } else{
-        echo "No records matching your query were found.";
-    }
-} else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+$sql = "SELECT player, mode, kills FROM counter";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+// output data of each row
+while($row = $result->fetch_assoc()) {
+echo "<tr><td>" . $row["player"]. "</td><td>" . $row["mode"] . "</td><td>"
+. $row["kills"]. "</td></tr>";
 }
-
-// Close connection
-mysqli_close($link);
+echo "</table>";
+} else { echo "No pk matches found!"; }
+$conn->close();
 ?>
+</table>
+</body>
+</html>
