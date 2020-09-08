@@ -7,9 +7,9 @@ $link = mysqli_connect("localhost", "admin_runead", "IKRd3sZ7dK", "admin_runead"
 if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
- 
+
 // Attempt select query execution
-$sql = "SELECT USERNAME, GAMEMODE, KILLS FROM counter";
+$sql = "SELECT * FROM counter";
 if($result = mysqli_query($link, $sql)){
     if(mysqli_num_rows($result) > 0){
         echo "<table>";
