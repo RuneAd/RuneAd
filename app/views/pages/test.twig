@@ -1,48 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Janus RSPS PK Record for players</title>
-<style>
-table {
-border-collapse: collapse;
-width: 100%;
-color: #588c7e;
-font-family: monospace;
-font-size: 25px;
-text-align: left;
-}
-th {
-background-color: #588c7e;
-color: white;
-}
-tr:nth-child(even) {background-color: #f2f2f2}
-</style>
-</head>
-<body>
-<table>
-<tr>
-<th>Id</th>
-<th>Username</th>
-<th>Password</th>
-</tr>
 <?php
-$conn = mysqli_connect("localhost", "admin_runead", "IKRd3sZ7dK", "admin_runead");
+$servername = "localhost";
+$username = "admin_runead";
+$password = "IKRd3sZ7dK";
+$dbname = "admin_runead";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
-die("Connection failed: " . $conn->connect_error);
+  die("Connection failed: " . $conn->connect_error);
 }
+
 $sql = "SELECT player, mode, kills FROM counter";
 $result = $conn->query($sql);
+
 if ($result->num_rows > 0) {
-// output data of each row
-while($row = $result->fetch_assoc()) {
-echo "<tr><td>" . $row["player"]. "</td><td>" . $row["mode"] . "</td><td>"
-. $row["kills"]. "</td></tr>";
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    echo "id: " . $row["player"]. " - Name: " . $row["mode"]. " " . $row["kills"]. "<br>";
+  }
+} else {
+  echo "0 results";
 }
-echo "</table>";
-} else { echo "No pk matches found!"; }
 $conn->close();
 ?>
-</table>
-</body>
-</html>
