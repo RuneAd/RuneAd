@@ -1,27 +1,17 @@
 <?php
-$servername = "localhost";
-$username = "admin_runead";
-$password = "IKRd3sZ7dK";
-$dbname = "admin_runead";
+$connection = mysql_connect('localhost', 'admin_runead', 'IKRd3sZ7dK'); //The Blank string is the password
+mysql_select_db('admin_runead');
 
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-// Check connection
-if (!$conn) {
-  die("Connection failed: " . mysqli_connect_error());
+$query = "SELECT * FROM counter"; //You don't need a ; like you do in SQL
+$result = mysql_query($query);
+
+echo "<table>"; // start a table tag in the HTML
+
+while($row = mysql_fetch_array($result)){   //Creates a loop to loop through results
+echo "<tr><td>" . $row['player'] . "</td><td>" . $row['kills'] . "</td></tr>";  //$row['index'] the index here is a field name
 }
 
-$sql = "SELECT player, mode, kills FROM counter";
-$result = mysqli_query($conn, $sql);
+echo "</table>"; //Close the table in HTML
 
-if (mysqli_num_rows($result) > 0) {
-  // output data of each row
-  while($row = mysqli_fetch_assoc($result)) {
-    echo "id: " . $row["player"]. " - Name: " . $row["mode"]. " " . $row["kills"]. "<br>";
-  }
-} else {
-  echo "0 results";
-}
-
-mysqli_close($conn);
+mysql_close(); //Make sure to close out the database connection
 ?>
