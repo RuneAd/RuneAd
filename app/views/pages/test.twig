@@ -1,46 +1,41 @@
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-table, th, td {
-    border: 1px solid black;
-}
-</style>
-</head>
-<body>
-
 <?php
-function OpenCon()
- {
- $servername = "localhost";
- $username = "admin_runead";
- $password = "IKRd3sZ7dK";
- $dbname = "admin_runead";
+/* Attempt MySQL server connection. Assuming you are running MySQL
+server with default setting (user 'root' with no password) */
+$link = mysqli_connect("localhost", "admin_runead", "IKRd3sZ7dK", "admin_runead");
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+if($link === false){
+    die("ERROR: Could not connect. " . mysqli_connect_error());
 }
-
+ 
+// Attempt select query execution
 $sql = "SELECT USERNAME, GAMEMODE, KILLS FROM counter";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-  echo "<table><tr><th>Username</th><th>Gamemode</th><th>Kills</th></tr>";
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-    echo "<tr><td>".$row["Username"]."</td><td>".$row["Gamemode"]." ".$row["Kills"]."</td></tr>";
-  }
-  echo "</table>";
-} else {
-  echo "0 results";
+if($result = mysqli_query($link, $sql)){
+    if(mysqli_num_rows($result) > 0){
+        echo "<table>";
+            echo "<tr>";
+                echo "<th>Name:</th>";
+                echo "<th>Game Mode:</th>";
+                echo "<th>Kills:</th>";
+                echo "<th>K/d</th>";
+            echo "</tr>";
+        while($row = mysqli_fetch_array($result)){
+            echo "<tr>";
+                echo "<td>" . $row['USERNAME'] . "</td>";
+                echo "<td>" . $row['GAMEMODE'] . "</td>";
+                echo "<td>" . $row['KILLS'] . "</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+        // Free result set
+        mysqli_free_result($result);
+    } else{
+        echo "No records matching your query were found.";
+    }
+} else{
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
- }
-$conn->close();
 
+// Close connection
+mysqli_close($link);
 ?>
-
-</body>
-</html>
