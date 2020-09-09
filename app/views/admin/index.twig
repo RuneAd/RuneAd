@@ -161,8 +161,8 @@
                                                 <th>Last Month</th>
                                                 <th>This Month</th>
                                                 <th>Last 7 Days</th>
-                                                <th>Last 24 Hour</th>
-                                                <th>----</th>
+                                                <th>Last 24 Hours</th>
+                                                <th>Last Hour</th>
                                             </tr>
                                         </thead>
 
@@ -173,7 +173,7 @@
                                                 <td>{{ data['votes']['month']|number_format }}</td>
                                                 <td>{{ data['votes']['week']|number_format }}</td>
                                                 <td>{{ data['votes']['day']|number_format }}</td>
-                                                <td></td>
+                                                <td>{{ data['votes']['hour']|number_format }}</td>
                                             </tr>
                                         </tbody>
                                     </table>
