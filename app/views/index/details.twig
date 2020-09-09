@@ -31,7 +31,7 @@
 
                         <div class="d-flex ">
                             <div class="flex-fill pr-1">
-                                <a href="{{ url('servers/out/'~friendlyTitle(server.id~'-'~server.title)) }}"
+                                <a href="{{ url('servers/'~friendlyTitle(server.id~'-'~server.title)) }}"
                                     target="_blank"
                                     class="btn btn-default btn-block mb-3 {{ server.website ? '' : 'disabled' }}" target="_blank">
                                     {{ icon('link-45deg', 20, 20) }}
