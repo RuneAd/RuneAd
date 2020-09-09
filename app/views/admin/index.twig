@@ -82,33 +82,33 @@
                         </div>
                         5
                     </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-4 col-xl-4">
-                            <div class="card mb-4 mb-xl-0 shadow-sm">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col">
-                                            <h5 class="card-title text-uppercase text-muted mb-0">Members</h5>
-                                            <span class="h2 font-weight-bold mb-0">{{ data['users']['total']|number_format }}</span>
-                                        </div>
-                                        <div class="col-auto">
-                                            <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                                                <i class="fi-xnsuxl-user-solid"></i>
-                                            </div>
+                    1
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-lg-4 col-xl-4">
+                        <div class="card mb-4 mb-xl-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Members</h5>
+                                        <span class="h2 font-weight-bold mb-0">{{ data['users']['total']|number_format }}</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                                            <i class="fi-xnsuxl-user-solid"></i>
                                         </div>
                                     </div>
-
-                                    <p class="mt-3 mb-0 text-sm">
-                                        <span class="text-success">
-                                            +{{ data['users']['month']|number_format }}
-                                        </span>
-                                        <span class="text-nowrap">members this month</span>
-                                    </p>
                                 </div>
+
+                                <p class="mt-3 mb-0 text-sm">
+                                    <span class="text-success">
+                                        +{{ data['users']['month']|number_format }}
+                                    </span>
+                                    <span class="text-nowrap">members this month</span>
+                                </p>
                             </div>
                         </div>
-                </div>
-                2
+                    </div>
             </div>
             3
         </div>
