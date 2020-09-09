@@ -19,6 +19,10 @@
                             {% if user is defined and user.user_id == server.owner %}
                                 <a href="{{ url('servers/edit/'~seo_link) }}"
                                     class="btn btn-default">Edit Server</a>
+                                <a href="{{ url('premium') }}"
+                                    class="btn btn-success pulse">Go Premium</a>
+                                <a href="{{ url('sponsor') }}"
+                                    class="btn btn-info pulse">Go Sponsored</a>
                             {% endif %}
                         </div>
                     </div>
@@ -31,8 +35,7 @@
 
                         <div class="d-flex ">
                             <div class="flex-fill pr-1">
-                                <a href="{{ url('servers/'~friendlyTitle(server.id~'-'~server.title)) }}"
-                                    target="_blank"
+                                <a href="{{ server.website }}"
                                     class="btn btn-default btn-block mb-3 {{ server.website ? '' : 'disabled' }}" target="_blank">
                                     {{ icon('link-45deg', 20, 20) }}
                                     Website
@@ -106,56 +109,32 @@
                         </a>
                         <h5 class="mb-0 text-white">Like this server?</h5>
                         <p class="mb-0">Consider giving it a vote to show your support!</p>
+
+
                     </div>
                     {% endif %}
-                    <div class="card border-0 shadow-sm mb-3">
-                        <div class="card-body pb-2">
-                            <div class="dropdown mb-3">
-                                <button class="btn btn-outline-default dropdown-toggle"
-                                    id="ratebtn"  rel="nofollow"
-                                        type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    30 Days
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" rel="nofollow"
-                                        id="days"
-                                        data-days="180"
-                                        href="#">
-                                        180 Days
-                                    </a>
-                                    <a class="dropdown-item" rel="nofollow"
-                                        id="days"
-                                        data-days="90"
-                                        href="#">
-                                        90 Days
-                                    </a>
-                                    <a class="dropdown-item" rel="nofollow"
-                                        id="days"
-                                        data-days="30"
-                                        href="#">
-                                        30 Days
-                                    </a>
-                                    <a class="dropdown-item" rel="nofollow"
-                                        id="days"
-                                        data-days="7"
-                                        href="#">
-                                        7 Days
-                                    </a>
-                                </div>
 
-                                <span id="loader">
-                                    <i class="fad fa-spinner fa-pulse"></i> Loading
-                                </span>
-                            </div>
-
-                            <div style="height:200px">
-                                <canvas id="voteChart" height="200px"></canvas>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="card border-0 shadow-sm mb-3">
                         <div class="card-body">
+                        {% if server.banner_url %}
+                        <a href="{{ url('details/'~server_url) }}" class="banner-img">
+                            <img data-src="{{ banner(server.banner_url) }}"
+                            src="{{ url('public/img/banner-loading.png') }}"
+                                id="banner"
+                                alt="{{ server.banner_url }}"
+                                style="margin-top:14px;"
+                                class="img-fluid rounded lazy">
+                        </a>
+                        {% else %}
+                        <a href="{{ url('details/'~server_url) }}" class="banner-img">
+                            <img src="{{ url('public/img/banner-'~theme~'.png') }}"
+                                id="banner"
+                                alt="{{ url('public/img/banner-'~theme~'.png') }}"
+                                style="margin-top:14px;"
+                                class="img-fluid rounded lazy">
+                        </a>
+                        {% endif %}
                             {{ description|raw }}
                         </div>
                     </div>
@@ -176,15 +155,18 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function(event) {
+    let locked = false;
     $('.vote-btn').click(function(event) {
         event.preventDefault();
+        locked = true;
 
         let btn = $(this);
         let txt = $(this).text();
         let id  = $(this).data("id");
 
         btn.html('{{ icon("three-dots", 16, 16) }}');
-        btn.removeClass("btn-outline-success btn-outline-danger").addClass("btn-outline-white");
+        btn.addClass("disabled");
+        btn.removeClass("btn-success btn-danger").addClass("btn-primary");
         grecaptcha.ready(function() {
             grecaptcha.execute("{{ recaptcha_key }}", {
                 action: 'homepage'
@@ -200,98 +182,35 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
                     },
                     success: function (json) {
-                        console.log(json);
-
                         if (json.success) {
                             let votes = json.votes;
                             let votecnt = btn.closest("td").find("#votes");
                             votecnt.html(votes);
                         }
 
-                        btn.removeClass("btn-outline-white btn-outline-danger btn-outline-success")
-                            .addClass("btn-outline-"+(json.success ? 'success' : 'danger'));
-                        btn.html(json.success
-                            ? '{{ icon("check", 16, 16) }}'
-                            : '{{ icon("x", 16, 16) }}');
+                        btn.removeClass("btn-primary btn-danger btn-success")
+                            .addClass("btn-"+(json.success ? 'success' : 'danger'));
+
+                            btn.html(json.success
+                                  ? '{{ icon("check", 16, 16) }}'
+                                  : '{{ icon("x", 16, 16) }}');
 
                         setTimeout(function() {
-                            btn.removeClass("btn-outline-success btn-outline-danger disabled")
-                                .addClass("btn-outline-white");
-                            btn.html("Vote Now");
-                        }, 700);
+                            btn.removeClass("btn-primary btn-danger disabled")
+                                .addClass("btn-primary");
+                            btn.html('{{ icon("check2-square", 16, 16) }}');
+                            locked = false;
+                        }, 1000);
                     },
                     error: function(data) {
+                        locked = false;
                         console.log(data.responseText);
                     }
                 });
             });
         });
     });
-    let canvas  = document.getElementById("voteChart"),
-    context = canvas.getContext('2d')
-    cdata = {
-        type: 'line',
-        data: {
-            datasets: [
-                {
-                    label: 'Votes',
-                    borderColor: window.chartColors.blue,
-                    backgroundColor:  window.chartColors.blue,
-                    hoverBackgroundColor: window.chartColors.blue,
-                    barWidth: 2,
-                    fill: false
-                }
-            ]
-        },
-        options: options
-    };
-    let chart = new Chart(context, cdata);
-    let days = 90;
-    let loader = $('#loader');
-    let loader_txt = loader.html();
-    let loading = false;
-    $('#ratebtn').html(days+" Days");
-    getChartData(days);
-    $('[id="days"]').on('click', function(event) {
-        event.preventDefault();
-        if (loading) {
-            return;
-        }
-        loading = true;
-
-        days = $(this).data("days");
-        loader.html(loader_txt);
-        $('#ratebtn').html(days+" Days");
-        getChartData(days);
-    });
-    function getChartData(days) {
-        $.ajaxq('VoteQueue', {
-            url: 'https://api.rune-nexus.com/server/graph',
-            data: {
-                days: days,
-                server: "{{ server.id }}"
-            },
-            type: 'GET',
-            complete: function (data) {
-            },
-            success: function (json) {
-                if (json.chartData) {
-                    let keys   = $.map(json.chartData, function(element,index) {return index});
-                    let values = $.map(json.chartData, function(element,index) {return element});
-                    cdata.data.labels = keys;
-                    cdata.data.datasets[0].data = values;
-                    chart.update();
-                    loader.html("");
-                    loading = false;
-                }
-            },
-            error: function(data) {
-                console.log(data.responseText);
-            }
-        });
-    }
 });
 </script>
-
 
 {%  endblock %}
