@@ -18,7 +18,7 @@ class ProfileController extends Controller {
 
 
     $data = [
-        'servers' => [
+        'votes' => [
             'total' => Votes::count(),
             'month' => Votes::where("votes", ">=", $thisMonth)->count(),
             'lastmonth' => Votes::where("votes", ">=", $lastMonth)->count(),
@@ -29,10 +29,6 @@ class ProfileController extends Controller {
         ],
 
     ];
-
-
-
-
 
   }
 
