@@ -44,7 +44,6 @@ class AdminController extends Controller {
         return true;
     }
 
-     $votes = Votes::getChartData($dates);
 
      $this->set("chart_keys", array_keys($dates['chart']));
      $this->set("votes_data", $votes);
