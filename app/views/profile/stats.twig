@@ -33,52 +33,23 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-sm-12 col-lg-4">
-            <div class="card border-0 shadow-sm mb-3">
-                <div class="card-body">
-                    <p class="mb-0">{{ servers|length }}</p>
-                    <small class="text-muted">Servers</small>
-                </div>
-            </div>
-
-            <div class="card border-0 shadow-sm mb-3">
-                <div class="card-body">
-                    <p class="mb-0">{{ user.user_id }}</p>
-                    <small class="text-muted">User ID</small>
-                </div>
-            </div>
-
-            <div class="card border-0 shadow-sm mb-3">
-                <div class="card-body">
-                    <p class="mb-0">{{ roles }}</p>
-                    <small class="text-muted">Roles</small>
-                </div>
-            </div>
-
-            <div class="card border-0 shadow-sm mb-3">
-                <div class="card-body">
-                    <p class="mb-0">{{ user.email }}</p>
-                    <small class="text-muted">Email</small>
-                </div>
-            </div>
-        </div>
 
 
-        <div class="col-sm-12 col-lg-8">
+        <div class="col-sm-12 col-lg-12">
             <div class="card border-0 shadow-sm mb-3">
                 <div class="card-header bg-{{ theme == "dark" ? "transparent" : "white" }} py-3">
                     My Servers
                 </div>
                 <table class="table table-hover mb-0">
                     <thead class="small text-muted border-0 bg-light">
-                        <tr>
-                            <th class="border-0 py-2 text-right">id</th>
-                            <th class="border-0 py-2 text-center status-col">status</th>
-                            <th class="border-0 py-2">title</th>
-                            <th class="border-0 py-2 text-right">votes</th>
-                            <th class="border-0 py-2 text-right"></th>
-                        </tr>
+                    <tr>
+                        <th>Server</th>
+                        <th>Votes: All Time</th>
+                        <th>Votes: This Month</th>
+                        <th>Votes: 7 Days</th>
+                        <th>Votes: 24 Hours</th>
+                        <th>Votes: 1 Hour</th>
+                    </tr>
                     </thead>
                     {% for server in servers %}
                     {% set class = server.premium_expires > time() ? 'bg-primary' : '' %}
