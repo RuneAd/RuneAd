@@ -38,72 +38,33 @@
         <div class="col-sm-12 col-lg-12">
             <div class="card border-0 shadow-sm mb-3">
                 <div class="card-header bg-{{ theme == "dark" ? "transparent" : "white" }} py-3">
-                    My Servers
+                    My RuneAd voting statistics
                 </div>
                 <table class="table table-hover mb-0">
                     <thead class="small text-muted border-0 bg-light">
                     <tr>
                         <th>Server</th>
-                        <th>Votes: All Time</th>
-                        <th>Votes: This Month</th>
-                        <th>Votes: 7 Days</th>
-                        <th>Votes: 24 Hours</th>
-                        <th>Votes: 1 Hour</th>
+                        <th>All Time</th>
+                        <th>This Month</th>
+                        <th>7 Days</th>
+                        <th>24 Hours</th>
+                        <th>1 Hour</th>
                     </tr>
                     </thead>
                     {% for server in servers %}
                     {% set class = server.premium_expires > time() ? 'bg-primary' : '' %}
                     {% set seo = friendlyTitle(server.id~'-'~server.title) %}
 
-                    <tr style="line-height:1em;" class="{{ class }}">
-                        <td class="text-right"style="width:90px;">{{ server.id }}</td>
-                        <td class="text-center status-col">
-                            {% set status = server.is_online ? 'online' : 'offline' %}
-                            <span class="status status-{{ status }}" data-toggle="tooltip" data-title="{{ status|capitalize }}"></span>
-                        </td>
-                        <td>
-                            <a href="{{ url('details/'~seo) }}">{{ server.title }}</a>
-                            <br>
-                            <span class="small text-muted">
-                                Rev. {{ server.revision }}
-                            </span>
-                            <br>
-                            <span class="small text-muted">
-                            {% if server.banner_url %}
-                            <a href="{{ url('servers/edit/'~seo) }}" class="banner-img">
-                                <img data-src="{{ banner(server.banner_url) }}"
-                                src="{{ url('public/img/banner-loading.png') }}"
-                                    id="banner"
-                                    alt="{{ server.banner_url }}"
-                                    style="margin-top:14px;"
-                                    class="img-fluid rounded lazy">
-                            </a>
-                            {% else %}
-                            <a href="{{ url('servers/edit/'~seo) }}" class="banner-img">
-                                <img src="{{ url('public/img/banner-'~theme~'.png') }}"
-                                    id="banner"
-                                    alt="{{ url('public/img/banner-'~theme~'.png') }}"
-                                    style="margin-top:14px;"
-                                    class="img-fluid rounded lazy">
-                            </a>
-                            {% endif %}
-                            </span>
-                        </td>
-                        <td class="small text-right">
-                            {{ server.votes }}
-                        </td>
-                        <td class="text-right">
-                            <a href="{{ url('servers/edit/'~seo) }}" class="btn btn-outline-primary btn-sm">
-                                Edit
-                            </a>
-
-                            <!-- Toggled out delete server for the time being -->
-                           <!-- <a href="{{ url('servers/delete/'~seo) }}" class="btn btn-link text-danger btn-sm">
-                                 {{ icon('trash', 16, 16) }}
-                            </a> -->
-
-                        </td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <td>{{ data['votes']['total']|number_format }}</td>
+                            <td>{{ data['votes']['lastmonth']|number_format }}</td>
+                            <td>{{ data['votes']['month']|number_format }}</td>
+                            <td>{{ data['votes']['week']|number_format }}</td>
+                            <td>{{ data['votes']['day']|number_format }}</td>
+                            <td>{{ data['votes']['hour']|number_format }}</td>
+                        </tr>
+                    </tbody>
                     {% else %}
                     <div class="list-group-item">
                         You have no servers listed.
