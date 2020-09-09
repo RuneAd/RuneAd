@@ -40,6 +40,7 @@ class IndexController extends Controller {
             ->where('servers.banner_url', '!=', null)
             ->where('servers.website', '!=', null)
             ->leftJoin("servers", "servers.id", "=", "sponsors.server_id")
+            ->orderBy("expires", "DESC")
             ->get();
 
         $this->set("servers", $servers);
