@@ -158,10 +158,10 @@
                                         <thead>
                                             <tr>
                                                 <th>All Time</th>
-                                                <th>Month</th>
-                                                <th>Week</th>
-                                                <th>Day</th>
-                                                <th>Hour</th>
+                                                <th>Last Month</th>
+                                                <th>This Month</th>
+                                                <th>Last 7 Days</th>
+                                                <th>Last 24 Hour</th>
                                                 <th>----</th>
                                             </tr>
                                         </thead>
@@ -171,7 +171,7 @@
                                                 <td>{{ data['votes']['total']|number_format }}</td>
                                                 <td>{{ data['votes']['month']|number_format }}</td>
                                                 <td>{{ data['votes']['week']|number_format }}</td>
-                                                <td></td>
+                                                <td>{{ data['votes']['day']|number_format }}</td>
                                                 <td></td>
                                                 <td></td>
                                             </tr>
