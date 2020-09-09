@@ -112,19 +112,8 @@
                             </div>
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-white mb-4">
-                                    <div class="card-body">Votes: {{ data['votes']['total']|number_format }}<br>
-                                    <p class="small text-success"> +{{ data['votes']['month']|number_format }} new this month!</p>
-                                    </div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View All</a>
-                                        <div class="small text-dark"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-white mb-4">
-                                    <div class="text-dark card-body">Income: ${{ data['payments']['total']|number_format(2) }}<br>
-                                    <p class="small text-success"> +${{ data['payments']['month']|number_format(2) }} earned this month!</p>
+                                    <div class="card-body">Servers: {{ data['servers']['total']|number_format }}<br>
+                                    <p class="small text-success"> +{{ data['servers']['month']|number_format }} new this month!</p>
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-dark stretched-link" href="#">View All</a>
@@ -133,9 +122,20 @@
                                 </div>
                             </div>
                             <div class="col-xl-3 col-md-6">
-                                <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body">Reports: {{ data['reports']['total']|number_format }}<br>
-                                    <p class="small text-white">{{ data['reports']['month']|number_format }} reports this month!</p>
+                                <div class="card bg-white mb-4">
+                                    <div class="text-dark card-body">Votes: ${{ data['votes']['total']|number_format }}<br>
+                                    <p class="small text-success"> {{ data['votes']['month']|number_format }} new this month!</p>
+                                    </div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-dark stretched-link" href="#">View All</a>
+                                        <div class="small text-dark"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-white mb-4">
+                                    <div class="text-dark card-body">Income: ${{ data['payments']['total']|number_format(2) }}<br>
+                                    <p class="small text-success"> +${{ data['payments']['month']|number_format(2) }} earned this month!</p>
                                     </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-dark stretched-link" href="#">View All</a>
