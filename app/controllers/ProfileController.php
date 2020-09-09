@@ -10,6 +10,28 @@ class ProfileController extends Controller {
     $this->set("servers", $servers);
     return true;
 
+    $thisMonth = strtotime(date("Y-m-01 00:00:00"));
+    $lastMonth = strtotime("first day of last month");
+    $lastWeek = strtotime("-1 week +1 day");
+    $day = strtotime("today");
+    $hour = strtotime("-1 hour");
+
+
+    $data = [
+        'servers' => [
+            'total' => Votes::count(),
+            'month' => Votes::where("votes", ">=", $thisMonth)->count(),
+            'lastmonth' => Votes::where("votes", ">=", $lastMonth)->count(),
+            'week' => Votes::where("votes", ">=", $lastWeek)->count(),
+            'day' => Votes::where("votes", ">=", $day)->count(),
+            'hour' => Votes::where("votes", ">=", $hour)->count()
+
+        ],
+
+    ];
+
+
+
 
 
   }
