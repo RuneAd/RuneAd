@@ -36,9 +36,9 @@ class Security {
         ];
 
         $admin = [
-          'admin'    => ['index']
-          'votes'    => ['index']
-          'payments' => ['index']
+          'admin'    => ['index'],
+          'votes'    => ['index'],
+          'payments' => ['index'],
         ];
 
         foreach ($public as $controller => $actions) {
