@@ -1,10 +1,6 @@
 <?php
 class AdminController extends Controller {
 
-  public function votes() {
-
-  }
-
     public function index() {
         $thisMonth = strtotime(date("Y-m-01 00:00:00"));
 
