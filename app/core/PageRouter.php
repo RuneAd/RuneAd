@@ -253,11 +253,11 @@ class PageRouter extends Router {
             return $this->setRoute('admin', 'index');
         });
 
-        $this->all('admin', function() {
+        $this->all('admin/votes', function() {
             return $this->setRoute('votes', 'index');
         });
 
-        $this->all('admin', function() {
+        $this->all('admin/users', function() {
             return $this->setRoute('users', 'index');
         });
 
