@@ -38,6 +38,7 @@ class Security {
         $admin = [
           'admin'    => ['index'],
           'votes'    => ['index'],
+          'users'    => ['index'],
           'payments' => ['index'],
         ];
 
