@@ -6,7 +6,7 @@ class AdminController extends Controller {
         $lastMonth = strtotime("first day of last month");
         $lastWeek = strtotime("-1 week +1 day");
         $day = strtotime("today");
-        $hour = strtotime(date("-1 hour"));
+        $hour = strtotime("-1 hour"));
 
         $data = [
             'users' => [
