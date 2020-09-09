@@ -1,6 +1,10 @@
 <?php
 class AdminController extends Controller {
 
+  public function votes() {
+
+  }
+
     public function index() {
         $thisMonth = strtotime(date("Y-m-01 00:00:00"));
 
@@ -33,10 +37,6 @@ class AdminController extends Controller {
         $this->set("chart_keys", array_keys($chartData));
         $this->set("chart_values", array_values($chartData));
         return true;
-    }
-
-    public function votes() {
-
     }
 
     public function beforeExecute() {
