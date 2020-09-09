@@ -3,7 +3,7 @@ class AdminController extends Controller {
 
     public function index() {
         $thisMonth = strtotime(date("Y-m-01 00:00:00"));
-        $lastWeek = date("Y-m-d", strtotime("-7 days"));
+        
         $thisDay = strtotime(date("Y-m-01 00:00:00"));
         $thisHour = strtotime(date("Y-m-01 00:00:00"));
 
