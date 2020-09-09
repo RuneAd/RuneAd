@@ -3,6 +3,9 @@ class AdminController extends Controller {
 
     public function index() {
         $thisMonth = strtotime(date("Y-m-01 00:00:00"));
+        $lastWeek = date("Y-m-d", strtotime("-7 days"));
+        $thisDay = strtotime(date("Y-m-01 00:00:00"));
+        $thisHour = strtotime(date("Y-m-01 00:00:00"));
 
         $data = [
             'users' => [
@@ -12,6 +15,7 @@ class AdminController extends Controller {
             'votes' => [
                 'total' => Votes::count(),
                 'month' => Votes::where("voted_on", ">=", $thisMonth)->count()
+                'week' => Votes::where("voted_on", ">=", $thisMonth)->count()
             ],
             'reports' => [
                 'total' => Reports::count(),
