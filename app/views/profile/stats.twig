@@ -44,6 +44,7 @@
                     <thead class="small text-muted border-0 bg-light">
                     <tr>
                         <th>Server</th>
+                        <th>Current</th>
                         <th>All Time</th>
                         <th>This Month</th>
                         <th>7 Days</th>
@@ -57,8 +58,8 @@
 
                     <tbody>
                         <tr>
-                            <td>{{ data['votes']['total']|number_format }}</td>
-                            <td>{{ data['votes']['lastmonth']|number_format }}</td>
+                            <td> <a href="{{ url('details/'~seo) }}">{{ server.title }}</a></td>
+                            <td>{{ server.votes }}</td>
                             <td>{{ data['votes']['month']|number_format }}</td>
                             <td>{{ data['votes']['week']|number_format }}</td>
                             <td>{{ data['votes']['day']|number_format }}</td>
