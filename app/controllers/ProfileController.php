@@ -3,7 +3,7 @@
 class ProfileController extends Controller {
 
   public function stats() {
-
+    $servers = Servers::where('server_id', $this->votes->server_id)->get();
 
   }
 
