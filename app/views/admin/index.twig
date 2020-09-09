@@ -112,7 +112,7 @@
                             </div>
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-white mb-4">
-                                    <div class="card-body">Votes: {{ votes|number_format }}<br>
+                                    <div class="card-body">Votes: {{ data['votes']['total']|number_format }}<br>
                                     <p class="small text-success"> +{{ data['votes']['month']|number_format }} new this month!</p>
                                     </div>
 
