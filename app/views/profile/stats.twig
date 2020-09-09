@@ -60,7 +60,7 @@
                         <tr>
                             <td> <a href="{{ url('details/'~seo) }}">{{ server.title }}</a></td>
                             <td>{{ server.votes }}</td>
-                            <td>{{ data['votes']['month']|number_format }}</td>
+                            <td>{{ 'server'|date('Y') }}</td>
                             <td>{{ data['votes']['week']|number_format }}</td>
                             <td>{{ data['votes']['day']|number_format }}</td>
                             <td>{{ data['votes']['hour']|number_format }}</td>
