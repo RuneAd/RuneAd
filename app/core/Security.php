@@ -38,7 +38,7 @@ class Security {
         $admin = [
           'admin'    => ['index'],
           'votes'    => ['index'],
-          'users'    => ['index'],
+          'users'    => ['index', 'banned'],
           'payments' => ['index'],
         ];
 
