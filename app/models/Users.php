@@ -9,7 +9,7 @@ class Users extends Model {
 
     protected $fillable = [
         'user_id', 'discriminator', 'username', 'role', 'premium_level',
-        'premium_expires', 'theme_id', 'email', 'avatar'
+        'premium_expires', 'theme_id', 'email', 'avatar', 'join_date'
     ];
 
     public function isRole($search) {
