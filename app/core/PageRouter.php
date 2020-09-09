@@ -258,7 +258,7 @@ class PageRouter extends Router {
         });
 
         $this->all('admin', function() {
-            return $this->setRoute('admin/users', 'index');
+            return $this->setRoute('users', 'index');
         });
 
         /**
