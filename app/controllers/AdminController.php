@@ -9,6 +9,10 @@ class AdminController extends Controller {
                 'total' => Users::count(),
                 'month' => Users::where("join_date", ">=", $thisMonth)->count()
             ],
+            'votes' => [
+                'total' => Votes::count(),
+                'month' => Votes::where("voted_on", ">=", $thisMonth)->count()
+            ],
             'payments' => [
                 'total' => Payments::sum('paid'),
                 'month' => Payments::where("date_paid", ">=", $thisMonth)->sum('paid'),
