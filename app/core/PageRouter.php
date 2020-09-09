@@ -249,6 +249,10 @@ class PageRouter extends Router {
             return $this->setRoute('admin', 'index');
         });
 
+        $this->all('admin', function() {
+            return $this->setRoute('admin', 'votes');
+        });
+
         /**
          * Admin Payments
          */
