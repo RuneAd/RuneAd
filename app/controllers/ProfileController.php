@@ -62,7 +62,7 @@ class ProfileController extends Controller {
 
     public function payments() {
 
-
+}
 
     public function stats() {
 
