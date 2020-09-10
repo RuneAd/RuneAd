@@ -115,12 +115,16 @@
                     {% endif %}
 
 
-                    <div class="card shadow-sm border-0 mb-1">
-                        <div class="card-body">
-                          <p class="text-primary text-center">Vote Statistics</p>
+                    <div class="col-sm-12 col-lg-8">
+                        {% if is_mobile == false %}
+                        <div class="alert alert-default border-info shadow-sm d-none d-lg-block">
+
+                            <h5 class="mb-0 text-white">Vote Statistics</h5>
+                            <p class="mb-0"> </p>
+
 
                         </div>
-                    </div>
+                        {% endif %}
 
 
                     <div class="text-center card border-0 shadow-sm mb-3">
