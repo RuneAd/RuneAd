@@ -94,13 +94,11 @@
                                 <div class="flex-fill w-100">
                                     <p class="mb-0">
                                     {% if server.ping == -1  %}
-                                    <span class="badge text-danger"
-                                        data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
+                                    <span class="badge text-danger">
                                         Offline
                                     </span>
                                     {% else %}
-                                    <span class="badge text-success"
-                                        data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
+                                    <span class="badge text-success>
                                         Online
                                     </span>
                                     {% endif %}
