@@ -92,8 +92,18 @@
                         <div id="details" class="text-center">
                             <div class="d-flex">
                                 <div class="flex-fill w-100">
-                                    <p class="mb-0 text-default">
-                                        {{ server.ping > -1 ? 'Online' : 'Offline' }}
+                                    <p class="mb-0">
+                                    {% if server.ping == -1  %}
+                                    <span class="badge badge-danger status-badge"
+                                        data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
+                                        Offline
+                                    </span>
+                                    {% else %}
+                                    <span class="badge badge-success status-badge"
+                                        data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
+                                        Online
+                                    </span>
+                                    {% endif %}
                                     </p>
                                     <p class="small">
                                         Status
