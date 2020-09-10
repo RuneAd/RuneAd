@@ -61,13 +61,7 @@ class ProfileController extends Controller {
     }
 
     public function payments() {
-      Paginator::currentPageResolver(function() use ($page) {
-           return $page;
-      });
-      $payments = Payments::where('user_id', $this->user->user_id)->paginate(15);
-        $roles = implode(", ", json_decode($this->user->roles, true));
-        $this->set("payments", $payments);
-        return true;
+      
       }
 
     public function stats() {
