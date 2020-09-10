@@ -38,15 +38,32 @@ class PagesController extends Controller {
     }
 
     public function stats() {
-        $servers = Servers::count();
-        $votes   = Votes::count();
-        $users   = Users::count();
+      $thisMonth = strtotime(date("Y-m-01 00:00:00"));
+      $lastMonth = strtotime("first day of last month");
+      $lastWeek = strtotime("-1 week +1 day");
+      $day = strtotime("today");
+      $hour = strtotime("-1 hour");
 
-        $this->set("servers", $servers);
-        $this->set("votes", $votes);
-        $this->set("users", $users);
-        return true;
-    }
+      $data = [
+          'users' => [
+              'total' => Users::count(),
+              'month' => Users::where("join_date", ">=", $thisMonth)->count()
+          ],
+          'votes' => [
+              'total' => Votes::count(),
+              'month' => Votes::where("voted_on", ">=", $thisMonth)->count(),
+              'lastmonth' => Votes::where("voted_on", ">=", $lastMonth)->count(),
+              'week' => Votes::where("voted_on", ">=", $lastWeek)->count(),
+              'day' => Votes::where("voted_on", ">=", $day)->count(),
+              'hour' => Votes::where("voted_on", ">=", $hour)->count()
+
+          ],
+          'servers' => [
+              'total' => Servers::count(),
+              'month' => Servers::where("date_created", ">=", $thisMonth)->count(),
+          ]
+      ];
+  }
 
     public static function getChartData($start_date) {
         return Votes::where("voted_on", '>', $start_date)
