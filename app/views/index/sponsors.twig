@@ -12,6 +12,12 @@
                 <i class="fas fa-crown" style="color:gold"></i>
             </td>
             <td class="py-4">
+            {% for server in servers %}
+            {% set seo = friendlyTitle(server.id~'-'~server.title) %}
+            <a class="text-default" href="{{ url('details/'~server.id) }}">
+                #{{ server.id}} {{ server.title }}
+            </a>
+            {% endfor %}
                 <a href="{{ sponsor.website }}" target="_blank" class="banner-img">
                     <img
                         src="{{ url('public/img/banner-loading.png') }}"
