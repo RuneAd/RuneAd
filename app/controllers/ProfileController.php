@@ -61,7 +61,7 @@ class ProfileController extends Controller {
         return true;
     }
 
-    public function payments() {
+    public function payments($page = 1) {
           Paginator::currentPageResolver(function() use ($page) {
                return $page;
           });
