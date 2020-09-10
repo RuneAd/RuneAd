@@ -118,9 +118,7 @@
 <p class="small text-muted">
     Status updates occur every 30 minutes on the clock. (ie 9, 9:30, 10, 10:30, etc.)
 </p>
-<p class="small text-muted">
-    Votes Reset in <p id="votetimer"></p>
-</p>
+
 
 {% set totalPages = servers.lastPage() %}
 {% set current = servers.currentPage() %}
@@ -188,25 +186,6 @@
 {% set recaptcha_key = constant('recaptcha')['public'] %}
 
 <script src="https://www.google.com/recaptcha/api.js?render={{ recaptcha_key }}" async></script>
-
-<script>
-var countDownDate = new Date("Sep 31, 2020 15:37:25").getTime();
-var x = setInterval(function() {
-  var now = new Date().getTime();
-  var distance = countDownDate - now;
-
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-  document.getElementById("votetimer").innerHTML = days + "d " + hours + "h "
-  + minutes + "m " + seconds + "s ";
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("votetimer").innerHTML = "RESETTING VOTES";
-  }
-}, 1000);
-</script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function(event) {
