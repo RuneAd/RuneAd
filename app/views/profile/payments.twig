@@ -14,7 +14,7 @@
                             height="60">
                         </div>
                         <div class="flex-fill w-100">
-                            <small class="text-muted">Profile - Payment History</small>
+                            <small class="text-muted">Profile</small>
                             <h5 class="mb-0">
                                 {{ user.username }} #{{ user.discriminator }}
                             </h5>
@@ -29,37 +29,45 @@
         </div>
     </div>
 
+    <div class="row mb-3">
+        <div class="col-sm-12 col-lg-4">
 
-        <table class="table mb-0">
-  {% for payment in payments.items() %}
-  <tr>
-      <td>
-          <span data-toggle="tooltip"
-                data-placement="right"
-                data-title="Discord ID: {{ payment.user_id }}">
-              {{ payment.username }}
-          </span>
-          <br>
-          <small class="text-muted">{{ payment.email }}</small>
-      </td>
-      <td>{{ payment.ip_address }}</td>
-      <td>
-          {{ payment.item_name }}<br>
-          <small class="text-muted">Paid ${{ payment.paid|number_format(2) }}</small>
-      </td>
-      <td>
-          {% if payment.status == "COMPLETED" %}
-          <span class="text-success">{{ payment.status|capitalize }}</span>
-          {% else %}
-          <span class="text-danger">{{ payment.status|capitalize }}</span>
-          {% endif %}<br>
-          {{ payment.date_paid|date("m.d.y H:i T") }}
-      </td>
-  </tr>
-  {% endfor %}
-</table>
+                        <div class="text-center" style="display:none;">
+                            <div class="d-flex">
+                                <div class="flex-fill w-100">
+                                    <p class="mb-0 text-primary">{{ payment.email }}</p>
+                                    <p class="small text-muted">Email</p>
+                                </div>
+                                <div class="flex-fill w-100">
+                                    <p class="mb-0 text-primary">{{ payment.username }}</p>
+                                    <p class="small text-muted">Username</p>
+                                </div>
+                                <div class="flex-fill w-100">
+                                    <p class="mb-0 text-primary">{{ payment.ip_address }}</p>
+                                    <p class="small text-muted">IP Paid</p>
+                                </div>
+                                <div class="flex-fill w-100">
+                                    <p class="mb-0 text-primary">{{ payment.item_name }}</p>
+                                    <p class="small text-muted">Item</p>
+                                </div>
+                                <div class="flex-fill w-100">
+                                    <p class="mb-0 text-primary">${{ payment.paid|number_format(2) }}</p>
+                                    <p class="small text-muted">Amount Paid</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+            <div class="alert alert-default shadow-sm">
+                You currently have no payments with RuneAd.
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 
     {{ content|raw }}
 </div>
+
 
 {%  endblock %}
