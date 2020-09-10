@@ -44,6 +44,7 @@ class PagesController extends Controller {
       $day = strtotime("today");
       $hour = strtotime("-1 hour");
 
+
       $data = [
           'users' => [
               'total' => Users::count(),
@@ -63,7 +64,15 @@ class PagesController extends Controller {
               'month' => Servers::where("date_created", ">=", $thisMonth)->count(),
           ]
       ];
-  }
+
+
+
+
+
+
+
+        return true;
+    }
 
     public static function getChartData($start_date) {
         return Votes::where("voted_on", '>', $start_date)
