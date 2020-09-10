@@ -11,7 +11,7 @@ class Servers extends Model {
 
     protected $fillable = [
         'id', 'owner', 'title', 'revision', 'server_ip', 'server_port', 'is_online', 'votes',
-        'website', 'callback_url', 'banner_url', 'discord_id', 'meta_info', 'meta_tags',
+        'website', 'callback_url', 'banner_url', 'discord_link', 'meta_info', 'meta_tags',
         'description', 'date_created', 'premium_level', 'premium_expires'
     ];
 
