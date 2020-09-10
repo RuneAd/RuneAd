@@ -62,16 +62,7 @@ class ProfileController extends Controller {
 
     public function payments() {
 
-    $payments = Payments::where('owner', $this->user->user_id)->get();
-    roles = implode(", ", json_decode($this->user->roles, true));
-    ->orderBy("date_paid", "DESC")
-    ->paginate(15);
-    $numRes   = count($payments->items());
 
-    $this->set("payments", $payments);
-    return true;
-
-    }
 
     public function stats() {
 
