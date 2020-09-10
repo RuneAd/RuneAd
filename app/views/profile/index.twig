@@ -2,7 +2,6 @@
 
 {% block content %}
 
-
 <div class="container" style="margin-top:-30px;">
     <div class="row">
         <div class="col-sm-12">
@@ -16,16 +15,13 @@
                         </div>
                         <div class="flex-fill w-100">
                             <small class="text-muted">Profile</small>
-                            <h5 class="mb-0">{{ user.username }} #{{ user.discriminator }}</h5>
+                            <h5 class="mb-0">
+                                {{ user.username }} #{{ user.discriminator }}
+                            </h5>
                         </div>
                         <div class="flex-fill w-100 text-right">
-                            <a href="{{ url('servers/add') }}" class="btn btn-success btn-lg">Add Server</a>
-                        </div>
-                        <div class="flex-fill w-50 text-right">
-                            <a href="{{ url('premium') }}" class="btn btn-success btn-lg pulse">Go Premium</a>
-                        </div>
-                        <div class="flex-fill w-50 text-right">
-                            <a href="{{ url('sponsor') }}" class="btn btn-info btn-lg pulse">Go Sponsored</a>
+                            <a href="{{ url('servers/add') }}" class="btn btn-default btn-lg">Add Server</a>
+                            <a href="{{ url('ads') }}" class="btn btn-success btn-lg">Go Premium</a>
                         </div>
                     </div>
                 </div>
@@ -33,117 +29,159 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row mb-3">
         <div class="col-sm-12 col-lg-4">
+
             <div class="card border-0 shadow-sm mb-3">
                 <div class="card-body">
+                    <p class="text-muted small mb-0">Servers</p>
                     <p class="mb-0">{{ servers|length }}</p>
-                    <small class="text-muted">Servers</small>
+
                 </div>
             </div>
 
             <div class="card border-0 shadow-sm mb-3">
                 <div class="card-body">
+                    <p class="text-muted small mb-0">Discord ID</p>
                     <p class="mb-0">{{ user.user_id }}</p>
-                    <small class="text-muted">User ID</small>
+
                 </div>
             </div>
 
             <div class="card border-0 shadow-sm mb-3">
                 <div class="card-body">
+                    <p class="text-muted small mb-0">Roles</p>
                     <p class="mb-0">{{ roles }}</p>
-                    <small class="text-muted">Roles</small>
+
                 </div>
             </div>
 
             <div class="card border-0 shadow-sm mb-3">
                 <div class="card-body">
+                    <p class="text-muted small mb-0">Email</p>
                     <p class="mb-0">{{ user.email }}</p>
-                    <small class="text-muted">Email</small>
+
                 </div>
             </div>
+
         </div>
-
-
         <div class="col-sm-12 col-lg-8">
-            <div class="card border-0 shadow-sm mb-3">
-                <div class="card-header bg-{{ theme == "dark" ? "transparent" : "white" }} py-3">
-                    My Servers
-                </div>
-                <table class="table table-hover mb-0">
-                    <thead class="small text-muted border-0 bg-light">
-                        <tr>
-                            <th class="border-0 py-2 text-right">id</th>
-                            <th class="border-0 py-2 text-center status-col">status</th>
-                            <th class="border-0 py-2">title</th>
-                            <th class="border-0 py-2 text-right">votes</th>
-                            <th class="border-0 py-2 text-right"></th>
-                        </tr>
-                    </thead>
-                    {% for server in servers %}
-                    {% set class = server.premium_expires > time() ? 'bg-primary' : '' %}
-                    {% set seo = friendlyTitle(server.id~'-'~server.title) %}
+            {% for server in servers %}
+            {% set seo = friendlyTitle(server.id~'-'~server.title) %}
+                <div class="card border-0 shadow-sm overflow-hidden mb-3" style="position:relative;">
+                    <div class="card-header bg-transparent">
 
-                    <tr style="line-height:1em;" class="{{ class }}">
-                        <td class="text-right"style="width:90px;">{{ server.id }}</td>
-                        <td class="text-center status-col">
-                            {% set status = server.is_online ? 'online' : 'offline' %}
-                            <span class="status status-{{ status }}" data-toggle="tooltip" data-title="{{ status|capitalize }}"></span>
-                        </td>
-                        <td>
-                            <a href="{{ url('details/'~seo) }}">{{ server.title }}</a>
-                            <br>
-                            <span class="small text-muted">
-                                Rev. {{ server.revision }}
-                            </span>
-                            <br>
-                            <span class="small text-muted">
-                            {% if server.banner_url %}
-                            <a href="{{ url('servers/edit/'~seo) }}" class="banner-img">
-                                <img data-src="{{ banner(server.banner_url) }}"
-                                src="{{ url('public/img/banner-loading.png') }}"
-                                    id="banner"
-                                    alt="{{ server.banner_url }}"
-                                    style="margin-top:14px;"
-                                    class="img-fluid rounded lazy">
-                            </a>
-                            {% else %}
-                            <a href="{{ url('servers/edit/'~seo) }}" class="banner-img">
-                                <img src="{{ url('public/img/banner-'~theme~'.png') }}"
-                                    id="banner"
-                                    alt="{{ url('public/img/banner-'~theme~'.png') }}"
-                                    style="margin-top:14px;"
-                                    class="img-fluid rounded lazy">
-                            </a>
-                            {% endif %}
-                            </span>
-                        </td>
-                        <td class="small text-right">
-                            {{ server.votes }}
-                        </td>
-                        <td class="text-right">
-                            <a href="{{ url('servers/edit/'~seo) }}" class="btn btn-outline-primary btn-sm">
-                                Edit
-                            </a>
-
-                            <!-- Toggled out delete server for the time being -->
-                           <!-- <a href="{{ url('servers/delete/'~seo) }}" class="btn btn-link text-danger btn-sm">
-                                 {{ icon('trash', 16, 16) }}
-                            </a> -->
-
-                        </td>
-                    </tr>
-                    {% else %}
-                    <div class="list-group-item">
-                        You have no servers listed.
+                        <div class="d-flex align-items-center">
+                            <div class="flex-fill">
+                                <a class="text-default" href="{{ url('details/'~server.id) }}">
+                                    #{{ server.id}} {{ server.title }}
+                                </a>
+                            </div>
+                            <div class="flex-fill text-right">
+                                <a href="#" id="showdetails" class="px-2">
+                                    {{ icon('info-circle')}}
+                                </a>
+                                <a href="{{ url('servers/edit/'~seo) }}" class="px-2">
+                                    {{ icon('pencil')}}
+                                </a>
+                                <a href="{{ url('servers/delete/'~seo) }}" class="px-2">
+                                    {{ icon('trash')}}
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    {% endfor %}
-                </table>
+
+                    <div class="card-body">
+                        <div id="details" class="text-center">
+                            <div class="d-flex">
+                                <div class="flex-fill w-100">
+                                    <p class="mb-0 text-default">
+                                        {{ server.ping > -1 ? 'Online' : 'Offline' }}
+                                    </p>
+                                    <p class="small">
+                                        Status
+                                    </p>
+                                </div>
+                                <div class="flex-fill w-100">
+                                    <p class="mb-0 text-default">
+                                        {% if server.premium_expires > time() %}
+                                            {{ timeLeft(server.premium_expires, true)}}
+                                        {% elseif server.premium_expires < time() and server.premium_expires != -1 %}
+                                            Expired
+                                        {% else %}
+                                            n/a
+                                        {% endif %}
+                                        </p>
+
+                                        <p class="small">
+                                            Premium Exp.
+                                        </p>
+                                </div>
+                                <div class="flex-fill w-100">
+                                    <p class="mb-0 text-default">
+                                        {{ server.date_created|date("m.d.y") }}
+                                    </p>
+                                    <p class="small">
+                                        Created
+                                    </p>
+                                </div>
+                                <div class="flex-fill w-100">
+                                    <p class="mb-0 text-default">
+                                        {{ server.revision ? server.revision : 'n/a'}}
+                                    </p>
+                                    <p class="small">
+                                        Revision
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="statistics" class="text-center" style="display:none;">
+                            <div class="d-flex">
+                                <div class="flex-fill w-100">
+                                    <p class="mb-0 text-default">{{ server.votes|number_format }}</p>
+                                    <p class="small text-muted">Current</p>
+                                </div>
+                                <div class="flex-fill w-100">
+                                    <p class="mb-0 text-default">{{ voteData[server.id]['60days']|number_format }}</p>
+                                    <p class="small text-muted">60 Days</p>
+                                </div>
+                                <div class="flex-fill w-100">
+                                    <p class="mb-0 text-default">{{ voteData[server.id]['30days']|number_format }}</p>
+                                    <p class="small text-muted">30 Days</p>
+                                </div>
+                                <div class="flex-fill w-100">
+                                    <p class="mb-0 text-default">{{ voteData[server.id]['7days']|number_format }}</p>
+                                    <p class="small text-muted">7 Days</p>
+                                </div>
+                                <div class="flex-fill w-100">
+                                    <p class="mb-0 text-default">{{ voteData[server.id]['1day']|number_format }}</p>
+                                    <p class="small text-muted">1 Day</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+            <div class="alert alert-default shadow-sm">
+                You dont have a server listed yet! Click the button above to add one now!
             </div>
+            {% endfor %}
         </div>
     </div>
 
     {{ content|raw }}
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(event) {
+    $('a[id="showdetails"]').click(function(event) {
+        event.preventDefault();
+        let parent = $(this).closest(".card");
+        parent.find("#statistics").toggle();
+        parent.find("#details").toggle();
+    });
+});
+</script>
 
 {%  endblock %}

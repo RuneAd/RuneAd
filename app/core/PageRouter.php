@@ -192,9 +192,8 @@ class PageRouter extends Router {
         });
 
         $this->get("profile/stats", function() {
-            return $this->setRoute('profile', 'stats');
-        });
-
+             return $this->setRoute('profile', 'stats');
+         });
         /**
          * Pages
          */

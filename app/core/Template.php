@@ -107,8 +107,8 @@ class Template extends FilesystemLoader {
                 return Functions::elapsed($int);
             }));
 
-            $twig->addFunction(new \Twig\TwigFunction('timeLeft', function ($int) {
-                return Functions::getTimeLeft($int);
+            $twig->addFunction(new \Twig\TwigFunction('timeLeft', function ($int, $short = false) {
+                 return Functions::getTimeLeft($int, $short);
             }));
 
             return $twig->load($path . '.twig');
