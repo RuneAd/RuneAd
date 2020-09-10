@@ -10,7 +10,9 @@
             <p>{{ content|raw }}</p>
 
             {% include 'index/sponsors.twig' %}
+            {% if servers.currentPage() == 1 %}
             {% include 'index/HomeAds.twig' %}
+            {% endif %}
             {% include 'index/listing.twig' %}
         </div>
     </div>
