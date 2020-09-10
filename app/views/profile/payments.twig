@@ -1,0 +1,49 @@
+{%  extends 'layout.twig' %}
+
+{% block content %}
+<section style="margin-top:-30px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="flex-fill px-4 pr-5 text-center">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-table mr-1"></i>
+                                    User Payment History
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                <tr>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {{ content|raw }}
+            </div>
+        </div>
+    </div>
+</section>
+
+{%  endblock %}

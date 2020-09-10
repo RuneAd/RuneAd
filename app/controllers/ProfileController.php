@@ -60,6 +60,10 @@ class ProfileController extends Controller {
         return true;
     }
 
+    public function payments() {
+
+    }
+
     public function stats() {
 
         return true;

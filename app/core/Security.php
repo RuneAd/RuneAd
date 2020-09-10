@@ -32,7 +32,7 @@ class Security {
             'servers' => ['add', 'edit', 'delete'],
             'premium' => ['button', 'verify', 'process'],
             'sponsor' => ['button', 'verify', 'process'],
-            'profile' => ['index', 'stats'],
+            'profile' => ['index', 'stats', 'payments'],
         ];
 
         $admin = [
