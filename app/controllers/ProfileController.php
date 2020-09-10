@@ -61,7 +61,8 @@ class ProfileController extends Controller {
     }
 
     public function payments() {
-
+        $payments = Payments::where('user_id', $this->user->user_id)->paginate(15);
+        return true;
 }
 
     public function stats() {
