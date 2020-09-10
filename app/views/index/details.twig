@@ -114,42 +114,6 @@
                     </div>
                     {% endif %}
 
-                    {% if is_mobile == false %}
-
-
-                    <div class="card border-0 shadow-sm mb-3">
-                        <div class="card-body">
-                        <small class="text-center text-primary"></small>
-                        <div class="table-responsive">
-                        <table class="text-small" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th><small class="text-primary">Current</small></th>
-                                <th><small class="text-primary">Last Month</small></th>
-                                <th><small class="text-primary">This Month</small></th>
-                                <th><small class="text-primary">Last 7 Days</small></th>
-                                <th><small class="text-primary">Last 24 Hours</small></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{{ server.votes }}</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                            </tr>
-                        </tbody>
-                        </table>
-                    </div>
-                  </div>
-                </div>
-
-
-
-                    {% endif %}
-
-
                     <div class="text-center card border-0 shadow-sm mb-3">
                         <div class="card-body">
                         {% if server.banner_url %}
