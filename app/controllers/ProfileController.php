@@ -66,6 +66,7 @@ class ProfileController extends Controller {
                return $page;
           });
           $payments = Payments::where('user_id', $this->user->user_id)->paginate(15);
+          $sum = Payments::where('user_id', $this->user->user_id)->sum("paid");
             $roles = implode(", ", json_decode($this->user->roles, true));
             $this->set("payments", $payments);
             return true;
