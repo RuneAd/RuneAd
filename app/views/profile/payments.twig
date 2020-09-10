@@ -1,64 +1,70 @@
 {%  extends 'layout.twig' %}
 
 {% block content %}
-<section style="margin-top:-30px;">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="card border-0 shadow-sm">
-                    <div class="card-body">
-                        <div class="d-flex">
-                            <div class="flex-fill px-4 pr-5 text-center">
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    <i class="fas fa-table mr-1"></i>
-                                    User Payment History
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                    <table class="table mb-0">
-                {% for payment in payments.items() %}
-                <tr>
-                    <td>
-                        <span data-toggle="tooltip"
-                              data-placement="right"
-                              data-title="Discord ID: {{ payment.user_id }}">
-                            {{ payment.username }}
-                        </span>
-                        <br>
-                        <small class="text-muted">{{ payment.email }}</small>
-                    </td>
-                    <td>{{ payment.ip_address }}</td>
-                    <td>
-                        {{ payment.item_name }}<br>
-                        <small class="text-muted">Paid ${{ payment.paid|number_format(2) }}</small>
-                    </td>
-                    <td>
-                        {% if payment.status == "COMPLETED" %}
-                        <span class="text-success">{{ payment.status|capitalize }}</span>
-                        {% else %}
-                        <span class="text-danger">{{ payment.status|capitalize }}</span>
-                        {% endif %}<br>
-                        {{ payment.date_paid|date("m.d.y H:i T") }}
-                    </td>
-                </tr>
-                {% endfor %}
-            </table>
-                                    </div>
-                                </div>
-                            </div>
 
-
-
-                            </div>
+<div class="container" style="margin-top:-30px;">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card border-0 shadow-sm mb-3">
+                <div class="card-body" style="line-height:.8em;">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-fill pr-3">
+                            <img src="{{ avatar(user.user_id, user.avatar) }}"
+                            class="rounded-circle mr-3"
+                            height="60">
+                        </div>
+                        <div class="flex-fill w-100">
+                            <small class="text-muted">Profile - Payment History</small>
+                            <h5 class="mb-0">
+                                {{ user.username }} #{{ user.discriminator }}
+                            </h5>
+                        </div>
+                        <div class="flex-fill w-100 text-right">
+                            <a href="{{ url('servers/add') }}" class="btn btn-default btn-lg">Add Server</a>
+                            <a href="{{ url('premium') }}" class="btn btn-success btn-lg">Go Premium</a>
                         </div>
                     </div>
                 </div>
-
-                {{ content|raw }}
             </div>
         </div>
     </div>
-</section>
+
+    <div class="row mb-3">
+        <div class="col-sm-12 col-lg-4">
+
+        <table class="table mb-0">
+  {% for payment in payments.items() %}
+  <tr>
+      <td>
+          <span data-toggle="tooltip"
+                data-placement="right"
+                data-title="Discord ID: {{ payment.user_id }}">
+              {{ payment.username }}
+          </span>
+          <br>
+          <small class="text-muted">{{ payment.email }}</small>
+      </td>
+      <td>{{ payment.ip_address }}</td>
+      <td>
+          {{ payment.item_name }}<br>
+          <small class="text-muted">Paid ${{ payment.paid|number_format(2) }}</small>
+      </td>
+      <td>
+          {% if payment.status == "COMPLETED" %}
+          <span class="text-success">{{ payment.status|capitalize }}</span>
+          {% else %}
+          <span class="text-danger">{{ payment.status|capitalize }}</span>
+          {% endif %}<br>
+          {{ payment.date_paid|date("m.d.y H:i T") }}
+      </td>
+  </tr>
+  {% endfor %}
+</table>
+
+        </div>
+    </div>
+
+    {{ content|raw }}
+</div>
 
 {%  endblock %}
