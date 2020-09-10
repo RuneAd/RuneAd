@@ -16,31 +16,34 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>Date</th>
-                                                    <th>Email</th>
-                                                    <th>Username</th>
-                                                    <th>Item</th>
-                                                    <th>Amount Paid</th>
-                                                    <th>Status</th>
-                                                    <th>Transaction ID</th>
-                                                </tr>
-                                            </thead>
-
-                                            <tbody>
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                    <table class="table mb-0">
+                {% for payment in payments.items() %}
+                <tr>
+                    <td>
+                        <span data-toggle="tooltip"
+                              data-placement="right"
+                              data-title="Discord ID: {{ payment.user_id }}">
+                            {{ payment.username }}
+                        </span>
+                        <br>
+                        <small class="text-muted">{{ payment.email }}</small>
+                    </td>
+                    <td>{{ payment.ip_address }}</td>
+                    <td>
+                        {{ payment.item_name }}<br>
+                        <small class="text-muted">Paid ${{ payment.paid|number_format(2) }}</small>
+                    </td>
+                    <td>
+                        {% if payment.status == "COMPLETED" %}
+                        <span class="text-success">{{ payment.status|capitalize }}</span>
+                        {% else %}
+                        <span class="text-danger">{{ payment.status|capitalize }}</span>
+                        {% endif %}<br>
+                        {{ payment.date_paid|date("m.d.y H:i T") }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
                                     </div>
                                 </div>
                             </div>
