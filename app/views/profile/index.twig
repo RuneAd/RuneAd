@@ -110,13 +110,17 @@
                                     </p>
                                 </div>
                                 <div class="flex-fill w-100">
-                                    <p class="mb-0 text-default">
+                                    <p class="mb-0 text-success">
                                         {% if server.premium_expires > time() %}
                                             {{ timeLeft(server.premium_expires, true)}}
                                         {% elseif server.premium_expires < time() and server.premium_expires != -1 %}
+                                        <span class="badge text-danger">
                                             Expired
+                                        </span>
                                         {% else %}
+                                        <span class="badge text-primary">
                                             n/a
+                                        </span>
                                         {% endif %}
                                         </p>
 
