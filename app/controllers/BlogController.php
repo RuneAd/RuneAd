@@ -5,9 +5,11 @@ class BlogController extends Controller {
 
         $data = [
             'blogs' => [
-                'total' => Blog::count()
+                'total' => Blogs::count()
             ]
             ];
+
+            $validation = Blogs::validate($data);
 
     }
 
