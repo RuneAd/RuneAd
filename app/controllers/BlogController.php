@@ -11,6 +11,7 @@ class BlogController extends Controller {
         if ($this->request->isPost()) {
             $data = [
                 'title'         => $this->request->getPost("title", "string"),
+                'owner'         => $this->user->user_id,
                 'meta_tags'     => explode(",", $this->request->getPost("meta_tags", 'string')),
                 'meta_info'     => $this->request->getPost("meta_info", "string"),
                 'description'   => $this->purify($this->request->getPost("info")),
