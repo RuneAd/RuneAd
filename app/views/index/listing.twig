@@ -73,12 +73,12 @@
                         {{ icon('link-45deg') }} WEBSITE
                     </a>
                     
-                    {{ server.meta_tags }}
+                    {{ server.meta_tags('UTF-8', 'HTML-ENTITIES') | raw }}
                        
                     {% endif %}
                     {% endif %}                    
                 </div>
-                {{ server.meta_tags }}
+                
             </td>
             <td class="text-right">
                 {% set btnclass = isPremium
