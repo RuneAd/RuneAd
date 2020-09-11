@@ -75,7 +75,7 @@
 
                     
 
-                            {% if server.description|length > 40 %}
+                            {% if server.description | raw |length > 40 %}
                             {{ substr(server.description, 0, 120)~'...' }}
                             {% else %}
                             {{ server.description | raw }}
