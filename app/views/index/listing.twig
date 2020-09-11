@@ -78,7 +78,7 @@
                             {% if server.description|length > 40 %}
                             {{ substr(server.description, 0, 120)~'...' }}
                             {% else %}
-                            {{ server.description | striptags }}
+                            {{ server.description | striptags | raw }}
                             {% endif %}
                       
 
