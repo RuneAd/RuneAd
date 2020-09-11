@@ -12,8 +12,8 @@ class IndexController extends Controller {
         $revisions = Revisions::where('visible', 1)->get();
 
         $data = [
-            'users' => [
-                'total' => Users::count()
+            'servers' => [
+                'total' => Serverss::count()
                 ]
             ];
 
