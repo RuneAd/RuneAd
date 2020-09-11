@@ -91,6 +91,7 @@ class Servers extends Model {
                 'revision',
                 'banner_url',
                 'is_online',
+                'discord_link',
                 'ping',
                 'last_ping',
                 'premium_expires',
