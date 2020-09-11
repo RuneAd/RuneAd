@@ -1,0 +1,18 @@
+<div class="card border-0 shadow-sm mb-4">
+     <div class="list-group">
+         <a href="{{ url('profile') }}" class="list-group-item {{ action == "index" ? "active" : "" }}">
+
+             <div class="float-left mr-2" style="margin-top:-1px;">
+                 {{ icon('house', 18, 18) }}
+             </div>
+
+             Total Blogs
+         </a>
+         <a href="{{ url('profile/payments') }}" class="list-group-item {{ action == "payments" ? "active" : "" }}">
+             <div class="float-left mr-2" style="margin-top:-1px;">
+                 {{ icon('shop', 18, 18) }}
+             </div>
+             Payment History
+         </a>
+     </div>
+ </div> 
