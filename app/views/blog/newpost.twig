@@ -1,0 +1,228 @@
+{%  extends 'layout.twig' %}
+
+{% block content %}
+
+<script src="https://runead.com/public/js/quill.js"></script>
+
+<div class="container" style="margin-top:-30px;">
+    <div class="row">
+        <div class="col-sm-12">
+
+            <div class="card border-0 shadow-sm mb-3">
+                <div class="card-header bg-default">
+                    <h5 class="mb-0 text-white">New Blog Post</h5>
+                    <p class="mb-0 text-white">Use the form below to create a new blog post on RuneAd.</p>
+                </div>
+                <div class="card-body">
+                    {% if errors is defined %}
+                        <div class="alert alert-danger">
+                            <p class="mb-2">Errors were encountered when creating your post:</p>
+                            <ul class="mb-0 pl-3">
+                                {% for key, value in errors %}
+                                <li>&bull; {{ value }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    <form method="post" action="{{ url('blog/add') }}" id="postform">
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <label>Blog Title*</label>
+                                <input type="text" class="form-control {{ errors['title'] is defined ? 'border-danger' : '' }}" name="title">
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <label>Meta Tags</label>
+                                <input type="text" class="form-control {{ errors['meta_tags'] is defined ? 'border-danger' : '' }}" name="meta_tags">
+                                <small class="text-muted">
+                                    Comma separated. Max 15. <a href="https://www.w3schools.com/tags/tag_meta.asp" target="_blank">More Info</a>
+                                </small>
+                            </div>
+                            <div class="col">
+                                <label>Meta Description</label>
+                                <input type="text" class="form-control {{ errors['meta_info'] is defined ? 'border-danger' : '' }}" name="meta_info">
+                                <small class="text-muted">
+                                    A short description of your blog post. <a href="https://yoast.com/meta-descriptions/" target="_blank">More Info</a>
+                                </small>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <input type="hidden" name="banner_url" id="banner_url" value="">
+
+                        <hr>
+
+                        <div class="form-group">
+                            <div id="editor" class="mb-3 {{ errors['info'] is defined ? 'border-danger' : '' }}"></div>
+                            <textarea name='info' id='editor-form' style='display:none'></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-dark shadow-none" id="submit">
+                                Create post
+                            </button>
+
+                            <div id="toolbar" class="d-inline-block">
+                                <span class="ql-formats">
+                                    <button class="ql-bold"
+                                        data-toggle="tooltip" data-title="Bold"></button>
+                                    <button class="ql-italic"
+                                        data-toggle="tooltip" data-title="Italic"></button>
+                                    <button class="ql-underline"
+                                        data-toggle="tooltip" data-title="Underline"></button>
+                                    <button class="ql-strike"
+                                        data-toggle="tooltip" data-title="Strikethrough"></button>
+                                </span>
+
+                                <span class="ql-formats">
+                                    <button class="ql-list" value="ordered"
+                                        data-toggle="tooltip" data-title="Ordered List"></button>
+                                    <button class="ql-list" value="bullet"
+                                        data-toggle="tooltip" data-title="Bullet List"></button>
+                                </span>
+
+                                <span class="ql-formats">
+                                    <button class="ql-link"
+                                        data-toggle="tooltip" data-title="Link"></button>
+                                    <button class="ql-image"
+                                        data-toggle="tooltip" data-title="Image"></button>
+                                </span>
+
+                                <span class="ql-formats">
+                                    <button class="ql-clean"  data-toggle="tooltip" data-title="Clear Formatting"></button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            {{ content|raw }}
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(event) {
+    var apiUrl = 'https://api.imgur.com/3/image';
+    var apiKey = '{{ constant("imgur_key") }}';
+    var quill = new Quill('#editor', {
+        theme: 'snow',
+        modules: {
+            toolbar: '#toolbar'
+        },
+        placeholder: 'Write a server description...'
+    });
+    let alert = $('.alert-box');
+    quill.getModule("toolbar").addHandler("image", function (a) {
+        var input = document.createElement('input');
+
+        input.setAttribute('type', 'file');
+        input.click();
+        input.onchange = (s) => {
+            var file = input.files[0];
+            if (/^image\//.test(file.type)) {
+                var settings = {
+                    async: true,
+                    crossDomain: true,
+                    processData: false,
+                    contentType: false,
+                    type: 'POST',
+                    url: apiUrl,
+                    headers: {
+                        Authorization: 'Client-ID ' + apiKey,
+                        Accept: 'application/json'
+                    },
+                    mimeType: 'multipart/form-data'
+                };
+                var formData = new FormData();
+                formData.append("image", file);
+                settings.data = formData;
+                quill.enable(false);   // Disables user input
+                var range = quill.getSelection();
+                if (range) {
+                    $.ajax(settings).done(function(response) {
+                        var json = JSON.parse(response);
+                        var index = range.index;
+                        quill.insertEmbed(index, 'image', json.data.link);
+                        quill.enable();
+                    });
+                } else {
+                    alert("Please select a spot in your post where you wish the image to be placed.")
+                }
+            } else {
+                console.warn('You could only upload images.');
+            }
+        }
+    });
+    $("#postform").on("submit", function (event) {
+        var body = $(this).find(".ql-editor").html();
+        $(this).find("#editor-form").html(body);
+        return true;
+    });
+    $('#bannerimg').click(function(event) {
+        event.preventDefault();
+        let button = $(this);
+        let progress = $('#progress');
+        var input = document.createElement('input');
+
+        input.setAttribute('type', 'file');
+        input.click();
+        input.onchange = (s) => {
+            var file = input.files[0];
+            var formData = new FormData();
+            formData.append("image", file);
+
+            $.ajax({
+                async: true,
+                crossDomain: true,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                data: formData,
+                url: "{{ url('servers/upload') }}",
+                mimeType: 'multipart/form-data',
+                xhr: function () {
+                    var myXhr = $.ajaxSettings.xhr();
+                    if (myXhr.upload) {
+                        myXhr.upload.addEventListener('progress', function (e) {
+                            if (e.lengthComputable) {
+                                let percent = Math.ceil((e.loaded * 100) / e.total);
+
+                                if (percent === 100) {
+                                    button.html("Processing...")
+                                } else {
+                                    button.html(percent+"%");
+                                }
+                            }
+                        }, false);
+                    }
+                    return myXhr;
+                },
+                success: function (data) {
+                    progress.css({"width": "0%"});
+                    button.html("&nbsp;");
+                    try {
+                        var json = JSON.parse(data);
+                        if (json.success) {
+                            $('#banner_url').val(json.message);
+                            button.css({'background-image' :
+                                'url("{{ constant("web_root") }}public/img/banners/'+json.message+'")'});
+                        }
+
+                    } catch (err) {
+                        console.log(err);
+                    }
+                },
+            });
+            //}
+        }
+    });
+});
+</script>
+{%  endblock %}
