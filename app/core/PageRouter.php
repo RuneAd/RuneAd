@@ -195,10 +195,6 @@ class PageRouter extends Router {
             return $this->setRoute('profile', 'stats');
          });
 
-         $this->get("profile/newpost", function() {
-            return $this->setRoute('profile', 'newpost');
-         });
-
          $this->get("profile/payments", function() {
             return $this->setRoute('profile', 'payments');
          });
