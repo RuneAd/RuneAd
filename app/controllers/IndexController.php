@@ -27,7 +27,7 @@ class IndexController extends Controller {
             $this->set("revision", $revision);
         } else {
             $servers = Servers::getAll($page);
-            $this->set("page_title", "RSPS Toplist");
+            $this->set("page_title", "RSPS Toplist | RuneScape Private Servers");
         }
         
         $data = [
@@ -49,7 +49,7 @@ class IndexController extends Controller {
             ->leftJoin("servers", "servers.id", "=", "sponsors.server_id")
             ->orderBy("started", "ASC")
             ->get();
-            
+
         $this->set("data", $data);
         $this->set("servers", $servers);
         $this->set("revisions", $revisions);
