@@ -260,7 +260,7 @@ class PageRouter extends Router {
             return $this->setRoute('blog', 'index');
         });
         $this->all('blog', function() {
-            return $this->setRoute('blog', 'newpost');
+            return $this->setRoute('blog', 'add');
         });
 
 
