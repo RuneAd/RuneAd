@@ -254,6 +254,14 @@ class PageRouter extends Router {
         });
 
         /**
+         * Blog
+         */
+        $this->all('blog', function() {
+            return $this->setRoute('blog', 'index');
+        });
+
+
+        /**
        * Admin Users
        */
       $this->all('admin/users', function() {
