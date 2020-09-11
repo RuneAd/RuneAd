@@ -76,7 +76,6 @@ class ProfileController extends Controller {
 
         return true;
     }
-    
 
     public $access =  [
         'login_required' => true,
