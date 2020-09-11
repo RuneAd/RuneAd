@@ -67,18 +67,21 @@
                 
                 <div class="mt-2">
                     {% if isPremium  %}
+                    {% if server.discord_link and server.discord_link != "" %}
                     <a href="{{ server.discord_link }}" class="btn btn-primary btn-sm py-1 text-uppercase mr-0"
                     style="font-size:9px;"
                     rel="nofollow" target="_blank">
                     {{ icon('discord') }} DISCORD
                     </a>
+                    {% endif %}
                     
-                    <a href="{{ server.website }}" class="btn btn-primary btn-sm py-1 text-uppercase"
-                        style="font-size:9px;"
+                    {% if server.website and server.website != "" %}
+                    <a href="{{ server.website }}" class="btn btn-default btn-sm py-1 text-uppercase"                        style="font-size:9px;"
                         rel="nofollow" target="_blank">
                         {{ icon('link-45deg') }} WEBSITE
                     </a>
 
+                    {% endif %}
                     {% endif %}
                     
                 </div>
