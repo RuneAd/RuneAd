@@ -3,6 +3,12 @@ class BlogController extends Controller {
 
     public function index() {
 
+        $data = [
+            'blog' => [
+                'total' => Blog::count()
+            ]
+            ];
+
     }
 
     public function add() {
