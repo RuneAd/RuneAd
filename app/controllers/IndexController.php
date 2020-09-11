@@ -11,11 +11,6 @@ class IndexController extends Controller {
     public function index($rev = null, $page = 1) {
         $revisions = Revisions::where('visible', 1)->get();
 
-        $data = [
-            'servers' => [
-                'total' => Servers::count()
-                ]
-            ];
 
         if ($rev != null) {
             $revision = Revisions::where('revision', $rev)->first();
@@ -34,6 +29,12 @@ class IndexController extends Controller {
             $servers = Servers::getAll($page);
             $this->set("page_title", "RSPS Toplist");
         }
+        
+        $data = [
+            'servers' => [
+                'total' => Servers::count()
+            ]
+            ];
 
         $sponsors = Sponsors::select([
                 'sponsors.id',
