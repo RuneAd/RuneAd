@@ -229,8 +229,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
                             ? '{{ icon("check", 16, 16) }}'
                             : '{{ icon("x", 16, 16) }}');
                         setTimeout(function() {
-                            btn.removeClass("btn-default btn-danger disabled")
-                                .addClass("btn-default");
+                            btn.removeClass("btn-primary btn-danger disabled")
+                                .addClass("btn-primary");
                             btn.html('{{ icon("check2-square", 16, 16) }}');
                             locked = false;
                         }, 1000);
