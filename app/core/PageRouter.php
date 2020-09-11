@@ -176,8 +176,8 @@ class PageRouter extends Router {
             return $this->setRoute('index', 'details', ['serverId' => $id, 'page' => 1]);
         });
 
-        $this->all('details/([0-9]+)-([A-Za-z0-9\-]+)/([A-Za-z0-9\-]+)', function($id, $title, $rate) {
-            return $this->setRoute('index', 'details', ['serverId' => $id, 'rate' => $rate]);
+        $this->all('details/([0-9]+)-([A-Za-z0-9\-]+)/([A-Za-z0-9\-]+)', function($id, $title) {
+            return $this->setRoute('index', 'details', ['serverId' => $id]);
         });
 
         $this->all('servers/view/([0-9]+)-([A-Za-z0-9\-]+)', function($id, $title) {
@@ -262,7 +262,6 @@ class PageRouter extends Router {
         $this->all('blog/add', function() {
             return $this->setRoute('blog', 'add');
         });
-
 
         /**
        * Admin Users

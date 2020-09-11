@@ -4,7 +4,7 @@ class BlogController extends Controller {
     public function index() {
 
         $data = [
-            'blog' => [
+            'blogs' => [
                 'total' => Blog::count()
             ]
             ];
