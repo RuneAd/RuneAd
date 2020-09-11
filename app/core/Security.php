@@ -29,10 +29,10 @@ class Security {
         ];
 
         $private = [
-            'servers' => ['add', 'edit', 'delete', 'newpost'],
+            'servers' => ['add', 'edit', 'delete'],
             'premium' => ['button', 'verify', 'process'],
             'sponsor' => ['button', 'verify', 'process'],
-            'profile' => ['index', 'stats', 'payments'],
+            'profile' => ['index', 'stats', 'payments', 'newpost'],
         ];
 
         $admin = [
