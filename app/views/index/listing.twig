@@ -34,6 +34,7 @@
                 </span>
                 {% endif %}
             </td>
+
             <td class="py-4">
                 {% if server.revision %} 
                  <span class="badge badge-primary">
@@ -51,16 +52,21 @@
 
                 {% if isPremium  %}
                 {% if server.website and server.website != "" %}
-                <div class="float-right">
                 <a href="{{ server.website }}" class="btn btn-primary btn-sm py-1 text-uppercase"
                 style="font-size:10px;"
                     rel="nofollow" target="_blank">
-                    {{ icon('link-45deg') }} WEBSITE
+                    {{ icon('link-45deg') }}
                 </a>
-                </div>
+                {% endif %}
+                
+                {% if server.discord_link and server.discord_link != "" %}
+                <a href="{{ server.discord_link }}" class="btn btn-primary btn-sm py-1 text-uppercase mr-0"
+                style="font-size:10px;"
+                rel="nofollow" target="_blank">
+                {{ icon('discord') }}
+                </a>
                 {% endif %}
                 {% endif %}
-
 
                 <a href="{{ url('details/'~server_url) }}" class="d-block mt-2" style="max-width:468px;">
                     <img 
@@ -73,15 +79,6 @@
                         class="rounded w-100"/>
                 </a>
                 <div class="mt-2"  style="max-width:520px;">
-                    {% if isPremium  %}
-                    {% if server.discord_link and server.discord_link != "" %}
-                    <a href="{{ server.discord_link }}" class="btn btn-primary btn-sm py-1 text-uppercase mr-0"
-                    style="font-size:10px;"
-                    rel="nofollow" target="_blank">
-                    {{ icon('discord') }} DISCORD
-                    </a>
-                    {% endif %}
-                    
                         {% set tags = server.meta_tags|json_decode %}
                         {% for tag in tags %}
                         <span class="badge badge-pill badge-primary">{{ tag }} </span>              
