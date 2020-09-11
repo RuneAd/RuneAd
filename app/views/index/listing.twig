@@ -72,6 +72,19 @@
                         rel="nofollow" target="_blank">
                         {{ icon('link-45deg') }} WEBSITE
                     </a>
+
+                    <p>
+
+                        <a href="{{ url('details/'~server_url) }}">
+                            {% if server.description|length > 40 %}
+                            {{ substr(server.description, 0, 120)~'...' }}
+                            {% else %}
+                            {{ server.description }}
+                            {% endif %}
+                        </a>
+
+                    </p>
+
                     {% endif %}
                     {% endif %}                    
                 </div>
