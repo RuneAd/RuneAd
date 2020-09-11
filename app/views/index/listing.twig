@@ -77,8 +77,7 @@
                         {% set tags = server.meta_tags|json_decode %}
                         {% for tag in tags %}
                         {{ tag }}               
-                        {% endfor %}
-                        {{ server.meta_tags}}   
+                        {% endfor %} 
                     </small>
                        
                     {% endif %}
