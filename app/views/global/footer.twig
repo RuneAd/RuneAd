@@ -18,13 +18,15 @@
             <div class="col-md-6">
                 <div class="copyright">
                     &copy; 2020 <a href="https://runead.com" class="text-primary" rel="nofollow">RuneAd</a>. Created by <a href="https://github.com/ogkingfox" target="_blank">KingFox</a>.
-                    Tracking {{ data['servers']['total']|number_format }} servers!
-
-
                 </div>
             </div>
             <div class="col-md-6">
                 <ul class="nav nav-footer justify-content-end">
+
+                    <li class="nav-item"></li>
+                        Tracking {{ data['servers']['total']|number_format }} servers!
+                    </li>
+
                 <li class="nav-item">
                     <a href="{{ url('contact') }}" class="nav-link">Contact Us</a>
                 </li>
