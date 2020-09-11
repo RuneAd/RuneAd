@@ -13,7 +13,7 @@ class IndexController extends Controller {
 
         $data = [
             'servers' => [
-                'total' => Serverss::count()
+                'total' => Servers::count()
                 ]
             ];
 
