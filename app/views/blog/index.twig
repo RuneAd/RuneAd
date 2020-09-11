@@ -8,19 +8,17 @@
      <div class="row mb-3">
          <div class="col-sm-12 col-lg-4">
 
-             {% include 'profile/components/sidebar_nav.twig' %}
-
              <div class="card border-0 shadow-sm mb-3">
                  <div class="card-body">
-                     <p class="text-muted small mb-0">Payment Made</p>
-                     <p class="mb-0">{{ payments.total() }}</p>
+                     <p class="text-muted small mb-0">Total Blogs</p>
+                     <p class="mb-0">1</p>
                  </div>
              </div>
 
              <div class="card border-0 shadow-sm mb-3">
                  <div class="card-body">
-                     <p class="text-muted small mb-0">Total Spent</p>
-                     <p class="mb-0">{{ spent|number_format(2) }}</p>
+                     <p class="text-muted small mb-0">Most Recent Blog</p>
+                     <p class="mb-0">Link test here</p>
 
                  </div>
              </div>
@@ -35,44 +33,12 @@
                              <div class="float-left mt-1 mr-3 text-default">
                                  {{ icon('shop', 32, 32) }}
                              </div>
-                             <p class="text-muted mb-0 small">Profile</p>
-                             <h6 class="mb-0">Payment History</h6>
+                             <p class="text-muted mb-0 small">Blog List</p>
+                             <h6 class="mb-0">Most recent blogs</h6>
                          </div>
                      </div>
                  </div>
-                 <table class="table table-hover mb-0">
-                     <thead class="thead-{{ theme }}">
-                         <tr class="small">
-                             <th class="py-2"></th>
-                             <th class="py-2">Item</th>
-                             <th class="py-2">Paid</th>
-                             <th class="py-2">Status</th>
-                         </tr>
-                     </thead>
-                     {% for payment in payments.items() %}
-                     <tr>
-                         <td class="text-center">{{ payment.id }}</td>
-                         <td>
-                             {{ payment.item_name }}
-                             <p class="small text-muted mb-0">
-                                 {{ payment.transaction_id }}
-                             </p>
-                         </td>
-                         <td>${{ payment.paid|number_format(2) }}</td>
-                         <td>
-                             {% if payment.status|lower == "completed" %}
-                             <span class="text-success">{{ payment.status|lower|capitalize }}</span>
-                             {% else %}
-                             <span class="text-danger">{{ payment.status|lower|capitalize }}</span>
-                             {% endif %}
-
-                             <p class="small text-muted mb-0">
-                                 {{ payment.date_paid|date("m.d.y g:i A T")}}
-                             </p>
-                         </td>
-                     </tr>
-                     {% endfor %}
-                 </table>
+               
              </div>
 
 
