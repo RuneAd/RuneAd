@@ -75,10 +75,10 @@
 
                     
 
-                            {% if server.description|length > 40 %}
-                            {{ substr(server.description, 0, 120)~'...' }}
+                            {% if server.description|striptags|truncate(200, '...')|raw }}|length > 40 %}
+                            {{ substr(server.description|striptags|truncate(200, '...')|raw }}, 0, 120)~'...' }}
                             {% else %}
-                            {{ server.description |convert_encoding('UTF-8', 'HTML-ENTITIES') | raw }}
+                            {{ server.description|striptags|truncate(200, '...')|raw }}
                             {% endif %}
                       
 
