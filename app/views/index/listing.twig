@@ -73,12 +73,12 @@
                         {{ icon('link-45deg') }} WEBSITE
                     </a>
                     
-                    <small>
+                    <span class="badge badge-info">
                         {% set tags = server.meta_tags|json_decode %}
                         {% for tag in tags %}
                         {{ tag }}               
                         {% endfor %} 
-                    </small>
+                    </span>
                        
                     {% endif %}
                     {% endif %}                    
