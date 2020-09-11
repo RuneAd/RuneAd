@@ -1,5 +1,5 @@
 <div class="card border-0 shadow-sm overflow-hidden mb-2">
-    <div class="card-header bg-primary text-white py-3">
+    <div class="card-header bg-primary py-3">
         Runescape Private Servers
     </div>
 
@@ -67,11 +67,11 @@
                 
                 <div class="mt-2">
                     {% if isPremium  %}
-                    <a href="{{ server.discord_link }}"
-                                    rel="nofollow"
-                                    class="btn btn-default btn-block mb-3 {{ server.discord_link }}" target="_blank">
-                                    {{ icon('discord'}} Discord
-                                </a>
+                    <a href="{{ server.discord_link }}" class="btn btn-primary btn-sm py-1 text-uppercase mr-0"
+                    style="font-size:9px;"
+                    rel="nofollow" target="_blank">
+                    {{ icon('discord') }} DISCORD
+                    </a>
                     
                     <a href="{{ server.website }}" class="btn btn-primary btn-sm py-1 text-uppercase"
                         style="font-size:9px;"
