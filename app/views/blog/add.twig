@@ -53,10 +53,6 @@
 
                         <hr>
 
-                        <input type="hidden" name="banner_url" id="banner_url" value="">
-
-                        <hr>
-
                         <div class="form-group">
                             <div id="editor" class="mb-3 {{ errors['info'] is defined ? 'border-danger' : '' }}"></div>
                             <textarea name='info' id='editor-form' style='display:none'></textarea>
@@ -156,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
                     alert("Please select a spot in your post where you wish the image to be placed.")
                 }
             } else {
-                console.warn('You could only upload images.');
+                console.warn('You can only upload images.');
             }
         }
     });
@@ -185,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
                 contentType: false,
                 type: 'POST',
                 data: formData,
-                url: "{{ url('servers/upload') }}",
+                url: "{{ url('blog/upload') }}",
                 mimeType: 'multipart/form-data',
                 xhr: function () {
                     var myXhr = $.ajaxSettings.xhr();
@@ -203,21 +199,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
                         }, false);
                     }
                     return myXhr;
-                },
-                success: function (data) {
-                    progress.css({"width": "0%"});
-                    button.html("&nbsp;");
-                    try {
-                        var json = JSON.parse(data);
-                        if (json.success) {
-                            $('#banner_url').val(json.message);
-                            button.css({'background-image' :
-                                'url("{{ constant("web_root") }}public/img/banners/'+json.message+'")'});
-                        }
-
-                    } catch (err) {
-                        console.log(err);
-                    }
                 },
             });
             //}
