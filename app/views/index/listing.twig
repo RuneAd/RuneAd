@@ -82,21 +82,10 @@
                     </a>
                     {% endif %}
                     
-                    {% if server.website and server.website != "" %}
-                    <a href="{{ server.website }}" class="btn btn-primary btn-sm py-1 text-uppercase"
-                    style="font-size:10px;"
-                        rel="nofollow" target="_blank">
-                        {{ icon('link-45deg') }} WEBSITE
-                    </a>
-                    
-                   
                         {% set tags = server.meta_tags|json_decode %}
                         {% for tag in tags %}
                         <span class="badge badge-pill badge-primary">{{ tag }} </span>              
                         {% endfor %} 
-                    
-                       
-                    {% endif %}
                     {% endif %}                    
                 </div>
                 
