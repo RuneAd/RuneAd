@@ -192,16 +192,20 @@ class PageRouter extends Router {
         });
 
         $this->get("profile/stats", function() {
-             return $this->setRoute('profile', 'stats');
+            return $this->setRoute('profile', 'stats');
+         });
+
+         $this->get("profile/newpost", function() {
+            return $this->setRoute('profile', 'newpost');
          });
 
          $this->get("profile/payments", function() {
-                return $this->setRoute('profile', 'payments');
-            });
+            return $this->setRoute('profile', 'payments');
+         });
 
-            $this->get("profile/payments/([0-9]+)", function($page = 1) {
-                return $this->setRoute('profile', 'payments', [ 'page' => $page ]);
-            });
+         $this->get("profile/payments/([0-9]+)", function($page = 1) {
+            return $this->setRoute('profile', 'payments', [ 'page' => $page ]);
+         });
         /**
          * Pages
          */

@@ -26,11 +26,10 @@ class Security {
             'errors'  => ['show404', 'show500', 'show401', 'missing'],
             'pages'   => ['docs', 'stats', 'terms', 'privacy', 'adinfo', 'ads', 'contact', 'adbenners'],
             'tools'   => ['itemdb', 'search', 'map'],
-            'blog'    => ['index', 'add']
         ];
 
         $private = [
-            'servers' => ['add', 'edit', 'delete'],
+            'servers' => ['add', 'edit', 'delete', 'newpost'],
             'premium' => ['button', 'verify', 'process'],
             'sponsor' => ['button', 'verify', 'process'],
             'profile' => ['index', 'stats', 'payments'],
