@@ -49,7 +49,8 @@ class IndexController extends Controller {
             ->leftJoin("servers", "servers.id", "=", "sponsors.server_id")
             ->orderBy("started", "ASC")
             ->get();
-
+            
+        $this->set("data", $data);
         $this->set("servers", $servers);
         $this->set("revisions", $revisions);
         $this->set("sponsors", $sponsors);
