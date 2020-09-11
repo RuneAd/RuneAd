@@ -64,6 +64,7 @@ class Servers extends Model {
                 'website',
                 'banner_url',
                 'is_online',
+                'discord_link',
                 'ping',
                 'last_ping',
                 'premium_expires',
