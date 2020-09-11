@@ -73,7 +73,11 @@
                         {{ icon('link-45deg') }} WEBSITE
                     </a>
                     
-                    <small>{{ server.meta_tags}}</small>
+                    <small>
+                        {{ server.meta_tags|striptags|convert_encoding('UTF-8', 'HTML-ENTITIES') }}
+
+
+                    </small>
                        
                     {% endif %}
                     {% endif %}                    
