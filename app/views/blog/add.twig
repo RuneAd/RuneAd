@@ -12,11 +12,6 @@
                 <div class="card-header bg-default">
                     <h5 class="mb-0 text-white">New Blog Post</h5>
                     <p class="mb-0 text-small text-white">Use the form below to create a new blog post</p>
-                    <div class="flex-fill w-100 text-right">
-                        <a href="{{ url('blog') }}" class="btn btn-default btn-lg">
-                            Blog Home
-                        </a>
-                    </div>
                 </div>
                 <div class="card-body">
                     {% if errors is defined %}
@@ -29,11 +24,15 @@
                             </ul>
                         </div>
                     {% endif %}
+
                     <form method="post" action="{{ url('blog/add') }}" id="postform">
                         <div class="form-row form-group">
                             <div class="col">
                                 <label>Blog Title*</label>
                                 <input type="text" class="form-control {{ errors['title'] is defined ? 'border-danger' : '' }}" name="title">
+                                <small class="text-muted">
+                                    Use an eye catching title to grab attention. Be creative!
+                                </small>
                             </div>
                         </div>
 
