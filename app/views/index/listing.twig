@@ -75,13 +75,10 @@
                     
                     <small>
                         {% set tags = server.meta_tags|json_decode %}
-
                         {% for tag in tags %}
-                        {{ tag }}
-                        
-                        {{ server.meta_tags}}
+                        {{ tag }}               
                         {% endfor %}
-
+                        {{ server.meta_tags}}   
                     </small>
                        
                     {% endif %}
