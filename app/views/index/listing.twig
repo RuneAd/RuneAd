@@ -47,12 +47,15 @@
                     {{ server.title }}
                     {% endif %}
                 </a>
+                
+                {% if isPremium  %}
                 {% if server.website and server.website != "" %}
                 <a href="{{ server.website }}" class="btn btn-primary btn-sm py-1 text-uppercase"
                 style="font-size:10px;"
                     rel="nofollow" target="_blank">
                     {{ icon('link-45deg') }} WEBSITE
                 </a>
+                {% endif %}
                 {% endif %}
 
                 <a href="{{ url('details/'~server_url) }}" class="d-block mt-2" style="max-width:468px;">
