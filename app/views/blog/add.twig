@@ -12,6 +12,11 @@
                 <div class="card-header bg-default">
                     <h5 class="mb-0 text-white">New Blog Post</h5>
                     <p class="mb-0 text-small text-white">Use the form below to create a new blog post</p>
+                    <div class="flex-fill w-100 text-right">
+                        <a href="{{ url('blog') }}" class="btn btn-default btn-lg">
+                            Blog Home
+                        </a>
+                    </div>
                 </div>
                 <div class="card-body">
                     {% if errors is defined %}
