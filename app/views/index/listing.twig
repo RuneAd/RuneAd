@@ -78,7 +78,7 @@
                             {% if server.description|length > 40 %}
                             {{ substr(server.description, 0, 120)~'...' }}
                             {% else %}
-                            {{ server.description|striptags|raw }}
+                            {{ server.description |convert_encoding('UTF-8', 'HTML-ENTITIES') | raw }}
                             {% endif %}
                       
 
