@@ -74,8 +74,13 @@
                     </a>
                     
                     <small>
-                        {{ server.meta_tags|replace({'[': "", "" : ""})}}
+                        {% set tags = server.meta_tags|json_decode %}
 
+                        {% for tag in tags %}
+                        {{ tag }}
+                        
+                        {{ server.meta_tags}}
+                        {% endfor %}
 
                     </small>
                        
