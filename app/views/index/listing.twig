@@ -67,7 +67,6 @@
                 
                 <div class="mt-2">
                     {% if isPremium  %}
-                    {{ server.description }}
                     <a href="{{ server.discord_link }}" class="btn btn-primary btn-sm py-1 text-uppercase mr-0"
                         style="font-size:9px;"
                         rel="nofollow" target="_blank">
@@ -79,6 +78,15 @@
                         rel="nofollow" target="_blank">
                         {{ icon('link-45deg') }} WEBSITE
                     </a>
+
+                    <a href="{{ url('details/'~server_url) }}">
+                        {% if server.description|length > 40 %}
+                        {{ substr(server.description, 0, 40)~'...' }}
+                        {% else %}
+                        {{ server.description }}
+                        {% endif %}
+                    </a>
+
                     {% endif %}
                     
                 </div>
