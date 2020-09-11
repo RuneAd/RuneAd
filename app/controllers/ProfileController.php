@@ -77,6 +77,9 @@ class ProfileController extends Controller {
         return true;
     }
 
+    public function newpost() {
+    }
+
     public $access =  [
         'login_required' => true,
         'roles'  => ['member', 'moderator', 'admin']
