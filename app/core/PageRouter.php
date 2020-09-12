@@ -213,10 +213,6 @@ class PageRouter extends Router {
             return $this->setRoute('pages', 'privacy');
         });
 
-        $this->get("nyan", function() {
-            return $this->setRoute('pages', 'nyan');
-        });
-
         /**
          * Sponsor Spots
          */
@@ -261,6 +257,9 @@ class PageRouter extends Router {
         });
         $this->all('blog/add', function() {
             return $this->setRoute('blog', 'add');
+        });
+        $this->all('blog/post/([0-9]+)-([A-Za-z0-9\-_]+)', function($id, $title) {
+            return $this->setRoute('blog', 'index', ['id' => $id]);
         });
 
         /**
