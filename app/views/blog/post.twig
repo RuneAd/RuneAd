@@ -6,24 +6,16 @@
      {% include 'blog/components/postheader.twig' %}
 
      <div class="row mb-3">
-
          <div class="col-sm-12 col-lg-12">
              <div class="card border-0 shadow-sm mb-3">
                  <div class="card-header">
                      <div class="row align-items-center">
                          <div class="col w-100">
-                             <h6 class="mb-0"></h6>
+                             -Blog Text-
                          </div>
                      </div>
                  </div>
-               
              </div>
-
-
-             {% set totalPages = post.lastPage() %}
-             {% set current = post.currentPage() %}
-
-             {% set pageUrl = url('blog/post/')  %}
          </div>
      </div>
 
