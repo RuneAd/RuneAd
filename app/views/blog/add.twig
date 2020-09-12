@@ -7,34 +7,21 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="card border-0 shadow-sm mb-3">
-
-
-                <div class="bg-default d-flex align-items-center">
-                    <div class="header text-white">
-                        <div class="container">
-                            <div class="d-flex pb-0 align-items-center">
-                                <div class="flex-fill d-none d-lg-flex pr-2">
-                                    {{ icon('bootstrap', 68, 68) }}
-                                </div>
-                                <div class="flex-fill">
-                                    <h4 class="text-white mb-0">
-                                        New Blog Post
-                                        </h4>
-                                        <p class="text-small">
-                                            Use the form below to create a new blog post
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                
+                <div class="card-header bg-default">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-fill">
+                            {{ icon('bootstrap', 68, 68) }}
+                            <h4 class="mb-0 text-white">New Blog Post</h4>
+                            <p class="mb-0 text-small text-white">Use the form below to create a new blog post</p>
                         </div>
-                    <div class="text-default flex-fill text-right">
-                        <a href="{{ url('blog') }}" class="btn btn-white btn-sm">
-                            Blog Home
-                        </a>
+                        <div class="flex-fill text-default text-right">
+                            <a href="{{ url('blog') }}" class="btn btn-white btn-sm">
+                                Blog Home
+                            </a>
+                        </div>
                     </div>
                 </div>
-
-                
                 <div class="card-body">
                     {% if errors is defined %}
                         <div class="alert alert-danger">
