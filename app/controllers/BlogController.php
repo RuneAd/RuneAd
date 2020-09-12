@@ -1,6 +1,11 @@
 <?php
 class BlogController extends Controller {
 
+    public function post() {
+
+
+    }
+
     public function index() {
 
         $data = [
