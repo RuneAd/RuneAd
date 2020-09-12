@@ -10,11 +10,9 @@
                     </div>
                     <div class="flex-fill w-100">
                         <h5 class="mb-0">
-                            How to play RSPS
+                            {{ user.username }} #{{ user.discriminator }}
                         </h5>
-                        <small class="text-muted">Author: {{ user.username }} #{{ user.discriminator }}</small>
-                        <small class="text-muted">Posted: </small>
-                    </div>
+                        <small class="text-muted">Author: </small>
                     </div>
                     <div class="flex-fill w-100 text-right">
                         <a href="{{ url('profile/add') }}" class="btn btn-default btn-sm">
