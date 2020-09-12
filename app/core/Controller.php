@@ -163,10 +163,19 @@ class Controller {
                     'title' => 'OSRS Item DB',
                     'meta' => 'An easy to use oldschool runescape item db that\'s always up to date.'
                 ],
-								'map' => [
+				 'map' => [
                     'title' => 'OSRS Interactive Map',
                     'meta'  => 'An easy to use oldschool runescape map that\'s always up to date.'
                 ],
+            ],
+            'blog' => [
+                'index' => [
+                    'title' => 'Blog',
+                    'meta' => 'An easy to use modern RuneScape Private Server Blog'
+                ],
+				 'add' => [
+                    'title' => 'Blog | Add Post',
+                    'meta' => 'An easy to use modern RuneScape Private Server Blog'                ],
             ]
         ];
 
