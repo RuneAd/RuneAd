@@ -14,7 +14,7 @@
                             {{ icon('bootstrap', 32, 32) }} -Blog Title-
                         </h5>
                         
-                        <small class="text-muted">Author: {{ blogs.owner }} #{{ user.discriminator }}</small><br>
+                        <small class="text-muted">Author: {{ blog.owner }}</small><br>
                         <small class="text-muted">Posted: -Time-</small>
                     </div>
                     <div class="flex-fill w-100 text-right">
@@ -22,6 +22,13 @@
                             Blog Home
                         </a>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="card border-0 shadow-sm mb-3">
+            <div class="card-body" style="line-height:.8em;">
+                <div class="d-flex align-items-center">
+                    -Blog Text-
                 </div>
             </div>
         </div>
