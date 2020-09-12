@@ -258,6 +258,9 @@ class PageRouter extends Router {
         $this->all('blog/add', function() {
             return $this->setRoute('blog', 'add');
         });
+        $this->all('blog/post', function() {
+            return $this->setRoute('blog', 'post');
+        });
         $this->all('blog/post/([0-9]+)-([A-Za-z0-9\-_]+)', function($id, $title) {
             return $this->setRoute('blog', 'index', ['id' => $id]);
         });
