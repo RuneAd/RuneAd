@@ -19,12 +19,8 @@ class Blog extends Model {
 
         $validation = $validator->validate($validate, [
             'title'        => 'required|min:6|max:150',
-            'meta_tags' => ['max:300', function($value) {
-                if (count($value) > 15) {
-                    return 'You can\'t have more than 15 meta tags.';
-                }
-            }],
-            'description' => 'required|min:7'
+            'meta_tags' => 'required|min:2|max:300',
+            'description' => 'required|min:300'
         ]);
 
         return $validation;
