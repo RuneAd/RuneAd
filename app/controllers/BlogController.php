@@ -8,14 +8,6 @@ class BlogController extends Controller {
 
     public function index() {
 
-        $data = [
-            'blogs' => [
-                'total' => Blog::count()
-            ]
-            ];
-
-            $validation = Blog::validate($data);
-
     }
 
     public function add() {
