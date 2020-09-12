@@ -9,10 +9,10 @@
                         height="60">
                     </div>
                     <div class="flex-fill w-100">
-                        <small class="text-muted">Profile</small>
                         <h5 class="mb-0">
-                            {{ user.username }} #{{ user.discriminator }}
+                            {{ blogs.title }}
                         </h5>
+                        <small class="text-muted">Author: {{ user.username }} #{{ user.discriminator }}</small>
                     </div>
                     <div class="flex-fill w-100 text-right">
                         <a href="{{ url('profile/add') }}" class="btn btn-default btn-sm">
