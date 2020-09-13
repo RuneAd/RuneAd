@@ -9,6 +9,8 @@ class Blog extends Model {
     public $incrementing  = true;
     protected $primaryKey = 'id';
 
+    public $table = 'blog';
+
     protected $fillable = [
         'id', 'owner', 'title', 'meta_info', 'meta_tags',
         'description', 'date_created'
