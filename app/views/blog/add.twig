@@ -86,7 +86,7 @@
 
                          <div class="form-group">
                              <div id="editor" class="mb-3 {{ errors['info'] is defined ? 'border-danger' : '' }}"></div>
-                             <textarea name='info' id='trumbowyg' style='display:none'></textarea>
+                             <textarea name='info' id='editor-form' style='display:none'></textarea>
                          </div>
 
                          <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
@@ -192,7 +192,7 @@
 
          $("#postform").on("submit", function (event) {
              var body = $(this).find(".ql-editor").html();
-             $(this).find("#trumbowyg").html(body);
+             $(this).find("#editor-form").html(body);
              return true;
          });
      });
