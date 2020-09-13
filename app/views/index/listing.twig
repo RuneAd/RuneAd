@@ -81,7 +81,7 @@
                     {% endif %}
                     
                     {% if server.website and server.website != "" %}
-                    <a href="{{ url('out/'~friendlyTitle(server.id~'-'~server.title)) }}" class="btn btn-primary btn-sm py-1 text-uppercase"
+                    <a href="{{ url(~friendlyTitle(server.id~'-'~server.title)) }}" class="btn btn-primary btn-sm py-1 text-uppercase"
                         style="font-size:9px;"
                         rel="nofollow" target="_blank">
                         {{ icon('link-45deg') }} WEBSITE
