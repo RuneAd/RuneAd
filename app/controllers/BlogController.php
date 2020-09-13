@@ -24,8 +24,6 @@ class BlogController extends Controller {
             'blogs.title',
             'blogs.description',
         ])
-        ->leftJoin("blogs", "blogs.id", "=", "blogs.id")
-        ->orderBy("started", "ASC")
         ->get();
 
     $this->set("blog", $blog);
