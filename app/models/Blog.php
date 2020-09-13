@@ -53,7 +53,7 @@ class Blog extends Model {
     public static function getBlog($id) {
         return Blog::where('id', $id)
             ->select('*')
-            ->leftJoin('users', 'users.user_id', '=', 'blogs.owner')
+            ->leftJoin('users', 'users.user_id', '=', 'blog.owner')
             ->first();
     }
 

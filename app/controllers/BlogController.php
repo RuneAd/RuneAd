@@ -20,9 +20,9 @@ class BlogController extends Controller {
         $seo = Functions::friendlyTitle($blog->id.'-'.$blog->title);
 
         $blog = Blog::select([
-            'blogs.id',
-            'blogs.title',
-            'blogs.description',
+            'blog.id',
+            'blog.title',
+            'blog.description',
         ])
         ->get();
 
