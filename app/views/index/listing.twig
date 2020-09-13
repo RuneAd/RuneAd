@@ -87,11 +87,17 @@
                         {{ icon('link-45deg') }} WEBSITE
                     </a>
                     {% endif %}
+			<div class="mt-2"  style="max-width:520px;">
+                        {% set tags = server.meta_tags|json_decode %}
+                        {% for tag in tags %}
+                        <span class="badge badge-pill badge-primary">{{ tag }} </span>              
+                        {% endfor %}                   
+                </div>
                     {% endif %}
                     
                 </div>
 
-                {{ server.meta_tags }}
+                
             </td>
 
             <td class="text-right">
