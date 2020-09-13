@@ -9,7 +9,7 @@ class BlogController extends Controller {
 
     }
 
-    public function post($id, $rate = "month") {
+    public function post($id) {
         $blog   = Blog::getBlog($id);
 
         if (!$blog) {
