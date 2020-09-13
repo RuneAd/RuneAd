@@ -41,17 +41,7 @@
                          class="list-group-item {{ category is not defined ? "active" : "" }}">
                          Show All Posts
                      </a>
-
-                    </div>
-
-                    <div class="mt-2">
-                        {% for cat in categories %}
-                        <a href="{{ url('blog/'~cat.title) }}" 
-                        <class="badge badge-pill badge-primary">{{ cat.title|lower == category|lower ? "active" : "" }}">
-                            {{ cat.title|capitalize }}
-                    </a>              
-                        {% endfor %}                   
-                        </div>
+                     
 
                      {% for cat in categories %}
                      <a href="{{ url('blog/'~cat.title) }}" 
@@ -59,7 +49,7 @@
                          {{ cat.title|capitalize }}
                      </a>
                      {% endfor %}
-                
+                 </div>
              </div>
 
 
