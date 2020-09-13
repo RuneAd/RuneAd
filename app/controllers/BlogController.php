@@ -5,6 +5,10 @@ use Fox\Request;
 
 class BlogController extends Controller {
 
+    public function index(){
+        
+    }
+
     public function add() {
         $client = new GuzzleHttp\Client();
 
