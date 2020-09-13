@@ -9,6 +9,35 @@ class BlogController extends Controller {
 
     }
 
+    public function post($id) {
+        $blog   = Blog::getBlog($id);
+
+        if (!$blog) {
+            $this->setView("errors/show404");
+            return false;
+        }
+
+        $seo = Functions::friendlyTitle($blog->id.'-'.$blog->title);
+
+        $this->set("rate", $rate);
+        $this->set("blog", $blog);
+        $this->set("purifier", $this->getPurifier());
+        $this->set("page_title", $blog->title);
+
+        $seo = Functions::friendlyTitle($blog->id.'-'.$blog->title);
+
+        if ($blog->meta_tags)
+            $this->set("meta_tags", implode(',',json_decode($blog->meta_tags, true)));
+
+        $this->set("meta_info", $this->filter($blog->meta_info));
+        $this->set("seo_link", $seo);
+
+        $body = str_replace("<img src", "<img data-src", $blog->description);
+        $body = str_replace("\"img-fluid\"", "\"lazy img-fluid\"", $body);
+        $this->set("description", $body);
+        return true;
+    }
+
     public function add() {
         $client = new GuzzleHttp\Client();
 
