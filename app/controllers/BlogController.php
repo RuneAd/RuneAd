@@ -1,22 +1,17 @@
 <?php
+use Fox\CSRF;
+use Rakit\Validation\Validator;
+use Fox\Request;
+
 class BlogController extends Controller {
-
-    public function post() {
-
-
-    }
-
-    public function index() {
-
-    }
 
     public function add() {
         $client = new GuzzleHttp\Client();
 
         if ($this->request->isPost()) {
             $data = [
+                'owner'         => $this->user->user_id,
                 'title'         => $this->request->getPost("title", "string"),
-                'owner'         => $this->user->username,
                 'meta_tags'     => explode(",", $this->request->getPost("meta_tags", 'string')),
                 'meta_info'     => $this->request->getPost("meta_info", "string"),
                 'description'   => $this->purify($this->request->getPost("info")),
@@ -34,12 +29,11 @@ class BlogController extends Controller {
             }
         }
 
-        $this->set("page_title", "Add Post");
+        $this->set("page_title", "Add Blog Post");
         $revisions = Revisions::where('visible', 1)->get();
         $this->set("revisions", $revisions);
     	return true;
     }
-
 
     public function upload() {
         $file = $_FILES['image'];
@@ -94,7 +88,7 @@ class BlogController extends Controller {
 
         $newname = md5($file['name'] . microtime()).'.'.$ext;
 
-        if (!move_uploaded_file($file['tmp_name'], 'public/img/blog/images/'.$newname)) {
+        if (!move_uploaded_file($file['tmp_name'], 'public/img/blog/'.$newname)) {
             return [
                 'success' => true,
                 'message' => 'Failed uploading file...'
@@ -106,5 +100,20 @@ class BlogController extends Controller {
             'message' => $newname,
         ];
     }
-    
+
+    public $access =  [
+        'login_required' => true,
+        'roles'  => ['member', 'moderator', 'admin']
+    ];
+
+    public function beforeExecute() {
+        if ($this->getActionName() == "upload") {
+            $this->request = Request::getInstance();
+            $this->disableView(true);
+            return true;
+        }
+
+        return parent::beforeExecute();;
+    }
+
 }
