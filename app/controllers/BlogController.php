@@ -120,7 +120,7 @@ class BlogController extends Controller {
                 'title'       => $this->request->getPost("title", "string"),
                 "category"    => strtolower($this->request->getPost("category", "string")),
                 'meta_tags'   => explode(",", $this->request->getPost("meta_tags", 'string')),
-                'meta_description' => $this->request->getPost("meta_info", "string"),
+                'meta_description' => $this->request->getPost("meta_description", "string"),
                 'content'     => $this->purify($this->request->getPost("info")),
             ];
 
