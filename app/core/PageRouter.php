@@ -202,7 +202,7 @@ class PageRouter extends Router {
         $this->all('blog/([0-9]+)', function($page) {
             return $this->setRoute('blog', 'index', ['category' => null, 'page' => $page]);
         });
-        $this->all('blog/([A-Za-z0-9\-]+)', function($category) {
+        $this->all('blog/([A-Za-z0-9\-%]+)', function($category) {
             return $this->setRoute('blog', 'index', ['category' => $category, 'page' => 1]);
         });
         $this->all('blog/([A-Za-z0-9\-]+)/([0-9]+)', function($category, $page) {
