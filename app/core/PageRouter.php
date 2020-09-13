@@ -199,7 +199,7 @@ class PageRouter extends Router {
         $this->all('blog/delete/([0-9]+)', function($postId) {
             return $this->setRoute('blog', 'delete', ['postId' => $postId]);
         });
-        $this->all('blog/([A-Za-z0-9\-]+', function($page) {
+        $this->all('blog/([0-9]+)', function($page) {
             return $this->setRoute('blog', 'index', ['category' => null, 'page' => $page]);
         });
         $this->all('blog/([A-Za-z0-9\-]+)', function($category) {
