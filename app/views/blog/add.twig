@@ -1,7 +1,7 @@
 {%  extends 'layout.twig' %}
 
  {% block content %}
- <script src="https://runead.com/public/js/editor/trumbowyg.js"></script>
+ <script src="https://runead.com/public/js/quill.js"></script>
 
  <div class="container" style="margin-top:-30px;">
 
@@ -85,8 +85,8 @@
                          <hr>
 
                          <div class="form-group">
-                             <div id="trumbowyg-demo" class="mb-3 {{ errors['info'] is defined ? 'border-danger' : '' }}"></div>
-                             <textarea name='info' id='trumbowyg-demo' style='display:none'></textarea>
+                             <div id="editor" class="mb-3 {{ errors['info'] is defined ? 'border-danger' : '' }}"></div>
+                             <textarea name='info' id='editor-form' style='display:none'></textarea>
                          </div>
 
                          <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
@@ -189,7 +189,6 @@
                  }
              }
          });
-         $('#trumbowyg-demo').trumbowyg();
 
          $("#postform").on("submit", function (event) {
              var body = $(this).find(".ql-editor").html();
