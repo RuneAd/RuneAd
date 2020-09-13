@@ -44,9 +44,12 @@
 
                     </div>
 
-                    <div class="mt-2"  style="max-width:520px;">
+                    <div class="mt-2">
                         {% for cat in categories %}
-                        <span class="badge badge-pill badge-primary">{{ cat.title|capitalize }} </span>              
+                        <a href="{{ url('blog/'~cat.title) }}" 
+                        <class="badge badge-pill badge-primary">{{ cat.title|lower == category|lower ? "active" : "" }}">
+                            {{ cat.title|capitalize }}
+                    </a>              
                         {% endfor %}                   
                         </div>
 
