@@ -35,7 +35,7 @@ class BlogController extends Controller {
         if ($blog->meta_tags)
             $this->set("meta_tags", implode(',',json_decode($blog->meta_tags, true)));
 
-        $this->set("meta_info", $this->filter($blog->meta_info));
+        $this->set("page_title", $post->title);
         $this->set("seo_link", $seo);
 
         $body = str_replace("<img src", "<img data-src", $blog->description);
