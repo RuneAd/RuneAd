@@ -46,7 +46,6 @@ class Blog extends Model {
                 'IF(premium_expires > '.time().', votes + (premium_level * 1), votes) as votes')
             ->where('website', '!=', null)
             ->orderBy('is_online', 'DESC')
-            ->orderBy('votes', 'DESC')
             ->orderBy('id', 'ASC')
             ->paginate(per_page);
     }
@@ -54,7 +53,7 @@ class Blog extends Model {
     public static function getBlog($id) {
         return Blog::where('id', $id)
             ->select('*')
-            ->leftJoin('users', 'users.user_id', '=', 'servers.owner')
+            ->leftJoin('users', 'users.user_id', '=', 'blog.owner')
             ->first();
     }
 
