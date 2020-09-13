@@ -44,10 +44,6 @@ class Blog extends Model {
                 'description',
                 'meta_tags'
             )
-            ->selectRaw(
-                'IF(premium_expires > '.time().', votes + (premium_level * 1), votes) as votes')
-            ->where('website', '!=', null)
-            ->orderBy('is_online', 'DESC')
             ->orderBy('id', 'ASC')
             ->paginate(per_page);
     }
@@ -62,8 +58,6 @@ class Blog extends Model {
     public static function getBlogByOwner($ownerId) {
         return Blog::where('owner', $ownerId)
             ->select('*')
-            ->selectRaw(
-                'IF(premium_expires > '.time().', votes + (premium_level * 1), votes) as votes')
             ->get();
     }
 
