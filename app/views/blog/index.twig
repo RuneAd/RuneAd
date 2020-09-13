@@ -42,13 +42,21 @@
                          Show All Posts
                      </a>
 
+                    </div>
+
+                    <div class="mt-2"  style="max-width:520px;">
+                        {% for cat in categories %}
+                        <span class="badge badge-pill badge-primary">{{ cat.title|capitalize }} </span>              
+                        {% endfor %}                   
+                        </div>
+
                      {% for cat in categories %}
                      <a href="{{ url('blog/'~cat.title) }}" 
                          class="list-group-item {{ cat.title|lower == category|lower ? "active" : "" }}">
                          {{ cat.title|capitalize }}
                      </a>
                      {% endfor %}
-                 </div>
+                
              </div>
 
 
