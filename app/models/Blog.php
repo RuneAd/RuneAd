@@ -20,7 +20,7 @@ class Blog extends Model {
         $validation = $validator->validate($validate, [
             'title'        => 'required|min:6|max:150',
             'meta_tags' => 'required|min:2|max:300',
-            'description' => 'required|min:300'
+            'description' => 'required|min:10'
         ]);
 
         return $validation;
