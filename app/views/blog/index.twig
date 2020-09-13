@@ -67,6 +67,7 @@
                          <div class="flex-fill w-100">
                              <h5 class="mb-0">
                                  <a href="{{ url('blog/post/'~seo_title) }}">{{ post.title }}</a>
+                                 {{ post.meta_description }}
                              </h5>
                              <p class="small text-muted mb-0">
                                   {{ post.username }} | {{ post.date_posted|date("m.d.y")}}
