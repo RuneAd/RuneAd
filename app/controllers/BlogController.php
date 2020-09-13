@@ -58,7 +58,7 @@ class BlogController extends Controller {
         $csrf = new AntiCSRF;
 
         $canPost = $this->user != null && $this->user->isRole([
-            'owner', 'blog author'
+            'owner', 'blogger', 'moderator', 'respected', 'youtuber', 'administrators', 'veteran'
         ]);
 
         if (!$canPost) {
