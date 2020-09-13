@@ -193,17 +193,25 @@ class PageRouter extends Router {
         $this->all('blog/add', function() {
             return $this->setRoute('blog', 'add');
         });
+        $this->all('blog/edit/([0-9]+)', function($postId) {
+            return $this->setRoute('blog', 'edit', ['postId' => $postId]);
+        });
+        $this->all('blog/delete/([0-9]+)', function($postId) {
+            return $this->setRoute('blog', 'delete', ['postId' => $postId]);
+        });
+        $this->all('blog/([0-9]+)', function($page) {
+            return $this->setRoute('blog', 'index', ['category' => null, 'page' => $page]);
+        });
+        $this->all('blog/([A-Za-z0-9\-]+)', function($category) {
+            return $this->setRoute('blog', 'index', ['category' => $category, 'page' => 1]);
+        });
+        $this->all('blog/([A-Za-z0-9\-]+)/([0-9]+)', function($category, $page) {
+            return $this->setRoute('blog', 'index', ['category' => $category, 'page' => $page]);
+        });
         $this->all('blog/post/([0-9]+)-([A-Za-z0-9\-]+)', function($id, $title) {
-            return $this->setRoute('blog', 'post', ['blogId' => $id, 'page' => 1]);
+            return $this->setRoute('blog', 'post', ['id' => $id]);
         });
 
-        $this->all('blog/post/([0-9]+)', function($id) {
-            return $this->setRoute('blog', 'post', ['blogId' => $id, 'page' => 1]);
-        });
-
-        $this->all('blog/post/([0-9]+)-([A-Za-z0-9\-]+)/([A-Za-z0-9\-]+)', function($id, $title) {
-            return $this->setRoute('blog', 'post', ['blogId' => $id]);
-        });
 
 
         /**

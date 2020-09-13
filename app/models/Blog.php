@@ -1,64 +1,41 @@
 <?php
-use Illuminate\Database\Eloquent\Model as Model;
-use Rakit\Validation\Validator;
-use Illuminate\Pagination\Paginator;
+ use Illuminate\Database\Eloquent\Model as Model;
+ use Rakit\Validation\Validator;
 
-class Blog extends Model {
+ class Blog extends Model {
 
-    public $timestamps    = false;
-    public $incrementing  = true;
-    protected $primaryKey = 'id';
+     public $timestamps    = false;
+     public $incrementing  = true;
+     protected $primaryKey = 'id';
 
-    public $table = 'blog';
+     protected $table = "blog";
 
-    protected $fillable = [
-        'id', 'owner', 'title', 'meta_info', 'meta_tags',
-        'description', 'date_created'
-    ];
+     protected $fillable = [
+         'title',
+         'category',
+         'author_id',
+         'content',
+         'meta_tags',
+         'meta_description',
+         'date_posted'
+     ];
 
-   public static function validate($validate){
-        $validator = new Validator;
+     public static function validate($validate){
+         $validator = new Validator;
 
-        $validation = $validator->validate($validate, [
-            'title'        => 'required|min:6|max:150',
-            'meta_tags' => 'required|min:2|max:300',
-            'description' => 'required|min:10'
-        ]);
+         $validation = $validator->validate($validate, [
+             'title'     => 'required|min:6|max:150',
+             'category'  => 'required|min:3|max:255',
+             'content'   => 'required|min:100',
+             'meta_tags' => ['', function($value) {
+                 if (count($value) > 15) {
+                     return 'You can\'t have more than 15 meta tags.';
+                 }
+             }],
+             'meta_description' => 'min:20|max:255'
+         ]);
 
-        return $validation;
-   }
-
-    public function user() {
-        return $this->belongsTo('Users', 'owner', 'id');
+         return $validation;
     }
 
-    public static function getAll($page = 1) {
-        Paginator::currentPageResolver(function() use ($page) {
-            return $page;
-        });
-
-        return Blog::where('title', '!=', null)
-            ->select(
-                'id',
-                'title',
-                'description',
-                'meta_tags'
-            )
-            ->orderBy('id', 'ASC')
-            ->paginate(per_page);
-    }
-
-    public static function getBlog($id) {
-        return Blog::where('id', $id)
-            ->select('*')
-            ->leftJoin('users', 'users.user_id', '=', 'blog.owner')
-            ->first();
-    }
-
-    public static function getBlogByOwner($ownerId) {
-        return Blog::where('owner', $ownerId)
-            ->select('*')
-            ->get();
-    }
-
-}
+ } 

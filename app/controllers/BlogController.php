@@ -1,158 +1,176 @@
 <?php
-use Fox\CSRF;
-use Rakit\Validation\Validator;
-use Fox\Request;
+ use Illuminate\Pagination\Paginator;
 
-class BlogController extends Controller {
+ class BlogController extends Controller {
 
-    public function index(){
+     public function index($category = null, $page = 1) {
+         Paginator::currentPageResolver(function() use ($page) {
+             return $page;
+         });
 
-    }
+         if ($category == null) {
+             $posts = Blog::select("*")
+                 ->leftJoin("users", "users.user_id", "=", "blog.author_id")
+                 ->paginate(15);
+         } else {
+             $posts = Blog::select("*")
+                 ->where("category", "=", $category)
+                 ->leftJoin("users", "users.user_id", "=", "blog.author_id")
+                 ->paginate(15);
 
-    public function post($id) {
-        $blog   = Blog::getBlog($id);
+             $this->set("category", $this->filter($category));
+         }
 
-        if (!$blog) {
-            $this->setView("errors/show404");
-            return false;
-        }
+         $categories = Blog::selectRaw("category as title")->groupBy("category")->get();
 
-        $seo = Functions::friendlyTitle($blog->id.'-'.$blog->title);
+         $this->set("posts", $posts);
+         $this->set("categories", $categories);
+         return true;
+     }
 
-        $blog = Blog::select([
-            'blog.id',
-            'blog.title',
-            'blog.description',
-        ])
-        ->get();
+     public function post($postId) {
+         $post = Blog::select("*")
+             ->where("id", $postId)
+             ->leftJoin("users", "users.user_id", "=", "blog.author_id")
+             ->first();
 
-    $this->set("blog", $blog);
+         if (!$post) {
+             $this->setView("errors/show404");
+             return false;
+         }
 
-    return true;
+         $this->set("post", $post);
+         $this->set("page_title", $post->title);
+         if ($post->meta_tags) {
+             $this->set("meta_tags", implode(",", json_decode($post->meta_tags, true)));
+         }
+         $this->set("meta_info", $post->meta_description);
+         return true;
+     }
 
-        $seo = Functions::friendlyTitle($blog->id.'-'.$blog->title);
+     public function add() {
+         $csrf = new AntiCSRF;
 
-        if ($blog->meta_tags)
-            $this->set("meta_tags", implode(',',json_decode($blog->meta_tags, true)));
+         if (!$this->user->isRole(['owner'])) {
+             if (!$this->user->isRole(['blog author'])) {
+                 $this->setView("errors/show401");
+                 return false;
+             }
+         }
 
-        $this->set("page_title", $post->title);
-        $this->set("seo_link", $seo);
+         if ($this->request->isPost() && $csrf->isValidPost()) {
+             $data = [
+                 'title'       => $this->request->getPost("title", "string"),
+                 "category"    => strtolower($this->request->getPost("category", "string")),
+                 'author_id'   => $this->user->user_id,
+                 'meta_tags'   => explode(",", $this->request->getPost("meta_tags", 'string')),
+                 'meta_info'   => $this->request->getPost("meta_info", "string"),
+                 'content'     => $this->purify($this->request->getPost("info")),
+                 'date_posted' => time()
+             ];
 
-        $body = str_replace("<img src", "<img data-src", $blog->description);
-        $body = str_replace("\"img-fluid\"", "\"lazy img-fluid\"", $body);
-        $this->set("description", $body);
-        return true;
-    }
+             $validation = Blog::validate($data);
 
-    public function add() {
-        $client = new GuzzleHttp\Client();
+             if ($validation->fails()) {
+                 $errors = $validation->errors();
+                 $this->set("errors", $errors->firstOfAll());
+             } else {
+                 $data['meta_tags'] = json_encode($data['meta_tags'], JSON_UNESCAPED_SLASHES);
+                 $post = Blog::create($data);
+                 $seo_title = Functions::friendlyTitle($post['id'].'-'.$post['title']);
+                 $this->redirect("blog/post/".$seo_title);
+                 exit;
+             }
+         }
 
-        if ($this->request->isPost()) {
-            $data = [
-                'owner'         => $this->user->user_id,
-                'title'         => $this->request->getPost("title", "string"),
-                'meta_tags'     => explode(",", $this->request->getPost("meta_tags", 'string')),
-                'meta_info'     => $this->request->getPost("meta_info", "string"),
-                'description'   => $this->purify($this->request->getPost("info")),
-                'date_created'  => time()
-            ];
+         $this->set("csrf_token", $csrf->getToken());
+     }
 
-            $validation = Blog::validate($data);
+     public function edit($postId) {
+         $post = Blog::select("*")
+             ->where("id", $postId)
+             ->leftJoin("users", "users.user_id", "=", "blog.author_id")
+             ->first();
 
-            if ($validation->fails()) {
-                $errors = $validation->errors();
-                $this->set("errors", $errors->firstOfAll());
-            } else {
-                $data['meta_tags'] = json_encode($data['meta_tags'], JSON_UNESCAPED_SLASHES);
-                $create = Blog::create($data);
-            }
-        }
+         if (!$post) {
+             $this->setView("errors/show404");
+             return false;
+         }
 
-        $this->set("page_title", "Add Blog Post");
-        $revisions = Revisions::where('visible', 1)->get();
-        $this->set("revisions", $revisions);
-    	return true;
-    }
+         if (!$this->user->isRole(['owner'])) {
+             if ($post->author_id != $this->user->user_id) {
+                 $this->setView("errors/show401");
+                 return false;
+             }
+         }
 
-    public function upload() {
-        $file = $_FILES['image'];
+         $csrf = new AntiCSRF;
 
-        $dims = getimagesize($file['tmp_name']);
-        if ($dims === false) {
-            return [
-                'success' => true,
-                'message' => 'File must be an image.'
-            ];
-        }
+         if ($this->request->isPost() && $csrf->isValidPost()) {
+             $data = [
+                 'title'       => $this->request->getPost("title", "string"),
+                 "category"    => strtolower($this->request->getPost("category", "string")),
+                 'author_id'   => $this->user->user_id,
+                 'meta_tags'   => explode(",", $this->request->getPost("meta_tags", 'string')),
+                 'meta_description'   => $this->request->getPost("meta_info", "string"),
+                 'content'     => $this->purify($this->request->getPost("info")),
+                 'date_posted' => time()
+             ];
 
-        $mimes = ['jpg' => 'image/jpeg', 'gif' => 'image/gif', 'png' => 'image/png'];
+             $validation = Blog::validate($data);
 
-        $type   = mime_content_type($file['tmp_name']);
-        $ext    = pathinfo($file['name'])['extension'];
-        $size   = $file['size'];
+             if ($validation->fails()) {
+                 $errors = $validation->errors();
+                 $this->set("errors", $errors->firstOfAll());
+             } else {
+                 $data['meta_tags'] = json_encode($data['meta_tags'], JSON_UNESCAPED_SLASHES);
 
-        $width  = $dims[0];
-        $height = $dims[1];
+                 $post->fill($data);
+                 $post->save();
 
-        $maxDims = [468, 60];
-        $maxSize = (1024 * 1024 * 5);
+                 $seo_title = Functions::friendlyTitle($post['id'].'-'.$post['title']);
+                 $this->redirect("blog/post/".$seo_title);
+                 exit;
+             }
+         }
 
-        if (!in_array($type, array_values($mimes))) {
-            return [
-                'success' => true,
-                'message' => 'Invalid file mime type.'
-            ];
-        }
+         $this->set("post", $post);
+         if ($post->meta_tags) {
+             $this->set("meta_tags", implode(",", json_decode($post->meta_tags, true)));
+         }
+         $this->set("csrf_token", $csrf->getToken());
+         return true;
+     }
 
-        if (!in_array($ext, array_keys($mimes))) {
-            return [
-                'success' => true,
-                'message' => 'Invalid file extension. Allowed: '.implode(', ', array_keys($mimes))
-            ];
-        }
+     public function delete($postId) {
+         $post = Blog::select("*")
+         ->where("id", $postId)
+         ->leftJoin("users", "users.user_id", "=", "blog.author_id")
+         ->first();
 
-        if ($size > $maxSize) {
-            return [
-                'success' => true,
-                'message' => "Image can not exceed ".(($maxSize/1024)/1024)."MB."
-            ];
-        }
+         if (!$post) {
+             $this->setView("errors/show404");
+             return false;
+         }
 
-        if ($width != $maxDims[0] && $height != $maxDims[1]) {
-            return [
-                'success' => true,
-                'message' => "Image must be $maxDims[0]px x $maxDims[1]px."
-            ];
-        }
+         if (!$this->user->isRole(['owner'])) {
+             if ($post->author_id != $this->user->user_id) {
+                 $this->setView("errors/show401");
+                 return false;
+             }
+         }
 
-        $newname = md5($file['name'] . microtime()).'.'.$ext;
+         $csrf = new AntiCSRF;
 
-        if (!move_uploaded_file($file['tmp_name'], 'public/img/blog/'.$newname)) {
-            return [
-                'success' => true,
-                'message' => 'Failed uploading file...'
-            ];
-        }
+         if ($this->request->isPost() && $csrf->isValidPost()) {
+             $post->delete();
+             $this->redirect("blog");
+             exit;
+         }
 
-        return [
-            'success' => true,
-            'message' => $newname,
-        ];
-    }
+         $this->set("post", $post);
+         $this->set("csrf_token", $csrf->getToken());
+         return true;
+     }
 
-    public $access =  [
-        'login_required' => true,
-        'roles'  => ['member', 'moderator', 'admin']
-    ];
-
-    public function beforeExecute() {
-        if ($this->getActionName() == "upload") {
-            $this->request = Request::getInstance();
-            $this->disableView(true);
-            return true;
-        }
-
-        return parent::beforeExecute();;
-    }
-
-}
+ } 

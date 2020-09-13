@@ -14,16 +14,18 @@
                              {{ icon("shield", 56, 56) }}
                          </div>
                          <div class="flex-fill w-100">
-                             <h4 class="mb-0">Create Blog Post</h4>
+                             <h4 class="mb-0">{{ post.title }}</h4>
                              <p class="mb-0 small text-muted">
-                                 Post a new article with the form below.
+                                 Edit the details of this post with the form below.
                              </p>
                          </div>
                          <div class="flex-fill text-right" style="min-width:300px;">
-                             <a href="{{ url('blog') }}" class="btn btn-default">Blog Home</a>
-
-                             <a href="{{ url('blog/add') }}" class="btn btn-default {{ user is defined ? "" : "disabled" }}">
-                                 Create Post
+                             <a href="{{ url('blog') }}" class="btn btn-default">
+                                 Blog Home
+                             </a>
+                             <a href="{{ url('blog/post/'~friendlyTitle(post.id~'-'~post.title)) }}" 
+                                 class="btn btn-default {{ user is defined ? "" : "disabled" }}">
+                                Back to Post
                              </a>
                          </div>
                      </div>
@@ -47,16 +49,16 @@
                  {% endif %}
 
                  <div class="card-body">
-                     <form method="post" action="{{ url('blog/add') }}" id="postform">
+                     <form method="post" action="{{ url('blog/edit/'~post.id) }}" id="postform">
                          <div class="form-row form-group">
                              <div class="col-sm-12 col-lg-3">
                                  <label>Category</label>
-                                 <input type="text" class="form-control {{ errors['category'] is defined ? 'border-danger' : '' }}" name="category">
+                                 <input type="text" class="form-control" value="{{ post.category }}" name="category">
 
                              </div>
                              <div class="col-sm-12 col-lg-9">
                                  <label>Blog Title*</label>
-                                 <input type="text" class="form-control {{ errors['title'] is defined ? 'border-danger' : '' }}" name="title">
+                                 <input type="text" class="form-control" name="title" value="{{ post.title }}">
                                  <small class="text-muted">
                                      Use an eye catching title to grab attention. Be creative!
                                  </small>
@@ -68,14 +70,14 @@
                          <div class="form-row form-group">
                              <div class="col">
                                  <label>Meta Tags</label>
-                                 <input type="text" class="form-control {{ errors['meta_tags'] is defined ? 'border-danger' : '' }}" name="meta_tags">
+                                 <input type="text" class="form-control" name="meta_tags" value="{{ meta_tags }}">
                                  <small class="text-muted">
                                      Comma separated. Max 15. <a href="https://www.w3schools.com/tags/tag_meta.asp" target="_blank">More Info</a>
                                  </small>
                              </div>
                              <div class="col">
                                  <label>Meta Description</label>
-                                 <input type="text" class="form-control {{ errors['meta_info'] is defined ? 'border-danger' : '' }}" name="meta_info">
+                                 <input type="text" class="form-control" name="meta_info" value="{{ post.meta_description }}">
                                  <small class="text-muted">
                                      A short description of your blog post. <a href="https://yoast.com/meta-descriptions/" target="_blank">More Info</a>
                                  </small>
@@ -85,15 +87,15 @@
                          <hr>
 
                          <div class="form-group">
-                             <div id="editor" class="mb-3 {{ errors['info'] is defined ? 'border-danger' : '' }}"></div>
+                             <div id="editor" class="mb-3">{{ post.content|raw }}</div>
                              <textarea name='info' id='editor-form' style='display:none'></textarea>
                          </div>
 
                          <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
 
                          <div class="form-group">
-                             <button type="submit" class="btn btn-dark shadow-none" id="submit">
-                                 Create post
+                             <button type="submit" class="btn btn-success shadow-none" id="submit">
+                                 Save Changes
                              </button>
 
                              <div id="toolbar" class="d-inline-block">
