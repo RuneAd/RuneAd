@@ -38,10 +38,12 @@ class Security {
         ];
 
         $admin = [
-          'admin'    => ['index'],
-          'votes'    => ['index'],
-          'users'    => ['index', 'banned'],
-          'payments' => ['index'],
+            'admin'    => ['index', 'reports', 'viewreport'],
+            'payments' => ['index'],
+            'sponsor'  => ['index', 'add', 'edit', 'delete'],
+            'premium'  => ['index', 'add', 'edit', 'delete'],
+            'users'    => ['index', 'banned'],
+            'servers'  => ['index', 'info', 'edit', 'delete']
         ];
 
         foreach ($public as $controller => $actions) {

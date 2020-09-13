@@ -1,18 +1,30 @@
-<nav class="navbar navbar-top navbar-expand-md navbar-dark bg-gradient-primary mt-0" id="navbar-main">
+<div class="header bg-default">
     <div class="container-fluid">
-        <!-- Brand -->
-      <a class="h4 mb-0 text-white text-uppercase text--sm-center text-md-left pl-4 pl-md-0"
-            href="{{ url('admin') }}">
-            Admin Panel
-        </a>
-
-        <ul class="navbar-nav align-items-center d-none d-md-flex">
-            <li class="nav-item">
-                <span class="mb-0 text-sm font-weight-bold text-white">
-                    <i class="fas fa-user-circle"></i>
-                    {{ user.username|capitalize }}
-                </span>
-            </li>
-        </ul>
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col">
+                    <div class="d-flex">
+                        <div class="flex-fill text-white pr-2">
+                            {{ icon('person-circle', 16, 16) }}
+                        </div>
+                        <div class="flex-fill w-100">
+                            <a href="#" class="text-white d-inline-block" style="margin-top: 2px;">
+                                {{ user.username }}
+                            </a>
+                            <small class="text-muted">#{{ user.discriminator }}</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col text-right">
+                    <a class="text-white" href="#" rel="nofollow" id="darkmode">
+                        {% if theme == "dark" %}
+                        {{ icon("brightness-high", 18, 18) }}
+                        {% else %}
+                        {{ icon("brightness-alt-high", 18, 18) }}
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
-</nav>
+</div>

@@ -8,17 +8,24 @@ class Votes extends Model {
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'server_id', 'ip_address', 'incentive', 'voted_on'
+        'server_id', 
+        'ip_address', 
+        'incentive', 
+        'voted_on'
     ];
 
-    public static function getChartData($server, $start_date) {
-        return self::where('server_id', '=', $server->id)
-            ->where("voted_on", '>', $start_date)
-            ->selectRaw('COUNT(*) AS total')
-            ->selectRaw("FROM_UNIXTIME(voted_on, '%m %d') AS time")
-            ->groupBy("time")
-            ->orderBy("time", 'ASC')
+    public static function getChartData($dates) {
+        $query = self::select(["voted_on"])
+            ->where("voted_on", ">=", $dates['start'])
+            ->orderby("voted_on", "ASC")
             ->get();
+
+        foreach ($query as $vote) {
+            $date = date($dates['format'], $vote->voted_on);
+            $dates['chart'][$date]++;
+        }
+
+        return array_values($dates['chart']);
     }
 
 }

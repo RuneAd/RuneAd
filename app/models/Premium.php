@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Database\Eloquent\Model as Model;
+use Rakit\Validation\Validator;
 
 class Premium extends Model {
 
@@ -11,11 +12,21 @@ class Premium extends Model {
     
     protected $fillable = [
         'title',
-        'duration',
         'price',
+        'duration',
         'features',
         'duration',
         'level'
     ];
+
+    public static function validate($validate){
+        $validation = (new Validator)->validate($validate, [
+            'title'     => 'required|min:3|max:150',
+            'price'     => 'required|numeric|min:1',
+            'duration'  => 'required|numeric|min:0',
+            'level'     => 'required|numeric|min:1',
+        ]);
+        return $validation;
+   }
 
 }

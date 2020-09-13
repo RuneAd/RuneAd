@@ -279,23 +279,74 @@ class PageRouter extends Router {
             return $this->setRoute('tools', 'map');
         });
 
-        /**
-       * Admin Users
-       */
-      $this->all('admin/users', function() {
-          return $this->setRoute('users', 'index');
-      });
-      $this->all('admin/users/([0-9]+)', function($page) {
-          return $this->setRoute('users', 'index', ['page' => $page]);
-      });
-      $this->all('admin/users/banned', function() {
-          return $this->setRoute('users', 'banned');
-      });
-      $this->all('admin/users/banned/([0-9]+)', function($page) {
-          return $this->setRoute('users', 'banned', ['page' => $page]);
-      });
+              /**
+         * Admin Sponsors
+         */
+        $this->all('admin/sponsor', function() {
+            return $this->setRoute('sponsor', 'index');
+        });
+
+        $this->all('admin/sponsor/add', function() {
+            return $this->setRoute('sponsor', 'add');
+        });
+
+        $this->all('admin/sponsor/edit/([0-9]+)', function($id) {
+            return $this->setRoute('sponsor', 'edit', ['id' => $id]);
+        });
+        
+        $this->all('admin/sponsor/delete/([0-9]+)', function($id) {
+            return $this->setRoute('sponsor', 'delete', ['id' => $id]);
+        });
 
         /**
+         * Admin Premium
+         */
+        $this->all('admin/premium', function() {
+            return $this->setRoute('premium', 'index');
+        });
+
+        $this->all('admin/premium/add', function() {
+            return $this->setRoute('premium', 'add');
+        });
+
+        $this->all('admin/premium/edit/([0-9]+)', function($id) {
+            return $this->setRoute('premium', 'edit', ['id' => $id]);
+        });
+        
+        $this->all('admin/premium/delete/([0-9]+)', function($id) {
+            return $this->setRoute('premium', 'delete', ['id' => $id]);
+        });
+
+        /**
+         * Admin Users
+         */
+        $this->all('admin/users', function() {
+            return $this->setRoute('users', 'index');
+        });
+        $this->all('admin/users/([0-9]+)', function($page) {
+            return $this->setRoute('users', 'index', ['page' => $page]);
+        });
+        $this->all('admin/users/banned', function() {
+            return $this->setRoute('users', 'banned');
+        });
+        $this->all('admin/users/banned/([0-9]+)', function($page) {
+            return $this->setRoute('users', 'banned', ['page' => $page]);
+        });
+        
+        /**
+         * Admin Reports
+         */
+        $this->all('admin/reports', function() {
+            return $this->setRoute('admin', 'reports');
+        });
+        $this->all('admin/reports/([0-9]+)', function($page) {
+            return $this->setRoute('admin', 'reports', ['page' => $page]);
+        });
+        $this->all('admin/reports/view/([0-9]+)', function($id) {
+            return $this->setRoute('admin', 'viewreport', ['id' => $id]);
+        });
+
+               /**
          * Admin
          */
         $this->all('admin', function() {
@@ -308,15 +359,39 @@ class PageRouter extends Router {
         $this->all('admin/payments', function() {
             return $this->setRoute('payments', 'index', [ 'search' => null, 'page' => 1 ]);
         });
+
         $this->all('admin/payments/([0-9]+)', function($page) {
             return $this->setRoute('payments', 'index', [ 'search' => null, 'page' => $page]);
         });
+
         $this->all('admin/payments/([A-Za-z0-9\-_]+)', function($search) {
             return $this->setRoute('payments', 'index', ['search' => $search, 'page' => 1]);
         });
+
         $this->all('admin/payments/([A-Za-z0-9\-_]+)/([0-9]+)', function($search, $page) {
             return $this->setRoute('payments', 'index', ['search' => $search, 'page' => $page]);
         });
+        
+        /**
+         * Admin Payments
+         */
+        $this->all('admin/servers', function() {
+            return $this->setRoute('servers', 'index');
+        });
+
+        $this->all('admin/servers/([0-9]+)', function($page) {
+            return $this->setRoute('servers', 'index', [ 'page' => $page ]);
+        });
+
+        $this->all('admin/servers/info/([0-9]+)', function($sid) {
+            return $this->setRoute('servers', 'info', [ 'sid' => $sid ]);
+        });
+
+        $this->all('admin/servers/edit/([0-9]+)', function($sid) {
+            return $this->setRoute('servers', 'edit', [ 'sid' => $sid ]);
+        });
+
+     
 
     }
 

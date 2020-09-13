@@ -32,7 +32,7 @@ class Servers extends Model {
             'callback_url' => 'url:http,https|max:255',
             'discord_link' => 'url:https|max:255',
             'banner_url'   => ['', function($value) {
-                if (!file_exists('public/img/banners/'.$value)) {
+                if (substr($value, 0, 4) != "http" && !file_exists('public/img/banners/'.$value)) {
                     return 'Image does not exist.';
                 }
             }],
@@ -58,22 +58,20 @@ class Servers extends Model {
 
         return Servers::where('revision', '=', $revision->revision)
             ->select(
-                'id',
-                'title',
-                'revision',
+                'id', 
+                'title', 
+                'revision', 
                 'website',
-                'banner_url',
+                'banner_url', 
                 'is_online',
-                'discord_link',
-                'description',
-                'meta_tags',
                 'ping',
                 'last_ping',
                 'premium_expires',
-                'website'
+                'website',
+                'discord_link'
             )
             ->selectRaw(
-                'IF(premium_expires > '.time().', votes + (premium_level * 1), votes) as votes')
+                'IF(premium_expires > '.time().', votes + (premium_level * 100), votes) as votes')
             ->where('website', '!=', null)
             ->orderBy('is_online', 'DESC')
             ->orderBy('votes', 'DESC')
@@ -88,24 +86,63 @@ class Servers extends Model {
 
         return Servers::where('website', '!=', null)
             ->select(
-                'id',
-                'title',
-                'revision',
-                'banner_url',
+                'id', 
+                'title', 
+                'revision', 
+                'banner_url', 
                 'is_online',
-                'discord_link',
-                'description',
-                'meta_tags',
                 'ping',
                 'last_ping',
                 'premium_expires',
-                'website'
+                'website',
+                'discord_link'
             )
             ->selectRaw(
-                'IF(premium_expires > '.time().', votes + (premium_level * 1), votes) as votes')
+                'IF(premium_expires > '.time().', votes + (premium_level * 100), votes) as votes')
             ->where('website', '!=', null)
             ->orderBy('is_online', 'DESC')
             ->orderBy('votes', 'DESC')
+            ->orderBy('id', 'ASC')
+            ->paginate(per_page);
+    }
+
+    public static function searchServers($name, $page = 1) {
+        Paginator::currentPageResolver(function() use ($page) {
+            return $page;
+        });
+
+        return Servers::where('website', '!=', null)
+            ->select(
+                'id', 
+                'title', 
+                'revision',
+                'votes',
+                'banner_url', 
+                'is_online',
+                'premium_expires'
+            )
+            ->where('title', 'LIKE', '%'.$name.'%')
+            ->orWhere('owner', '=', ''.$name.'')
+            ->orderBy('id', 'ASC')
+            ->paginate(per_page);
+    }
+
+    public static function getAdminServers($page = 1) {
+        Paginator::currentPageResolver(function() use ($page) {
+            return $page;
+        });
+
+        return Servers::where('website', '!=', null)
+            ->select(
+                'id', 
+                'title', 
+                'revision',
+                'votes',
+                'banner_url', 
+                'is_online',
+                'premium_expires'
+            )
+            ->where('website', '!=', null)
             ->orderBy('id', 'ASC')
             ->paginate(per_page);
     }
@@ -121,8 +158,22 @@ class Servers extends Model {
         return Servers::where('owner', $ownerId)
             ->select('*')
             ->selectRaw(
-                'IF(premium_expires > '.time().', votes + (premium_level * 1), votes) as votes')
+                'IF(premium_expires > '.time().', votes + (premium_level * 100), votes) as votes')
             ->get();
+    }
+
+    public static function getChartData($data) {
+        $query = self::select("date_created")
+            ->where('date_created', '>=', $data['start'])
+            ->orderby("date_created", "ASC")
+            ->get();
+
+        foreach ($query as $user) {
+            $date = date($data['format'], $user->date_created);
+            $data['chart'][$date]++;
+        }
+
+        return array_values($data['chart']);
     }
 
 }

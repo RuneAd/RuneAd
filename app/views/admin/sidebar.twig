@@ -1,25 +1,29 @@
 {% block admin_sidebar %}
-<nav class="navbar navbar-main navbar-vertical fixed-left navbar-expand-md navbar-light shadow-sm" id="sidenav-main">
+
+{% set icon_class = "text-default" %}
+
+<nav class="navbar navbar-main navbar-vertical fixed-left navbar-expand-md navbar-{{ theme }}" id="sidenav-main">
     <div class="container-fluid">
         <!-- Toggler -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#sidenav-collapse-main" aria-controls="sidenav-main"
+        <button class="navbar-toggler" type="button" data-toggle="collapse" 
+            data-target="#sidenav-collapse-main" aria-controls="sidenav-main" 
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
+        <div class="navbar-brand text-default d-none d-md-block">
+            {% include 'global/logo_svg.twig' %}
+            <p class="text-{{ theme == "dark" ? "white" : "dark" }}">Admin Dashboard</p>
+        </div>
         <!-- Brand -->
-        <a class="navbar-brand pt-0" href="{{ url('admin') }}">
-            RuneAd
-        </a>
-
+        
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
             <li class="nav-item dropdown">
-                <i class="fas fa-user-circle"></i> {{ user.getName() }}
+                Admin Dashboard
             </li>
         </ul>
-
+        
         <!-- Collapse -->
         <div class="collapse navbar-collapse" id="sidenav-collapse-main">
             <!-- Collapse header -->
@@ -42,52 +46,141 @@
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link {{ controller == "admin" and action == 'index' ? "active" : "" }}"
-                       href="{{ url('admin') }}">
-                        <i class="fal fa-chart-bar text-primary fa-fw mr-2"></i>
-                        Dashboard
+                    {% set active = controller == "admin" ? "active" : "" %}
+                    <a class="nav-link {{ active }}" href="{{ url('admin') }}">
+
+                        <div class="d-flex align-items-center">
+                            <div class="flex-fill pr-2 {{ icon_class }}">
+                                {{ icon('bar-chart', 16, 16) }}
+                            </div>
+                            <div class="flex-fill w-100">
+                                Home
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    {% set active = controller == "servers" ? "active" : "" %}
+                    <a class="nav-link {{ active }}" href="{{ url('admin/servers') }}">
+
+                        <div class="d-flex align-items-center">
+                            <div class="flex-fill pr-2 {{ icon_class }}">
+                                {{ icon('card-list', 16, 16) }}
+                            </div>
+                            <div class="flex-fill w-100">
+                                Servers
+                            </div>
+                        </div>
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
+                    {% set active = controller == "payments" ? "active" : "" %}
+                    <a class="nav-link {{ active }}" href="{{ url('admin/payments') }}">
+
+                        <div class="d-flex align-items-center">
+                            <div class="flex-fill pr-2 {{ icon_class }}">
+                                {{ icon('shop', 16, 16) }}
+                            </div>
+                            <div class="flex-fill w-100">
+                                Payments
+                            </div>
+                        </div>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                <a class="nav-link {{ controller == "payments" and action == 'index' ? "active" : "" }}"
-                    href="{{ url('admin/payments') }}">
-                     <i class="fal fa-dollar-sign text-primary fa-fw mr-2"></i>
-                     Payments
-                 </a>
-             </li>
+                    {% set active = controller == "users" ? "active" : "" %}
+                    <a class="nav-link {{ active }}" href="{{ url('admin/users') }}">
 
-             <li class="nav-item">
-                 <a class="nav-link {{ controller == "sponsor" and action == 'index' ? "active" : "" }}"
-                       href="{{ url('admin/sponsor') }}">
-                        <i class="fal fa-crown text-primary fa-fw mr-2"></i>
-                        Sponsor Slots
+                        <div class="d-flex align-items-center">
+                            <div class="flex-fill pr-2 {{ icon_class }}">
+                                {{ icon('people', 16, 16) }}
+                            </div>
+                            <div class="flex-fill w-100">
+                                Users
+                            </div>
+                        </div>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link {{ controller == "premium" and action == 'index' ? "active" : "" }}"
-                       href="{{ url('admin/sponsor') }}">
-                        <i class="fal fa-star text-primary fa-fw mr-2"></i>
-                        Premium
+                    {% set active = controller == "admin" and action == "reports" ? "active" : "" %}
+                    <a class="nav-link {{ active }}" href="{{ url('admin/reports') }}">
+
+                        <div class="d-flex align-items-center">
+                            <div class="flex-fill pr-2 {{ icon_class }}">
+                                {{ icon('exclamation-triangle', 16, 16) }}
+                            </div>
+                            <div class="flex-fill w-100">
+                                Reports
+                            </div>
+                        </div>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    {% set active = controller == "sponsor" ? "active" : "" %}
+                    <a class="nav-link {{ active }}" href="{{ url('admin/sponsor') }}">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-fill pr-2 {{ icon_class }}">
+                                {{ icon('card-list', 16, 16) }}
+                            </div>
+                            <div class="flex-fill w-100">
+                                Sponsor Slots
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    {% set active = controller == "premium" ? "active" : "" %}
+                    <a class="nav-link {{ active }}" href="{{ url('admin/premium') }}">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-fill pr-2 {{ icon_class }}">
+                                {{ icon('award', 16, 16) }}
+                            </div>
+                            <div class="flex-fill w-100">
+                                Premium
+                            </div>
+                        </div>
+                    </a>
+                </li>
+
+
+            
             </ul>
 
             <hr class="my-3">
 
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class=" nav-link" href="{{ url('') }}">
-                        <i class="fal fa-home text-primary fa-fw"></i>
-                        Home
+                    <a class="nav-link" href="{{ url('') }}">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-fill pr-2 {{ icon_class }}">
+                                {{ icon('house', 16, 16) }}
+                            </div>
+                            <div class="flex-fill w-100">
+                                Home
+                            </div>
+                        </div>
                     </a>
                 </li>
-
+                
                 <li class="nav-item active">
-                    <a class="nav-link text-danger" href="{{ url('logout') }}">
-                        <i class="fal fa-sign-out text-danger fa-fw"></i>
-                        Sign Out</a>
+                    <a class="nav-link" href="{{ url('logout') }}">
+
+                        <div class="d-flex align-items-center text-danger">
+                            <div class="flex-fill pr-2">
+                                {{ icon('power', 16, 16) }}
+                            </div>
+                            <div class="flex-fill w-100">
+                                Sign Out
+                            </div>
+                        </div>
+                    </a>
                 </li>
             </ul>
         </div>
