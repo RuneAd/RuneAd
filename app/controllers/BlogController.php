@@ -163,19 +163,11 @@ class BlogController extends Controller {
             return false;
         }
 
-        $canDelete = $this->user != null && ($this->user->isRole(['owner']) 
-            || $post->author_id == $this->user->user_id);
+        $canDelete = $this->user != null && $this->user->isRole(['owner']);
 
         if (!$canDelete) {
             $this->setView("errors/show401");
             return false;
-        }
-
-        if (!$this->user->isRole(['owner'])) {
-            if ($post->author_id != $this->user->user_id) {
-                $this->setView("errors/show401");
-                return false;
-            }
         }
 
         $csrf = new AntiCSRF;
