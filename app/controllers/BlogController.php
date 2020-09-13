@@ -19,10 +19,22 @@ class BlogController extends Controller {
 
         $seo = Functions::friendlyTitle($blog->id.'-'.$blog->title);
 
-        $this->set("rate", $rate);
-        $this->set("blog", $blog);
-        $this->set("purifier", $this->getPurifier());
-        $this->set("page_title", $blog->title);
+        $blogs = Blogs::select([
+            'blogs.id',
+            'blogs.title',
+            'blogs.website',
+            'blogs.discord_link',
+            'blogs.banner_url'
+        ])
+        ->leftJoin("blogs", "blogs.id", "=", "blogs.id")
+        ->orderBy("started", "ASC")
+        ->get();
+
+    $this->set("data", $data);
+    $this->set("servers", $servers);
+    $this->set("revisions", $revisions);
+    $this->set("sponsors", $sponsors);
+    return true;
 
         $seo = Functions::friendlyTitle($blog->id.'-'.$blog->title);
 
