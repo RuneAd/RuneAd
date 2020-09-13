@@ -81,7 +81,7 @@
                     {% endif %}
                     
                     {% if server.website and server.website != "" %}
-                    <a href="{{ url(~friendlyTitle(server.id~'-'~server.title)) }}" class="btn btn-primary btn-sm py-1 text-uppercase"
+                    <a href="{{ url('out/'~friendlyTitle(server.id~'-'~server.title)) }}" class="btn btn-primary btn-sm py-1 text-uppercase"
                         style="font-size:9px;"
                         rel="nofollow" target="_blank">
                         {{ icon('link-45deg') }} WEBSITE
@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
                 action: 'homepage'
             }).then(function(token) {
                 $.ajaxq('VoteQueue', {
-                    url: '{{ url("servers/addvote") }}',
+                    url: '{{ url("vote/addvote") }}',
                     data: {
                         server_id: id,
                         token: token
