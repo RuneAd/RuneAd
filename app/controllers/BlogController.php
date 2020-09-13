@@ -9,8 +9,6 @@ class BlogController extends Controller {
 
     }
 
-
-
     public function add() {
         $client = new GuzzleHttp\Client();
 

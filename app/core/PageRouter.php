@@ -185,6 +185,20 @@ class PageRouter extends Router {
         });
 
         /**
+         * Blog
+         */
+        $this->all('blog', function() {
+            return $this->setRoute('blog', 'index');
+        });
+        $this->all('blog/add', function() {
+            return $this->setRoute('blog', 'add');
+        });
+        $this->all('blog/post/([0-9]+)-([A-Za-z0-9\-_]+)', function($id, $title) {
+            return $this->setRoute('blog', 'index', ['id' => $id]);
+        });
+
+
+        /**
          * Profile
          */
         $this->get("profile", function() {
@@ -247,22 +261,6 @@ class PageRouter extends Router {
 
         $this->all('tools/map', function() {
             return $this->setRoute('tools', 'map');
-        });
-
-        /**
-         * Blog
-         */
-        $this->all('blog', function() {
-            return $this->setRoute('blog', 'index');
-        });
-        $this->all('blog/add', function() {
-            return $this->setRoute('blog', 'add');
-        });
-        $this->all('blog/post', function() {
-            return $this->setRoute('blog', 'post');
-        });
-        $this->all('blog/post/([0-9]+)-([A-Za-z0-9\-_]+)', function($id, $title) {
-            return $this->setRoute('blog', 'index', ['id' => $id]);
         });
 
         /**
