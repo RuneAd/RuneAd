@@ -1,176 +1,196 @@
 <?php
- use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\Paginator;
 
- class BlogController extends Controller {
+class BlogController extends Controller {
 
-     public function index($category = null, $page = 1) {
-         Paginator::currentPageResolver(function() use ($page) {
-             return $page;
-         });
+    public function index($category = null, $page = 1) {
+        Paginator::currentPageResolver(function() use ($page) {
+            return $page;
+        });
 
-         if ($category == null) {
-             $posts = Blog::select("*")
-                 ->leftJoin("users", "users.user_id", "=", "blog.author_id")
-                 ->paginate(15);
-         } else {
-             $posts = Blog::select("*")
-                 ->where("category", "=", $category)
-                 ->leftJoin("users", "users.user_id", "=", "blog.author_id")
-                 ->paginate(15);
+        if ($category == null) {
+            $posts = Blog::select("*")
+                ->leftJoin("users", "users.user_id", "=", "blog.author_id")
+                ->paginate(15);
+        } else {
+            $posts = Blog::select("*")
+                ->where("category", "=", $category)
+                ->leftJoin("users", "users.user_id", "=", "blog.author_id")
+                ->paginate(15);
 
-             $this->set("category", $this->filter($category));
-         }
+            $this->set("category", $this->filter($category));
+        }
 
-         $categories = Blog::selectRaw("category as title")->groupBy("category")->get();
+        $categories = Blog::selectRaw("category as title")->groupBy("category")->get();
 
-         $this->set("posts", $posts);
-         $this->set("categories", $categories);
-         return true;
-     }
+        $this->set("posts", $posts);
+        $this->set("categories", $categories);
+        return true;
+    }
 
-     public function post($postId) {
-         $post = Blog::select("*")
-             ->where("id", $postId)
-             ->leftJoin("users", "users.user_id", "=", "blog.author_id")
-             ->first();
+    public function post($postId) {
+        $post = Blog::select("*")
+            ->where("id", $postId)
+            ->leftJoin("users", "users.user_id", "=", "blog.author_id")
+            ->first();
 
-         if (!$post) {
-             $this->setView("errors/show404");
-             return false;
-         }
+        if (!$post) {
+            $this->setView("errors/show404");
+            return false;
+        }
 
-         $this->set("post", $post);
-         $this->set("page_title", $post->title);
-         if ($post->meta_tags) {
-             $this->set("meta_tags", implode(",", json_decode($post->meta_tags, true)));
-         }
-         $this->set("meta_info", $post->meta_description);
-         return true;
-     }
+        $canEdit = $this->user != null && ($this->user->isRole(['owner']) 
+            || $post->author_id == $this->user->user_id);
 
-     public function add() {
-         $csrf = new AntiCSRF;
+        $this->set("post", $post);
+        $this->set("page_title", $post->title);
 
-         if (!$this->user->isRole(['owner'])) {
-             if (!$this->user->isRole(['blog author'])) {
-                 $this->setView("errors/show401");
-                 return false;
-             }
-         }
+        if ($post->meta_tags) {
+            $this->set("meta_tags", implode(",", json_decode($post->meta_tags, true)));
+        }
 
-         if ($this->request->isPost() && $csrf->isValidPost()) {
-             $data = [
-                 'title'       => $this->request->getPost("title", "string"),
-                 "category"    => strtolower($this->request->getPost("category", "string")),
-                 'author_id'   => $this->user->user_id,
-                 'meta_tags'   => explode(",", $this->request->getPost("meta_tags", 'string')),
-                 'meta_info'   => $this->request->getPost("meta_info", "string"),
-                 'content'     => $this->purify($this->request->getPost("info")),
-                 'date_posted' => time()
-             ];
+        $this->set("can_edit", $canEdit);
+        $this->set("meta_info", $post->meta_description);
+        return true;
+    }
 
-             $validation = Blog::validate($data);
+    public function add() {
+        $csrf = new AntiCSRF;
 
-             if ($validation->fails()) {
-                 $errors = $validation->errors();
-                 $this->set("errors", $errors->firstOfAll());
-             } else {
-                 $data['meta_tags'] = json_encode($data['meta_tags'], JSON_UNESCAPED_SLASHES);
-                 $post = Blog::create($data);
-                 $seo_title = Functions::friendlyTitle($post['id'].'-'.$post['title']);
-                 $this->redirect("blog/post/".$seo_title);
-                 exit;
-             }
-         }
+        $canPost = $this->user != null && $this->user->isRole([
+            'owner', 'blog author'
+        ]);
 
-         $this->set("csrf_token", $csrf->getToken());
-     }
+        if (!$canPost) {
+            $this->setView("errors/show401");
+            return false;
+        }
 
-     public function edit($postId) {
-         $post = Blog::select("*")
-             ->where("id", $postId)
-             ->leftJoin("users", "users.user_id", "=", "blog.author_id")
-             ->first();
+        if ($this->request->isPost() && $csrf->isValidPost()) {
+            $data = [
+                'title'       => $this->request->getPost("title", "string"),
+                "category"    => strtolower($this->request->getPost("category", "string")),
+                'author_id'   => $this->user->user_id,
+                'meta_tags'   => explode(",", $this->request->getPost("meta_tags", 'string')),
+                'meta_info'   => $this->request->getPost("meta_info", "string"),
+                'content'     => $this->purify($this->request->getPost("info")),
+                'date_posted' => time()
+            ];
 
-         if (!$post) {
-             $this->setView("errors/show404");
-             return false;
-         }
+            $validation = Blog::validate($data);
 
-         if (!$this->user->isRole(['owner'])) {
-             if ($post->author_id != $this->user->user_id) {
-                 $this->setView("errors/show401");
-                 return false;
-             }
-         }
+            if ($validation->fails()) {
+                $errors = $validation->errors();
+                $this->set("errors", $errors->firstOfAll());
+            } else {
+                $data['meta_tags'] = json_encode($data['meta_tags'], JSON_UNESCAPED_SLASHES);
+                $post = Blog::create($data);
+                $seo_title = Functions::friendlyTitle($post['id'].'-'.$post['title']);
+                $this->redirect("blog/post/".$seo_title);
+                exit;
+            }
+        }
 
-         $csrf = new AntiCSRF;
+        $this->set("csrf_token", $csrf->getToken());
+    }
 
-         if ($this->request->isPost() && $csrf->isValidPost()) {
-             $data = [
-                 'title'       => $this->request->getPost("title", "string"),
-                 "category"    => strtolower($this->request->getPost("category", "string")),
-                 'author_id'   => $this->user->user_id,
-                 'meta_tags'   => explode(",", $this->request->getPost("meta_tags", 'string')),
-                 'meta_description'   => $this->request->getPost("meta_info", "string"),
-                 'content'     => $this->purify($this->request->getPost("info")),
-                 'date_posted' => time()
-             ];
+    public function edit($postId) {
+        $post = Blog::select("*")
+            ->where("id", $postId)
+            ->leftJoin("users", "users.user_id", "=", "blog.author_id")
+            ->first();
 
-             $validation = Blog::validate($data);
+        if (!$post) {
+            $this->setView("errors/show404");
+            return false;
+        }
 
-             if ($validation->fails()) {
-                 $errors = $validation->errors();
-                 $this->set("errors", $errors->firstOfAll());
-             } else {
-                 $data['meta_tags'] = json_encode($data['meta_tags'], JSON_UNESCAPED_SLASHES);
+        $canEdit = $this->user != null && ($this->user->isRole(['owner']) 
+            || $post->author_id == $this->user->user_id);
 
-                 $post->fill($data);
-                 $post->save();
+        if (!$canEdit) {
+            $this->setView("errors/show401");
+            return false;
+        }
 
-                 $seo_title = Functions::friendlyTitle($post['id'].'-'.$post['title']);
-                 $this->redirect("blog/post/".$seo_title);
-                 exit;
-             }
-         }
+        $csrf = new AntiCSRF;
 
-         $this->set("post", $post);
-         if ($post->meta_tags) {
-             $this->set("meta_tags", implode(",", json_decode($post->meta_tags, true)));
-         }
-         $this->set("csrf_token", $csrf->getToken());
-         return true;
-     }
+        if ($this->request->isPost() && $csrf->isValidPost()) {
+            $data = [
+                'title'       => $this->request->getPost("title", "string"),
+                "category"    => strtolower($this->request->getPost("category", "string")),
+                'author_id'   => $this->user->user_id,
+                'meta_tags'   => explode(",", $this->request->getPost("meta_tags", 'string')),
+                'meta_description'   => $this->request->getPost("meta_info", "string"),
+                'content'     => $this->purify($this->request->getPost("info")),
+                'date_posted' => time()
+            ];
 
-     public function delete($postId) {
-         $post = Blog::select("*")
-         ->where("id", $postId)
-         ->leftJoin("users", "users.user_id", "=", "blog.author_id")
-         ->first();
+            $validation = Blog::validate($data);
 
-         if (!$post) {
-             $this->setView("errors/show404");
-             return false;
-         }
+            if ($validation->fails()) {
+                $errors = $validation->errors();
+                $this->set("errors", $errors->firstOfAll());
+            } else {
+                $data['meta_tags'] = json_encode($data['meta_tags'], JSON_UNESCAPED_SLASHES);
+                
+                $post->fill($data);
+                $post->save();
 
-         if (!$this->user->isRole(['owner'])) {
-             if ($post->author_id != $this->user->user_id) {
-                 $this->setView("errors/show401");
-                 return false;
-             }
-         }
+                $seo_title = Functions::friendlyTitle($post['id'].'-'.$post['title']);
+                $this->redirect("blog/post/".$seo_title);
+                exit;
+            }
+        }
 
-         $csrf = new AntiCSRF;
+        $this->set("post", $post);
 
-         if ($this->request->isPost() && $csrf->isValidPost()) {
-             $post->delete();
-             $this->redirect("blog");
-             exit;
-         }
+        if ($post->meta_tags) {
+            $this->set("meta_tags", implode(",", json_decode($post->meta_tags, true)));
+        }
 
-         $this->set("post", $post);
-         $this->set("csrf_token", $csrf->getToken());
-         return true;
-     }
+        $this->set("can_edit", $canEdit);
+        $this->set("csrf_token", $csrf->getToken());
+        return true;
+    }
 
- } 
+    public function delete($postId) {
+        $post = Blog::select("*")
+        ->where("id", $postId)
+        ->leftJoin("users", "users.user_id", "=", "blog.author_id")
+        ->first();
+
+        if (!$post) {
+            $this->setView("errors/show404");
+            return false;
+        }
+
+        $canDelete = $this->user != null && ($this->user->isRole(['owner']) 
+            || $post->author_id == $this->user->user_id);
+
+        if (!$canDelete) {
+            $this->setView("errors/show401");
+            return false;
+        }
+
+        if (!$this->user->isRole(['owner'])) {
+            if ($post->author_id != $this->user->user_id) {
+                $this->setView("errors/show401");
+                return false;
+            }
+        }
+
+        $csrf = new AntiCSRF;
+
+        if ($this->request->isPost() && $csrf->isValidPost()) {
+            $post->delete();
+            $this->redirect("blog");
+            exit;
+        }
+
+        $this->set("post", $post);
+        $this->set("csrf_token", $csrf->getToken());
+        return true;
+    }
+
+}

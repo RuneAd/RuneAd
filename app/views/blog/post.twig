@@ -1,66 +1,66 @@
 {%  extends 'layout.twig' %}
 
- {% block content %}
+{% block content %}
 
- <div class="container" style="margin-top:-30px;">
+<div class="container" style="margin-top:-30px;">
 
-     <div class="row mb-3">
+    <div class="row mb-3">
 
-         <div class="col-sm-12">
-             <div class="card border-0 shadow-sm">
-                 <div class="card-body">
-                     <div class="d-flex align-items-center">
-                         <div class="px-3">
-                             <img src="{{ avatar(post.user_id, post.avatar) }}"
-                                 style="width:76px" class="rounded-circle mt-1">
-                         </div>
-                         <div class="flex-fill w-100">
-                             <h4 class="mb-0">{{ post.title }}</h4>
-                             <p class="mb-0 small text-muted">
-                                 {{ post.meta_description }}
-                             </p>
-                         </div>
-                         <div class="flex-fill text-right" style="min-width:300px;">
-                             <a href="{{ url('blog') }}" class="btn btn-default">Blog Home</a>
+        <div class="col-sm-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="px-3">
+                            <img src="{{ avatar(post.user_id, post.avatar) }}"
+                                style="width:76px" class="rounded-circle mt-1">
+                        </div>
+                        <div class="flex-fill w-100">
+                            <h4 class="mb-0">{{ post.title }}</h4>
+                            <p class="mb-0 small text-muted">
+                                {{ post.meta_description }}
+                            </p>
+                        </div>
+                        <div class="flex-fill text-right" style="min-width:300px;">
+                            <a href="{{ url('blog') }}" class="btn btn-default">Blog Home</a>
+                            
+                            <a href="{{ url('blog/edit/'~post.id) }}" 
+                                class="btn btn-default {{ can_edit ? "" : "disabled" }}">
+                                Edit Post
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                             <a href="{{ url('blog/edit/'~post.id) }}" 
-                                 class="btn btn-default {{ user is defined and user.user_id == post.author_id ? "" : "disabled" }}">
-                                 Edit Post
-                             </a>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div>
+    <div class="row">
+        <div class="col-sm-12 col-lg-12">
+            <div class="card border-0 shadow-sm mb-2">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <div class="pr-3">
+                            
+                        </div>
+                        <div class="flex-fill w-100">
+                            <p class="small text-muted">
+                                 {{ post.username }} | {{ post.date_posted|date("m.d.y")}}
+                            </p>
+                            {{ post.content|raw }}
+                        </div>
+                    </div>
+                </div>
 
-     <div class="row">
-         <div class="col-sm-12 col-lg-12">
-             <div class="card border-0 shadow-sm mb-2">
-                 <div class="card-body">
-                     <div class="d-flex">
-                         <div class="pr-3">
+                <div class="card-footer text-right">
+                    <a href="{{ url('blog/delete/'~post.id) }}" class="btn btn-danger {{ can_edit ? "" : "disabled" }}">
+                        Delete Post
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                         </div>
-                         <div class="flex-fill w-100">
-                             <p class="small text-muted">
-                                  {{ post.username }} | {{ post.date_posted|date("m.d.y")}}
-                             </p>
-                             {{ post.content|raw }}
-                         </div>
-                     </div>
-                 </div>
+    {{ content|raw }}
+</div>
 
-                 <div class="card-footer text-right">
-                     <a href="{{ url('blog/delete/'~post.id) }}" class="btn btn-danger">
-                         Delete Post
-                     </a>
-                 </div>
-             </div>
-         </div>
-     </div>
-
-     {{ content|raw }}
- </div>
-
- {%  endblock %}
+{%  endblock %}
