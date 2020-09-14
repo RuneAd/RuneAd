@@ -134,7 +134,7 @@
                                 class="img-fluid rounded lazy">
                         </a>
                         {% endif %}
-                            {{ description|raw }}
+                            {{ description|html_to_markdown}}
                         </div>
                     </div>
                 </div>
