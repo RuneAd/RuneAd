@@ -224,12 +224,23 @@ document.addEventListener('DOMContentLoaded', function(event) {
     var apiUrl = 'https://api.imgur.com/3/image';
     var apiKey = '{{ constant("imgur_key") }}';
     var quill = new Quill('#editor', {
-        theme: 'snow',
         modules: {
-            toolbar: '#toolbar'
-        },
-        placeholder: 'Write a server description...'
-    });
+                'syntax': true,
+                'toolbar': [
+                  [{ 'font': [] }, { 'size': [] }],
+                  [ 'bold', 'italic', 'underline', 'strike' ],
+                  [{ 'color': [] }, { 'background': [] }],
+                  [{ 'script': 'super' }, { 'script': 'sub' }],
+                  [{ 'header': '1' }, { 'header': '2' }, 'blockquote', 'code-block' ],
+                  [{ 'list': 'ordered' }, { 'list': 'bullet'}, { 'indent': '-1' }, { 'indent': '+1' }],
+                  [ 'direction', { 'align': [] }],
+                  [ 'link', 'image', 'video', 'formula' ],
+                  [ 'clean' ]
+            ]
+         },
+          placeholder: 'Compose an epic...',
+          theme: 'snow'  // or 'bubble'
+        });
     let alert = $('.alert-box');
     quill.getModule("toolbar").addHandler("image", function (a) {
         var input = document.createElement('input');
