@@ -25,6 +25,7 @@ class BlogController extends Controller {
 
         $this->set("posts", $posts);
         $this->set("categories", $categories);
+        ->orderBy("id", "ASC")
         return true;
     }
 
