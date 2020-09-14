@@ -16,6 +16,7 @@ class BlogController extends Controller {
             $posts = Blog::select("*")
                 ->where("category", "=", $category)
                 ->leftJoin("users", "users.user_id", "=", "blog.author_id")
+                ->orderBy("id", "ASC")
                 ->paginate(15);
 
             $this->set("category", $this->filter($category));
