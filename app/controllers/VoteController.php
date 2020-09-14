@@ -6,6 +6,14 @@ class VoteController extends Controller {
     public function index($serverId, $incentive) {
         $server = Servers::getServer($serverId);
 
+        $servers = Servers::getByRevision($revision, $page);
+
+        $this->set("page_title", "{$revision->revision} Servers");
+        $this->set("meta_info", "{$revision->revision} Runescape private servers.");
+        $this->set("revision", $revision);
+        $servers = Servers::getAll($page);
+        $this->set("page_title", "RSPS Toplist | RuneScape Private Servers");
+
         $data = [
             'servers' => [
                 'total' => Servers::count()
