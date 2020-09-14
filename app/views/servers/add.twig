@@ -3,8 +3,6 @@
 {% block content %}
 
 <script src="https://runead.com/public/js/quill.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote.min.css" integrity="sha512-KbfxGgOkkFXdpDCVkrlTYYNXbF2TwlCecJjq1gK5B+BYwVk7DGbpYi4d4+Vulz9h+1wgzJMWqnyHQ+RDAlp8Dw==" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote.min.js" integrity="sha512-kZv5Zq4Cj/9aTpjyYFrt7CmyTUlvBday8NGjD9MxJyOY/f2UfRYluKsFzek26XWQaiAp7SZ0ekE7ooL9IYMM2A==" crossorigin="anonymous"></script>
 
 <div class="container" style="margin-top:-30px;">
     <div class="row">
@@ -169,56 +167,55 @@
 document.addEventListener('DOMContentLoaded', function(event) {
     var apiUrl = 'https://api.imgur.com/3/image';
     var apiKey = '{{ constant("imgur_key") }}';
-    $('#editor').summernote();
-    // var quill = new Quill('#editor', {
-    //     theme: 'snow',
-    //     modules: {
-    //         toolbar: '#toolbar'
-    //     },
-    //     placeholder: 'Write a server description...'
-    // });
+    var quill = new Quill('#editor', {
+        theme: 'snow',
+        modules: {
+            toolbar: '#toolbar'
+        },
+        placeholder: 'Write a server description...'
+    });
     let alert = $('.alert-box');
-    // quill.getModule("toolbar").addHandler("image", function (a) {
-    //     var input = document.createElement('input');
-    //
-    //     input.setAttribute('type', 'file');
-    //     input.click();
-    //     input.onchange = (s) => {
-    //         var file = input.files[0];
-    //         if (/^image\//.test(file.type)) {
-    //             var settings = {
-    //                 async: true,
-    //                 crossDomain: true,
-    //                 processData: false,
-    //                 contentType: false,
-    //                 type: 'POST',
-    //                 url: apiUrl,
-    //                 headers: {
-    //                     Authorization: 'Client-ID ' + apiKey,
-    //                     Accept: 'application/json'
-    //                 },
-    //                 mimeType: 'multipart/form-data'
-    //             };
-    //             var formData = new FormData();
-    //             formData.append("image", file);
-    //             settings.data = formData;
-    //             quill.enable(false);   // Disables user input
-    //             var range = quill.getSelection();
-    //             if (range) {
-    //                 $.ajax(settings).done(function(response) {
-    //                     var json = JSON.parse(response);
-    //                     var index = range.index;
-    //                     quill.insertEmbed(index, 'image', json.data.link);
-    //                     quill.enable();
-    //                 });
-    //             } else {
-    //                 alert("Please select a spot in your post where you wish the image to be placed.")
-    //             }
-    //         } else {
-    //             console.warn('You could only upload images.');
-    //         }
-    //     }
-    // });
+    quill.getModule("toolbar").addHandler("image", function (a) {
+        var input = document.createElement('input');
+
+        input.setAttribute('type', 'file');
+        input.click();
+        input.onchange = (s) => {
+            var file = input.files[0];
+            if (/^image\//.test(file.type)) {
+                var settings = {
+                    async: true,
+                    crossDomain: true,
+                    processData: false,
+                    contentType: false,
+                    type: 'POST',
+                    url: apiUrl,
+                    headers: {
+                        Authorization: 'Client-ID ' + apiKey,
+                        Accept: 'application/json'
+                    },
+                    mimeType: 'multipart/form-data'
+                };
+                var formData = new FormData();
+                formData.append("image", file);
+                settings.data = formData;
+                quill.enable(false);   // Disables user input
+                var range = quill.getSelection();
+                if (range) {
+                    $.ajax(settings).done(function(response) {
+                        var json = JSON.parse(response);
+                        var index = range.index;
+                        quill.insertEmbed(index, 'image', json.data.link);
+                        quill.enable();
+                    });
+                } else {
+                    alert("Please select a spot in your post where you wish the image to be placed.")
+                }
+            } else {
+                console.warn('You could only upload images.');
+            }
+        }
+    });
     $("#postform").on("submit", function (event) {
         var body = $(this).find(".ql-editor").html();
         $(this).find("#editor-form").html(body);
