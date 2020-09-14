@@ -6,6 +6,12 @@ class VoteController extends Controller {
     public function index($serverId, $incentive) {
         $server = Servers::getServer($serverId);
 
+        $data = [
+            'servers' => [
+                'total' => Servers::count()
+            ]
+            ];
+
         if (!$server) {
            $this->setView("errors", "show404");
            return false;
@@ -28,12 +34,6 @@ class VoteController extends Controller {
         $this->set("server", $server);
         $this->set("server_url", Functions::friendlyTitle($server->id.'-'.$server->title));
         return true;
-
-        $data = [
-            'servers' => [
-                'total' => Servers::count()
-            ]
-            ];
     }
 
     public function addvote() {
