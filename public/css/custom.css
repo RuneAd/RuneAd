@@ -20,6 +20,11 @@ body {
     font-family: "Montserrat-Light";
 }
 
+.white-text
+{
+ color: white !important;
+}
+
 .site-footer
 {
   background-color:#26272b;
