@@ -35,7 +35,7 @@ body {
 }
 .site-footer hr
 {
-  border-top-color:#bbb;
+  border-top-color:rgb(255, 187, 0);
   opacity:0.5
 }
 .site-footer hr.small
