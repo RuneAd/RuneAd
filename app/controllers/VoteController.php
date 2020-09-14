@@ -28,6 +28,12 @@ class VoteController extends Controller {
         $this->set("server", $server);
         $this->set("server_url", Functions::friendlyTitle($server->id.'-'.$server->title));
         return true;
+
+        $data = [
+            'servers' => [
+                'total' => Servers::count()
+            ]
+            ];
     }
 
     public function addvote() {
