@@ -32,6 +32,7 @@ class VoteController extends Controller {
         $this->set("incentive", $incentive);
         $this->set("vote", $vote);
         $this->set("server", $server);
+        $this->set("servers", $servers);
         $this->set("server_url", Functions::friendlyTitle($server->id.'-'.$server->title));
         return true;
     }
