@@ -11,6 +11,7 @@ class BlogController extends Controller {
         if ($category == null) {
             $posts = Blog::select("*")
                 ->leftJoin("users", "users.user_id", "=", "blog.author_id")
+                ->orderBy("id", "DESC")
                 ->paginate(15);
         } else {
             $posts = Blog::select("*")
