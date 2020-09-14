@@ -168,11 +168,11 @@
                         <hr>
 
                         <div class="form-group">
-                            <div id="summernote"
+                            <div id="editor"
                             class="mb-3 {{ errors['info'] is defined ? 'border-danger' : '' }}">
                             {{ server.description|raw }}
                             </div>
-                            <textarea name='info' id='summernote' style='display:none'></textarea>
+                            <textarea name='info' id='editor-form' style='display:none'></textarea>
                         </div>
 
                         <div class="form-group mb-0">
@@ -180,7 +180,36 @@
                                Save Changes
                             </button>
 
+                            <div id="toolbar" class="d-inline-block">
+                                <span class="ql-formats">
+                                    <button class="ql-bold"
+                                        data-toggle="tooltip" data-title="Bold"></button>
+                                    <button class="ql-italic"
+                                        data-toggle="tooltip" data-title="Italic"></button>
+                                    <button class="ql-underline"
+                                        data-toggle="tooltip" data-title="Underline"></button>
+                                    <button class="ql-strike"
+                                        data-toggle="tooltip" data-title="Strikethrough"></button>
+                                </span>
 
+                                <span class="ql-formats">
+                                    <button class="ql-list" value="ordered"
+                                        data-toggle="tooltip" data-title="Ordered List"></button>
+                                    <button class="ql-list" value="bullet"
+                                        data-toggle="tooltip" data-title="Bullet List"></button>
+                                </span>
+
+                                <span class="ql-formats">
+                                    <button class="ql-link"
+                                        data-toggle="tooltip" data-title="Link"></button>
+                                    <button class="ql-image"
+                                        data-toggle="tooltip" data-title="Image"></button>
+                                </span>
+
+                                <span class="ql-formats">
+                                    <button class="ql-clean"  data-toggle="tooltip" data-title="Clear Formatting"></button>
+                                </span>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -191,10 +220,9 @@
     </div>
 </div>
 
-
+<div id="summernote"></div>
 <script>
-    document.addEventListener('DOMContentLoaded', function(event)
-  $('#summernote').summernote({ 
+  $('#summernote').summernote({
     placeholder: 'Hello Bootstrap 4',
     tabsize: 2,
     height: 100
