@@ -20,6 +20,7 @@
                 <div class="card-body text-center">
                     <p class="small text-muted mb-0">Vote for</p>
                     <h2 class="mb-4">{{ server.title }}</h2>
+                    {% set class = isPremium ? 'bg-premium' : '' %}
 
                     <div class="mb-5">
                     {% if server.banner_url %}
