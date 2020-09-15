@@ -15,10 +15,19 @@
 
 </style>
 
-<div class="desk text-center card-body py-2">
-              <div class="container">
-                <table class="table mt-0 mb-0 tab " style="line-height: 0.0em">
-                  <p id="HomeAds1"></p>
-                </table>
-          </div>
+<div class="d-flex w-100">
+  <div class="flex-fill w-100 pr-0 pr-lg-3">
+      {% include 'index/listing.twig' %}
+  </div>
+  <div class="flex-fill text-right d-none d-lg-inline-block" style="min-width:160px;max-width:160px;">
+      <div class="card border-0 shadow-sm mb-3 overflow-hidden">
+          <a rel="nofollow"
+              target="_self"
+              href="{{ url('ads')}}"
+              title="Vertical Banner">
+              <img src="Https://runead.com/public/img/banners/banner468.png?raw=true">
+          </a>
       </div>
+
+  </div>
+</div>
