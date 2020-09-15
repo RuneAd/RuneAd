@@ -1,0 +1,143 @@
+{% extends 'layout.twig' %}
+{% block content %}
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card border-0 mb-3 overflow-hidden">
+                <div class="card-header">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h6 class="text-uppercase text-muted ls-1 mb-0">Users</h6>
+                            <h2 class="mb-0">User List</h2>
+                        </div>
+                        <div class="col">
+                            <form method="post" action="{{ url('admin/users') }}" 
+                                class="form-inline float-right">
+                                <div class="form-group my-0">
+                                    <input class="form-control form-control-sm" 
+                                        name="search" 
+                                        placeholder="Search username..."
+                                        value="{{ search is defined ? search : "" }}">
+                                </div>
+                                <div class="form-group my-0">
+                                    <button class="btn btn-link btn-sm text-primary" type="submit">
+                                        {{ icon('search') }}
+                                    </button>
+                                </div>
+                                <input type="hidden" name="_token" value="{{ csrf_token }}">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                {% if error is defined %}
+                <div class="alert alert-danger rounded-0 mb-0">{{ error|raw }}</div>
+                {% elseif success is defined %}
+                <div class="alert alert-success rounded-0 mb-0">{{ success }}</div>
+                {% endif %}
+                
+                <table class="table mb-0">
+                    {% for user in users.items() %}
+                    <tr>
+                        <td style="line-height: 1.2em;">
+
+                            {% set roles  = [''] %}
+
+                            {% if user.roles %}
+                            {% set roles = user.roles|json_decode %}
+                            {% endif %}
+
+                            <a href="https://discord.com/users/{{ user.user_id }}" 
+                                class="text-default" 
+                                target="_blank" data-toggle="tooltip" data-placement="right" data-title="{{ roles|implode(', ') }}">
+                                {{ user.username }}#{{ user.discriminator }}
+                            </a>
+                            
+                            <br>
+                            <small>{{ user.email }}</small>
+                        </td>
+                        <td class="text-right">
+                            {% if user.join_date %}
+                            {{ user.join_date|date("m.d.y") }}
+                            {% endif %}
+                        </td>
+                        <td class="text-right">
+                            <a href="{{ url('admin/users/?ban='~user.user_id) }}" class="btn btn-default btn-sm">
+                                Ban
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+            {% set totalPages = users.lastPage() %}
+            {% set current = users.currentPage() %}
+            {% set pageUrl = url('admin/users/')  %}
+
+            <nav aria-label="servernav" class="my-5">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item {{ users.onFirstPage() ? 'disabled' : '' }}">
+                        <a class="page-link"
+                                href="{{ pageUrl~'1' }}" tabindex="-1">
+                            <i class="fal fa-angle-double-left"></i>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+            
+                    <li class="page-item {{ users.onFirstPage() ? 'disabled' : '' }}">
+                        <a class="page-link" 
+                            href="{{ pageUrl ~ (current == 1 ? 1 : current - 1) }}" tabindex="-1">
+                            <i class="fal fa-angle-left"></i>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+            
+                    {% if totalPages > 5 %}
+                        {% set start = current < 3 ? 1 : current - 2 %}
+                        {% set end   = start < 4 ? start + 4 : current + 2 %}
+            
+                        {% if end > totalPages %}
+                            {% set end = totalPages %}
+                        {% endif %}
+            
+                        {% if start + 4 >= totalPages %}
+                            {% set start = totalPages - 4 %}
+                        {% endif %}
+                    {% else %}
+                        {% set start = 1 %}
+                        {% set end   = payments.lastPage() %}
+                    {% endif %}
+            
+                    {% for p in start..end %}
+                    <li class="page-item {{ current == p ? ' active' : ''}}">
+                        <a class="page-link" href="{{ pageUrl ~ p }}">
+                            {{ p }}
+                        </a>
+                    </li>
+                    {% endfor %}
+            
+                    <li class="page-item {{ current >= totalPages ? 'disabled' : '' }}">
+                        <a class="page-link" 
+                            href="{{ pageUrl~(current == totalPages ? totalPages : current + 1) }}">
+                            <i class="fal fa-angle-right"></i>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+            
+                    <li class="page-item {{ current >= totalPages ? 'disabled' : '' }}">
+                        <a class="page-link" 
+                            href="{{ pageUrl ~ totalPages }}">
+                            <i class="fal fa-angle-double-right"></i>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            {{ content|raw}}
+            
+        </div>
+    </div>
+</div>
+{% endblock %}
