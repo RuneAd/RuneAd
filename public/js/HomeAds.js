@@ -1,6 +1,6 @@
 $(document).ready(function() {
     let Servers = [
-      '<a href="http://nefariouspkz.com/?ref=runead" rel="sponsored" target="_blank"><img class="responsive-ad" src="https://runead.com/public/img/banners/apache.gif"></a>',
+        '<a href="https://runead.com/ads" rel="nofollow" target="_self"><img alt="RuneAd" class="responsive-ad" src="https://runead.com/public/img/banners/banner468.png"></a>',
 
     ];
 
