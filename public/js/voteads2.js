@@ -1,6 +1,6 @@
 $(document).ready(function() {
     let VoteAds2 = [
-      '<a href="https://runead.com/ads" rel="nofollow" target="_self"><img alt="RuneAd" class="responsive-ad" src="https://runead.com/public/img/banners/banner468.png"></a>',
+      '<a href="https://runead.com/ads" rel="nofollow" target="_self"><img alt="RuneAd" class="responsive-ad" src="https://runead.com/public/img/banners/banner728.png"></a>',
    ];
 
     let AdVotePage2 = $('#AdVotePage2');
