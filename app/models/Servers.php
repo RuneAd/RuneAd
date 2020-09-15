@@ -71,7 +71,7 @@ class Servers extends Model {
                 'discord_link'
             )
             ->selectRaw(
-                'IF(premium_expires > '.time().', votes + (premium_level * 100), votes) as votes')
+                'IF(premium_expires > '.time().', votes + (premium_level * 1, votes) as votes')
             ->where('website', '!=', null)
             ->orderBy('is_online', 'DESC')
             ->orderBy('votes', 'DESC')
@@ -98,7 +98,7 @@ class Servers extends Model {
                 'discord_link'
             )
             ->selectRaw(
-                'IF(premium_expires > '.time().', votes + (premium_level * 100), votes) as votes')
+                'IF(premium_expires > '.time().', votes + (premium_level * 1), votes) as votes')
             ->where('website', '!=', null)
             ->orderBy('is_online', 'DESC')
             ->orderBy('votes', 'DESC')
@@ -158,7 +158,7 @@ class Servers extends Model {
         return Servers::where('owner', $ownerId)
             ->select('*')
             ->selectRaw(
-                'IF(premium_expires > '.time().', votes + (premium_level * 100), votes) as votes')
+                'IF(premium_expires > '.time().', votes + (premium_level * 1), votes) as votes')
             ->get();
     }
 
