@@ -4,7 +4,7 @@ $(document).ready(function() {
 
     ];
 
-    let HomeAds1 = $('#HomeAds');
+    let HomeAds1 = $('#HomeAds1');
 
     let random = Math.floor(Math.random() * (Servers.length - 0)) + 0;
 
