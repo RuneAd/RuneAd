@@ -4,17 +4,17 @@ $(document).ready(function() {
 
     ];
 
-    let HomeAds = $('#HomeAds');
+    let HomeAds1 = $('#HomeAds');
 
     let random = Math.floor(Math.random() * (Servers.length - 0)) + 0;
 
-    HomeAds.html(Servers[random]);
+    HomeAds1.html(Servers[random]);
 
     setInterval(function() {
         random = Math.floor(Math.random() * (Servers.length - 0)) + 0;
         $('#factBox div').fadeOut(function() {
             $(this).fadeIn();
-            HomeAds.html(Servers[random]);
+            HomeAds1.html(Servers[random]);
         })
     }, 6500);
 
