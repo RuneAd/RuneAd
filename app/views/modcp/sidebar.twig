@@ -1,0 +1,190 @@
+{% block admin_sidebar %}
+
+{% set icon_class = "text-default" %}
+
+<nav class="navbar navbar-main navbar-vertical fixed-left navbar-expand-md navbar-{{ theme }}" id="sidenav-main">
+    <div class="container-fluid">
+        <!-- Toggler -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" 
+            data-target="#sidenav-collapse-main" aria-controls="sidenav-main" 
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-brand text-default d-none d-md-block">
+            {% include 'global/logo_svg.twig' %}
+            <p class="text-{{ theme == "dark" ? "white" : "dark" }}">Admin Dashboard</p>
+        </div>
+        <!-- Brand -->
+        
+        <!-- User -->
+        <ul class="nav align-items-center d-md-none">
+            <li class="nav-item dropdown">
+                Admin Dashboard
+            </li>
+        </ul>
+        
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+            <!-- Collapse header -->
+            <div class="navbar-collapse-header d-md-none">
+                <div class="row">
+                    <div class="col-6 collapse-brand">
+                        <a href="{{ url('admin') }}">
+                            Dashboard
+                        </a>
+                    </div>
+                    <div class="col-6 collapse-close">
+                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle sidenav">
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    {% set active = controller == "admin" ? "active" : "" %}
+                    <a class="nav-link {{ active }}" href="{{ url('admin') }}">
+
+                        <div class="d-flex align-items-center">
+                            <div class="flex-fill pr-2 {{ icon_class }}">
+                                {{ icon('bar-chart', 16, 16) }}
+                            </div>
+                            <div class="flex-fill w-100">
+                                Home
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    {% set active = controller == "servers" ? "active" : "" %}
+                    <a class="nav-link {{ active }}" href="{{ url('admin/servers') }}">
+
+                        <div class="d-flex align-items-center">
+                            <div class="flex-fill pr-2 {{ icon_class }}">
+                                {{ icon('card-list', 16, 16) }}
+                            </div>
+                            <div class="flex-fill w-100">
+                                Servers
+                            </div>
+                        </div>
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
+                    {% set active = controller == "payments" ? "active" : "" %}
+                    <a class="nav-link {{ active }}" href="{{ url('admin/payments') }}">
+
+                        <div class="d-flex align-items-center">
+                            <div class="flex-fill pr-2 {{ icon_class }}">
+                                {{ icon('shop', 16, 16) }}
+                            </div>
+                            <div class="flex-fill w-100">
+                                Payments
+                            </div>
+                        </div>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    {% set active = controller == "users" ? "active" : "" %}
+                    <a class="nav-link {{ active }}" href="{{ url('admin/users') }}">
+
+                        <div class="d-flex align-items-center">
+                            <div class="flex-fill pr-2 {{ icon_class }}">
+                                {{ icon('people', 16, 16) }}
+                            </div>
+                            <div class="flex-fill w-100">
+                                Users
+                            </div>
+                        </div>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    {% set active = controller == "admin" and action == "reports" ? "active" : "" %}
+                    <a class="nav-link {{ active }}" href="{{ url('admin/reports') }}">
+
+                        <div class="d-flex align-items-center">
+                            <div class="flex-fill pr-2 {{ icon_class }}">
+                                {{ icon('exclamation-triangle', 16, 16) }}
+                            </div>
+                            <div class="flex-fill w-100">
+                                Reports
+                            </div>
+                        </div>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    {% set active = controller == "sponsor" ? "active" : "" %}
+                    <a class="nav-link {{ active }}" href="{{ url('admin/sponsor') }}">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-fill pr-2 {{ icon_class }}">
+                                {{ icon('card-list', 16, 16) }}
+                            </div>
+                            <div class="flex-fill w-100">
+                                Sponsor Slots
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    {% set active = controller == "premium" ? "active" : "" %}
+                    <a class="nav-link {{ active }}" href="{{ url('admin/premium') }}">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-fill pr-2 {{ icon_class }}">
+                                {{ icon('award', 16, 16) }}
+                            </div>
+                            <div class="flex-fill w-100">
+                                Premium
+                            </div>
+                        </div>
+                    </a>
+                </li>
+
+
+            
+            </ul>
+
+            <hr class="my-3">
+
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('') }}">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-fill pr-2 {{ icon_class }}">
+                                {{ icon('house', 16, 16) }}
+                            </div>
+                            <div class="flex-fill w-100">
+                                Home
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url('logout') }}">
+
+                        <div class="d-flex align-items-center text-danger">
+                            <div class="flex-fill pr-2">
+                                {{ icon('power', 16, 16) }}
+                            </div>
+                            <div class="flex-fill w-100">
+                                Sign Out
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+{% endblock %}
