@@ -44,7 +44,7 @@
                      
 
                      {% for cat in categories %}
-                     <a href="{{ url('blog/'~cat.title) }}" 
+                     <a href="{{ url('blog/'~friendlyTitle(cat.title)) }}" 
                          class="list-group-item {{ cat.title|lower == category|lower ? "active" : "" }}">
                          {{ cat.title|capitalize }}
                      </a>

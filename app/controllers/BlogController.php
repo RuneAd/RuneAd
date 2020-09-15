@@ -14,6 +14,9 @@ class BlogController extends Controller {
                 ->orderBy("id", "DESC")
                 ->paginate(15);
         } else {
+
+            $category = str_replace("-", " ", $category);
+
             $posts = Blog::select("*")
                 ->where("category", "=", $category)
                 ->leftJoin("users", "users.user_id", "=", "blog.author_id")
