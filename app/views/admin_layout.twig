@@ -2,9 +2,9 @@
 <html lang="en-US">
 <head>
     {% if page_title is defined %}
-    <title>{{ page_title }} | RuneAd</title>
+    <title>{{ page_title }} | Rune Nexus</title>
     {% else %}
-    <title>RuneAd</title>
+    <title>Rune Nexus</title>
     {% endif %}
 
     <link rel="canonical" href="{{ route }}">
@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="{{ stylesheet('quill.snow.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ stylesheet('themes/'~theme~'.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ stylesheet('admin.css') }}" />
-    <script type="text/javascript" src="https://runead.imfast.io/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="{{ javascript('jquery-3.3.1.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 </head>
 <body>
@@ -31,7 +31,6 @@
 </div>
 
 </body>
-
 <script type="text/javascript" src="https://runead.imfast.io/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="{{ javascript('argon-dashboard.min.js') }}"></script>
 <script type="text/javascript" src="{{ javascript('fontawesome.pro.min.js') }}"></script>
