@@ -346,7 +346,7 @@ class PageRouter extends Router {
             return $this->setRoute('admin', 'viewreport', ['id' => $id]);
         });
 
-               /**
+         /**
          * Admin
          */
         $this->all('admin', function() {
@@ -390,6 +390,14 @@ class PageRouter extends Router {
         $this->all('admin/servers/edit/([0-9]+)', function($sid) {
             return $this->setRoute('servers', 'edit', [ 'sid' => $sid ]);
         });
+
+         /**
+         * ModCP
+         */
+        $this->all('modcp', function() {
+            return $this->setRoute('modcp', 'index');
+        });
+
 
      
 

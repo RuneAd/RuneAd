@@ -46,12 +46,21 @@ class Security {
             'servers'  => ['index', 'info', 'edit', 'delete']
         ];
 
+        $mod = [
+            'modcp'    => ['index', 'reports', 'viewreport'],
+            'sponsor'  => ['index', 'add', 'edit', 'delete'],
+            'premium'  => ['index', 'add', 'edit', 'delete'],
+            'users'    => ['index', 'banned'],
+            'servers'  => ['index', 'info', 'edit', 'delete']
+        ];
+
         foreach ($public as $controller => $actions) {
             $resource = new Resource($controller, $actions);
 
             $resource->allow([
                 $acl->getRole('Owner'),
                 $acl->getRole('Administrator'),
+                $acl->getRole('Moderator'),
                 $acl->getRole('Member'),
                 $acl->getRole('Server Owner'),
                 $acl->getRole('Guest'),
@@ -66,6 +75,7 @@ class Security {
             $resource->allow([
                 $acl->getRole('Owner'),
                 $acl->getRole('Administrator'),
+                $acl->getRole('Moderator'),
                 $acl->getRole('Member'),
                 $acl->getRole('Server Owner')
             ]);
@@ -78,6 +88,17 @@ class Security {
 
             $resource->allow([
                 $acl->getRole('Owner'),
+            ]);
+
+            $acl->addResource($controller, $resource);
+        }
+        return $acl;
+
+        foreach ($mod as $controller => $actions) {
+            $resource = new Resource($controller, $actions);
+
+            $resource->allow([
+                $acl->getRole('Moderator'),
             ]);
 
             $acl->addResource($controller, $resource);
