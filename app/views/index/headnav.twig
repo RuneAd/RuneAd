@@ -14,9 +14,7 @@
                          <a class="dropdown-item" href="{{ url('') }}">
                              All Versions
                          </a>
-
                          <div class="dropdown-divider"></div>
-
                          {% for revision in revisions %}
                          <a class="dropdown-item" href="{{ url('rev-'~revision.revision~'/1') }}">
                              {{ revision.revision }}

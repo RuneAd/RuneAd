@@ -49,7 +49,6 @@ class Security {
 
         $mod = [
             'modcp'    => ['index', 'reports', 'viewreport'],
-            'sponsor'  => ['index', 'add', 'edit', 'delete'],
             'premium'  => ['index', 'add', 'edit', 'delete'],
             'users'    => ['index', 'banned'],
             'servers'  => ['index', 'info', 'edit', 'delete']
