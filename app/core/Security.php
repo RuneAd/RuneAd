@@ -10,6 +10,7 @@ class Security {
         // register available roles.
         $acl->addRole(new Role('Owner'));
         $acl->addRole(new Role('Administrator'));
+        $acl->addRole(new Role('Moderator'));
         $acl->addRole(new Role('Server Owner'));
         $acl->addRole(new Role('Member'));
         $acl->addRole(new Role('Guest'));
@@ -92,7 +93,6 @@ class Security {
 
             $acl->addResource($controller, $resource);
         }
-        return $acl;
 
         foreach ($mod as $controller => $actions) {
             $resource = new Resource($controller, $actions);
