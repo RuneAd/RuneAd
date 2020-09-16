@@ -10,7 +10,20 @@
             <p>{{ content|raw }}</p>
 
             {% include 'index/sponsors.twig' %}
-            {% include 'index/HomeAds2.twig' %}
+
+            
+
+            <div class="flex-fill text-right d-none d-lg-inline-block" style="min-width:728px;max-width:90px;">
+                <div class="card border-0 shadow-sm mb-3 overflow-hidden">
+                    <a rel="nofollow"
+                        target="_self"
+                        href="{{ url('ads')}}"
+                        title="Vertical Banner">
+                        <img src="{{ url('public/img/banners/banner728.png') }}">
+                    </a>
+                </div>
+
+
             
             <div class="d-flex w-100">
                 <div class="flex-fill w-100 pr-0 pr-lg-3">
