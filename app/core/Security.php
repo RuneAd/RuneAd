@@ -99,6 +99,7 @@ class Security {
 
             $resource->allow([
                 $acl->getRole('Moderator'),
+                $acl->getRole('Owner'),
             ]);
 
             $acl->addResource($controller, $resource);
