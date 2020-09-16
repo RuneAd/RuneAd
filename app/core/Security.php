@@ -10,7 +10,6 @@ class Security {
         // register available roles.
         $acl->addRole(new Role('Owner'));
         $acl->addRole(new Role('Administrator'));
-        $acl->getRole(new Role('Moderator'));
         $acl->addRole(new Role('Server Owner'));
         $acl->addRole(new Role('Member'));
         $acl->addRole(new Role('Guest'));
