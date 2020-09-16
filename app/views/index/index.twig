@@ -12,19 +12,20 @@
             {% include 'index/sponsors.twig' %}
 
 
-            <div class="text-center card-body py-2" style="min-width:728px;max-width:90px;">
-                <div class="card border-0 shadow-sm mb-3 overflow-hidden">
-                    <a rel="nofollow"
-                        target="_self"
-                        href="{{ url('ads')}}"
-                        title="RuneAd Banner">
-                        <img src="{{ url('public/img/banners/banner728.png') }}">
-                    </a>
-                </div>
-            </div>
+
 
             
             <div class="d-flex w-100">
+                <div class="flex-fill text-center d-none d-lg-inline-block" style="min-width:728px;max-width:90px;">
+                    <div class="card border-0 shadow-sm mb-3 overflow-hidden">
+                        <a rel="nofollow"
+                            target="_self"
+                            href="{{ url('ads')}}"
+                            title="RuneAd Banner">
+                            <img src="{{ url('public/img/banners/banner728.png') }}">
+                        </a>
+                    </div>
+                </div>
                 <div class="flex-fill w-100 pr-0 pr-lg-3">
                     {% include 'index/listing.twig' %}
                 </div>
