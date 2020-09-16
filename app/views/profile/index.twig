@@ -9,38 +9,8 @@
         <div class="col-sm-12 col-lg-4">
 
             {% include 'profile/components/sidebar_nav.twig' %}
+            {% include 'profile/components/settings.twig' %}
 
-            <div class="card border-0 shadow-sm mb-3">
-                <div class="card-body">
-                    <p class="text-muted small mb-0">Servers</p>
-                    <p class="mb-0">{{ servers|length }}</p>
-                    
-                </div>
-            </div>
-
-            <div class="card border-0 shadow-sm mb-3">
-                <div class="card-body">
-                    <p class="text-muted small mb-0">Discord ID</p>
-                    <p class="mb-0">{{ user.user_id }}</p>
-                    
-                </div>
-            </div>
-
-            <div class="card border-0 shadow-sm mb-3">
-                <div class="card-body">
-                    <p class="text-muted small mb-0">Roles</p>
-                    <p class="mb-0">{{ roles }}</p>
-                    
-                </div>
-            </div>
-
-            <div class="card border-0 shadow-sm mb-3">
-                <div class="card-body">
-                    <p class="text-muted small mb-0">Email</p>
-                    <p class="mb-0">{{ user.email }}</p>
-                    
-                </div>
-            </div>
 
         </div>
         <div class="col-sm-12 col-lg-8">
