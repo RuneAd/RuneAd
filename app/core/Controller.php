@@ -137,9 +137,9 @@ class Controller {
                 ],
                 'terms' => [
                     'title' => 'Terms of Service',
-                    'meta'  => 'Our terms of service.'
+                    'meta'  => 'RuneAd Terms Of Service.'
                 ],
-								'contact' => [
+							   'contact' => [
                     'title' => 'Contact Us',
                     'meta'  => 'Contact RuneAd.'
                 ],
@@ -147,15 +147,33 @@ class Controller {
                     'title' => 'Privacy Policy',
                     'meta'  => 'Our privacy policy.'
                 ],
-								'ads' => [
-                    'title' => 'Advertisements',
+					'ads' => [
+                    'title' => 'Store',
                     'meta'  => 'Infomation about Advertisements on RuneAd'
                 ]
             ],
+            'profile' => [
+                'index' => [
+                    'title' => 'Profile',
+                     'meta'  => 'Edit and add a new server, view payment history, stats, and more.'
+                ],
+                'payments' => [
+                    'title'  => 'Payments',
+                     'meta'  => 'View your payment history.'
+                ],
+                'add' => [
+                    'title'  => 'Add Server',
+                     'meta'  => 'Add a new server to the toplist'
+                ],
+                'edit' => [
+                    'title'  => 'Edit Server',
+                     'meta'  => 'Edit an existing server on the toplist'
+                ]
+                ],
             'sponsor' => [
                 'index' => [
-                    'title' => 'Sponsored Ads',
-                    'meta' => 'Sponsored ad spots that place you above all other on every page of the main listing.'
+                    'title' => 'Store',
+                    'meta' => 'Purchase sponsored ad spots to give your server a boost!'
                 ]
             ],
             'tools' => [
@@ -175,7 +193,8 @@ class Controller {
                 ],
 				 'add' => [
                     'title' => 'Blog | Add Post',
-                    'meta' => 'An easy to use modern RuneScape Private Server Blog'                ],
+                    'meta' => 'An easy to use modern RuneScape Private Server Blog'                
+                ],
             ]
         ];
 
@@ -187,7 +206,7 @@ class Controller {
         }
 
         return [
-            'title' => 'Servers',
+            'title' => 'RSPS Toplist',
             'meta'  => 'The most modern runescape private server toplist built to-date. Come join your favorite RSPS, or add your server today to start advertising with us!'
         ];
     }
