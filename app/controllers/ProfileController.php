@@ -32,10 +32,6 @@ class ProfileController extends Controller {
             ];
         }
 
-        $this->set("page_title", $user->username);
-
-        $seo = Functions::friendlyTitle($user->username);
-
         if (count($servers) > 0) {
             foreach($votes as $vote) {
                 $vote_time = $vote->voted_on;
