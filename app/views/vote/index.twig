@@ -15,8 +15,8 @@
                     </div>
                 </div>
             </div>
-
-            <div class="card border-0 shadow-sm mb-3">
+            {% for server in servers %}
+            <div class="card border-0 shadow-sm mb-3 {{ server.premium_expires > time() ? 'bg-premium' : '' }}"></div>
                 <div class="card-body text-center">
                     <p class="small text-muted mb-0">Vote for</p>
                     <h2 class="mb-4">{{ server.title }}</h2>
