@@ -66,42 +66,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="col-sm-3 col-lg-3">
-            <div class="card border-0 shadow-sm mb-2">
-                <div class="card-body">
-                    <div class="d-flex">
-                        <div class="flex-fill w-100">
-                              <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-                              <script>
-                            
-                                // Enable pusher logging - don't include this in production
-                                Pusher.logToConsole = true;
-                            
-                                var pusher = new Pusher('2c60f504aff0399cb05c', {
-                                  cluster: 'us2'
-                                });
-                            
-                                var channel = pusher.subscribe('my-channel');
-                                channel.bind('my-event', function(data) {
-                                  alert(JSON.stringify(data));
-                                });
-                              </script>
-                            </head>
-                            <body>
-                              <h4>Comments</h4>
-                              <p>
-
-                              </p>
-                            </body>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
     </div>
 
     {{ content|raw }}
