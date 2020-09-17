@@ -55,12 +55,6 @@
                             <a class="a2a_button_blogger"></a>
                             <a class="a2a_button_copy_link"></a>
                             </div>
-
-
-                            
-
-
-
                         </div>
                     </div>
                 </div>
@@ -77,12 +71,30 @@
             <div class="card border-0 shadow-sm mb-2">
                 <div class="card-body">
                     <div class="d-flex">
-                        <div class="pr-3">
-                        </div>
                         <div class="flex-fill w-100">
-                            <p class="small text-center text-default">
-                                Comments
-                            </p>
+                              <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+                              <script>
+                            
+                                // Enable pusher logging - don't include this in production
+                                Pusher.logToConsole = true;
+                            
+                                var pusher = new Pusher('2c60f504aff0399cb05c', {
+                                  cluster: 'us2'
+                                });
+                            
+                                var channel = pusher.subscribe('my-channel');
+                                channel.bind('my-event', function(data) {
+                                  alert(JSON.stringify(data));
+                                });
+                              </script>
+                            </head>
+                            <body>
+                              <h4>Comments Test</h4>
+                              <p>
+                                Try publishing an event to comments <code>CommentController</code>
+                                with event name <code>Comments</code>.
+                              </p>
+                            </body>
 
                         </div>
                     </div>
