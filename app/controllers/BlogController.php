@@ -12,7 +12,7 @@ class BlogController extends Controller {
             $posts = Blog::select("*")
                 ->leftJoin("users", "users.user_id", "=", "blog.author_id")
                 ->orderBy("id", "DESC")
-                ->paginate(15);
+                ->paginate(7);
         } else {
 
             $category = str_replace("-", " ", $category);
@@ -21,7 +21,7 @@ class BlogController extends Controller {
                 ->where("category", "=", $category)
                 ->leftJoin("users", "users.user_id", "=", "blog.author_id")
                 ->orderBy("id", "DESC")
-                ->paginate(15);
+                ->paginate(7);
 
             $this->set("category", $this->filter($category));
         }
