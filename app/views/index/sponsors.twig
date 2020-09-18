@@ -19,11 +19,12 @@
                     {% if sponsor.title|length > 30 %}
                     {{ substr(sponsor.title, 0, 30)~'...' }}
                     {% else %}
-                    {{ ssponsor.title }}
+                    {{ sponsor.title }}
                     {% endif %}
                 </a>
 
                 </div>
+
                 <a href="{{ sponsor.website }}" target="_blank" class="banner-img">
                     <img
                         src="{{ url('public/img/banner-loading.png') }}"
