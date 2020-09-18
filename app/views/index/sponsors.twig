@@ -23,9 +23,9 @@
             </td>
             <td class="text-center">
                 <div class="d-flex align-items-center justify-content-end">
-                    <div class="pr-1">
-                            {% if sponsor.title|length > 40 %}
-                            {{ substr(sponsor.title, 0, 40)~'...' }}
+                    <div class="text-center pr-1">
+                            {% if sponsor.title|length > 8 %}
+                            {{ substr(sponsor.title, 0, 8)~'...' }}
                             {% else %}
                             {{ sponsor.title }}
                             {% endif %}
