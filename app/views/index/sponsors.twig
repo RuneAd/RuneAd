@@ -24,13 +24,11 @@
             <td class="text-center">
                 <div class="d-flex align-items-center justify-content-end">
                     <div class="pr-1">
-                        <a href="{{ sponsor.website }}" target="_blank"
                             {% if sponsor.title|length > 40 %}
                             {{ substr(sponsor.title, 0, 40)~'...' }}
                             {% else %}
                             {{ sponsor.title }}
                             {% endif %}
-                        </a>
                     </div>
                 </div>
             </td>
