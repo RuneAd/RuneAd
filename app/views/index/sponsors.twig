@@ -25,7 +25,7 @@
                 <div class="d-flex align-items-center justify-content-end">
                     <div class="pr-1">
                         <a href="{{ sponsor.website }}" target="_blank"
-                            {% if server.title|length > 8 %}
+                            {% if sponsor.title|length > 8 %}
                             {{ substr(sponsor.title, 0, 8)~'...' }}
                             {% else %}
                             {{ sponsor.title }}
