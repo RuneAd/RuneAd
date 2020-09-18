@@ -24,7 +24,13 @@
             <td class="text-center">
                 <div class="d-flex align-items-center justify-content-end">
                     <div class="pr-1">
-                        
+                        <a href="{{ sponsor.website }}" target="_blank"
+                            {% if server.title|length > 8 %}
+                            {{ substr(server.title, 0, 8)~'...' }}
+                            {% else %}
+                            {{ server.title }}
+                            {% endif %}
+                        </a>
                     </div>
                 </div>
             </td>
