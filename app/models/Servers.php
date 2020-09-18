@@ -25,7 +25,7 @@ class Servers extends Model {
                     return ":attribute is not a valid revision.";
                 }
             }],
-            'title'        => 'required|min:6|max:150',
+            'title'        => 'required|min:4|max:150',
             'server_port'  => 'numeric|min:0|max:65535',
             'server_ip'    => 'ipv4',
             'website'      => 'url:http,https|max:255',
