@@ -26,7 +26,7 @@
                     <div class="pr-1">
                         <a href="{{ sponsor.website }}" target="_blank"
                             {% if server.title|length > 8 %}
-                            {{ substr(server.title, 0, 8)~'...' }}
+                            {{ substr(sponsor.title, 0, 8)~'...' }}
                             {% else %}
                             {{ sponsor.title }}
                             {% endif %}
