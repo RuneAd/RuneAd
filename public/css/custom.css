@@ -25,6 +25,10 @@ body {
  color: white !important;
 }
 
+.gold-bg {
+    background-color:#FFDF00 !important;
+}
+
 .site-footer
 {
   background-color:#26272b;
