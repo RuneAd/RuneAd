@@ -12,6 +12,19 @@
                 <i class="fas fa-crown" style="color:gold"></i>
             </td>
             <td class="py-3">
+                <div class="text-default mb-2">
+                    
+
+                <a href="{{ sponsor.website }}">
+                    {% if sponsor.title|length > 40 %}
+                    {{ substr(sponsor.title, 0, 40)~'...' }}
+                    {% else %}
+                    {{ ssponsor.title }}
+                    {% endif %}
+                </a>
+
+
+                </div>
                 <a href="{{ sponsor.website }}" target="_blank" class="banner-img">
                     <img
                         src="{{ url('public/img/banner-loading.png') }}"
@@ -20,19 +33,6 @@
                         alt="{{ sponsor.banner_url }}"
                         class="img-fluid rounded lazy">
                 </a>
-            </td>
-            <td class="text-left">
-                <div class="d-flex align-items-left justify-content-end">
-                    <div class="text-left pr-1">
-                        <a href="{{sponsor.website}}"
-                            {% if sponsor.title|length > 15 %}
-                            {{ substr(sponsor.title, 0, 15)~'...' }}
-                            {% else %}
-                            {{ sponsor.title }}
-                            {% endif %}
-                            </a>
-                    </div>
-                </div>
             </td>
             <td class="text-right">
                 <div class="d-flex align-items-center justify-content-end">
