@@ -33,6 +33,14 @@
                         alt="{{ sponsor.banner_url }}"
                         class="img-fluid rounded lazy">
                 </a>
+
+                <video autoplay loop>
+                    <source src="{{ banner(sponsor.banner_url) }}"  id="banner" type="video/webm">
+                    <source src="{{ banner(sponsor.banner_url) }}"  id="banner" type="image/gif">
+                    <source src="{{ banner(sponsor.banner_url) }}"  id="banner" type="video/mp4">
+                    Sorry, your browser doesn't support embedded videos.
+                </video>
+
             </td>
 
 
