@@ -1,68 +1,263 @@
 <div class="card border-0 shadow-sm overflow-hidden mb-2">
-    <div class="card-header bg-primary text-white py-3">
-        <h5 class="mb-0 text-white">Sponsored Servers</h5>
-        <p class="text-white-50 mb-0 small">
-          Some of the best Runescape Private Servers.</p>
+    <div class="text-white bg-primary card-header py-3">
+        <div class="row align-items-center">
+            <div class="col">
+                Runescape Private Servers
+            </div>
+            <div class="col text-right small text-muted">
+                
+            </div>
+        </div>
     </div>
 
-    <table class="table mb-0" style="line-height:.7em;">
-        {% for sponsor in sponsors %}
-        <tr id="server">
-            <td class="text-center rank-col">
-                <i class="fas fa-crown" style="color:gold"></i>
+    {% set start_rank = servers.firstItem() %}
+
+    <table class="table mb-0" style="line-height:1em;">
+        <thead class="thead-{{ theme }}">
+            <tr>
+                <th class="text-center py-2 small border-0">Rank</th>
+                <th class="py-2 small border-0">Server</th>
+                <th class="py-2 border-0 small text-center"></th>
+            </tr>
+        </thead>
+        {% for server in servers.items() %}
+        {% set server_url = friendlyTitle(server.id~' '~server.title) %}
+
+        {% set isPremium = server.premium_expires > time() %}
+        {% set class = isPremium ? 'bg-premium' : '' %}
+        
+        <tr id="server" class="{{ class }}">
+            <td class="text-center small pr-1">
+                <p class="mb-1">{{ start_rank }}</p>
+
+                {% if server.ping == -1  %}
+                <span class="badge badge-danger status-badge small"
+                    data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
+                    Offline
+                </span>
+                {% else %}
+                <span class="badge badge-success status-badge" 
+                    data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
+                    Online
+                </span>
+                {% endif %}
             </td>
-            
-            <td class="py-3">
-                <div class="text-default mb-2">
-                    
-                <a href="{{ sponsor.website }}" target="_blank">
-                    {% if sponsor.title|length > 30 %}
-                    {{ substr(sponsor.title, 0, 30)~'...' }}
+
+            <td class="py-4">
+                {% if server.revision %} 
+                <span class="badge badge-primary">
+                    {{ server.revision }}
+                </span>
+                {% endif %}
+
+                <a href="{{ url('details/'~server_url) }}">
+                    {% if server.title|length > 40 %}
+                    {{ substr(server.title, 0, 40)~'...' }}
                     {% else %}
-                    {{ sponsor.title }}
+                    {{ server.title }}
                     {% endif %}
                 </a>
+                
+                <a href="{{ url('details/'~server_url) }}" class="d-block mt-2" style="max-width:468px;">
+                    <img 
+                        {% if server.banner_url %}
+                        data-src="{{ banner(server.banner_url) }}"
+                        {% endif %}
+                        src="{{ url('public/img/banner-loading.png') }}"
+                        id="banner"
+                        alt="RuneScape Private Server listing on RuneAd RSPS Toplist for {{ server.title }}"
+                        class="rounded w-100"/>
+                </a>
+                
+                <div class="mt-2">
+                    {% if isPremium  %}
 
+                    {% if server.discord_link and server.discord_link != "" %}
+                    <a href="{{ server.discord_link }}" class="btn btn-primary btn-sm py-1 text-uppercase mr-0"
+                        style="font-size:9px;"
+                        rel="nofollow" target="_blank">
+                        {{ icon('discord') }} DISCORD
+                    </a>
+                    {% endif %}
+                    
+                    {% if server.website and server.website != "" %}
+                    <a href="{{ server.website }}" class="btn btn-primary btn-sm py-1 text-uppercase"
+                        style="font-size:9px;"
+                        rel="nofollow" target="_blank">
+                        {{ icon('link-45deg') }} WEBSITE
+                    </a>
+                    {% endif %}
+			        <div class="mt-2"  style="max-width:520px;">
+                        {% set tags = server.meta_tags|json_decode %}
+                        {% for tag in tags %}
+                        <span class="badge badge-pill badge-primary">{{ tag }} </span>              
+                        {% endfor %}                   
+                    </div>
+                    {% endif %}
+                    
                 </div>
 
-                <a href="{{ sponsor.website }}" target="_blank" class="banner-img">
-                    <img
-                        src="{{ url('public/img/banner-loading.png') }}"
-                        data-src="{{ banner(sponsor.banner_url) }}"
-                        id="banner"
-                        alt="{{ sponsor.banner_url }}"
-                        class="img-fluid rounded lazy">
-                </a>
+                
             </td>
 
-
             <td class="text-right">
+                {% set btnclass = isPremium
+                    and theme == "dark" ? 'btn-primary' : 'btn-default' %}
+
                 <div class="d-flex align-items-center justify-content-end">
-                    <div class="pr-1">
-                        <a href="{{ sponsor.discord_link }}" target="_blank"
-                            class="btn btn-lg btn-link text-primary {{ sponsor.discord_link ? '' : 'disabled' }}"
-                            rel="nofollow">
-                            {{ icon('discord', 24, 24) }}
+                    <div class="pr-3">
+                        <p class="mb-0" id="votes">{{ server.votes|number_format }}</p>
+                        <span class="small text-muted mb-0">Votes</span>
+                    </div>
+                    {% if is_mobile == false %}
+                    <div class="pr-1 d-none d-lg-flex">
+                        <a href="{{ url('vote/'~server_url) }}" rel="nofollow"
+                            data-toggle="tooltip"
+                            data-title="Vote"
+                            data-id="{{ server.id }}" class="btn btn-primary vote-btn">
+                            {{ icon('check2-square', 16, 16) }}
                         </a>
                     </div>
-                    <div>
-                        <a href="{{ sponsor.website }}"
-                            class="btn btn-primary btn-lg" target="_blank" rel="sponsored">
-                            <span class="d-none d-lg-inline-block">Play Now</span>
-                        </a>
-                    </div>
+                    {% endif %}
                 </div>
             </td>
         </tr>
-        {% endfor %}
-
-
-        {% set remaining = (3 - sponsors|length) - 1 %}
-
-        {% for i in 0..remaining %}
-        <tr id="server" class="{{ class }}">
-
+        {% set start_rank = start_rank + 1 %}
+        {% else %}
+        <tr>
+            <td colspan=5 class="p-4">Nothing to see here.</td>
         </tr>
         {% endfor %}
     </table>
 </div>
+
+<p class="small text-muted">
+    Status updates occur every 30 minutes on the clock. (ie 9, 9:30, 10, 10:30, etc.)
+</p>
+
+{% set totalPages = servers.lastPage() %}
+{% set current = servers.currentPage() %}
+
+{% set pageUrl = revision is defined ? url('rev-'~revision.revision~'/') : url('')  %}
+
+
+<nav aria-label="servernav" class="mt-5">
+    <ul class="pagination justify-content-center">
+        <li class="page-item {{ servers.onFirstPage() ? 'disabled' : '' }}">
+            <a class="page-link"
+                 href="{{ pageUrl~'1' }}" tabindex="-1">
+                 {{ icon('chevron-bar-left', 14, 14) }}
+            </a>
+        </li>
+
+        <li class="page-item {{ servers.onFirstPage() ? 'disabled' : '' }}">
+            <a class="page-link" 
+                href="{{ pageUrl ~ (current == 1 ? 1 : current - 1) }}" tabindex="-1">
+                {{ icon('chevron-left', 14, 14) }}
+            </a>
+        </li>
+
+        {% if totalPages > 5 %}
+            {% set start = current < 3 ? 1 : current - 2 %}
+            {% set end   = start < 4 ? start + 4 : current + 2 %}
+
+            {% if end > totalPages %}
+                {% set end = totalPages %}
+            {% endif %}
+
+            {% if start + 4 >= totalPages %}
+                {% set start = totalPages - 4 %}
+            {% endif %}
+        {% else %}
+            {% set start = 1 %}
+            {% set end   = servers.lastPage() %}
+        {% endif %}
+
+        {% for p in start..end %}
+        <li class="page-item {{ current == p ? ' active' : ''}}">
+            <a class="page-link" href="{{ pageUrl ~ p }}">
+                {{ p }}
+            </a>
+        </li>
+        {% endfor %}
+
+        <li class="page-item {{ current >= totalPages ? 'disabled' : '' }}">
+            <a class="page-link" 
+                href="{{ pageUrl~(current == totalPages ? totalPages : current + 1) }}">
+                {{ icon('chevron-right', 14, 14) }}
+            </a>
+        </li>
+
+        <li class="page-item {{ current >= totalPages ? 'disabled' : '' }}">
+            <a class="page-link" 
+                href="{{ pageUrl ~ totalPages }}">
+                {{ icon('chevron-bar-right', 14, 14) }}
+            </a>
+        </li>
+    </ul>
+</nav>
+
+{% if is_mobile == false %}
+{% set recaptcha_key = constant('recaptcha')['public'] %}
+
+<script src="https://www.google.com/recaptcha/api.js?render={{ recaptcha_key }}" async></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(event) {
+    let locked = false;
+    $('.vote-btn').click(function(event) {
+        event.preventDefault();
+        locked = true;
+        
+        let btn = $(this);
+        let txt = $(this).text();
+        let id  = $(this).data("id");
+        
+        btn.html('{{ icon("three-dots", 16, 16) }}');
+        btn.addClass("disabled");
+        btn.removeClass("btn-success btn-danger").addClass("btn-primary");
+        grecaptcha.ready(function() {
+            grecaptcha.execute("{{ recaptcha_key }}", {
+                action: 'homepage'
+            }).then(function(token) {
+                $.ajaxq('VoteQueue', {
+                    url: '{{ url("servers/addvote") }}',
+                    data: {
+                        server_id: id,
+                        token: token
+                    },
+                    type: 'POST',
+                    complete: function (data) {
+        
+                    },
+                    success: function (json) {
+                        if (json.success) {
+                            let votes = json.votes;
+                            let votecnt = btn.closest("td").find("#votes");
+                            votecnt.html(votes);
+                        }
+                        
+                        btn.removeClass("btn-primary btn-danger btn-success")
+                            .addClass("btn-"+(json.success ? 'success' : 'danger'));
+        
+                        btn.html(json.success
+                            ? '{{ icon("check", 16, 16) }}'
+                            : '{{ icon("x", 16, 16) }}');
+                        setTimeout(function() {
+                            btn.removeClass("btn-primary btn-danger disabled")
+                                .addClass("btn-primary");
+                            btn.html('{{ icon("check2-square", 16, 16) }}');
+                            locked = false;
+                        }, 1000);
+                    },
+                    error: function(data) {
+                        locked = false;
+                        console.log(data.responseText);
+                    }
+                });
+            });
+        });
+    });
+});
+</script>
+{% endif %}
