@@ -57,6 +57,11 @@ class IndexController extends Controller {
     	return true;
     }
 
+    public function test() {
+
+
+    }
+
     public function details($id, $rate = "month") {
         $server   = Servers::getServer($id);
 
