@@ -122,6 +122,12 @@ class Controller {
                     'meta'  => 'Buy premium on RuneAd to give your server a nice boost, which will increase traffic and visibility for your server!'
                 ]
             ],
+            'index' => [
+                'index' => [
+                    'title' => 'RSPS Toplist',
+                    'meta'  => 'The Modern RuneScape Private Server Toplist'
+                ]
+            ],
             'pages' => [
                 'docs' => [
                     'title' => 'Documentation',
