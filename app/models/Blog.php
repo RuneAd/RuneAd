@@ -32,7 +32,7 @@
                      return 'You can\'t have more than 15 meta tags.';
                  }
              }],
-             'meta_description' => 'required|min:20|max:255'
+             'meta_description' => 'min:20|max:255'
          ]);
 
          return $validation;
