@@ -13,7 +13,7 @@
 
 	// Set the start URL. Here is http used, use https:// for 
 	// SSL websites.
-	$start_url = "https://runead.com/";       
+	$start_url = "https://runead.com/app/views/";       
 
 	// Set true or false to define how the script is used.
 	// true:  As CLI script.
