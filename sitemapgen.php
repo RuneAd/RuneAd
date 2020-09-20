@@ -37,7 +37,7 @@
 					   ); 
 
 	// Scan frequency
-	$freq = "daily";
+	$freq = "always";
 
 	// Page priority
 	$priority = "1.0";
