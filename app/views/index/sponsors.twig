@@ -11,10 +11,9 @@
             <td class="text-center rank-col">
                 <i class="fas fa-crown" style="color:gold"></i>
             </td>
-            
+
             <td class="py-3">
                 <div class="text-default mb-2">
-                    
                 <a href="{{ sponsor.website }}" target="_blank">
                     {% if sponsor.title|length > 30 %}
                     {{ substr(sponsor.title, 0, 30)~'...' }}
@@ -24,7 +23,6 @@
                 </a>
 
                 </div>
-
                 <a href="{{ sponsor.website }}" target="_blank" class="banner-img">
                     <img
                         src="{{ url('public/img/banner-loading.png') }}"
@@ -33,9 +31,7 @@
                         alt="{{ sponsor.banner_url }}"
                         class="img-fluid rounded lazy">
                 </a>
-
             </td>
-
 
             <td class="text-right">
                 <div class="d-flex align-items-center justify-content-end">
