@@ -19,7 +19,7 @@ class SponsorController extends Controller {
         $this->set("packages", $packages);
         $this->set("sponsors", $sponsors);
 
-        if ($sponsors == 3) {
+        if ($sponsors == 4) {
             $nextSlot = Sponsors::select("expires")
                 ->where("expires", ">", time())
                 ->orderBy("expires", "ASC")
@@ -35,7 +35,7 @@ class SponsorController extends Controller {
 
         $sponsors = Sponsors::where("expires", ">", time())->count();
 
-        if ($sponsors == 3) {
+        if ($sponsors == 4) {
             return [
                 'success' => false,
                 'message' => "There are currently no available slots. Please check back later."
@@ -78,7 +78,7 @@ class SponsorController extends Controller {
 
         $sponsors = Sponsors::where("expires", ">", time())->count();
 
-        if ($sponsors == 3) {
+        if ($sponsors == 4) {
             return [
                 'success' => false,
                 'message' => "There are currently no available slots. Please check back later."
@@ -176,7 +176,7 @@ class SponsorController extends Controller {
 
         $sponsors = Sponsors::where("expires", ">", time())->count();
 
-        if ($sponsors == 3) {
+        if ($sponsors == 4) {
             return [
                 'success' => false,
                 'message' => "There are currently no available slots. If you were charged please contact us on discord."
