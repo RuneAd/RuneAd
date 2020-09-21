@@ -17,7 +17,16 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 d-flex justify-content-center flex-column">
-                <h3 class="display-3 mt-3">Choose a plan that best fits you</h3>
+                <h3 class="display-3 mt-3">
+                    
+                    {% if user is defined %}
+                    <p>
+                    <span class="text-primary">{{ user.username }}, </span>
+                    </p>
+                    {% endif %}
+                    
+                    
+                    Choose a plan that best fits you</h3>
                 <ul class="nav nav-pills nav-pills-primary my-4" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#commercial" role="tablist">
