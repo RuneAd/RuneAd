@@ -20,6 +20,10 @@ body {
     font-family: "Montserrat-Light";
 }
 
+.kingfox {
+    visibility: hidden;
+  }
+
 .white-text
 {
  color: white !important;
