@@ -13,15 +13,6 @@ body {
     font-family: "OpenSans-Regular" !important;
 }
 
-
-img {
-    transition: opacity 0.5s;
-    position:absolute;
-    top:0;
-  }
-
-
-
 .pricing {
     font-family: "Montserrat-Bold";
 }
