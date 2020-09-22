@@ -14,9 +14,11 @@ body {
 }
 
 
-#cycler{position:relative;}
-#cycler img{position:absolute;z-index:1}
-#cycler img.active{z-index:3}
+img {
+    transition: opacity 0.5s;
+    position:absolute;
+    top:0;
+  }
 
 
 
