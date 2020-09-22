@@ -12,6 +12,28 @@ body {
     color: #7c7c7c;
     font-family: "OpenSans-Regular" !important;
 }
+
+
+/* makes images responsive */
+img {
+    max-width: 100%;
+    }
+    
+    /* takes care of clearing the floats */
+    #slideshow:after {
+    content: "";
+    display: table;
+    clear: both;
+    }
+    
+    /* hides the images not being shown */
+    #slideshow img {
+    float: left;
+    margin: 0 -100% 0 0;
+    }
+
+
+
 .pricing {
     font-family: "Montserrat-Bold";
 }
