@@ -14,23 +14,9 @@ body {
 }
 
 
-/* makes images responsive */
-img {
-    max-width: 100%;
-    }
-    
-    /* takes care of clearing the floats */
-    #slideshow:after {
-    content: "";
-    display: table;
-    clear: both;
-    }
-    
-    /* hides the images not being shown */
-    #slideshow img {
-    float: left;
-    margin: 0 -100% 0 0;
-    }
+#cycler{position:relative;}
+#cycler img{position:absolute;z-index:1}
+#cycler img.active{z-index:3}
 
 
 
