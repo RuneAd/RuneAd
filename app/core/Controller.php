@@ -145,7 +145,7 @@ class Controller {
                     'title' => 'Terms of Service',
                     'meta'  => 'RuneAd Terms Of Service.'
                 ],
-							   'contact' => [
+				'contact' => [
                     'title' => 'Contact Us',
                     'meta'  => 'Contact RuneAd.'
                 ],
@@ -153,7 +153,11 @@ class Controller {
                     'title' => 'Privacy Policy',
                     'meta'  => 'Our privacy policy.'
                 ],
-					'ads' => [
+                'faq' => [
+                    'title' => 'Frequently Asked Questions',
+                    'meta'  => 'Most of our Frequently Asked Questions!'
+                ],
+				'ads' => [
                     'title' => 'Store',
                     'meta'  => 'Infomation about Advertisements on RuneAd'
                 ]
