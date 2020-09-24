@@ -196,12 +196,7 @@ class Controller {
                     'meta'  => 'An easy to use oldschool runescape map that\'s always up to date.'
                 ],
             ],
-            'rev-317' => [
-                'index' => [
-                    'title' => 'Revision 289 Servers',
-                    'meta' => 'All RSPS servers with revision 289 on RuneAd'
-                ],
-				 'map' => [
+			'map' => [
                     'title' => 'OSRS Interactive Map',
                     'meta'  => 'An easy to use oldschool runescape map that\'s always up to date.'
                 ],
