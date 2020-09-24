@@ -128,14 +128,17 @@
                         </a>
                         <h5 class="mb-0 text-white">Like this server?</h5>
                         <p class="mb-0">Consider giving it a vote to show your support!</p>
-
-
                     </div>
                     {% endif %}
 
                     <div class="text-center card border-0 shadow-sm mb-3">
                         <div class="card-body">
                             {{ description|raw }}
+                        </div>
+                    </div>
+                    <div class="text-center mb-3">
+                        <div class="card-body">
+                        {{ server.title }} & RuneAd has no affiliation with Jagex nor RuneScape. RuneScape is a registered trademarks of Jagex.
                         </div>
                     </div>
                 </div>
@@ -145,8 +148,6 @@
         </div>
     </div>
 </div>
-
-{% include 'chart_config.twig' %}
 
 
 {% set recaptcha_key = constant('recaptcha')['public'] %}
