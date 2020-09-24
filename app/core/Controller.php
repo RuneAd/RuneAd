@@ -196,6 +196,16 @@ class Controller {
                     'meta'  => 'An easy to use oldschool runescape map that\'s always up to date.'
                 ],
             ],
+            'how' => [
+                'index' => [
+                    'title' => 'How to...?',
+                    'meta' => 'All exclusive guides on how to do different things around Runescape, Oldschool Runescaoe, and RSPS'
+                ],
+				 'map' => [
+                    'title' => 'OSRS Interactive Map',
+                    'meta'  => 'An easy to use oldschool runescape map that\'s always up to date.'
+                ],
+            ],
             'blog' => [
                 'index' => [
                     'title' => 'Blog',

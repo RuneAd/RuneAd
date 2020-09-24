@@ -27,7 +27,8 @@ class Security {
             'errors'  => ['show404', 'show500', 'show401', 'missing'],
             'pages'   => ['docs', 'stats', 'terms', 'privacy', 'adinfo', 'ads', 'contact', 'adbenners', 'faq'],
             'tools'   => ['itemdb', 'search', 'map'],
-            'blog'    => ['index', 'post']
+            'blog'    => ['index', 'post'],
+            'how'    => ['index']
         ];
 
         $private = [

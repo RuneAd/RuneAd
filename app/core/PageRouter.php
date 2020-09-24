@@ -120,6 +120,13 @@ class PageRouter extends Router {
             return $this->setRoute('premium', 'verify');
         });
 
+                /**
+         * How to 
+         */
+        $this->all('how', function() {
+            return $this->setRoute('how', 'index');
+        });
+
         /**
          * Report
          */
