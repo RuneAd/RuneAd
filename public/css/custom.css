@@ -25,6 +25,11 @@ body {
     visibility: hidden;
   }
 
+.lantern-script {
+    font-family: 'Tangerine', serif;
+    text-shadow: 4px 4px 4px #aaa;
+  }
+
 .white-text
 {
  color: white !important;
