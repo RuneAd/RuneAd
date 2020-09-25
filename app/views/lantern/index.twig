@@ -1,0 +1,23 @@
+{%  extends 'layout.twig' %}
+
+{% block content %}
+
+<div class="container" style="margin-top:-30px;">
+    {% include 'lantern/components/header.twig' %}
+
+    <div class="row mb-3">
+        <div class="col-sm-12 col-lg-12">
+
+        </div>
+        <div class="col-sm-12 col-lg-12">
+
+            <div class="alert alert-default shadow-sm">
+                Nothing to see here yet
+            </div>
+        </div>
+    </div>
+
+    {{ content|raw }}
+</div>
+
+{%  endblock %}

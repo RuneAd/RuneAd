@@ -179,7 +179,7 @@ class Controller {
                     'title'  => 'Edit Server',
                      'meta'  => 'Edit an existing server on the toplist'
                 ]
-                ],
+            ],
             'sponsor' => [
                 'index' => [
                     'title' => 'Store',
