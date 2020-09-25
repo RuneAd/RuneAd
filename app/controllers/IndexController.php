@@ -65,7 +65,6 @@ class IndexController extends Controller {
 
         $seo = Functions::friendlyTitle($server->id.'-'.$server->title);
 
-        $this->set("rate", $rate);
         $this->set("server", $server);
         $this->set("purifier", $this->getPurifier());
         $this->set("page_title", $server->title);
