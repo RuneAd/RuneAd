@@ -11,7 +11,6 @@ class IndexController extends Controller {
     public function index($rev = null, $page = 1) {
         $revisions = Revisions::where('visible', 1)->get();
 
-
         if ($rev != null) {
             $revision = Revisions::where('revision', $rev)->first();
 
