@@ -55,7 +55,7 @@ class IndexController extends Controller {
         $this->set("sponsors", $sponsors);
     	return true;
     }
-    public function details($id, $rate = "month") {
+    public function details($id) {
         $server   = Servers::getServer($id);
 
         if (!$server) {
