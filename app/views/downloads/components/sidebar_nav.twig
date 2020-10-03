@@ -1,18 +1,25 @@
 <div class="card border-0 shadow-sm mb-4">
      <div class="list-group">
-         <a href="{{ url('profile') }}" class="list-group-item {{ action == "index" ? "active" : "" }}">
+         <a href="{{ url('#') }}" class="list-group-item {{ action == "index" ? "active" : "" }}">
 
              <div class="float-left mr-2" style="margin-top:-1px;">
-                 {{ icon('house', 18, 18) }}
+                 {{ icon('file-arrow-down', 18, 18) }}
              </div>
 
              Tools
          </a>
-         <a href="{{ url('profile/payments') }}" class="list-group-item {{ action == "payments" ? "active" : "" }}">
+         <a href="{{ url('#') }}" class="list-group-item {{ action == "#" ? "active" : "" }}">
              <div class="float-left mr-2" style="margin-top:-1px;">
-                 {{ icon('shop', 18, 18) }}
+                 {{ icon('file-arrow-down', 18, 18) }}
              </div>
-             Web templates
+             Sources & Clients
          </a>
+
+         <a href="{{ url('#') }}" class="list-group-item {{ action == "#" ? "active" : "" }}">
+            <div class="float-left mr-2" style="margin-top:-1px;">
+                {{ icon('file-arrow-down', 18, 18) }}
+            </div>
+            Web-Templates
+        </a>
      </div>
  </div> 
