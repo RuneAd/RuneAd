@@ -337,6 +337,10 @@ class PageRouter extends Router {
         $this->get("downloads", function() {
             return $this->setRoute('downloads', 'index');
         });
+
+        $this->get("downloads", function() {
+            return $this->setRoute('downloads', 'rsps');
+        });
         /**
          * Admin Users
          */

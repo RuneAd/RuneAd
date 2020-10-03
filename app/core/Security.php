@@ -29,7 +29,7 @@ class Security {
             'tools'   => ['itemdb', 'search', 'map'],
             'blog'    => ['index', 'post'],
             'how'    => ['index'],
-            'downloads'    => ['index'],
+            'downloads'    => ['index', 'rsps'],
             'lantern'    => ['index']
         ];
 
