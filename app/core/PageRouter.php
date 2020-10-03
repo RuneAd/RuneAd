@@ -324,13 +324,19 @@ class PageRouter extends Router {
             return $this->setRoute('premium', 'delete', ['id' => $id]);
         });
 
-                /**
+        /**
          * Lantern Web Store
          */
         $this->get("lantern", function() {
             return $this->setRoute('lantern', 'index');
         });
 
+        /**
+         * Downloads
+         */
+        $this->get("downloads", function() {
+            return $this->setRoute('downloads', 'index');
+        });
         /**
          * Admin Users
          */

@@ -1,0 +1,38 @@
+{%  extends 'layout.twig' %}
+
+{% block content %}
+
+<div class="container" style="margin-top:-30px;">
+    {% include 'downloads/components/header.twig' %}
+
+    <div class="row mb-3">
+        <div class="col-sm-12 col-lg-4">
+
+            {% include 'downloads/components/sidebar_nav.twig' %}
+            {% include 'downloads/components/settings.twig' %}
+
+        </div>
+        <div class="col-sm-12 col-lg-8">
+
+            <div class="alert alert-default shadow-sm">
+                No downloads are added yet!
+            </div>
+          
+        </div>
+    </div>
+
+    {{ content|raw }}
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(event) {
+    $('a[id="showdetails"]').click(function(event) {
+        event.preventDefault();
+        let parent = $(this).closest(".card");
+        parent.find("#statistics").toggle();
+        parent.find("#details").toggle();
+    });
+});
+</script>
+
+{%  endblock %}
