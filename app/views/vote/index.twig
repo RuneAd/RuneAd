@@ -67,6 +67,7 @@
                     {% set disabled = vote is null ? '' : 'disabled' %}
                     <div class="mb-4">
                         <a href="" class="btn btn-lg btn-primary vote" data-id="{{ server.id }}">
+                            {{ icon('hand-thumbs-up', 16, 16) }}
                             Vote Now
                         </a>
 
