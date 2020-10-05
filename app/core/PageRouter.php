@@ -120,13 +120,6 @@ class PageRouter extends Router {
             return $this->setRoute('premium', 'verify');
         });
 
-                /**
-         * How to 
-         */
-        $this->all('how', function() {
-            return $this->setRoute('how', 'index');
-        });
-
         /**
          * Report
          */
@@ -331,7 +324,7 @@ class PageRouter extends Router {
             return $this->setRoute('downloads', 'index');
         });
 
-        $this->get("downloads", function() {
+        $this->get("downloads/rsps", function() {
             return $this->setRoute('downloads', 'rsps');
         });
         /**
