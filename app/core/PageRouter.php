@@ -325,13 +325,6 @@ class PageRouter extends Router {
         });
 
         /**
-         * Lantern Web Store
-         */
-        $this->get("lantern", function() {
-            return $this->setRoute('lantern', 'index');
-        });
-
-        /**
          * Downloads
          */
         $this->get("downloads", function() {

@@ -196,14 +196,14 @@ class Controller {
                     'meta'  => 'An easy to use oldschool runescape map that\'s always up to date.'
                 ],
             ],
-            'how' => [
+            'downloads' => [
                 'index' => [
-                    'title' => 'How to...',
-                    'meta' => 'All exclusive guides on how to do different things around Runescape, Oldschool Runescaoe,'
+                    'title' => 'Tool Downloads',
+                    'meta' => 'Downloads for RSPS tools, sources, clients, web-templates & more!'
                 ],
-				 'map' => [
-                    'title' => 'OSRS Interactive Map',
-                    'meta'  => 'An easy to use oldschool runescape map that\'s always up to date.'
+				 'rsps' => [
+                    'title' => 'RSPS Downloads',
+                    'meta'  => 'Downloads for RSPS tools, sources, clients, web-templates & more!'
                 ],
             ],
             'blog' => [
