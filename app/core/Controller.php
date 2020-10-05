@@ -182,7 +182,7 @@ class Controller {
             ],
             'sponsor' => [
                 'index' => [
-                    'title' => 'Store',
+                    'title' => 'Sponsored Ads',
                     'meta' => 'Purchase sponsored ad spots to give your server a boost!'
                 ]
             ],
@@ -198,7 +198,7 @@ class Controller {
             ],
             'downloads' => [
                 'index' => [
-                    'title' => 'Tool Downloads',
+                    'title' => 'RSPS Tool Downloads',
                     'meta' => 'Downloads for RSPS tools, sources, clients, web-templates & more!'
                 ],
 				 'rsps' => [
@@ -206,7 +206,7 @@ class Controller {
                     'meta'  => 'Downloads for RSPS tools, sources, clients, web-templates & more!'
                 ],
                 'web' => [
-                    'title' => 'Web Downloads',
+                    'title' => 'RSPS Web Downloads',
                     'meta'  => 'Downloads for RSPS tools, sources, clients, web-templates & more!'
                 ],
             ],
