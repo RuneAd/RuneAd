@@ -331,6 +331,10 @@ class PageRouter extends Router {
         $this->get("downloads/web", function() {
             return $this->setRoute('downloads', 'web');
         });
+
+        $this->get("downloads/project51rev180", function() {
+            return $this->setRoute('downloads', 'project51rev180');
+        });
         /**
          * Admin Users
          */

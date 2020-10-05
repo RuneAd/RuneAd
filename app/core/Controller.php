@@ -209,6 +209,10 @@ class Controller {
                     'title' => 'RSPS Web Downloads',
                     'meta'  => 'Downloads for RSPS tools, sources, clients, web-templates & more!'
                 ],
+                'project51rev180' => [
+                    'title' => 'Project51 Rev180 RSPS Downloads',
+                    'meta'  => 'Downloads for RSPS tools, sources, clients, web-templates & more!'
+                ],
             ],
             'blog' => [
                 'index' => [
