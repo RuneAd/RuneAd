@@ -8,6 +8,11 @@ class DownloadsController extends Controller {
      public function rsps() {
 
     }
+
+    public function web() {
+
+    }
+     
      
 }
 ?>

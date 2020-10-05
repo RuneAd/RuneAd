@@ -205,6 +205,10 @@ class Controller {
                     'title' => 'RSPS Downloads',
                     'meta'  => 'Downloads for RSPS tools, sources, clients, web-templates & more!'
                 ],
+                'web' => [
+                    'title' => 'Web Downloads',
+                    'meta'  => 'Downloads for RSPS tools, sources, clients, web-templates & more!'
+                ],
             ],
             'blog' => [
                 'index' => [
