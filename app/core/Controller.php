@@ -140,6 +140,12 @@ class Controller {
                     'meta'  => 'The Modern RuneScape Private Server Toplist | Page 2'
                 ]
             ],
+            '2' => [
+                'index' => [
+                    'title' => 'RSPS Toplist | Page 2',
+                    'meta'  => 'The Modern RuneScape Private Server Toplist | Page 2'
+                ]
+            ],
             'pages' => [
                 'docs' => [
                     'title' => 'Documentation',
