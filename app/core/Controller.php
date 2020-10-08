@@ -128,24 +128,6 @@ class Controller {
                     'meta'  => 'The Modern RuneScape Private Server Toplist'
                 ]
             ],
-            'index' => [
-                '1' => [
-                    'title' => 'RSPS Toplist | Page 1',
-                    'meta'  => 'The Modern RuneScape Private Server Toplist | Page 1'
-                ]
-            ],
-            'index' => [
-                '2' => [
-                    'title' => 'RSPS Toplist | Page 2',
-                    'meta'  => 'The Modern RuneScape Private Server Toplist | Page 2'
-                ]
-            ],
-            '2' => [
-                '2' => [
-                    'title' => 'RSPS Toplist | Page 2',
-                    'meta'  => 'The Modern RuneScape Private Server Toplist | Page 2'
-                ]
-            ],
             'pages' => [
                 'docs' => [
                     'title' => 'Documentation',
@@ -217,15 +199,15 @@ class Controller {
             'downloads' => [
                 'index' => [
                     'title' => 'RSPS Tool Downloads',
-                    'meta' => 'Downloads for RSPS tools, sources, clients, web-templates & more!'
+                    'meta' => 'Downloads for RSPS Tools on RuneAd'
                 ],
 				 'rsps' => [
                     'title' => 'RSPS Downloads',
-                    'meta'  => 'Downloads for RSPS tools, sources, clients, web-templates & more!'
+                    'meta'  => 'Downloads for RSPS Sources and Clients on RuneAd'
                 ],
                 'web' => [
                     'title' => 'RSPS Web Downloads',
-                    'meta'  => 'Downloads for RSPS tools, sources, clients, web-templates & more!'
+                    'meta'  => 'Downloads for RSPS Web-templates'
                 ],
                 'project51rev180' => [
                     'title' => 'Project51 Rev180 RSPS Downloads',
