@@ -65,6 +65,10 @@ class PageRouter extends Router {
             return $this->setRoute('pages', 'docs');
         });
 
+        $this->all('sitemap', function() {
+            return $this->setRoute('pages', 'sitemap');
+        });
+
         $this->all('faq', function() {
             return $this->setRoute('pages', 'faq');
         });

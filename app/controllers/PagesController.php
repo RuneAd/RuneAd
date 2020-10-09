@@ -13,6 +13,10 @@ class PagesController extends Controller {
 
     }
 
+    public function sitemap() {
+
+    }
+
     public function adinfo() {
 
     }

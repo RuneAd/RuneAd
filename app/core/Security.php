@@ -25,7 +25,7 @@ class Security {
             'report'  => ['index'],
             'login'   => ['index', 'discord', 'auth', 'dauth'],
             'errors'  => ['show404', 'show500', 'show401', 'missing'],
-            'pages'   => ['docs', 'stats', 'terms', 'privacy', 'adinfo', 'ads', 'contact', 'adbenners', 'faq'],
+            'pages'   => ['docs', 'stats', 'terms', 'privacy', 'adinfo', 'ads', 'contact', 'adbenners', 'faq', 'sitemap'],
             'tools'   => ['itemdb', 'search', 'map'],
             'blog'    => ['index', 'post'],
             'downloads'    => ['index', 'rsps', 'web', 'project51rev180']

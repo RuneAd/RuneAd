@@ -137,6 +137,10 @@ class Controller {
                     'title' => 'Update Log',
                     'meta'  => 'All updates that have been pushed for the toplist, and a list of contributors.'
                 ],
+                'sitemap' => [
+                    'title' => 'Sitemap',
+                    'meta'  => 'A full sitemap of RuneAd RSPS Toplist displaying RSPS servers, tools, and more!'
+                ],
                 'stats' => [
                     'title' => 'Stats',
                     'meta'  => 'Global statistics showing votes, user, and server counts.'
