@@ -73,7 +73,7 @@ class IndexController extends Controller {
         if ($server->meta_tags)
             $this->set("meta_tags", implode(',',json_decode($server->meta_tags, true)));
 
-        $this->set("meta_info", $this->filter($server->meta_info '-' .$server_description));
+        $this->set("meta_info", $this->filter($server->meta_info));
         $this->set("seo_link", $seo);
 
         $body = str_replace("<img src", "<img data-src", $server->description);
