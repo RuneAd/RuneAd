@@ -82,24 +82,6 @@ class IndexController extends Controller {
         return true;
     }
 
-    public function out($serverId) {
-        $server = Servers::getServer($id);
-
-        if (!$server) {
-            $this->setView("errors/show404");
-            return false;
-        }
-
-        $website = $server->website;
-
-        if (!$website) {
-            $this->redirect("");
-        }
-
-        $this->redirect($website, false);
-        exit;
-    }
-
     public function logout() {
         $token = $this->cookies->get("access_token");
 
