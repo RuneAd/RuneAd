@@ -53,14 +53,12 @@
                             </div>
                             <div class="flex-fill pr-1">
                                 <a href="{{ server.discord_link }}"
-                                    rel="nofollow"
                                     class="btn btn-default btn-block mb-3 {{ server.discord_link ? '' : 'disabled' }}" target="_blank">
                                     {{ icon('discord', 20, 20) }} Discord
                                 </a>
                             </div>
                             <div class="flex-fill">
                                 <a href="{{ url('report/'~seo_link) }}"
-                                    rel="nofollow"
                                     class="btn btn-danger btn-block mb-3" target="_blank">
                                     {{ icon('flag', 20, 20) }}
                                      Report
@@ -133,7 +131,7 @@
                     {% if is_mobile == false %}
                     <div class="alert alert-default border-info shadow-sm d-none d-lg-block">
                         <a href="#" id="vote"
-                            data-id="{{ server.id }}" rel="nofollow"
+                            data-id="{{ server.id }}"
                             class="btn btn-outline-white mt-2 float-right vote-btn">
                             Vote Now
                         </a>
