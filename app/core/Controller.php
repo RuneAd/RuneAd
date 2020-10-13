@@ -238,7 +238,7 @@ class Controller {
         }
 
         return [
-            'title' => 'RSPS Toplist',
+            'title' => 'RSPS Toplist | RuneScape Private Servers',
             'meta'  => 'The most modern runescape private server toplist built to-date. Come join your favorite RSPS, or add your server today to start advertising with us!'
         ];
     }
