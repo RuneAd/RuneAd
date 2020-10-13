@@ -125,7 +125,7 @@ class Controller {
             'index' => [
                 'index' => [
                     'title' => 'RSPS Toplist | RuneScape Private Servers',
-                    'meta'  => 'The Modern RuneScape Private Server Toplist | Listing the top RuneScape Privatew Servers'
+                    'meta'  => 'The Modern RuneScape Private Server Toplist | Listing the top RuneScape Private Servers'
                 ]
             ],
             'pages' => [
