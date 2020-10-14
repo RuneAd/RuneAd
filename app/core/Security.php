@@ -28,7 +28,8 @@ class Security {
             'pages'   => ['docs', 'stats', 'terms', 'privacy', 'adinfo', 'ads', 'contact', 'adbenners', 'faq', 'sitemap'],
             'tools'   => ['itemdb', 'search', 'map'],
             'blog'    => ['index', 'post'],
-            'downloads'    => ['index', 'rsps', 'web', 'project51rev180']
+            'downloads'    => ['index', 'rsps', 'web'],
+            'videos'  => ['index']
         ];
 
         $private = [

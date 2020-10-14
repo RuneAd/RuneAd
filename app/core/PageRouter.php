@@ -154,6 +154,13 @@ class PageRouter extends Router {
             return $this->setRoute('index', 'logout');
         });
 
+         /**
+         * Videos
+         */
+        $this->all('videos', function() {
+            return $this->setRoute('videos', 'index');
+        });
+
         /**
          * Main List
          */

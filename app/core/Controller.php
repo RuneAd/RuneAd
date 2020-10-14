@@ -218,6 +218,12 @@ class Controller {
                     'meta'  => 'Downloads for RSPS tools, sources, clients, web-templates & more!'
                 ],
             ],
+            'videos' => [
+                'index' => [
+                    'title' => 'RSPS Videos | The Modern RuneScape Private Server Toplist',
+                    'meta' => 'RSPS Videos brought you to by RuneAd!'
+                ]
+            ],
             'blog' => [
                 'index' => [
                     'title' => 'Blog | The Modern RuneScape Private Server Toplist',
