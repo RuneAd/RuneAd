@@ -125,7 +125,7 @@ class Controller {
             'index' => [
                 'index' => [
                     'title' => 'RSPS Toplist | RuneScape Private Servers',
-                    'meta'  => 'RuneAd is the newest, most up-to-date and modern RuneScape Private Server Toplist. Search and effectively find all the newest RSPS using RuneAd! Join us now and effectively boost your player count!'
+                    'meta'  => 'Looking for the best Runescape Private Servers 2020? Come get involved in our RSPS Toplist, and increase your website traffic and attract your players today!'
                 ]
             ],
             'pages' => [
@@ -220,8 +220,8 @@ class Controller {
             ],
             'videos' => [
                 'index' => [
-                    'title' => 'RSPS Videos | The Modern RuneScape Private Server Toplist',
-                    'meta' => 'RSPS Videos brought you to by RuneAd! Browse our free collection of Runescape Private Server Videos & more!'
+                    'title' => 'RuneAd Videos | The Modern RuneScape Private Server Toplist',
+                    'meta' => 'RuneAd Videos brought you to by RuneAd! Browse our free collection of Runescape Private Server Videos & more!'
                 ]
             ],
             'blog' => [
