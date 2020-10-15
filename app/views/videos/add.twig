@@ -79,6 +79,14 @@
 
                          <hr>
 
+                         <div class="col">
+                            <label>Youtube URL</label>
+                            <input type="text" class="form-control {{ errors['meta_description'] is defined ? 'border-danger' : '' }}" name="meta_description">
+                            <small class="text-muted">
+                                The YouTube URL to the video you wish to submit.
+                            </small>
+                        </div>
+
                          <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
 
                          <div class="form-group">
