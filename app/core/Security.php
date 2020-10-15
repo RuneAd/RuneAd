@@ -37,7 +37,7 @@ class Security {
             'premium' => ['button', 'verify', 'process'],
             'sponsor' => ['button', 'verify', 'process'],
             'profile' => ['index', 'stats', 'payments'],
-            'blog'    => ['add', 'edit', 'delete']
+            'blog'    => ['add', 'edit', 'delete'],
             'videos'    => ['add']
         ];
 
