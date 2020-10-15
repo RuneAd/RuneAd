@@ -61,6 +61,25 @@
 
                         <hr>
 
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <label>Meta Tags</label>
+                                <input type="text" class="form-control {{ errors['meta_tags'] is defined ? 'border-danger' : '' }}" name="meta_tags">
+                                <small class="text-muted">
+                                    Comma separated. Max 15. <a href="https://www.w3schools.com/tags/tag_meta.asp" target="_blank">More Info</a>
+                                </small>
+                            </div>
+                            <div class="col">
+                                <label>Meta Description</label>
+                                <input type="text" class="form-control {{ errors['meta_description'] is defined ? 'border-danger' : '' }}" name="meta_description">
+                                <small class="text-muted">
+                                    A short description of your video <a href="https://yoast.com/meta-descriptions/" target="_blank">More Info</a>
+                                </small>
+                            </div>
+                        </div>
+
+                        <hr>
+
                          <div class="col">
                             <label>Youtube Embed Code</label>
                             <input type="text" class="form-control {{ errors['content'] is defined ? 'border-danger' : '' }}" name="content">
