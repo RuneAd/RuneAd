@@ -21,15 +21,21 @@
      ];
 
      public static function validate($validate){
-         $validator = new Validator;
+        $validator = new Validator;
 
-         $validation = $validator->validate($validate, [
+        $validation = $validator->validate($validate, [
             'title'     => 'required|min:6|max:150',
             'category'  => 'required|min:3|max:255',
-            'content'   => 'min:10',
-         ]);
+            'content'   => 'required|min:100',
+            'meta_tags' => ['', function($value) {
+                if (count($value) > 15) {
+                    return 'You can\'t have more than 15 meta tags.';
+                }
+            }],
+            'meta_description' => 'min:20|max:255'
+        ]);
 
-         return $validation;
-    }
+        return $validation;
+   }
 
- } 
+} 
