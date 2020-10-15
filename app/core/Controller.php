@@ -125,13 +125,13 @@ class Controller {
             'index' => [
                 'index' => [
                     'title' => 'RSPS Toplist | RuneScape Private Servers',
-                    'meta'  => 'The Modern RuneScape Private Server Toplist | Listing the top RuneScape Private Servers'
+                    'meta'  => 'RuneAd is the newest, most up-to-date and modern RuneScape Private Server Toplist. Search and effectively find all the newest RSPS using RuneAd! Join us now and effectively boost your player count!'
                 ]
             ],
             'pages' => [
                 'docs' => [
                     'title' => 'Documentation | The Modern RuneScape Private Server Toplist',
-                    'meta'  => 'Integrate your website with our service, receive voting callback, and more!'
+                    'meta'  => 'Integrate your RSPS server with our service, receive voting callback, and more!'
                 ],
                 'updates' => [
                     'title' => 'Update Log | The Modern RuneScape Private Server Toplist',
@@ -143,51 +143,51 @@ class Controller {
                 ],
                 'stats' => [
                     'title' => 'Stats | The Modern RuneScape Private Server Toplist',
-                    'meta'  => 'Global statistics showing votes, user, and server counts.'
+                    'meta'  => 'Global statistics on RuneAd showing votes, user, and server counts.'
                 ],
                 'terms' => [
                     'title' => 'Terms of Service | The Modern RuneScape Private Server Toplist',
-                    'meta'  => 'RuneAd Terms Of Service.'
+                    'meta'  => 'RuneAd Terms Of Service. Preview the Terms of Service for RuneAd RSPS Toplist and get to know the rules!'
                 ],
 				'contact' => [
                     'title' => 'Contact Us | The Modern RuneScape Private Server Toplist',
-                    'meta'  => 'Contact RuneAd.'
+                    'meta'  => 'Contact RuneAd support and get help on anything related to RuneAd RSPS Toplist.'
                 ],
                 'privacy' => [
                     'title' => 'Privacy Policy | The Modern RuneScape Private Server Toplist',
-                    'meta'  => 'RuneAd privacy policy.'
+                    'meta'  => 'RuneAd Privacy Policy. Review the Privacy Policy for RuneAd RSPS Toplist and get to know the rules!'
                 ],
                 'faq' => [
                     'title' => 'Frequently Asked Questions | The Modern RuneScape Private Server Toplist',
-                    'meta'  => 'Most of our Frequently Asked Questions!'
+                    'meta'  => 'Most of our Frequently Asked Questions! Browse RuneAds FAQs to find out more information about RuneAd RSPS Toplist!'
                 ],
 				'ads' => [
                     'title' => 'Store | The Modern RuneScape Private Server Toplist',
-                    'meta'  => 'Infomation about Advertisements on RuneAd'
+                    'meta'  => 'Infomation about Advertisements on RuneAd. If you cant find the info here please contact RuneAd!'
                 ]
             ],
             'profile' => [
                 'index' => [
                     'title' => 'Profile | The Modern RuneScape Private Server Toplist',
-                     'meta'  => 'Edit and add a new server, view payment history, stats, and more.'
+                     'meta'  => 'Edit and add a new server, view payment history, stats, and more on RuneAd.'
                 ],
                 'payments' => [
                     'title'  => 'Payments | The Modern RuneScape Private Server Toplist',
-                     'meta'  => 'View your payment history.'
+                     'meta'  => 'View your payment history for RuneAd.'
                 ],
                 'add' => [
                     'title'  => 'Add Server | The Modern RuneScape Private Server Toplist',
-                     'meta'  => 'Add a new server to the toplist'
+                     'meta'  => 'Add a new server to the RuneAd toplist.'
                 ],
                 'edit' => [
                     'title'  => 'Edit Server | The Modern RuneScape Private Server Toplist',
-                     'meta'  => 'Edit an existing server on the toplist'
+                     'meta'  => 'Edit an existing server on the RuneAd toplist.'
                 ]
             ],
             'sponsor' => [
                 'index' => [
                     'title' => 'Sponsored Ads | The Modern RuneScape Private Server Toplist',
-                    'meta' => 'Purchase sponsored ad spots to give your server a boost!'
+                    'meta' => 'Purchase sponsored ad spots on RuneAd to give your server a boost!'
                 ]
             ],
             'tools' => [
@@ -203,35 +203,35 @@ class Controller {
             'downloads' => [
                 'index' => [
                     'title' => 'RSPS Tool Downloads | The Modern RuneScape Private Server Toplist',
-                    'meta' => 'Downloads for RSPS Tools on RuneAd'
+                    'meta' => 'Downloads for RSPS Tools on RuneAd. Browse our free collection of Runescape Private Server Downloads & more!'
                 ],
 				 'rsps' => [
                     'title' => 'RSPS Downloads | The Modern RuneScape Private Server Toplist',
-                    'meta'  => 'Downloads for RSPS Sources and Clients on RuneAd'
+                    'meta'  => 'Downloads for RSPS Sources and Clients on RuneAd. Browse our free collection of Runescape Private Server Downloads & more!'
                 ],
                 'web' => [
                     'title' => 'RSPS Web Downloads | The Modern RuneScape Private Server Toplist',
-                    'meta'  => 'Downloads for RSPS Web-templates'
+                    'meta'  => 'Downloads for RSPS Web-templates. Browse our free collection of Runescape Private Server Downloads & more!'
                 ],
                 'project51rev180' => [
                     'title' => 'Project51 Rev180 RSPS Downloads',
-                    'meta'  => 'Downloads for RSPS tools, sources, clients, web-templates & more!'
+                    'meta'  => 'Downloads for RSPS tools, sources, clients, web-templates & more! Browse our free collection of Runescape Private Server Downloads & more!'
                 ],
             ],
             'videos' => [
                 'index' => [
                     'title' => 'RSPS Videos | The Modern RuneScape Private Server Toplist',
-                    'meta' => 'RSPS Videos brought you to by RuneAd!'
+                    'meta' => 'RSPS Videos brought you to by RuneAd! Browse our free collection of Runescape Private Server Videos & more!'
                 ]
             ],
             'blog' => [
                 'index' => [
                     'title' => 'Blog | The Modern RuneScape Private Server Toplist',
-                    'meta' => 'An easy to use modern RuneScape Private Server Blog'
+                    'meta' => 'An easy to use modern RuneScape Private Server Blog. Browse our free collection of amazing blog posts & more!'
                 ],
 				 'add' => [
                     'title' => 'Blog | Add Post | The Modern RuneScape Private Server Toplist',
-                    'meta' => 'An easy to use modern RuneScape Private Server Blog'                
+                    'meta' => 'An easy to use modern RuneScape Private Server Blog. Browse our free collection of amazing blog posts & more!'                
                 ],
             ]
         ];
