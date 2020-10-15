@@ -10,14 +10,14 @@
             <div class="card border-0 shadow-sm mb-3">
 
                 <div class="list-group list-group-flush">
-                    <a href="{{ url('blog/') }}" 
+                    <a href="{{ url('videos/') }}" 
                         class="list-group-item {{ category is not defined ? "active" : "" }}">
                         Show All Videos
                     </a>
                     
 
                     {% for cat in categories %}
-                    <a href="{{ url('blog/'~friendlyTitle(cat.title)) }}" 
+                    <a href="{{ url('videos/'~friendlyTitle(cat.title)) }}" 
                         class="list-group-item {{ cat.title|lower == category|lower ? "active" : "" }}">
                         {{ cat.title|capitalize }}
                     </a>
@@ -62,7 +62,7 @@
             {% set totalPages = posts.lastPage() %}
             {% set current = posts.currentPage() %}
 
-            {% set pageUrl = category is defined ? url('blog/'~category~'/') : url('blog/')  %}
+            {% set pageUrl = category is defined ? url('videos/'~category~'/') : url('videos/')  %}
 
 
             <nav aria-label="servernav" class="mt-5">
