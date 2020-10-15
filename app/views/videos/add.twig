@@ -44,6 +44,12 @@
                  <div class="card-body">
                      <form method="post" action="{{ url('videos/add') }}" id="postform">
 
+                        <div class="col-sm-12 col-lg-3">
+                            <label>Category</label>
+                            <input type="text" class="form-control {{ errors['category'] is defined ? 'border-danger' : '' }}" name="category">
+
+                        </div>
+
                          <div class="col">
                             <label>Youtube Embed Code</label>
                             <input type="text" class="form-control {{ errors['content'] is defined ? 'border-danger' : '' }}" name="content">
@@ -51,6 +57,7 @@
                                 The YouTube embed code to the video you wish to submit.
                             </small>
                         </div>
+
                         <hr>
 
                          <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
