@@ -1,16 +1,18 @@
 {%  extends 'layout.twig' %}
 
 {% block content %}
-    <div class="container mt-5 mb-3">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="card border-0 shadow-sm">
-                    <div class="card-body py-5 text-center">
-                        <h3 class="mb-0">Coming Soon...</h3>
-                        <p>This page is coming soon, please check back soon!</p>
-                    </div>
-                </div>
-            </div>
+
+<div class="container" style="margin-top:-30px;">
+    {% include 'videos/components/header.twig' %}
+
+    <div class="row mb-3">
+        <div class="col-sm-12 col-lg-12">
+
+           
         </div>
     </div>
+
+    {{ content|raw }}
+</div>
+
 {%  endblock %}
