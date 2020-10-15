@@ -43,47 +43,12 @@
 
                  <div class="card-body">
                      <form method="post" action="{{ url('videos/add') }}" id="postform">
-                         <div class="form-row form-group">
-                             <div class="col-sm-12 col-lg-3">
-                                 <label>Category</label>
-                                 <input type="text" class="form-control {{ errors['category'] is defined ? 'border-danger' : '' }}" name="category">
-
-                             </div>
-                             <div class="col-sm-12 col-lg-9">
-                                 <label>Video Title*</label>
-                                 <input type="text" class="form-control {{ errors['title'] is defined ? 'border-danger' : '' }}" name="title">
-                                 <small class="text-muted">
-                                     Use an eye catching title to grab attention. Be creative!
-                                 </small>
-                             </div>
-                         </div>
-
-                         <hr>
-
-                         <div class="form-row form-group">
-                             <div class="col">
-                                 <label>Meta Tags</label>
-                                 <input type="text" class="form-control {{ errors['meta_tags'] is defined ? 'border-danger' : '' }}" name="meta_tags">
-                                 <small class="text-muted">
-                                     Comma separated. Max 15. <a href="https://www.w3schools.com/tags/tag_meta.asp" target="_blank">More Info</a>
-                                 </small>
-                             </div>
-                             <div class="col">
-                                 <label>Meta Description</label>
-                                 <input type="text" class="form-control {{ errors['meta_description'] is defined ? 'border-danger' : '' }}" name="meta_description">
-                                 <small class="text-muted">
-                                     A short description of your YouTube Video. <a href="https://yoast.com/meta-descriptions/" target="_blank">More Info</a>
-                                 </small>
-                             </div>
-                         </div>
-
-                        
 
                          <div class="col">
-                            <label>Youtube URL</label>
+                            <label>Youtube Embeded Code</label>
                             <input type="text" class="form-control {{ errors['content'] is defined ? 'border-danger' : '' }}" name="content">
                             <small class="text-muted">
-                                The YouTube URL to the video you wish to submit.
+                                The YouTube embed code to the video you wish to submit.
                             </small>
                         </div>
                         <hr>
