@@ -19,7 +19,7 @@
                              </p>
                          </div>
                          <div class="flex-fill text-right" style="min-width:250px;">
-                             <a href="{{ url('blog') }}" class="btn btn-default">Back to Videos</a>
+                             <a href="{{ url('videos') }}" class="btn btn-default">Back to Videos</a>
                          </div>
                      </div>
                  </div>
@@ -81,7 +81,7 @@
 
                          <div class="col">
                             <label>Youtube URL</label>
-                            <input type="text" class="form-control {{ errors['meta_description'] is defined ? 'border-danger' : '' }}" name="meta_description">
+                            <input type="text" class="form-control {{ errors['content'] is defined ? 'border-danger' : '' }}" name="content">
                             <small class="text-muted">
                                 The YouTube URL to the video you wish to submit.
                             </small>
