@@ -131,73 +131,73 @@ class Controller {
             'pages' => [
                 'docs' => [
                     'title' => 'Documentation | The Modern RuneScape Private Server Toplist',
-                    'meta'  => 'Integrate your RSPS server with our service, receive voting callback, and more!'
+                    'meta'  => 'Integrate your RSPS server with our service, receive voting callback, and more! RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
                 'updates' => [
                     'title' => 'Update Log | The Modern RuneScape Private Server Toplist',
-                    'meta'  => 'All updates that have been pushed for the toplist, and a list of contributors.'
+                    'meta'  => 'All updates that have been pushed for the toplist, and a list of contributors. RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
                 'sitemap' => [
                     'title' => 'Sitemap | The Modern RuneScape Private Server Toplist',
-                    'meta'  => 'A full sitemap of RuneAd RSPS Toplist displaying RSPS servers, tools, and more!'
+                    'meta'  => 'A full sitemap of RuneAd RSPS Toplist displaying RSPS servers, tools, and more! RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
                 'stats' => [
                     'title' => 'Stats | The Modern RuneScape Private Server Toplist',
-                    'meta'  => 'Global statistics on RuneAd showing votes, user, and server counts.'
+                    'meta'  => 'Global statistics on RuneAd showing votes, user, and server counts. RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
                 'terms' => [
                     'title' => 'Terms of Service | The Modern RuneScape Private Server Toplist',
-                    'meta'  => 'RuneAd Terms Of Service. Preview the Terms of Service for RuneAd RSPS Toplist and get to know the rules!'
+                    'meta'  => 'RuneAd Terms Of Service. Preview the Terms of Service for RuneAd RSPS Toplist! RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
 				'contact' => [
                     'title' => 'Contact Us | The Modern RuneScape Private Server Toplist',
-                    'meta'  => 'Contact RuneAd support and get help on anything related to RuneAd RSPS Toplist.'
+                    'meta'  => 'Contact RuneAd support and get help on anything related to RuneAd RSPS Toplist. RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
                 'privacy' => [
                     'title' => 'Privacy Policy | The Modern RuneScape Private Server Toplist',
-                    'meta'  => 'RuneAd Privacy Policy. Review the Privacy Policy for RuneAd RSPS Toplist and get to know the rules!'
+                    'meta'  => 'RuneAd Privacy Policy. Review the Privacy Policy for RuneAd RSPS Toplist! RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
                 'faq' => [
                     'title' => 'Frequently Asked Questions | The Modern RuneScape Private Server Toplist',
-                    'meta'  => 'Most of our Frequently Asked Questions! Browse RuneAds FAQs to find out more information about RuneAd RSPS Toplist!'
+                    'meta'  => 'Frequently Asked Questions! Browse RuneAds FAQs to find out more about RuneAd RSPS Toplist! RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
 				'ads' => [
                     'title' => 'Store | The Modern RuneScape Private Server Toplist',
-                    'meta'  => 'Infomation about Advertisements on RuneAd. If you cant find the info here please contact RuneAd!'
+                    'meta'  => 'Infomation about Advertisements on RuneAd. RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ]
             ],
             'profile' => [
                 'index' => [
                     'title' => 'Profile | The Modern RuneScape Private Server Toplist',
-                     'meta'  => 'Edit and add a new server, view payment history, stats, and more on RuneAd.'
+                     'meta'  => 'Edit and add a new server, view payment history, stats, and more on RuneAd. RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
                 'payments' => [
                     'title'  => 'Payments | The Modern RuneScape Private Server Toplist',
-                     'meta'  => 'View your payment history for RuneAd.'
+                     'meta'  => 'View your payment history for RuneAd. RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
                 'add' => [
                     'title'  => 'Add Server | The Modern RuneScape Private Server Toplist',
-                     'meta'  => 'Add a new server to the RuneAd toplist.'
+                     'meta'  => 'Add a new server to the RuneAd toplist. RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
                 'edit' => [
                     'title'  => 'Edit Server | The Modern RuneScape Private Server Toplist',
-                     'meta'  => 'Edit an existing server on the RuneAd toplist.'
+                     'meta'  => 'Edit an existing server on the RuneAd toplist. RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ]
             ],
             'sponsor' => [
                 'index' => [
                     'title' => 'Sponsored Ads | The Modern RuneScape Private Server Toplist',
-                    'meta' => 'Purchase sponsored ad spots on RuneAd to give your server a boost!'
+                    'meta' => 'Purchase sponsored ad spots on RuneAd to give your server a boost! RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ]
             ],
             'tools' => [
                 'itemdb' => [
                     'title' => 'OSRS Item DB | The Modern RuneScape Private Server Toplist',
-                    'meta' => 'An easy to use oldschool runescape item db that\'s always up to date.'
+                    'meta' => 'An easy to use oldschool runescape item db that\'s always up to date. RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
 				 'map' => [
                     'title' => 'OSRS Interactive Map | The Modern RuneScape Private Server Toplist',
-                    'meta'  => 'An easy to use oldschool runescape map that\'s always up to date.'
+                    'meta'  => 'An easy to use oldschool runescape map that\'s always up to date. RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
             ],
             'downloads' => [
@@ -245,7 +245,7 @@ class Controller {
 
         return [
             'title' => 'RSPS Toplist | RuneScape Private Servers',
-            'meta'  => 'The most modern runescape private server toplist built to-date. Come join your favorite RSPS, or add your server today to start advertising with us!'
+            'meta'  => 'Looking for the best Runescape Private Servers 2020? Come get involved in our RSPS Toplist, and increase your website traffic and attract your players today!'
         ];
     }
 
