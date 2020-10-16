@@ -23,7 +23,7 @@
         $validator = new Validator;
 
         $validation = $validator->validate($validate, [
-            'category'  => 'required|min:3|max:255',
+            'category'  => 'required|min:3|max:10',
             'content'   => 'required',
         ]);
 
