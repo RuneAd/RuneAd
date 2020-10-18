@@ -18,7 +18,14 @@
                 <h6 class="card-title"><a href="{{ url('videos/post/'~seo_title) }}">{{ post.title }}</a></h6>
                 <p class="card-text">{{ post.content|raw }}</p>
               </div>
+
+            {% else %}
+            <div class="alert alert-default">
+                Nothing to see here. Move along...
             </div>
+            {% endfor %}
+            </div>
+        </div>
           
 
 
