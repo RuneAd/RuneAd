@@ -1,9 +1,36 @@
 <?php
 class VideosController extends Controller {
 
-    public function index() {
+    public function index($category = null, $page = 1) {
+        Paginator::currentPageResolver(function() use ($page) {
+            return $page;
+        });
 
-     }
+        if ($category == null) {
+            $posts = Videos::select("*")
+                ->leftJoin("users", "users.user_id", "=", "videos.author_id")
+                ->orderBy("id", "DESC")
+                ->paginate(7);
+        } else {
+
+            $category = str_replace("-", " ", $category);
+
+            $posts = Videos::select("*")
+                ->where("category", "=", $category)
+                ->leftJoin("users", "users.user_id", "=", "videos.author_id")
+                ->orderBy("id", "DESC")
+                ->paginate(7);
+
+            $this->set("category", $this->filter($category));
+        }
+
+        $categories = Videos::selectRaw("category as title")->groupBy("category")->get();
+
+        $this->set("posts", $posts);
+        $this->set("categories", $categories);
+        
+        return true;
+    }
 
      public function post($postId) {
         $post = Videos::select("*")
