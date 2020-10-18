@@ -7,38 +7,6 @@
 
     <div class="row">
 
-
-
-
-        <div class="row col-12">
-            {% for post in posts.items() %}
-            {% set seo_title = friendlyTitle(post.id~'-'~post.title) %}
-            <div class="card col-6">
-              <div class="card-body">
-                <h6 class="card-title"><a href="{{ url('videos/post/'~seo_title) }}">{{ post.title }}</a></h6>
-                <p class="card-text">{{ post.content|raw }}</p>
-              </div>
-
-            {% else %}
-            <div class="alert alert-default">
-                Nothing to see here. Move along...
-            </div>
-            {% endfor %}
-            </div>
-        </div>
-          
-
-
-
-
-
-
-
-
-
-
-
-
         <div class="col-sm-12 col-lg-12">
             {% for post in posts.items() %}
             {% set seo_title = friendlyTitle(post.id~'-'~post.title) %}
