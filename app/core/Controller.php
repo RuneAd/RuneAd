@@ -142,7 +142,7 @@ class Controller {
                     'meta'  => 'A full sitemap of RuneAd RSPS Toplist displaying RSPS servers, tools, and more! RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
                 'stats' => [
-                    'title' => 'Stats | The Modern RuneScape Private Server Toplist',
+                    'title' => 'Voting Stats | The Modern RuneScape Private Server Toplist',
                     'meta'  => 'Global statistics on RuneAd showing votes, user, and server counts. RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
                 'terms' => [
@@ -158,7 +158,7 @@ class Controller {
                     'meta'  => 'RuneAd Privacy Policy. Review the Privacy Policy for RuneAd RSPS Toplist! RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
                 'faq' => [
-                    'title' => 'Frequently Asked Questions | The Modern RuneScape Private Server Toplist',
+                    'title' => 'FAQ | The Modern RuneScape Private Server Toplist',
                     'meta'  => 'Frequently Asked Questions! Browse RuneAds FAQs to find out more about RuneAd RSPS Toplist! RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
 				'ads' => [
@@ -168,11 +168,11 @@ class Controller {
             ],
             'profile' => [
                 'index' => [
-                    'title' => 'Profile | The Modern RuneScape Private Server Toplist',
+                    'title' => 'My Profile | The Modern RuneScape Private Server Toplist',
                      'meta'  => 'Edit and add a new server, view payment history, stats, and more on RuneAd. RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
                 'payments' => [
-                    'title'  => 'Payments | The Modern RuneScape Private Server Toplist',
+                    'title'  => 'My Payments | The Modern RuneScape Private Server Toplist',
                      'meta'  => 'View your payment history for RuneAd. RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
                 'add' => [
