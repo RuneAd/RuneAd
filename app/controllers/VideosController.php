@@ -1,4 +1,6 @@
 <?php
+use Illuminate\Pagination\Paginator;
+
 class VideosController extends Controller {
 
     public function index($category = null, $page = 1) {
