@@ -10,7 +10,7 @@
         <div class="col-sm-12 col-lg-12">
             {% for post in posts.items() %}
             {% set seo_title = friendlyTitle(post.id~'-'~post.title) %}
-            <div class="card">
+            <div class="card col-sm-5 col-lg-5">
                 <div class="card-header">
                     <h6 class="mb-0">
                     <a href="{{ url('videos/post/'~seo_title) }}">{{ post.title }}</a>
