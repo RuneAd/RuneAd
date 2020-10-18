@@ -31,9 +31,14 @@
         <div class="col-sm-12 col-lg-9">
             {% for post in posts.items() %}
             {% set seo_title = friendlyTitle(post.id~'-'~post.title) %}
-            <div class="alert alert-default">
-                Nothing to see here. Move along...
-            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                    <a href="{{ url('blog/post/'~seo_title) }}">{{ post.title }}</a>
+                </h5></div>
+                <div class="card-body">Content</div> 
+                <div class="card-footer">Footer</div>
+              </div>
             {% else %}
             <div class="alert alert-default">
                 Nothing to see here. Move along...
