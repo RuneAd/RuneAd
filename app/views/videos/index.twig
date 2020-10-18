@@ -31,26 +31,8 @@
         <div class="col-sm-12 col-lg-9">
             {% for post in posts.items() %}
             {% set seo_title = friendlyTitle(post.id~'-'~post.title) %}
-            <div class="card border-0 shadow-sm mb-2">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div class="pr-3">
-                            <img src="{{ avatar(post.user_id, post.avatar) }}"
-                                style="width:48px" class="rounded-circle mt-1">
-                        </div>
-                        <div class="flex-fill w-100">
-                            <h5 class="mb-0">
-                                <a href="{{ url('videos/post/'~seo_title) }}">{{ post.title }}</a>
-                            </h5>
-                            <p class="small text-muted mb-0">
-                               {{ icon("info-circle", 14, 14) }} {{ post.meta_description }}
-                            </p>
-                            <p class="small text-muted mb-0">
-                               Author: {{ post.username }} | {{ post.date_posted|date("m.d.y")}}
-                            </p>
-                        </div>
-                    </div>
-                </div>
+            <div class="alert alert-default">
+                Nothing to see here. Move along...
             </div>
             {% else %}
             <div class="alert alert-default">
