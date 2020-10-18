@@ -24,7 +24,7 @@
 
         $validation = $validator->validate($validate, [
             'category'  => 'required|min:3|max:10',
-            'content'   => 'min:1',
+            'content'   => 'required|min:15',
         ]);
 
         return $validation;
