@@ -6,29 +6,8 @@
     {% include 'videos/components/header.twig' %}
 
     <div class="row">
-        <div class="col-sm-12 col-lg-3">
-            <div class="card border-0 shadow-sm mb-3">
 
-                <div class="list-group list-group-flush">
-                    <a href="{{ url('videos/') }}" 
-                        class="list-group-item {{ category is not defined ? "active" : "" }}">
-                        Show All Videos
-                    </a>
-                    
-
-                    {% for cat in categories %}
-                    <a href="{{ url('videos/'~friendlyTitle(cat.title)) }}" 
-                        class="list-group-item {{ cat.title|lower == category|lower ? "active" : "" }}">
-                        {{ cat.title|capitalize }}
-                    </a>
-                    {% endfor %}
-                </div>
-            </div>
-
-
-        </div>
-
-        <div class="col-sm-12 col-lg-9">
+        <div class="col-sm-12 col-lg-12">
             {% for post in posts.items() %}
             {% set seo_title = friendlyTitle(post.id~'-'~post.title) %}
             <div class="card">
