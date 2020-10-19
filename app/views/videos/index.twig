@@ -7,6 +7,21 @@
 
     <div class="row">
 
+
+<!-- Flickity HTML init -->
+<div class="gallery js-flickity"
+  data-flickity-options='{ "wrapAround": true }'>
+  <div class="gallery-cell"></div>
+  <div class="gallery-cell"></div>
+  <div class="gallery-cell"></div>
+  <div class="gallery-cell"></div>
+  <div class="gallery-cell"></div>
+</div>
+
+
+
+
+
         <div class="col-sm-12 col-lg-12">
             {% for post in posts.items() %}
             {% set seo_title = friendlyTitle(post.id~'-'~post.title) %}
