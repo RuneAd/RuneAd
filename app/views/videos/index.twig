@@ -9,30 +9,37 @@
     <!-- Flickity HTML init -->
 <div class="gallery js-flickity"
 data-flickity-options='{ "wrapAround": true }'>
-<div class="gallery-cell">
-
-    {% for post in posts.items() %}
-    {% set seo_title = friendlyTitle(post.id~'-'~post.title) %}
-    <div class="card col-sm-12 col-lg-5">
-        <div class="card-header">
-            <h6 class="mb-0">
-            <a href="{{ url('videos/post/'~seo_title) }}">{{ post.title }}</a>
-            </h6>
-            <p class="mb-0 small text-muted">
-                Posted by: {{ post.username }} | {{ post.date_posted|date("m.d.y")}}
-            </p>
-    </div>
-        <div class="card-body">{{ post.content|raw }}</div> 
-    </div>
-
-
-</div>
+<div class="gallery-cell"></div>
+<div class="gallery-cell"></div>
+<div class="gallery-cell"></div>
+<div class="gallery-cell"></div>
+<div class="gallery-cell"></div>
 </div>
 
     <div class="row">
 
 
         <div class="col-sm-12 col-lg-12">
+            {% for post in posts.items() %}
+            {% set seo_title = friendlyTitle(post.id~'-'~post.title) %}
+            <div class="card col-sm-12 col-lg-5">
+                <div class="card-header">
+                    <h6 class="mb-0">
+                    <a href="{{ url('videos/post/'~seo_title) }}">{{ post.title }}</a>
+                    </h6>
+                    <p class="mb-0 small text-muted">
+                        Posted by: {{ post.username }} | {{ post.date_posted|date("m.d.y")}}
+                    </p>
+            </div>
+                <div class="card-body">{{ post.content|raw }}</div> 
+            </div>
+
+
+            {% else %}
+            <div class="alert alert-default">
+                Nothing to see here. Move along...
+            </div>
+            {% endfor %}
 
 
             {% set totalPages = posts.lastPage() %}
