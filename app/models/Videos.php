@@ -14,7 +14,7 @@
          'title',
          'category',
          'author_id',
-         'content',
+         'embed',
          'meta_description',
          'date_posted'
      ];
@@ -25,6 +25,7 @@
         $validation = $validator->validate($validate, [
             'title'     => 'required',
             'category'  => 'required|min:3|max:15',
+            'embed'   => 'required|min:50',
         ]);
 
         return $validation;

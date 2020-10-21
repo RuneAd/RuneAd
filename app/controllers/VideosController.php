@@ -78,7 +78,7 @@ class VideosController extends Controller {
                 "category"    => strtolower($this->request->getPost("category", "string")),
                 'author_id'   => $this->user->user_id,
                 'meta_info'   => $this->request->getPost("meta_info", "string"),
-                'content'     => $this->purify($this->request->getPost("content")),
+                'embed'     => $this->purify($this->request->getPost("embed")),
                 'date_posted' => time()
             ];
 
