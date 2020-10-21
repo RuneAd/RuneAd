@@ -52,9 +52,8 @@
                          <div class="form-row form-group">
 
                             <div class="col-sm-12 col-lg-7">
-                                <label>Title*</label>
-                                <input type="text" class="form-control {{ errors['category'] is defined ? 'border-danger' : '' }}" name="title">
-
+                                <label>Video Title*</label>
+                                <input type="text" class="form-control" name="title" value="{{ post.title }}">
                             </div>
                              <div class="col-sm-12 col-lg-5">
                                 <label>Channel Name*</label>
