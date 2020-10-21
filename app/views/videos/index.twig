@@ -6,12 +6,16 @@
     {% include 'videos/components/header.twig' %}
 
     <div class="row">
+        <style>
+            .videoGrid iframe{
+                max-width: 100%;
+            }
+        </style>
 
-
-        <div class="col-sm-12 col-lg-12">
+        <div class="col-sm-12 col-lg-12 row videoGrid">
             {% for post in posts.items() %}
             {% set seo_title = friendlyTitle(post.id~'-'~post.title) %}
-            <div class="card col-sm-12 col-lg-5">
+            <div class="card col-sm-12 col-lg-4 col-md-6 mx-2">
                 <div class="card-header">
                     <h6 class="mb-0">
                     <a href="{{ url('videos/post/'~seo_title) }}">{{ post.title }}</a>
@@ -37,7 +41,7 @@
             {% set pageUrl = category is defined ? url('videos/'~category~'/') : url('videos/')  %}
 
 
-            <nav aria-label="servernav" class="mt-5">
+            <nav aria-label="servernav" class="mt-5 col-12">
                 <ul class="pagination justify-content-center">
                     <li class="page-item {{ posts.onFirstPage() ? 'disabled' : '' }}">
                         <a class="page-link"
