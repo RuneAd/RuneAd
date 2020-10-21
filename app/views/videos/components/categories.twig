@@ -1,0 +1,20 @@
+<div class="row">
+     <div class="col-sm-12">
+         <div class="card border-0 shadow-sm mb-3">
+             <div class="card-body" style="line-height:.8em;">
+                 <div class="d-flex align-items-center">
+                     <div class="flex-fill w-100">
+                         <small class="text-muted">
+                            {% for cat in categories %}
+                            <a href="{{ url('videos/'~friendlyTitle(cat.title)) }}" 
+                            class="list-group-item {{ cat.title|lower == category|lower ? "active" : "" }}">
+                            {{ cat.title|capitalize }}
+                            </a>
+                            {% endfor %} 
+                         </small>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div> 
