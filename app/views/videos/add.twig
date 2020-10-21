@@ -67,6 +67,11 @@
 
                         <hr>
 
+                        <div class="form-group">
+                            <div id="editor" class="mb-3 {{ errors['info'] is defined ? 'border-danger' : '' }}"></div>
+                            <textarea name='info' id='editor-form' style='display:none'></textarea>
+                        </div>
+
                         <div class="form-row form-group">
                             <div class="col">
                                 <label>YouTube Embed Code*</label>
