@@ -38,7 +38,7 @@ class Security {
             'sponsor' => ['button', 'verify', 'process'],
             'profile' => ['index', 'stats', 'payments'],
             'blog'    => ['add', 'edit', 'delete'],
-            'videos'    => ['add']
+            'videos'    => ['add', 'edit', 'delete']
         ];
 
         $admin = [
