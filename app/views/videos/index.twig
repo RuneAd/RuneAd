@@ -17,7 +17,7 @@
             {% set seo_title = friendlyTitle(post.id~'-'~post.title) %}
             <div class="card col-sm-12 col-lg-4 col-md-4 mx-2">
                 <div class="card-header">
-                    <p class="mb-0 small">
+                    <h6 class="mb-0 small">
                     <a href="{{ url('videos/post/'~seo_title) }}">
                         
                         {% if post.title|length > 40 %}
@@ -27,7 +27,7 @@
                         {% endif %}
                     
                     </a>
-                </p>
+                </h6>
                     <p class="mb-0 small text-muted">
                         Posted by: {{ post.username }}
                     </p>
