@@ -6,14 +6,12 @@
                      <div class="flex-fill w-100">
                          <small class="text-muted">
                             <a href="{{ url('videos/') }}" 
-                         class="list-group-item {{ category is not defined ? "active" : "" }}">
+                         class="btn btn-primary {{ category is not defined ? "active" : "" }}">
                          All Videos
                      </a>
-                     
-
                      {% for cat in categories %}
                      <a href="{{ url('videos/'~friendlyTitle(cat.title)) }}" 
-                         class="list-group-item {{ cat.title|lower == category|lower ? "active" : "" }}">
+                         class="btn btn-primary {{ cat.title|lower == category|lower ? "active" : "" }}">
                          {{ cat.title|capitalize }}
                      </a>
                      {% endfor %}
