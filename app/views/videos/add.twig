@@ -57,11 +57,19 @@
                             </div>
                         </div>
 
+                        <div class="col">
+                            <label>Meta Description</label>
+                            <input type="text" class="form-control {{ errors['meta_description'] is defined ? 'border-danger' : '' }}" name="meta_description">
+                            <small class="text-muted">
+                                A short description of your video <a href="https://yoast.com/meta-descriptions/" target="_blank">More Info</a>
+                            </small>
+                        </div>
+
                         <hr>
 
                         <div class="form-row form-group">
                             <div class="col">
-                                <label>YouTube Embed Code</label>
+                                <label>YouTube Embed Code*</label>
                                 <input type="text" class="form-control {{ errors['content'] is defined ? 'border-danger' : '' }}" name="info">
                                 <small class="text-muted">
                                     The embed code for your video (NOT the URL) - Found when you click Share on your video. <a href="https://developers.google.com/youtube/player_parameters" target="_blank">More Info</a>
