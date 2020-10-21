@@ -18,7 +18,15 @@
             <div class="card col-sm-12 col-lg-4 col-md-4 mx-2">
                 <div class="card-header">
                     <h6 class="mb-0">
-                    <a href="{{ url('videos/post/'~seo_title) }}">{{ post.title }}</a>
+                    <a href="{{ url('videos/post/'~seo_title) }}">
+                        
+                        {% if post.title|length > 40 %}
+                        {{ substr(post.title, 0, 25)~'...' }}
+                        {% else %}
+                        {{ post.title }}
+                        {% endif %}
+                    
+                    </a>
                     </h6>
                     <p class="mb-0 small text-muted">
                         Posted by: {{ post.username }} | {{ post.date_posted|date("m.d.y")}}
