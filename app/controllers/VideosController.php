@@ -97,6 +97,37 @@ class VideosController extends Controller {
 
         $this->set("csrf_token", $csrf->getToken());
     }
+
+    public function delete($postId) {
+        $post = Videos::select("*")
+        ->where("id", $postId)
+        ->leftJoin("users", "users.user_id", "=", "videos.author_id")
+        ->first();
+
+        if (!$post) {
+            $this->setView("errors/show404");
+            return false;
+        }
+
+        $canDelete = $this->user != null && $this->user->isRole(['owner']);
+
+        if (!$canDelete) {
+            $this->setView("errors/show401");
+            return false;
+        }
+
+        $csrf = new AntiCSRF;
+
+        if ($this->request->isPost() && $csrf->isValidPost()) {
+            $post->delete();
+            $this->redirect("videos");
+            exit;
+        }
+
+        $this->set("post", $post);
+        $this->set("csrf_token", $csrf->getToken());
+        return true;
+    }
      
 }
 ?>
