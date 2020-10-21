@@ -29,7 +29,7 @@
                     <h6 class="mb-0">
                         <a href="{{ url('videos/post/'~seo_title) }}">
                         {% if post.title|length > 40 %}
-                        {{ substr(post.title, 0, 40)~'...' }}
+                        {{ substr(post.title, 0, 27)~'...' }}
                         {% else %}
                         {{ post.title }}
                         {% endif %}
