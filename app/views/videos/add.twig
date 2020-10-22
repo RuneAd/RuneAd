@@ -71,16 +71,11 @@
 
                         <div class="form-group">
                             <label>YouTube Embed Code*</label>
-                            <input type="text" class="form-control {{ errors['embed'] is defined ? 'border-danger' : '' }}" name="embed">
-
+                            <div id="editor" class="mb-3 {{ errors['embed'] is defined ? 'border-danger' : '' }}"></div>
+                            <textarea name='embed' id='embed' style='display:none'></textarea>
                             <small class="text-muted">
                                 The embed code for your video (NOT the URL) - Found when you click Share on your video. <a href="https://developers.google.com/youtube/player_parameters" target="_blank">More Info</a>
                             </small>
-                        </div>
-
-                        <div class="form-group">
-                            <div id="editor" class="mb-3 {{ errors['embed'] is defined ? 'border-danger' : '' }}"></div>
-                            <textarea name='embed' id='editor-form' style='display:none'></textarea>
                         </div>
 
                         <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
