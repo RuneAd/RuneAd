@@ -10,12 +10,12 @@
                  <div class="card-body">
                      <div class="d-flex align-items-center">
                          <div class="text-default px-1">
-                             {{ icon("bootstrap", 56, 56) }}
+                             
                          </div>
                          <div class="flex-fill w-100">
                              <h4 class="mb-0">Submit YouTube Video</h4>
                              <p class="mb-0 small text-muted">
-                                 Placeholder
+                                
                              </p>
                          </div>
                          <div class="flex-fill text-right" style="min-width:250px;">
@@ -60,18 +60,6 @@
 
                          <hr>
 
-                         <div class="form-row form-group">
-                             <div class="col">
-                                 <label>Meta Description</label>
-                                 <input type="text" class="form-control {{ errors['meta_description'] is defined ? 'border-danger' : '' }}" name="meta_description">
-                                 <small class="text-muted">
-                                     A short description of your blog post. <a href="https://yoast.com/meta-descriptions/" target="_blank">More Info</a>
-                                 </small>
-                             </div>
-                         </div>
-
-                         <hr>
-
                          <div class="form-group">
                              <div id="editor" class="mb-3 {{ errors['info'] is defined ? 'border-danger' : '' }}"></div>
                              <textarea name='info' id='editor-form' style='display:none'></textarea>
@@ -80,40 +68,9 @@
                          <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
 
                          <div class="form-group">
-                             <button type="submit" class="btn btn-red shadow-none" id="submit">
+                             <button type="submit" class="btn btn-danger shadow-none" id="submit">
                                  Submit Video
                              </button>
-
-                             <div id="toolbar" class="d-inline-block">
-                                 <span class="ql-formats">
-                                     <button class="ql-bold"
-                                         data-toggle="tooltip" data-title="Bold"></button>
-                                     <button class="ql-italic"
-                                         data-toggle="tooltip" data-title="Italic"></button>
-                                     <button class="ql-underline"
-                                         data-toggle="tooltip" data-title="Underline"></button>
-                                     <button class="ql-strike"
-                                         data-toggle="tooltip" data-title="Strikethrough"></button>
-                                 </span>
-
-                                 <span class="ql-formats">
-                                     <button class="ql-list" value="ordered"
-                                         data-toggle="tooltip" data-title="Ordered List"></button>
-                                     <button class="ql-list" value="bullet"
-                                         data-toggle="tooltip" data-title="Bullet List"></button>
-                                 </span>
-
-                                 <span class="ql-formats">
-                                     <button class="ql-link"
-                                         data-toggle="tooltip" data-title="Link"></button>
-                                     <button class="ql-image"
-                                         data-toggle="tooltip" data-title="Image"></button>
-                                 </span>
-
-                                 <span class="ql-formats">
-                                     <button class="ql-clean"  data-toggle="tooltip" data-title="Clear Formatting"></button>
-                                 </span>
-                             </div>
                          </div>
                      </form>
                  </div>
