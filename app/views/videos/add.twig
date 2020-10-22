@@ -71,8 +71,8 @@
 
 
                         <div class="form-group">
-                            <div id="embed" class="mb-3 {{ errors['embed'] is defined ? 'border-danger' : '' }}"></div>
-                            <textarea name='embed' id='editor-form' style='display:none'></textarea>
+                            <div id="editor" class="mb-3 {{ errors['embed'] is defined ? 'border-danger' : '' }}"></div>
+                            <textarea name='embed' id='embed' style='display:none'></textarea>
                         </div>
 
                         <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
@@ -81,37 +81,6 @@
                             <button type="submit" class="btn btn-dark shadow-none" id="submit">
                                 Submit Video
                             </button>
-
-                            <div id="toolbar" class="d-inline-block">
-                                <span class="ql-formats">
-                                    <button class="ql-bold"
-                                        data-toggle="tooltip" data-title="Bold"></button>
-                                    <button class="ql-italic"
-                                        data-toggle="tooltip" data-title="Italic"></button>
-                                    <button class="ql-underline"
-                                        data-toggle="tooltip" data-title="Underline"></button>
-                                    <button class="ql-strike"
-                                        data-toggle="tooltip" data-title="Strikethrough"></button>
-                                </span>
-
-                                <span class="ql-formats">
-                                    <button class="ql-list" value="ordered"
-                                        data-toggle="tooltip" data-title="Ordered List"></button>
-                                    <button class="ql-list" value="bullet"
-                                        data-toggle="tooltip" data-title="Bullet List"></button>
-                                </span>
-
-                                <span class="ql-formats">
-                                    <button class="ql-link"
-                                        data-toggle="tooltip" data-title="Link"></button>
-                                    <button class="ql-image"
-                                        data-toggle="tooltip" data-title="Image"></button>
-                                </span>
-
-                                <span class="ql-formats">
-                                    <button class="ql-clean"  data-toggle="tooltip" data-title="Clear Formatting"></button>
-                                </span>
-                            </div>
                         </div>
                     </form>
                 </div>
