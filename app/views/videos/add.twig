@@ -45,15 +45,15 @@
                      <form method="post" action="{{ url('blog/add') }}" id="postform">
                          <div class="form-row form-group">
                              <div class="col-sm-12 col-lg-3">
-                                 <label>Category</label>
+                                 <label>Channel Name*</label>
                                  <input type="text" class="form-control {{ errors['category'] is defined ? 'border-danger' : '' }}" name="category">
 
                              </div>
                              <div class="col-sm-12 col-lg-9">
-                                 <label>Blog Title*</label>
+                                 <label>Video Title*</label>
                                  <input type="text" class="form-control {{ errors['title'] is defined ? 'border-danger' : '' }}" name="title">
                                  <small class="text-muted">
-                                     Use an eye catching title to grab attention. Be creative!
+                                     PlaceHolder
                                  </small>
                              </div>
                          </div>
@@ -61,13 +61,6 @@
                          <hr>
 
                          <div class="form-row form-group">
-                             <div class="col">
-                                 <label>Meta Tags</label>
-                                 <input type="text" class="form-control {{ errors['meta_tags'] is defined ? 'border-danger' : '' }}" name="meta_tags">
-                                 <small class="text-muted">
-                                     Comma separated. Max 15. <a href="https://www.w3schools.com/tags/tag_meta.asp" target="_blank">More Info</a>
-                                 </small>
-                             </div>
                              <div class="col">
                                  <label>Meta Description</label>
                                  <input type="text" class="form-control {{ errors['meta_description'] is defined ? 'border-danger' : '' }}" name="meta_description">
@@ -87,8 +80,8 @@
                          <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
 
                          <div class="form-group">
-                             <button type="submit" class="btn btn-dark shadow-none" id="submit">
-                                 Create post
+                             <button type="submit" class="btn btn-red shadow-none" id="submit">
+                                 Submit Video
                              </button>
 
                              <div id="toolbar" class="d-inline-block">
