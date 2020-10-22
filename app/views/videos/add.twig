@@ -71,17 +71,16 @@
 
 
                         <div class="form-group">
-                            <div id="editor" class="mb-3 {{ errors['embed'] is defined ? 'border-danger' : '' }}"></div>
-                            <textarea name='embed' id='embed' style='display:none'></textarea>
+                            <div id="editor" class="mb-3 {{ errors['info'] is defined ? 'border-danger' : '' }}"></div>
+                            <textarea name='info' id='editor-form' style='display:none'></textarea>
                         </div>
 
                         <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-dark shadow-none" id="submit">
+                            <button type="submit" class="btn btn-danger shadow-none" id="submit">
                                 Submit Video
                             </button>
-                        </div>
                     </form>
                 </div>
             </div>
