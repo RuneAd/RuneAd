@@ -60,7 +60,7 @@ class VideosController extends Controller {
         return true;
     }
 
-     public function add() {
+    public function add() {
         $csrf = new AntiCSRF;
 
         $canPost = $this->user != null && $this->user->isRole([
@@ -77,8 +77,9 @@ class VideosController extends Controller {
                 'title'       => $this->request->getPost("title", "string"),
                 "category"    => strtolower($this->request->getPost("category", "string")),
                 'author_id'   => $this->user->user_id,
+                'meta_tags'   => explode(",", $this->request->getPost("meta_tags", 'string')),
                 'meta_info'   => $this->request->getPost("meta_info", "string"),
-                'embed'     => $this->purify($this->request->getPost("embed")),
+                'content'     => $this->purify($this->request->getPost("info")),
                 'date_posted' => time()
             ];
 
@@ -88,6 +89,7 @@ class VideosController extends Controller {
                 $errors = $validation->errors();
                 $this->set("errors", $errors->firstOfAll());
             } else {
+                $data['meta_tags'] = json_encode($data['meta_tags'], JSON_UNESCAPED_SLASHES);
                 $post = Videos::create($data);
                 $seo_title = Functions::friendlyTitle($post['id'].'-'.$post['title']);
                 $this->redirect("videos/post/".$seo_title);
