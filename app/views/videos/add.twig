@@ -78,6 +78,11 @@
                             </small>
                         </div>
 
+                        <div class="form-group">
+                            <div id="editor" class="mb-3 {{ errors['embed'] is defined ? 'border-danger' : '' }}"></div>
+                            <textarea name='embed' id='editor-form' style='display:none'></textarea>
+                        </div>
+
                         <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
 
                         <div class="text-right form-group">
