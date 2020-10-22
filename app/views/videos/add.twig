@@ -69,6 +69,8 @@
 
                         <hr>
 
+
+
                         <div class="form-group">
                             <label>YouTube Embed Code*</label>
                             <div id="editor" class="mb-3 {{ errors['embed'] is defined ? 'border-danger' : '' }}"></div>
@@ -149,7 +151,7 @@
 
         $("#postform").on("submit", function (event) {
             var body = $(this).find(".ql-editor").html();
-            $(this).find("#editor-form").html(body);
+            $(this).find("#embed").html(body);
             return true;
         });
     });
