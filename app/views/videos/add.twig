@@ -61,8 +61,8 @@
                          <hr>
 
                          <div class="form-group">
-                             <div id="editor" class="mb-3 {{ errors['content'] is defined ? 'border-danger' : '' }}"></div>
-                             <textarea name='content' id='editor-form' style='display:none'></textarea>
+                             <div id="editor" class="mb-3 {{ errors['embed'] is defined ? 'border-danger' : '' }}"></div>
+                             <textarea name='embed' id='editor-form' style='display:none'></textarea>
                          </div>
 
                          <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
@@ -92,7 +92,7 @@
              modules: {
                  toolbar: '#toolbar'
              },
-             placeholder: 'Write your blog here...'
+             placeholder: 'Put your YouTube video Embed code here...'
          });
          let alert = $('.alert-box');
          quill.getModule("toolbar").addHandler("image", function (a) {
