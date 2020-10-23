@@ -79,7 +79,7 @@ class VideosController extends Controller {
                 'author_id'   => $this->user->user_id,
                 'meta_tags'   => explode(",", $this->request->getPost("meta_tags", 'string')),
                 'meta_info'   => $this->request->getPost("meta_info", "string"),
-                'content'     => $this->purify($this->request->getPost("info")),
+                'content'     => $this->purify($this->request->getPost("content")),
                 'date_posted' => time()
             ];
 
