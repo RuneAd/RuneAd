@@ -450,7 +450,7 @@ class Controller {
 
         // handle less than sign
         $text = preg_split('#\s+#', $text, 2);
-        $text = htmlspecialchars($text[0].''.$text[1], ENT_COMPAT);
+        $text = $text[0].''.$text[1];
 
         echo $text;
         echo "<br>";
