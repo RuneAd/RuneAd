@@ -13,7 +13,6 @@
      protected $fillable = [
          'title',
          'category',
-         'category2',
          'author_id',
          'content',
          'meta_tags',
@@ -25,16 +24,7 @@
          $validator = new Validator;
 
          $validation = $validator->validate($validate, [
-             'content'   => 'min:50',
-             'category'  => 'required|min:3|max:255',
-             'category2'  => 'min:3',
-             'title'     => 'min:6|max:150',
-             'meta_tags' => ['', function($value) {
-                 if (count($value) > 15) {
-                     return 'You can\'t have more than 15 meta tags.';
-                 }
-             }],
-             'meta_description' => 'min:20|max:255'
+             'title'     => 'required'
          ]);
 
          return $validation;
