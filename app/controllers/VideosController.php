@@ -78,7 +78,6 @@ class VideosController extends Controller {
                 "category"    => strtolower($this->request->getPost("category", "string")),
                 'author_id'   => $this->user->user_id,
                 'meta_tags'   => explode(",", $this->request->getPost("meta_tags", 'string')),
-                'meta_info'   => $this->request->getPost("meta_info", "string"),
                 'meta_description'     => $this->purify($this->request->getPost("meta_description")),
                 'date_posted' => time()
             ];
@@ -128,7 +127,6 @@ class VideosController extends Controller {
                 "category"    => strtolower($this->request->getPost("category", "string")),
                 'meta_tags'   => explode(",", $this->request->getPost("meta_tags", 'string')),
                 'meta_description' => $this->request->getPost("meta_description", "string"),
-                'embed'     => $this->purify($this->request->getPost("embed")),
             ];
 
             $validation = Videos::validate($data);
