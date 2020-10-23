@@ -65,15 +65,15 @@
                          <hr>
 
                          <div class="form-group">
-                            <div id="editor" class="mb-3 {{ errors['content'] is defined ? 'border-danger' : '' }}"></div>
-                            <textarea name='content' id='editor-form' style='display:none'></textarea>
+                            <input type="text" class="form-control {{ errors['content'] is defined ? 'border-danger' : '' }}" name="content">
+
                         </div>
 
                         <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
 
                          <div class="form-group">
-                             <button type="submit" class="btn btn-dark shadow-none" id="submit">
-                                 Create post
+                             <button type="submit" class="btn btn-danger shadow-none" id="submit">
+                                 Submit Video
                              </button>
                          </div>
                      </form>
