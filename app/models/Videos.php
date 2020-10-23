@@ -26,7 +26,7 @@
          $validation = $validator->validate($validate, [
              'category'  => 'required|min:3|max:25',
              'title'     => 'required|min:6|max:150',
-             'content'   => 'required|min:25',
+             'content'   => 'required|html|min:25',
              'meta_tags' => ['', function($value) {
                  if (count($value) > 15) {
                      return 'You can\'t have more than 15 meta tags.';
