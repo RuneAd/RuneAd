@@ -1,27 +1,51 @@
 {%  extends 'layout.twig' %}
 
-{% block content %}
+ {% block content %}
 
-<div class="container" style="margin-top:-30px;">
-    <div class="row">
-        <div class="col-sm-12">
+ <div class="container" style="margin-top:-30px;">
 
-            <div class="card border-0 shadow-sm mb-3">
-                <div class="card-header bg-primary">
-                    <h5 class="mb-0 text-white">Embed Video to RuneAd</h5>
-                    <p class="mb-0 text-white">Use the form below to embed your YouTube video to RuneAd</p>
-                </div>
+     <div class="row mb-3">
+         <div class="col-sm-12">
+             <div class="card border-0 shadow-sm">
+                 <div class="card-body">
+                     <div class="d-flex align-items-center">
+                         <div class="text-default px-1">
+                             {{ icon("bootstrap", 56, 56) }}
+                         </div>
+                         <div class="flex-fill w-100">
+                             <h4 class="mb-0">Create Blog Post</h4>
+                             <p class="mb-0 small text-muted">
+                                 Post a new article with the form below.
+                             </p>
+                         </div>
+                         <div class="flex-fill text-right" style="min-width:250px;">
+                             <a href="{{ url('blog') }}" class="btn btn-default">Blog Home</a>
+
+                             <a href="{{ url('blog/add') }}" class="btn btn-default {{ user is defined ? "" : "disabled" }}">
+                                 Create Post
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+
+     <div class="row">
+         <div class="col-sm-12 col-lg-12">
+             <div class="card border-0 shadow-sm overflow-hidden">
+                 {% if errors is defined %}
+                     <div class="alert alert-danger rounded-0">
+                         <p class="mb-2">Errors were encountered when creating your post:</p>
+                         <ul class="mb-0 pl-3">
+                             {% for key, value in errors %}
+                             <li>&bull; {{ value }}</li>
+                             {% endfor %}
+                         </ul>
+                     </div>
+                 {% endif %}
                 <div class="card-body">
-                    {% if errors is defined %}
-                        <div class="alert alert-danger">
-                            <p class="mb-2">Errors were encountered when submitting your video:</p>
-                            <ul class="mb-0 pl-3">
-                                {% for key, value in errors %}
-                                <li>&bull; {{ value }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    {% endif %}
+                   
                     <form method="post" action="{{ url('videos/add') }}" id="postform">
                         <div class="form-row form-group">
                             <div class="col">
