@@ -60,6 +60,15 @@
                             </div>
                          </div>
 
+                         <div class="form-row form-group">
+                           
+                            <div class="col-sm-12 col-lg-12">
+                               <label>Youtube Name*</label>
+                               <input type="text" class="form-control {{ errors['content'] is defined ? 'border-danger' : '' }}" name="content">
+
+                           </div>
+                        </div>
+
                          <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
 
                          <div class="form-group">
