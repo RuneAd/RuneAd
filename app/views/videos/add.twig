@@ -83,10 +83,15 @@
 
                          <hr>
 
-                         <div class="form-group">
-                             <div id="editor" class="mb-3 {{ errors['info'] is defined ? 'border-danger' : '' }}"></div>
-                             <textarea name='info' id='editor-form' style='display:none'></textarea>
-                         </div>
+                         <div class="form-row form-group">
+                            <div class="col">
+                                <label>CONTENT</label>
+                                <input type="text" class="form-control {{ errors['info'] is defined ? 'border-danger' : '' }}" name="info">
+                                <small class="text-muted">
+                                    A short description of your blog post. <a href="https://yoast.com/meta-descriptions/" target="_blank">More Info</a>
+                                </small>
+                            </div>
+                        </div>
 
                          <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
 
