@@ -2,13 +2,13 @@
  use Illuminate\Database\Eloquent\Model as Model;
  use Rakit\Validation\Validator;
 
- class Blog extends Model {
+ class Videos extends Model {
 
      public $timestamps    = false;
      public $incrementing  = true;
      protected $primaryKey = 'id';
 
-     protected $table = "blog";
+     protected $table = "videos";
 
      protected $fillable = [
          'title',
