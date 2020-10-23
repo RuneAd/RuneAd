@@ -452,10 +452,14 @@ class Controller {
             // handle less than sign
             $text = preg_split('#\s+#', $text, 2);
 	    $text = $text[0].$text[1]."</iframe>";
+		 echo $text;
+            echo "<br>";
+		 $text = str_replace("https:", "//", $text);
+
             echo $text;
             echo "<br>";
 
-            exit;
+//             exit;
         }
 
         echo $text;
