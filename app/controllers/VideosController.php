@@ -127,7 +127,7 @@ class VideosController extends Controller {
                 "category"    => strtolower($this->request->getPost("category", "string")),
                 'meta_tags'   => explode(",", $this->request->getPost("meta_tags", 'string')),
                 'meta_description' => $this->request->getPost("meta_description", "string"),
-                'content'     => $this->purify($this->request->getPost("info")),
+                'content'    => $this->request->getPost("info", "string"),
             ];
 
             $validation = Videos::validate($data);
