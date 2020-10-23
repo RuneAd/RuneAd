@@ -41,7 +41,7 @@
                      </div>
                  {% endif %}
                  <div class="card-body">
-                    <form method="post" action="{{ url('blog/add') }}" id="postform">
+                    <form method="post" action="{{ url('videos/add') }}" id="postform">
                         <div class="form-row form-group">
                             <div class="col-sm-12 col-lg-3">
                                 <label>Category</label>
@@ -49,7 +49,7 @@
 
                             </div>
                             <div class="col-sm-12 col-lg-9">
-                                <label>Blog Title*</label>
+                                <label>Video Title*</label>
                                 <input type="text" class="form-control {{ errors['title'] is defined ? 'border-danger' : '' }}" name="title">
                                 <small class="text-muted">
                                     Use an eye catching title to grab attention. Be creative!
