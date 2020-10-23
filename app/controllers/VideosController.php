@@ -30,7 +30,7 @@ class VideosController extends Controller {
 
         $this->set("posts", $posts);
         $this->set("categories", $categories);
-        
+
         return true;
     }
 
