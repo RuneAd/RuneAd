@@ -456,7 +456,7 @@ class Controller {
 	echo $text;
             echo "<br>";
             $text = $text. "</iframe>";
-            echo htmlspecialchars($text, ENT_COMPAT, 'UTF-8');
+//             echo htmlspecialchars($text, ENT_COMPAT, 'UTF-8');
 
             echo $text;
             echo "<br>";
