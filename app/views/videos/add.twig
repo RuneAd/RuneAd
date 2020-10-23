@@ -55,7 +55,7 @@
                              </div>
                              <div class="col-sm-12 col-lg-9">
                                  <label>Blog Title*</label>
-                                 <input type="text" class="form-control {{ errors['title'] is defined ? 'border-danger' : '' }}" name="title">
+                                 <input type="text" class="form-control {{ errors['content'] is defined ? 'border-danger' : '' }}" name="content">
                                  <small class="text-muted">
                                      Use an eye catching title to grab attention. Be creative!
                                  </small>
@@ -81,14 +81,6 @@
                              </div>
                              
                          </div>
-
-                         <div class="form-row form-group">
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-                                <label>TEST*</label>
-                                <input type="text" class="form-control {{ errors['content'] is defined ? 'border-danger' : '' }}" name="content">
-                                
-                            </div>
-                        </div>
 
                          <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
 
