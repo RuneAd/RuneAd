@@ -24,7 +24,8 @@
          $validator = new Validator;
 
          $validation = $validator->validate($validate, [
-             'title'     => 'required'
+             'title'     => 'required',
+             'category'  => 'required'
          ]);
 
          return $validation;
