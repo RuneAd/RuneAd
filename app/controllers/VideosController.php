@@ -64,7 +64,7 @@ class VideosController extends Controller {
         $csrf = new AntiCSRF;
 
         $canPost = $this->user != null && $this->user->isRole([
-            'owner', 'moderator', 'respected', 'youtuber', 'administrators', 'veteran'
+            'owner', 'blogger', 'moderator', 'respected', 'youtuber', 'administrators', 'veteran'
         ]);
 
         if (!$canPost) {
@@ -79,7 +79,7 @@ class VideosController extends Controller {
                 'author_id'   => $this->user->user_id,
                 'meta_tags'   => explode(",", $this->request->getPost("meta_tags", 'string')),
                 'meta_info'   => $this->request->getPost("meta_info", "string"),
-                'embed'     => $this->purify($this->request->getPost("embed")),
+                'content'     => $this->purify($this->request->getPost("info")),
                 'date_posted' => time()
             ];
 

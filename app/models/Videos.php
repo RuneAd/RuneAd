@@ -14,7 +14,7 @@
          'title',
          'category',
          'author_id',
-         'embed',
+         'content',
          'meta_tags',
          'meta_description',
          'date_posted'
@@ -24,9 +24,9 @@
          $validator = new Validator;
 
          $validation = $validator->validate($validate, [
-             'title'     => 'required:min:6|max:150',
-             'category'  => 'required:min:3|max:255',
-             'embed'   => 'required|min:25',
+             'title'     => 'required|min:6|max:150',
+             'category'  => 'required|min:3|max:255',
+             'content'   => 'required|min:50',
              'meta_tags' => ['', function($value) {
                  if (count($value) > 15) {
                      return 'You can\'t have more than 15 meta tags.';
