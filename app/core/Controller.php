@@ -436,6 +436,7 @@ class Controller {
 
     public function purify($text) {
         $text  = $this->getPurifier()->purify($text);
+        echo $text; exit;
         $text  = preg_replace( "/\r|\n/", "", $text);
         $text  = preg_replace('/[^\00-\255]+/u', '', $text);
         return $text;
