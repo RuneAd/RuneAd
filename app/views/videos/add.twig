@@ -46,17 +46,18 @@
 
                             <div class="col-sm-12 col-lg-7">
                                 <label>Video Title*</label>
-                                <input type="text" class="form-control" name="title" value="{{ post.title }}">
+                                <input type="text" class="form-control" name="title">
                             </div>
                              <div class="col-sm-12 col-lg-5">
                                 <label>Channel Name*</label>
-                                <input type="text" class="form-control" value="{{ post.category }}" name="category">
+                                <input type="text" class="form-control" name="category">
                             </div>
                          </div>
 
                          <div class="col">
                             <label>Meta Description (Not required)</label>
-                            <input type="text" class="form-control" name="meta_description" value="{{ post.meta_description }}">                            <small class="text-muted">
+                            <input type="text" class="form-control" name="meta_description">                            
+                            <small class="text-muted">
                                 A short description of your video. <a href="https://yoast.com/meta-descriptions/" target="_blank">More Info</a>
                             </small>
                         </div>
@@ -66,7 +67,7 @@
                          <div class="form-row form-group">
                             <div class="col">
                                 <label>YouTube Embed Code*</label>
-                                <input type="text" class="form-control" value="{{ post.content }}" name="info">
+                                <input type="text" class="form-control" name="info">
                                 <small class="text-muted">
                                     The embed code for your video (NOT the URL) - Found when you click Share on your video. <a href="https://developers.google.com/youtube/player_parameters" target="_blank">More Info</a>
                                 </small>
