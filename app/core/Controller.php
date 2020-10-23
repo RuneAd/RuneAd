@@ -448,14 +448,16 @@ class Controller {
         echo "<br>";
         echo "<br>";
 
-        // handle less than sign
-        $text = preg_split('#\s+#', $text, 2);
-        $text = $text[0].''.$text[1];
+	if (strpos($text, 'iframe') !== false) {
+            // handle less than sign
+            $text = preg_split('#\s+#', $text, 2);
+            $text = $text[0].''.$text[1];
+        }
 
         echo $text;
         echo "<br>";
 
-        exit;
+//         exit;
         return $text;
     }
 }
