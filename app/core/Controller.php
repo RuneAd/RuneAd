@@ -407,7 +407,7 @@ class Controller {
         $allowed_html = [
             'div[class]',
             'span[style]',
-            'iframe',
+            'iframe[src|width|height]',
             'a[href|class|target]',
             'img[src|class|data-src]',
             'h1','h2','h3',
