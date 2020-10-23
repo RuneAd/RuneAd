@@ -40,65 +40,51 @@
                          </ul>
                      </div>
                  {% endif %}
-
                  <div class="card-body">
-                     <form method="post" action="{{ url('videos/add') }}" id="postform">
-                         <div class="form-row form-group">
-                             <div class="col-sm-12 col-lg-3">
-                                 <label>Channel Name*</label>
-                                 <input type="text" class="form-control {{ errors['category'] is defined ? 'border-danger' : '' }}" name="category">
+                    <form method="post" action="{{ url('blog/add') }}" id="postform">
+                        <div class="form-row form-group">
+                            <div class="col-sm-12 col-lg-3">
+                                <label>Category</label>
+                                <input type="text" class="form-control {{ errors['category'] is defined ? 'border-danger' : '' }}" name="category">
 
-                             </div>
-                             <div class="col-sm-12 col-lg-9">
-                                 <label>Video Title*</label>
-                                 <input type="text" class="form-control {{ errors['title'] is defined ? 'border-danger' : '' }}" name="title">
-                             </div>
-                         </div>
-
-                         <div class="accordion" id="Extras">
-                            <div class="card">
-                              <div class="bg-danger card" id="headingOne">
-                                <h1 class="mb-0">
-                                  <button class="text-white btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Show Advanced Options (Not Required)
-                                  </button>
-                                </h1>
-                              </div>
-                              <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#Extras">
-                                <div class="card-body">
-                                    <div class="form-row form-group">
-                                        <div class="col-sm-12 col-lg-4">
-                                            <label>Meta Tags (Not Required)</label>
-                                            <input type="text" class="form-control {{ errors['meta_tags'] is defined ? 'border-danger' : '' }}" name="meta_tags">
-                                            <small class="text-muted">
-                                                Comma separated. Max 15. <a href="https://www.w3schools.com/tags/tag_meta.asp" target="_blank">More Info</a>
-                                            </small>
-                                        </div>
-                                        <div class="col-sm-12 col-lg-8">
-                                            <label>Meta Description (Not Required)</label>
-                                            <input type="text" class="form-control {{ errors['meta_description'] is defined ? 'border-danger' : '' }}" name="meta_description">
-                                            <small class="text-muted">
-                                                A short description of your video. <a href="https://yoast.com/meta-descriptions/" target="_blank">More Info</a>
-                                            </small>
-                                        </div>
-                                    </div>
-
-                                </div>
-                              </div>
                             </div>
-                          </div>
-
-                          <hr>
-
-                          <div class="col">
-                            <label>Youtube Embed Code</label>
-                            <input type="text" class="form-control {{ errors['content'] is defined ? 'border-danger' : '' }}" name="content">
-                            <small class="text-muted">
-                            The YouTube embed code to the video you wish to submit.
-                            </small>
+                            <div class="col-sm-12 col-lg-9">
+                                <label>Blog Title*</label>
+                                <input type="text" class="form-control {{ errors['title'] is defined ? 'border-danger' : '' }}" name="title">
+                                <small class="text-muted">
+                                    Use an eye catching title to grab attention. Be creative!
+                                </small>
                             </div>
+                        </div>
 
-                         <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+                        <hr>
+
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <label>Meta Tags</label>
+                                <input type="text" class="form-control {{ errors['meta_tags'] is defined ? 'border-danger' : '' }}" name="meta_tags">
+                                <small class="text-muted">
+                                    Comma separated. Max 15. <a href="https://www.w3schools.com/tags/tag_meta.asp" target="_blank">More Info</a>
+                                </small>
+                            </div>
+                            <div class="col">
+                                <label>Meta Description</label>
+                                <input type="text" class="form-control {{ errors['meta_description'] is defined ? 'border-danger' : '' }}" name="meta_description">
+                                <small class="text-muted">
+                                    A short description of your blog post. <a href="https://yoast.com/meta-descriptions/" target="_blank">More Info</a>
+                                </small>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="form-group">
+                            <div id="editor" class="mb-3 {{ errors['info'] is defined ? 'border-danger' : '' }}"></div>
+                            <textarea name='info' id='editor-form' style='display:none'></textarea>
+                        </div>
+
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+
 
                          <div class="form-group">
                              <button type="submit" class="btn btn-danger shadow-none" id="submit">
