@@ -434,5 +434,5 @@ class Controller {
         return $this->purifier;
     }
 
-    public function purify($text) { $text = str_replace("<iframe", "< iframe", $text); echo $text; echo "<br>";  $text = str_replace("</iframe>", "</ iframe>", $text);  echo $text; echo "<br>";  $text = $this->getPurifier()->purify($text); $text = preg_replace( "/\r|\n/", "", $text); $text = preg_replace('/[^\00-\255]+/u', '', $text);  echo $text; echo "<br>";  $text = str_replace("< iframe", "<iframe ", $text);  echo $text; echo "<br>";  $text = str_replace("</ iframe>", "</iframe>", $text);   echo $text; echo "<br>";  exit; return $text; }
+    public function purify($text) { $text = str_replace("<iframe", "< iframe", $text); echo $text; echo "<br>";  $text = str_replace("</iframe>", "</ iframe>", $text);  echo $text; echo "<br>";  $text = $this->getPurifier()->purify($text); $text = preg_replace( "/\r|\n/", "", $text); $text = preg_replace('/[^\00-\255]+/u', '', $text);  echo $text; echo "<br>";  $text = str_replace("< iframe", "<iframe", $text);  echo $text; echo "<br>";  $text = str_replace("iframe>", "</iframe>", $text);   echo $text; echo "<br>";  exit; return $text; }
 }
