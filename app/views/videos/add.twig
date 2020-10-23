@@ -57,10 +57,7 @@
                             </div>
                         <hr>
 
-                        <div class="form-group">
-                            <div id="editor" class="mb-3 {{ errors['content'] is defined ? 'border-danger' : '' }}"></div>
-                            <textarea name='info' id='editor-form' style='display:none'></textarea>
-                        </div>
+                        <input type="text" class="form-control {{ errors['content'] is defined ? 'border-danger' : '' }}" name="info">
                     </div>
                         <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
 
