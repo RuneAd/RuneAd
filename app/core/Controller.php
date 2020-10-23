@@ -422,7 +422,7 @@ class Controller {
             $config->set("Core.Encoding", 'utf-8');
             $config->set('AutoFormat.RemoveEmpty', true);
             $config->set("HTML.Allowed", implode(',', $allowed_html));
-            $config->set('HTML.AllowedAttributes', 'src, height, width, alt, href, class, style, data-src');
+            $config->set('HTML.AllowedAttributes', 'iframe, src, height, width, alt, href, class, style, data-src');
             $config->set('URI.SafeIframeRegexp', '%^(https?:)?//(www\.youtube(?:-nocookie)?\.com/embed/|player\.vimeo\.com/video/)%');
 
             $def = $config->getHTMLDefinition(true);
@@ -434,4 +434,5 @@ class Controller {
         return $this->purifier;
     }
 
-    public function purify($text) { $text = str_replace("<iframe", "< iframe", $text); echo $text; echo "<br>";  $text = $this->getPurifier()->purify($text);  $text = str_replace("< iframe", "<iframe", $text); echo $text; echo "<br>";  $text = preg_replace( "/\r|\n/", "", $text); $text = preg_replace('/[^\00-\255]+/u', '', $text);  echo $text; echo "<br>"; echo "<br>";  $text = str_replace("< iframe", "<iframe", $text);  echo $text; echo "<br>";  exit; return $text; }}
+    public function purify($text) { $text = $this->getPurifier()->purify($text); $text = preg_replace( "/\r|\n/", "", $text); $text = preg_replace('/[^\00-\255]+/u', '', $text); return $text; }
+}
