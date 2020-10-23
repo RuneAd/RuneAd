@@ -9,21 +9,15 @@
              <div class="card border-0 shadow-sm">
                  <div class="card-body">
                      <div class="d-flex align-items-center">
-                         <div class="text-default px-1">
-                             {{ icon("bootstrap", 56, 56) }}
-                         </div>
+                         
                          <div class="flex-fill w-100">
-                             <h4 class="mb-0">Create Blog Post</h4>
+                             <h4 class="mb-0">PlaceHolder</h4>
                              <p class="mb-0 small text-muted">
-                                 Post a new article with the form below.
+                                 PlaceHolder Text
                              </p>
                          </div>
                          <div class="flex-fill text-right" style="min-width:250px;">
-                             <a href="{{ url('blog') }}" class="btn btn-default">Blog Home</a>
-
-                             <a href="{{ url('blog/add') }}" class="btn btn-default {{ user is defined ? "" : "disabled" }}">
-                                 Create Post
-                             </a>
+                             <a href="{{ url('videos') }}" class="btn btn-default">Videos Home</a>
                          </div>
                      </div>
                  </div>
@@ -36,7 +30,7 @@
              <div class="card border-0 shadow-sm overflow-hidden">
                  {% if errors is defined %}
                      <div class="alert alert-danger rounded-0">
-                         <p class="mb-2">Errors were encountered when creating your post:</p>
+                         <p class="mb-2">Errors were encountered when Submitting your video:</p>
                          <ul class="mb-0 pl-3">
                              {% for key, value in errors %}
                              <li>&bull; {{ value }}</li>
@@ -65,37 +59,6 @@
                             <button type="submit" class="btn btn-danger shadow-none" id="submit">
                                 Submit Video
                             </button>
-
-                            <div id="toolbar" class="d-inline-block">
-                                <span class="ql-formats">
-                                    <button class="ql-bold"
-                                        data-toggle="tooltip" data-title="Bold"></button>
-                                    <button class="ql-italic"
-                                        data-toggle="tooltip" data-title="Italic"></button>
-                                    <button class="ql-underline"
-                                        data-toggle="tooltip" data-title="Underline"></button>
-                                    <button class="ql-strike"
-                                        data-toggle="tooltip" data-title="Strikethrough"></button>
-                                </span>
-
-                                <span class="ql-formats">
-                                    <button class="ql-list" value="ordered"
-                                        data-toggle="tooltip" data-title="Ordered List"></button>
-                                    <button class="ql-list" value="bullet"
-                                        data-toggle="tooltip" data-title="Bullet List"></button>
-                                </span>
-
-                                <span class="ql-formats">
-                                    <button class="ql-link"
-                                        data-toggle="tooltip" data-title="Link"></button>
-                                    <button class="ql-image"
-                                        data-toggle="tooltip" data-title="Image"></button>
-                                </span>
-
-                                <span class="ql-formats">
-                                    <button class="ql-clean"  data-toggle="tooltip" data-title="Clear Formatting"></button>
-                                </span>
-                            </div>
                         </div>
                     </form>
                 </div>
