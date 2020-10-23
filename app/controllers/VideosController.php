@@ -69,7 +69,7 @@ class VideosController extends Controller {
 
         if (!$canPost) {
             $this->setView("errors/show401");
-            return false;
+            return true;
         }
 
         if ($this->request->isPost() && $csrf->isValidPost()) {
