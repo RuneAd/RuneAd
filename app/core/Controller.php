@@ -434,10 +434,5 @@ class Controller {
         return $this->purifier;
     }
 
-    public function purify($text) {
-        $text  = $this->getPurifier()->purify($text);
-        $text  = preg_replace( "/\r|\n/", "", $text);
-        $text  = preg_replace('/[^\00-\255]+/u', '', $text);
-        return $text;
-    }
+    public function purify($text) { $text = str_replace("<iframe", "< iframe ", $text);  $text = $this->getPurifier()->purify($text); $text = preg_replace( "/\r|\n/", "", $text); $text = preg_replace('/[^\00-\255]+/u', '', $text);  $text = str_replace("< iframe", "<iframe ", $text); return $text; }
 }
