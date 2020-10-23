@@ -452,6 +452,16 @@ class Controller {
             // handle less than sign
             $text = preg_split('#\s+#', $text, 2);
             $text = $text[0].''.$text[1];
+		
+	echo $text;
+            echo "<br>";
+            $text = $text. "</iframe>";
+            echo htmlspecialchars($text, ENT_COMPAT, 'UTF-8');
+
+            echo $text;
+            echo "<br>";
+
+            exit;
         }
 
         echo $text;
