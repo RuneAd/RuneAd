@@ -10,7 +10,7 @@ class VideosController extends Controller {
 
         if ($category == null) {
             $posts = Videos::select("*")
-                ->leftJoin("users", "users.user_id", "=", "videos.author_id")
+                ->leftJoin("users", "users.user_id", "=", "Videos.author_id")
                 ->orderBy("id", "DESC")
                 ->paginate(7);
         } else {
@@ -19,7 +19,7 @@ class VideosController extends Controller {
 
             $posts = Videos::select("*")
                 ->where("category", "=", $category)
-                ->leftJoin("users", "users.user_id", "=", "videos.author_id")
+                ->leftJoin("users", "users.user_id", "=", "Videos.author_id")
                 ->orderBy("id", "DESC")
                 ->paginate(7);
 
@@ -34,7 +34,7 @@ class VideosController extends Controller {
         return true;
     }
 
-     public function post($postId) {
+    public function post($postId) {
         $post = Videos::select("*")
             ->where("id", $postId)
             ->leftJoin("users", "users.user_id", "=", "videos.author_id")
@@ -64,7 +64,7 @@ class VideosController extends Controller {
         $csrf = new AntiCSRF;
 
         $canPost = $this->user != null && $this->user->isRole([
-            'owner'
+            'owner', 'moderator', 'respected', 'youtuber', 'administrators', 'veteran'
         ]);
 
         if (!$canPost) {
@@ -78,7 +78,8 @@ class VideosController extends Controller {
                 "category"    => strtolower($this->request->getPost("category", "string")),
                 'author_id'   => $this->user->user_id,
                 'meta_tags'   => explode(",", $this->request->getPost("meta_tags", 'string')),
-                'meta_description'     => $this->purify($this->request->getPost("meta_description")),
+                'meta_info'   => $this->request->getPost("meta_info", "string"),
+                'content'     => $this->purify($this->request->getPost("info")),
                 'date_posted' => time()
             ];
 
@@ -98,7 +99,6 @@ class VideosController extends Controller {
 
         $this->set("csrf_token", $csrf->getToken());
     }
-
 
     public function edit($postId) {
         $post = Videos::select("*")
@@ -127,6 +127,7 @@ class VideosController extends Controller {
                 "category"    => strtolower($this->request->getPost("category", "string")),
                 'meta_tags'   => explode(",", $this->request->getPost("meta_tags", 'string')),
                 'meta_description' => $this->request->getPost("meta_description", "string"),
+                'content'     => $this->purify($this->request->getPost("info")),
             ];
 
             $validation = Videos::validate($data);
@@ -187,6 +188,5 @@ class VideosController extends Controller {
         $this->set("csrf_token", $csrf->getToken());
         return true;
     }
-     
+
 }
-?>
