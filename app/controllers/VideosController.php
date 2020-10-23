@@ -63,13 +63,13 @@ class VideosController extends Controller {
      public function add() {
         $csrf = new AntiCSRF;
 
-        $canPost = $this->user != null && $this->user->isRole([
+        $canPost = $this->user = null && $this->user->isRole([
             'owner', 'blogger', 'moderator', 'respected', 'youtuber', 'administrators', 'veteran'
         ]);
 
         if (!$canPost) {
             $this->setView("errors/show401");
-            return true;
+            return false;
         }
 
         if ($this->request->isPost() && $csrf->isValidPost()) {
