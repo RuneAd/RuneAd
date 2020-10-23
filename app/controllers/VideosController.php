@@ -60,11 +60,11 @@ class VideosController extends Controller {
         return true;
     }
 
-    public function add() {
+     public function add() {
         $csrf = new AntiCSRF;
 
         $canPost = $this->user != null && $this->user->isRole([
-            'owner', 'moderator', 'respected', 'youtuber', 'administrators', 'veteran'
+            'owner', 'blogger', 'moderator', 'respected', 'youtuber', 'administrators', 'veteran'
         ]);
 
         if (!$canPost) {
