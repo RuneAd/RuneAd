@@ -13,6 +13,7 @@
      protected $fillable = [
          'title',
          'category',
+         'category2',
          'author_id',
          'content',
          'meta_tags',
@@ -24,8 +25,9 @@
          $validator = new Validator;
 
          $validation = $validator->validate($validate, [
-             'content'   => 'required|min:50',
+             'content'   => 'min:50',
              'category'  => 'required|min:3|max:255',
+             'category2'  => 'required|min:3|',
              'title'     => 'min:6|max:150',
              'meta_tags' => ['', function($value) {
                  if (count($value) > 15) {

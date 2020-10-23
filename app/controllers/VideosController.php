@@ -76,6 +76,7 @@ class VideosController extends Controller {
             $data = [
                 'title'       => $this->request->getPost("title", "string"),
                 "category"    => strtolower($this->request->getPost("category", "string")),
+                "category2"    => strtolower($this->request->getPost("category2", "string")),
                 'author_id'   => $this->user->user_id,
                 'meta_tags'   => explode(",", $this->request->getPost("meta_tags", 'string')),
                 'meta_info'   => $this->request->getPost("meta_info", "string"),
@@ -125,6 +126,7 @@ class VideosController extends Controller {
             $data = [
                 'title'       => $this->request->getPost("title", "string"),
                 "category"    => strtolower($this->request->getPost("category", "string")),
+                "category2"    => strtolower($this->request->getPost("category2", "string")),
                 'meta_tags'   => explode(",", $this->request->getPost("meta_tags", 'string')),
                 'meta_description' => $this->request->getPost("meta_description", "string"),
                 'content'     => $this->purify($this->request->getPost("content")),
