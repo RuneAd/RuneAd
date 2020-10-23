@@ -91,11 +91,12 @@
                           <hr>
 
 
-                          <div class="col-sm-12 col-lg-8">
+                          <div class="col-sm-12 col-lg-12">
                             <label>YouTube embed code</label>
                             <input type="text" class="form-control {{ errors['content'] is defined ? 'border-danger' : '' }}" name="content">
-                           
-                        </div>
+                            </div>
+
+                            <hr>
 
                          <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
 
