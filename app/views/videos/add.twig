@@ -9,20 +9,19 @@
              <div class="card border-0 shadow-sm">
                  <div class="card-body">
                      <div class="d-flex align-items-center">
-                         <div class="text-default px-1">
-                             {{ icon("bootstrap", 56, 56) }}
-                         </div>
                          <div class="flex-fill w-100">
-                             <h4 class="mb-0">Create Blog Post</h4>
+                             <h6 class="text-small mb-0">{{ post.title }}</h6>
                              <p class="mb-0 small text-muted">
-                                 Post a new article with the form below.
+                                 Edit the details of this video with the form below.
                              </p>
                          </div>
                          <div class="flex-fill text-right" style="min-width:250px;">
-                             <a href="{{ url('videos') }}" class="btn btn-default">Blog Home</a>
-
-                             <a href="{{ url('videos/add') }}" class="btn btn-default {{ user is defined ? "" : "disabled" }}">
-                                 Create Post
+                             <a href="{{ url('videos') }}" class="btn btn-default">
+                                 Videos Home
+                             </a>
+                             <a href="{{ url('videos/post/'~friendlyTitle(post.id~'-'~post.title)) }}" 
+                                 class="btn btn-default {{ user is defined ? "" : "disabled" }}">
+                                Back to Video
                              </a>
                          </div>
                      </div>
@@ -46,36 +45,46 @@
                  {% endif %}
 
                  <div class="card-body">
-                     <form method="post" action="{{ url('videos/add') }}" id="postform">
+                     <form method="post" action="{{ url('videos/edit/'~post.id) }}" id="postform">
                          <div class="form-row form-group">
-                             <div class="col-sm-12 col-lg-3">
-                                 <label>Category</label>
-                                 <input type="text" class="form-control {{ errors['category'] is defined ? 'border-danger' : '' }}" name="category">
 
-                             </div>
-                             <div class="col-sm-12 col-lg-9">
-                                 <label>Blog Title*</label>
-                                 <input type="text" class="form-control {{ errors['title'] is defined ? 'border-danger' : '' }}" name="title">
-                                 <small class="text-muted">
-                                     Use an eye catching title to grab attention. Be creative!
-                                 </small>
-                             </div>
+                            <div class="col-sm-12 col-lg-7">
+                                <label>Video Title*</label>
+                                <input type="text" class="form-control" name="title" value="{{ post.title }}">
+                            </div>
+                             <div class="col-sm-12 col-lg-5">
+                                <label>Channel Name*</label>
+                                <input type="text" class="form-control" value="{{ post.category }}" name="category">
+                            </div>
                          </div>
+
+                         <div class="col">
+                            <label>Meta Description (Not required)</label>
+                            <input type="text" class="form-control" name="meta_description" value="{{ post.meta_description }}">                            <small class="text-muted">
+                                A short description of your video. <a href="https://yoast.com/meta-descriptions/" target="_blank">More Info</a>
+                            </small>
+                        </div>
 
                          <hr>
 
-                         <div class="form-group">
-                             <div id="editor" class="mb-3 {{ errors['info'] is defined ? 'border-danger' : '' }}"></div>
-                             <textarea name='info' id='editor-form' style='display:none'></textarea>
-                         </div>
+                         <div class="form-row form-group">
+                            <div class="col">
+                                <label>YouTube Embed Code*</label>
+                                <input type="text" class="form-control" value="{{ post.content }}" name="info">
+                                <small class="text-muted">
+                                    The embed code for your video (NOT the URL) - Found when you click Share on your video. <a href="https://developers.google.com/youtube/player_parameters" target="_blank">More Info</a>
+                                </small>
+                            </div>
+                        </div>
 
+
+                         
                          <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
 
                          <div class="form-group">
-                             <button type="submit" class="btn btn-danger shadow-none" id="submit">
-                                 Submit Video
+                             <button type="submit" class="btn btn-success shadow-none" id="submit">
+                                 Save Changes
                              </button>
-
                          </div>
                      </form>
                  </div>
