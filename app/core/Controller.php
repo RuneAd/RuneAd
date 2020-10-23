@@ -422,7 +422,7 @@ class Controller {
             $config->set("Core.Encoding", 'utf-8');
             $config->set('AutoFormat.RemoveEmpty', true);
             $config->set("HTML.Allowed", implode(',', $allowed_html));
-            $config->set('HTML.AllowedAttributes', 'src, height, width, alt, href, class, style, data-src');
+            $config->set('HTML.AllowedAttributes', 'iframe, src, height, width, alt, href, class, style, data-src');
 
             $def = $config->getHTMLDefinition(true);
             $def->addAttribute('img', 'data-src', 'Text');
