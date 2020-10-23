@@ -10,7 +10,7 @@ class VideosController extends Controller {
 
         if ($category == null) {
             $posts = Videos::select("*")
-                ->leftJoin("users", "users.user_id", "=", "Videos.author_id")
+                ->leftJoin("users", "users.user_id", "=", "videos.author_id")
                 ->orderBy("id", "DESC")
                 ->paginate(7);
         } else {
@@ -19,7 +19,7 @@ class VideosController extends Controller {
 
             $posts = Videos::select("*")
                 ->where("category", "=", $category)
-                ->leftJoin("users", "users.user_id", "=", "Videos.author_id")
+                ->leftJoin("users", "users.user_id", "=", "videos.author_id")
                 ->orderBy("id", "DESC")
                 ->paginate(7);
 
