@@ -27,7 +27,7 @@
          $validation = $validator->validate($validate, [
              'content'   => 'min:50',
              'category'  => 'required|min:3|max:255',
-             'category2'  => 'required|min:3|',
+             'category2'  => 'min:3',
              'title'     => 'min:6|max:150',
              'meta_tags' => ['', function($value) {
                  if (count($value) > 15) {
