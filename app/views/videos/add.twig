@@ -43,22 +43,27 @@
                  <div class="card-body">
                     <form method="post" action="{{ url('videos/add') }}" id="postform">
                         <div class="form-row form-group">
-                            <div class="col-sm-12 col-lg-3">
-                                <label>Category*</label>
-                                <input type="text" class="form-control {{ errors['category'] is defined ? 'border-danger' : '' }}" name="category">
-
-                            </div>
-                            <div class="col-sm-12 col-lg-9">
-                                <label>Video Title*</label>
-                                <input type="text" class="form-control {{ errors['title'] is defined ? 'border-danger' : '' }}" name="title">
-                                <small class="text-muted">
-                                    Use an eye catching title to grab attention. Be creative!
-                                </small>
+                            <div class="col-sm-12 col-lg-12">
+                                <label>YouTube Embed Code*</label>
+                                <input type="text" class="form-control {{ errors['content'] is defined ? 'border-danger' : '' }}" name="info">
                             </div>
                         <hr>
-
-                        <input type="text" class="form-control {{ errors['content'] is defined ? 'border-danger' : '' }}" name="info">
                     </div>
+                    <div class="form-row form-group">
+                        <div class="col-sm-12 col-lg-12">
+                            <label>title*</label>
+                            <input type="text" class="form-control {{ errors['title'] is defined ? 'border-danger' : '' }}" name="title">
+                        </div>
+                    <hr>
+                </div>
+                <div class="form-row form-group">
+                    <div class="col-sm-12 col-lg-12">
+                        <label>category</label>
+                        <input type="text" class="form-control {{ errors['category'] is defined ? 'border-danger' : '' }}" name="category">
+                    </div>
+                <hr>
+            </div>
+
                         <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
 
                          <div class="text-right form-group">
