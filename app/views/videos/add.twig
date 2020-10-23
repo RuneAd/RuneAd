@@ -53,6 +53,42 @@
                              </div>
                          </div>
 
+                         <div class="accordion" id="Extras">
+                            <div class="card">
+                              <div class="bg-danger card" id="headingOne">
+                                <h1 class="mb-0">
+                                  <button class="text-white btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Show advanced options
+                                  </button>
+                                </h1>
+                              </div>
+                              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#Extras">
+                                <div class="card-body">
+                                 
+                                    
+
+                                    <div class="form-row form-group">
+                                        <div class="col-sm-12 col-lg-3">
+                                            <label>Channel Name*</label>
+                                            <input type="text" class="form-control {{ errors['category'] is defined ? 'border-danger' : '' }}" name="category">
+           
+                                        </div>
+                                        <div class="col-sm-12 col-lg-9">
+                                            <label>Video Title*</label>
+                                            <input type="text" class="form-control {{ errors['title'] is defined ? 'border-danger' : '' }}" name="title">
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                </div>
+                              </div>
+                            </div>
+
+                          </div>
+
 
                          <hr>
 
