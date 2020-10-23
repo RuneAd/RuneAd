@@ -91,10 +91,11 @@
                           <hr>
 
 
-                         <div class="form-group">
-                             <div id="editor" class="mb-3 {{ errors['content'] is defined ? 'border-danger' : '' }}"></div>
-                             <textarea name='content' id='editor-form' style='display:none'></textarea>
-                         </div>
+                          <div class="col-sm-12 col-lg-8">
+                            <label>YouTube embed code</label>
+                            <input type="text" class="form-control {{ errors['content'] is defined ? 'border-danger' : '' }}" name="content">
+                           
+                        </div>
 
                          <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
 
@@ -102,16 +103,6 @@
                              <button type="submit" class="btn btn-danger shadow-none" id="submit">
                                  Submit Video
                              </button>
-
-
-                             <div id="toolbar" class="d-inline-block">
-
-                                <span class="ql-formats">
-                                    <button class="ql-video"
-                                        data-toggle="tooltip" data-title="Embed popup code"></button>
-                                </span>
-
-                            </div>
 
 
                          </div>
