@@ -452,7 +452,7 @@ class Controller {
         echo "<br>";
         echo "<br>";
 
-        $text = str_replace("< iframe", "<iframe", $text);
+        $text = str_replace("< iframe ", "<iframe ", $text);
 
         echo $text;
         echo "<br>";
