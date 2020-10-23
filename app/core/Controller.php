@@ -440,11 +440,7 @@ class Controller {
         echo "<br>";
 
         $text = $this->getPurifier()->purify($text);
-
-        $text = str_replace("< iframe", "<iframe", $text);
-        echo $text;
-        echo "<br>";
-
+        
         $text = preg_replace( "/\r|\n/", "", $text);
         $text = preg_replace('/[^\00-\255]+/u', '', $text);
 
@@ -452,7 +448,9 @@ class Controller {
         echo "<br>";
         echo "<br>";
 
-        $text = str_replace("< iframe ", "<iframe ", $text);
+        // handle less than sign
+        $text = preg_split('#\s+#', $text, 2);
+        $text = htmlspecialchars($text[0].''.$text[1], ENT_COMPAT);
 
         echo $text;
         echo "<br>";
