@@ -451,7 +451,15 @@ class Controller {
 	if (strpos($text, 'iframe') !== false) {
             // handle less than sign
             $text = preg_split('#\s+#', $text, 2);
-            $text = $text[0].''.$text[1];
+	    $text = $text[0].$text[1]."</iframe>";
+		 echo $text;
+            echo "<br>";
+		 $text = str_replace("https:", "", $text);
+
+            echo $text;
+            echo "<br>";
+
+//             exit;
         }
 
         echo $text;
