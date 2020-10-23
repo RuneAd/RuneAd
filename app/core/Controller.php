@@ -454,7 +454,7 @@ class Controller {
 	    $text = $text[0].$text[1]."</iframe>";
 		 echo $text;
             echo "<br>";
-		 $text = str_replace("https:", "/", $text);
+		 $text = str_replace("https:", "", $text);
 
             echo $text;
             echo "<br>";
