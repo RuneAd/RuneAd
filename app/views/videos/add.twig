@@ -72,36 +72,7 @@
                                  Submit Video
                              </button>
 
-                             <div id="toolbar" class="d-inline-block">
-                                 <span class="ql-formats">
-                                     <button class="ql-bold"
-                                         data-toggle="tooltip" data-title="Bold"></button>
-                                     <button class="ql-italic"
-                                         data-toggle="tooltip" data-title="Italic"></button>
-                                     <button class="ql-underline"
-                                         data-toggle="tooltip" data-title="Underline"></button>
-                                     <button class="ql-strike"
-                                         data-toggle="tooltip" data-title="Strikethrough"></button>
-                                 </span>
 
-                                 <span class="ql-formats">
-                                     <button class="ql-list" value="ordered"
-                                         data-toggle="tooltip" data-title="Ordered List"></button>
-                                     <button class="ql-list" value="bullet"
-                                         data-toggle="tooltip" data-title="Bullet List"></button>
-                                 </span>
-
-                                 <span class="ql-formats">
-                                     <button class="ql-link"
-                                         data-toggle="tooltip" data-title="Link"></button>
-                                     <button class="ql-image"
-                                         data-toggle="tooltip" data-title="Image"></button>
-                                 </span>
-
-                                 <span class="ql-formats">
-                                     <button class="ql-clean"  data-toggle="tooltip" data-title="Clear Formatting"></button>
-                                 </span>
-                             </div>
                          </div>
                      </form>
                  </div>
@@ -119,9 +90,6 @@
          var apiKey = '{{ constant("imgur_key") }}';
          var quill = new Quill('#editor', {
              theme: 'snow',
-             modules: {
-                 toolbar: '#toolbar'
-             },
              placeholder: 'Place your YouTube embed code here...'
          });
          let alert = $('.alert-box');
