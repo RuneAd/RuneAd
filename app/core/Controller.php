@@ -422,6 +422,8 @@ class Controller {
             $config->set('AutoFormat.RemoveEmpty', true);
             $config->set("HTML.Allowed", implode(',', $allowed_html));
             $config->set('HTML.AllowedAttributes', 'src, height, width, alt, href, class, style, data-src');
+            $config->set('HTML.SafeIframe', true);
+            $config->set('URI.SafeIframeRegexp', '%^(https?:)?//(www\.youtube(?:-nocookie)?\.com/embed/|player\.vimeo\.com/video/)%'); //allow YouTube and Vimeo
 
             $def = $config->getHTMLDefinition(true);
             $def->addAttribute('img', 'data-src', 'Text');
