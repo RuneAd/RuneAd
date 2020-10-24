@@ -13,20 +13,16 @@
                              {{ icon("bootstrap", 56, 56) }}
                          </div>
                          <div class="flex-fill w-100">
-                             <h4 class="mb-0">Create Blog Post</h4>
+                             <h4 class="mb-0">Embed YouTube Video</h4>
                              <p class="mb-0 small text-muted">
-                                 Post a new article with the form below.
+                                 Use the form below to embed you YouTube video to RuneAd
                              </p>
                          </div>
                          <div class="flex-fill text-right" style="min-width:250px;">
-                             <a href="{{ url('videos') }}" class="btn btn-default">Blog Home</a>
-
-                             <a href="{{ url('videos/add') }}" class="btn btn-default {{ user is defined ? "" : "disabled" }}">
-                                 Create Post
-                             </a>
+                             <a href="{{ url('videos') }}" class="btn btn-danger">Videos Home</a>
                          </div>
                      </div>
-                 </div>
+                 </div>s
              </div>
          </div>
      </div>
@@ -49,12 +45,12 @@
                      <form method="post" action="{{ url('videos/add') }}" id="postform">
                          <div class="form-row form-group">
                              <div class="col-sm-12 col-lg-3">
-                                 <label>Category</label>
+                                 <label>Channel Name*</label>
                                  <input type="text" class="form-control {{ errors['category'] is defined ? 'border-danger' : '' }}" name="category">
 
                              </div>
                              <div class="col-sm-12 col-lg-9">
-                                 <label>Blog Title*</label>
+                                 <label>Video Title*</label>
                                  <input type="text" class="form-control {{ errors['title'] is defined ? 'border-danger' : '' }}" name="title">
                                  <small class="text-muted">
                                      Use an eye catching title to grab attention. Be creative!
@@ -64,35 +60,16 @@
 
                          <hr>
 
-                         <div class="form-row form-group">
-                             <div class="col">
-                                 <label>Meta Tags</label>
-                                 <input type="text" class="form-control {{ errors['meta_tags'] is defined ? 'border-danger' : '' }}" name="meta_tags">
-                                 <small class="text-muted">
-                                     Comma separated. Max 15. <a href="https://www.w3schools.com/tags/tag_meta.asp" target="_blank">More Info</a>
-                                 </small>
-                             </div>
-                             <div class="col">
-                                 <label>Meta Description</label>
-                                 <input type="text" class="form-control {{ errors['meta_description'] is defined ? 'border-danger' : '' }}" name="meta_description">
-                                 <small class="text-muted">
-                                     A short description of your blog post. <a href="https://yoast.com/meta-descriptions/" target="_blank">More Info</a>
-                                 </small>
-                             </div>
-                         </div>
-
-                         <hr>
-
                          <div class="form-group">
-                             <div id="editor" class="mb-3 {{ errors['info'] is defined ? 'border-danger' : '' }}"></div>
-                             <textarea name='info' id='editor-form' style='display:none'></textarea>
+                             <div id="editor" class="mb-3 {{ errors['content'] is defined ? 'border-danger' : '' }}"></div>
+                             <textarea name='content' id='editor-form' style='display:none'></textarea>
                          </div>
 
                          <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
 
                          <div class="form-group">
                              <button type="submit" class="btn btn-dark shadow-none" id="submit">
-                                 Create post
+                                 Submit Video
                              </button>
 
                              <div id="toolbar" class="d-inline-block">
