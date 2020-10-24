@@ -30,6 +30,12 @@
      </div>
 
      <div class="row">
+        <style>
+            .videoGrid iframe{
+                max-width: 100%;
+            }
+        </style>
+
         <div class="col-sm-12 col-lg-12 row videoGrid">
             {% for post in posts.items() %}
             {% set seo_title = friendlyTitle(post.id~'-'~post.title) %}
