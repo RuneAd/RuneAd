@@ -61,8 +61,13 @@
                          <hr>
 
                          <div class="form-group">
-                             <div id="content" class="mb-3 {{ errors['content'] is defined ? 'border-danger' : '' }}"></div>
-                             <textarea name='content' id='content' style='display:none'></textarea>
+                            <div class="col-sm-12 col-lg-12">
+                                <label>YouTube embed code**</label>
+                                <input type="text" class="form-control {{ errors['content'] is defined ? 'border-danger' : '' }}" name="content">
+                                <small class="text-muted">
+                                    
+                                </small>
+                            </div>
                          </div>
 
                          <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
