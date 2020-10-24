@@ -11,19 +11,15 @@
                  <div class="card-body">
                      <div class="d-flex align-items-center">
                          <div class="px-3">
-                             {{ icon("bootstrap", 56, 56) }}
+                            
                          </div>
                          <div class="flex-fill w-100">
-                             <h4 class="mb-0">RuneAd Blog</h4>
-                             <p class="mb-0 small text-muted">Interesting articles and information about different topics from around the net.</p>
+                             <h4 class="mb-0">Videos</h4>
+                             <p class="mb-0 small text-muted"></p>
                          </div>
                          <div class="flex-fill text-right" style="min-width:250px;">
-                             <a href="{{ url('blog') }}" class="btn btn-default">
-                                 Blog Home
-                             </a>
-
-                             <a href="{{ url('blog/add') }}" class="btn btn-default {{ user is defined ? "" : "disabled" }}">
-                                 Create Post
+                             <a href="{{ url('videos/add') }}" class="btn btn-default {{ user is defined ? "" : "disabled" }}">
+                                 Submit Video
                              </a>
                          </div>
                      </div>
