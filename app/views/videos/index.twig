@@ -1,0 +1,132 @@
+{%  extends 'layout.twig' %}
+
+ {% block content %}
+
+ <div class="container" style="margin-top:-30px;">
+
+     <div class="row mb-3">
+
+         <div class="col-sm-12">
+             <div class="card border-0 shadow-sm">
+                 <div class="card-body">
+                     <div class="d-flex align-items-center">
+                         <div class="px-3">
+                             {{ icon("bootstrap", 56, 56) }}
+                         </div>
+                         <div class="flex-fill w-100">
+                             <h4 class="mb-0">RuneAd Blog</h4>
+                             <p class="mb-0 small text-muted">Interesting articles and information about different topics from around the net.</p>
+                         </div>
+                         <div class="flex-fill text-right" style="min-width:250px;">
+                             <a href="{{ url('blog') }}" class="btn btn-default">
+                                 Blog Home
+                             </a>
+
+                             <a href="{{ url('blog/add') }}" class="btn btn-default {{ user is defined ? "" : "disabled" }}">
+                                 Create Post
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+
+     <div class="row">
+        <style>
+            .videoGrid iframe{
+                max-width: 100%;
+            }
+        </style>
+
+        <div class="col-sm-12 col-lg-12 row videoGrid">
+            {% for post in posts.items() %}
+            {% set seo_title = friendlyTitle(post.id~'-'~post.title) %}
+            <div class="card col-sm-12 col-lg-4 col-md-6 mx-2">
+                <div class="card-header">
+                    <h6 class="mb-0">
+                    <a href="{{ url('videos/post/'~seo_title) }}">{{ post.title }}</a>
+                    </h6>
+                    <p class="mb-0 small text-muted">
+                        Posted by: {{ post.username }} | {{ post.date_posted|date("m.d.y")}}
+                    </p>
+            </div>
+                <div class="card-body">{{ post.content|raw }}</div> 
+            </div>
+
+
+            {% else %}
+            <div class="alert alert-default">
+                Nothing to see here. Move along...
+            </div>
+            {% endfor %}
+
+
+            {% set totalPages = posts.lastPage() %}
+            {% set current = posts.currentPage() %}
+
+            {% set pageUrl = category is defined ? url('videos/'~category~'/') : url('videos/')  %}
+
+
+            <nav aria-label="servernav" class="mt-5 col-12">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item {{ posts.onFirstPage() ? 'disabled' : '' }}">
+                        <a class="page-link"
+                            href="{{ pageUrl~'1' }}" tabindex="-1">
+                            {{ icon('chevron-bar-left', 14, 14) }}
+                        </a>
+                    </li>
+
+                    <li class="page-item {{ posts.onFirstPage() ? 'disabled' : '' }}">
+                        <a class="page-link" 
+                            href="{{ pageUrl ~ (current == 1 ? 1 : current - 1) }}" tabindex="-1">
+                            {{ icon('chevron-left', 14, 14) }}
+                        </a>
+                    </li>
+
+                    {% if totalPages > 5 %}
+                        {% set start = current < 3 ? 1 : current - 2 %}
+                        {% set end   = start < 4 ? start + 4 : current + 2 %}
+
+                        {% if end > totalPages %}
+                            {% set end = totalPages %}
+                        {% endif %}
+
+                        {% if start + 4 >= totalPages %}
+                            {% set start = totalPages - 4 %}
+                        {% endif %}
+                    {% else %}
+                        {% set start = 1 %}
+                        {% set end   = posts.lastPage() %}
+                    {% endif %}
+
+                    {% for p in start..end %}
+                    <li class="page-item {{ current == p ? ' active' : ''}}">
+                        <a class="page-link" href="{{ pageUrl ~ p }}">
+                            {{ p }}
+                        </a>
+                    </li>
+                    {% endfor %}
+
+                    <li class="page-item {{ current >= totalPages ? 'disabled' : '' }}">
+                        <a class="page-link" 
+                            href="{{ pageUrl~(current == totalPages ? totalPages : current + 1) }}">
+                            {{ icon('chevron-right', 14, 14) }}
+                        </a>
+                    </li>
+
+                    <li class="page-item {{ current >= totalPages ? 'disabled' : '' }}">
+                        <a class="page-link" 
+                            href="{{ pageUrl ~ totalPages }}">
+                            {{ icon('chevron-bar-right', 14, 14) }}
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+     {{ content|raw }}
+ </div>
+
+ {%  endblock %}
