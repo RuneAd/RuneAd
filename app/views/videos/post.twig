@@ -53,11 +53,11 @@
                 </div>
 
                 <div class="card-footer text-right">
-                    <a href="{{ url('blog/edit/'~post.id) }}" 
+                    <a href="{{ url('videos/edit/'~post.id) }}" 
                                 class="btn btn-warning {{ can_edit ? "" : "disabled" }}">
                                 Edit Post
                         </a>
-                    <a href="{{ url('blog/delete/'~post.id) }}" class="btn btn-danger {{ can_edit ? "" : "disabled" }}">
+                    <a href="{{ url('videos/delete/'~post.id) }}" class="btn btn-danger {{ can_edit ? "" : "disabled" }}">
                         Delete Video
                     </a>
                 </div>
