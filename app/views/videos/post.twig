@@ -43,7 +43,7 @@
                             {{ post.username }} | {{ post.date_posted|date("m.d.y")}}
                             </p>
 
-                            <div style="height:auto">{{ post.content|raw }}</div>
+                            <div style="height:auto">{{ post.content|markdown_to_html }}</div>
              
                             <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
                             <a class="a2a_dd" href="Https://runead.com/"></a>
