@@ -250,7 +250,7 @@ class Controller {
     }
 
 
-    /**
+   /**
      * Displays the necessary template using Twig
      */
 	public function show() {
@@ -269,10 +269,10 @@ class Controller {
             $template = $loader->load($this->view);
             echo $template->render($this->viewVars);
         } catch (Exception $e) {
-
+            
         }
     }
-
+    
     /**
      * Gets the name of the action
      * @return mixed
@@ -313,7 +313,7 @@ class Controller {
 	public function setView($view) {
 		$this->view = $view;
     }
-
+    
     public function getView() {
         return $this->view;
     }
