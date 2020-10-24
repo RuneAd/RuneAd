@@ -1,0 +1,75 @@
+{%  extends 'layout.twig' %}
+
+{% block content %}
+
+<div class="container" style="margin-top:-30px;">
+
+    <div class="row mb-3">
+
+        <div class="col-sm-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="px-3">
+                            <img src="{{ avatar(post.user_id, post.avatar) }}"
+                                style="width:76px" class="rounded-circle mt-1">
+                        </div>
+                        <div class="flex-fill w-100">
+                            <h4 class="mb-0">{{ post.title }}</h4>
+                            <p class="mb-0 small text-muted">
+                                {{ icon("info-circle", 18, 18) }} {{ post.meta_description }}
+                            </p>
+                        </div>
+                        <div class="flex-fill text-right" style="min-width:250px;">
+                            <a href="{{ url('blog') }}" class="btn btn-default">Blog Home</a>
+                            
+                            <a href="{{ url('blog/edit/'~post.id) }}" 
+                                class="btn btn-default {{ can_edit ? "" : "disabled" }}">
+                                Edit Post
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-lg-12">
+            <div class="card border-0 shadow-sm mb-2">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <div class="pr-3">
+                        </div>
+                        <div class="flex-fill w-100">
+                            <p class="small text-muted">
+                            {{ post.username }} | {{ post.date_posted|date("m.d.y")}}
+                            </p>
+                            {{ post.content|raw }}
+                            <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+                            <a class="a2a_dd" href="https://runead.com/"></a>
+                            <a class="a2a_button_facebook"></a>
+                            <a class="a2a_button_twitter"></a>
+                            <a class="a2a_button_reddit"></a>
+                            <a class="a2a_button_digg"></a>
+                            <a class="a2a_button_blogger"></a>
+                            <a class="a2a_button_copy_link"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-footer text-right">
+                    <a href="{{ url('blog/delete/'~post.id) }}" class="btn btn-danger {{ can_edit ? "" : "disabled" }}">
+                        Delete Post
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{ content|raw }}
+</div>
+
+
+{%  endblock %}

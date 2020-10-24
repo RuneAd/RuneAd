@@ -6,26 +6,27 @@
 
      <div class="row mb-3">
 
-         <div class="col-sm-12">
-             <div class="card border-0 shadow-sm">
-                 <div class="card-body">
-                     <div class="d-flex align-items-center">
-                         <div class="px-3">
-                            
-                         </div>
-                         <div class="flex-fill w-100">
-                             <h4 class="mb-0">Videos</h4>
-                             <p class="mb-0 small text-muted"></p>
-                         </div>
-                         <div class="flex-fill text-right" style="min-width:250px;">
-                             <a href="{{ url('videos/add') }}" class="btn btn-default {{ user is defined ? "" : "disabled" }}">
-                                 Submit Video
-                             </a>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </div>
+        <div class="col-sm-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="px-3 text-red">
+                            <i class="fi-xwsuxl-youtube"></i>
+                        </div>
+                        <div class="flex-fill w-100">
+                            <h4 class="mb-0">RuneAd Videos</h4>
+                            <p class="mb-0 small text-muted">Runescape Private Server & OSRS Videos from Youtubers on RuneAd</p>
+                        </div>
+                        <div class="flex-fill text-right" style="min-width:250px;">
+
+                            <a href="{{ url('videos/add') }}" class="btn btn-danger {{ user is defined ? "" : "disabled" }}">
+                                Submit Video
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
      </div>
 
      <div class="row">

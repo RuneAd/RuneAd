@@ -216,7 +216,7 @@ class PageRouter extends Router {
         });
 
          /**
-         * Blog
+         * Videos
          */
         $this->all('videos', function() {
             return $this->setRoute('videos', 'index');
