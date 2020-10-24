@@ -53,7 +53,7 @@
                              </div>
                              <div class="col-sm-12 col-lg-9">
                                  <label>Video Title*</label>
-                                 <input type="text" class="form-control {{ errors['title'] is defined ? 'border-danger' : '' }}" name="title">
+                                 <input type="text" value="{{ post.title }}" class="form-control {{ errors['title'] is defined ? 'border-danger' : '' }}" name="title">
                                  <small class="text-muted">
                                   An interesting and eye catching title for your video.
                                  </small>
@@ -77,14 +77,14 @@
                                     <div class="form-row form-group">
                                         <div class="col">
                                             <label>Meta Tags</label>
-                                            <input type="text" class="form-control {{ errors['meta_tags'] is defined ? 'border-danger' : '' }}" name="meta_tags">
+                                            <input type="text" value="{{ meta_tags }}" class="form-control {{ errors['meta_tags'] is defined ? 'border-danger' : '' }}" name="meta_tags">
                                             <small class="text-muted">
                                                 Comma separated. Max 15. <a href="https://www.w3schools.com/tags/tag_meta.asp" target="_blank">More Info</a>
                                             </small>
                                         </div>
                                         <div class="col">
                                             <label>Meta Description</label>
-                                            <input type="text" class="form-control {{ errors['meta_description'] is defined ? 'border-danger' : '' }}" name="meta_description">
+                                            <input type="text" value="{{ post.meta_description }}" class="form-control {{ errors['meta_description'] is defined ? 'border-danger' : '' }}" name="meta_description">
                                             <small class="text-muted">
                                                 A short description of your video. <a href="https://yoast.com/meta-descriptions/" target="_blank">More Info</a>
                                             </small>
