@@ -29,7 +29,7 @@ class Security {
             'tools'   => ['itemdb', 'search', 'map'],
             'blog'    => ['index', 'post'],
             'downloads'    => ['index', 'rsps', 'web'],
-            'videos'  => ['index', 'post', 'add']
+            'videos'  => ['index', 'post']
         ];
 
         $private = [
