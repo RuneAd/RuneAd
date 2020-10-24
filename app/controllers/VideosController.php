@@ -131,7 +131,7 @@ class VideosController extends Controller {
             ];
 
             $validation = Videos::validate($data);
-
+            
             if ($validation->fails()) {
                 $errors = $validation->errors();
                 $this->set("errors", $errors->firstOfAll());

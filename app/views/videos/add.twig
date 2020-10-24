@@ -61,6 +61,23 @@
                          <hr>
 
                          <div class="form-row form-group">
+                            <div class="col-sm-12 col-lg-6">
+                                <label>Meta Description (Optional)</label>
+                                <input type="text" class="form-control {{ errors['meta_description'] is defined ? 'border-danger' : '' }}" name="meta_description">
+
+                            </div>
+                            <div class="col-sm-12 col-lg-6">
+                                <label>Meta Tags (Optional)</label>
+                                <input type="text" class="form-control {{ errors['meta_tags'] is defined ? 'border-danger' : '' }}" name="meta_tags">
+                                <small class="text-muted">
+                                    
+                                </small>
+                            </div>
+                        </div>
+
+                         <hr>
+
+                         <div class="form-row form-group">
                         
                             <div class="col-sm-12 col-lg-12">
                                 <label>Video Title*</label>
