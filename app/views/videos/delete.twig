@@ -54,11 +54,11 @@
                          recover the data from this post. Only click confirm below if you're absolutely sure you want to do this.
                      </p>
 
-                     <form method="post" action="{{ url('blog/delete/'~post.id) }}">
+                     <form method="post" action="{{ url('videos/delete/'~post.id) }}">
                          <div class="form-group mb-0">
                              <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
                              <button type="submit" class="btn btn-danger">Confirm</button>
-                             <a href="{{ url('blog/post/'~friendlyTitle(post.id~'-'~post.title)) }}" class="btn btn-link text-muted">
+                             <a href="{{ url('videos/post/'~friendlyTitle(post.id~'-'~post.title)) }}" class="btn btn-link text-muted">
                                  Abort Mission
                              </a>
                          </div>
