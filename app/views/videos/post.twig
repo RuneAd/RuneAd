@@ -21,12 +21,8 @@
                             </p>
                         </div>
                         <div class="flex-fill text-right" style="min-width:250px;">
-                            <a href="{{ url('blog') }}" class="btn btn-default">Blog Home</a>
-                            
-                            <a href="{{ url('blog/edit/'~post.id) }}" 
-                                class="btn btn-default {{ can_edit ? "" : "disabled" }}">
-                                Edit Post
-                            </a>
+                            <a href="{{ url('videos') }}" class="btn btn-default">Videos Home</a>
+
                         </div>
                     </div>
                 </div>
@@ -60,6 +56,10 @@
                 </div>
 
                 <div class="card-footer text-right">
+                    <a href="{{ url('blog/edit/'~post.id) }}" 
+                                class="btn btn-warning {{ can_edit ? "" : "disabled" }}">
+                                Edit Post
+                        </a>
                     <a href="{{ url('blog/delete/'~post.id) }}" class="btn btn-danger {{ can_edit ? "" : "disabled" }}">
                         Delete Post
                     </a>
