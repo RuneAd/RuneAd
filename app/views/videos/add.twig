@@ -61,13 +61,8 @@
                          <hr>
 
                          <div class="form-group">
-                            <div class="col-sm-12 col-lg-12">
-                                <label>YouTube embed code**</label>
-                                <input type="text" class="form-control {{ errors['content'] is defined ? 'border-danger' : '' }}" name="content">
-                                <small class="text-muted">
-                                    
-                                </small>
-                            </div>
+                             <div id="embed" class="mb-3 {{ errors['content'] is defined ? 'border-danger' : '' }}"></div>
+                             <textarea name='content' id='embed-form' style='display:none'></textarea>
                          </div>
 
                          <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
@@ -93,7 +88,7 @@
      document.addEventListener('DOMContentLoaded', function(event) {
          var apiUrl = 'https://api.imgur.com/3/image';
          var apiKey = '{{ constant("imgur_key") }}';
-         var quill = new Quill('#editor', {
+         var quill = new Quill('#embed', {
              theme: 'snow',
              placeholder: 'Place your YouTube embed code here...'
          });
@@ -141,7 +136,7 @@
 
          $("#postform").on("submit", function (event) {
              var body = $(this).find(".ql-editor").html();
-             $(this).find("#editor-form").html(body);
+             $(this).find("#embed-form").html(body);
              return true;
          });
      });
