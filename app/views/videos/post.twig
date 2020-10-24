@@ -31,16 +31,13 @@
     </div>
 
     <div class="row">
-        <div class="col-sm-12 col-lg-12">
+        <div class="col-sm-8 col-lg-12">
             <div class="card border-0 shadow-sm mb-2">
                 <div class="card-body">
                     <div class="d-flex">
                         <div class="pr-3">
                         </div>
                         <div class="flex-fill w-100">
-                            <p class="small text-muted">
-                            {{ post.username }} | {{ post.date_posted|date("m.d.y")}}
-                            </p>
                             {{ post.content|raw }}
                             <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
                             <a class="a2a_dd" href="https://runead.com/"></a>
@@ -61,7 +58,7 @@
                                 Edit Post
                         </a>
                     <a href="{{ url('blog/delete/'~post.id) }}" class="btn btn-danger {{ can_edit ? "" : "disabled" }}">
-                        Delete Post
+                        Delete Video
                     </a>
                 </div>
             </div>
