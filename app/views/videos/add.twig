@@ -60,20 +60,25 @@
 
                          <hr>
 
-                         <div class="form-row form-group">
-                            <div class="col-sm-12 col-lg-6">
-                                <label>Meta Description (Optional)</label>
-                                <input type="text" class="form-control {{ errors['meta_description'] is defined ? 'border-danger' : '' }}" name="meta_description">
+                         <div class="accordion" id="extras">
+                            <div class="card">
+                              <div class="bg-danger card" id="headingOne">
+                                <h1 class="mb-0">
+                                  <button class="text-white btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Show Advanced Options (Not Required)
+                                  </button>
+                                </h1>
+                              </div>
+                              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#extras">
+                                <div class="card-body">
+                                 
 
+
+                                </div>
+                              </div>
                             </div>
-                            <div class="col-sm-12 col-lg-6">
-                                <label>Meta Tags (Optional)</label>
-                                <input type="text" class="form-control {{ errors['meta_tags'] is defined ? 'border-danger' : '' }}" name="meta_tags">
-                                <small class="text-muted">
-                                    
-                                </small>
-                            </div>
-                        </div>
+
+                          </div>
 
                          <hr>
 
