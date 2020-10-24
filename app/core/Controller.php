@@ -403,11 +403,10 @@ class Controller {
     }
 
     public function getPurifier() {
-
+        
         $allowed_html = [
             'div[class]',
             'span[style]',
-            'iframe[src|width|height]',
             'a[href|class|target]',
             'img[src|class|data-src]',
             'h1','h2','h3',
@@ -423,7 +422,6 @@ class Controller {
             $config->set('AutoFormat.RemoveEmpty', true);
             $config->set("HTML.Allowed", implode(',', $allowed_html));
             $config->set('HTML.AllowedAttributes', 'src, height, width, alt, href, class, style, data-src');
-            $config->set('URI.SafeIframeRegexp', '%^(https?:)?//(www\.youtube(?:-nocookie)?\.com/embed/|player\.vimeo\.com/video/)%');
 
             $def = $config->getHTMLDefinition(true);
             $def->addAttribute('img', 'data-src', 'Text');
@@ -435,37 +433,9 @@ class Controller {
     }
 
     public function purify($text) {
-        $text = str_replace("<iframe", "< iframe", $text);
-        echo $text;
-        echo "<br>";
-
-        $text = $this->getPurifier()->purify($text);
-        
-        $text = preg_replace( "/\r|\n/", "", $text);
-        $text = preg_replace('/[^\00-\255]+/u', '', $text);
-
-        echo $text;
-        echo "<br>";
-        echo "<br>";
-
-	if (strpos($text, 'iframe') !== false) {
-            // handle less than sign
-            $text = preg_split('#\s+#', $text, 2);
-	    $text = $text[0].$text[1]."</iframe>";
-		 echo $text;
-            echo "<br>";
-		 $text = str_replace("https:", "", $text);
-
-            echo $text;
-            echo "<br>";
-
-//             exit;
-        }
-
-        echo $text;
-        echo "<br>";
-
-//         exit;
+        $text  = $this->getPurifier()->purify($text);
+        $text  = preg_replace( "/\r|\n/", "", $text);
+        $text  = preg_replace('/[^\00-\255]+/u', '', $text);
         return $text;
     }
 }
