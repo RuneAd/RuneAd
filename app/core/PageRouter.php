@@ -153,35 +153,6 @@ class PageRouter extends Router {
         $this->get("logout", function() {
             return $this->setRoute('index', 'logout');
         });
-
-         /**
-         * Videos
-         */
-        $this->all('videos', function() {
-            return $this->setRoute('videos', 'index');
-        });
-        $this->all('videos/add', function() {
-            return $this->setRoute('videos', 'add');
-        });
-        $this->all('videos/edit/([0-9]+)', function($postId) {
-            return $this->setRoute('videos', 'edit', ['postId' => $postId]);
-        });
-        $this->all('videos/delete/([0-9]+)', function($postId) {
-            return $this->setRoute('videos', 'delete', ['postId' => $postId]);
-        });
-        $this->all('videos/([0-9]+)', function($page) {
-            return $this->setRoute('videos', 'index', ['category' => null, 'page' => $page]);
-        });
-        $this->all('videos/([A-Za-z0-9\-]+)', function($category) {
-            return $this->setRoute('videos', 'index', ['category' => $category, 'page' => 1]);
-        });
-        $this->all('videos/([A-Za-z0-9\-]+)/([0-9]+)', function($category, $page) {
-            return $this->setRoute('videos', 'index', ['category' => $category, 'page' => $page]);
-        });
-        $this->all('videos/post/([0-9]+)-([A-Za-z0-9\-]+)', function($id, $title) {
-            return $this->setRoute('videos', 'post', ['id' => $id]);
-        });
-
         /**
          * Main List
          */
