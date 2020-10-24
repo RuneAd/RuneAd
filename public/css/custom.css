@@ -26,6 +26,11 @@ body {
     visibility: hidden;
   }
 
+
+.videoGrid iframe{
+      max-width: 100%;
+  }
+
 .lantern-script {
     font-family: 'Tangerine', serif;
     text-shadow: 4px 4px 4px #aaa;
