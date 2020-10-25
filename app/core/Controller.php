@@ -220,7 +220,7 @@ class Controller {
             ],
             'videos' => [
                 'index' => [
-                    'title' => 'RuneAd Videos | The Modern RuneScape Private Server Toplist',
+                    'title' => 'Videos | The Modern RuneScape Private Server Toplist',
                     'meta' => 'RuneAd Videos brought you to by RuneAd! Browse our free collection of Runescape Private Server Videos & more!'
                 ]
             ],
