@@ -37,7 +37,7 @@
             }
         </style>
 
-        <div class="col-sm-12 col-lg-12 row videoGrid">
+        <div class="col-sm-12 col-lg-12 row videoGrid no-gutters">
             {% for post in posts.items() %}
             {% set seo_title = friendlyTitle(post.id~'-'~post.title) %}
             <div class="card col-sm-12 col-lg-4 col-md-6 mx-0">
