@@ -37,11 +37,11 @@
             }
         </style>
 
-        <div class="col-sm-12 col-lg-12 row videoGrid"></div>
+        <div class="col-sm-12 col-lg-12 row videoGrid" style="width: 18rem;">
             {% for post in posts.items() %}
             {% set seo_title = friendlyTitle(post.id~'-'~post.title) %}
             <div class="card col-sm-12 col-lg-4 col-md-6 mx-0">
-                <div class="card-header">
+                <div class="card-header" style="width: 18rem;">
                     <h6 class="mb-0">
                     <a href="{{ url('videos/post/'~seo_title) }}">{{ post.title }}</a>
                     </h6>
