@@ -34,13 +34,15 @@
             .videoGrid iframe{
                 max-width: 100%    !important;
                 height: auto   !important;
+                min-height: 250px;
+                display: block;
             }
         </style>
 
         <div class="col-sm-12 col-lg-12 row videoGrid">
             {% for post in posts.items() %}
             {% set seo_title = friendlyTitle(post.id~'-'~post.title) %}
-            <div class="card col-sm-12 col-lg-4 col-md-6 mx-0">
+            <div class="card col-sm-12 col-lg-4 col-md-6 mx-0 px-0">
                 <div class="card-header">
                     <h6 class="mb-0">
                     <a href="{{ url('videos/post/'~seo_title) }}">
@@ -59,7 +61,7 @@
                         {{ post.username }} | {{ post.date_posted|date("m.d.y")}}
                     </p>
             </div>
-                <div class="card-body">{{ post.content|raw }}</div> 
+                <div class="card-body p-0">{{ post.content|raw }}</div> 
             </div>
 
 
