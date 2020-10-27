@@ -36,30 +36,22 @@
                         <div class="flex-fill w-100">
 
 
-                            <button type="button" class="btn btn-default btn-sm">
+
+
                                 <a href="{{ url('videos/') }}" 
-                                class="btn btn-default {{ category is not defined ? "active" : "" }}">
+                                class="badge badge-primary {{ category is not defined ? "active" : "" }}">
                                 Show All Posts
 
                                 {% for cat in categories %}
                                 <a href="{{ url('blog/'~friendlyTitle(cat.title)) }}" 
-                                    class="btn btn-default {{ cat.title|lower == category|lower ? "active" : "" }}">
+                                    class="badge badge-primary {{ cat.title|lower == category|lower ? "active" : "" }}">
                                     {{ cat.title|capitalize }}
                                 </a>
                                 {% endfor %}
                             </a>
 
 
-                            </button>
-                            
-                            
-
-
                            
-
-
-
-
 
                         </div>
                     </div>
