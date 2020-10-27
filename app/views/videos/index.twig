@@ -39,12 +39,12 @@
 
 
                                 <a href="{{ url('videos/') }}" 
-                                class="badge badge-primary {{ category is not defined ? "active" : "" }}">
+                                class="btn btn-danger btn-sm {{ category is not defined ? "active" : "" }}">
                                 Show All Posts
 
                                 {% for cat in categories %}
                                 <a href="{{ url('videos/'~friendlyTitle(cat.title)) }}" 
-                                    class="badge badge-primary {{ cat.title|lower == category|lower ? "active" : "" }}">
+                                    class="btn btn-danger btn-sm {{ cat.title|lower == category|lower ? "active" : "" }}">
                                     {{ cat.title|capitalize }}
                                 </a>
                                 {% endfor %}
