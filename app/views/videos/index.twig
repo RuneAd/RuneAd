@@ -43,7 +43,7 @@
                                 Show All Posts
 
                                 {% for cat in categories %}
-                                <a href="{{ url('blog/'~friendlyTitle(cat.title)) }}" 
+                                <a href="{{ url('videos/'~friendlyTitle(cat.title)) }}" 
                                     class="badge badge-primary {{ cat.title|lower == category|lower ? "active" : "" }}">
                                     {{ cat.title|capitalize }}
                                 </a>
