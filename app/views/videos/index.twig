@@ -34,7 +34,30 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div class="flex-fill w-100">
-                            <p class="mb-0 small text-muted">{{ Tags }}</p>
+                            
+                            
+
+
+                            <div class="btn btn-default">
+                                <a href="{{ url('blog/') }}" 
+                                    class="btn btn-default {{ category is not defined ? "active" : "" }}">
+                                    Show All Posts
+                                </a>
+                                
+           
+                                {% for cat in categories %}
+                                <a href="{{ url('blog/'~friendlyTitle(cat.title)) }}" 
+                                    class="btn btn-default {{ cat.title|lower == category|lower ? "active" : "" }}">
+                                    {{ cat.title|capitalize }}
+                                </a>
+                                {% endfor %}
+                            </div>
+
+
+
+
+
+
                         </div>
                     </div>
                 </div>
