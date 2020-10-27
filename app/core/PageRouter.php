@@ -310,7 +310,7 @@ class PageRouter extends Router {
         });
 
         $this->all('tools/xptable', function() {
-            return $this->setRoute('tools', 'map');
+            return $this->setRoute('tools', 'xptable');
         });
 
               /**
