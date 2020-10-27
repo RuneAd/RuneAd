@@ -28,19 +28,16 @@
             </div>
         </div>
     </div>
+
         <div class="row mb-3">
         <div class="col-sm-12">
             <div class="card border-0 shadow-sm">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div class="flex-fill w-100">
-
-
-
-
                                 <a href="{{ url('videos/') }}" 
                                 class="btn btn-danger btn-sm {{ category is not defined ? "active" : "" }}">
-                                Show All Posts
+                                Show All Videos
 
                                 {% for cat in categories %}
                                 <a href="{{ url('videos/'~friendlyTitle(cat.title)) }}" 
@@ -48,11 +45,7 @@
                                     {{ cat.title|capitalize }}
                                 </a>
                                 {% endfor %}
-                            </a>
-
-
-                           
-
+                            </a>      
                         </div>
                     </div>
                 </div>
