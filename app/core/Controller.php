@@ -199,6 +199,10 @@ class Controller {
                     'title' => 'OSRS Interactive Map | The Modern RuneScape Private Server Toplist',
                     'meta'  => 'An easy to use oldschool runescape map that\'s always up to date. RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
+                'xptable' => [
+                    'title' => 'OSRS Experience Table | The Modern RuneScape Private Server Toplist',
+                    'meta'  => 'An easy to use oldschool runescape Experience Table. RuneAd is the best 2020 RuneScape Private Server Toplist!'
+                ],
             ],
             'downloads' => [
                 'index' => [

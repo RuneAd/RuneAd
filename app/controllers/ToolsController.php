@@ -11,6 +11,10 @@ class ToolsController extends Controller {
 
     }
 
+    public function xptable() {
+
+    }
+
     public function search() {
         $data   = $this->getItemList();
         $search = $this->request->getPost("search", "string");
