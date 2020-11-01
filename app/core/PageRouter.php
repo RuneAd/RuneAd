@@ -295,7 +295,7 @@ class PageRouter extends Router {
          * Tools
          */
 
-        $this->all('tools/index', function() {
+        $this->all('tools', function() {
             return $this->setRoute('tools', 'index');
         });
 
