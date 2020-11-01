@@ -191,6 +191,10 @@ class Controller {
                 ]
             ],
             'tools' => [
+                'index' => [
+                    'title' => 'Tools | The Modern RuneScape Private Server Toplist',
+                    'meta' => 'The best RSPS, OSRS & Runescape tools that\'s always up to date. RuneAd is the best 2020 RuneScape Private Server Toplist!'
+                ],
                 'itemdb' => [
                     'title' => 'OSRS Item DB | The Modern RuneScape Private Server Toplist',
                     'meta' => 'An easy to use oldschool runescape item db that\'s always up to date. RuneAd is the best 2020 RuneScape Private Server Toplist!'

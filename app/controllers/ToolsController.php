@@ -3,6 +3,10 @@ use Fox\Paginator;
 
 class ToolsController extends Controller {
 
+    public function index() {
+
+    }
+
     public function itemdb() {
 
     }
