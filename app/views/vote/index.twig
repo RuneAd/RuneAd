@@ -110,17 +110,43 @@
 
 
         <div class="col-lg-4 col-md-12 col-sm-12">
-            <div class="card border-0 shadow-sm mb-3">
-                <div class="card-body text-center">
-                    <p class="small text-muted mb-0">Block title</p>
+            <div class="card shadow-sm border-0 mb-3">
+                <div class="card-body">
                     <small class="text-muted">Server Status</small>
                     <h6 class="mb-0 text-{{ server.is_online ? 'success' : 'danger' }}">
                         {{ server.is_online ? 'Online' : 'Offline' }}
                     </h6>
-
                 </div>
             </div>
 
+            <div class="card shadow-sm border-0 mb-3">
+                <div class="card-body">
+                    <small class="text-muted">
+                        Owner
+                    </small>
+                    <h6 class="mb-0">
+                        <a href="https://discord.com/users/{{ server.user_id }}" target="_blank">{{ server.username }}#{{ server.discriminator }}</a>
+                    </h6>
+                </div>
+            </div>
+
+            <div class="card shadow-sm border-0 mb-3">
+                <div class="card-body">
+                    <small class="text-muted">Votes</small>
+                    <h6 class="mb-0">
+                        {{ server.votes }}
+                    </h6>
+                </div>
+            </div>
+
+            <div class="card shadow-sm border-0 mb-3">
+                <div class="card-body">
+                    <small class="text-muted">Created</small>
+                    <h6 class="mb-0">
+                        {{ server.date_created|date("M d Y") }}
+                    </h6>
+                </div>
+            </div>
         </div>
 
 
