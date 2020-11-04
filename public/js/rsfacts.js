@@ -44,6 +44,7 @@ $(document).ready(function() {
         "The Rune scimitar was released on 13 August 2001!",
         "The Dragon scimitar was released on 29 March 2005, about 4 YEARS after the Rune scimitar!",
         "Monkey Madness I was released on 6 December 2004!",
+        "Leagues II - Trailblazer was released on 28 October 2020",
 
     ];
 
