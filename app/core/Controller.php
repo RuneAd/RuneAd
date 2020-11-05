@@ -232,12 +232,6 @@ class Controller {
                     'meta' => 'Videos brought you to by RuneAd! Browse our free collection of Runescape Private Server Videos & more!'
                 ]
             ],
-            'report' => [
-                '112' => [
-                    'title' => 'Report RunePK | The Modern RuneScape Private Server Toplist',
-                    'meta'  => 'RunePK RSPS | The best Runescape Private Servers 2020! Come get involved in our RSPS Toplist, and increase your website traffic and attract your players today!'
-                    ]
-            ],
             'blog' => [
                 'index' => [
                     'title' => 'Blog | The Modern RuneScape Private Server Toplist',
