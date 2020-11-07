@@ -1,9 +1,9 @@
 <?php
-namespace Fox;
+namespace RuneAd;
 
 /**
  * Class Request
- * @package Fox\Req
+ * @package RuneAd\Req
  */
 class Request {
 
