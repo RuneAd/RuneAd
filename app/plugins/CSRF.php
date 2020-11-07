@@ -1,5 +1,5 @@
 <?php
-namespace RuneAd;
+namespace Fox;
 
 class CSRF {
     

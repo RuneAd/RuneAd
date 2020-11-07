@@ -1,9 +1,9 @@
 <?php
-namespace RuneAd;
+namespace Fox;
 
 /**
  * Class Cookies
- * @package RuneAd
+ * @package Fox
  */
 class Cookies {
 
