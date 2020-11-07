@@ -1,7 +1,7 @@
 <?php
 class AntiCSRF {
 
-    private static $token_name = "fox_csrf_token";
+    private static $token_name = "RuneAd0000000001_csrf_token";
     private $csrf_key;
 
     public function __constructor() {
