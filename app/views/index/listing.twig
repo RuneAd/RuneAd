@@ -25,9 +25,6 @@
 
         {% set isPremium = server.premium_expires > time() %}
         {% set class = isPremium ? 'bg-premium' : '' %}
-
-        {% set isTurbo = server.turbo_expires > time() %}
-        {% set class = isTurbo ? 'bg-success' : '' %}
         
         <tr id="server" class="{{ class }}">
             <td class="text-center small pr-1">
