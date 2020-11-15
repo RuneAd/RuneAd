@@ -9,6 +9,9 @@ a:hover, a:active, a:focus {
 .card{
     background-color: #36393F
 }
+tr.bg-primary, .bg-premium {
+    background-color: hsla(204, 100%, 51%, 0.719) !important;
+}
 .enlarge {
     transform: scale(1.02);
     z-index:1;
