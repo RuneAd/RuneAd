@@ -13,6 +13,14 @@ body {
     font-family: "OpenSans-Regular" !important;
 }
 
+.my-card
+{
+    position:absolute;
+    left:40%;
+    top:-20px;
+    border-radius:50%;
+}
+
 
 .pricing {
     font-family: "Montserrat-Bold";
