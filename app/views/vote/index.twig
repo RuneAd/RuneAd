@@ -157,25 +157,35 @@
                         <span class="fa fa-link" aria-hidden="true">Links</span>
                     </div>
 
-                    <h6 class="mb-0">
-                        
-                        {% if server.discord_link and server.discord_link != "" %}
-                        <a href="{{ server.discord_link }}" class="btn btn-primary btn-sm py-1 text-uppercase mr-0"
-                            style="font-size:9px;"
-                            target="_blank">
-                            {{ icon('discord') }} DISCORD
-                        </a>
-                        {% endif %}
-                        
-                        {% if server.website and server.website != "" %}
-                        <a href="{{ server.website }}" class="btn btn-primary btn-sm py-1 text-uppercase"
-                            style="font-size:9px;"
-                            rel="sponsored" target="_blank">
-                            {{ icon('link-45deg') }} WEBSITE
-                        </a>
-                        {% endif %}
 
-                    </h6>
+                    <div class="text-center mt-1">
+                        
+                        <h6 class="mb-0">
+                        
+                            {% if server.discord_link and server.discord_link != "" %}
+                            <a href="{{ server.discord_link }}" class="btn btn-primary btn-sm py-1 text-uppercase mr-0"
+                                style="font-size:9px;"
+                                target="_blank">
+                                {{ icon('discord') }} DISCORD
+                            </a>
+                            {% endif %}
+                            
+                            {% if server.website and server.website != "" %}
+                            <a href="{{ server.website }}" class="btn btn-primary btn-sm py-1 text-uppercase"
+                                style="font-size:9px;"
+                                rel="sponsored" target="_blank">
+                                {{ icon('link-45deg') }} WEBSITE
+                            </a>
+                            {% endif %}
+    
+                        </h6>
+
+
+
+
+                    </div>
+
+
 
                 </div>
         </div>
