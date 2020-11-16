@@ -120,13 +120,15 @@
 
 
         <div class="col-lg-4 col-md-12 col-sm-12">
-            <div class="card shadow-sm border-0 mb-3">
-                <div class="card-body">
-                    <small class="text-muted">Server Status</small>
-                    <h6 class="mb-0 text-{{ server.is_online ? 'success' : 'danger' }}">
-                        {{ server.is_online ? 'Online' : 'Offline' }}
-                    </h6>
+
+
+            <div class="card shadow-sm border-info mb-3">
+                <div class="card border-success shadow text-info p-3 my-card">
+                    <span class="fa fa-signal" aria-hidden="true">Server Status</span>
                 </div>
+                <h6 class="mb-0 text-{{ server.is_online ? 'success' : 'danger' }}">
+                    {{ server.is_online ? 'Online' : 'Offline' }}
+                </h6>                
             </div>
 
             <div class="card shadow-sm border-0 mb-3">
@@ -141,11 +143,9 @@
             </div>
 
             <div class="card shadow-sm border-info mb-3">
-
             <div class="card border-info shadow text-info p-3 my-card">
                 <span class="fa fa-vote-yea" aria-hidden="true">Votes</span>
             </div>
-
                 <div class="text-info text-center mt-1"><h3>{{ server.votes }}</h3></div>
             </div>
 
