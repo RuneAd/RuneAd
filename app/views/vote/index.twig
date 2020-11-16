@@ -132,17 +132,7 @@
                         </h4>    
                     </div>
                 </div>
-
-            <div class="card shadow-sm border-0 mb-3">
-                <div class="card-body">
-                    <small class="text-muted">
-                        Owner
-                    </small>
-                    <h6 class="mb-0">
-                        <a href="https://discord.com/users/{{ server.user_id }}" target="_blank">{{ server.username }}#{{ server.discriminator }}</a>
-                    </h6>
-                </div>
-            </div>
+            
 
             <div class="card shadow-sm border-info mb-3">
             <div class="card border-info shadow text-info p-3 my-card">
@@ -150,6 +140,15 @@
             </div>
                 <div class="text-info text-center mt-1"><h3>{{ server.votes }}</h3></div>
             </div>
+            
+
+
+            <div class="card shadow-sm border-warning mb-3">
+                <div class="card border-info shadow text-warning p-3 my-card">
+                    <span class="fa fa-user-shield" aria-hidden="true">Owner</span>
+                </div>
+                    <div class="text-info text-center mt-1"><h3><a href="https://discord.com/users/{{ server.user_id }}" target="_blank">{{ server.username }}#{{ server.discriminator }}</a></h3></div>
+                </div>
 
             <div class="card shadow-sm border-0 mb-3">
                 <div class="card-body">
