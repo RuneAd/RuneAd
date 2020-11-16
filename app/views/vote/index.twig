@@ -47,7 +47,7 @@
 
         <div class="row">
             <div class="col-lg-8 col-md-12 col-sm-12">
-            <div class="card border-0 shadow-sm mb-3">
+            <div class="card border-vote-gold shadow mb-3">
                 <div class="card-body text-center">
                     <p class="small text-muted mb-0">Vote for</p>
                     <h2 class="mb-4">{{ server.title }}</h2>
@@ -120,8 +120,6 @@
 
 
         <div class="col-lg-4 col-md-12 col-sm-12">
-
-
             <div class="card shadow-sm border-success mb-3">
                 <div class="card border-success shadow text-primary p-3 my-card">
                     <span class="fa fa-signal" aria-hidden="true">Status</span>
@@ -132,36 +130,24 @@
                         </h4>    
                     </div>
                 </div>
-            
-
             <div class="card shadow-sm border-info mb-3">
             <div class="card border-info shadow text-info p-3 my-card">
                 <span class="fa fa-vote-yea" aria-hidden="true">Votes</span>
             </div>
                 <div class="text-info text-center mt-1"><h3>{{ server.votes }}</h3></div>
             </div>
-            
-
-
             <div class="card shadow-sm border-warning mb-3">
                 <div class="card border-warning shadow text-warning p-3 my-card">
                     <span class="fa fa-user-shield" aria-hidden="true">Owner</span>
                 </div>
                     <div class="text-info text-center mt-1"><h3><a href="https://discord.com/users/{{ server.user_id }}" target="_blank">{{ server.username }}#{{ server.discriminator }}</a></h3></div>
                 </div>
-
-
-
                 <div class="card shadow-sm border-dark mb-3">
                     <div class="card border-dark shadow text-dark p-3 my-card">
                         <span class="fa fa-link" aria-hidden="true">Links</span>
                     </div>
-
-
                     <div class="text-center mt-1">
-                        
                         <h6 class="mb-2">
-                        
                             {% if server.discord_link and server.discord_link != "" %}
                             <a href="{{ server.discord_link }}" class="btn btn-primary btn-sm py-1 text-uppercase mr-0"
                                 style="font-size:9px;"
@@ -169,7 +155,6 @@
                                 {{ icon('discord') }} DISCORD
                             </a>
                             {% endif %}
-                            
                             {% if server.website and server.website != "" %}
                             <a href="{{ server.website }}" class="btn btn-primary btn-sm py-1 text-uppercase"
                                 style="font-size:9px;"
@@ -177,15 +162,8 @@
                                 {{ icon('link-45deg') }} WEBSITE
                             </a>
                             {% endif %}
-    
                         </h6>
-
-
-
-
                     </div>
-
-
 
                 </div>
         </div>

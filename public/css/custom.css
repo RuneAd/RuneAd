@@ -212,6 +212,9 @@ a.text-primary:hover {
 .sponsor-blue {
     color: #0275d8 !important;
 }
+.vote-gold {
+    color: #ffee00de !important;
+}
 .dropdown-item.active, .dropdown-item:active {
     text-decoration: none;
     color: #fff;
