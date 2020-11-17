@@ -122,7 +122,7 @@
         <div class="col-lg-4 col-md-12 col-sm-12">
             <div class="card shadow-sm border-success mb-3">
                 <div class="card border-success shadow text-primary p-3 my-card">
-                    <span class="fa fa-signal" aria-hidden="true">Status</span>
+                    <span class="fa fa-signal" aria-hidden="true">&ensp;Status</span>
                 </div>
                     <div class="text-info text-center mt-1">
                         <h4 class="mb-0 text-{{ server.is_online ? 'success' : 'danger' }}">
@@ -132,19 +132,19 @@
                 </div>
             <div class="card shadow-sm border-info mb-3">
             <div class="card border-info shadow text-info p-3 my-card">
-                <span class="fa fa-vote-yea" aria-hidden="true">Votes</span>
+                <span class="fa fa-vote-yea" aria-hidden="true">&ensp;Votes</span>
             </div>
                 <div class="text-info text-center mt-1"><h3>{{ server.votes }}</h3></div>
             </div>
             <div class="card shadow-sm border-warning mb-3">
                 <div class="card border-warning shadow text-warning p-3 my-card">
-                    <span class="fa fa-user-shield" aria-hidden="true">Owner</span>
+                    <span class="fa fa-user-shield" aria-hidden="true">&ensp;Owner</span>
                 </div>
                     <div class="text-info text-center mt-1"><h3><a href="https://discord.com/users/{{ server.user_id }}" target="_blank">{{ server.username }}#{{ server.discriminator }}</a></h3></div>
                 </div>
                 <div class="card shadow-sm border-dark mb-3">
                     <div class="card border-dark shadow text-dark p-3 my-card">
-                        <span class="fa fa-link" aria-hidden="true">Links</span>
+                        <span class="fa fa-link" aria-hidden="true">&ensp;Links</span>
                     </div>
                     <div class="text-center mt-1">
                         <h6 class="mb-2">
