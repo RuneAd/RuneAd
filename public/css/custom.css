@@ -215,8 +215,17 @@ a.text-primary:hover {
     font-family: "OpenSans-Regular" !important;
 }
 .custom-header {
-    /*background-image: linear-gradient(to right bottom, #2327a0, #05c6b1);*/
-    background: url('../img/runead-rsps-toplist.png') top center no-repeat #3c4d69;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("../img/runead-rsps-toplist.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    /*background-image: linear-gradient(to right bottom, #2327a0, #05c6b1);
+    background: url('../img/runead-rsps-toplist.png') top center no-repeat #3c4d69;*/
 }
 .custom-header .navbar .nav-link {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.4);

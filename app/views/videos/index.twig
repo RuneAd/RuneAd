@@ -5,7 +5,6 @@
  <div class="container" style="margin-top:-30px;">
 
      <div class="row mb-3">
-
         <div class="col-sm-12">
             <div class="card border-0 shadow-sm">
                 <div class="card-body">
@@ -52,7 +51,6 @@
             </div>
         </div>
 
-
      </div>
 
      <div class="row">
@@ -78,9 +76,6 @@
                         {% else %}
                         {{ post.title }}
                         {% endif %}
-                    
-                    
-                    
                     </a>
                     </h6>
                     <p class="mb-0 small text-muted">
@@ -90,13 +85,11 @@
                 <div class="card-body p-0">{{ post.content|raw }}</div> 
             </div>
 
-
             {% else %}
             <div class="alert alert-default">
                 Nothing to see here. Move along...
             </div>
             {% endfor %}
-
 
             {% set totalPages = posts.lastPage() %}
             {% set current = posts.currentPage() %}
