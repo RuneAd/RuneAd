@@ -36,45 +36,9 @@
             </div>
             <div class="col-lg-7 col-md-8 ml-auto ">
                 <div class="tab-content tab-space">
-                    <div class="tab-pane" id="personal">
-                        <div class="row">
-                            {% for package in expensive %}
-                            {% set features = package['features']|json_decode %}
-
-                            <div class="col-md-6">
-                                <div class="card card-pricing text-center mb-4 shadow-sm">
-                                    <div class="card-header bg-transparent">
-                                        <h6 class="text-uppercase ls-1 py-3 mb-0">{{ package['title'] }}</h6>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="display-2">${{ package['price']|number_format(2) }}</div>
-                                        <span>{{ package['duration']/60/60/24 }} Days</span>
-                                        <ul class="list-unstyled my-4">
-                                            {% for feature in features %}
-                                            <li class="align-items-center">
-                                                {% if feature is null %}
-                                                <i class="fal fa-times text-danger"></i>
-                                                {% else %}
-                                                {{ feature|raw }}
-                                                {% endif %}
-                                            </li>
-                                            {% endfor %}
-                                        </ul>
-                                    </div>
-                                    <div class="card-footer bg-transparent">
-                                        <a href="#"
-                                            id="package-select"
-                                            data-package="{{ package['id'] }}"
-                                            class="btn btn-default {{ user is defined ? '' : 'disabled' }}">Select</a>
-                                    </div>
-                                </div>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
                     <div class="tab-pane active" id="commercial">
                         <div class="row">
-                            {% for package in cheap %}
+                            {% for package in turbo %}
                             {% set features = package['features']|json_decode %}
 
                             <div class="col-md-6">

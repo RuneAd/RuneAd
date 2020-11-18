@@ -11,8 +11,7 @@ class TurboController extends Controller {
             $this->set("servers", $servers);
         }
 
-        $this->set("cheap", $turbo[0]);
-        $this->set("expensive", $turbo[1]);
+        $this->set("turbo", $turbo[0]);
         return true;
     }
 
