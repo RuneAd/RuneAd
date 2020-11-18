@@ -125,6 +125,29 @@ class PageRouter extends Router {
         });
 
         /**
+         * Turbo Boost
+         */
+        $this->all('turbo', function() {
+            return $this->setRoute('turbo', 'index');
+        });
+
+        $this->all('turbo/([0-9]+)', function($package) {
+            return $this->setRoute('turbo', 'select', ['package' => $package]);
+        });
+
+        $this->all('turbo/button', function() {
+            return $this->setRoute('turbo', 'button');
+        });
+
+        $this->all('turbo/process', function() {
+            return $this->setRoute('turbo', 'process');
+        });
+
+        $this->all('turbo/verify', function() {
+            return $this->setRoute('turbo', 'verify');
+        });
+
+        /**
          * Report
          */
         $this->all('report/([0-9]+)-([A-Za-z0-9\-]+)', function($id, $title) {

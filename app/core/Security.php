@@ -47,7 +47,8 @@ class Security {
             'sponsor'  => ['index', 'add', 'edit', 'delete'],
             'premium'  => ['index', 'add', 'edit', 'delete'],
             'users'    => ['index', 'banned'],
-            'servers'  => ['index', 'info', 'edit', 'delete']
+            'servers'  => ['index', 'info', 'edit', 'delete'],
+            'turbo'    => ['index', 'button', 'verify', 'process']
         ];
 
         $mod = [
