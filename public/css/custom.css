@@ -211,6 +211,12 @@ a.text-primary:hover {
     color: #fff;
     background-color: #3c4d69;
 }
+
+.dropdown-turbo.active, .dropdown-turbo:active {
+    text-decoration: none;
+    color: #9933CC;
+    background-color: #aa66cc;
+}
 .navbar-dark .navbar-nav .nav-link {
     font-family: "OpenSans-Regular" !important;
 }
