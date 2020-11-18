@@ -82,7 +82,7 @@ class TurboController extends Controller {
             ];
         }
 
-        $package = Premium::where('id', $sku)->first();
+        $package = Turbo::where('id', $sku)->first();
 
         if (!$package) {
             return [
