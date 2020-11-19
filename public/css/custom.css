@@ -496,7 +496,6 @@ a.banner-img {
 }
 
 .pulse-turbo  {
-    background-color:#FFDF00 !important;
     animation: pulse-turbo 1.5s infinite;
 }
 
@@ -508,15 +507,20 @@ a.banner-img {
     animation: pulse-sponsor 1.5s infinite;
 }
 
-@keyframes pulse-turbo
-{
+@keyframes pulse-turbo {
     0% {
-        box-shadow: 0 0 0 0px #f700ff;
+      transform: scale(.3);
+      background-color: red;
+      border-radius: 100%;
+    }
+    50% {
+      background-color: orange;
     }
     100% {
-        box-shadow: 0 0 0 6px rgba(247, 86, 118, 0);
+      transform: scale(1.5);
+      background-color: yellow;
     }
-}
+  }
 @keyframes pulse-red
 {
     0% {
