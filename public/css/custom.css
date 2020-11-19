@@ -25,10 +25,15 @@ body {
     visibility: hidden;
   }
 
-
 .videoGrid iframe{
       max-width: 100%;
   }
+
+  .text-logo {
+	background: linear-gradient(to right, #1497e2 0%, #117796 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	};
 
 .lantern-script {
     font-family: 'Tangerine', serif;
@@ -220,7 +225,7 @@ a.text-primary:hover {
 }
 .custom-header {
     /*background-image: linear-gradient(to right bottom, #2327a0, #05c6b1);*/
-    background: url('../img/runeadq.jpg') top center no-repeat #3c4d69;
+    background: url('../img/runeadq.jpg') top center no-repeat #6a8bbe;
 }
 .custom-header .navbar .nav-link {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
