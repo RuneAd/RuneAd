@@ -14,10 +14,10 @@
     </div>
 </div>
 
-<section class="pricing-2 py-2" id="pricing-6">
+<section class="pricing-6 py-6" id="pricing-6">
     <div class="container">
         <div class="row">
-            <div class="col-lg-7 col-md-8 ml-auto ">
+            <div class="col-lg-7 col-md-8">
                 <div class="tab-content tab-space">
                     <div class="tab-pane active" id="commercial">
                         <div class="row">
@@ -25,9 +25,9 @@
                             {% set features = package['features']|json_decode %}
 
                             <div class="col-md-6">
-                                <div class="card card-pricing text-center mb-4 shadow-sm">
-                                    <div class="card-header bg-transparent">
-                                        <h6 class="text-uppercase ls-1 py-3 mb-0">{{ package['title'] }}</h6>
+                                <div class="card card-pricing text-center mb-4 shadow">
+                                    <div class="card-header bg-gradient-primary">
+                                        <h6 class="gold-text text-uppercase ls-1 py-3 mb-0">{{ package['title'] }}</h6>
                                     </div>
                                     <div class="card-body">
                                         <div class="display-2">${{ package['price']|number_format(2) }}</div>

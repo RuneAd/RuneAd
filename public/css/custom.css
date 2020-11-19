@@ -35,10 +35,13 @@ body {
     text-shadow: 4px 4px 4px #aaa;
   }
 
-.white-text
-{
+.white-text {
  color: white !important;
 }
+
+.gold-text {
+    color: #FFDF00 !important;
+   }
 
 .gold-bg {
     background-color:#FFDF00 !important;
