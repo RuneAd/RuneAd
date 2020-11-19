@@ -495,12 +495,27 @@ a.banner-img {
     animation: pulse-green 1.5s infinite;
 }
 
+.turbo-pulse  {
+    background-color:#FFDF00 !important;
+    animation: pulse-gold 1.5s infinite;
+}
+
 .pulse {
     animation: pulse-premium 1.5s infinite;
 }
 
 .pulse-sponsor {
     animation: pulse-sponsor 1.5s infinite;
+}
+
+@keyframes pulse-gold
+{
+    0% {
+        box-shadow: 0 0 0 0px #FFDF00;
+    }
+    100% {
+        box-shadow: 0 0 0 6px rgba(247, 86, 118, 0);
+    }
 }
 
 @keyframes pulse-red
