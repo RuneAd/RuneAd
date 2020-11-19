@@ -510,7 +510,7 @@ a.banner-img {
 @keyframes pulse-turbo {
     0% {
       transform: scale(.3);
-      background-color: rgb(0, 174, 255);
+      
       border-radius: 100%;
     }
     50% {
