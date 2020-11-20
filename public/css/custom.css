@@ -505,7 +505,7 @@ a.banner-img {
 }
 
 .pulse {
-    animation: pulse-premium 1.5s infinite;
+    animation: pulse-premium move 5s infinite;
 
 }
 
