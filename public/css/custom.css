@@ -505,12 +505,12 @@ a.banner-img {
 }
 
 .pulse {
-    animation: pulse-premium move 5s infinite;
+    animation: pulse-premium 1.9 infinite;
 
 }
 
 .pulse-sponsor {
-    animation: pulse-sponsor 1.5s infinite;
+    animation: pulse-sponsor 1.9s infinite;
 
 }
 
