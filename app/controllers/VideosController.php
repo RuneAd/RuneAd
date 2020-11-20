@@ -12,7 +12,7 @@ class VideosController extends Controller {
             $posts = Videos::select("*")
                 ->leftJoin("users", "users.user_id", "=", "videos.author_id")
                 ->orderBy("id", "DESC")
-                ->paginate(7);
+                ->paginate(9);
         } else {
 
             $category = str_replace("-", " ", $category);
@@ -21,7 +21,7 @@ class VideosController extends Controller {
                 ->where("category", "=", $category)
                 ->leftJoin("users", "users.user_id", "=", "videos.author_id")
                 ->orderBy("id", "DESC")
-                ->paginate(7);
+                ->paginate(9);
 
             $this->set("category", $this->filter($category));
         }
