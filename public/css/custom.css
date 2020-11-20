@@ -505,11 +505,11 @@ a.banner-img {
 }
 
 .pulse {
-    animation: pulse-premium 1.5s infinite;
+    animation: pulse-premium 5s infinite;
 }
 
 .pulse-sponsor {
-    animation: pulse-sponsor 1.5s infinite;
+    animation: pulse-sponsor 5s infinite;
 }
 
 @keyframes pulse-turbo {
