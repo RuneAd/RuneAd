@@ -6,6 +6,9 @@ body {
 a:hover, a:active, a:focus {
     color: #fffb00;
 }
+a  {
+    color: #eeea01;
+}
 .card{
     background-color: #36393F
 }
