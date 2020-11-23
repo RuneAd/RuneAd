@@ -19,6 +19,28 @@ class ToolsController extends Controller {
 
     }
 
+    public function servers() {
+
+        Paginator::currentPageResolver(function() use ($page) {
+            return $page;
+        });
+
+        return Servers::where('website', '!=', null)
+            ->select(
+                'id', 
+                'title', 
+                'revision',
+                'votes',
+                'banner_url', 
+                'is_online',
+                'premium_expires'
+            )
+            ->where('title', 'LIKE', '%'.$name.'%')
+            ->orWhere('owner', '=', ''.$name.'')
+            ->orderBy('id', 'ASC')
+            ->paginate(per_page);
+    }
+
     public function search() {
         $data   = $this->getItemList();
         $search = $this->request->getPost("search", "string");

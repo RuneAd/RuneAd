@@ -101,10 +101,6 @@ class PageRouter extends Router {
             return $this->setRoute('pages', 'contributors');
         });
 
-        $this->post('allservers', function() {
-            return $this->setRoute('pages', 'allservers');
-        });
-
         /**
          * Premium
          */
@@ -348,6 +344,10 @@ class PageRouter extends Router {
 
         $this->all('tools/xptable', function() {
             return $this->setRoute('tools', 'xptable');
+        });
+
+        $this->all('tools/serveers', function() {
+            return $this->setRoute('tools', 'servers');
         });
 
               /**
