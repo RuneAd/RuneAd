@@ -41,6 +41,28 @@ class PagesController extends Controller {
 
     }
 
+    public function servers() {
+
+        Paginator::currentPageResolver(function() use ($page) {
+            return $page;
+        });
+
+        return Servers::where('website', '!=', null)
+            ->select(
+                'id', 
+                'title', 
+                'revision',
+                'votes',
+                'banner_url', 
+                'is_online',
+                'premium_expires'
+            )
+            ->where('title', 'LIKE', '%'.$name.'%')
+            ->orWhere('owner', '=', ''.$name.'')
+            ->orderBy('id', 'ASC')
+            ->paginate(per_page);
+    }
+
     public function stats() {
         $thisMonth = strtotime(date("Y-m-01 00:00:00"));
         $lastMonth = strtotime("first day of last month");

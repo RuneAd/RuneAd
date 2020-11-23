@@ -48,14 +48,16 @@ class Security {
             'premium'  => ['index', 'add', 'edit', 'delete'],
             'users'    => ['index', 'banned'],
             'servers'  => ['index', 'info', 'edit', 'delete'],
-            'turbo'    => ['index', 'button', 'verify', 'process']
+            'turbo'    => ['index', 'button', 'verify', 'process'],
+            'pages' => ['servers']
         ];
 
         $mod = [
             'modcp'    => ['index', 'reports', 'viewreport'],
             'premium'  => ['index', 'add', 'edit', 'delete'],
             'users'    => ['index', 'banned'],
-            'servers'  => ['index', 'info', 'edit', 'delete']
+            'servers'  => ['index', 'info', 'edit', 'delete'],
+            'pages' => ['servers']
         ];
 
         foreach ($public as $controller => $actions) {
