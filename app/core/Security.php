@@ -26,7 +26,7 @@ class Security {
             'login'   => ['index', 'discord', 'auth', 'dauth'],
             'errors'  => ['show404', 'show500', 'show401', 'missing'],
             'pages'   => ['docs', 'stats', 'terms', 'privacy', 'adinfo', 'ads', 'contact', 'adbenners', 'faq', 'sitemap'],
-            'tools'   => ['index', 'itemdb', 'search', 'map', 'xptable'],
+            'tools'   => ['index', 'itemdb', 'search', 'map', 'xptable', 'servers'],
             'blog'    => ['index', 'post'],
             'downloads'   => ['index', 'rsps', 'web'],
             'videos'  => ['index', 'post']
