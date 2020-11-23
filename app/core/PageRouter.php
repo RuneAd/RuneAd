@@ -346,7 +346,7 @@ class PageRouter extends Router {
             return $this->setRoute('tools', 'xptable');
         });
 
-        $this->all('tools/serveers', function() {
+        $this->all('tools/servers', function() {
             return $this->setRoute('tools', 'servers');
         });
 
