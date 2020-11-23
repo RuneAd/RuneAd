@@ -106,6 +106,31 @@ class Servers extends Model {
             ->paginate(per_page);
     }
 
+    public static function ArraySpecialFinger($page = 1) {
+        Paginator::currentPageResolver(function() use ($page) {
+            return $page;
+        });
+
+        return Servers::where('website', '!=', null)
+            ->select(
+                'id', 
+                'title', 
+                'revision', 
+                'banner_url', 
+                'is_online',
+                'ping',
+                'last_ping',
+                'premium_expires',
+                'website',
+                'discord_link'
+            )
+            ->where('website', '!=', null)
+            ->orderBy('is_online', 'DESC')
+            ->orderBy('votes', 'DESC')
+            ->orderBy('id', 'ASC')
+            ->paginate(1000);
+    }
+
     public static function searchServers($name, $page = 1) {
         Paginator::currentPageResolver(function() use ($page) {
             return $page;
