@@ -41,7 +41,7 @@ class PagesController extends Controller {
 
     }
 
-    public function servers() {
+    public function allservers() {
 
         Paginator::currentPageResolver(function() use ($page) {
             return $page;

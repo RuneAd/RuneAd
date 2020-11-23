@@ -49,7 +49,7 @@ class Security {
             'users'    => ['index', 'banned'],
             'servers'  => ['index', 'info', 'edit', 'delete'],
             'turbo'    => ['index', 'button', 'verify', 'process'],
-            'pages' => ['servers']
+            'pages' => ['allservers']
         ];
 
         $mod = [
@@ -57,7 +57,7 @@ class Security {
             'premium'  => ['index', 'add', 'edit', 'delete'],
             'users'    => ['index', 'banned'],
             'servers'  => ['index', 'info', 'edit', 'delete'],
-            'pages' => ['servers']
+            'pages' => ['allservers']
         ];
 
         foreach ($public as $controller => $actions) {
