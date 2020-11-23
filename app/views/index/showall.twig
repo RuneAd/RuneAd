@@ -27,19 +27,8 @@
         {% set class = isPremium ? 'bg-premium' : '' %}
         
         <tr id="server" class="{{ class }}">
-            <td class="text-center small pr-1">
-                <p class="mb-1">{{ start_rank }}</p>
-
-                <a href="https://discord.com/users/{{ server.user_id }}" target="_blank">{{ server.username }}#{{ server.discriminator }}</a>
-            </td>
 
             <td class="py-4">
-                {% if server.revision %} 
-                <span class="badge badge-primary">
-                    {{ server.revision }}
-                </span>
-                {% endif %}
-
                 <a href="{{ url('details/'~server_url) }}">
                     {% if server.title|length > 40 %}
                     {{ substr(server.title, 0, 40)~'...' }}
@@ -47,8 +36,6 @@
                     {{ server.title }}
                     {% endif %}
                 </a>
-
-            
             </td>
         </tr>
         {% set start_rank = start_rank + 1 %}
