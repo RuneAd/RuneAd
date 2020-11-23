@@ -57,67 +57,7 @@
                     {{ server.title }}
                     {% endif %}
                 </a>
-                
-                <a href="{{ url('details/'~server_url) }}" class="d-block mt-2" style="max-width:468px;">
-                    <img 
-                        {% if server.banner_url %}
-                        data-src="{{ banner(server.banner_url) }}"
-                        {% endif %}
-                        src="{{ url('public/img/banner-loading.png') }}"
-                        alt="RuneScape Private Server listing on RuneAd RSPS Toplist for {{ server.title }}" width="468" height="60"
-                        id="banner"
-                        class="rounded w-100"/>
-                </a>
-                
-                <div class="mt-2">
-                    {% if isPremium  %}
-
-                    {% if server.discord_link and server.discord_link != "" %}
-                    <a href="{{ server.discord_link }}" class="btn btn-primary btn-sm py-1 text-uppercase mr-0"
-                        style="font-size:9px;"
-                        target="_blank">
-                        {{ icon('discord') }} DISCORD
-                    </a>
-                    {% endif %}
-                    
-                    {% if server.website and server.website != "" %}
-                    <a href="{{ server.website }}" class="btn btn-primary btn-sm py-1 text-uppercase"
-                        style="font-size:9px;"
-                        rel="sponsored" target="_blank">
-                        {{ icon('link-45deg') }} WEBSITE
-                    </a>
-                    {% endif %}
-			        <div class="mt-2"  style="max-width:520px;">
-                        {% set tags = server.meta_tags|json_decode %}
-                        {% for tag in tags %}
-                        <span class="badge badge-pill badge-primary">{{ tag }} </span>              
-                        {% endfor %}                   
-                    </div>
-                    {% endif %}
-                    
-                </div>
-            </td>
-
-            <td class="text-right">
-                {% set btnclass = isPremium
-                    and theme == "dark" ? 'btn-primary' : 'btn-default' %}
-
-                <div class="d-flex align-items-center justify-content-end">
-                    <div class="pr-3">
-                        <p class="mb-0" id="votes">{{ server.votes|number_format }}</p>
-                        <span class="small text-muted mb-0">Votes</span>
-                    </div>
-                    {% if is_mobile == false %}
-                    <div class="pr-1 d-none d-lg-flex">
-                        <a href="{{ url('vote/'~server_url) }}"
-                            data-toggle="tooltip"
-                            data-title="Vote"
-                            data-id="{{ server.id }}" class="btn btn-primary vote-btn">
-                            {{ icon('check2-square', 16, 16) }}
-                        </a>
-                    </div>
-                    {% endif %}
-                </div>
+            
             </td>
         </tr>
         {% set start_rank = start_rank + 1 %}
@@ -129,9 +69,6 @@
     </table>
 </div>
 
-<p class="small text-muted">
-    Status updates occur every 30 minutes on the clock. (ie 9, 9:30, 10, 10:30, etc.)
-</p>
 
 {% set totalPages = servers.lastPage() %}
 {% set current = servers.currentPage() %}
