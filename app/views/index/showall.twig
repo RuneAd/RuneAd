@@ -30,17 +30,7 @@
             <td class="text-center small pr-1">
                 <p class="mb-1">{{ start_rank }}</p>
 
-                {% if server.ping == -1  %}
-                <span class="badge badge-danger status-badge small"
-                    data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
-                    Offline
-                </span>
-                {% else %}
-                <span class="badge badge-success status-badge" 
-                    data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
-                    Online
-                </span>
-                {% endif %}
+                <a href="https://discord.com/users/{{ server.user_id }}" target="_blank">{{ server.username }}#{{ server.discriminator }}</a>
             </td>
 
             <td class="py-4">
@@ -57,17 +47,6 @@
                     {{ server.title }}
                     {% endif %}
                 </a>
-
-                <div class="card shadow-sm border-0 mb-3">
-                    <div class="card-body">
-                        <small class="text-muted">
-                            Owner
-                        </small>
-                        <h6 class="mb-0">
-                            <a href="https://discord.com/users/{{ server.user_id }}" target="_blank">{{ server.username }}#{{ server.discriminator }}</a>
-                        </h6>
-                    </div>
-                </div>
 
             
             </td>
