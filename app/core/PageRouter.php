@@ -101,8 +101,8 @@ class PageRouter extends Router {
             return $this->setRoute('pages', 'contributors');
         });
 
-        $this->post('servers', function() {
-            return $this->setRoute('pages', 'servers');
+        $this->post('allservers', function() {
+            return $this->setRoute('pages', 'allservers');
         });
 
         /**
