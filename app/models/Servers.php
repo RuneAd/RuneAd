@@ -103,7 +103,7 @@ class Servers extends Model {
             ->orderBy('is_online', 'DESC')
             ->orderBy('votes', 'DESC')
             ->orderBy('id', 'ASC')
-            ->paginate(per_page);
+            ->paginate(5000);
     }
 
     public static function searchServers($name, $page = 1) {
