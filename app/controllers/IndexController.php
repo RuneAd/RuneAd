@@ -55,6 +55,56 @@ class IndexController extends Controller {
         $this->set("server_count", $servers->total());
     	return true;
     }
+
+    public function showall($rev = null, $page = 1) {
+        $revisions = Revisions::where('visible', 1)->get();
+
+        if ($rev != null) {
+            $revision = Revisions::where('revision', $rev)->first();
+
+            if (!$revision) {
+                $this->setView("errors/show404");
+                return false;
+            }
+
+            $servers = Servers::getByRevision($revision, $page);
+
+            $this->set("page_title", "{$revision->revision} Servers");
+            $this->set("meta_info", "{$revision->revision} Runescape private servers.");
+            $this->set("revision", $revision);
+        } else {
+            $servers = Servers::getAll($page);
+        }
+        
+        $data = [
+            'servers' => [
+                'total' => Servers::count()
+            ]
+            ];
+
+        $sponsors = Sponsors::select([
+                'sponsors.id',
+                'servers.title',
+                'servers.website',
+                'servers.discord_link',
+                'servers.banner_url'
+            ])
+            ->where('expires', '>', time())
+            ->where('servers.banner_url', '!=', null)
+            ->where('servers.website', '!=', null)
+            ->leftJoin("servers", "servers.id", "=", "sponsors.server_id")
+            ->orderBy("started", "ASC")
+            ->get();
+
+        $this->set("data", $data);
+        $this->set("servers", $servers);
+        $this->set("revisions", $revisions);
+        $this->set("sponsors", $sponsors);
+        $this->set("server_count", $servers->total());
+    	return true;
+    }
+
+
     public function details($id) {
         $server   = Servers::getServer($id);
 
