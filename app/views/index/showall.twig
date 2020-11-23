@@ -59,63 +59,6 @@
 
 {% set pageUrl = revision is defined ? url('rev-'~revision.revision~'/') : url('')  %}
 
-
-<nav aria-label="servernav" class="mt-5">
-    <ul class="pagination justify-content-center">
-        <li class="page-item {{ servers.onFirstPage() ? 'disabled' : '' }}">
-            <a class="page-link"
-                 href="{{ pageUrl~'1' }}" tabindex="-1">
-                 {{ icon('chevron-bar-left', 14, 14) }}
-            </a>
-        </li>
-
-        <li class="page-item {{ servers.onFirstPage() ? 'disabled' : '' }}">
-            <a class="page-link" 
-                href="{{ pageUrl ~ (current == 1 ? 1 : current - 1) }}" tabindex="-1">
-                {{ icon('chevron-left', 14, 14) }}
-            </a>
-        </li>
-
-        {% if totalPages > 5 %}
-            {% set start = current < 3 ? 1 : current - 2 %}
-            {% set end   = start < 4 ? start + 4 : current + 2 %}
-
-            {% if end > totalPages %}
-                {% set end = totalPages %}
-            {% endif %}
-
-            {% if start + 4 >= totalPages %}
-                {% set start = totalPages - 4 %}
-            {% endif %}
-        {% else %}
-            {% set start = 1 %}
-            {% set end   = servers.lastPage() %}
-        {% endif %}
-
-        {% for p in start..end %}
-        <li class="page-item {{ current == p ? ' active' : ''}}">
-            <a class="page-link" href="{{ pageUrl ~ p }}">
-                {{ p }}
-            </a>
-        </li>
-        {% endfor %}
-
-        <li class="page-item {{ current >= totalPages ? 'disabled' : '' }}">
-            <a class="page-link" 
-                href="{{ pageUrl~(current == totalPages ? totalPages : current + 1) }}">
-                {{ icon('chevron-right', 14, 14) }}
-            </a>
-        </li>
-
-        <li class="page-item {{ current >= totalPages ? 'disabled' : '' }}">
-            <a class="page-link" 
-                href="{{ pageUrl ~ totalPages }}">
-                {{ icon('chevron-bar-right', 14, 14) }}
-            </a>
-        </li>
-    </ul>
-</nav>
-
 {% if is_mobile == false %}
 {% set recaptcha_key = constant('recaptcha')['public'] %}
 
