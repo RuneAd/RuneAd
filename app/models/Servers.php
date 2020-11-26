@@ -12,7 +12,7 @@ class Servers extends Model {
     protected $fillable = [
         'id', 'owner', 'title', 'revision', 'server_ip', 'server_port', 'is_online', 'votes',
         'website', 'callback_url', 'banner_url', 'discord_link', 'meta_info', 'meta_tags',
-        'description', 'date_created', 'premium_level', 'premium_expires'
+        'description', 'date_created', 'premium_level', 'premium_expires', 'awards'
     ];
 
    public static function validate($validate){
@@ -68,7 +68,8 @@ class Servers extends Model {
                 'last_ping',
                 'premium_expires',
                 'website',
-                'discord_link'
+                'discord_link',
+                'awards'
             )
             ->selectRaw(
                 'IF(premium_expires > '.time().', votes + (premium_level * 1, votes) as votes')
@@ -95,7 +96,8 @@ class Servers extends Model {
                 'last_ping',
                 'premium_expires',
                 'website',
-                'discord_link'
+                'discord_link',
+                'awards'
             )
             ->selectRaw(
                 'IF(premium_expires > '.time().', votes + (premium_level * 1), votes) as votes')
@@ -122,7 +124,8 @@ class Servers extends Model {
                 'last_ping',
                 'premium_expires',
                 'website',
-                'discord_link'
+                'discord_link',
+                'awards'
             )
             ->where('website', '!=', null)
             ->orderBy('is_online', 'DESC')
@@ -144,7 +147,8 @@ class Servers extends Model {
                 'votes',
                 'banner_url', 
                 'is_online',
-                'premium_expires'
+                'premium_expires',
+                'awards'
             )
             ->where('title', 'LIKE', '%'.$name.'%')
             ->orWhere('owner', '=', ''.$name.'')
@@ -165,7 +169,8 @@ class Servers extends Model {
                 'votes',
                 'banner_url', 
                 'is_online',
-                'premium_expires'
+                'premium_expires',
+                'awards'
             )
             ->where('website', '!=', null)
             ->orderBy('id', 'ASC')
