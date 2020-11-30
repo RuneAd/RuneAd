@@ -1,5 +1,5 @@
 <?php
-use Illuminate\Pagination\Paginator;
+use Fox\Paginator;
 
 class ToolsController extends Controller {
 
