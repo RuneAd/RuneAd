@@ -118,107 +118,107 @@ class Controller {
         $pages = [
             'premium' => [
                 'index' => [
-                    'title' => 'Premium | The Modern RuneScape Private Server Toplist',
+                    'title' => 'Premium | The Modern RuneScape Private Server Toplist | RSPS List',
                     'meta'  => 'Buy premium on RuneAd to give your server a nice boost, which will increase traffic and visibility for your server!'
                 ]
             ],
             'index' => [
                 'index' => [
-                    'title' => 'RSPS Toplist | RuneScape Private Servers',
+                    'title' => 'RSPS Toplist | RuneScape Private Servers | RSPS List',
                     'meta'  => 'Looking for the best Runescape Private Servers 2020? Come get involved in our RSPS Toplist, and increase your website traffic and attract your players today!'
                 ]
             ],
             'pages' => [
                 'docs' => [
-                    'title' => 'Documentation | The Modern RuneScape Private Server Toplist',
+                    'title' => 'Documentation | The Modern RuneScape Private Server Toplist | RSPS List',
                     'meta'  => 'Integrate your RSPS server with our service, receive voting callback, and more! RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
                 'updates' => [
-                    'title' => 'Update Log | The Modern RuneScape Private Server Toplist',
+                    'title' => 'Update Log | The Modern RuneScape Private Server Toplist | RSPS List',
                     'meta'  => 'All updates that have been pushed for the toplist, and a list of contributors. RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
                 'sitemap' => [
-                    'title' => 'Sitemap | The Modern RuneScape Private Server Toplist',
+                    'title' => 'Sitemap | The Modern RuneScape Private Server Toplist | RSPS List',
                     'meta'  => 'A full sitemap of RuneAd RSPS Toplist displaying RSPS servers, tools, and more! RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
                 'stats' => [
-                    'title' => 'Voting Stats | The Modern RuneScape Private Server Toplist',
+                    'title' => 'Voting Stats | The Modern RuneScape Private Server Toplist | RSPS List',
                     'meta'  => 'Global statistics on RuneAd showing votes, user, and server counts. RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
                 'terms' => [
-                    'title' => 'Terms of Service | The Modern RuneScape Private Server Toplist',
+                    'title' => 'Terms of Service | The Modern RuneScape Private Server Toplist | RSPS List',
                     'meta'  => 'RuneAd Terms Of Service. Preview the Terms of Service for RuneAd RSPS Toplist! RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
 				'contact' => [
-                    'title' => 'Contact Us | The Modern RuneScape Private Server Toplist',
+                    'title' => 'Contact Us | The Modern RuneScape Private Server Toplist | RSPS List',
                     'meta'  => 'Contact RuneAd support and get help on anything related to RuneAd RSPS Toplist. RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
                 'privacy' => [
-                    'title' => 'Privacy Policy | The Modern RuneScape Private Server Toplist',
+                    'title' => 'Privacy Policy | The Modern RuneScape Private Server Toplist | RSPS List',
                     'meta'  => 'RuneAd Privacy Policy. Review the Privacy Policy for RuneAd RSPS Toplist! RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
                 'faq' => [
-                    'title' => 'FAQ | The Modern RuneScape Private Server Toplist',
+                    'title' => 'FAQ | The Modern RuneScape Private Server Toplist | RSPS List',
                     'meta'  => 'Frequently Asked Questions! Browse RuneAds FAQs to find out more about RuneAd RSPS Toplist! RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
 				'ads' => [
-                    'title' => 'Store | The Modern RuneScape Private Server Toplist',
+                    'title' => 'Store | The Modern RuneScape Private Server Toplist | RSPS List',
                     'meta'  => 'Infomation about Advertisements on RuneAd. RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ]
             ],
             'profile' => [
                 'index' => [
-                    'title' => 'My Profile | The Modern RuneScape Private Server Toplist',
+                    'title' => 'My Profile | The Modern RuneScape Private Server Toplist | RSPS List',
                      'meta'  => 'Edit and add a new server, view payment history, stats, and more on RuneAd. RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
                 'payments' => [
-                    'title'  => 'My Payments | The Modern RuneScape Private Server Toplist',
+                    'title'  => 'My Payments | The Modern RuneScape Private Server Toplist | RSPS List',
                      'meta'  => 'View your payment history for RuneAd. RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
                 'add' => [
-                    'title'  => 'Add Server | The Modern RuneScape Private Server Toplist',
+                    'title'  => 'Add Server | The Modern RuneScape Private Server Toplist | RSPS List',
                      'meta'  => 'Add a new server to the RuneAd toplist. RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
                 'edit' => [
-                    'title'  => 'Edit Server | The Modern RuneScape Private Server Toplist',
+                    'title'  => 'Edit Server | The Modern RuneScape Private Server Toplist | RSPS List',
                      'meta'  => 'Edit an existing server on the RuneAd toplist. RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ]
             ],
             'sponsor' => [
                 'index' => [
-                    'title' => 'Sponsored Ads | The Modern RuneScape Private Server Toplist',
+                    'title' => 'Sponsored Ads | The Modern RuneScape Private Server Toplist | RSPS List',
                     'meta' => 'Purchase sponsored ad spots on RuneAd to give your server a boost! RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ]
             ],
             'tools' => [
                 'index' => [
-                    'title' => 'Tools | The Modern RuneScape Private Server Toplist',
+                    'title' => 'Tools | The Modern RuneScape Private Server Toplist | RSPS List',
                     'meta' => 'The best RSPS, OSRS & Runescape tools that\'s always up to date. RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
                 'itemdb' => [
-                    'title' => 'OSRS Item DB | The Modern RuneScape Private Server Toplist',
+                    'title' => 'OSRS Item DB | The Modern RuneScape Private Server Toplist | RSPS List',
                     'meta' => 'An easy to use oldschool runescape item db that\'s always up to date. RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
 				 'map' => [
-                    'title' => 'OSRS Interactive Map | The Modern RuneScape Private Server Toplist',
+                    'title' => 'OSRS Interactive Map | The Modern RuneScape Private Server Toplist | RSPS List',
                     'meta'  => 'An easy to use oldschool runescape map that\'s always up to date. RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
                 'xptable' => [
-                    'title' => 'OSRS Experience Table | The Modern RuneScape Private Server Toplist',
+                    'title' => 'OSRS Experience Table | The Modern RuneScape Private Server Toplist | RSPS List',
                     'meta'  => 'An easy to use oldschool runescape Experience Table. RuneAd is the best 2020 RuneScape Private Server Toplist!'
                 ],
             ],
             'downloads' => [
                 'index' => [
-                    'title' => 'RSPS Tool Downloads | The Modern RuneScape Private Server Toplist',
+                    'title' => 'RSPS Tool Downloads | The Modern RuneScape Private Server Toplist | RSPS List',
                     'meta' => 'Downloads for RSPS Tools on RuneAd. Browse our free collection of Runescape Private Server Downloads & more!'
                 ],
 				 'rsps' => [
-                    'title' => 'RSPS Downloads | The Modern RuneScape Private Server Toplist',
+                    'title' => 'RSPS Downloads | The Modern RuneScape Private Server Toplist | RSPS List',
                     'meta'  => 'Downloads for RSPS Sources and Clients on RuneAd. Browse our free collection of Runescape Private Server Downloads & more!'
                 ],
                 'web' => [
-                    'title' => 'RSPS Web Downloads | The Modern RuneScape Private Server Toplist',
+                    'title' => 'RSPS Web Downloads | The Modern RuneScape Private Server Toplist | RSPS List',
                     'meta'  => 'Downloads for RSPS Web-templates. Browse our free collection of Runescape Private Server Downloads & more!'
                 ],
                 'project51rev180' => [
@@ -228,17 +228,17 @@ class Controller {
             ],
             'videos' => [
                 'index' => [
-                    'title' => 'Videos | The Modern RuneScape Private Server Toplist',
+                    'title' => 'Videos | The Modern RuneScape Private Server Toplist | RSPS List',
                     'meta' => 'Videos brought you to by RuneAd! Browse our free collection of Runescape Private Server Videos & more!'
                 ]
             ],
             'blog' => [
                 'index' => [
-                    'title' => 'Blog | The Modern RuneScape Private Server Toplist',
+                    'title' => 'Blog | The Modern RuneScape Private Server Toplist | RSPS List',
                     'meta' => 'An easy to use modern RuneScape Private Server Blog. Browse our free collection of amazing blog posts & more!'
                 ],
 				 'add' => [
-                    'title' => 'Blog | Add Post | The Modern RuneScape Private Server Toplist',
+                    'title' => 'Blog | Add Post | The Modern RuneScape Private Server Toplist | RSPS List',
                     'meta' => 'An easy to use modern RuneScape Private Server Blog. Browse our free collection of amazing blog posts & more!'                
                 ],
             ]
@@ -252,7 +252,7 @@ class Controller {
         }
 
         return [
-            'title' => 'RSPS Toplist | RuneScape Private Servers',
+            'title' => 'RSPS Toplist | RuneScape Private Servers | RSPS List',
             'meta'  => 'Looking for the best Runescape Private Servers 2020? Come get involved in our RSPS Toplist, and increase your website traffic and attract your players today!'
         ];
     }
