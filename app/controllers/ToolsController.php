@@ -15,6 +15,10 @@ class ToolsController extends Controller {
 
     }
 
+    public function analytics() {
+
+    }
+
     public function xptable() {
 
     }

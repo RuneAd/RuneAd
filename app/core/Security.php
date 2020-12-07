@@ -10,6 +10,7 @@ class Security {
         // register available roles.
         $acl->addRole(new Role('Owner'));
         $acl->addRole(new Role('Administrator'));
+        $acl->addRole(new Role('Coordinator'));
         $acl->addRole(new Role('Moderator'));
         $acl->addRole(new Role('Server Owner'));
         $acl->addRole(new Role('Member'));
@@ -57,7 +58,7 @@ class Security {
             'premium'  => ['index', 'add', 'edit', 'delete'],
             'users'    => ['index', 'banned'],
             'servers'  => ['index', 'info', 'edit', 'delete'],
-            'tools' => ['servers']
+            'tools' => ['servers', 'analytics']
         ];
 
         foreach ($public as $controller => $actions) {
@@ -66,6 +67,7 @@ class Security {
             $resource->allow([
                 $acl->getRole('Owner'),
                 $acl->getRole('Administrator'),
+                $acl->getRole('Coordinator'),
                 $acl->getRole('Moderator'),
                 $acl->getRole('Member'),
                 $acl->getRole('Server Owner'),
@@ -81,6 +83,7 @@ class Security {
             $resource->allow([
                 $acl->getRole('Owner'),
                 $acl->getRole('Administrator'),
+                $acl->getRole('Coordinator'),
                 $acl->getRole('Moderator'),
                 $acl->getRole('Member'),
                 $acl->getRole('Server Owner')
@@ -104,6 +107,7 @@ class Security {
 
             $resource->allow([
                 $acl->getRole('Moderator'),
+                $acl->getRole('Coordinator'),
                 $acl->getRole('Owner'),
             ]);
 
