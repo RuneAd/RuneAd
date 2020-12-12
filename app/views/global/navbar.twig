@@ -152,6 +152,10 @@
                         <a class="dropdown-item" href="{{ url('admin') }}">Admin Panel</a>
                         {% endif %}
 
+                        {% if user.isRole("owner") %}
+                        <a class="dropdown-item" href="{{ url('showall') }}">(BETA) Mod Panel</a>
+                        {% endif %}
+
                         <div class="dropdown-divider"></div>
 
                         <a class="dropdown-item text-danger" href="{{ url('logout') }}">Sign Out</a>
