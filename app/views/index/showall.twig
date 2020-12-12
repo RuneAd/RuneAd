@@ -22,6 +22,7 @@
                 <th class="text-left py-2 small border-0">Server</th>
                 <th class="text-left py-2 small border-0">Status</th>
                 <th class="text-left py-2 small border-0">Votes</th>
+                <th class="text-left py-2 small border-0">Premium Info</th>
                 <th class="text-left py-2 small border-0">Premium Trial</th>
             </tr>
         </thead>
@@ -61,6 +62,23 @@
             <td>
                 <p class="mb-0" id="votes">{{ server.votes|number_format }}</p>
             </td>
+
+            <td>
+                <p class="mb-0 text-default">
+                    {% if server.premium_expires > time() %}
+                        <span class="text-success">
+                            {{ timeLeft(server.premium_expires, true)}}
+                        </span>
+                    {% elseif server.premium_expires < time() and server.premium_expires != -1 %}
+                        <span class="text-danger">
+                            Expired
+                        </span>
+                    {% else %}
+                        n/a
+                    {% endif %}
+                </p>
+            </td>
+
             <td>
                 <a class="btn btn-info" href="#" role="button">Give 7 days Premium</a>
             </td>
