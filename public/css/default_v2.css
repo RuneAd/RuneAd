@@ -870,10 +870,12 @@ table.blur-table tr {
     0%, 100%{
         background: #f02241;
         box-shadow: 0px 4.66667px 24px 3px #f02241;
+        -webkit-animation-delay: 150ms;
     }
     50%{
         background: rgba(240, 34, 65, 0.4);
         box-shadow: 0px 4.66667px 24px 3px rgba(240, 35, 65, .02);
+        -webkit-animation-delay: 150ms;
     }
 }
 @keyframes flash-1{
@@ -881,10 +883,12 @@ table.blur-table tr {
   100% {
     background: #f02241;
     box-shadow: 0px 4.66667px 24px 3px #f02241;
+    -webkit-animation-delay: 150ms;
   }
   50% {
     background: rgba(240, 34, 65, 0.4);
     box-shadow: 0px 4.66667px 24px 3px rgba(240, 35, 65, 0.2);
+    -webkit-animation-delay: 150ms;
   }
 }
 @-webkit-keyframes flash-2{
@@ -892,10 +896,12 @@ table.blur-table tr {
     100%{
         background: #42b261;
         box-shadow: 0px 4.66667px 24px 3px #42b261;
+        -webkit-animation-delay: 150ms;
     }
     50%{
         background: rgba(66, 178, 97, 0.4);
         box-shadow: 0px 4.6667px 24px 3px rgba(66, 178, 97, 0.2);
+        -webkit-animation-delay: 150ms;
     }
 }
 @keyframes flash-2{
@@ -903,10 +909,12 @@ table.blur-table tr {
   100% {
     background: #42b261;
     box-shadow: 0px 4.66667px 24px 3px #42b261;
+    -webkit-animation-delay: 150ms;
   }
   50% {
     background: rgba(66, 178, 97, 0.4);
     box-shadow: 0px 4.66667px 24px 3px rgba(66, 178, 97, 0.2);
+    -webkit-animation-delay: 150ms;
   }
 }
 @keyframes flash-3{
@@ -914,10 +922,12 @@ table.blur-table tr {
     100%{
         background: #f9fbee;
         box-shadow: 0px 4.6667px 24px 3px #f9fbee;
+        -webkit-animation-delay: 150ms;
     }
     50%{
         background: rgba(249, 251, 238, .4);
         box-shadow: 0px 4.66667px 24px 3px rgba(249, 251, 238, .2);
+        -webkit-animation-delay: 150ms;
     }
     
 }
