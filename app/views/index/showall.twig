@@ -22,6 +22,7 @@
                 <th class="text-left py-2 small border-0">Server</th>
                 <th class="text-left py-2 small border-0">Status</th>
                 <th class="text-left py-2 small border-0">Votes</th>
+                <th class="text-left py-2 small border-0">Premium Trial</th>
             </tr>
         </thead>
 
@@ -60,13 +61,16 @@
             <td>
                 <p class="mb-0" id="votes">{{ server.votes|number_format }}</p>
             </td>
+            <td>
+                <a class="btn btn-info" href="#" role="button">Give 7 days Premium</a>
+            </td>
 
 
         </tr>
         {% set start_rank = start_rank + 1 %}
         {% else %}
         <tr>
-            <td colspan=5 class="p-4">Nothing to see here.</td>
+            <td colspan=5 class="p-4">Uh oh! No servers found on this page. Please contact Aaron!</td>
         </tr>
         {% endfor %}
     </table>
