@@ -18,7 +18,7 @@ class Security {
 
         // define controlsl and actions for a group
         $public = [
-            'index'   => ['index', 'logout', 'details', 'showall'],
+            'index'   => ['index', 'logout', 'details'],
             'vote'    => ['index', 'addvote'],
             'premium' => ['index'],
             'sponsor' => ['index'],
@@ -54,6 +54,7 @@ class Security {
         ];
 
         $mod = [
+            'index'    => ['showall'],
             'modcp'    => ['index', 'reports', 'viewreport'],
             'premium'  => ['index', 'add', 'edit', 'delete'],
             'users'    => ['index', 'banned'],
