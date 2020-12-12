@@ -2,43 +2,43 @@
 class PagesController extends Controller {
 
     public function docs() {
-
+        return true;
     }
 
     public function updates() {
-
+        return true;
     }
 
     public function terms() {
-
+        return true;
     }
 
     public function sitemap() {
-
+        return true;
     }
 
     public function adinfo() {
-
+        return true;
     }
 
     public function faq() {
-
+        return true;
     }
 
     public function adbenners() {
-
+        return true;
     }
 
     public function ads() {
-
+        return true;
     }
 
     public function contact() {
-
+        return true;
     }
 
     public function privacy() {
-
+        return true;
     }
 
     public function stats() {

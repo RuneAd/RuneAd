@@ -4,23 +4,23 @@ use Fox\Paginator;
 class ToolsController extends Controller {
 
     public function index() {
-
+        return true;
     }
 
     public function itemdb() {
-
+        return true;
     }
 
     public function map() {
-
+        return true;
     }
 
     public function analytics() {
-
+        return true;
     }
 
     public function xptable() {
-
+        return true;
     }
 
     public function servers() {
