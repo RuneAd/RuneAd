@@ -21,6 +21,7 @@
             <tr>
                 <th class="text-left py-2 small border-0">Server</th>
                 <th class="text-left py-2 small border-0">Status</th>
+                <th class="text-left py-2 small border-0">Creation Date</th>
                 <th class="text-left py-2 small border-0">Votes</th>
                 <th class="text-left py-2 small border-0">Premium Info</th>
                 <th class="text-left py-2 small border-0">Premium Trial</th>
@@ -57,6 +58,12 @@
                     Online
                 </span>
                 {% endif %}
+            </td>
+
+            <td>
+                <p class="mb-0 text-default">
+                    {{ server.date_created|date("m.d.y") }}
+                </p>
             </td>
 
             <td>
