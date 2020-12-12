@@ -44,7 +44,9 @@ a  {
   }
 
 
-
+  .btn-vote {
+    background-image: linear-gradient(to right, #a1c4fd 0%, #c2e9fb 51%, #a1c4fd 100%);
+  }
 
 
 tr.bg-primary, .bg-premium {

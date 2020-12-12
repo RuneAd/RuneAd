@@ -1,5 +1,5 @@
 <div class="card border-0 shadow-sm overflow-hidden mb-2">
-    <div class="text-white bg-primary card-header py-3">
+    <div class="text-white bg-gradient-primary card-header py-3">
         <div class="row align-items-center">
             <div class="col">
                 Runescape Private Servers
@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
         
         btn.html('{{ icon("three-dots", 16, 16) }}');
         btn.addClass("disabled");
-        btn.removeClass("btn-success btn-danger").addClass("btn-primary");
+        btn.removeClass("btn-success btn-danger").addClass("btn-vote");
         grecaptcha.ready(function() {
             grecaptcha.execute("{{ recaptcha_key }}", {
                 action: 'homepage'
@@ -240,15 +240,15 @@ document.addEventListener('DOMContentLoaded', function(event) {
                             votecnt.html(votes);
                         }
                         
-                        btn.removeClass("btn-primary btn-danger btn-success")
+                        btn.removeClass("btn-vote btn-danger btn-success")
                             .addClass("btn-"+(json.success ? 'success' : 'danger'));
         
                         btn.html(json.success
                             ? '{{ icon("check", 16, 16) }}'
                             : '{{ icon("x", 16, 16) }}');
                         setTimeout(function() {
-                            btn.removeClass("btn-primary btn-danger disabled")
-                                .addClass("btn-primary");
+                            btn.removeClass("btn-vote btn-danger disabled")
+                                .addClass("btn-vote");
                             btn.html('{{ icon("check2-square", 16, 16) }}');
                             locked = false;
                         }, 1000);
