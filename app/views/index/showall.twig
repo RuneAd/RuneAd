@@ -22,9 +22,9 @@
                 <th class="text-left py-2 small border-0">Server</th>
                 <th class="text-left py-2 small border-0">Status</th>
                 <th class="text-left py-2 small border-0">Votes</th>
-                <th class="text-left py-2 small border-0">Owner</th>
             </tr>
         </thead>
+
         {% for server in servers.items() %}
         {% set server_url = friendlyTitle(server.id~' '~server.title) %}
 
@@ -43,9 +43,20 @@
                 </a>
             </td>
 
-            <td>
-                <div class="text-info text-center mt-1"><h3><a href="https://discord.com/users/{{ server.user_id }}" target="_blank">{{ server.username }}#{{ server.discriminator }}</a></h3></div>
+             <td class="text-center small pr-1">
+                <p class="mb-1">{{ start_rank }}</p>
 
+                {% if server.ping == -1  %}
+                <span class="badge badge-danger status-badge small"
+                    data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
+                    Offline
+                </span>
+                {% else %}
+                <span class="badge badge-success status-badge" 
+                    data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
+                    Online
+                </span>
+                {% endif %}
             </td>
 
         </tr>
