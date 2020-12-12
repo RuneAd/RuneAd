@@ -33,10 +33,10 @@ a  {
   }
   
   @keyframes move {
-    from {
+    0% {
       background-position: 0px;
     }
-    to {
+    100% {
       background-position: 1000px;
     }
   }
