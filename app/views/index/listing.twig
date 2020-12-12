@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
         
         btn.html('{{ icon("three-dots", 16, 16) }}');
         btn.addClass("disabled");
-        btn.removeClass("btn-success btn-danger").addClass("btn-vote");
+        btn.removeClass("btn-success btn-danger").addClass("btn-primary");
         grecaptcha.ready(function() {
             grecaptcha.execute("{{ recaptcha_key }}", {
                 action: 'homepage'
@@ -240,15 +240,15 @@ document.addEventListener('DOMContentLoaded', function(event) {
                             votecnt.html(votes);
                         }
                         
-                        btn.removeClass("btn-vote btn-danger btn-success")
+                        btn.removeClass("btn-primary btn-danger btn-success")
                             .addClass("btn-"+(json.success ? 'success' : 'danger'));
         
                         btn.html(json.success
                             ? '{{ icon("check", 16, 16) }}'
                             : '{{ icon("x", 16, 16) }}');
                         setTimeout(function() {
-                            btn.removeClass("btn-vote btn-danger disabled")
-                                .addClass("btn-vote");
+                            btn.removeClass("btn-primary btn-danger disabled")
+                                .addClass("btn-primary");
                             btn.html('{{ icon("check2-square", 16, 16) }}');
                             locked = false;
                         }, 1000);
