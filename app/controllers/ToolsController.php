@@ -65,6 +65,7 @@ class ToolsController extends Controller {
         $paginator = (new Paginator($found, $pageNum, 20))->paginate();
         $results   = $paginator->getResults();
         $this->set("results", $results);
+        return true;
     }
 
     private function getItemList() {
