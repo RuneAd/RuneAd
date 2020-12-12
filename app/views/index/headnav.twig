@@ -3,12 +3,12 @@
          <div class="row flex-md-row flex-column">
              <div class="col mb-sm-3 mb-md-0">
 
-                 <a href="{{ url('premium') }}" class="btn btn-success btn-lg pulse-sponsor">Go Premium</a>
-                 <a href="{{ url('sponsor') }}" class="btn btn-info btn-lg pulse">Sponsor Info</a>
+                 <a href="{{ url('premium') }}" class="btn btn-success btn-sm">Go Premium</a>
+                 <a href="{{ url('sponsor') }}" class="btn btn-info btn-sm">Sponsor Info</a>
              </div>
              <div class="col text-sm-left text-md-right">
                  <a href="{{ url('servers/add') }}"
-                     class="btn btn-success btn-lg shadow-none {{ user is defined ? '' : 'disabled' }}"
+                     class="btn btn-success btn-sm {{ user is defined ? '' : 'disabled' }}"
                      data-toggle="tooltip"
                      data-title="Add Server">
                      Add Server
