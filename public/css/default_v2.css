@@ -35,9 +35,11 @@ body {
   @keyframes move {
     0% {
       background-position: 0px;
+      -webkit-animation-delay: 150ms;
     }
     100% {
       background-position: 1000px;
+      -webkit-animation-delay: 150ms;
     }
   }
 
