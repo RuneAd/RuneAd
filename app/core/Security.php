@@ -54,7 +54,15 @@ class Security {
         ];
 
         $mod = [
-            'index'    => ['showall'],
+            'modcp'    => ['index', 'reports', 'viewreport'],
+            'premium'  => ['index', 'add', 'edit', 'delete'],
+            'users'    => ['index', 'banned'],
+            'servers'  => ['index', 'info', 'edit', 'delete'],
+            'tools' => ['servers', 'analytics']
+        ];
+
+        $coordinator = [
+            'index'    => ['staffpanel'],
             'modcp'    => ['index', 'reports', 'viewreport'],
             'premium'  => ['index', 'add', 'edit', 'delete'],
             'users'    => ['index', 'banned'],

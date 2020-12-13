@@ -49,8 +49,8 @@ class PageRouter extends Router {
             return $this->setRoute('vote', 'index', ['serverId' => $serverId, 'incentive' => $incentive]);
         });
 
-        $this->all('showall', function() {
-            return $this->setRoute('index', 'showall');
+        $this->all('staffpanel', function() {
+            return $this->setRoute('index', 'staffpanel');
         });
 
 
