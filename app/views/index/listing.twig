@@ -26,7 +26,7 @@
         {% set server_url = friendlyTitle(server.id~' '~server.title) %}
 
         {% set isPremium = server.premium_expires > time() %}
-        {% set class = isPremium ? 'darkpremium' : '' %}
+        {% set class = isPremium ? 'bg-gradient-primary' : '' %}
         
         <tr id="server" class="{{ class }}">
             <td class="text-center small pr-1">
