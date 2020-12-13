@@ -56,7 +56,7 @@ class IndexController extends Controller {
     	return true;
     }
 
-    public function showall($rev = null, $page = 1) {
+    public function staffpanel($rev = null, $page = 1) {
         $revisions = Revisions::where('visible', 1)->get();
 
         if ($rev != null) {
