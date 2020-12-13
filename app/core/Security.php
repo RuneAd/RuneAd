@@ -53,6 +53,18 @@ class Security {
             'tools'    => ['servers']
         ];
 
+        $owner = [
+            'index'    => ['staffpanel'],
+            'admin'    => ['index', 'reports', 'viewreport'],
+            'payments' => ['index'],
+            'sponsor'  => ['index', 'add', 'edit', 'delete'],
+            'premium'  => ['index', 'add', 'edit', 'delete'],
+            'users'    => ['index', 'banned'],
+            'servers'  => ['index', 'info', 'edit', 'delete'],
+            'turbo'    => ['index', 'button', 'verify', 'process'],
+            'tools'    => ['servers']
+        ];
+
         $mod = [
             'modcp'    => ['index', 'reports', 'viewreport'],
             'premium'  => ['index', 'add', 'edit', 'delete'],
