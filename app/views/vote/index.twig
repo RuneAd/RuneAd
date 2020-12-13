@@ -121,11 +121,10 @@
 
         <div class="col-lg-4 col-md-12 col-sm-12">
 
-            <div class="card shadow-sm mb-3 my-card bg-{{ server.is_online ? 'success' : 'danger' }}">
+            <div class="card shadow-sm mb-3 my-card">
                 <div class="text-center card shadow text-white p-3 bg-{{ server.is_online ? 'success' : 'danger' }}">
                     <span class="fa fa-signal" aria-hidden="true">&ensp;Status</span>
                 </div>
-
                     <div class="text-info text-center mt-1">
                         <h4 class="mb-0 text-white">
                         {{ server.is_online ? 'Online' : 'Offline' }}
