@@ -148,12 +148,13 @@
                     </div>
             </div> 
 
-                <div class="card shadow-sm border-dark mb-3">
-                    <div class="card border-dark shadow text-dark p-3 my-card">
-                        <span class="fa fa-link" aria-hidden="true">&ensp;Links</span>
-                    </div>
+            <div class="card shadow-sm mb-3 my-card bg-primary">
+                <h4 class="text-center card shadow text-white p-3 bg-primary">
+                    <span class="fa fa-link" aria-hidden="true">&ensp;Links</span>
+                </h4>
                     <div class="text-center mt-1">
-                        <h6 class="mb-2">
+                        <h6 class="mb-2 text-white">
+                            
                             {% if server.discord_link and server.discord_link != "" %}
                             <a href="{{ server.discord_link }}" class="btn btn-primary btn-sm py-1 text-uppercase mr-0"
                                 style="font-size:9px;"
@@ -168,10 +169,12 @@
                                 {{ icon('link-45deg') }} WEBSITE
                             </a>
                             {% endif %}
-                        </h6>
-                    </div>
 
-                </div>
+
+                        </h6>    
+                    </div>
+            </div> 
+
         </div> 
     </div>
 
