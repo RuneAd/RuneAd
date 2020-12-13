@@ -41,7 +41,10 @@
             <td class="text-right">
                 <div class="d-flex align-items-center justify-content-end">
                     <div class="pr-1">
-                        <a href="{{ sponsor.discord_link }}" target="_blank"
+                        <a href="{{ sponsor.discord_link }}" 
+                        data-toggle="tooltip"
+                        data-title="Discord"
+                        target="_blank"
                             class="btn btn-lg btn-link text-primary {{ sponsor.discord_link ? '' : 'disabled' }}">
                             {{ icon('discord', 24, 24) }}
                         </a>
