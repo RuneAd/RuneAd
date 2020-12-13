@@ -124,7 +124,7 @@ class Controller {
             ],
             'index' => [
                 'index' => [
-                    'title' => 'RSPS Toplist | RuneScape Private Servers | RSPS List',
+                    'title' => 'RSPS Toplist | RuneScape Private Servers',
                     'meta'  => 'Looking for the best Runescape Private Servers 2020? Come get involved in our RSPS Toplist, and increase your website traffic and attract your players today!'
                 ]
             ],
