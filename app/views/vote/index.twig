@@ -122,13 +122,12 @@
         <div class="col-lg-4 col-md-12 col-sm-12">
             <div class="card shadow-sm border-success mb-3">
                 <div class="card border-success shadow text-primary p-3 my-card">
-                    <span class="fa fa-signal" aria-hidden="true">&ensp;Status</span>
-                </div>
-                    <div class="text-info text-center mt-1">
-                        <h4 class="mb-0 text-{{ server.is_online ? 'success' : 'danger' }}">
+                    <span class="fa fa-signal" aria-hidden="true">&ensp;Status</span> | 
+                    <h4 class="mb-0 text-{{ server.is_online ? 'success' : 'danger' }}">
                         {{ server.is_online ? 'Online' : 'Offline' }}
-                        </h4>    
-                    </div>
+                        </h4>  
+                </div>
+                   
                 </div>
 
                <!--  <div class="card shadow-sm border-primary mb-3">
