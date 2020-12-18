@@ -75,12 +75,7 @@
                         {% endif %}
 
 
-                        <div class="row">
-                            <div class="text-right col-md-12">
-                                <h6 class="mb-0">
-                                Votes: {{ server.votes }}
-                            </h6></div>
-                          </div>       
+                        
 
                         </div>
                     </div>
@@ -124,7 +119,14 @@
                             </div>
                         </div> -->
                     
-                    
+                        <div class="card shadow-sm border-0 mb-3">
+                            <div class="card-body">
+                                <small class="text-muted">Votes</small>
+                                <h6 class="mb-0">
+                                    {{ server.votes }}
+                                </h6>
+                            </div>
+                        </div>
 
                         <div class="card shadow-sm border-0 mb-3">
                             <div class="card-body">
@@ -137,7 +139,6 @@
                             </div>
                         </div>
 
-                        
 
                         <div class="card shadow-sm border-0 mb-3">
                             <div class="card-body">
