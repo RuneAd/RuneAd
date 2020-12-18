@@ -15,7 +15,8 @@
                                 {% if server.website and server.website != "" %}
                                 <a href="{{ server.website }}" class="btn btn-primary btn-sm py-1 text-uppercase"
                                     style="font-size:9px;"
-                                    data-title="Server Website"
+                                    data-toggle="tooltip"
+                                    data-title="Website"
                                     rel="sponsored" target="_blank">
                                     {{ icon('link-45deg') }}
                                 </a> 
@@ -23,7 +24,8 @@
                                 {% if server.discord_link and server.discord_link != "" %}
                                 <a href="{{ server.discord_link }}" class="btn btn-primary btn-sm py-1 text-uppercase mr-0"
                                     style="font-size:9px;"
-                                    data-title="Server Discord"
+                                    data-toggle="tooltip"
+                                    data-title="Discord"
                                     target="_blank">
                                     {{ icon('discord') }} 
                                 </a>
