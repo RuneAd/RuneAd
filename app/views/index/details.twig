@@ -10,12 +10,12 @@
                 <div class="card-body">
                     <div class="row align-items-center flex-sm-column flex-lg-row">
                         <div class="col mb-sm-3 mb-lg-0">
-                            <h4 class="text-center mb-0">
+                            <h4 class="text-left mb-0">
                                 {{ server.title }}
                             </h4>
-                            <span class="">Revision: {{ server.revision }}</span>
+                            <span class="text-left">Revision: {{ server.revision }}</span>
                         </div>
-                        <div class="col text-center">
+                        <div class="col">
                             {% if server.banner_url %}
                         <a href="{{ url('details/'~server_url) }}" class="banner-img">
                             <img data-src="{{ banner(server.banner_url) }}"
