@@ -33,6 +33,9 @@
                             </h4>
 
                             <span class="text-left">Revision: {{ server.revision }}</span>
+                            <h6 class="mb-0 text-{{ server.is_online ? 'success' : 'danger' }}">
+                                {{ server.is_online ? 'Online' : 'Offline' }}
+                            </h6>
                         
                         </div>
                         <div class="col">
@@ -86,7 +89,7 @@
                                      Report
                                 </a>
                             </div> 
-                        </div> -->
+                        </div> 
 
                         
                         <div class="card shadow-sm border-0 mb-3">
@@ -96,7 +99,7 @@
                                     {{ server.is_online ? 'Online' : 'Offline' }}
                                 </h6>
                             </div>
-                        </div>
+                        </div> -->
                     
                     
 
