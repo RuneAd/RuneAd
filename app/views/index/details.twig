@@ -12,22 +12,24 @@
                         <div class="col mb-sm-3 mb-lg-0">
                             <h4 class="text-left mb-0">
                                 {{ server.title }}
+                                {% if server.website and server.website != "" %}
+                                <a href="{{ server.website }}" class="btn btn-primary btn-sm py-1 text-uppercase"
+                                    style="font-size:9px;"
+                                    rel="sponsored" target="_blank">
+                                    {{ icon('link-45deg') }}
+                                </a> 
+                                {% endif %}
+                                {% if server.discord_link and server.discord_link != "" %}
+                                <a href="{{ server.discord_link }}" class="btn btn-primary btn-sm py-1 text-uppercase mr-0"
+                                    style="font-size:9px;"
+                                    target="_blank">
+                                    {{ icon('discord') }} 
+                                </a>
+                                {% endif %}
                             </h4>
+
                             <span class="text-left">Revision: {{ server.revision }}</span>
-                            {% if server.website and server.website != "" %}
-                            <a href="{{ server.website }}" class="btn btn-primary btn-sm py-1 text-uppercase"
-                                style="font-size:9px;"
-                                rel="sponsored" target="_blank">
-                                {{ icon('link-45deg') }}
-                            </a> 
-                            {% endif %}
-                            {% if server.discord_link and server.discord_link != "" %}
-                            <a href="{{ server.discord_link }}" class="btn btn-primary btn-sm py-1 text-uppercase mr-0"
-                                style="font-size:9px;"
-                                target="_blank">
-                                {{ icon('discord') }} 
-                            </a>
-                            {% endif %}
+                        
                         </div>
                         <div class="col">
                             {% if server.banner_url %}
