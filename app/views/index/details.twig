@@ -37,26 +37,7 @@
                         </div>
                         <div class="text-right col">
 
-
-                            <div class="row">
-                                <div class="col-md-6">Revision: {{ server.revision }}  </div>
-                                <div class="col-md-6"> 
-                                    {% if server.ping == -1  %}
-                <span class="badge badge-danger status-badge small"
-                    data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
-                    Offline
-                </span>
-                {% else %}
-                <span class="badge badge-success status-badge" 
-                    data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
-                    Online
-                </span>
-                {% endif %}
-                            </div>
-                              </div>
-
-                          
-                                
+                                  
 
                             {% if server.banner_url %}
                        
@@ -76,6 +57,24 @@
                                 class="img-fluid rounded lazy">
                         
                         {% endif %}
+
+
+                        <div class="row">
+                            <div class="col-md-6">Revision: {{ server.revision }}  </div>
+                            <div class="col-md-6"> 
+                                {% if server.ping == -1  %}
+            <span class="badge badge-danger status-badge small"
+                data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
+                Offline
+            </span>
+            {% else %}
+            <span class="badge badge-success status-badge" 
+                data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
+                Online
+            </span>
+            {% endif %}
+                        </div>
+                          </div>              
 
                         </div>
                     </div>
