@@ -182,6 +182,18 @@
                         </div>
                     </div>
                 </div>
+
+
+                <div class="card shadow-sm border-0 mb-3">
+                    <div class="card-body">
+                        <small class="text-muted">Meta Info & Tags</small>
+                        <h6 class="mb-0">
+                            {{ server.meta_info|striptags }} | {{ server.meta_tags|raw }}
+                        </h6>
+                    </div>
+                </div>
+
+
             </div>
 
             {{ content|raw }}
