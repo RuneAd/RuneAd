@@ -10,12 +10,12 @@
                 <div class="card-body">
                     <div class="row align-items-center flex-sm-column flex-lg-row">
                         <div class="col mb-sm-3 mb-lg-0">
-                            <h4 class="mb-0">
+                            <h4 class="text-center mb-0">
                                 {{ server.title }}
                             </h4>
                             <span class="">Revision: {{ server.revision }}</span>
                         </div>
-                        <div class="col text-lg-right">
+                        <div class="col text-center">
                             {% if server.banner_url %}
                         <a href="{{ url('details/'~server_url) }}" class="banner-img">
                             <img data-src="{{ banner(server.banner_url) }}"
@@ -65,15 +65,6 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="text-center mb-2 a2a_kit a2a_kit_size_32 a2a_default_style">
-                            <a class="a2a_dd" href="Https://runead.com/"></a>
-                            <a class="a2a_button_facebook"></a>
-                            <a class="a2a_button_twitter"></a>
-                            <a class="a2a_button_reddit"></a>
-                            <a class="a2a_button_digg"></a>
-                            <a class="a2a_button_blogger"></a>
-                            <a class="a2a_button_copy_link"></a>
-                            </div>
 
                         <div class="card shadow-sm border-0 mb-3">
                             <div class="card-body">
