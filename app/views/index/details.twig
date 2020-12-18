@@ -42,15 +42,15 @@
                                 <div class="col-md-6">Revision: {{ server.revision }}  </div>
                                 <div class="col-md-6"> 
                                     {% if server.ping == -1  %}
-                <span class="badge badge-danger status-badge small"
+                <h6 class="badge badge-danger status-badge small"
                     data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
                     Offline
-                </span>
+                                </h6>
                 {% else %}
-                <span class="badge badge-success status-badge" 
+                <h6 class="badge badge-success status-badge" 
                     data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
                     Online
-                </span>
+                            </h6>
                 {% endif %}
                             </div>
                               </div>
