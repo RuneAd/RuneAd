@@ -37,9 +37,17 @@
                         </div>
                         <div class="text-right col">
 
-                                <h6 class="text-{{ server.is_online ? 'success' : 'danger' }}">
-                                    Revision: {{ server.revision }}  {{ server.is_online ? 'Online' : 'Offline' }}
+
+                            <div class="row">
+                                <div class="col-md-6">Revision: {{ server.revision }}  </div>
+                                <div class="col-md-6"> 
+                                    <h6 class="text-{{ server.is_online ? 'success' : 'danger' }}">
+                                    {{ server.is_online ? 'Online' : 'Offline' }}
                                 </h6>
+                            </div>
+                              </div>
+
+                          
                                 
 
                             {% if server.banner_url %}
