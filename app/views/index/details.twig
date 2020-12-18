@@ -14,6 +14,20 @@
                                 {{ server.title }}
                             </h4>
                             <span class="text-left">Revision: {{ server.revision }}</span>
+                            {% if server.website and server.website != "" %}
+                            <a href="{{ server.website }}" class="btn btn-primary btn-sm py-1 text-uppercase"
+                                style="font-size:9px;"
+                                rel="sponsored" target="_blank">
+                                {{ icon('link-45deg') }}
+                            </a> 
+                            {% endif %}
+                            {% if server.discord_link and server.discord_link != "" %}
+                            <a href="{{ server.discord_link }}" class="btn btn-primary btn-sm py-1 text-uppercase mr-0"
+                                style="font-size:9px;"
+                                target="_blank">
+                                {{ icon('discord') }} 
+                            </a>
+                            {% endif %}
                         </div>
                         <div class="col">
                             {% if server.banner_url %}
@@ -43,7 +57,7 @@
                 <div class="col-sm-12 col-lg-4">
                     <div class="sticky-top" style="top:18px;">
 
-                        <div class="d-flex ">
+                       <!-- <div class="d-flex ">
                             <div class="flex-fill pr-1">
                                 <a href="{{ server.website }}"
                                     class="btn btn-default btn-block mb-3 {{ server.website ? '' : 'disabled' }}" target="_blank">
@@ -57,14 +71,14 @@
                                     {{ icon('discord', 20, 20) }} Discord
                                 </a>
                             </div>
-                            <div class="flex-fill">
+                            <!-- <div class="flex-fill">
                                 <a href="{{ url('report/'~seo_link) }}"
                                     class="btn btn-danger btn-block mb-3" target="_blank">
                                     {{ icon('flag', 20, 20) }}
                                      Report
                                 </a>
-                            </div>
-                        </div>
+                            </div> 
+                        </div> -->
 
                         <div class="card shadow-sm border-0 mb-3">
                             <div class="card-body">
