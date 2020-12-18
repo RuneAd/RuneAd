@@ -32,24 +32,26 @@
                         
                         </div>
                         <div class="col">
+                            
                             {% if server.banner_url %}
-                        <a href="{{ url('details/'~server_url) }}" class="banner-img">
+                       
                             <img data-src="{{ banner(server.banner_url) }}"
                                 src="{{ url('public/img/banner-loading.png') }}"
                                 id="banner"
                                 alt="{{ server.banner_url }}"
                                 style="margin-top:14px;"
                                 class="img-fluid rounded lazy">
-                        </a>
+                       
                         {% else %}
-                        <a href="{{ url('details/'~server_url) }}" class="banner-img">
+                       
                             <img src="{{ url('public/img/banner-'~theme~'.png') }}"
                                 id="banner"
                                 alt="{{ url('public/img/banner-'~theme~'.png') }}"
                                 style="margin-top:14px;"
                                 class="img-fluid rounded lazy">
-                        </a>
+                        
                         {% endif %}
+
                         </div>
                     </div>
                 </div>
