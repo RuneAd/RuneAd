@@ -44,12 +44,12 @@
                                     {% if server.ping == -1  %}
                 <h6 class="badge badge-danger status-badge small"
                     data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
-                    Offline
-                                </h6>
+                    <h6>Offline</h6>
+                    </h6>
                 {% else %}
                 <h6 class="badge badge-success status-badge" 
                     data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
-                    Online
+                    <h6>Online</h6>>
                             </h6>
                 {% endif %}
                             </div>
