@@ -38,8 +38,7 @@
                         <div class="text-right col">
 
                             <div class="row">
-                                <div class="text-right col-md-6">Revision: {{ server.revision }}  </div>
-                                <div class="col-md-6"> 
+                                <div class="text-right col-md-12">Revision: {{ server.revision }}  
                                     {% if server.ping == -1  %}
                 <span class="badge badge-danger status-badge small"
                     data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
@@ -51,7 +50,8 @@
                     Online
                 </span>
                 {% endif %}
-                            </div>
+                                </div>
+                               
                               </div>                                
 
                             {% if server.banner_url %}
