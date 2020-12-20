@@ -103,24 +103,21 @@
             <td class="text-right">
                 {% set btnclass = isPremium
                     and theme == "dark" ? 'btn-primary' : 'btn-default' %}
-
-
                   
-
-
-
                 <div class="d-flex align-items-center justify-content-end">
-                    <div class="pr-3">
+                    <!-- <div class="pr-3">
                         <p class="mb-0" id="votes">{{ server.votes|number_format }}</p>
                         <span class="small text-muted mb-0">Votes</span>
-                    </div>
+                    </div> -->
                     {% if is_mobile == false %}
                     <div class="pr-1 d-none d-lg-flex">
+                        {{ icon('check2-square', 16, 16) }}
+                        {{ server.votes|number_format }} Votes
                         <a href="{{ url('vote/'~server_url) }}"
                             data-toggle="tooltip"
                             data-title="Vote"
-                            data-id="{{ server.id }}" class="btn btn-primary vote-btn">
-                            {{ icon('check2-square', 16, 16) }}
+                            data-id="{{ server.id }}" class="btn btn-primary btn-sm vote-btn">
+                            
                         </a>
                     </div>
                     {% endif %}
