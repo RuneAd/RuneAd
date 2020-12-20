@@ -111,11 +111,10 @@
                     </div>
                     {% if is_mobile == false %}
                     <div class="pr-1 d-none d-lg-flex">
-                        
                         <a href="{{ url('vote/'~server_url) }}"
                             data-toggle="tooltip"
                             data-title="Vote"
-                            data-id="{{ server.id }}" class="btn btn-primary btn-sm vote-btn">
+                            data-id="{{ server.id }}" class="btn btn-primary vote-btn">
                             {{ icon('check2-square', 16, 16) }}
                         </a>
                     </div>
