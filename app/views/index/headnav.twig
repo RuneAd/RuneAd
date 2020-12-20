@@ -1,4 +1,11 @@
-<div class="card cardtop overflow-hidden">
+<nav class="navbar navbar-light bg-light">
+  <form class="form-inline">
+    <button class="btn btn-outline-success" type="button">Main button</button>
+    <button class="btn btn-sm btn-outline-secondary" type="button">Smaller button</button>
+  </form>
+</nav>
+
+<div class="card overflow-hidden">
      <div class="card-body">
          <div class="row flex-md-row flex-column">
              <div class="col mb-sm-3 mb-md-0">
@@ -11,7 +18,7 @@
                      class="btn btn-success btn-md {{ user is defined ? '' : 'disabled' }}"
                      data-toggle="tooltip"
                      data-title="Add Server">
-                     Add Server
+                     <i class="fi-xwsuxl-plus-solid"></i> Server
                  </a>
              </div>
          </div>
