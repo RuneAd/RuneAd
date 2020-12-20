@@ -104,6 +104,13 @@
                 {% set btnclass = isPremium
                     and theme == "dark" ? 'btn-primary' : 'btn-default' %}
 
+
+                    <div class="displayvotes">
+                        <i class="fas fa-vote-yea"></i>{{ server.votes|number_format }} Votes
+                    </div>
+
+
+
                 <div class="d-flex align-items-center justify-content-end">
                     <div class="pr-3">
                         <p class="mb-0" id="votes">{{ server.votes|number_format }}</p>

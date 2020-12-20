@@ -16,6 +16,20 @@ a  {
     background-color: #36393F
 }
 
+.displayvotes {
+    color: #000;
+    background: #667db6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    width: 97%;
+    height: 34px;
+    vertical-align: middle;
+    line-height: 34px;
+    font-size: 14px;
+    font-weight: normal;
+    border: 1px solid transparent;
+}
+
 .cardtop {
 background: #485563;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #29323c, #485563);  /* Chrome 10-25, Safari 5.1-6 */
@@ -27,37 +41,6 @@ background: #43C6AC;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #191654, #43C6AC);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #191654, #43C6AC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-
-.xmastext {
-    --color1: #E40010;
-    --color2: #00B32C;
-    font-family: "Open Sans", sans-serif;
-    text-align: center;
-    font-size: 46px;
-    background: repeating-linear-gradient(
-      45deg,
-      var(--color1),
-      var(--color1) 30px,
-      var(--color2) 30px,
-      var(--color2) 60px
-    );
-    background-clip: text;
-    color: transparent;
-    -webkit-background-clip: text;
-    animation: 40s linear 0s infinite move;
-  }
-  
-  @keyframes move {
-    0% {
-      background-position: 0px;
-      -webkit-animation-delay: 150ms;
-    }
-    100% {
-      background-position: 1000px;
-      -webkit-animation-delay: 150ms;
-    }
-  }
-
 
   .btn-vote {
     background-image: linear-gradient(to right, #a1c4fd 0%, #c2e9fb 51%, #a1c4fd 100%);
