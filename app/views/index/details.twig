@@ -183,11 +183,13 @@
             {{ content|raw }}
         </div>
     </div>
-</div>
-
-<!-- Bottom FAQ is addeed after main content to keep in-line style without messing up any sizing of the bootstrap Accordion -->
+    <!-- Bottom FAQ is addeed after main content to keep in-line style without messing up any sizing of the bootstrap Accordion -->
 
 {% include 'index/components/bottomfaq.twig' %}
+
+</div>
+
+
 
 {% set recaptcha_key = constant('recaptcha')['public'] %}
 
