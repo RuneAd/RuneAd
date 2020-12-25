@@ -229,7 +229,7 @@ class Controller {
             'commands' => [
                 'index' => [
                     'title' => 'RSPS Commands | RuneScape Private Server Toplist | RSPS List',
-                    'meta' => 'Common and most used RSPS Commands with Java code on how to use them! Check them out at RuneAd RSPS List | RuenScape Private Servers'
+                    'meta' => 'Common and most used RSPS Commands with Java code on how to use them! Check them out at RuneAd RSPS List | RuneScape Private Servers'
                 ],
             ],
             'videos' => [
