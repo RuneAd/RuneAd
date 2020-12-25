@@ -1,0 +1,94 @@
+{%  extends 'layout.twig' %}
+
+{% block content %}
+
+<div class="container" style="margin-top:-40px;">
+    {% include 'commands/components/header.twig' %}
+
+    <div class="row mb-3">
+        <div class="col-sm-12 col-lg-2">
+
+            {% include 'commands/components/sidebar_nav.twig' %}
+            
+
+        </div>
+        <div class="col-sm-12 col-lg-10">
+           
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Type</th>
+                <th scope="col">Command</th>
+                <th scope="col">Usage</th>
+                <th scope="col">Info</th>
+                <th scope="col">Code</th>
+              </tr>
+            </thead>
+            <tbody> 
+
+              <tr>
+                <th scope="row"><span class="badge bg-primary text-white">Player</span></th>
+                <th scope="row"><span class="badge bg-warning text-white">::players</span></th>
+                <td><span class="badge bg-warning text-white">::players</span> </td>
+                <td>Displays number of players online</td>
+                <td> 
+                  <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#CommandTele">
+                    Code
+                  </button>
+              </td>
+              </tr>  
+
+            </tbody>
+          </table>
+
+          <div class="modal fade" id="CommandTele" tabindex="-1" role="dialog" aria-labelledby="CommandTele" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Command code: <span class="badge bg-warning text-white">::tele</span>
+                  </br>
+                  <small class="text-muted">This code is an example and may need editing to match your source.</small>
+                  </h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  </div>
+                <div class="modal-body">
+                  <style>
+                    code[class*="language-"], pre[class*="language-"] {
+                        font-size: .7rem;
+                        text-align: left;
+                    }
+                </style>
+                <span class="text-left badge bg-dark text-white badge-lg badge-pill">JAVA</span>
+
+                <pre class="text-left language-java">
+                <code class="text-left language-java">
+if (command[0].equals("tele")) {
+  int x = Integer.valueOf(command[1]), y = Integer.valueOf(command[2]);
+  int z = player.getPosition().getZ();
+  if (command.length > 3) {
+  z = Integer.valueOf(command[3]);
+  }
+  Position position = new Position(x, y, z);
+  player.moveTo(position);
+  player.getPacketSender().sendConsoleMessage("Teleporting to " + position.toString());
+}
+                </code>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+    </div>
+
+    {{ content|raw }}
+</div>
+
+{%  endblock %}
