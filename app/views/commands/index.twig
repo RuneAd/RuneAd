@@ -30,7 +30,7 @@
                 <td>::master</td>
                 <td>Gives player all 99 skills</td>
                 <td> 
-                  <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#collapseMaster" aria-expanded="false" aria-controls="collapseMaster">
+                  <button class="btn btn-sm btn-primary" type="button" data-toggle="modal" data-target="#collapseMaster" aria-expanded="false" aria-controls="collapseMaster">
                   Code
                 </button>
               </td>
@@ -41,26 +41,32 @@
                 <td>::pickup <span class="badge bg-info text-white">ItemID</span> <span class="badge bg-success text-white">number</span></td>
                 <td>Gives player item + x amount</td>
                 <td> 
-                  <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#collapsePickup" aria-expanded="false" aria-controls="collapsePickup">
-                  Code
-                </button>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#CommandPickup">
+                    Code
+                  </button>
               </td>
               </tr>      
             </tbody>
           </table>
 
-          <div class="collapse" id="collapsePickup">
-            <div class="card card-body">
-             Pickup Code here
-            </div>
-          </div>   
-
-          <div class="collapse" id="collapseMaster">
-            <div class="card card-body">
-             Master Code here
+          <div class="modal fade" id="CommandPickup" tabindex="-1" role="dialog" aria-labelledby="CommandPickupTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">::pickup </h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  Code heree
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
             </div>
           </div>
-
 
           
         </div>
