@@ -74,7 +74,7 @@
                 <div class="mt-1">
                     {% if server.meta_tags %} 
                     <span class="badge badge-info">
-                        {{ server.meta_tags }}
+                        {{ server.meta_tags|replace({'"': "","," : ",","[" : "","]" : ""}) }}
                     </span>
                     {% endif %}
                 </div> 
