@@ -72,9 +72,11 @@
                 </a>
                 
                 <div class="mt-2">
-                  {% if server.meta_tags %}
-                  {{ server.meta_tags }}
-                  {% endif %}
+                    {% if server.meta_tags %} 
+                    <span class="badge badge-info">
+                        {{ server.meta_tags }}
+                    </span>
+                    {% endif %}
                 </div> 
 
 
