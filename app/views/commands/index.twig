@@ -111,15 +111,15 @@
 
                 <pre class="text-left language-java">
                 <code class="text-left language-java">
-                if (command[0].equalsIgnoreCase("master")) {
-                  for (Skill skill : Skill.VALUES) {
-                    int level = SkillManager.getMaxAchievingLevel(skill);
-                    player.getSkillManager().setCurrentLevel(skill, level).setMaxLevel(skill, level).setExperience(skill,
-                        SkillManager.getExperienceForLevel(level == 120 ? 120 : 99));
-                  }
-                  player.getPacketSender().sendConsoleMessage("You are now a master of all skills.");
-                  player.getUpdateFlag().flag(Flag.APPEARANCE);
-                }
+if (command[0].equalsIgnoreCase("master")) {
+  for (Skill skill : Skill.VALUES) {
+  int level = SkillManager.getMaxAchievingLevel(skill);
+    player.getSkillManager().setCurrentLevel(skill, level).setMaxLevel(skill, level).setExperience(skill,
+      SkillManager.getExperienceForLevel(level == 120 ? 120 : 99));
+}
+  player.getPacketSender().sendConsoleMessage("You are now a master of all skills.");
+  player.getUpdateFlag().flag(Flag.APPEARANCE);
+}
                 </code>
 
                 </div>
