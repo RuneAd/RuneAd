@@ -8,14 +8,14 @@
 
              All
          </a>
-        <a href="" class="list-group-item {{ action == "owner" ? "active" : "" }}">
+        <a href="{{ url('commands/owner') }}" class="list-group-item {{ action == "owner" ? "active" : "" }}">
              <div class="float-left mr-2" style="margin-top:-1px;">
                  {{ icon('file-arrow-down', 18, 18) }}
              </div>
              Owner
          </a>
 
-         <a href="{{ url('commands/owner') }}" class="list-group-item {{ action == "web" ? "active" : "" }}">
+         <a href="" class="list-group-item {{ action == "web" ? "active" : "" }}">
             <div class="float-left mr-2" style="margin-top:-1px;">
                 {{ icon('file-arrow-down', 18, 18) }}
             </div>
