@@ -70,35 +70,10 @@
                         id="banner"
                         class="rounded w-100"/>
                 </a>
-
-                  <!-- Display of Meta Tags for Premium Servers only -->
-                {% if isPremium  %}
-                {% if server.meta_tags %} 
-                <span class="badge badge-info">
-                    {{ server.meta_tags|raw }}
-                </span>
-                {% endif %}
-                {% endif %}
-                 <!-- End Meta Tags display-->
                 
-                <!-- <div class="mt-2">
+                <div class="mt-2">
                     {% if isPremium  %}
 
-                    {% if server.discord_link and server.discord_link != "" %}
-                    <a href="{{ server.discord_link }}" class="btn btn-primary btn-sm py-1 text-uppercase mr-0"
-                        style="font-size:9px;"
-                        target="_blank">
-                        {{ icon('discord') }} DISCORD
-                    </a>
-                    {% endif %}
-                    
-                    {% if server.website and server.website != "" %}
-                    <a href="{{ server.website }}" class="btn btn-primary btn-sm py-1 text-uppercase"
-                        style="font-size:9px;"
-                        rel="sponsored" target="_blank">
-                        {{ icon('link-45deg') }} WEBSITE
-                    </a>
-                    {% endif %}
 			        <div class="mt-2"  style="max-width:520px;">
                         {% set tags = server.meta_tags|json_decode %}
                         {% for tag in tags %}
@@ -107,7 +82,9 @@
                     </div>
                     {% endif %}
                     
-                </div> -->
+                </div> 
+
+
             </td>
 
             <td class="text-right">
