@@ -101,7 +101,32 @@
                   </button>
                   </div>
                 <div class="modal-body">
-                  Master Code here
+                  
+                  
+                  <style>
+                    code[class*="language-"], pre[class*="language-"] {
+                        font-size: .6rem;
+                    }
+                </style>
+                <span class="badge bg-dark text-white badge-lg badge-pill">JAVA</span>
+
+                <pre class="language-php">
+                <code class="language-php">
+                &lt;if (command[0].equalsIgnoreCase("master")) {
+                  for (Skill skill : Skill.VALUES) {
+                    int level = SkillManager.getMaxAchievingLevel(skill);
+                    player.getSkillManager().setCurrentLevel(skill, level).setMaxLevel(skill, level).setExperience(skill,
+                        SkillManager.getExperienceForLevel(level == 120 ? 120 : 99));
+                  }
+                  player.getPacketSender().sendConsoleMessage("You are now a master of all skills.");
+                  player.getUpdateFlag().flag(Flag.APPEARANCE);
+                }
+                ?&gt;
+                </code>
+
+
+
+
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
