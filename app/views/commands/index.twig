@@ -128,13 +128,13 @@ if (!found) {
  }
                 </code>
                 </div>
+
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
               </div>
             </div>
           </div>
-
 
           <div class="modal fade" id="CommandMaster" tabindex="-1" role="dialog" aria-labelledby="CommandMasterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -177,6 +177,50 @@ if (command[0].equalsIgnoreCase("master")) {
               </div>
             </div>
           </div>
+
+          <div class="modal fade" id="CommandIPBan" tabindex="-1" role="dialog" aria-labelledby="CommandIPBan" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Command code: <span class="badge bg-warning text-white">::ipban</span>
+                  </br>
+                  <small class="text-muted">This code is an example and may need editing to match your source.</small>
+                  </h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  </div>
+                <div class="modal-body">
+                  <style>
+                    code[class*="language-"], pre[class*="language-"] {
+                        font-size: .7rem;
+                        text-align: left;
+                    }
+                </style>
+                <span class="text-left badge bg-dark text-white badge-lg badge-pill">JAVA</span>
+
+                <pre class="text-left language-java">
+                <code class="text-left language-java">
+if (command[0].equals("tele")) {
+  int x = Integer.valueOf(command[1]), y = Integer.valueOf(command[2]);
+  int z = player.getPosition().getZ();
+  if (command.length > 3) {
+  z = Integer.valueOf(command[3]);
+  }
+  Position position = new Position(x, y, z);
+  player.moveTo(position);
+  player.getPacketSender().sendConsoleMessage("Teleporting to " + position.toString());
+}
+                </code>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
 
           <div class="modal fade" id="CommandIPBan" tabindex="-1" role="dialog" aria-labelledby="CommandIPBanTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
