@@ -75,8 +75,9 @@
                     {% if isPremium  %}
 
 			        <div class="mt-2"  style="max-width:520px;">
-                        {% for server.meta_tags|json_decode %}
-                        <span class="badge badge-pill badge-primary">{{ server.meta_tags }} </span>              
+                        {% set tags = server.meta_tags|json_decode %}
+                        {% for tag in tags %}
+                        <span class="badge badge-pill badge-primary">{{ tag }} </span>              
                         {% endfor %}                   
                     </div>
                     {% endif %}

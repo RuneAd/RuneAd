@@ -34,8 +34,7 @@ class IndexController extends Controller {
             ]
             ];
 
-            
-
+        
         $sponsors = Sponsors::select([
                 'sponsors.id',
                 'servers.title',
