@@ -60,13 +60,13 @@
                     {% endif %}
                 </a>
                 
-                <a href="{{ url('details/'~server_url) }}" class="d-block mt-2" style="max-width:468px;">
+                <a href="{{ url('details/'~server_url) }}" class="d-block mt-1" style="max-width:468px;">
                     <img 
                         {% if server.banner_url %}
                         data-src="{{ banner(server.banner_url) }}"
                         {% endif %}
                         src="{{ url('public/img/banner-loading.png') }}"
-                        alt="RuneScape Private Server listing on RuneAd RSPS Toplist for {{ server.title }} | RSPS List" width="468" height="60"
+                        alt="RuneScape Private Server on RuneAd RSPS Toplist for {{ server.title }} | RSPS List" width="468" height="60"
                         id="banner"
                         class="rounded w-100"/>
                 </a>
