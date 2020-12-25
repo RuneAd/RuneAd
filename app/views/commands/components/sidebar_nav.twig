@@ -1,0 +1,25 @@
+<div class="card border-0 shadow-sm mb-4">
+     <div class="list-group">
+         <a href="{{ url('downloads') }}" class="list-group-item {{ action == "index" ? "active" : "" }}">
+
+             <div class="float-left mr-2" style="margin-top:-1px;">
+                 {{ icon('file-arrow-down', 18, 18) }}
+             </div>
+
+             317 Commands
+         </a>
+         <a href="{{ url('downloads/rsps') }}" class="list-group-item {{ action == "rsps" ? "active" : "" }}">
+             <div class="float-left mr-2" style="margin-top:-1px;">
+                 {{ icon('file-arrow-down', 18, 18) }}
+             </div>
+             N/A
+         </a>
+
+         <a href="{{ url('downloads/web') }}" class="list-group-item {{ action == "web" ? "active" : "" }}">
+            <div class="float-left mr-2" style="margin-top:-1px;">
+                {{ icon('file-arrow-down', 18, 18) }}
+            </div>
+            N/A
+        </a>
+     </div>
+ </div> 

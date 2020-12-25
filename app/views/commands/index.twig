@@ -1,0 +1,64 @@
+{%  extends 'layout.twig' %}
+
+{% block content %}
+
+<div class="container" style="margin-top:-30px;">
+    {% include 'downloads/components/header.twig' %}
+
+    <div class="row mb-3">
+        <div class="col-sm-12 col-lg-3">
+
+            {% include 'downloads/components/sidebar_nav.twig' %}
+            {% include 'downloads/components/settings.twig' %}
+
+        </div>
+        <div class="col-sm-12 col-lg-9">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">File Name</th>
+                    <th scope="col">Date Added</th>
+                    <th scope="col">File Size</th>
+                    <th scope="col">Download</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Toms_Suite.jar</th>
+                    <td>2020-10-03</td>
+                    <td>199KB</td>
+                    <td><a href="https://cdn.runead.com/downloads/tools/Toms_Suite.jar">Toms_Suite.jar</a></td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row">Easy Galkon Sprites</th>
+                    <td>2020-10-03</td>
+                    <td>457.49KB</td>
+                    <td><a href="https://cdn.runead.com/downloads/tools/easygalkonsprites.zip">easygalkonsprites.zip</a></td>
+                  </tr>
+
+                 <tr>
+                    <th scope="row">Lins Interface Editor v1.3</th>
+                    <td>2020-10-04</td>
+                    <td>51.51KB</td>
+                    <td><a href="https://cdn.runead.com/downloads/tools/LinsInterfaceEditorv1.3.zip">LinsInterfaceEditorv1.3.zip</a></td>
+                  </tr> 
+
+                  <tr>
+                    <th scope="row">317/OSRS Model Editor</th>
+                    <td>2020-10-04</td>
+                    <td>66.4MB</td>
+                    <td><a href="https://cdn.runead.com/downloads/tools/ModelEditor317-osrs.zip">ModelEditor317-OSRS.zip</a></td>
+                  </tr> 
+
+                </tbody>
+              </table>
+           
+          
+        </div>
+    </div>
+
+    {{ content|raw }}
+</div>
+
+{%  endblock %}

@@ -15,6 +15,10 @@ class ToolsController extends Controller {
         return true;
     }
 
+    public function commands() {
+        return true;
+    }
+
     public function analytics() {
         return true;
     }

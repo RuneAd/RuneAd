@@ -226,6 +226,12 @@ class Controller {
                     'meta'  => 'Downloads for RSPS tools, sources, clients, web-templates & more! Browse our free collection of Runescape Private Server Downloads & more!'
                 ],
             ],
+            'commands' => [
+                'index' => [
+                    'title' => 'RSPS Commands | RuneScape Private Server Toplist | RSPS List',
+                    'meta' => 'Common and most used RSPS Commands with Java code on how to use them! Check them out at RuneAd RSPS List | RuenScape Private Servers'
+                ],
+            ],
             'videos' => [
                 'index' => [
                     'title' => 'Videos | RuneScape Private Server Toplist | RSPS List',
