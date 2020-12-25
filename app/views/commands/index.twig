@@ -152,43 +152,43 @@ if (command[0].equalsIgnoreCase("master")) {
 
                 <pre class="text-left language-java">
                 <code class="text-left language-java">
-              		if (command[0].equalsIgnoreCase("ipban")) {
-                    final String bannedUserName = Misc.formatPlayerName(wholeCommand.substring(command[0].length() + 1));
-              
-                    player.sendMessage("Attempting to ban " + bannedUserName);
-                    Player player2 = PlayerHandler.getPlayerForName(bannedUserName);
-                    if (player2 == null) {
-                      player.getPacketSender()
-                          .sendConsoleMessage("Could not find that player online, started searching offline files.");
-                      BanHammer.ban(BanType.IP, player, bannedUserName);
-                    } else {
-                      if (PlayerPunishment.IPBanned(player2.getHostAddress())) {
-                        player.getPacketSender().sendConsoleMessage(
-                            "Player " + player2.getUsername() + "'s IP is already banned. Command logs written.");
-                        return;
-                      }
-                      final String bannedIP = player2.getHostAddress();
-                      PlayerPunishment.addBannedIP(bannedIP);
-                      player.getPacketSender().sendConsoleMessage(
-                          "Player " + player2.getUsername() + "'s IP was successfully banned. Command logs written.");
-                      World.sendStaffMessage("<col=FF0066><img=10> [PUNISHMENTS]<col=6600FF> " + player.getUsername()
-                          + " has IPbanned " + player2.getUsername() + ". Don't forget to post logs!");
-                      for (Player playersToBan : World.getPlayers()) {
-                        if (playersToBan == null) {
-                          continue;
-                        }
-                        if (Objects.equals(playersToBan.getHostAddress(), bannedIP)) {
-                          PlayerLogs.log(player.getUsername(),
-                              "" + player.getUsername() + " just IPBanned " + playersToBan.getUsername() + "!");
-                          World.deregister(playersToBan);
-                          if (!Objects.equals(player2.getUsername(), playersToBan.getUsername())) {
-                            player.getPacketSender().sendConsoleMessage("Player " + playersToBan.getUsername()
-                                + " was successfully IPBanned. Command logs written.");
-                          }
-                        }
-                      }
-                    }
-                  }
+if (command[0].equalsIgnoreCase("ipban")) {
+  final String bannedUserName = Misc.formatPlayerName(wholeCommand.substring(command[0].length() + 1));
+
+  player.sendMessage("Attempting to ban " + bannedUserName);
+  Player player2 = PlayerHandler.getPlayerForName(bannedUserName);
+    if (player2 == null) {
+      player.getPacketSender()
+      .sendConsoleMessage("Could not find that player online, started searching offline files.");
+      BanHammer.ban(BanType.IP, player, bannedUserName);
+          } else {
+       if (PlayerPunishment.IPBanned(player2.getHostAddress())) {
+       player.getPacketSender().sendConsoleMessage(
+      "Player " + player2.getUsername() + "'s IP is already banned. Command logs written.");
+        return;
+            }
+        final String bannedIP = player2.getHostAddress();
+        PlayerPunishment.addBannedIP(bannedIP);
+        player.getPacketSender().sendConsoleMessage(
+           "Player " + player2.getUsername() + "'s IP was successfully banned. Command logs written.");
+           World.sendStaffMessage("<col=FF0066><img=10> [PUNISHMENTS]<col=6600FF> " + player.getUsername()
+             + " has IPbanned " + player2.getUsername() + ". Don't forget to post logs!");
+              for (Player playersToBan : World.getPlayers()) {
+              if (playersToBan == null) {
+               continue;
+             }
+               if (Objects.equals(playersToBan.getHostAddress(), bannedIP)) {
+                  PlayerLogs.log(player.getUsername(),
+                  "" + player.getUsername() + " just IPBanned " + playersToBan.getUsername() + "!");
+                  World.deregister(playersToBan);
+                  if (!Objects.equals(player2.getUsername(), playersToBan.getUsername())) {
+                  player.getPacketSender().sendConsoleMessage("Player " + playersToBan.getUsername()
+                  + " was successfully IPBanned. Command logs written.");
+              }
+            }
+          }
+        }
+      }
                 </code>
 
                 </div>
