@@ -34,6 +34,9 @@ class IndexController extends Controller {
             ]
             ];
 
+            if ($server->meta_tags)
+            $this->set("meta_tags", implode(',',json_decode($server->meta_tags, true)));
+
         $sponsors = Sponsors::select([
                 'sponsors.id',
                 'servers.title',
