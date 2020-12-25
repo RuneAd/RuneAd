@@ -101,18 +101,10 @@
                   </button>
                   </div>
                 <div class="modal-body">
-                  
-                  
-                  <style>
-                    code[class*="language-"], pre[class*="language-"] {
-                        font-size: .6rem;
-                        text-align: left;
-                    }
-                </style>
+            
                 <span class="text-left badge bg-dark text-white badge-lg badge-pill">JAVA</span>
 
-                <pre class="text-left language-php">
-                <code class="text-left language-php">
+             
                 if (command[0].equalsIgnoreCase("master")) {
                   for (Skill skill : Skill.VALUES) {
                     int level = SkillManager.getMaxAchievingLevel(skill);
@@ -122,8 +114,7 @@
                   player.getPacketSender().sendConsoleMessage("You are now a master of all skills.");
                   player.getUpdateFlag().flag(Flag.APPEARANCE);
                 }
-                
-                </code>
+            
 
 
 
