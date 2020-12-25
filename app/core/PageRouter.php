@@ -397,7 +397,7 @@ class PageRouter extends Router {
         });
 
         /**
-         * Downloads
+         * Downloads Page
          */
         $this->get("downloads", function() {
             return $this->setRoute('downloads', 'index');
@@ -413,6 +413,12 @@ class PageRouter extends Router {
 
         $this->get("downloads/project51rev180", function() {
             return $this->setRoute('downloads', 'project51rev180');
+        });
+        /**
+         * Commands Page
+         */
+        $this->get("commands", function() {
+            return $this->setRoute('commands', 'index');
         });
         /**
          * Admin Users
