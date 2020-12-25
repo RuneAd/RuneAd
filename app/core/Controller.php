@@ -231,6 +231,26 @@ class Controller {
                     'title' => 'RSPS Commands | RuneScape Private Server Toplist | RSPS List',
                     'meta' => 'Common and wildy used RSPS Commands with Java code on how to use them! Check them out at RuneAd RSPS List | RuneScape Private Servers'
                 ],
+                'owner' => [
+                    'title' => 'Owner RSPS Commands | RuneScape Private Server Toplist | RSPS List',
+                    'meta' => 'Common and wildy used RSPS Commands with Java code on how to use them! Check them out at RuneAd RSPS List | RuneScape Private Servers'
+                ],
+                'admin' => [
+                    'title' => 'Admin RSPS Commands | RuneScape Private Server Toplist | RSPS List',
+                    'meta' => 'Common and wildy used RSPS Commands with Java code on how to use them! Check them out at RuneAd RSPS List | RuneScape Private Servers'
+                ],
+                'moderator' => [
+                    'title' => 'Moderator RSPS Commands | RuneScape Private Server Toplist | RSPS List',
+                    'meta' => 'Common and wildy used RSPS Commands with Java code on how to use them! Check them out at RuneAd RSPS List | RuneScape Private Servers'
+                ],
+                'donator' => [
+                    'title' => 'Donator RSPS Commands | RuneScape Private Server Toplist | RSPS List',
+                    'meta' => 'Common and wildy used RSPS Commands with Java code on how to use them! Check them out at RuneAd RSPS List | RuneScape Private Servers'
+                ],
+                'player' => [
+                    'title' => 'Player RSPS Commands | RuneScape Private Server Toplist | RSPS List',
+                    'meta' => 'Common and wildy used RSPS Commands with Java code on how to use them! Check them out at RuneAd RSPS List | RuneScape Private Servers'
+                ],
             ],
             'videos' => [
                 'index' => [

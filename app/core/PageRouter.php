@@ -420,6 +420,21 @@ class PageRouter extends Router {
         $this->get("commands", function() {
             return $this->setRoute('commands', 'index');
         });
+        $this->get("commands/owner", function() {
+            return $this->setRoute('commands', 'owner');
+        });
+        $this->get("commands/admin", function() {
+            return $this->setRoute('commands', 'admin');
+        });
+        $this->get("commands/moderator", function() {
+            return $this->setRoute('commands', 'moderator');
+        });
+        $this->get("commands/donator", function() {
+            return $this->setRoute('commands', 'donator');
+        });
+        $this->get("commands/player", function() {
+            return $this->setRoute('commands', 'player');
+        });
         /**
          * Admin Users
          */

@@ -30,7 +30,7 @@ class Security {
             'tools'   => ['index', 'itemdb', 'search', 'map', 'xptable', 'servers'],
             'blog'    => ['index', 'post'],
             'downloads'   => ['index', 'rsps', 'web'],
-            'commands'  => ['index'],
+            'commands'  => ['index', 'owner', 'admin', 'moderator', 'donator', 'player'],
             'videos'  => ['index', 'post']
         ];
 
