@@ -72,13 +72,18 @@
                 </a>
 
                   <!-- Display of Meta Tags for Premium Servers only -->
-                {% if isPremium  %}
-                {% if server.meta_tags %} 
-                <span class="badge badge-info">
-                    {{ server.meta_tags }}
-                </span>
-                {% endif %}
-                {% endif %}
+             <div class="mt-2">
+                    {% if isPremium  %}
+
+			        <div class="mt-1"  style="max-width:520px;">
+                        {% set tags = server.meta_tags|json_decode %}
+                        {% for tag in tags %}
+                        <span class="badge badge-pill badge-primary">{{ tag }} </span>              
+                        {% endfor %}                   
+                    </div>
+                    {% endif %}
+                    
+                </div>
                  <!-- End Meta Tags display-->
                 
                 <!-- <div class="mt-2">
