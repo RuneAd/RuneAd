@@ -108,11 +108,11 @@
                         font-size: .6rem;
                     }
                 </style>
-                <span class="badge bg-dark text-white badge-lg badge-pill">JAVA</span>
+                <span class="text-left badge bg-dark text-white badge-lg badge-pill">JAVA</span>
 
                 <pre class="language-php">
-                <code class="language-php">
-                &lt;if (command[0].equalsIgnoreCase("master")) {
+                <code class="text-left language-php">
+                if (command[0].equalsIgnoreCase("master")) {
                   for (Skill skill : Skill.VALUES) {
                     int level = SkillManager.getMaxAchievingLevel(skill);
                     player.getSkillManager().setCurrentLevel(skill, level).setMaxLevel(skill, level).setExperience(skill,
@@ -121,7 +121,7 @@
                   player.getPacketSender().sendConsoleMessage("You are now a master of all skills.");
                   player.getUpdateFlag().flag(Flag.APPEARANCE);
                 }
-                ?&gt;
+                
                 </code>
 
 
