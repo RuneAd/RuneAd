@@ -1,0 +1,42 @@
+{%  extends 'layout.twig' %}
+
+{% block content %}
+
+<div class="container" style="margin-top:-40px;">
+    {% include 'commands/components/header.twig' %}
+
+    <div class="row mb-3">
+        <div class="col-sm-12 col-lg-2">
+
+            {% include 'commands/components/sidebar_nav.twig' %}
+            
+
+        </div>
+        <div class="col-sm-12 col-lg-10">
+           
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Type</th>
+                <th scope="col">Command</th>
+                <th scope="col">Usage</th>
+                <th scope="col">Info</th>
+                <th scope="col">Code</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              
+            </tbody>
+          </table>
+
+          {% include 'commands/components/modals.twig' %}
+          
+        </div>
+    </div>
+
+    {{ content|raw }}
+</div>
+
+{%  endblock %}
