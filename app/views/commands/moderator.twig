@@ -1,0 +1,89 @@
+{%  extends 'layout.twig' %}
+
+{% block content %}
+
+<div class="container" style="margin-top:-40px;">
+    {% include 'commands/components/header.twig' %}
+
+    <div class="row mb-3">
+        <div class="col-sm-12 col-lg-2">
+
+            {% include 'commands/components/sidebar_nav.twig' %}
+            
+
+        </div>
+        <div class="col-sm-12 col-lg-10">
+           
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Type</th>
+                <th scope="col">Command</th>
+                <th scope="col">Usage</th>
+                <th scope="col">Info</th>
+                <th scope="col">Code</th>
+              </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <th scope="row"><span class="badge bg-primary text-white">Staff</span></th>
+                    <th scope="row"><span class="badge bg-warning text-white">::tele</span></th>
+                    <td><span class="badge bg-warning text-white">::tele</span> <span class="badge bg-info text-white">Coord X</span> <span class="badge bg-info text-white">Coord Y</span></td>
+                    <td>Teleports to X,Y position</td>
+                    <td> 
+                      <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#CommandTele">
+                        Code
+                      </button>
+                  </td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row"><span class="badge bg-primary text-white">Staff</span></th>
+                    <th scope="row"><span class="badge bg-warning text-white">::kick</span></th>
+                    <td><span class="badge bg-warning text-white">::kick</span> <span class="badge bg-info text-white">PlayerName</span> </td>
+                    <td>Kicks player by name</td>
+                    <td> 
+                      <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#CommandKick">
+                        Code
+                      </button>
+                  </td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row"><span class="badge bg-primary text-white">Staff</span></th>
+                    <th scope="row"><span class="badge bg-warning text-white">::jail</span></th>
+                    <td><span class="badge bg-warning text-white">::jail</span> <span class="badge bg-info text-white">PlayerName</span></td>
+                    <td>Jails player by name</td>
+                    <td> 
+                      <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#CommandJail">
+                        Code
+                      </button>
+                  </td>
+                  </tr> 
+
+                  <tr>
+                    <th scope="row"><span class="badge bg-primary text-white">Staff</span></th>
+                    <th scope="row"><span class="badge bg-warning text-white">::ban</span></th>
+                    <td><span class="badge bg-warning text-white">::ban</span> <span class="badge bg-info text-white">PlayerName</span></td>
+                    <td>Bans player by name</td>
+                    <td> 
+                      <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#CommandBanPlayer">
+                        Code
+                      </button>
+                  </td>
+                  </tr> 
+
+            </tbody>
+          </table>
+
+          {% include 'commands/components/modals.twig' %}
+          
+        </div>
+    </div>
+
+    {{ content|raw }}
+</div>
+
+{%  endblock %}
