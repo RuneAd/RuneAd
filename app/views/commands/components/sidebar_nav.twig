@@ -15,21 +15,21 @@
              Owner
          </a>
 
-         <a href="" class="list-group-item {{ action == "admin" ? "active" : "" }}">
+         <a href="{{ url('commands/admin') }}" class="list-group-item {{ action == "admin" ? "active" : "" }}">
             <div class="float-left mr-2" style="margin-top:-1px;">
                 {{ icon('file-arrow-down', 18, 18) }}
             </div>
             Admin
         </a>
 
-        <a href="" class="list-group-item {{ action == "moderator" ? "active" : "" }}">
+        <a href="{{ url('commands/moderator') }}" class="list-group-item {{ action == "moderator" ? "active" : "" }}">
             <div class="float-left mr-2" style="margin-top:-1px;">
                 {{ icon('file-arrow-down', 18, 18) }}
             </div>
             Moderator
         </a>
 
-        <a href="" class="list-group-item {{ action == "donator" ? "active" : "" }}">
+        <a href="{{ url('commands/donator') }}" class="list-group-item {{ action == "donator" ? "active" : "" }}">
             <div class="float-left mr-2" style="margin-top:-1px;">
                 {{ icon('file-arrow-down', 18, 18) }}
             </div>
