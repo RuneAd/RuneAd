@@ -70,6 +70,51 @@ player.getInventory().resetItems().refreshItems();
     </div>
   </div>
 
+  <div class="modal fade" id="CommandKick" tabindex="-1" role="dialog" aria-labelledby="CommandKick" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Command code: <span class="badge bg-warning text-white">::kick</span>
+          </br>
+          <small class="text-muted">This code is an example and may need editing to match your source.</small>
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          </div>
+        <div class="modal-body">
+          <style>
+            code[class*="language-"], pre[class*="language-"] {
+                font-size: .7rem;
+                text-align: left;
+            }
+        </style>
+        <span class="text-left badge bg-dark text-white badge-lg badge-pill">JAVA</span>
+        <pre class="text-left language-java">
+        <code class="text-left language-java">
+if (command[0].equalsIgnoreCase("kick")) {
+  String player2 = wholeCommand.substring(5);
+  Player playerToKick = World.getPlayerByName(player2);
+  if (playerToKick == null) {
+      player.getPacketSender().sendConsoleMessage("Player " + player2 + " couldn't be found on Yanille.");
+      return;
+  } else if (playerToKick.getLocation() != Location.WILDERNESS) {
+    World.deregister(playerToKick);
+    PlayerHandler.handleLogout(playerToKick);
+    player.getPacketSender().sendConsoleMessage("Kicked " + playerToKick.getUsername() + ".");
+    PlayerLogs.log(player.getUsername(),
+     "" + player.getUsername() + " just kicked " + playerToKick.getUsername() + "!");
+    }
+}
+        </code>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="modal fade" id="CommandMaxHit" tabindex="-1" role="dialog" aria-labelledby="CommandMaxHit" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -90,7 +135,6 @@ player.getInventory().resetItems().refreshItems();
             }
         </style>
         <span class="text-left badge bg-dark text-white badge-lg badge-pill">JAVA</span>
-
         <pre class="text-left language-java">
         <code class="text-left language-java">
 if (command[0].equalsIgnoreCase("maxhit")) {
@@ -101,7 +145,6 @@ player.getPacketSender().sendMessage("@bla@Melee attack: @or2@" + attack + "@bla
 + range + "@bla@, magic attack: @or2@" + magic);
 }
         </code>
-
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -144,7 +187,6 @@ player.moveTo(position);
 player.getPacketSender().sendConsoleMessage("Teleporting to " + position.toString());
 }
         </code>
-
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -213,7 +255,6 @@ player.getUpdateFlag().flag(Flag.APPEARANCE);
             }
         </style>
         <span class="text-left badge bg-dark text-white badge-lg badge-pill">JAVA</span>
-
         <pre class="text-left language-java">
         <code class="text-left language-java">
 if (command[0].equalsIgnoreCase("ipban")) {
@@ -254,7 +295,6 @@ player.getPacketSender().sendConsoleMessage(
 }
 }
         </code>
-
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -283,7 +323,6 @@ player.getPacketSender().sendConsoleMessage(
             }
         </style>
         <span class="text-left badge bg-dark text-white badge-lg badge-pill">JAVA</span>
-
         <pre class="text-left language-java">
         <code class="text-left language-java">
 if (command[0].equals("item")) {
@@ -314,7 +353,6 @@ player.getPacketSender().sendMessage("No item with name [" + name + "] has been 
 }
         </code>
         </div>
-
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
