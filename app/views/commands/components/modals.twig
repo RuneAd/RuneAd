@@ -1,0 +1,34 @@
+<div class="modal fade" id="CommandPlayers" tabindex="-1" role="dialog" aria-labelledby="CommandPlayersTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="CommandPlayersTitleLong">Command code: <span class="badge bg-warning text-white">::players</span>
+          </br>
+          <small class="text-muted">This code is an example and may need editing to match your source.</small>
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          </div>
+        <div class="modal-body">
+          <style>
+            code[class*="language-"], pre[class*="language-"] {
+                font-size: .7rem;
+                text-align: left;
+            }
+        </style>
+        <span class="text-left badge bg-dark text-white badge-lg badge-pill">JAVA</span>
+        <pre class="text-left language-java">
+        <code class="text-left language-java">
+if (command[0].equals("players")) {
+    player.getPacketSender()
+    .sendMessage("There are currently " + (int) (World.getPlayers().size() * 1) + " players online!");
+}
+        </code>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
