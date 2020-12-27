@@ -13,37 +13,53 @@ body {
     font-family: "OpenSans-Regular" !important;
 }
 
-.xmastext {
-    --color1: #E40010;
-    --color2: #00B32C;
-    font-family: "Open Sans", sans-serif;
-    text-align: center;
-    font-size: 46px;
-    background: repeating-linear-gradient(
-      45deg,
-      var(--color1),
-      var(--color1) 30px,
-      var(--color2) 30px,
-      var(--color2) 60px
-    );
-    background-clip: text;
-    color: transparent;
-    -webkit-background-clip: text;
-    animation: 40s linear 0s infinite move;
+.card-custom {
+    overflow: hidden;
+    min-height: 350px;
+    border: 0;
+    box-shadow: 0 0 15px rgba(10, 10, 10, 0.3);
   }
   
-  @keyframes move {
-    0% {
-      background-position: 0px;
-      -webkit-animation-delay: 150ms;
-    }
-    100% {
-      background-position: 1000px;
-      -webkit-animation-delay: 150ms;
-    }
+  .card-custom-img {
+    height: 200px;
+    min-height: 200px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-color: inherit;
+  }
+  
+  /* First border-left-width setting is a fallback */
+  .card-custom-img::after {
+    position: absolute;
+    content: '';
+    top: 161px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-top-width: 40px;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 545px;
+    border-left-width: calc(575px - 5vw);
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: inherit;
+  }
+  
+  .card-custom-avatar img {
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(10, 10, 10, 0.3);
+    position: absolute;
+    top: 100px;
+    left: 1.25rem;
+    width: 100px;
+    height: 100px;
   }
 
-  .btn-vote {
+.btn-vote {
     background-image: linear-gradient(to right, #a1c4fd 0%, #c2e9fb 51%, #a1c4fd 100%);
   }
 
@@ -67,7 +83,7 @@ body {
       max-width: 100%;
   }
 
-  .text-logo {
+.text-logo {
 	background: linear-gradient(to right, #1497e2 0%, #117796 100%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
