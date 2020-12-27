@@ -18,7 +18,7 @@ a  {
 
 .card-custom {
     overflow: hidden;
-    min-height: 450px;
+    min-height: 350px;
     border: 0;
     box-shadow: 0 0 15px rgba(10, 10, 10, 0.3);
   }
