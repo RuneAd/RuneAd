@@ -11,7 +11,7 @@ class VideosController extends Controller {
         if ($category == null) {
             $posts = Videos::select("*")
                 ->leftJoin("users", "users.user_id", "=", "videos.author_id")
-                ->orderBy("rand")
+                ->orderBy("id", "DESC")
                 ->paginate(9);
         } else {
 
