@@ -20,7 +20,7 @@ class VideosController extends Controller {
             $posts = Videos::select("*")
                 ->where("category", "=", $category)
                 ->leftJoin("users", "users.user_id", "=", "videos.author_id")
-                ->orderBy("id", "DESC")
+                ->orderBy("rand"
                 ->paginate(9);
 
             $this->set("category", $this->filter($category));

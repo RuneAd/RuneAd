@@ -6,8 +6,9 @@ class ErrorsController extends Controller {
     }
 
     public function show404() {
-        return true;
-    }
+
+        
+            }
 
     public function show401() {
         return true;
