@@ -1,49 +1,53 @@
 {%  extends 'layout.twig' %}
 
 {% block content %}
-<section style="margin-top:-40px;">
+<section style="margin-top:-30px;">
     <div class="container">
+
+        {% include 'index/components/updates.twig' %}
         <div class="row">
             <div class="col-sm-12">
-              <div class="card-deck">
                 <div class="card border-0 shadow-sm">
                     <div class="card-body">
-                        <h2 class="mb-3">RuneAd Tools</h2>
-                        <p>Providing owners and players with the best tools found around the net</p>
-                    </div>
+                        <h2 class="mb-0">RuneAd Tools & Info</h2>
+                        <p></p>
+                        <hr>
 
-                    <div class="card-deck">
-                      <div class="card text-white bg-primary mb-3">
-                        <div class="card-header">Header</div>
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <div class="card-deck">
+                          <div class="card">
+                            
+                            <div class="card-body">
+                              <h5 class="bg-primary card-title">Card title</h5>
+                              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
+                          </div>
+                          <div class="card">
+                            
+                            <div class="card-body">
+                              <h5 class="bg-primary card-title">Card title</h5>
+                              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
+                          </div>
+                          <div class="card">
+                            
+                            <div class="card-body">
+                              <h5 class="bg-primary card-title">Card title</h5>
+                              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                      </div>
-                      <div class="card text-white bg-primary mb-3">
-                        <div class="card-header">Header</div>
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                      </div>
-                      <div class="card text-white bg-primary mb-3">
-                        <div class="card-header">Header</div>
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                      </div>
+
                     </div>
-                  </div>
-                  </div>
+                </div>
+
                 {{ content|raw }}
             </div>
+
         </div>
+    </div>
 </section>
 
 {%  endblock %}
