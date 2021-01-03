@@ -80,9 +80,34 @@
                 </div>
 
                 <div class="card-body">
-                    <div class="chart">
-                        <canvas id="chart-orders" class="chart-canvas"></canvas>
-                    </div>
+                    <table class="table mb-0">
+                        {% for report in reports.items() %}
+                        <tr>
+                            <td>{{ report.id }}</td>
+                            <td>
+                                <a href="{{ url('details/'~report.server_id) }}" 
+                                    target="_blank">
+                                    {{ report.title }}
+                                </a>
+                            </td>
+                            <td>{{ report.reason }}</td>
+                            <td class="text-right">
+                                <a href="{{ url('admin/reports/view/'~report.id) }}" 
+                                    class="btn btn-default btn-sm">
+                                    View
+                                </a>
+                                <a href="{{ url('admin/reports?delete='~report.id) }}" 
+                                    class="btn btn-link btn-sm">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td>Nothing to see here.</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
                 </div>
             </div>
 
