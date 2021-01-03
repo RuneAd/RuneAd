@@ -25,6 +25,14 @@
 
                 <div class="card-body">
                     <table class="table mb-0">
+                        <thead>
+                            <tr>
+                              <th scope="col">Report ID</th>
+                              <th scope="col">Report User</th>
+                              <th scope="col">Reason</th>
+                              <th scope="col">Options</th>
+                            </tr>
+                          </thead>
                         {% for report in reports.items() %}
                         <tr>
                             <td>{{ report.id }}</td>
