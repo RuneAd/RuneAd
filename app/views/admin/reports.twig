@@ -1,121 +1,106 @@
-{% extends 'layout.twig' %}
+{% extends 'admin_layout.twig' %}
 {% block content %}
-<div class="container-fluid mt-5">
+<div class="container-fluid bg-default pb-7 pt-4">
+    <div class="row">
+
+        <div class="col-sm-12 col-lg-4 col-xl-4">
+            <div class="card mb-4 overflow-hidden shadow-none">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="card-title text-uppercase text-warning mb-0">
+                                Members
+                            </h5>
+                            <span class="h2 font-weight-bold mb-0">
+                                {{ data['users']['total']|number_format }}
+                            </span>
+                        </div>
+                        <div class="col-auto">
+                            <div class="icon icon-shape text-warning rounded-circle">
+                                {{ icon('people', 32, 32) }}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="mt-3 mb-0 text-sm">
+                        <span class="text-warning">
+                            +{{ data['users']['month']|number_format }}
+                        </span>
+                        <span class="text-nowrap">members this month</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-sm-12 col-lg-4 col-xl-4">
+            <div class="card mb-4 overflow-hidden shadow-none">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="card-title text-uppercase text-info mb-0">
+                                Servers Added
+                            </h5>
+                            <span class="h2 font-weight-bold mb-0">
+                                {{ data['servers']['total']|number_format }}
+                            </span>
+                        </div>
+                        <div class="col-auto">
+                            <div class="icon icon-shape text-info rounded-circle">
+                                {{ icon('list-nested', 38, 38) }}
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mt-3 mb-0 text-sm">
+                        <span class="text-info">
+                            +{{ data['servers']['month']|number_format }}
+                        </span>
+                        <span class="text-nowrap">servers this month</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt--7">
     <div class="row">
         <div class="col-xl-12">
-            <div class="card border-0 mb-3 overflow-hidden">
+            <div class="card border-0 mb-5">
+
                 <div class="card-header">
                     <div class="row align-items-center">
-                        <div class="col">
-                            <h6 class="text-uppercase text-muted ls-1 mb-0">Servers</h6>
-                            <h2 class="mb-0">Reports</h2>
+                        <div class="col w-100">
+                            <div class="float-left mt-1 mr-3 text-default">
+                                {{ icon('bar-chart-fill', 32, 32) }}
+                            </div>
+                            <h2 class="mb-0">Server Reports</h2>
+                            <h6 class="text-uppercase text-muted ls-1 mb-0"></h6>
                         </div>
                     </div>
                 </div>
 
-                {% if error is defined %}
-                <div class="alert alert-danger rounded-0 mb-0">{{ error|raw }}</div>
-                {% elseif success is defined %}
-                <div class="alert alert-success rounded-0 mb-0">{{ success }}</div>
-                {% endif %}
-                
-                <table class="table mb-0">
-                    {% for report in reports.items() %}
-                    <tr>
-                        <td>{{ report.id }}</td>
-                        <td>
-                            <a href="{{ url('details/'~report.server_id) }}" 
-                                target="_blank">
-                                {{ report.title }}
-                            </a>
-                        </td>
-                        <td>{{ report.reason }}</td>
-                        <td class="text-right">
-                            <a href="{{ url('admin/reports/view/'~report.id) }}" 
-                                class="btn btn-default btn-sm">
-                                View
-                            </a>
-                            <a href="{{ url('admin/reports?delete='~report.id) }}" 
-                                class="btn btn-link btn-sm">
-                                Delete
-                            </a>
-                        </td>
-                    </tr>
-                    {% else %}
-                    <tr>
-                        <td>Nothing to see here.</td>
-                    </tr>
-                    {% endfor %}
-                </table>
+                <div class="card-body">
+                    <div class="chart">
+                        <canvas id="chart-orders" class="chart-canvas"></canvas>
+                    </div>
+                </div>
             </div>
 
-            {% set totalPages = reports.lastPage() %}
-            {% set current    = reports.currentPage() %}
-            {% set pageUrl    = url('admin/reports/')  %}
-
-            <nav aria-label="servernav" class="my-5">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item {{ reports.onFirstPage() ? 'disabled' : '' }}">
-                        <a class="page-link"
-                                href="{{ pageUrl~'1' }}" tabindex="-1">
-                            <i class="fal fa-angle-double-left"></i>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </li>
-            
-                    <li class="page-item {{ reports.onFirstPage() ? 'disabled' : '' }}">
-                        <a class="page-link" 
-                            href="{{ pageUrl ~ (current == 1 ? 1 : current - 1) }}" tabindex="-1">
-                            <i class="fal fa-angle-left"></i>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </li>
-            
-                    {% if totalPages > 5 %}
-                        {% set start = current < 3 ? 1 : current - 2 %}
-                        {% set end   = start < 4 ? start + 4 : current + 2 %}
-            
-                        {% if end > totalPages %}
-                            {% set end = totalPages %}
-                        {% endif %}
-            
-                        {% if start + 4 >= totalPages %}
-                            {% set start = totalPages - 4 %}
-                        {% endif %}
-                    {% else %}
-                        {% set start = 1 %}
-                        {% set end   = reports.lastPage() %}
-                    {% endif %}
-            
-                    {% for p in start..end %}
-                    <li class="page-item {{ current == p ? ' active' : ''}}">
-                        <a class="page-link" href="{{ pageUrl ~ p }}">
-                            {{ p }}
-                        </a>
-                    </li>
-                    {% endfor %}
-            
-                    <li class="page-item {{ current >= totalPages ? 'disabled' : '' }}">
-                        <a class="page-link" 
-                            href="{{ pageUrl~(current == totalPages ? totalPages : current + 1) }}">
-                            <i class="fal fa-angle-right"></i>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </li>
-            
-                    <li class="page-item {{ current >= totalPages ? 'disabled' : '' }}">
-                        <a class="page-link" 
-                            href="{{ pageUrl ~ totalPages }}">
-                            <i class="fal fa-angle-double-right"></i>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-
             {{ content|raw}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-lg-6">
+
+        </div>
+        <div class="col-sm-12 col-lg-6">
             
         </div>
     </div>
 </div>
+
+{% include 'chart_config.twig' %}
+
+
 {% endblock %}
