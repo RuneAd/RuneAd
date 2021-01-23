@@ -88,6 +88,7 @@
                                         <h6 class="text-uppercase ls-1 py-3 mb-0">{{ package['title'] }}</h6>
                                     </div>
                                     <div class="card-body">
+                                        <h4>WAS <del> ${{ package['saleprice']|number_format(2) }}</del></h4>
                                         <div class="display-2">${{ package['price']|number_format(2) }}</div>
                                         <span>{{ package['duration']/60/60/24 }} Days</span>
                                         <ul class="list-unstyled my-4">
