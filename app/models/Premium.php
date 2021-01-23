@@ -16,13 +16,15 @@ class Premium extends Model {
         'duration',
         'features',
         'duration',
-        'level'
+        'level',
+        'saleprice'
     ];
 
     public static function validate($validate){
         $validation = (new Validator)->validate($validate, [
             'title'     => 'required|min:3|max:150',
             'price'     => 'required|numeric|min:1',
+            'saleprice' => 'required|numeric|min:1',
             'duration'  => 'required|numeric|min:0',
             'level'     => 'required|numeric|min:1',
         ]);
