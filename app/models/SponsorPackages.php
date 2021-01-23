@@ -15,13 +15,15 @@ class SponsorPackages extends Model {
         'price',
         'duration',
         'visible',
-        'icon'
+        'icon',
+        'saleprice'
     ];
 
     public static function validate($validate){
         $validation = (new Validator)->validate($validate, [
             'title'     => 'required|min:3|max:150',
             'price'     => 'required|numeric|min:1',
+            'saleprice' => 'required|numeric|min:1',
             'duration'  => 'required|numeric|min:0',
             'visible'   => 'required|numeric|min:0|max:1'
         ]);
