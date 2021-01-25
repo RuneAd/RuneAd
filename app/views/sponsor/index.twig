@@ -52,8 +52,8 @@
     </div>
 </div>
 
-<h3 class="text-primary text-center">50% OFF ALL PACKAGES ON SALE NOW!</h3>
-<h5 class="text-danger text-center">Sale lasts until January 24th, 2021</h5>
+<!-- <h3 class="text-primary text-center">50% OFF ALL PACKAGES ON SALE NOW!</h3>
+<h5 class="text-danger text-center">Sale lasts until January 24th, 2021</h5> -->
 
 <section class="mt-5">
     <div class="container">
@@ -61,11 +61,13 @@
             {% for pkg in packages %}
             <div class="col-sm-12 col-lg-4">
                 <div class="card card-pricing text-center mb-4 shadow-sm {{ pkg.highlight ? 'enlarge-2 bg-primary text-white' : '' }}">
-                    <div class="card-header bg-danger">
+
+                    <!-- <div class="card-header bg-danger">
                         <h4 class="text-uppercase text-white ls-1 py-3 mb-0">
                             SALE
                         </h4>
-                    </div>
+                    </div> -->
+
                     <div class="card-header bg-transparent">
                         <h4 class="text-uppercase ls-1 py-3 mb-0 {{ pkg.highlight ? 'text-white' : '' }}">
                             {{ pkg.title }}
@@ -73,7 +75,7 @@
                     </div>
                     <div class="card-body">
                         <div class="pricing display-2 {{ pkg.highlight ? 'text-white' : 'sponsor-blue' }}">
-                            <h4>WAS <del> ${{pkg.saleprice}} </del></h4>
+                            <!-- <h4>WAS <del> ${{pkg.saleprice}} </del></h4> -->
                             ${{ pkg.price }}
                         </div>
                         <span>
