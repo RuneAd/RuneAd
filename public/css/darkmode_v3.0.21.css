@@ -16,10 +16,18 @@ a  {
     background-color: #36393F
 }
 
+.text-mode {
+    color:#FBFBFB;
+}
+
+.text-extras {
+    color:#00B74A;
+}
+
   .pricing .card {
     border: none;
     background: #363631;
-    background: linear-gradient(to right, #535353, #1266F1);
+    background: linear-gradient(to right, #B23CFD, #1266F1);
     border-radius: 1rem;
     transition: all 0.2s;
     box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
