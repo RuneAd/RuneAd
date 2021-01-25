@@ -56,48 +56,44 @@
 <h5 class="text-danger text-center">Sale lasts until January 24th, 2021</h5> -->
 
 
-<section class="mt-5">
-    <div class="container">
-        <div class="row">
-            {% for pkg in packages %}
-            <div class="col-sm-12 col-lg-4">
-                <div class="card card-pricing text-center mb-4 shadow-sm {{ pkg.highlight ? 'enlarge-2 bg-primary text-white' : '' }}">
 
-                    <div class="card-header bg-transparent">
-                        <h4 class="text-uppercase ls-1 py-3 mb-0 {{ pkg.highlight ? 'text-white' : '' }}">
-                            {{ pkg.title }}
-                        </h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="pricing display-2 {{ pkg.highlight ? 'text-white' : 'sponsor-blue' }}">
-                        ${{ pkg.price }}
-                        </div>
-                        <h5>**FREE WITH SPONSOR**</h5>
-                        <p>*A discord channel with your server ad.</p>
-                        <p>*Ability to do @everyone tag</p>
-                        <span>
-                            {{ pkg.duration/60/60/24 }} Days
-                        </span>
-                    </div>
-                    <div class="card-footer bg-transparent">
-                        {% if user is defined %}
-                        <a href="#" id="package-select" data-package="{{ pkg.id }}"
-                            class="btn {{ pkg.highlight ? 'btn-outline-white' : 'btn-primary' }} rounded-pill px-5 {{ slots == 0 ? "disabled" : "" }}">
-                            Select
-                        </a>
-                        {% else %}
-                        <a href="#" id="package-select"
-                            class="btn {{ pkg.highlight ? 'btn-outline-white' : 'btn-primary' }} rounded-pill px-5 disabled">
-                            Select
-                        </a>
-                        {% endif %}
-                    </div>
-                </div>
+
+
+<section class="pricing py-5">
+    <div class="container">
+      <div class="row">
+        {% for pkg in packages %}
+        <div class="col-sm-12 col-lg-4">
+          <div class="card mb-5 mb-lg-0">
+            <div class="card-body">
+              <h5 class="card-title text-muted text-uppercase text-center">{{ pkg.title }}</h5>
+              <h6 class="card-price text-center">${{ pkg.price }}</h6>
+              <hr>
+              <ul class="fa-ul">
+                <li><span class="fa-li"><i class="fas fa-check"></i></span>{{ pkg.duration/60/60/24 }} Days</li>
+              </ul>
+              <div class="card-footer bg-transparent">
+                {% if user is defined %}
+                <a href="#" id="package-select" data-package="{{ pkg.id }}"
+                    class="btn {{ pkg.highlight ? 'btn-outline-white' : 'btn-primary' }} rounded-pill px-5 {{ slots == 0 ? "disabled" : "" }}">
+                    Select
+                </a>
+                {% else %}
+                <a href="#" id="package-select"
+                    class="btn {{ pkg.highlight ? 'btn-outline-white' : 'btn-primary' }} rounded-pill px-5 disabled">
+                    Select
+                </a>
+                {% endif %}
             </div>
-            {% endfor %}
+            </div>
+          </div>
         </div>
+        {% endfor %}
+      </div>
     </div>
-</section>
+  </section>
+
+
 
 {% if user is defined and slots > 0 %}
 <section id="servers" class="pricing-5 py-5">
