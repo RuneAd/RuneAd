@@ -19,7 +19,7 @@ a  {
   .pricing .card {
     border: none;
     background: #363631;
-    background: linear-gradient(to right, #3d3d3d, #252525);
+    background: linear-gradient(to right, #535353, #303030);
     border-radius: 1rem;
     transition: all 0.2s;
     box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
