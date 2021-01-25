@@ -16,7 +16,8 @@ class SponsorPackages extends Model {
         'duration',
         'visible',
         'icon',
-        'saleprice'
+        'saleprice',
+        'extras'
     ];
 
     public static function validate($validate){
@@ -25,7 +26,9 @@ class SponsorPackages extends Model {
             'price'     => 'required|numeric|min:1',
             'saleprice' => 'required|numeric|min:1',
             'duration'  => 'required|numeric|min:0',
-            'visible'   => 'required|numeric|min:0|max:1'
+            'visible'   => 'required|numeric|min:0|max:1',
+            'extras'   => 'required'
+
         ]);
         return $validation;
    }
