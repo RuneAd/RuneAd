@@ -59,14 +59,45 @@
     <div class="container">
         <div class="row">
             {% for pkg in packages %}
+            <div class="col">
+                <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                  <h4 class="my-0 fw-normal">{{ pkg.title }}</h4>
+                </div>
+                <div class="card-body">
+                  <h1 class="card-title pricing-card-title">${{ pkg.price }}</h1>
+                  <ul class="list-unstyled mt-3 mb-4">
+                    <li><span>{{ pkg.duration/60/60/24 }} Days</span></li>
+
+                  </ul>
+                  <div class="card-footer bg-transparent">
+                    {% if user is defined %}
+                    <a href="#" id="package-select" data-package="{{ pkg.id }}"
+                        class="btn {{ pkg.highlight ? 'btn-outline-white' : 'btn-primary' }} rounded-pill px-5 {{ slots == 0 ? "disabled" : "" }}">
+                        Select
+                    </a>
+                    {% else %}
+                    <a href="#" id="package-select"
+                        class="btn {{ pkg.highlight ? 'btn-outline-white' : 'btn-primary' }} rounded-pill px-5 disabled">
+                        Select
+                    </a>
+                    {% endif %}
+                </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+</section>
+
+<section class="mt-5">
+    <div class="container">
+        <div class="row">
+            {% for pkg in packages %}
             <div class="col-sm-12 col-lg-4">
                 <div class="card card-pricing text-center mb-4 shadow-sm {{ pkg.highlight ? 'enlarge-2 bg-primary text-white' : '' }}">
-
-                    <!-- <div class="card-header bg-danger">
-                        <h4 class="text-uppercase text-white ls-1 py-3 mb-0">
-                            SALE
-                        </h4>
-                    </div> -->
 
                     <div class="card-header bg-transparent">
                         <h4 class="text-uppercase ls-1 py-3 mb-0 {{ pkg.highlight ? 'text-white' : '' }}">
@@ -75,8 +106,7 @@
                     </div>
                     <div class="card-body">
                         <div class="pricing display-2 {{ pkg.highlight ? 'text-white' : 'sponsor-blue' }}">
-                            <!-- <h4>WAS <del> ${{pkg.saleprice}} </del></h4> -->
-                            ${{ pkg.price }}
+                        ${{ pkg.price }}
                         </div>
                         <h5>**FREE WITH SPONSOR**</h5>
                         <p>*A discord channel with your server ad.</p>
