@@ -2,55 +2,56 @@
 
 {% block content %}
 
-<div class="container mt-5">
-    <div class="row text-center">
-        <div class="col-sm-12">
-            <h3 class="display-3 mt-3 mb-0">
-                Sponsored Ads
-            </h3>
-            {% if user is defined %}
-            <p>
-            <span class="text-primary">Welcome, {{ user.username }}!</span>
-            </p>
-            {% endif %}
-            {% if user is not defined %}
-            <p>
-            <span class="text-danger">Please login RuneAd to order a Sponsored Ad slot!</span>
-            </p>
-            {% endif %}
-            <p>
-                Get the most bang for your buck with our sponsor slots.
-                You'll be placed at the top of the main listing page.<br>
-                in which viewers will have quick access to your server.
-            </p>
 
-            {% set slots = 3 - sponsors %}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card border-0 shadow-sm mb-3">
+            <div class="card-body" style="line-height:.8em;">
+                <div class="d-flex align-items-center">
+                   <div class="px-3">
+                       {{ icon("terminal-fill", 56, 56) }}
+                   </div>
+                    <div class="flex-fill w-100">
+                        
+                       <h4 class="mb-0">
+                          Sponsored Listing
+                       </h4>
+                       <small class="text-muted">Get the most bang for your buck with our sponsor slots. You'll be placed at the top of 
+                           the main listing page in which viewers will have quick access to your server.</small>
+                    </div>
+                    <div class="flex-fill text-right" style="min-width:250px;">
+                        {% set slots = 3 - sponsors %}
 
-            {% if slots > 0 %}
-            <p class="font-weight-bold">
-                Slots Available:
-
-                {% if slots == 3 %}
-                <span class="text-success">{{ slots }}</span>
-                {% elseif slots == 2 %}
-                <span class="text-warning">{{ slots }}</span>
-                {% elseif slots == 1 %}
-                <span class="text-danger">{{ slots }}</span>
-                {% elseif slots == 0 %}
-                <span class="text-danger">{{ slots }}</span>
-                {% endif %}
-            </p>
-            {% else %}
-            <div class="text-danger">
-                There are no slots available right now. A slot will be available in:<br>
-                <span class="font-weight-bold">
-                  {{ timeLeft(nextslot.expires) }} 
-                </span>
+                        {% if slots > 0 %}
+                        <p class="font-weight-bold">
+                            Slots Available:
+            
+                            {% if slots == 3 %}
+                            <span class="text-success">{{ slots }}</span>
+                            {% elseif slots == 2 %}
+                            <span class="text-warning">{{ slots }}</span>
+                            {% elseif slots == 1 %}
+                            <span class="text-danger">{{ slots }}</span>
+                            {% elseif slots == 0 %}
+                            <span class="text-danger">{{ slots }}</span>
+                            {% endif %}
+                        </p>
+                        {% else %}
+                        <div class="text-danger">
+                            There are no slots available right now. A slot will be available in:<br>
+                            <span class="font-weight-bold">
+                              {{ timeLeft(nextslot.expires) }} 
+                            </span>
+                        </div>
+                        {% endif %}
+                   </div>
+                </div>
             </div>
-            {% endif %}
         </div>
     </div>
-</div>
+</div> 
+
+
 
 <!-- <h3 class="text-primary text-center">50% OFF ALL PACKAGES ON SALE NOW!</h3>
 <h5 class="text-danger text-center">Sale lasts until January 24th, 2021</h5> -->
