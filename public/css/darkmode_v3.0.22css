@@ -24,6 +24,11 @@ a  {
     color: #00B74A;
 }
 
+.sponsor-bg {
+    background: linear-gradient(to right, #B23CFD, #1266F1);
+    transition: all 0.2s;
+}
+
   .pricing .card {
     border: none;
     background: #363631;
