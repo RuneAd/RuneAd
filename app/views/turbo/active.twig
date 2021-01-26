@@ -13,16 +13,7 @@
                 <div class="flex-fill">
                     <div class="d-flex align-items-center justify-content-end">
 
-                        <div class="text-default mb-1">
-                            <a href="{{ turbo.website }}" target="_blank">
-                                {% if turbo.title|length > 30 %}
-                                {{ substr(turbo.title, 0, 30)~'...' }}
-                                {% else %}
-                                {{ turbo.title }}
-                                {% endif %}
-                            </a>
-            
-                            </div>
+                        {{ turbo.title }}
 
                             <a href="{{ turbo.website }}" target="_blank" class="banner-img">
                                 <img
