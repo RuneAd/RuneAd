@@ -2,7 +2,7 @@
 use Illuminate\Database\Eloquent\Model as Model;
 use Rakit\Validation\Validator;
 
-class Turbo extends Model {
+class TurboPackages extends Model {
 
     public $timestamps    = false;
     public $incrementing  = true;
