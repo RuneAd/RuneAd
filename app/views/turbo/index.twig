@@ -2,42 +2,88 @@
 
 {% block content %}
 
-<div class="container mt-5">
-    <div class="row text-center">
-        <div class="col-sm-12">
-            <h3 class="display-3 mt-3 mb-0">Turbo Boost</h3>
-            <p>Get a turbo boost for your server which will increase visibility! 
-                Turbo Boosts show on many pages around RuneAd, giving your server
-                the best possible outcome for visibility! Find out more below!
-            </p>
+<div class="container" style="margin-top:-40px;">
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card border-0 shadow-sm mb-3">
+            <div class="card-body" style="line-height:.8em;">
+                <div class="d-flex align-items-center">
+                   <div class="px-3">
+                    <i class="fas fa-crown fa-lg" style="color:gold;"></i>
+                   </div>
+                    <div class="flex-fill w-100">
+                        
+                       <h4 class="mb-0">
+                          Turbo Boosted Server
+                       </h4>
+                       <small class="text-muted">Get a turbo boost for your server which will increase visibility! 
+                           Turbo Boosts show on many pages around RuneAd, giving your server the best possible outcome for visibility! 
+                           Find out more below!</small>
+                    </div>
+                    <div class="flex-fill text-right" style="min-width:250px;">
+                        {% set slots = 1 - turbos %}
+
+                        {% if slots > 0 %}
+                        <p class="font-weight-bold">
+                            Slots Available:
+            
+                            {% if slots == 1 %}
+                            <span class="text-success">{{ slots }}</span>
+                            {% elseif slots == 0 %}
+                            <span class="text-danger">{{ slots }}</span>
+                            {% endif %}
+                        </p>
+                        {% else %}
+                        <div class="text-danger">
+                            There are no slots available right now. A slot will be available in:<br>
+                            <span class="font-weight-bold">
+                              {{ timeLeft(nextslot.expires) }} 
+                            </span>
+                        </div>
+                        {% endif %}
+                   </div>
+                </div>
+            </div>
         </div>
     </div>
+</div> 
 </div>
+
+
+
+<!-- <h3 class="text-primary text-center">50% OFF ALL PACKAGES ON SALE NOW!</h3>
+<h5 class="text-danger text-center">Sale lasts until January 24th, 2021</h5> -->
+
+
 
 
 
 <section class="pricing py-5">
     <div class="container">
       <div class="row">
-        {% for package in turbo %}
-        {% set features = package['features']|json_decode %}
+        {% for pkg in packages %}
         <div class="col-sm-12 col-lg-4">
           <div class="card mb-5 mb-lg-0">
             <div class="card-body">
-              <h5 class="card-title text-mode text-uppercase text-center">{{ package['title'] }}</h5>
-              <h6 class="card-price text-mode text-center">${{ package['price'] }}</h6>
+              <h5 class="card-title text-mode text-uppercase text-center">{{ pkg.title }}</h5>
+              <h6 class="card-price text-mode text-center">${{ pkg.price }}</h6>
               <hr>
               <ul class="text-white fa-ul">
-                <li><span class="fa-li"><i class="fas fa-check"></i></span>{{ package['duration']/60/60/24 }} Days</li>
-                <li><span class="fa-li"><i class="fas fa-check"></i></span>Extra info coming soon...</li>
-                <li><span class="fa-li"><i class="fas fa-check"></i></span>Extra info coming soon...</li>
-                
+                <li><span class="fa-li"><i class="fas fa-check"></i></span>{{ pkg.duration/60/60/24 }} Days</li>
+                <li><span class="fa-li"><i class="fas fa-check"></i></span>{{ pkg.extras }}</li>
               </ul>
               <div class="card-footer bg-transparent">
-                <a href="#"
-                    id="package-select"
-                    data-package="{{ package['id'] }}"
-                    class="btn btn-default {{ user is defined ? '' : 'disabled' }}">Select</a>
+                {% if user is defined %}
+                <a href="#" id="package-select" data-package="{{ pkg.id }}"
+                    class="btn {{ pkg.highlight ? 'btn-outline-white' : 'btn-primary' }} rounded-pill px-5 {{ slots == 0 ? "disabled" : "" }}">
+                    Select
+                </a>
+                {% else %}
+                <a href="#" id="package-select"
+                    class="btn {{ pkg.highlight ? 'btn-outline-white' : 'btn-primary' }} rounded-pill px-5 disabled">
+                    Select
+                </a>
+                {% endif %}
             </div>
             </div>
           </div>
@@ -49,23 +95,13 @@
 
 
 
-
-<div class="text-center">
-              <div class="container">
-                <table class="table mt-0 mb-0 tab " style="line-height: 0.0em">
-                  <p>*Depends on the uniqueness of server & content provided by the Server</p>
-                </table>
-              </div>
-          </div>
-
-
-{% if user is defined and user is not null %}
+{% if user is defined and slots > 0 %}
 <section id="servers" class="pricing-5 py-5">
     <div class="container">
         <div class="row text-center">
             <div class="col-sm-12">
                 <h3 class="display-3 mt-3 mb-0">Choose a Server</h3>
-                <p>Select a server in which you want Turbo Boosted.</p>
+                <p>Select a server in which you want the boost.</p>
             </div>
         </div>
     </div>
@@ -74,9 +110,7 @@
         <div class="row">
             <div class="col-sm-12 col-lg-12">
                 {% for server in servers %}
-                {% set class = server.premium_expires > time() ? 'bg-primary' : '' %}
-
-                <div id="server" class="card shadow-sm mb-0 mb-3 ">
+                <div class="card shadow-sm mb-0 mb-3 {{ server.premium_expires > time() ? 'bg-premium' : '' }}">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div class="flex-fill" style="width:300px;">
@@ -137,53 +171,6 @@
                 </div>
             </div>
         </div>
-</section>
-
-<section id="preview" class="pricing-5 py-5">
-    <div class="container">
-
-        <div class="row mb-5 text-center">
-            <div class="col-sm-12">
-                <h3 class="display-3 mt-3 mb-0">Turbo Boost Preview</h3>
-                <p>See how your Turbo Boost will look thoughout RuneAd</p>
-            </div>
-        </div>
-
-        <div class="row" id="preview-block">
-            <div class="col-sm-12 col-lg-12">
-                <div class="card border-primary shadow mb-5 bg-gradient-primary">
-
-                    <div class="d-flex align-items-center pr-3 py-4 overlay shadow-inset-bottom">
-                       
-                        <div class="flex-fill text-center px-3">
-                            <h4 class="flex-fill gold-text px-3">TURBO BOOSTED</h4>
-                             <i class="fas fa-bolt pulse-turbo fa-3x" style="color:gold;"></i>
-                        </div>
-
-                        <div class="flex-fill">
-                           
-                            <img
-                                src="{{ url('public/img/banner-loading.png') }}"
-                                alt="default-banner.png"
-                                class="img-fluid rounded">
-                        </div>
-                        <div class="flex-fill">
-                            <div class="d-flex align-items-center justify-content-end">
-                                
-
-                                <div class="">
-                                    <a href="#" class="btn text-primary btn-primary gold-bg btn-lg">
-                                        <i class="fas fa-trophy fa-lg mr-lg-3 mr-0"></i>
-                                        Play Now
-                                    </a>
-                                </div>
-                               
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -198,15 +185,124 @@
         </div>
     </div>
 </div>
+{% endif %}
 
 {{ content|raw }}
 
+<section id="preview" class="pricing-5 py-5">
+    <div class="container">
+
+        <div class="row mb-5 text-center">
+            <div class="col-sm-12">
+                <h3 class="display-3 mt-3 mb-0">Turbo Preview</h3>
+                <p>See how your ad will look on our page</p>
+            </div>
+        </div>
+
+        <div class="row" id="preview-block">
+            <div class="col-sm-12 col-lg-12">
+                <div class="card border-0 shadow-sm mb-5">
+
+                    <div class="card-header bg-primary text-white py-3">
+                        <h5 class="mb-0 text-white">Sponsored Servers</h5>
+                        <p class="text-white-50 mb-0 small">
+                        This shows on the main listing, at the top of every page.
+                        </p>
+                    </div>
+
+                    <div class="d-flex align-items-center pr-3 py-4 overlay shadow-inset-bottom">
+                        <div class="flex-fill text-center px-3">
+                            <i class="fas fa-crown fa-lg" style="color:gold;"></i>
+                        </div>
+                        <div class="flex-fill">
+                            <img
+                                src="{{ url('public/img/banner-loading.png') }}"
+                                alt="default-banner.png"
+                                class="img-fluid rounded">
+                        </div>
+                        <div class="flex-fill">
+                            <div class="d-flex align-items-center justify-content-end">
+                                <div class="pr-1">
+                                    <a href="" class="btn btn-lg btn-link text-primary disabled">
+                                        <i class="fab fa-discord fa-2x"></i>
+                                    </a>
+                                </div>
+                                <div class="">
+                                    <a href="#" class="btn btn-primary btn-lg disabled">
+                                        <i class="fas fa-gamepad-alt rotate-45 mr-lg-3 mr-0"></i>
+                                        Play Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center pr-3 py-4 enlarge">
+                        <div class="flex-fill text-center px-3">
+                            <i class="fas fa-crown fa-lg" style="color:gold;"></i>
+                        </div>
+                        <div class="flex-fill">
+                            <img
+                                src="{{ url('public/img/banner-loading.png') }}"
+                                alt="default-banner.png"
+                                class="img-fluid rounded">
+                        </div>
+                        <div class="flex-fill">
+                            <div class="d-flex align-items-center justify-content-end">
+                                <div class="pr-1">
+                                    <a href="" class="btn btn-lg btn-link text-primary disabled">
+                                        <i class="fab fa-discord fa-2x"></i>
+                                    </a>
+                                </div>
+                                <div class="">
+                                    <a href="#" class="btn btn-primary btn-lg disabled">
+                                        <i class="fas fa-gamepad-alt rotate-45 mr-lg-3 mr-0"></i>
+                                        Play Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center pr-3 py-4 overlay  shadow-inset-top">
+                        <div class="flex-fill text-center px-3">
+                          <i class="fas fa-crown fa-lg" style="color:gold;"></i>
+                        </div>
+                        <div class="flex-fill">
+                            <img
+                                src="{{ url('public/img/banner-loading.png') }}"
+                                alt="default-banner.png"
+                                class="img-fluid rounded">
+                        </div>
+                        <div class="flex-fill">
+                            <div class="d-flex align-items-center justify-content-end">
+                                <div class="pr-1">
+                                    <a href="" class="btn btn-lg btn-link text-primary disabled">
+                                        <i class="fab fa-discord fa-2x"></i>
+                                    </a>
+                                </div>
+                                <div class="">
+                                    <a href="#" class="btn btn-primary btn-lg disabled">
+                                        <i class="fas fa-gamepad-alt rotate-45 mr-lg-3 mr-0"></i>
+                                        Play Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% if user is defined and page_disabled is not defined %}
 <script src="https://www.paypal.com/sdk/js?client-id={{ constant('paypal_production') }}"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function(event) {
     let modal = $('#preModal');
-   // modal.modal('show');
+    // modal.modal('show');
     let package;
     let server;
     let paypalBtn = $('#paypal-btn');
@@ -228,10 +324,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
         })
         if ((typeof package !== "undefined") && (typeof server != "undefined")) {
             $(this).closest(".card").addClass("border-primary");
-
-            //$('#paypal-btn').removeClass("text-danger").html("<i class='fad fa-spinner fa-pulse fa-3x mb-3'></i>");
             $('#checkout').removeClass("d-none");
-            //scrollTo($("[id='checkout']"));
             loadButton(package, server);
         }
     });
@@ -243,14 +336,13 @@ document.addEventListener('DOMContentLoaded', function(event) {
     function loadButton(package, server) {
         statusBlock.removeClass("text-danger").html("<i class='fad fa-spinner fa-pulse'></i>");
         $.ajaxq('PaymentQueue', {
-            url: '{{ url("turbo/button") }}',
+            url: '{{ url("sponsor/button") }}',
             data: {
                 package: package,
                 server: server
             },
             type: 'POST',
             success: function (json) {
-
                 if (json.success) {
                     statusBlock.html("");
                     paypalBtn.html(json.message);
@@ -265,5 +357,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
 });
 </script>
+
 {% endif %}
+
 {% endblock %}
