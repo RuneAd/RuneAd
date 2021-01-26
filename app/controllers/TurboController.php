@@ -11,7 +11,7 @@ class TurboController extends Controller {
             $this->set("servers", $servers);
         }
 
-        $turbos = Turbo::where("expires", ">", time())->count();
+        $turbos = Turbos::where("expires", ">", time())->count();
 
         if (self::$disabled)
             $this->set("page_disabled", self::$disabled);
@@ -19,7 +19,7 @@ class TurboController extends Controller {
         $this->set("packages", $packages);
         $this->set("turbos", $turbos);
 
-        if ($turbos == 3) {
+        if ($turbos == 1) {
             $nextSlot = Turbos::select("expires")
                 ->where("expires", ">", time())
                 ->orderBy("expires", "ASC")
@@ -33,7 +33,7 @@ class TurboController extends Controller {
         $packageId = $this->request->getPost("package", "int");
         $serverId  = $this->request->getPost("server", "int");
 
-        $turbos = Turbo::where("expires", ">", time())->count();
+        $turbos = Turbos::where("expires", ">", time())->count();
 
         if ($turbos == 1) {
             return [
@@ -76,7 +76,7 @@ class TurboController extends Controller {
         $order_info = $this->request->getPost("orderDetails");
         $server_id  = $this->request->getPost("server_id", "int");
 
-        $turbos = Turbo::where("expires", ">", time())->count();
+        $turbos = Turbos::where("expires", ">", time())->count();
 
         if ($turbos == 1) {
             return [
@@ -148,7 +148,7 @@ class TurboController extends Controller {
             ];
         }
 
-        $turbo = Turbo::where('server_id', $server_id)
+        $turbo = Turbos::where('server_id', $server_id)
             ->where('expires', '>', time())->first();
 
         if ($turbo) {
@@ -174,7 +174,7 @@ class TurboController extends Controller {
         $pp_key   = $this->request->getPost("pp_key", "string");
         $sess_key = $this->session->get("pp_key");
 
-        $turbos = Turbo::where("expires", ">", time())->count();
+        $turbos = Turbos::where("expires", ">", time())->count();
 
         if ($turbos == 1) {
             return [
@@ -276,12 +276,12 @@ class TurboController extends Controller {
             return [
                 'success' => false,
                 'message' => $this->getViewContents("turbo/error", [
-                    "message" => "Sorry! We could not find your server, please try again!"
+                    "message" => "Could not find your server!"
                 ])
             ];
         }
 
-        $turbo = new Turbo;
+        $turbo = new Turbos;
 
         $turbo->fill([
             'server_id' => $server_id,
