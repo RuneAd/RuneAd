@@ -25,6 +25,9 @@ class ToolsController extends Controller {
         ->leftJoin("servers", "servers.id", "=", "turbos.server_id")
         ->orderBy("started", "ASC")
         ->get();
+
+        $this->set("turbos", $turbos);
+
         return true;
     }
 
