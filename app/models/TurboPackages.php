@@ -15,19 +15,16 @@ class TurboPackages extends Model {
         'price',
         'duration',
         'visible',
-        'icon',
-        'saleprice',
-        'extras'
+        'features'
     ];
 
     public static function validate($validate){
         $validation = (new Validator)->validate($validate, [
-            'title'     => 'required|min:3|max:150',
-            'price'     => 'required|numeric|min:1',
-            'saleprice' => 'required|numeric|min:1',
-            'duration'  => 'required|numeric|min:0',
-            'visible'   => 'required|numeric|min:0|max:1',
-            'extras'   => 'required'
+            'title'     => 'required',
+            'price'     => 'required|numeric',
+            'duration'  => 'required|numeric',
+            'visible'   => 'required|numeric',
+            'features'   => 'required'
 
         ]);
         return $validation;
