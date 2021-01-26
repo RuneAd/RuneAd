@@ -1,17 +1,31 @@
 <?php
-use Fox\Request;
-
 class TurboController extends Controller {
 
+    private static $disabled = false;
+
     public function index() {
-        $turbo = array_chunk(Turbo::get()->toArray(), 2);
+        $packages = TurboPackages::where('visible', 1)->get();
 
         if ($this->user) {
             $servers = Servers::getServersByOwner($this->user->user_id);
             $this->set("servers", $servers);
         }
 
-        $this->set("turbo", $turbo[0]);
+        $turbos = Turbo::where("expires", ">", time())->count();
+
+        if (self::$disabled)
+            $this->set("page_disabled", self::$disabled);
+
+        $this->set("packages", $packages);
+        $this->set("turbos", $turbos);
+
+        if ($turbos == 3) {
+            $nextSlot = Turbos::select("expires")
+                ->where("expires", ">", time())
+                ->orderBy("expires", "ASC")
+                ->first();
+            $this->set("nextslot", $nextSlot);
+        }
         return true;
     }
 
@@ -19,7 +33,17 @@ class TurboController extends Controller {
         $packageId = $this->request->getPost("package", "int");
         $serverId  = $this->request->getPost("server", "int");
 
-        $package  = Turbo::where('id', $packageId)->first();
+        $turbos = Turbo::where("expires", ">", time())->count();
+
+        if ($turbos == 1) {
+            return [
+                'success' => false,
+                'message' => "There are currently no available slots. Please check back later."
+            ];
+        }
+
+        $package  = TurboPackages::where('id', $packageId)->first();
+
 
         if (!$package) {
             return [
@@ -52,6 +76,15 @@ class TurboController extends Controller {
         $order_info = $this->request->getPost("orderDetails");
         $server_id  = $this->request->getPost("server_id", "int");
 
+        $turbos = Turbo::where("expires", ">", time())->count();
+
+        if ($turbos == 1) {
+            return [
+                'success' => false,
+                'message' => "There are currently no available slots. Please check back later."
+            ];
+        }
+
         if (empty($order_info)) {
             return [
                 'success' => false,
@@ -77,12 +110,12 @@ class TurboController extends Controller {
             return [
                 'success' => false,
                 'message' => $this->getViewContents("turbo/error", [
-                    "message" => "Payment was not approved."
+                    "message" => "Payment was not approved. For additional payment methods please contact us."
                 ])
             ];
         }
 
-        $package = Turbo::where('id', $sku)->first();
+        $package = TurboPackages::where('id', $sku)->first();
 
         if (!$package) {
             return [
@@ -115,6 +148,18 @@ class TurboController extends Controller {
             ];
         }
 
+        $turbo = Turbo::where('server_id', $server_id)
+            ->where('expires', '>', time())->first();
+
+        if ($turbo) {
+            return [
+                'success' => false,
+                'message' => $this->getViewContents("turbo/error", [
+                    "message" => "This server already has Turbo. Purchase cancelled."
+                ])
+            ];
+        }
+
         $token = Functions::generateString(15);
         $this->session->set("pp_key", $token);
 
@@ -128,6 +173,15 @@ class TurboController extends Controller {
     public function process() {
         $pp_key   = $this->request->getPost("pp_key", "string");
         $sess_key = $this->session->get("pp_key");
+
+        $turbos = Turbo::where("expires", ">", time())->count();
+
+        if ($turbos == 1) {
+            return [
+                'success' => false,
+                'message' => "There are currently no available slots. If you were charged please contact us on discord."
+            ];
+        }
 
         if (!$pp_key || !$sess_key || $pp_key != $sess_key) {
             return [
@@ -175,7 +229,7 @@ class TurboController extends Controller {
             ];
         }
 
-        $package = Turbo::where('id', $sku)->first();
+        $package = TurboPackages::where('id', $sku)->first();
 
         if (!$package) {
             return [
@@ -193,7 +247,7 @@ class TurboController extends Controller {
             'username' => $this->user->username,
             'ip_address' => $this->request->getAddress(),
             'sku' => $package->id,
-            'item_name' => $package->title,
+            'item_name' => $package->title.' Turbo',
             'email' => $email,
             'status' => $status,
             'paid' => $paid,
@@ -222,26 +276,24 @@ class TurboController extends Controller {
             return [
                 'success' => false,
                 'message' => $this->getViewContents("turbo/error", [
-                    "message" => "Could not find your server!"
+                    "message" => "Sorry! We could not find your server, please try again!"
                 ])
             ];
         }
 
-        if ($package->level > $server->premium_level) {
-            $server->premium_level = $package->level;
-        }
+        $turbo = new Turbo;
 
-        if ($server->premium_expires > time()) {
-            $server->premium_expires = $server->premium_expires + $package->duration;
-        } else {
-            $server->premium_expires = time() + $package->duration;
-        }
+        $turbo->fill([
+            'server_id' => $server_id,
+            'started' => time(),
+            'expires' => time() + $expires
+        ]);
 
-        if (!$server->save()) {
+        if (!$turbo->save()) {
             return [
                 'success' => false,
                 'message' => $this->getViewContents("turbo/error", [
-                    "message" => "Could not update server."
+                    "message" => "Could not save Turbo."
                 ])
             ];
         }
@@ -261,4 +313,5 @@ class TurboController extends Controller {
         }
         return parent::beforeExecute();
     }
+
 }
