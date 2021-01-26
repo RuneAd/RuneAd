@@ -31,13 +31,15 @@ class Security {
             'blog'    => ['index', 'post'],
             'downloads'   => ['index', 'rsps', 'web'],
             'commands'  => ['index', 'owner', 'admin', 'moderator', 'donator', 'player'],
-            'videos'  => ['index', 'post']
+            'videos'  => ['index', 'post'],
+            'turbo'    => ['index']
         ];
 
         $private = [
             'servers' => ['add', 'edit', 'delete'],
             'premium' => ['button', 'verify', 'process'],
             'sponsor' => ['button', 'verify', 'process'],
+            'turbo'   => ['button', 'verify', 'process'],
             'profile' => ['index', 'stats', 'payments'],
             'blog'    => ['add', 'edit', 'delete'],
             'videos'    => ['add', 'edit', 'delete']
@@ -50,7 +52,6 @@ class Security {
             'premium'  => ['index', 'add', 'edit', 'delete'],
             'users'    => ['index', 'banned'],
             'servers'  => ['index', 'info', 'edit', 'delete'],
-            'turbo'    => ['index', 'button', 'verify', 'process'],
             'tools'    => ['servers']
         ];
 
