@@ -4,7 +4,6 @@ use Fox\Request;
 class TurboController extends Controller {
 
     public function index() {
-        $packages = TurboPackages::where('visible', 1)->get();
         $turbo = array_chunk(Turbo::get()->toArray(), 2);
 
         if ($this->user) {
