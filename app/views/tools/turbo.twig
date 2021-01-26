@@ -1,0 +1,66 @@
+<div class="card border-2 shadow-sm overflow-hidden mb-0">
+    <div class="card-header bg-gradient-primary text-white py-3">
+        <h5 class="mb-0 text-white">Turbo Servers</h5>
+    </div>
+
+    <table class="table mb-0" style="line-height:.7em;">
+        {% for turbo in turbos %}
+        <tr id="server">
+            <td class="text-center rank-col">
+                <i class="fi-xnsuxl-cup-solid" style="color:gold"></i>
+            </td>
+
+            <td class="py-3">
+                <div class="text-default mb-1">
+                <a href="{{ turbo.website }}" target="_blank">
+                    {% if turbo.title|length > 30 %}
+                    {{ substr(turbo.title, 0, 30)~'...' }}
+                    {% else %}
+                    {{ turbo.title }}
+                    {% endif %}
+                </a>
+
+                </div>
+                <a href="{{ turbo.website }}" target="_blank" class="banner-img">
+                    <img
+                        src="{{ url('public/img/banner-loading.png') }}"
+                        alt="RuneAd Banner" width="468" height="60"
+                        data-src="{{ banner(turbo.banner_url) }}"
+                        id="banner"
+                        alt="{{ turbo.banner_url }}"
+                        class="img-fluid rounded lazy">
+                </a>
+            </td>
+
+            <td class="text-right">
+                <div class="d-flex align-items-center justify-content-end">
+                    <div class="pr-1">
+                        <a href="{{ turbo.discord_link }}" 
+                        data-toggle="tooltip"
+                        data-title="Discord"
+                        target="_blank"
+                            class="btn btn-lg btn-link text-primary {{ turbo.discord_link ? '' : 'disabled' }}">
+                            {{ icon('discord', 24, 24) }}
+                        </a>
+                    </div>
+                    <div>
+                        <a href="{{ turbo.website }}"
+                        data-toggle="tooltip"
+                        data-title="Play Server"
+                            class="btn btn-primary btn-lg" target="_blank" rel="Turbo Boosted Server">
+                            <span class="d-inline">Play Now</span>
+                        </a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+
+
+        {% set remaining = (1 - turbos|length) - 1 %}
+
+        {% for i in 0..remaining %}
+        <tr id="server" class="{{ class }}"></tr>
+        {% endfor %}
+    </table>
+</div>
