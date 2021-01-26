@@ -8,8 +8,8 @@
             <td class="py-3">
                 <div class="text-default mb-1">
                 <a href="{{ turbo.website }}" target="_blank">
-                    {% if turbo.title|length > 30 %}
-                    {{ substr(turbo.title, 0, 30)~'...' }}
+                    {% if turbo.title|length > 40 %}
+                    {{ substr(turbo.title, 0, 40)~'...' }}
                     {% else %}
                     {{ turbo.title }}
                     {% endif %}
