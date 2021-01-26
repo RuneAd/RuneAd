@@ -55,10 +55,7 @@
             </td>
         </tr>
         {% endfor %}
-
-
         {% set remaining = (1 - turbos|length) - 1 %}
-
         {% for i in 0..remaining %}
         <tr id="server" class="{{ class }}"></tr>
         {% endfor %}
