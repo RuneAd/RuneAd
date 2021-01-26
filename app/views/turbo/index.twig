@@ -29,17 +29,9 @@
               <hr>
               <ul class="text-white fa-ul">
                 <li><span class="fa-li"><i class="fas fa-check"></i></span>{{ package['duration']/60/60/24 }} Days</li>
-                <ul class="list-unstyled my-4">
-                    {% for feature in features %}
-                    <li class="align-items-center">
-                        {% if feature is null %}
-                        <i class="fal fa-times text-danger"></i>
-                        {% else %}
-                        {{ feature|raw }}
-                        {% endif %}
-                    </li>
-                    {% endfor %}
-                </ul>
+               
+                
+                
               </ul>
               <div class="card-footer bg-transparent">
                 <a href="#"
