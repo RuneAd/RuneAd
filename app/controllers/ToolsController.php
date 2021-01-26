@@ -12,19 +12,6 @@ class ToolsController extends Controller {
     }
 
     public function map() {
-        $turbo = Turbo::select([
-            'turbo.id',
-            'servers.title',
-            'servers.website',
-            'servers.discord_link',
-            'servers.banner_url'
-        ])
-        ->where('expires', '>', time())
-        ->where('servers.banner_url', '!=', null)
-        ->where('servers.website', '!=', null)
-        ->leftJoin("servers", "servers.id", "=", "turbo.server_id")
-        ->orderBy("started", "ASC")
-        ->get();
         return true;
     }
 
