@@ -14,52 +14,41 @@
     </div>
 </div>
 
-<section class="pricing-6 py-6" id="pricing-6">
+<section class="pricing py-5">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-7 col-md-8">
-                <div class="tab-content tab-space">
-                    <div class="tab-pane active" id="commercial">
-                        <div class="row">
-                            {% for package in turbo %}
-                            {% set features = package['features']|json_decode %}
-
-                            <div class="col-md-6">
-                                <div class="card card-pricing text-center mb-4 shadow">
-                                    <div class="card-header bg-gradient-primary">
-                                        <h6 class="gold-text text-uppercase ls-1 py-3 mb-0">{{ package['title'] }}</h6>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="display-2">${{ package['price']|number_format(2) }}</div>
-                                        <span>{{ package['duration']/60/60/24 }} Days</span>
-                                        <ul class="list-unstyled my-4">
-                                            {% for feature in features %}
-                                            <li class="align-items-center">
-                                                {% if feature is null %}
-                                                <i class="fal fa-times text-danger"></i>
-                                                {% else %}
-                                                {{ feature|raw }}
-                                                {% endif %}
-                                            </li>
-                                            {% endfor %}
-                                        </ul>
-                                    </div>
-                                    <div class="card-footer bg-transparent">
-                                        <a href="#"
-                                            id="package-select"
-                                            data-package="{{ package['id'] }}"
-                                            class="btn btn-default {{ user is defined ? '' : 'disabled' }}">Select</a>
-                                    </div>
-                                </div>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
+      <div class="row">
+        {% for pkg in packages %}
+        <div class="col-sm-12 col-lg-4">
+          <div class="card mb-5 mb-lg-0">
+            <div class="card-body">
+              <h5 class="card-title text-mode text-uppercase text-center">{{ pkg.title }}</h5>
+              <h6 class="card-price text-mode text-center">${{ pkg.price }}</h6>
+              <hr>
+              <ul class="text-white fa-ul">
+                <li><span class="fa-li"><i class="fas fa-check"></i></span>{{ pkg.duration/60/60/24 }} Days</li>
+                <li><span class="fa-li"><i class="fas fa-check"></i></span>{{ pkg.extras }}</li>
+              </ul>
+              <div class="card-footer bg-transparent">
+                {% if user is defined %}
+                <a href="#" id="package-select" data-package="{{ pkg.id }}"
+                    class="btn {{ pkg.highlight ? 'btn-outline-white' : 'btn-primary' }} rounded-pill px-5 {{ slots == 0 ? "disabled" : "" }}">
+                    Select
+                </a>
+                {% else %}
+                <a href="#" id="package-select"
+                    class="btn {{ pkg.highlight ? 'btn-outline-white' : 'btn-primary' }} rounded-pill px-5 disabled">
+                    Select
+                </a>
+                {% endif %}
             </div>
+            </div>
+          </div>
         </div>
+        {% endfor %}
+      </div>
     </div>
-</section>
+  </section>
+
 
 <div class="text-center">
               <div class="container">
