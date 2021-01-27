@@ -15,6 +15,11 @@ class TurboPackages extends Model {
         'price',
         'duration',
         'features',
+        'features1',
+        'features2',
+        'features3',
+        'features4',
+        'features5',
         'duration',
         'level'
     ];
@@ -26,6 +31,11 @@ class TurboPackages extends Model {
             'duration'  => 'required|numeric|min:0',
             'level'     => 'required|numeric|min:1',
             'features'     => 'required|min:1',
+            'features1'     => 'required|min:1',
+            'features2'     => 'required|min:1',
+            'features3'     => 'required|min:1',
+            'features4'     => 'required|min:1',
+            'features5'     => 'required|min:1',
         ]);
         return $validation;
    }
