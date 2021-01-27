@@ -7,7 +7,7 @@ background: linear-gradient(to top, #1b1b1b, #333333); /* W3C, IE 10+/ Edge, Fir
 }
 
 a:hover, a:active, a:focus {
-    color: #5e72e4;
+    color: #fffb00;
 }
 a  {
     color: #FFF;
