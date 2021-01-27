@@ -125,87 +125,93 @@ class Controller {
             'index' => [
                 'index' => [
                     'title' => 'RSPS Toplist | RuneScape Private Servers',
-                    'meta'  => 'Looking for the best Runescape Private Servers 2020? Come get involved in our RSPS Toplist, and increase your website traffic and attract your players today!'
+                    'meta'  => 'Looking for the best Runescape Private Servers 2021? Come get involved in our RSPS Toplist, and increase your website traffic and attract your players today!'
                 ]
             ],
             'pages' => [
                 'docs' => [
                     'title' => 'Documentation | RuneScape Private Server Toplist | RSPS List',
-                    'meta'  => 'Integrate your RSPS server with our service, receive voting callback, and more! RuneAd is the best 2020 RuneScape Private Server Toplist!'
+                    'meta'  => 'Integrate your RSPS server with our service, receive voting callback, and more! RuneAd is the best 2021 RuneScape Private Server Toplist!'
                 ],
                 'updates' => [
                     'title' => 'Update Log | RuneScape Private Server Toplist | RSPS List',
-                    'meta'  => 'All updates that have been pushed for the toplist, and a list of contributors. RuneAd is the best 2020 RuneScape Private Server Toplist!'
+                    'meta'  => 'All updates that have been pushed for the toplist, and a list of contributors. RuneAd is the best 2021 RuneScape Private Server Toplist!'
                 ],
                 'sitemap' => [
                     'title' => 'Sitemap | RuneScape Private Server Toplist | RSPS List',
-                    'meta'  => 'A full sitemap of RuneAd RSPS Toplist displaying RSPS servers, tools, and more! RuneAd is the best 2020 RuneScape Private Server Toplist!'
+                    'meta'  => 'A full sitemap of RuneAd RSPS Toplist displaying RSPS servers, tools, and more! RuneAd is the best 2021 RuneScape Private Server Toplist!'
                 ],
                 'stats' => [
                     'title' => 'Voting Stats | RuneScape Private Server Toplist | RSPS List',
-                    'meta'  => 'Global statistics on RuneAd showing votes, user, and server counts. RuneAd is the best 2020 RuneScape Private Server Toplist!'
+                    'meta'  => 'Global statistics on RuneAd showing votes, user, and server counts. RuneAd is the best 2021 RuneScape Private Server Toplist!'
                 ],
                 'terms' => [
                     'title' => 'Terms of Service | RuneScape Private Server Toplist | RSPS List',
-                    'meta'  => 'RuneAd Terms Of Service. Preview the Terms of Service for RuneAd RSPS Toplist! RuneAd is the best 2020 RuneScape Private Server Toplist!'
+                    'meta'  => 'RuneAd Terms Of Service. Preview the Terms of Service for RuneAd RSPS Toplist! RuneAd is the best 2021 RuneScape Private Server Toplist!'
                 ],
 				'contact' => [
                     'title' => 'Contact Us | RuneScape Private Server Toplist | RSPS List',
-                    'meta'  => 'Contact RuneAd support and get help on anything related to RuneAd RSPS Toplist. RuneAd is the best 2020 RuneScape Private Server Toplist!'
+                    'meta'  => 'Contact RuneAd support and get help on anything related to RuneAd RSPS Toplist. RuneAd is the best 2021 RuneScape Private Server Toplist!'
                 ],
                 'privacy' => [
                     'title' => 'Privacy Policy | RuneScape Private Server Toplist | RSPS List',
-                    'meta'  => 'RuneAd Privacy Policy. Review the Privacy Policy for RuneAd RSPS Toplist! RuneAd is the best 2020 RuneScape Private Server Toplist!'
+                    'meta'  => 'RuneAd Privacy Policy. Review the Privacy Policy for RuneAd RSPS Toplist! RuneAd is the best 2021 RuneScape Private Server Toplist!'
                 ],
                 'faq' => [
                     'title' => 'FAQ | RuneScape Private Server Toplist | RSPS List',
-                    'meta'  => 'Frequently Asked Questions! Browse RuneAds FAQs to find out more about RuneAd RSPS Toplist! RuneAd is the best 2020 RuneScape Private Server Toplist!'
+                    'meta'  => 'Frequently Asked Questions! Browse RuneAds FAQs to find out more about RuneAd RSPS Toplist! RuneAd is the best 2021 RuneScape Private Server Toplist!'
                 ],
 				'ads' => [
                     'title' => 'Store | RuneScape Private Server Toplist | RSPS List',
-                    'meta'  => 'Infomation about Advertisements on RuneAd. RuneAd is the best 2020 RuneScape Private Server Toplist!'
+                    'meta'  => 'Infomation about Advertisements on RuneAd. RuneAd is the best 2021 RuneScape Private Server Toplist!'
                 ]
             ],
             'profile' => [
                 'index' => [
                     'title' => 'My Profile | RuneScape Private Server Toplist | RSPS List',
-                     'meta'  => 'Edit and add a new server, view payment history, stats, and more on RuneAd. RuneAd is the best 2020 RuneScape Private Server Toplist!'
+                     'meta'  => 'Edit and add a new server, view payment history, stats, and more on RuneAd. RuneAd is the best 2021 RuneScape Private Server Toplist!'
                 ],
                 'payments' => [
                     'title'  => 'My Payments | RuneScape Private Server Toplist | RSPS List',
-                     'meta'  => 'View your payment history for RuneAd. RuneAd is the best 2020 RuneScape Private Server Toplist!'
+                     'meta'  => 'View your payment history for RuneAd. RuneAd is the best 2021 RuneScape Private Server Toplist!'
                 ],
                 'add' => [
                     'title'  => 'Add Server | RuneScape Private Server Toplist | RSPS List',
-                     'meta'  => 'Add a new server to the RuneAd toplist. RuneAd is the best 2020 RuneScape Private Server Toplist!'
+                     'meta'  => 'Add a new server to the RuneAd toplist. RuneAd is the best 2021 RuneScape Private Server Toplist!'
                 ],
                 'edit' => [
                     'title'  => 'Edit Server | RuneScape Private Server Toplist | RSPS List',
-                     'meta'  => 'Edit an existing server on the RuneAd toplist. RuneAd is the best 2020 RuneScape Private Server Toplist!'
+                     'meta'  => 'Edit an existing server on the RuneAd toplist. RuneAd is the best 2021 RuneScape Private Server Toplist!'
                 ]
             ],
             'sponsor' => [
                 'index' => [
                     'title' => 'Sponsored Ads | RuneScape Private Server Toplist | RSPS List',
-                    'meta' => 'Purchase sponsored ad spots on RuneAd to give your server a boost! RuneAd is the best 2020 RuneScape Private Server Toplist!'
+                    'meta' => 'Purchase sponsored ad spots on RuneAd to give your server a boost! RuneAd is the best 2021 RuneScape Private Server Toplist!'
+                ]
+            ],
+            'turbo' => [
+                'index' => [
+                    'title' => 'Turbo Boosted Ads | RuneScape Private Server Toplist | RSPS List',
+                    'meta' => 'Purchase Turbo Boosted spots on RuneAd to give your server a HUGE boost! RuneAd is the best 2021 RuneScape Private Server Toplist!'
                 ]
             ],
             'tools' => [
                 'index' => [
                     'title' => 'Tools | RuneScape Private Server Toplist | RSPS List',
-                    'meta' => 'The best RSPS, OSRS & Runescape tools that\'s always up to date. RuneAd is the best 2020 RuneScape Private Server Toplist!'
+                    'meta' => 'The best RSPS, OSRS & Runescape tools that\'s always up to date. RuneAd is the best 2021 RuneScape Private Server Toplist!'
                 ],
                 'itemdb' => [
                     'title' => 'OSRS Item DB | RuneScape Private Server Toplist | RSPS List',
-                    'meta' => 'An easy to use oldschool runescape item db that\'s always up to date. RuneAd is the best 2020 RuneScape Private Server Toplist!'
+                    'meta' => 'An easy to use oldschool runescape item db that\'s always up to date. RuneAd is the best 2021 RuneScape Private Server Toplist!'
                 ],
 				 'map' => [
                     'title' => 'OSRS Interactive Map | RuneScape Private Server Toplist | RSPS List',
-                    'meta'  => 'An easy to use oldschool runescape map that\'s always up to date. RuneAd is the best 2020 RuneScape Private Server Toplist!'
+                    'meta'  => 'An easy to use oldschool runescape map that\'s always up to date. RuneAd is the best 2021 RuneScape Private Server Toplist!'
                 ],
                 'xptable' => [
                     'title' => 'OSRS Experience Table | RuneScape Private Server Toplist | RSPS List',
-                    'meta'  => 'An easy to use oldschool runescape Experience Table. RuneAd is the best 2020 RuneScape Private Server Toplist!'
+                    'meta'  => 'An easy to use oldschool runescape Experience Table. RuneAd is the best 2021 RuneScape Private Server Toplist!'
                 ],
             ],
             'downloads' => [
@@ -279,7 +285,7 @@ class Controller {
 
         return [
             'title' => 'RSPS Toplist | RuneScape Private Servers',
-            'meta'  => 'Looking for the best Runescape Private Servers 2020? Come get involved in our RSPS Toplist, and increase your website traffic and attract your players today!'
+            'meta'  => 'Looking for the best Runescape Private Servers 2021? Come get involved in our RSPS Toplist, and increase your website traffic and attract your players today!'
         ];
     }
 
