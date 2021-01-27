@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
     function loadButton(package, server) {
         statusBlock.removeClass("text-danger").html("<i class='fad fa-spinner fa-pulse'></i>");
         $.ajaxq('PaymentQueue', {
-            url: '{{ url("sponsor/button") }}',
+            url: '{{ url("turbo/button") }}',
             data: {
                 package: package,
                 server: server
