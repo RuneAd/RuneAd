@@ -11,12 +11,12 @@
             </p4>
         </div>
     </div>
+    {% include 'turbo/active.twig' %}
 
     {% set start_rank = servers.firstItem() %}
 
     <table class="table mb-0" style="line-height:1em;">
         <thead class="thead-{{ theme }}">
-            {% include 'turbo/active.twig' %}
             <tr>
                 <th class="text-center py-2 small border-0">Rank</th>
                 <th class="py-2 small border-0">Server</th>
