@@ -21,6 +21,14 @@ body {
     color:#00B74A;
 }
 
+.turbo-mode {
+    background: rgb(178,60,253);
+    background: -moz-linear-gradient(90deg, rgba(178,60,253,1) 50%, rgba(18,102,241,1) 91%);
+    background: -webkit-linear-gradient(90deg, rgba(178,60,253,1) 50%, rgba(18,102,241,1) 91%);
+    background: linear-gradient(90deg, rgba(178,60,253,1) 50%, rgba(18,102,241,1) 91%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b23cfd",endColorstr="#1266f1",GradientType=1);
+}
+
 .sponsor-bg {
     background: linear-gradient(to right, #B23CFD, #1266F1);
     transition: all 0.2s;
