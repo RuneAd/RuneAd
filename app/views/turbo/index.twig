@@ -21,26 +21,6 @@
                            Find out more below!
                         </small>
                     </div>
-                    <div class="flex-fill text-right" style="min-width:250px;">
-                        {% set slots = 1 - turbos %}
-                        {% if slots > 0 %}
-                        <p class="font-weight-bold">
-                            Slots Available:
-                            {% if slots == 1 %}
-                            <span class="text-success">{{ slots }}</span>
-                            {% elseif slots == 0 %}
-                            <span class="text-danger">{{ slots }}</span>
-                            {% endif %}
-                        </p>
-                        {% else %}
-                        <div class="flex-fill text-danger">
-                            There are no slots available right now. Next slot in:<br>
-                            <span class="font-weight-bold">
-                              {{ timeLeft(nextslot.expires) }} 
-                            </span>
-                        </div>
-                        {% endif %}
-                   </div>
                 </div>
             </div>
         </div>
