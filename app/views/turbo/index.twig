@@ -12,21 +12,20 @@
                     <i class="fas fa-crown fa-lg" style="color:gold;"></i>
                    </div>
                     <div class="flex-fill w-100">
-                        
                        <h4 class="mb-0">
                           Turbo Boosted Server
                        </h4>
-                       <small class="text-muted">Get a turbo boost for your server which will increase visibility! 
+                       <small class="text-muted">
+                           Get a turbo boost for your server which will increase visibility! 
                            Turbo Boosts show on many pages around RuneAd, giving your server the best possible outcome for visibility! 
-                           Find out more below!</small>
+                           Find out more below!
+                        </small>
                     </div>
                     <div class="flex-fill text-right" style="min-width:250px;">
                         {% set slots = 1 - turbos %}
-
                         {% if slots > 0 %}
                         <p class="font-weight-bold">
                             Slots Available:
-            
                             {% if slots == 1 %}
                             <span class="text-success">{{ slots }}</span>
                             {% elseif slots == 0 %}
@@ -35,7 +34,7 @@
                         </p>
                         {% else %}
                         <div class="text-danger">
-                            There are no slots available right now. Next slot in:<br>
+                            There are no slots available right now. <br> Next slot in:<br>
                             <span class="font-weight-bold">
                               {{ timeLeft(nextslot.expires) }} 
                             </span>
@@ -49,14 +48,8 @@
 </div> 
 </div>
 
-
-
 <!-- <h3 class="text-primary text-center">50% OFF ALL PACKAGES ON SALE NOW!</h3>
 <h5 class="text-danger text-center">Sale lasts until January 24th, 2021</h5> -->
-
-
-
-
 
 <section class="pricing py-5">
     <div class="container">
@@ -98,8 +91,6 @@
     </div>
   </section>
 
-
-
 {% if user is defined and slots > 0 %}
 <section id="servers" class="pricing-5 py-5">
     <div class="container">
@@ -110,7 +101,6 @@
             </div>
         </div>
     </div>
-
     <div class="container mt-5">
         <div class="row">
             <div class="col-sm-12 col-lg-12">
@@ -168,7 +158,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div id="paypal-btn" style="height:60px; width:400px;" class="mx-auto mb-5">
                     <div class="rounded-pill"
                         style="height:45px;background-color: rgba(0,0,0,0.1)">
@@ -184,7 +173,6 @@
         <div class="modal-content">
             <div class="modal-body py-5">
                 <div id="content">
-
                 </div>
             </div>
         </div>
@@ -196,33 +184,28 @@
 
 <section id="preview" class="pricing-5 py-5">
     <div class="container">
-
         <div class="row mb-5 text-center">
             <div class="col-sm-12">
                 <h3 class="display-3 mt-3 mb-0">Turbo Preview</h3>
                 <p>See how your Turbo ad will look on our page</p>
             </div>
         </div>
-
         <div class="row" id="preview-block">
             <div class="col-sm-12 col-lg-12">
                 <div class="card border-primary shadow mb-2 turbo-mode">
-
                     <div class="d-flex align-items-center pr-3 py-4">
-                       
                         <div class="flex-fill text-center px-2">
                             <h6 class="flex-fill gold-text px-2">TURBO BOOSTED</h6>
                              <i class="fas fa-bolt pulse-turbo fa-2x" style="color:gold;"></i>
                         </div>
-
                         <div class="flex-fill">
                             <div class="d-flex align-items-center justify-content-end">
                             <img
                                 src="{{ url('public/img/banner-loading.png') }}"
                                 alt="default-banner.png"
                                 class="img-fluid rounded">
+                            </div>
                         </div>
-                    </div>
                         <div class="flex-fill">
                             <div class="d-flex align-items-center justify-content-end">
                                 <div class="">
@@ -301,7 +284,5 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
 });
 </script>
-
 {% endif %}
-
 {% endblock %}
