@@ -46,6 +46,30 @@
         </div>
     </div>
 </div> 
+
+<span class="badge badge-pill badge-primary">
+    {% set slots = 1 - turbos %}
+    {% if slots > 0 %}
+    <p class="font-weight-bold">
+        Slots Available:
+        {% if slots == 1 %}
+        <span class="text-success">{{ slots }}</span>
+        {% elseif slots == 0 %}
+        <span class="text-danger">{{ slots }}</span>
+        {% endif %}
+    </p>
+    {% else %}
+    <div class="flex-fill text-danger">
+        There are no slots available right now. Next slot in:<br>
+        <span class="font-weight-bold">
+          {{ timeLeft(nextslot.expires) }} 
+        </span>
+    </div>
+    {% endif %}
+
+
+</span>
+
 </div>
 
 <!-- <h3 class="text-primary text-center">50% OFF ALL PACKAGES ON SALE NOW!</h3>
