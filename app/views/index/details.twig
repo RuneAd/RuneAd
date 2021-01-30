@@ -114,7 +114,7 @@
                             </div>
                         </div> -->
                     
-                        <div class="text-quicksand card shadow-sm border-0 mb-3">
+                        <div class="card shadow-sm border-0 mb-3">
                             <div class="card-body">
                                 <small class="text-muted">Votes</small>
                                 <h6 class="mb-0">
@@ -123,7 +123,7 @@
                             </div>
                         </div>
 
-                        <div class="text-quicksand card shadow-sm border-0 mb-3">
+                        <div class="card shadow-sm border-0 mb-3">
                             <div class="card-body">
                                 <small class="text-muted">
                                     Owner
@@ -135,7 +135,7 @@
                         </div>
 
 
-                        <div class="text-quicksand card shadow-sm border-0 mb-3">
+                        <div class="card shadow-sm border-0 mb-3">
                             <div class="card-body">
                                 <small class="text-muted">Created</small>
                                 <h6 class="mb-0">
@@ -144,7 +144,7 @@
                             </div>
                         </div>
 
-                        <div class="text-quicksand card shadow-sm border-0 mb-3">
+                        <div class="card shadow-sm border-0 mb-3">
                             <div class="card-body">
                                 <small class="text-muted">Meta Tags</small>
                                 <h6 class="mb-0">
@@ -156,6 +156,19 @@
 
                     </div>
                 </div>
+
+                <div class="col-sm-12 col-lg-9">
+                    {% if is_mobile == false %}
+                    <div class="alert alert-default border-info shadow-sm d-none d-lg-block">
+                        <a href="#" id="vote"
+                            data-id="{{ server.id }}"
+                            class="btn btn-outline-white mt-2 float-right vote-btn">
+                            Vote Now
+                        </a>
+                        <h5 class="mb-0 text-white">Like this server?</h5>
+                        <p class="mb-0">Consider giving it a vote to show your support!</p>
+                    </div>
+                    {% endif %}
 
                     <div class="text-center card border-0 shadow-sm mb-3">
                         <div class="card-body">
