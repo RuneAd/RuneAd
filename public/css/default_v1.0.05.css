@@ -21,6 +21,10 @@ body {
     color:#00B74A;
 }
 
+.text-quicksand {
+    font-family: 'Quicksand', sans-serif;
+}
+
 .turbo-mode {
     background: rgb(178,60,253);
     background: -moz-linear-gradient(90deg, rgba(178,60,253,1) 50%, rgba(18,102,241,1) 91%);
