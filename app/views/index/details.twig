@@ -159,11 +159,13 @@
 
                 <div class="text-quicksand col-sm-12 col-lg-9">
                     {% if is_mobile == false %}
-                    <div class="alert alert-default border-info shadow-sm d-none d-lg-block">
-                        <a href="{{ server.website }}" id="vote"
-                            class="btn btn-outline-white mt-2 float-right vote-btn">
-                            Play
-                        </a>
+                    <div class="alert alert-default border-info shadow-sm d-none d-lg-block"></div>
+                    
+                    <a href="{{ server.website }}"
+                    class="btn btn-default btn-block mb-3 {{ server.website ? '' : 'disabled' }}" target="_blank">
+                    {{ icon('link-45deg', 20, 20) }}
+                    Website
+                </a>
                         <h5 class="mb-0 text-white">Like this server?</h5>
                         <p class="mb-0">Consider giving it a try, and show your support by voting!</p>
                     </div>
