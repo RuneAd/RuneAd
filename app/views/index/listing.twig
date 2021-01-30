@@ -95,11 +95,11 @@
                     </div> -->
                     {% if is_mobile == false %}
                     <div class="pr-1 d-none d-lg-flex">
-                        <a href="{{ url('vote/'~server_url) }}"
+                        <a href="{{ server.website }}"
                             data-toggle="tooltip"
                             data-title="Play"
                             data-id="{{ server.id }}" class="btn btn-primary vote-btn">
-                            Play Now
+                            Play
                         </a>
                     </div>
                     {% endif %}
