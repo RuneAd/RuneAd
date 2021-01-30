@@ -45,7 +45,7 @@
             <div class="card border-info shadow mb-3">
                 <div class="card-body text-center">
                     <p class="small text-muted mb-0">Vote for</p>
-                    <h4 class="mb-4">{{ server.title }}</h4>
+                    <h4 class="text-quicksand mb-4">{{ server.title }}</h4>
 
                     <div class="mb-5">
                     {% if server.banner_url %}
@@ -73,7 +73,7 @@
                     </p>
 
                     {% set disabled = vote is null ? '' : 'disabled' %}
-                    <div class="mb-4">
+                    <div class="text-quicksand mb-4">
                         <a href="" class="btn btn-lg btn-primary vote" data-id="{{ server.id }}">
                             Vote Now
                         </a>
@@ -114,7 +114,7 @@
 
 
 
-        <div class="col-lg-4 col-md-12 col-sm-12">
+        <div class="text-quicksand col-lg-4 col-md-12 col-sm-12">
 
             <div class="card shadow-sm mb-3 my-card bg-{{ server.is_online ? 'success' : 'danger' }}">
                 <h4 class="text-center card shadow text-white p-3 bg-{{ server.is_online ? 'success' : 'danger' }}">
