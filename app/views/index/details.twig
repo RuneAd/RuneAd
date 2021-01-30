@@ -160,13 +160,12 @@
                 <div class="text-quicksand col-sm-12 col-lg-9">
                     {% if is_mobile == false %}
                     <div class="alert alert-default border-info shadow-sm d-none d-lg-block">
-                        <a href="#" id="vote"
-                            data-id="{{ server.id }}"
-                            class="btn btn-outline-white mt-2 float-right vote-btn">
-                            Vote Now
-                        </a>
+                        <a href="{{ server.website }}"
+                        class="btn btn-default btn-block mb-3 {{ server.website ? '' : 'disabled' }}" target="_blank">
+                       Play now
+                    </a>
                         <h5 class="mb-0 text-white">Like this server?</h5>
-                        <p class="mb-0">Consider giving it a vote to show your support!</p>
+                        <p class="mb-0">Consider giving it a try, and show your support by voting!</p>
                     </div>
                     {% endif %}
 
