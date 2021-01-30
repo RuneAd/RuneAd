@@ -2,13 +2,13 @@
 
 {% block content %}
 
-<div class="text-quicksand container" style="margin-top:-40px;">
+<div class="container" style="margin-top:-40px;">
 
     {% include 'turbo/active.twig' %}
 
     <div class="row">
         <div class="col-sm-12">
-            <div class="card border border-light shadow-sm mb-1">
+            <div class="card border border-light shadow-sm mb-2">
                 <div class="card-body">
                     <div id="factBox" class="d-flex align-items-center"style="height:50px;">
                         <div class="w-100">
@@ -45,7 +45,7 @@
             <div class="card border-info shadow mb-3">
                 <div class="card-body text-center">
                     <p class="small text-muted mb-0">Vote for</p>
-                    <h4 class="mb-4">{{ server.title }}</h4>
+                    <h4 class="text-quicksand mb-4">{{ server.title }}</h4>
 
                     <div class="mb-5">
                     {% if server.banner_url %}
@@ -74,11 +74,11 @@
 
                     {% set disabled = vote is null ? '' : 'disabled' %}
                     <div class="mb-4">
-                        <a href="" class="btn btn-lg btn-primary vote" data-id="{{ server.id }}">
+                        <a href="" class="text-quicksand btn btn-lg btn-primary vote" data-id="{{ server.id }}">
                             Vote Now
                         </a>
 
-                        <a href="{{ url('details/'~server_url) }}" class="btn btn-lg btn-outline-primary">
+                        <a href="{{ url('details/'~server_url) }}" class="text-quicksand btn btn-lg btn-outline-primary">
                             View Server
                         </a>
                     </div>
