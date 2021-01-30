@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <div class="row align-items-center flex-sm-column flex-lg-row">
                         <div class="col mb-sm-3 mb-lg-0">
-                            <h4 class="text-left mb-0">
+                            <h4 class="text-quicksand text-left mb-0">
                                 {{ server.title }}
                                 {% if server.website and server.website != "" %}
                                 <a href="{{ server.website }}" class="btn btn-primary btn-sm py-1 text-uppercase"
@@ -35,7 +35,7 @@
                         </div>
                         <div class="text-right col">
 
-                            <div class="row">
+                            <div class="text-quicksand row">
                                 <div class="text-right col-md-9">Revision: {{ server.revision }} </div>
                                 <div class="text-right col-md-3">
                                     {% if server.ping == -1  %}
@@ -114,7 +114,7 @@
                             </div>
                         </div> -->
                     
-                        <div class="card shadow-sm border-0 mb-3">
+                        <div class="text-quicksand card shadow-sm border-0 mb-3">
                             <div class="card-body">
                                 <small class="text-muted">Votes</small>
                                 <h6 class="mb-0">
@@ -123,7 +123,7 @@
                             </div>
                         </div>
 
-                        <div class="card shadow-sm border-0 mb-3">
+                        <div class="text-quicksand card shadow-sm border-0 mb-3">
                             <div class="card-body">
                                 <small class="text-muted">
                                     Owner
@@ -135,7 +135,7 @@
                         </div>
 
 
-                        <div class="card shadow-sm border-0 mb-3">
+                        <div class="text-quicksand card shadow-sm border-0 mb-3">
                             <div class="card-body">
                                 <small class="text-muted">Created</small>
                                 <h6 class="mb-0">
@@ -144,7 +144,7 @@
                             </div>
                         </div>
 
-                        <div class="card shadow-sm border-0 mb-3">
+                        <div class="text-quicksand card shadow-sm border-0 mb-3">
                             <div class="card-body">
                                 <small class="text-muted">Meta Tags</small>
                                 <h6 class="mb-0">
@@ -157,7 +157,7 @@
                     </div>
                 </div>
 
-                <div class="col-sm-12 col-lg-9">
+                <div class="text-quicksand col-sm-12 col-lg-9">
                     {% if is_mobile == false %}
                     <div class="alert alert-default border-info shadow-sm d-none d-lg-block">
                         <a href="#" id="vote"
