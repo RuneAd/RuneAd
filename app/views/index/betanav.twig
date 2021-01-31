@@ -1,12 +1,12 @@
 <div class="card overflow-hidden d-none d-md-block">
     <div class="card-body">
         <div class="row flex-md-row flex-column">
-            <div class="col mb-sm-3 mb-md-0">
+            <div class="col-sm-6 mb-sm-3 mb-md-0">
 
                 <a href="{{ url('premium') }}" class="btn btn-success btn-md">Go Premium</a>
                 <a href="{{ url('sponsor') }}" class="btn btn-info btn-md">Sponsor Info</a>
             </div>
-            <div class="col text-sm-left text-md-right">
+            <div class="col-sm-6 text-sm-left text-md-right">
                 <a href="{{ url('servers/add') }}"
                     class="btn btn-success btn-md {{ user is defined ? '' : 'disabled' }}"
                     data-toggle="tooltip"
