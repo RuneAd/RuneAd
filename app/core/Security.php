@@ -19,7 +19,7 @@ class Security {
         // define controlsl and actions for a group
         $public = [
             'index'   => ['index', 'logout', 'details', 'beta'],
-            'vote'    => ['index', 'addvote'],
+            'vote'    => ['index', 'addvote', 'botfight'],
             'premium' => ['index'],
             'sponsor' => ['index'],
             'banners' => ['index'],
