@@ -1,0 +1,199 @@
+<div class="card border-0 shadow-sm overflow-hidden mb-2">
+    <div class="text-white bg-gradient-primary card-header mb-2 py-3">
+        <div class="row align-items-center">
+            <h5 class="text-quicksand text-white col">
+                Runescape Private Servers
+                <p class="text-white-50 mb-0 small">
+                    Find RSPS servers on RuneAd | RSPS List</p>
+                </h5>
+            <p4 class="col text-right text-white">
+                Currently tracking <strong class="text-success">{{ server_count }}</strong> servers!
+            </p4>
+        </div>
+    </div>
+    {% include 'turbo/active.twig' %}
+
+    {% set start_rank = servers.firstItem() %}
+
+    <table class="table mb-0" style="line-height:1em;">
+        <thead class="thead-{{ theme }}">
+            <tr>
+                <th class="text-center py-2 small border-0">Rank</th>
+                <th class="py-2 small border-0">Server</th>
+                <th class="py-2 border-0 small text-center"></th>
+            </tr>
+        </thead>
+        {% for server in servers.items() %}
+        {% set server_url = friendlyTitle(server.id~' '~server.title) %}
+
+        {% set isPremium = server.premium_expires > time() %}
+        {% set class = isPremium ? 'bg-premium' : '' %}
+
+        
+        <tr id="server" class="{{ class }}">
+            <td class="text-center small pr-1">
+                <h4 class="mb-1">#{{ start_rank }}</h4>
+
+                {% if server.ping == -1  %}
+                <span class="badge badge-danger status-badge small"
+                    data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
+                    Offline
+                </span>
+                {% else %}
+                <span class="badge badge-success status-badge" 
+                    data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
+                    Online
+                </span>
+                {% endif %}
+            </td>
+
+            <td class="text-quicksand py-4">
+                {% if server.revision %} 
+                <span class="badge badge-primary">
+                    {{ server.revision }}
+                </span>
+                {% endif %}
+
+                <a href="{{ url('details/'~server_url) }}">
+                    {% if server.title|length > 40 %}
+                    {{ substr(server.title, 0, 40)~'...' }}
+                    {% else %}
+                    {{ server.title }}
+                    {% endif %}
+                </a>
+                
+                <a href="{{ url('details/'~server_url) }}" class="d-block mt-1" style="max-width:468px;">
+                    <img 
+                        {% if server.banner_url %}
+                        data-src="{{ banner(server.banner_url) }}"
+                        {% endif %}
+                        src="{{ url('public/img/banner-loading.png') }}"
+                        alt="RuneScape Private Server on RuneAd RSPS Toplist for {{ server.title }} | RSPS List" width="468" height="60"
+                        id="banner"
+                        class="rounded w-100"/>
+                </a>
+                
+                <div class="mt-1">
+                    {% if server.meta_tags %} 
+                    <span class="badge badge-info">
+                        {{ server.meta_tags|replace({'"': "","," : ",","[" : "","]" : ""}) }}
+                    </span>
+                    {% endif %}
+                </div> 
+
+
+            </td>
+
+            <td class="text-right">
+                {% set btnclass = isPremium
+                    and theme == "dark" ? 'btn-primary' : 'btn-default' %}
+                  
+                <div class="d-flex align-items-center justify-content-end">
+                    <!-- <div class="pr-3">
+                        <p class="mb-0" id="votes">{{ server.votes|number_format }}</p>
+                        <span class="small text-muted mb-0">Votes</span>
+                    </div> -->
+                    {% if is_mobile == false %}
+                    <div class="pr-1 d-none d-lg-flex">
+
+                        <a href="{{ server.website }}" target="_blank" class="btn btn-primary btn-md">Play</a>
+                    </div>
+                    {% endif %}
+                  
+                    
+
+                </div>
+
+                <div class="d-flex align-items-center justify-content-end text-quicksand">
+                    <p class="mb-0" id="votes">{{ server.votes|number_format }} Votes</p>
+                    <!-- <span class="small text-muted mb-0">Votes</span> -->
+                </div>
+
+
+            </td>
+
+        </tr>
+        {% set start_rank = start_rank + 1 %}
+        {% else %}
+        <tr>
+            <td colspan=5 class="p-4">Nothing to see here.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<p class="small text-muted">
+    Status updates occur every 2 minutes. We check often to ensure best real time updates for everyone who uses RuneAd.
+</p>
+
+{% set totalPages = servers.lastPage() %}
+{% set current = servers.currentPage() %}
+
+{% set pageUrl = revision is defined ? url('rev-'~revision.revision~'/') : url('')  %}
+
+
+<nav aria-label="servernav" class="mt-5">
+    <ul class="pagination justify-content-center">
+        <li class="page-item {{ servers.onFirstPage() ? 'disabled' : '' }}">
+            <a class="page-link"
+                 href="{{ pageUrl~'1' }}" tabindex="-1">
+                 {{ icon('chevron-bar-left', 14, 14) }}
+            </a>
+        </li>
+
+        <li class="page-item {{ servers.onFirstPage() ? 'disabled' : '' }}">
+            <a class="page-link" 
+                href="{{ pageUrl ~ (current == 1 ? 1 : current - 1) }}" tabindex="-1">
+                {{ icon('chevron-left', 14, 14) }}
+            </a>
+        </li>
+
+        {% if totalPages > 5 %}
+            {% set start = current < 3 ? 1 : current - 2 %}
+            {% set end   = start < 4 ? start + 4 : current + 2 %}
+
+            {% if end > totalPages %}
+                {% set end = totalPages %}
+            {% endif %}
+
+            {% if start + 4 >= totalPages %}
+                {% set start = totalPages - 4 %}
+            {% endif %}
+        {% else %}
+            {% set start = 1 %}
+            {% set end   = servers.lastPage() %}
+        {% endif %}
+
+        {% for p in start..end %}
+        <li class="page-item {{ current == p ? ' active' : ''}}">
+            <a class="page-link" href="{{ pageUrl ~ p }}">
+                {{ p }}
+            </a>
+        </li>
+        {% endfor %}
+
+        <li class="page-item {{ current >= totalPages ? 'disabled' : '' }}">
+            <a class="page-link" 
+                href="{{ pageUrl~(current == totalPages ? totalPages : current + 1) }}">
+                {{ icon('chevron-right', 14, 14) }}
+            </a>
+        </li>
+
+        <li class="page-item {{ current >= totalPages ? 'disabled' : '' }}">
+            <a class="page-link" 
+                href="{{ pageUrl ~ totalPages }}">
+                {{ icon('chevron-bar-right', 14, 14) }}
+            </a>
+        </li>
+    </ul>
+</nav>
+
+{% include 'index/components/bottomfaq.twig' %}
+
+{% if is_mobile == false %}
+{% set recaptcha_key = constant('recaptcha')['public'] %}
+
+<script src="https://www.google.com/recaptcha/api.js?render={{ recaptcha_key }}" async></script>
+
+
+{% endif %}

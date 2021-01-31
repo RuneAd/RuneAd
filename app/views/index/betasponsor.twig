@@ -1,0 +1,74 @@
+<div class="card border-2 shadow-sm overflow-hidden mb-0">
+    <div class="card-header bg-gradient-primary text-white py-3">
+        <h5 class="text-quicksand mb-0 text-white">Sponsored Servers</h5>
+        <p class="text-white-50 mb-0 small">
+          Some of the best Runescape Private Servers</p>
+    </div>
+
+    <table class="table mb-0" style="line-height:.7em;">
+        {% for sponsor in sponsors %}
+        <tr id="server">
+            <td class="text-center rank-col">
+                <i class="fi-xnsuxl-cup-solid" style="color:gold"></i>
+            </td>
+
+            <td class="py-3">
+                <div class="text-default text-quicksand mb-1">
+                <a href="{{ sponsor.website }}" target="_blank">
+                    {% if sponsor.title|length > 30 %}
+                    {{ substr(sponsor.title, 0, 30)~'...' }}
+                    {% else %}
+                    {{ sponsor.title }}
+                    {% endif %}
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-link-45deg" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.715 6.542L3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.001 1.001 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
+                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 0 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 0 0-4.243-4.243L6.586 4.672z"/>
+                      </svg>
+                </a>
+
+                </div>
+                <a href="{{ sponsor.website }}" target="_blank" class="banner-img">
+                    <img
+                        src="{{ url('public/img/banner-loading.png') }}"
+                        alt="RuneAd Banner" width="468" height="60"
+                        data-src="{{ banner(sponsor.banner_url) }}"
+                        id="banner"
+                        alt="{{ sponsor.banner_url }}"
+                        class="img-fluid rounded lazy">
+                </a>
+            </td>
+
+            <td class="text-right">
+                <div class="d-flex align-items-center justify-content-end">
+                    <div class="pr-1">
+                        <a href="{{ sponsor.discord_link }}" 
+                        data-toggle="tooltip"
+                        data-title="Discord"
+                        target="_blank"
+                            class="btn btn-lg btn-link text-primary {{ sponsor.discord_link ? '' : 'disabled' }}">
+                            {{ icon('discord', 24, 24) }}
+                        </a>
+                    </div>
+                    <div>
+                        <a href="{{ sponsor.website }}"
+                        data-toggle="tooltip"
+                        data-title="Play Server"
+                            class="btn btn-primary btn-lg" target="_blank" rel="sponsored">
+                            <span class="d-inline">Play Now</span>
+                        </a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+
+
+        {% set remaining = (3 - sponsors|length) - 1 %}
+
+        {% for i in 0..remaining %}
+        <tr id="server" class="{{ class }}">
+
+        </tr>
+        {% endfor %}
+    </table>
+</div>
