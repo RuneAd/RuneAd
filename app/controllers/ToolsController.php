@@ -35,10 +35,6 @@ class ToolsController extends Controller {
         return true;
     }
 
-    public function analytics() {
-        return true;
-    }
-
     public function xptable() {
         $turbos = Turbos::select([
             'turbos.id',
