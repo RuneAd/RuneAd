@@ -15,8 +15,8 @@
             <td class="py-3">
                 <div class="text-default text-quicksand mb-1">
                 <a href="{{ sponsor.website }}" target="_blank">
-                    {% if sponsor.title|length > 30 %}
-                    {{ substr(sponsor.title, 0, 30)~'...' }}
+                    {% if sponsor.title|length > 40 %}
+                    {{ substr(sponsor.title, 0, 40)~'...' }}
                     {% else %}
                     {{ sponsor.title }}
                     {% endif %}
@@ -27,6 +27,7 @@
                 </a>
 
                 </div>
+                <div class="mb-1">
                 <a href="{{ sponsor.website }}" target="_blank" class="banner-img">
                     <img
                         src="{{ url('public/img/banner-loading.png') }}"
@@ -36,6 +37,7 @@
                         alt="{{ sponsor.banner_url }}"
                         class="img-fluid rounded lazy">
                 </a>
+            </div>
             </td>
 
             <td class="text-right">
@@ -61,8 +63,6 @@
             </td>
         </tr>
         {% endfor %}
-
-
         {% set remaining = (3 - sponsors|length) - 1 %}
 
         {% for i in 0..remaining %}
