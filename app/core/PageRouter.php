@@ -53,6 +53,10 @@ class PageRouter extends Router {
             return $this->setRoute('index', 'staffpanel');
         });
 
+        $this->all('beta', function() {
+            return $this->setRoute('index', 'beta');
+        });
+
 
         /**
          * Pages
