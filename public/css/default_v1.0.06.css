@@ -21,6 +21,16 @@ body {
     color:#00B74A;
 }
 
+.question-container {
+    transition: all 0.4s ease-in-out;
+    max-height: 1000px;
+  }
+  .question-container.hidden {
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+  }
+
 .text-quicksand {
     font-family: 'Quicksand', sans-serif;
 }
