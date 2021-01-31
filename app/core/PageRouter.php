@@ -358,10 +358,6 @@ class PageRouter extends Router {
             return $this->setRoute('tools', 'servers');
         });
 
-        $this->all('tools/analytics', function() {
-            return $this->setRoute('tools', 'analytics');
-        });
-
               /**
          * Admin Sponsors
          */

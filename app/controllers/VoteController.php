@@ -2,51 +2,7 @@
 use Fox\Request;
 
 class VoteController extends Controller {
-
-
-    public function botfight($serverId, $incentive) {
-        $server = Servers::getServer($serverId);
-
-        if (!$server) {
-           $this->setView("errors", "show404");
-           return false;
-        }
-
-        $ip   = $this->request->getAddress();
-
-        $vote = Votes::query()
-            ->where("server_id", $server->id)
-            ->where(function($query) use ($ip, $incentive) {
-                $query
-                    ->where("ip_address", $ip)
-                    ->orWhere("incentive", $incentive);
-            })
-            ->whereRaw(time()." - voted_on < 43000")
-            ->first();
-
-
-            $turbos = Turbos::select([
-                'turbos.id',
-                'servers.title',
-                'servers.website',
-                'servers.discord_link',
-                'servers.banner_url'
-            ])
-            ->where('expires', '>', time())
-            ->where('servers.banner_url', '!=', null)
-            ->where('servers.website', '!=', null)
-            ->leftJoin("servers", "servers.id", "=", "turbos.server_id")
-            ->orderBy("started", "ASC")
-            ->get();
     
-            
-        $this->set("turbos", $turbos);
-        $this->set("incentive", $incentive);
-        $this->set("vote", $vote);
-        $this->set("server", $server);
-        $this->set("server_url", Functions::friendlyTitle($server->id.'-'.$server->title));
-        return true;
-    }
 
     public function index($serverId, $incentive) {
         $server = Servers::getServer($serverId);

@@ -19,7 +19,7 @@ class Security {
         // define controlsl and actions for a group
         $public = [
             'index'   => ['index', 'logout', 'details', 'beta'],
-            'vote'    => ['index', 'addvote', 'botfight'],
+            'vote'    => ['index', 'addvote'],
             'premium' => ['index'],
             'sponsor' => ['index'],
             'banners' => ['index'],
@@ -61,7 +61,7 @@ class Security {
             'premium'  => ['index', 'add', 'edit', 'delete'],
             'users'    => ['index', 'banned'],
             'servers'  => ['index', 'info', 'edit', 'delete'],
-            'tools' => ['servers', 'analytics']
+            'tools' => ['servers']
         ];
 
         foreach ($public as $controller => $actions) {
