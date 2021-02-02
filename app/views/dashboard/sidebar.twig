@@ -45,8 +45,8 @@
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    {% set active = controller == "admin" ? "active" : "" %}
-                    <a class="nav-link {{ active }}" href="{{ url('admin') }}">
+                    {% set active = controller == "dashboard" ? "active" : "" %}
+                    <a class="nav-link {{ active }}" href="{{ url('dashboard') }}">
 
                         <div class="d-flex align-items-center">
                             <div class="flex-fill pr-2 {{ icon_class }}">
