@@ -36,27 +36,15 @@
 
 <div class="container-fluid mt--7">
     <div class="row">
-        <div class="col-xl-12">
-            <div class="card border-0 mb-5">
-
-                <div class="card-header">
-                    <div class="row align-items-center">
-                        <div class="col w-100">
-                            <div class="float-left mt-1 mr-3 text-default">
-                                {{ icon('bar-chart-fill', 32, 32) }}
-                            </div>
-                            <h6 class="text-uppercase text-muted ls-1 mb-0">Performance</h6>
-                            <h2 class="mb-0">Statistics during 2021</h2>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-body">
-                    <h2 class="text-center text-default mb-0">Coming Soon...</h2>
-                </div>
+        <div class="col-sm-12 col-lg-8">
+            {% for server in servers %}
+            {% set seo = friendlyTitle(server.id~'-'~server.title) %}
+            {% include 'profile/components/servers.twig' %}
+            {% else %}
+            <div class="alert alert-default shadow-sm">
+                You dont have a server listed yet! Click the button above to add one now!
             </div>
-
-            {{ content|raw}}
+            {% endfor %}
         </div>
     </div>
 
