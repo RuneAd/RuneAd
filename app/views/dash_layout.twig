@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    {% if page_title is defined %}
+    <title>{{ page_title }} | RuneAd</title>
+    {% else %}
+    <title>RuneAd</title>
+    {% endif %}
+
+    <link rel="canonical" href="{{ route }}">
+    <meta name="keywords" content="toplist,topg,rspslist,best rsps,top rsps,mmo,runescape,rsps,rsps toplist,private,server,runelocus,rune-server,rune-list,runelist,top100,arena,everythingrs,moparscape,rsps-page,best-rsps,runescape private server">
+    <meta name="description" content="The most modern top-list built to-date. Completely free, feature rich, and easy to use!">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=0.87, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{{ stylesheet('argon-dashboard.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ stylesheet('quill.snow.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ stylesheet('themes/'~theme~'.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ stylesheet('dashboard.css') }}" />
+    <script type="text/javascript" src="{{ javascript('jquery-3.3.1.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+</head>
+<body>
+
+<div class="main-content" id="panel">
+    {% include "dashboard/index.twig" %}
+
+    {% block content %}
+    {% endblock %}
+</div> 
+
+</body>
+<script type="text/javascript" src="{{ javascript('bootstrap.bundle.min.js') }}"></script>
+<script type="text/javascript" src="{{ javascript('argon-dashboard.min.js') }}"></script>
+<script type="text/javascript" src="{{ javascript('fontawesome.pro.min.js') }}"></script>
+<script type="text/javascript" src="{{ javascript('custom.js') }}"></script>
+</html>
