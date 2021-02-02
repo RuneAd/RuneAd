@@ -39,7 +39,7 @@
         <div class="col-sm-12 col-lg-8">
             {% for server in servers %}
             {% set seo = friendlyTitle(server.id~'-'~server.title) %}
-            {% include 'profile/components/servers.twig' %}
+            {% include 'dashboard/servers.twig' %}
             {% else %}
             <div class="alert alert-default shadow-sm">
                 You dont have a server listed yet! Click the button above to add one now!
