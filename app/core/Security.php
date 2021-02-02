@@ -41,6 +41,7 @@ class Security {
             'sponsor' => ['button', 'verify', 'process'],
             'turbo'   => ['button', 'verify', 'process'],
             'profile' => ['index', 'stats', 'payments'],
+            'dashboard' => ['index', 'stats', 'payments'],
             'blog'    => ['add', 'edit', 'delete'],
             'videos'    => ['add', 'edit', 'delete']
         ];

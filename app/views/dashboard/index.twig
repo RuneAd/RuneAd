@@ -1,0 +1,41 @@
+{%  extends 'layout.twig' %}
+
+{% block content %}
+
+<div class="container" style="margin-top:-30px;">
+    {% include 'profile/components/header.twig' %}
+
+    <div class="row mb-3">
+        <div class="col-sm-12 col-lg-4">
+
+            {% include 'profile/components/sidebar_nav.twig' %}
+            {% include 'profile/components/settings.twig' %}
+
+        </div>
+        <div class="col-sm-12 col-lg-8">
+            {% for server in servers %}
+            {% set seo = friendlyTitle(server.id~'-'~server.title) %}
+            {% include 'profile/components/servers.twig' %}
+            {% else %}
+            <div class="alert alert-default shadow-sm">
+                You dont have a server listed yet! Click the button above to add one now!
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {{ content|raw }}
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(event) {
+    $('a[id="showdetails"]').click(function(event) {
+        event.preventDefault();
+        let parent = $(this).closest(".card");
+        parent.find("#statistics").toggle();
+        parent.find("#details").toggle();
+    });
+});
+</script>
+
+{%  endblock %}
