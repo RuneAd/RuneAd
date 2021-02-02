@@ -293,6 +293,13 @@ class PageRouter extends Router {
          $this->get("profile/payments/([0-9]+)", function($page = 1) {
             return $this->setRoute('profile', 'payments', [ 'page' => $page ]);
          });
+
+         /**
+         * Profile
+         */
+        $this->get("dashboard", function() {
+            return $this->setRoute('dashboard', 'index');
+        });
         /**
          * Pages
          */
