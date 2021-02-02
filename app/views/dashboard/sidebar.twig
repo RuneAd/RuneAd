@@ -60,14 +60,14 @@
                 </li>
                 
                 <li class="nav-item">
-                    {% set active = controller == "payments" ? "active" : "" %}
-                    <a class="nav-link {{ active }}" href="{{ url('admin/payments') }}">
+                    {% set active = controller == "index" ? "active" : "" %}
+                    <a class="nav-link {{ active }}" href="{{ url('dashboard/index') }}">
 
                         <div class="d-flex align-items-center">
                             <div class="flex-fill pr-2 {{ icon_class }}">
                                 {{ icon('shop', 16, 16) }}
                             </div>
-                            <div class="text-default flex-fill w-100">
+                            <div class="text-muted flex-fill w-100">
                                 Payments
                             </div>
                         </div>
