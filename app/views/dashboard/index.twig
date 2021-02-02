@@ -1,7 +1,6 @@
 {% extends 'dash_layout.twig' %}
 {% block content %}
-
-<div class="container-fluid mt--7">
+<div class="container-fluid bg-default pb-7 pt-4">
     <div class="row">
         <div class="col-sm-12 col-lg-8">
             {% for server in servers %}
@@ -14,16 +13,8 @@
             {% endfor %}
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-sm-12 col-lg-6">
-
-        </div>
-        <div class="col-sm-12 col-lg-6">
-            
-        </div>
-    </div>
 </div>
+
 
 {% include 'chart_config.twig' %}
 
