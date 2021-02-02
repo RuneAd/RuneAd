@@ -15,14 +15,16 @@
     <link rel="stylesheet" type="text/css" href="{{ stylesheet('argon-dashboard.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ stylesheet('quill.snow.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ stylesheet('themes/'~theme~'.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ stylesheet('dashboard.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ stylesheet('admin.css') }}" />
     <script type="text/javascript" src="{{ javascript('jquery-3.3.1.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 </head>
 <body>
 
+{% include 'admin/sidebar.twig' %}
+
 <div class="main-content" id="panel">
-    {% include "dashboard/index.twig" %}
+    {% include "admin/header.twig" %}
 
     {% block content %}
     {% endblock %}
