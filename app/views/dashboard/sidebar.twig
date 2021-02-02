@@ -60,22 +60,6 @@
                 </li>
                 
                 <li class="nav-item">
-                    {% set active = controller == "servers" ? "active" : "" %}
-                    <a class="nav-link {{ active }}" href="{{ url('admin/servers') }}">
-
-                        <div class="d-flex align-items-center">
-                            <div class="flex-fill pr-2 {{ icon_class }}">
-                                {{ icon('card-list', 16, 16) }}
-                            </div>
-                            <div class="text-default flex-fill w-100">
-                                Servers
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-
-                <li class="nav-item">
                     {% set active = controller == "payments" ? "active" : "" %}
                     <a class="nav-link {{ active }}" href="{{ url('admin/payments') }}">
 
@@ -89,99 +73,10 @@
                         </div>
                     </a>
                 </li>
-
-                <li class="nav-item">
-                    {% set active = controller == "users" ? "active" : "" %}
-                    <a class="nav-link {{ active }}" href="{{ url('admin/users') }}">
-
-                        <div class="d-flex align-items-center">
-                            <div class="flex-fill pr-2 {{ icon_class }}">
-                                {{ icon('people', 16, 16) }}
-                            </div>
-                            <div class="text-default flex-fill w-100">
-                                Users
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    {% set active = controller == "admin" and action == "reports" ? "active" : "" %}
-                    <a class="nav-link {{ active }}" href="{{ url('admin/reports') }}">
-
-                        <div class="d-flex align-items-center">
-                            <div class="flex-fill pr-2 {{ icon_class }}">
-                                {{ icon('exclamation-triangle', 16, 16) }}
-                            </div>
-                            <div class="text-default flex-fill w-100">
-                                Reports
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    {% set active = controller == "sponsor" ? "active" : "" %}
-                    <a class="nav-link {{ active }}" href="{{ url('admin/sponsor') }}">
-                        <div class="d-flex align-items-center">
-                            <div class="flex-fill pr-2 {{ icon_class }}">
-                                {{ icon('card-list', 16, 16) }}
-                            </div>
-                            <div class="text-default flex-fill w-100">
-                                Sponsor Slots
-                            </div>
-                        </div>
-                    </a>
-                </li>
                 
-                <li class="nav-item">
-                    {% set active = controller == "premium" ? "active" : "" %}
-                    <a class="nav-link {{ active }}" href="{{ url('admin/premium') }}">
-                        <div class="d-flex align-items-center">
-                            <div class="flex-fill pr-2 {{ icon_class }}">
-                                {{ icon('award', 16, 16) }}
-                            </div>
-                            <div class="text-default flex-fill w-100">
-                                Premium
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-
             
             </ul>
 
-            <hr class="my-3">
-
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('') }}">
-                        <div class="d-flex align-items-center">
-                            <div class="flex-fill pr-2 {{ icon_class }}">
-                                {{ icon('house', 16, 16) }}
-                            </div>
-                            <div class="text-default flex-fill w-100">
-                                Home
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ url('logout') }}">
-
-                        <div class="d-flex align-items-center text-danger">
-                            <div class="flex-fill pr-2">
-                                {{ icon('power', 16, 16) }}
-                            </div>
-                            <div class="flex-fill w-100">
-                                Sign Out
-                            </div>
-                        </div>
-                    </a>
-                </li>
-            </ul>
         </div>
     </div>
 </nav>
