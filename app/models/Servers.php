@@ -129,7 +129,7 @@ class Servers extends Model {
             )
             ->selectRaw(
                 'IF(premium_expires > '.time().', votes + (premium_level * 1), votes) as votes')
-                ->orderby("date_created", "ASC")
+                ->orderby("date_created", "DESC")
             ->paginate(per_page);
     }
 
