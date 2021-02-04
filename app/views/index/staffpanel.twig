@@ -9,7 +9,7 @@
                 RuneAd Full Server List |  Currently tracking <strong class="text-success">{{ server_count }}</strong> servers!
             </div>
             <div class="col text-right text-muted">
-                <small>Panel Last updated: 12/17/2020</small>
+                <small>Panel Last updated: 02/02/2021</small>
             </div>
         </div>
     </div>
@@ -50,12 +50,10 @@
                 {% if server.ping == -1  %}
                 <span class="badge badge-danger status-badge small"
                     data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
-                    Offline
                 </span>
                 {% else %}
                 <span class="badge badge-success status-badge" 
                     data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
-                    Online
                 </span>
                 {% endif %}
             </td>
