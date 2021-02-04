@@ -2,168 +2,173 @@
 
 {% block content %}
 
+
+
 <div class="container" style="margin-top:-30px;">
-    <div class="row">
-        <div class="col-sm-12">
-
-<div class="card border-0 shadow-sm overflow-hidden mb-2">
-    <div class="text-white bg-primary card-header py-3">
-        <div class="row align-items-center">
-            <div class="col">
-                RuneAd Full Server List |  Currently tracking <strong class="text-success">{{ server_count }}</strong> servers!
-            </div>
-            <div class="col text-right text-muted">
-                <small>Panel Last updated: 02/02/2021</small>
-            </div>
-        </div>
-    </div>
-
-    {% set start_rank = servers.firstItem() %}
-
-    <table class="table mb-0" style="line-height:1em;">
-        <thead class="thead-{{ theme }}">
-            <tr>
-                <th class="text-left py-2 small border-0">Server</th>
-                <th class="text-left py-2 small border-0">Status</th>
-                <th class="text-left py-2 small border-0">Creation Date</th>
-                <th class="text-left py-2 small border-0">Votes</th>
-                <th class="text-left py-2 small border-0">Premium Info</th>
-                <th class="text-left py-2 small border-0">Premium Trial</th>
-            </tr>
-        </thead>
-
-        {% for server in servers.items() %}
-        {% set server_url = friendlyTitle(server.id~' '~server.title) %}
-
-        {% set isPremium = server.premium_expires > time() %}
-        {% set class = isPremium ? '' : '' %}
+<div class="row">
+    <div class="col-sm-9">
         
-        <tr id="server" class="{{ class }}">
-
-            <td class="py-2">{{ start_rank }})
-                <a href="{{ url('details/'~server_url) }}">
-                    {% if server.title|length > 40 %}
-                    {{ substr(server.title, 0, 40)~'...' }}
-                    {% else %}
-                    {{ server.title }}
-                    {% endif %}
-                </a>
-            </td>
-
-             <td class="small pr-1">
-                {% if server.ping == -1  %}
-                <span class="badge badge-danger status-badge small"
-                    data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
-                </span>
+        <div class="card border-0 shadow-sm overflow-hidden mb-2">
+            <div class="text-white bg-primary card-header py-3">
+                <div class="row align-items-center">
+                    <div class="col">
+                        RuneAd Full Server List |  Currently tracking <strong class="text-success">{{ server_count }}</strong> servers!
+                    </div>
+                    <div class="col text-right text-muted">
+                        <small>Panel Last updated: 02/02/2021</small>
+                    </div>
+                </div>
+            </div>
+        
+            {% set start_rank = servers.firstItem() %}
+        
+            <table class="table mb-0" style="line-height:1em;">
+                <thead class="thead-{{ theme }}">
+                    <tr>
+                        <th class="text-left py-2 small border-0">Server</th>
+                        <th class="text-left py-2 small border-0">Status</th>
+                        <th class="text-left py-2 small border-0">Creation Date</th>
+                        <th class="text-left py-2 small border-0">Votes</th>
+                        <th class="text-left py-2 small border-0">Premium Info</th>
+                        <th class="text-left py-2 small border-0">Premium Trial</th>
+                    </tr>
+                </thead>
+        
+                {% for server in servers.items() %}
+                {% set server_url = friendlyTitle(server.id~' '~server.title) %}
+        
+                {% set isPremium = server.premium_expires > time() %}
+                {% set class = isPremium ? '' : '' %}
+                
+                <tr id="server" class="{{ class }}">
+        
+                    <td class="py-2">{{ start_rank }})
+                        <a href="{{ url('details/'~server_url) }}">
+                            {% if server.title|length > 40 %}
+                            {{ substr(server.title, 0, 40)~'...' }}
+                            {% else %}
+                            {{ server.title }}
+                            {% endif %}
+                        </a>
+                    </td>
+        
+                     <td class="small pr-1">
+                        {% if server.ping == -1  %}
+                        <span class="badge badge-danger status-badge small"
+                            data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
+                        </span>
+                        {% else %}
+                        <span class="badge badge-success status-badge" 
+                            data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
+                        </span>
+                        {% endif %}
+                    </td>
+        
+                    <td>
+                        <p class="mb-0 text-default">
+                            {{ server.date_created|date("m.d.y") }}
+                        </p>
+                    </td>
+        
+                    <td>
+                        <p class="mb-0" id="votes">{{ server.votes|number_format }}</p>
+                    </td>
+        
+                    <td>
+                        <p class="mb-0 text-default">
+                            {% if server.premium_expires > time() %}
+                                <span class="text-success">
+                                    {{ timeLeft(server.premium_expires, true)}}
+                                </span>
+                            {% elseif server.premium_expires < time() and server.premium_expires != -1 %}
+                                <span class="text-danger">
+                                    Expired
+                                </span>
+                            {% else %}
+                                n/a
+                            {% endif %}
+                        </p>
+                    </td>
+        
+                    <td>
+                        <a class="btn btn-info disabled" href="#"
+                        data-toggle="tooltip"
+                        data-title="Only give this per request to a new server!"
+                         role="button">Activate</a>
+                    </td>
+        
+        
+                </tr>
+                {% set start_rank = start_rank + 1 %}
                 {% else %}
-                <span class="badge badge-success status-badge" 
-                    data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
-                </span>
-                {% endif %}
-            </td>
-
-            <td>
-                <p class="mb-0 text-default">
-                    {{ server.date_created|date("m.d.y") }}
-                </p>
-            </td>
-
-            <td>
-                <p class="mb-0" id="votes">{{ server.votes|number_format }}</p>
-            </td>
-
-            <td>
-                <p class="mb-0 text-default">
-                    {% if server.premium_expires > time() %}
-                        <span class="text-success">
-                            {{ timeLeft(server.premium_expires, true)}}
-                        </span>
-                    {% elseif server.premium_expires < time() and server.premium_expires != -1 %}
-                        <span class="text-danger">
-                            Expired
-                        </span>
-                    {% else %}
-                        n/a
-                    {% endif %}
-                </p>
-            </td>
-
-            <td>
-                <a class="btn btn-info disabled" href="#"
-                data-toggle="tooltip"
-                data-title="Only give this per request to a new server!"
-                 role="button">Activate</a>
-            </td>
-
-
-        </tr>
-        {% set start_rank = start_rank + 1 %}
-        {% else %}
-        <tr>
-            <td colspan=5 class="p-4">Uh oh! No servers found on this page. Please contact Aaron!</td>
-        </tr>
-        {% endfor %}
-    </table>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-12 col-lg-3">
-                    <div class="" style="top:18px;">
-                    
-                        <div class="card shadow-sm border-0 mb-3">
-                            <div class="card-body">
-                                <small class="text-muted">Votes</small>
-                                <h6 class="mb-0">
-                                 
-                                </h6>
-                            </div>
-                        </div>
-
-                        <div class="card shadow-sm border-0 mb-3">
-                            <div class="card-body">
-                                <small class="text-muted">
-                                    Owner
-                                </small>
-                                <h6 class="mb-0">
-                                </h6>
-                            </div>
-                        </div>
-
-
-                        <div class="card shadow-sm border-0 mb-3">
-                            <div class="card-body">
-                                <small class="text-muted">Created</small>
-                                <h6 class="mb-0">
-                                </h6>
-                            </div>
-                        </div>
-
-                        <div class="card shadow-sm border-0 mb-3">
-                            <div class="card-body">
-                                <small class="text-muted">Meta Tags</small>
-                                <h6 class="mb-0">
-                                </h6>
-                            </div>
-                        </div>
-
-
+                <tr>
+                    <td colspan=5 class="p-4">Uh oh! No servers found on this page. Please contact Aaron!</td>
+                </tr>
+                {% endfor %}
+            </table>
                     </div>
-                </div>
-
-                <div class="col-sm-12 col-lg-9">
-
-                    <div class="text-center card border-0 shadow-sm mb-3">
-                        <div class="card-body">
-                        </div>
-                    </div>
-                </div>
 
 
-            </div>
 
 
-        </div>
+
     </div>
+    <div class="col-sm-3">
+        
+        <div class="row">
+            <div class="col-sm-3 col-lg-3">
+                <div class="" style="top:18px;">
+                    <div class="card shadow-sm border-0 mb-3">
+                        <div class="card-body">
+                            <small class="text-muted">Votes</small>
+                            <h6 class="mb-0">
+                             
+                            </h6>
+                        </div>
+                    </div>
+                    <div class="card shadow-sm border-0 mb-3">
+                        <div class="card-body">
+                            <small class="text-muted">
+                                Owner
+                            </small>
+                            <h6 class="mb-0">
+                            </h6>
+                        </div>
+                    </div>
+                    <div class="card shadow-sm border-0 mb-3">
+                        <div class="card-body">
+                            <small class="text-muted">Created</small>
+                            <h6 class="mb-0">
+                            </h6>
+                        </div>
+                    </div>
+
+                    <div class="card shadow-sm border-0 mb-3">
+                        <div class="card-body">
+                            <small class="text-muted">Meta Tags</small>
+                            <h6 class="mb-0">
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-lg-9">
+
+                <div class="text-center card border-0 shadow-sm mb-3">
+                    <div class="card-body">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+  </div>
 </div>
+
+
+
 
 {%  endblock %}
