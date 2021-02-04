@@ -142,62 +142,70 @@ class IndexController extends Controller {
     }
 
     public function staffpanel($rev = null, $page = 1) {
-        $servers = Servers::where('owner', $this->user->user_id)->get();
-        $roles = implode(", ", json_decode($this->user->roles, true));
+        $revisions = Revisions::where('visible', 1)->get();
 
-        $idArr = array_column($servers->toArray(), "id");
-        $ids   = implode(",", $idArr);
+        if ($rev != null) {
+            $revision = Revisions::where('revision', $rev)->first();
 
-        if (count($servers) > 0) {
-            $votes = Votes::
-                select("*")
-                ->whereRaw("server_id IN (".$ids.")")
-                ->leftJoin("servers", "servers.id", "=", "votes.server_id")
-                ->orderByRaw("votes.voted_on DESC")
-                ->get();
-        }
-
-        $votesArr = [];
-
-        foreach ($idArr as $id) {
-            $votesArr[$id] = [
-                '1hour'    => 0,
-                '1day'     => 0,
-                '7days'    => 0,
-                '30days'   => 0,
-                '60days'   => 0,
-                'lifetime' => 0,
-            ];
-        }
-
-        if (count($servers) > 0) {
-            foreach($votes as $vote) {
-                $vote_time = $vote->voted_on;
-                $timeDiff  = time() - $vote_time;
-
-                if ($timeDiff <= 3600) {
-                    $votesArr[$vote->server_id]['1hour']++;
-                }
-                if ($timeDiff <= 86400) {
-                    $votesArr[$vote->server_id]['1day']++;
-                }
-                if ($timeDiff <= 604800) {
-                    $votesArr[$vote->server_id]['7days']++;
-                }
-                if ($timeDiff <= 2592000) {
-                    $votesArr[$vote->server_id]['30days']++;
-                }
-                if ($timeDiff <= 10368000) {
-                    $votesArr[$vote->server_id]['60days']++;
-                }
-                $votesArr[$vote->server_id]['lifetime']++;
+            if (!$revision) {
+                $this->setView("errors/show404");
+                return false;
             }
+
+            $servers = Servers::getByRevision($revision, $page);
+
+            $this->set("page_title", "{$revision->revision} Servers");
+            $this->set("meta_info", "{$revision->revision} Runescape private servers.");
+            $this->set("revision", $revision);
+        } else {
+            $servers = Servers::getAll($page);
         }
-        $this->set("roles", $roles);
+        
+        $data = [
+            'servers' => [
+                'total' => Servers::count()
+            ]
+            ];
+
+            $turbos = Turbos::select([
+                'turbos.id',
+                'servers.title',
+                'servers.website',
+                'servers.discord_link',
+                'servers.banner_url'
+            ])
+            ->where('expires', '>', time())
+            ->where('servers.banner_url', '!=', null)
+            ->where('servers.website', '!=', null)
+            ->leftJoin("servers", "servers.id", "=", "turbos.server_id")
+            ->orderBy("started", "ASC")
+            ->get();
+    
+            $this->set("turbos", $turbos);
+
+        
+        $sponsors = Sponsors::select([
+                'sponsors.id',
+                'servers.title',
+                'servers.website',
+                'servers.discord_link',
+                'servers.banner_url'
+            ])
+            ->where('expires', '>', time())
+            ->where('servers.banner_url', '!=', null)
+            ->where('servers.website', '!=', null)
+            ->leftJoin("servers", "servers.id", "=", "sponsors.server_id")
+            ->orderBy("started", "ASC")
+            ->get();
+
+        $this->set("data", $data);
         $this->set("servers", $servers);
-        $this->set("voteData", $votesArr);
-        return true;
+        $this->set("revisions", $revisions);
+        $this->set("sponsors", $sponsors);
+        $this->set("server_count", $servers->total());
+    	return true;
     }
+
 
 
     public function details($id) {
