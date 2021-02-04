@@ -158,7 +158,7 @@ class IndexController extends Controller {
             $this->set("meta_info", "{$revision->revision} Runescape private servers.");
             $this->set("revision", $revision);
         } else {
-            $servers = Servers::getAll($page);
+            $servers = Servers::getStaffPanel($page);
         }
         
         $data = [
