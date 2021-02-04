@@ -41,10 +41,10 @@
                 
                 <tr id="server" class="{{ class }}">
         
-                    <td class="py-2">{{ start_rank }})
+                    <td class="py-2">
                         <a href="{{ url('details/'~server_url) }}">
-                            {% if server.title|length > 40 %}
-                            {{ substr(server.title, 0, 40)~'...' }}
+                            {% if server.title|length > 30 %}
+                            {{ substr(server.title, 0, 30)~'...' }}
                             {% else %}
                             {{ server.title }}
                             {% endif %}
