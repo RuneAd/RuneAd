@@ -62,17 +62,14 @@
                         </span>
                         {% endif %}
                     </td>
-        
                     <td>
                         <p class="mb-0 text-default">
-                            {{ server.date_created|date("m.d.y") }}
+                            {{ date_created|date("m.d.y") }}
                         </p>
                     </td>
-        
                     <td>
                         <p class="mb-0" id="votes">{{ server.votes|number_format }}</p>
                     </td>
-        
                     <td>
                         <p class="mb-0 text-default">
                             {% if server.premium_expires > time() %}
