@@ -108,6 +108,31 @@ class Servers extends Model {
             ->paginate(per_page);
     }
 
+    public static function getStaffPanel($page = 1) {
+        Paginator::currentPageResolver(function() use ($page) {
+            return $page;
+        });
+
+        return Servers::where('website', '!=', null)
+            ->select(
+                'id', 
+                'title', 
+                'revision', 
+                'banner_url', 
+                'is_online',
+                'ping',
+                'last_ping',
+                'premium_expires',
+                'website',
+                'discord_link',
+                'awards'
+            )
+            ->selectRaw(
+                'IF(premium_expires > '.time().', votes + (premium_level * 1), votes) as votes')
+                ->orderby("date_created", "ASC")
+            ->paginate(per_page);
+    }
+
     public static function ArraySpecialFinger($page = 1) {
         Paginator::currentPageResolver(function() use ($page) {
             return $page;
