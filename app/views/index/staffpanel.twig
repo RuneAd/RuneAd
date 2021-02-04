@@ -32,7 +32,7 @@
         {% set server_url = friendlyTitle(server.id~' '~server.title) %}
 
         {% set isPremium = server.premium_expires > time() %}
-        {% set class = isPremium ? 'bg-premium' : '' %}
+        {% set class = isPremium ? '' : '' %}
         
         <tr id="server" class="{{ class }}">
 
