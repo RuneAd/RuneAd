@@ -178,7 +178,7 @@ class IndexController extends Controller {
             ->where('servers.banner_url', '!=', null)
             ->where('servers.website', '!=', null)
             ->leftJoin("servers", "servers.id", "=", "turbos.server_id")
-            ->orderBy("started", "ASC")
+            ->orderBy("started", "DESC")
             ->get();
     
             $this->set("turbos", $turbos);
@@ -195,7 +195,7 @@ class IndexController extends Controller {
             ->where('servers.banner_url', '!=', null)
             ->where('servers.website', '!=', null)
             ->leftJoin("servers", "servers.id", "=", "sponsors.server_id")
-            ->orderBy("started", "ASC")
+            ->orderBy("started", "DESC")
             ->get();
 
         $this->set("data", $data);
