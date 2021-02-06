@@ -10,7 +10,7 @@ a  {
     color: #FFF;
 }
 .card{
-    background-color: #212121
+    background-color: #292929
 }
 
 .text-mode {
@@ -27,7 +27,7 @@ a  {
     transition: all 0.4s ease-in-out;
     max-height: 1000px;
   }
-  .question-container.hidden {
+.question-container.hidden {
     opacity: 0;
     visibility: hidden;
     max-height: 0;
