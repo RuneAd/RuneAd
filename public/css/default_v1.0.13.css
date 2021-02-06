@@ -8,15 +8,6 @@
 @font-face { font-family: "OpenSans-Regular"; src: url('../fonts/OpenSans-Regular.ttf'); font-display: swap; }
 
 body {
-background: #1d1d1d;  /* fallback for old browsers */
-color:#D2D3D5 !important;
-}
-
-.card{
-    background-color: #212121
-}
-
-body-light {
     background-color: #f3f3f3;
     color: #7c7c7c;
     font-family: "OpenSans-Regular" !important;
@@ -728,10 +719,7 @@ a.banner-img {
 }
 
 tr.bg-primary, .bg-premium {
-    background: #000428;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #004e92, #2a3388);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #004e92, #2a3388); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
+    background-color: #FFEB99 !important;
 }
 .card-body p:last-child {
     margin-bottom: 0 !important;
