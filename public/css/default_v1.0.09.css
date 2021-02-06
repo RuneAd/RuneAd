@@ -372,8 +372,11 @@ a.text-primary:hover {
 .navbar-dark .navbar-nav .nav-link {
     font-family: "OpenSans-Regular" !important;
 }
+.darken-90 {
+    filter: brightness(90%);
+}
 .custom-header {
-    filter: brightness(50%);
+    filter: brightness(90%);
     /*background-image: linear-gradient(to right bottom, #2327a0, #05c6b1);*/
     background: url('../img/runeadq.jpg') top center no-repeat #6a8bbe;
 }
