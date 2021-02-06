@@ -373,6 +373,7 @@ a.text-primary:hover {
     font-family: "OpenSans-Regular" !important;
 }
 .custom-header {
+    filter: brightness(50%);
     /*background-image: linear-gradient(to right bottom, #2327a0, #05c6b1);*/
     background: url('../img/runeadq.jpg') top center no-repeat #6a8bbe;
 }
