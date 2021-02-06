@@ -8,6 +8,15 @@
 @font-face { font-family: "OpenSans-Regular"; src: url('../fonts/OpenSans-Regular.ttf'); font-display: swap; }
 
 body {
+background: #1d1d1d;  /* fallback for old browsers */
+color:#D2D3D5 !important;
+}
+
+.card{
+    background-color: #212121
+}
+
+body-light {
     background-color: #f3f3f3;
     color: #7c7c7c;
     font-family: "OpenSans-Regular" !important;
