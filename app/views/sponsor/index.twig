@@ -19,38 +19,38 @@
                        <small class="text-muted">Get the most bang for your buck with our sponsor slots. You'll be placed at the top of 
                            the main listing page in which viewers will have quick access to your server.</small>
                     </div>
-                    <div class="flex-fill text-right" style="min-width:250px;">
-                        {% set slots = 3 - sponsors %}
-
-                        {% if slots > 0 %}
-                        <p class="font-weight-bold">
-                            Slots Available:
-            
-                            {% if slots == 3 %}
-                            <span class="text-success">{{ slots }}</span>
-                            {% elseif slots == 2 %}
-                            <span class="text-warning">{{ slots }}</span>
-                            {% elseif slots == 1 %}
-                            <span class="text-danger">{{ slots }}</span>
-                            {% elseif slots == 0 %}
-                            <span class="text-danger">{{ slots }}</span>
-                            {% endif %}
-                        </p>
-                        {% else %}
-                        <div class="text-danger">
-                            There are no slots available right now. A slot will be available in:<br>
-                            <span class="font-weight-bold">
-                              {{ timeLeft(nextslot.expires) }} 
-                            </span>
-                        </div>
-                        {% endif %}
-                   </div>
                 </div>
             </div>
         </div>
     </div>
 </div> 
 </div>
+<h5 class="text-center">
+    {% set slots = 3 - sponsors %}
+
+    {% if slots > 0 %}
+    <p class="font-weight-bold">
+        Slots Available:
+
+        {% if slots == 3 %}
+        <span class="text-success">{{ slots }}</span>
+        {% elseif slots == 2 %}
+        <span class="text-warning">{{ slots }}</span>
+        {% elseif slots == 1 %}
+        <span class="text-danger">{{ slots }}</span>
+        {% elseif slots == 0 %}
+        <span class="text-danger">{{ slots }}</span>
+        {% endif %}
+    </p>
+    {% else %}
+    <div class="text-danger">
+        There are no slots available right now. A slot will be available in:<br>
+        <span class="font-weight-bold">
+          {{ timeLeft(nextslot.expires) }} 
+        </span>
+    </div>
+    {% endif %}
+</h5>
 
 
 
