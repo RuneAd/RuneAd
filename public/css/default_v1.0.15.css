@@ -14,7 +14,6 @@ body {
 }
 
 .custom-header {
-    filter: brightness(90%);
     /*background-image: linear-gradient(to right bottom, #2327a0, #05c6b1);*/
     background: url('../img/runeadq.jpg') top center no-repeat #6a8bbe;
 }
