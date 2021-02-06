@@ -17,6 +17,10 @@ a  {
     color:#FBFBFB;
 }
 
+.icon-background {
+    color: #6975dd;
+}
+
 .custom-header {
     filter: brightness(90%);
     /*background-image: linear-gradient(to right bottom, #2327a0, #05c6b1);*/
