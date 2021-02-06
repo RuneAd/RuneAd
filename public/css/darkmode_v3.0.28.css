@@ -1,7 +1,5 @@
 body {
-    background: #000000;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to top, #1b1b1b, #333333);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to top, #1b1b1b, #333333); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #1d1d1d;  /* fallback for old browsers */
 color:#D2D3D5 !important;
 }
 
@@ -12,7 +10,7 @@ a  {
     color: #FFF;
 }
 .card{
-    background-color: #36393F
+    background-color: #212121
 }
 
 .text-mode {
