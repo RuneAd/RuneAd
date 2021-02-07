@@ -20,8 +20,6 @@ class Security {
         $public = [
             'index'   => ['index', 'logout', 'details', 'beta'],
             'vote'    => ['index', 'addvote'],
-            'premium' => ['index'],
-            'sponsor' => ['index'],
             'banners' => ['index'],
             'report'  => ['index'],
             'login'   => ['index', 'discord', 'auth', 'dauth'],
@@ -32,7 +30,6 @@ class Security {
             'downloads'   => ['index', 'rsps', 'web'],
             'commands'  => ['index', 'owner', 'admin', 'moderator', 'donator', 'player'],
             'videos'  => ['index', 'post'],
-            'turbo'    => ['index']
         ];
 
         $private = [
