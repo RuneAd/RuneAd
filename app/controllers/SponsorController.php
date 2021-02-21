@@ -19,7 +19,7 @@ class SponsorController extends Controller {
         $this->set("packages", $packages);
         $this->set("sponsors", $sponsors);
 
-        if ($sponsors == 3) {
+        if ($sponsors == 4) {
             $nextSlot = Sponsors::select("expires")
                 ->where("expires", ">", time())
                 ->orderBy("expires", "ASC")
