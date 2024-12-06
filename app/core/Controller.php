@@ -190,12 +190,6 @@ class Controller {
                     'meta' => 'Purchase sponsored ad spots on RuneAd to give your server a boost! RuneAd is the best 2021 RuneScape Private Server Toplist!'
                 ]
             ],
-            'turbo' => [
-                'index' => [
-                    'title' => 'Turbo Boosted Ads | RuneScape Private Server Toplist | RSPS List',
-                    'meta' => 'Purchase Turbo Boosted spots on RuneAd to give your server a HUGE boost! RuneAd is the best 2021 RuneScape Private Server Toplist!'
-                ]
-            ],
             'tools' => [
                 'index' => [
                     'title' => 'Tools | RuneScape Private Server Toplist | RSPS List',
