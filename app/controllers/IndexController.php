@@ -23,7 +23,7 @@ class IndexController extends Controller {
             $servers = Servers::getByRevision($revision, $page);
 
             $this->set("page_title", "{$revision->revision} Servers");
-            $this->set("meta_info", "{$revision->revision} Runescape private servers.");
+            $this->set("meta_info", "{$revision->revision} Project Zanaris Community Servers.");
             $this->set("revision", $revision);
         } else {
             $servers = Servers::getAll($page);
@@ -73,7 +73,7 @@ class IndexController extends Controller {
             $servers = Servers::getByRevision($revision, $page);
 
             $this->set("page_title", "{$revision->revision} Servers");
-            $this->set("meta_info", "{$revision->revision} Runescape private servers.");
+            $this->set("meta_info", "{$revision->revision} Project Zanaris Community Servers.");
             $this->set("revision", $revision);
         } else {
             $servers = Servers::getAll($page);
@@ -122,7 +122,7 @@ class IndexController extends Controller {
             $servers = Servers::getByRevision($revision, $page);
 
             $this->set("page_title", "{$revision->revision} Servers");
-            $this->set("meta_info", "{$revision->revision} Runescape private servers.");
+            $this->set("meta_info", "{$revision->revision} Project Zanaris Community Servers.");
             $this->set("revision", $revision);
         } else {
             $servers = Servers::getStaffPanel($page);
