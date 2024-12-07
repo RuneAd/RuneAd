@@ -39,25 +39,26 @@
                         </div>
 
 
-                         <div class="form-row form-group">
-                             <div class="col-lg-2">
-                             <label>Server Settings & Features</label>
-                                 <label>Everyone Ultimate Ironman?</label>
-                                 <select name="revision" class="form-control {{ errors['revision'] is defined ? 'border-danger' : '' }}">
-                                     {% for revision in revisions %}
-                                     <option value="{{ revision.revision }}">{{ revision.revision }} disabled</option>
-                                     {% endfor %}
-                                 </select>
-                             </div>
-                             <div class="col-lg-2">
-                                 <label>PVP World?</label>
-                                 <select name="revision" class="form-control {{ errors['revision'] is defined ? 'border-danger' : '' }}">
-                                     {% for revision in revisions %}
-                                     <option value="{{ revision.revision }}">{{ revision.revision }} diabled</option>
-                                     {% endfor %}
-                                 </select>
-                             </div>
-                         </div>
+<div class="form-row form-group">
+    <label>Server Settings & Features</label>
+    <div class="col-lg-3">
+        <label>Everyone Ultimate Ironman?</label>
+        <select name="revision" class="form-control {{ errors['revision'] is defined ? 'border-danger' : '' }}" disabled>
+            {% for revision in revisions %}
+            <option value="{{ revision.revision }}">{{ revision.revision }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-lg-3">
+        <label>PVP World?</label>
+        <select name="revision" class="form-control {{ errors['revision'] is defined ? 'border-danger' : '' }}" disabled>
+            {% for revision in revisions %}
+            <option value="{{ revision.revision }}">{{ revision.revision }}</option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
+
 
 
 
