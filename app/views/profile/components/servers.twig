@@ -9,7 +9,7 @@
             </div>
             <!-- Action Icons -->
             <div class="flex-fill text-right">
-                <a href="{{ url('vote/'~server.id~'/'~server.title) }}" class="px-2" title="Share Vote link">
+                <a href="{{ url('vote/'~server.id~'/'~server.title|replace({' ': '-'}) ) }}" class="px-2" title="Share Vote link">
                     {{ icon('share') }}
                 </a>
                 <a href="{{ url('profile/delete/'~seo) }}" class="px-2" title="Delete Server">
