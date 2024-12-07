@@ -213,8 +213,6 @@ class Controller {
         ];
     }
 
-}
-
    /**
      * Displays the necessary template using Twig
      */
