@@ -21,11 +21,13 @@
         <div id="details" class="text-center">
             <div class="d-flex">
                 <div class="flex-fill">
-                           <img
+                        <a href="{{ url('details/' ~ server_url) }}" class="d-block mt-1" style="max-width:468px;">
+                            <img
                                 src="{{ server.banner_url ? banner(server.banner_url) : url('public/img/banner-loading.png') }}"
                                 alt="PlayZanaris - Jagex Community Servers - {{ server.title }} | RSPS List"
                                 class="rounded w-100" width="468" height="60"
                             />
+                        </a>
                 </div>
             </div>
         </div>
