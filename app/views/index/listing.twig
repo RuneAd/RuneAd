@@ -23,7 +23,7 @@
                 <th class="py-2 border-0 small text-center">Play</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="border-primary">
             {% for server in servers.items() %}
                 {% set server_url = friendlyTitle(server.id ~ ' ' ~ server.title) %}
                 {% set isPremium = server.premium_expires > time() %}
