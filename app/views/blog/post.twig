@@ -19,14 +19,15 @@
                                 {{ icon("info-circle", 18, 18) }} {{ post.meta_description }}
                             </p>
                         </div>
-                        <div class="flex-fill text-right" style="min-width:250px;">
-                            <a href="{{ url('blog') }}" class="btn btn-default">Blog Home</a>
-                            
-                            <a href="{{ url('blog/edit/'~post.id) }}" 
-                                class="btn btn-default {{ can_edit ? "" : "disabled" }}">
-                                Edit Post
-                            </a>
-                        </div>
+<div class="flex-fill text-right" style="min-width:250px;">
+    <a href="{{ url('blog') }}" class="btn btn-default">Blog Home</a>
+
+    {% if can_edit %}
+        <a href="{{ url('blog/edit/'~post.id) }}" class="btn btn-default">
+            Edit Post
+        </a>
+    {% endif %}
+</div>
                     </div>
                 </div>
             </div>
