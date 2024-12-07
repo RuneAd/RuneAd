@@ -19,15 +19,15 @@
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     const hash = window.location.hash.substr(1);
+
     if (hash) {
         const access_token = getUrlParam('access_token', hash);
 
         setTimeout(() => {
-            $.post('{{ url("discord/auth") }}', { access_token }, function(data) {
+            $.post('{{ url("discord/auth") }}', { access_token }, (data) => {
                 console.log(data);
-
                 const success = data.success;
 
                 $('#icon')
@@ -50,14 +50,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
     }
 
-    function getUrlParam(name, url) {
-        if (!url) url = window.location.href;
+    function getUrlParam(name, url = window.location.href) {
         name = name.replace(/[\[\]]/g, '\\$&');
         const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
         const results = regex.exec(url);
         if (!results) return null;
-        if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        return decodeURIComponent(results[2]?.replace(/\+/g, ' ') || '');
     }
 });
 </script>
