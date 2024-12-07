@@ -20,19 +20,12 @@
         <!-- Server Details -->
         <div id="details" class="text-center">
             <div class="d-flex">
-                <!-- Server Created Date -->
                 <div class="flex-fill">
-                    <p class="mb-0 text-default">
-                        {{ server.date_created|date("m.d.y") }}
-                    </p>
-                    <p class="small mb-0">Created</p>
-                </div>
-                <!-- Server Revision -->
-                <div class="flex-fill">
-                    <p class="mb-0 text-default">
-                        {{ server.revision ? server.revision : 'n/a' }}
-                    </p>
-                    <p class="small mb-0">Revision</p>
+                           <img
+                                src="{{ server.banner_url ? banner(server.banner_url) : url('public/img/banner-loading.png') }}"
+                                alt="PlayZanaris - Jagex Community Servers - {{ server.title }} | RSPS List"
+                                class="rounded w-100" width="468" height="60"
+                            />
                 </div>
             </div>
         </div>
