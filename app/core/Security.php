@@ -42,7 +42,9 @@ class Security {
         $admin = [
             'admin'    => ['index', 'reports', 'viewreport'],
             'payments' => ['index'],
+            'blog'    => ['add', 'edit', 'delete'],
             'sponsor'  => ['index', 'add', 'edit', 'delete'],
+            'videos'    => ['add', 'edit', 'delete']
             'premium'  => ['index', 'add', 'edit', 'delete'],
             'users'    => ['index', 'banned'],
             'servers'  => ['index', 'info', 'edit', 'delete'],
