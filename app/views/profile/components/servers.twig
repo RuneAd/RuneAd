@@ -9,8 +9,8 @@
             </div>
             <!-- Action Icons -->
             <div class="flex-fill text-right">
-                <a href="{{ url('servers/edit/'~seo) }}" class="px-2" title="Edit Server">
-                    {{ icon('pencil') }}
+                <a href="{{ url('vote/'~server.id~'/'~hash('sha256', server.id~time())) }}" class="px-2" title="Share Vote link">
+                    {{ icon('share') }}
                 </a>
                 <a href="{{ url('profile/delete/'~seo) }}" class="px-2" title="Delete Server">
                     {{ icon('trash') }}
