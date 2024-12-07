@@ -9,9 +9,10 @@
             </div>
             <!-- Action Icons -->
             <div class="flex-fill text-right">
-                <button class="btn btn-success btn-md" title="Share Vote link" onclick="copyToClipboard('{{ url('vote/'~server.id~'/'~server.title|replace({' ': '-'}) ) }}')">
+                <button class="btn btn-success btn-md" title="Share Vote link" onclick="copyToClipboardWithMessage('https://PlayZanaris.com{{ url('vote/'~server.id~'/'~server.title|replace({' ': '-'}) ) }}', this)">
                     {{ icon('share') }} Share
                 </button>
+                <div class="mt-2 text-success d-none" id="clipboard-message">Voting Link copied to clipboard</div>
             </div>
         </div>
     </div>
@@ -52,9 +53,13 @@
 </div>
 
 <script>
-    function copyToClipboard(text) {
+    function copyToClipboardWithMessage(text, buttonElement) {
         navigator.clipboard.writeText(text).then(function() {
-            alert('Voting Link copied to clipboard');
+            const message = buttonElement.nextElementSibling;
+            message.classList.remove('d-none');
+            setTimeout(() => {
+                message.classList.add('d-none');
+            }, 3000);
         }, function(err) {
             console.error('Could not copy text: ', err);
         });
