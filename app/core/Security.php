@@ -34,9 +34,6 @@ class Security {
 
         $private = [
             'servers' => ['add', 'edit', 'delete'],
-            'premium' => ['button', 'verify', 'process'],
-            'sponsor' => ['button', 'verify', 'process'],
-            'turbo'   => ['button', 'verify', 'process'],
             'profile' => ['index', 'stats', 'payments'],
             'dashboard' => ['index', 'stats', 'payments'],
             'blog'    => ['add', 'edit', 'delete'],
