@@ -14,6 +14,7 @@ class ServersController extends Controller {
                 'revision'      => $this->request->getPost("revision", "string"),
                 //Below are server settings set when adding a server
                 'settings'      => $this->request->getPost("setting", "string"), //Settings
+                'setting_ironman'      => $this->request->getPost("revision", "string"),
                 //End of Server Settings
                 'title'         => $this->request->getPost("title", "string"),
                 'server_port'   => $this->request->getPost("server_port", "int"),
