@@ -124,8 +124,8 @@ class Controller {
             ],
             'index' => [
                 'index' => [
-                    'title' => 'RSPS Toplist | RuneScape Private Servers',
-                    'meta'  => 'Looking for the best Runescape Private Servers 2021? Come get involved in our RSPS Toplist, and increase your website traffic and attract your players today!'
+                    'title' => 'PlayZanaris | The only Toplist for Jagex approved Community Servers | Project Zanaris',
+                    'meta'  => 'Discover PlayZanaris, the ultimate toplist for Jagex-approved Community Servers! Explore Project Zanaris, where players host and control their own Jagex-supported OSRS servers. Build, play, and join the community today!'
                 ]
             ],
             'pages' => [
