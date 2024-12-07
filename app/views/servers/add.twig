@@ -42,7 +42,7 @@
 <div class="form-row form-group">
       <div class="col-lg-3">
           <label>Ultimate Ironman?</label>
-          <select name="setting" class="form-control {{ errors['setting'] is defined ? 'border-danger' : '' }}" disabled>
+          <select name="setting" class="form-control {{ errors['setting'] is defined ? 'border-danger' : '' }}">
               {% for setting in settings_add %}
               <option value="{{ setting.setting }}">{{ setting.setting }}</option>
               {% endfor %}
@@ -50,7 +50,7 @@
       </div>
     <div class="col-lg-3">
         <label>PVP World?</label>
-        <select name="revision" class="form-control {{ errors['revision'] is defined ? 'border-danger' : '' }}">
+        <select name="revision" class="form-control {{ errors['revision'] is defined ? 'border-danger' : '' }}" disabled>
             {% for revision in revisions %}
             <option value="{{ revision.revision }}">{{ revision.revision }}</option>
             {% endfor %}
