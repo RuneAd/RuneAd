@@ -28,7 +28,7 @@ class Security {
             'blog'    => ['index', 'post'],
             'downloads'   => ['index', 'rsps', 'web'],
             'commands'  => ['index', 'owner', 'admin', 'moderator', 'donator', 'player'],
-            'videos'  => ['index', 'post'],
+            'videos'  => ['index', 'post']
         ];
 
         $private = [
