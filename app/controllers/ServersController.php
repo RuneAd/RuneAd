@@ -13,7 +13,7 @@ class ServersController extends Controller {
                 'owner'         => $this->user->user_id,
                 'revision'      => $this->request->getPost("revision", "string"),
                 //Below are server settings set when adding a server
-                'settings_add'      => $this->request->getPost("setting", "string"), //Settings
+                'settings'      => $this->request->getPost("setting", "string"), //Settings
                 //End of Server Settings
                 'title'         => $this->request->getPost("title", "string"),
                 'server_port'   => $this->request->getPost("server_port", "int"),
