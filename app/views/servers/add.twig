@@ -40,18 +40,18 @@
 
 <div class="form-row form-group mb-0">
     <div class="col">
-        <label>Server Port* (Do not edit)</label>
+        <label>Server Port*</label>
         <input type="number" class="form-control {{ errors['server_port'] is defined ? 'border-danger' : '' }}"
             name="server_port" min="0" max="65535" value="43594" disabled>
     </div>
     <div class="col">
-        <label>Server IP* (Do not edit)</label>
+        <label>Server IP*</label>
         <input type="text" class="form-control {{ errors['server_ip'] is defined ? 'border-danger' : '' }}"
             name="server_ip" disabled>
     </div>
 </div>
 
-                       <p class="text-muted small text-center">We're not sure if Project Zanaris Servers will use Port & IP. They are here just in case.</p>
+                       <p class="text-muted small text-center">We're not sure if Project Zanaris Servers will use Port & IP. We have disabled this setting until we get more information.</p>
 
                         <hr>
 
@@ -65,8 +65,8 @@
 
                         <div class="form-group">
                             <label>Callback URL (Optional)</label>
-                            <input type="text" class="form-control {{ errors['callback_url'] is defined ? 'border-danger' : '' }}" name="callback_url" maxlength="255">
-                            <span class="text-muted small">We're not sure if Project Zanaris Servers will use a callback system. This is here just in case.</span>
+                            <input type="text" class="form-control {{ errors['callback_url'] is defined ? 'border-danger' : '' }}" name="callback_url" disabled maxlength="255">
+                            <span class="text-muted small">We're not sure if Project Zanaris Servers will use a callback system. We have disabled this setting until we get more information.</span>
                         </div>
 
                         <div class="form-group">
