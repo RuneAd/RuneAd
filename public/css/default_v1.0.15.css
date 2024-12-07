@@ -13,6 +13,12 @@ body {
     font-family: "OpenSans-Regular" !important;
 }
 
+.Header-BG-Top {
+    background: linear-gradient(180deg, rgb(60, 48, 34), rgb(83, 67, 49), rgb(37, 29, 19));
+    color: white; /* Ensures text is visible on the dark gradient */
+}
+
+
 .custom-header {
     /*background-image: linear-gradient(to right bottom, #2327a0, #05c6b1);*/
     background: url('../img/headerbg.png') top center no-repeat #6a8bbe;
