@@ -23,20 +23,33 @@
                         </div>
                     {% endif %}
                     <form method="post" action="{{ url('servers/add') }}" id="postform">
-                        <div class="form-row form-group">
-                            <div class="col-lg-2">
-                                <label>Revision</label>
-                                <select name="revision" class="form-control {{ errors['revision'] is defined ? 'border-danger' : '' }}">
-                                    {% for revision in revisions %}
-                                    <option value="{{ revision.revision }}">{{ revision.revision }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                            <div class="col">
-                                <label>Server Name*</label>
-                                <input type="text" class="form-control {{ errors['title'] is defined ? 'border-danger' : '' }}" name="title">
-                            </div>
-                        </div>
+                       <div class="form-row form-group">
+                           <div class="col-lg-2">
+                               <label>Revision</label>
+                               <select name="revision" class="form-control {{ errors['revision'] is defined ? 'border-danger' : '' }}">
+                                   {% for revision in revisions %}
+                                   <option value="{{ revision.revision }}">{{ revision.revision }}</option>
+                                   {% endfor %}
+                               </select>
+                           </div>
+                           <div class="col">
+                               <label>Server Name*</label>
+                               <input type="text" class="form-control {{ errors['title'] is defined ? 'border-danger' : '' }}" name="title">
+                           </div>
+                       </div>
+                       <!-- New row for feature checkboxes -->
+                       <div class="form-row form-group">
+                           <div class="col-12">
+                               <label>Do you have any of these features enabled on your server?</label>
+                               <div class="form-check">
+                                   <input class="form-check-input" type="checkbox" name="features[]" value="leagues" id="feature-leagues">
+                                   <label class="form-check-label" for="feature-leagues">
+                                       Leagues
+                                   </label>
+                               </div>
+                           </div>
+                       </div>
+
 
                         <div class="form-row form-group mb-0">
                             <div class="col">
