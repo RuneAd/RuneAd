@@ -40,22 +40,35 @@
 
     <label>Server Settings & Features (Not required, but helpful for players looking for a specific server)</label>
 <div class="form-row form-group">
-    <label>Server Settings & Features</label>
     <div class="col-lg-3">
         <label>Ultimate Ironman?</label>
         <select name="setting_ironman" class="form-control {{ errors['setting_ironman'] is defined ? 'border-danger' : '' }}">
-            {% for ironman in setting_ironman %}
-            <option value="{{ ironman.setting_ironman }}">{{ ironman.setting_ironman }}</option>
-            {% endfor %}
+            {% if setting_ironman %}
+                {% for ironman in setting_ironman %}
+                <option value="{{ ironman.setting_ironman }}">{{ ironman.setting_ironman }}</option>
+                {% endfor %}
+            {% else %}
+                <option value="" disabled>No settings found</option>
+            {% endif %}
         </select>
+        {% if not setting_ironman %}
+            <p class="text-danger">Debug: No data passed to "setting_ironman".</p>
+        {% endif %}
     </div>
     <div class="col-lg-3">
         <label>PVP World?</label>
         <select name="revision" class="form-control {{ errors['revision'] is defined ? 'border-danger' : '' }}" disabled>
-            {% for revision in revisions %}
-            <option value="{{ revision.revision }}">{{ revision.revision }}</option>
-            {% endfor %}
+            {% if revisions %}
+                {% for revision in revisions %}
+                <option value="{{ revision.revision }}">{{ revision.revision }}</option>
+                {% endfor %}
+            {% else %}
+                <option value="" disabled>No revisions found</option>
+            {% endif %}
         </select>
+        {% if not revisions %}
+            <p class="text-danger">Debug: No data passed to "revisions".</p>
+        {% endif %}
     </div>
 </div>
         <div class="col-lg-3">
