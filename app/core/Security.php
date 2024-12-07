@@ -34,16 +34,14 @@ class Security {
         $private = [
             'servers' => ['add', 'edit', 'delete'],
             'profile' => ['index', 'stats', 'payments'],
-            'dashboard' => ['index', 'stats', 'payments'],
-            'blog'    => ['add', 'edit', 'delete'],
-            'videos'    => ['add', 'edit', 'delete']
+            'dashboard' => ['index', 'stats', 'payments']
         ];
 
         $admin = [
             'admin'    => ['index', 'reports', 'viewreport'],
             'payments' => ['index'],
             'sponsor'  => ['index', 'add', 'edit', 'delete'],
-            'videos'    => ['add', 'edit', 'delete']
+            'videos'   => ['add', 'edit', 'delete']
             'premium'  => ['index', 'add', 'edit', 'delete'],
             'users'    => ['index', 'banned'],
             'servers'  => ['index', 'info', 'edit', 'delete'],
