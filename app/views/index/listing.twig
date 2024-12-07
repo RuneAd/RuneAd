@@ -15,69 +15,70 @@
 
     {% set start_rank = servers.firstItem() %}
 
-    <table class="table mb-0" style="line-height:1em; background-color: rgb(233,220,178, 0.9);>
-        <thead class="thead-{{ theme }}">
-            <tr>
-                <th class="text-center py-2 small border-0">Rank</th>
-                <th class="py-2 small border-0">Server</th>
-                <th class="py-2 border-0 small text-center">Play</th>
+<table class="table mb-0" style="line-height:1em; background-color: rgba(233, 220, 178, 0.9);">
+    <thead class="thead-{{ theme }}">
+        <tr>
+            <th class="text-center py-2 small border-0">Rank</th>
+            <th class="py-2 small border-0">Server</th>
+            <th class="py-2 border-0 small text-center">Play</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for server in servers.items() %}
+            {% set server_url = friendlyTitle(server.id ~ ' ' ~ server.title) %}
+            {% set isPremium = server.premium_expires > time() %}
+            {% set class = isPremium ? 'bg-premium' : '' %}
+
+            <tr class="{{ class }} border-primary">
+                <td class="text-center small pr-1">
+                    <h4 class="mb-1">#{{ start_rank }}</h4>
+                </td>
+                <td class="text-quicksand py-4">
+                    {% if server.revision %}
+                        <span class="badge badge-primary">{{ server.revision }}</span>
+                    {% endif %}
+
+                    <a href="{{ url('details/' ~ server_url) }}">
+                        {{ server.title|length > 40 ? server.title|slice(0, 40) ~ '...' : server.title }}
+                    </a>
+
+                    <a href="{{ url('details/' ~ server_url) }}" class="d-block mt-1" style="max-width:468px;">
+                        <img
+                            src="{{ server.banner_url ? banner(server.banner_url) : url('public/img/banner-loading.png') }}"
+                            alt="PlayZanaris - Jagex Community Servers - {{ server.title }} | RSPS List"
+                            class="rounded w-100" width="468" height="60"
+                        />
+                    </a>
+
+                    {% if server.meta_tags %}
+                        <div class="mt-1">
+                            <span class="badge badge-info">
+                                {{ server.meta_tags|replace({'"': '', ',' : ', ', '[': '', ']': ''}) }}
+                            </span>
+                        </div>
+                    {% endif %}
+                </td>
+                <td class="text-right">
+                    <div class="d-flex align-items-center justify-content-end">
+                        {% if not is_mobile %}
+                            <a href="{{ server.website }}" target="_blank" class="btn btn-primary btn-md">Play</a>
+                        {% endif %}
+                    </div>
+                    <div class="d-flex align-items-center justify-content-end text-quicksand">
+                        <p class="mb-0" id="votes">{{ server.votes|number_format }} Votes</p>
+                    </div>
+                </td>
             </tr>
-        </thead>
-        <tbody class="border-primary">
-            {% for server in servers.items() %}
-                {% set server_url = friendlyTitle(server.id ~ ' ' ~ server.title) %}
-                {% set isPremium = server.premium_expires > time() %}
-                {% set class = isPremium ? 'bg-premium' : '' %}
 
-                <tr class="{{ class }} border-primary">
-                    <td class="text-center small pr-1">
-                        <h4 class="mb-1">#{{ start_rank }}</h4>
-                    </td>
-                    <td class="text-quicksand py-4">
-                        {% if server.revision %}
-                            <span class="badge badge-primary">{{ server.revision }}</span>
-                        {% endif %}
+            {% set start_rank = start_rank + 1 %}
+        {% else %}
+            <tr>
+                <td colspan="3" class="p-4">Nothing to see here.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
-                        <a href="{{ url('details/' ~ server_url) }}">
-                            {{ server.title|length > 40 ? server.title|slice(0, 40) ~ '...' : server.title }}
-                        </a>
-
-                        <a href="{{ url('details/' ~ server_url) }}" class="d-block mt-1" style="max-width:468px;">
-                            <img
-                                src="{{ server.banner_url ? banner(server.banner_url) : url('public/img/banner-loading.png') }}"
-                                alt="PlayZanaris - Jagex Community Servers - {{ server.title }} | RSPS List"
-                                class="rounded w-100" width="468" height="60"
-                            />
-                        </a>
-
-                        {% if server.meta_tags %}
-                            <div class="mt-1">
-                                <span class="badge badge-info">
-                                    {{ server.meta_tags|replace({'"': '', ',' : ', ', '[': '', ']': ''}) }}
-                                </span>
-                            </div>
-                        {% endif %}
-                    </td>
-                    <td class="text-right">
-                        <div class="d-flex align-items-center justify-content-end">
-                            {% if not is_mobile %}
-                                <a href="{{ server.website }}" target="_blank" class="btn btn-primary btn-md">Play</a>
-                            {% endif %}
-                        </div>
-                        <div class="d-flex align-items-center justify-content-end text-quicksand">
-                            <p class="mb-0" id="votes">{{ server.votes|number_format }} Votes</p>
-                        </div>
-                    </td>
-                </tr>
-
-                {% set start_rank = start_rank + 1 %}
-            {% else %}
-                <tr>
-                    <td colspan="3" class="p-4">Nothing to see here.</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
 </div>
 
 <p class="small text-muted">
