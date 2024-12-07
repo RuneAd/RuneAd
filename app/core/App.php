@@ -10,30 +10,9 @@ class App {
 
     public function __construct() {
         $this->router = PageRouter::getInstance();
-        $this->router->initRoutes();
+        $this->initializeRouter();
 
-        try {
-            $this->router->route();
-        } catch (\Router\RouteNotFoundException $e) {
-            $this->router->setRoute("errors", "show404");
-        }
-
-        $controller  = $this->router->getController(true);
-
-        /** @var Controller controller */
-        $this->controller = new $controller;
-
-        /** Redirects to 404 is method doesn't exist. */
-        if (!method_exists($this->controller, $this->router->getMethod())) {
-            $this->router->setRoute("errors", "show404");
-
-            $controller  = $this->router->getController(true);
-            $this->controller = new $controller;
-        }
-
-        $this->controller->setView($this->router->getViewPath());
-        $this->controller->setActionName($this->router->getMethod());
-        $this->controller->setRouter($this->router);
+        $this->loadController();
 
         if ($this->initRoute()) {
             $this->controller->show();
@@ -41,36 +20,78 @@ class App {
     }
 
     /**
-     * Calls the action within a controller
-     * TODO: revisit later
+     * Initializes the router and handles routing.
+     */
+    private function initializeRouter() {
+        $this->router->initRoutes();
+
+        try {
+            $this->router->route();
+        } catch (\Router\RouteNotFoundException $e) {
+            $this->router->setRoute("errors", "show404");
+        }
+    }
+
+    /**
+     * Loads the appropriate controller based on the current route.
+     */
+    private function loadController() {
+        $controllerClass = $this->router->getController(true);
+
+        if (!class_exists($controllerClass)) {
+            $this->redirectTo404();
+            return;
+        }
+
+        $this->controller = new $controllerClass;
+
+        if (!method_exists($this->controller, $this->router->getMethod())) {
+            $this->redirectTo404();
+        }
+
+        $this->controller->setView($this->router->getViewPath());
+        $this->controller->setActionName($this->router->getMethod());
+        $this->controller->setRouter($this->router);
+    }
+
+    /**
+     * Redirects to the 404 error page.
+     */
+    private function redirectTo404() {
+        $this->router->setRoute("errors", "show404");
+
+        $controllerClass = $this->router->getController(true);
+        $this->controller = new $controllerClass;
+    }
+
+    /**
+     * Executes the controller action and handles output.
+     *
+     * @return bool
      */
     public function initRoute() {
         if (method_exists($this->controller, "beforeExecute")) {
-            $before = call_user_func_array([$this->controller, "beforeExecute"], []);
-
-              if (!$before) {
-                return true;
+            $before = call_user_func([$this->controller, "beforeExecute"]);
+            if (!$before) {
+                return false;
             }
         }
 
-        $controller = $this->controller;
-         $method     = $this->router->getMethod();
-         $params     = $this->router->getParams();
+        $method = $this->router->getMethod();
+        $params = $this->router->getParams();
 
-         $output = call_user_func_array([$controller, $method], $params);
+        ob_start();
+        $output = call_user_func_array([$this->controller, $method], $params);
+        $content = ob_get_clean();
 
         if ($this->controller->isJson()) {
             header('Content-Type: application/json');
             echo json_encode($output);
-            return;
+            return false;
         }
 
-        $content = ob_get_contents();
-        ob_end_clean();
         $this->controller->set("content", $content);
         return true;
     }
-
-
 }
 ?>
