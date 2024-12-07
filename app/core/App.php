@@ -15,7 +15,7 @@ class App {
         try {
             $this->router->route();
         } catch (\Router\RouteNotFoundException $e) {
-            $this->router->setRoute("/", "/");
+            $this->router->setRoute("errors", "show404");
         }
 
         $controller  = $this->router->getController(true);
@@ -25,7 +25,7 @@ class App {
 
         /** Redirects to 404 is method doesn't exist. */
         if (!method_exists($this->controller, $this->router->getMethod())) {
-            $this->router->setRoute("/", "/");
+            $this->router->setRoute("errors", "show404");
 
             $controller  = $this->router->getController(true);
             $this->controller = new $controller;
