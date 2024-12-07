@@ -25,6 +25,11 @@ class PageRouter extends Router {
             return $this->setRoute('index', 'index');
         });
 
+        $this->all('error', function() {
+            // Redirect any error pages back to the homepage
+            return $this->redirect(url('/'));
+        });
+
         $this->all('servers/add', function() {
             return $this->setRoute('servers', 'add');
         });
