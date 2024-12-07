@@ -25,12 +25,12 @@ class Servers extends Model {
                     return ":attribute is not a valid revision.";
                 }
             }],
-            'title'        => 'required|min:4|max:150',
-            'server_port'  => 'numeric|min:0|max:65535',
-            'server_ip'    => 'ipv4',
-            'website'      => 'url:http,https|max:255',
-            'callback_url' => 'url:http,https|max:255',
-            'discord_link' => 'url:https|max:255',
+           'title'        => 'required|min:4|max:150',
+           'server_port'  => 'nullable|numeric|min:0|max:65535',
+           'server_ip'    => 'nullable|ipv4',
+           'website'      => 'url:http,https|max:255',
+           'callback_url' => 'url:http,https|max:255',
+           'discord_link' => 'url:https|max:255',
             'banner_url'   => ['', function($value) {
                 if (substr($value, 0, 4) != "http" && !file_exists('public/img/banners/'.$value)) {
                     return 'Image does not exist.';
