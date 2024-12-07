@@ -177,7 +177,7 @@ class Controller {
                 ],
                 'add' => [
                     'title'  => 'Add Server | The only Toplist for Jagex approved Community Servers | Project Zanaris',
-                     'meta'  => 'Add a new server to the RuneAd toplist. RuneAd is the best 2021 RuneScape Private Server Toplist!'
+                     'meta'  => 'Discover PlayZanaris, the ultimate toplist for Jagex-approved Community Servers! Explore Project Zanaris, where players host and control their own Jagex-supported OSRS servers. Build, play, and join the community today!'
                 ],
                 'edit' => [
                     'title'  => 'Edit Server | RuneScape Private Server Toplist | RSPS List',

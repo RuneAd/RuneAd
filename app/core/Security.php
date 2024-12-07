@@ -18,13 +18,12 @@ class Security {
 
         // define controlsl and actions for a group
         $public = [
-            'index'   => ['index', 'logout', 'details', 'beta'],
+            'index'   => ['index', 'logout', 'details'],
             'vote'    => ['index', 'addvote'],
-            'banners' => ['index'],
             'report'  => ['index'],
             'login'   => ['index', 'discord', 'auth', 'dauth'],
             'errors'  => ['show404', 'show500', 'show401', 'missing'],
-            'pages'   => ['docs', 'stats', 'terms', 'privacy', 'adinfo', 'ads', 'contact', 'adbenners', 'faq', 'sitemap'],
+            'pages'   => ['docs', 'stats', 'terms', 'privacy', 'contact', 'faq', 'sitemap'],
             'tools'   => ['index', 'itemdb', 'search', 'map', 'xptable', 'servers'],
             'blog'    => ['index', 'post'],
             'downloads'   => ['index', 'rsps', 'web'],

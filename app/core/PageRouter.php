@@ -53,10 +53,6 @@ class PageRouter extends Router {
             return $this->setRoute('index', 'staffpanel');
         });
 
-        $this->all('beta', function() {
-            return $this->setRoute('index', 'beta');
-        });
-
 
         /**
          * Pages
@@ -81,17 +77,6 @@ class PageRouter extends Router {
             return $this->setRoute('pages', 'faq');
         });
 
-        $this->all('adinfo', function() {
-            return $this->setRoute('pages', 'adinfo');
-        });
-
-        $this->all('adbenners', function() {
-            return $this->setRoute('pages', 'adbenners');
-        });
-
-        $this->all('ads', function() {
-            return $this->setRoute('pages', 'ads');
-        });
 
         $this->all('contact', function() {
             return $this->setRoute('pages', 'contact');
@@ -273,7 +258,6 @@ class PageRouter extends Router {
         $this->all('videos/post/([0-9]+)-([A-Za-z0-9\-]+)', function($id, $title) {
             return $this->setRoute('videos', 'post', ['id' => $id]);
         });
-
 
         /**
          * Profile

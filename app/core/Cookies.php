@@ -3,15 +3,21 @@ namespace Fox;
 
 /**
  * Class Cookies
+ * Handles cookie management functionality.
  * @package Fox
  */
-class Cookies {
+class Cookies
+{
+    private static ?Cookies $instance = null;
+    private array $cookies;
+    private string $path;
 
-    private static $instance;
-    private $cookies;
-    private $path;
-
-    public static function getInstance() {
+    /**
+     * Returns the singleton instance of the Cookies class.
+     * @return Cookies
+     */
+    public static function getInstance(): Cookies
+    {
         if (!self::$instance) {
             self::$instance = new Cookies(web_root);
         }
@@ -20,70 +26,69 @@ class Cookies {
 
     /**
      * Cookies constructor.
-     * @param $path
+     * @param string $path
      */
-    public function __construct($path) {
-        $this->path    = $path;
+    public function __construct(string $path)
+    {
+        $this->path = $path;
         $this->cookies = $_COOKIE;
     }
 
     /**
-     * Returns a value from $_COOKIE
-     * @param $key
-     * @return mixed
+     * Retrieves a value from the cookies.
+     * @param string $key
+     * @return string|null
      */
-    public function get($key) {
-        if (!$this->has($key)) {
-            return null;
-        }
-        return $this->cookies[$key];
+    public function get(string $key): ?string
+    {
+        return $this->has($key) ? $this->cookies[$key] : null;
     }
 
     /**
-     * Returns if $_COOKIE contains a key.
-     * @param $key
+     * Checks if a cookie exists and is not empty.
+     * @param string $key
      * @return bool
      */
-    public function has($key) {
+    public function has(string $key): bool
+    {
         return isset($this->cookies[$key]) && !empty($this->cookies[$key]);
     }
 
     /**
-     * Updates an existing cookie with a value. Returns false if cookie doesn't exist.
-     * @param $key
-     * @param $value
-     * @param null $expires
+     * Updates an existing cookie with a new value.
+     * @param string $key
+     * @param string $value
+     * @param int|null $expires Time in seconds. Default is 1 day.
      * @return bool
      */
-    public function update($key, $value, $expires = null) {
-        if ($expires == null)
-            $expires = 86400;
-
+    public function update(string $key, string $value, ?int $expires = null): bool
+    {
         if (!$this->has($key)) {
             return false;
         }
 
+        $expires = $expires ?? 86400;
         setcookie($key, $value, time() + $expires, $this->path);
         return true;
     }
 
     /**
-     * Sets a cookie with an expire time. 86400 = 1 day.
-     * @param $key
-     * @param $value
-     * @param $expires
+     * Sets a cookie with an expiration time.
+     * @param string $key
+     * @param string $value
+     * @param int $expires Time in seconds. Default is 1 day.
      */
-    public function set($key, $value, $expires = 86400) {
+    public function set(string $key, string $value, int $expires = 86400): void
+    {
         setcookie($key, $value, time() + $expires, $this->path);
     }
 
     /**
-     * Sets a cookies expire date to before current time to expire it.
-     * Jank but deal with it.
-     * @param $key
+     * Deletes a cookie by setting its expiration time in the past.
+     * @param string $key
      */
-    public function delete($key) {
-        setcookie($key, null, time() - 1000,  $this->path);
+    public function delete(string $key): void
+    {
+        setcookie($key, '', time() - 3600, $this->path);
     }
-
 }
