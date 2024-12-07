@@ -34,44 +34,9 @@
                         
                         </div>
                         <div class="text-right col">
-
                             <div class="text-quicksand row">
                                 <div class="text-right col-md-9">Revision: {{ server.revision }} </div>
-                                <div class="text-right col-md-3">
-                                    {% if server.ping == -1  %}
-                                    <span class="badge-danger status-badge small"
-                                        data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
-                                        Offline
-                                    </span>
-                                    {% else %}
-                                    <span class="badge-success status-badge" 
-                                        data-toggle="tooltip" data-title="{{ elapsed(server.last_ping) }}">
-                                        Online
-                                    </span>
-                                    {% endif %}
-                                </div>
-                               
-                              </div>                                
-
-                            {% if server.banner_url %}
-                       
-                            <img data-src="{{ banner(server.banner_url) }}"
-                                src="{{ url('public/img/banner-loading.png') }}"
-                                id="banner"
-                                alt="{{ server.banner_url }}"
-                                style="margin-top:14px;"
-                                class="img-fluid rounded lazy">
-                       
-                        {% else %}
-                       
-                            <img src="{{ url('public/img/banner-'~theme~'.png') }}"
-                                id="banner"
-                                alt="{{ url('public/img/banner-'~theme~'.png') }}"
-                                style="margin-top:14px;"
-                                class="img-fluid rounded lazy">
-                        
-                        {% endif %}
-                        
+                              </div>
                         </div>
                     </div>
                 </div>
@@ -128,6 +93,26 @@
 
                     <div class="text-center card border-0 shadow-sm mb-3">
                         <div class="card-body">
+
+                                                    {% if server.banner_url %}
+
+                                                    <img data-src="{{ banner(server.banner_url) }}"
+                                                        src="{{ url('public/img/banner-loading.png') }}"
+                                                        id="banner"
+                                                        alt="{{ server.banner_url }}"
+                                                        style="margin-top:14px;"
+                                                        class="img-fluid rounded lazy">
+
+                                                {% else %}
+
+                                                    <img src="{{ url('public/img/banner-'~theme~'.png') }}"
+                                                        id="banner"
+                                                        alt="{{ url('public/img/banner-'~theme~'.png') }}"
+                                                        style="margin-top:14px;"
+                                                        class="img-fluid rounded lazy">
+
+                                                {% endif %}
+
                             {{ description|raw }}
                         </div>
                     </div>
