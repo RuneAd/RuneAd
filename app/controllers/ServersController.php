@@ -28,16 +28,15 @@ class ServersController extends Controller {
             $validation = Servers::validate($data);
 
             if ($validation->fails()) {
-/*                 $errors = $validation->errors();
-                $this->set("errors", $errors->firstOfAll()); */
-                $create->save();
+                $errors = $validation->errors();
+                $this->set("errors", $errors->firstOfAll());
             } else {
                 $data['meta_tags'] = json_encode($data['meta_tags'], JSON_UNESCAPED_SLASHES);
                 $create = Servers::create($data);
 
                 if ($create) {
                     if ($create['server_ip'] && $create['server_port']) {
-                        $api_url  = "http://api.rune-nexus.com/ping";
+                        $api_url  = "https://playzanaris.com";
 
                         $endpoint = $api_url."?address=".$data['server_ip']."&port=".$data['server_port'];
                         $res      = json_decode($client->request('GET', $endpoint)->getBody(), true);
