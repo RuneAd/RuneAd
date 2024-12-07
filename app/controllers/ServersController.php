@@ -28,8 +28,9 @@ class ServersController extends Controller {
             $validation = Servers::validate($data);
 
             if ($validation->fails()) {
-                $errors = $validation->errors();
-                $this->set("errors", $errors->firstOfAll());
+/*                 $errors = $validation->errors();
+                $this->set("errors", $errors->firstOfAll()); */
+                $create->save();
             } else {
                 $data['meta_tags'] = json_encode($data['meta_tags'], JSON_UNESCAPED_SLASHES);
                 $create = Servers::create($data);
@@ -49,7 +50,7 @@ class ServersController extends Controller {
                     }
 
                     $seo  = Functions::friendlyTitle($create->id.'-'.$create->title);
-                    $link = "[{$data['title']}](https://runead.com/details/{$seo})";
+                    $link = "[{$data['title']}](https://playzanaris.com/details/{$seo})";
 
                     (new DiscordMessage([
                         'channel_id' => '607320502268330016',
@@ -110,7 +111,7 @@ class ServersController extends Controller {
 
                 if ($saved) {
                     $seo  = Functions::friendlyTitle($server->id.'-'.$server->title);
-                    $link = "[{$data['title']}](https://runead.com/details/{$seo})";
+                    $link = "[{$data['title']}](https://playzanaris.com/details/{$seo})";
 
                     (new DiscordMessage([
                         'channel_id' => '610038623743639559',
