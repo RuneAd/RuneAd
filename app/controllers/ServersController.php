@@ -29,47 +29,50 @@ if ($this->request->isPost()) {
         'date_created'  => time()
     ];
 
-            $validation = Servers::validate($data);
+    $validation = Servers::validate($data);
 
-            if ($validation->fails()) {
-                $errors = $validation->errors();
-                $this->set("errors", $errors->firstOfAll());
-            } else {
-                $data['meta_tags'] = json_encode($data['meta_tags'], JSON_UNESCAPED_SLASHES);
-                $create = Servers::create($data);
+    if ($validation->fails()) {
+        $errors = $validation->errors();
+        $this->set("errors", $errors->firstOfAll());
+    } else {
+        $data['meta_tags'] = json_encode($data['meta_tags'], JSON_UNESCAPED_SLASHES);
+        $create = Servers::create($data);
 
-                if ($create) {
-                    if ($create['server_ip'] && $create['server_port']) {
-                        $api_url  = "https://playzanaris.com";
+        if ($create) {
+            if ($create['server_ip'] && $create['server_port']) {
+                $api_url  = "https://playzanaris.com";
 
-                        $endpoint = $api_url."?address=".$data['server_ip']."&port=".$data['server_port'];
-                        $res      = json_decode($client->request('GET', $endpoint)->getBody(), true);
+                $endpoint = $api_url."?address=".$data['server_ip']."&port=".$data['server_port'];
+                $res      = json_decode($client->request('GET', $endpoint)->getBody(), true);
 
-                        $success = $res['success'];
+                $success = $res['success'];
 
-                        $create->is_online = $success;
-                        $create->ping = $success ? $res['ping'] : -1;
-                        $create->save();
-                    }
-
-                    $seo  = Functions::friendlyTitle($create->id.'-'.$create->title);
-                    $link = "[{$data['title']}](https://playzanaris.com/details/{$seo})";
-
-                    (new DiscordMessage([
-                        'channel_id' => '607320502268330016',
-                        'title'      => 'New Server!',
-                        'message'    => "{$this->user->username} has listed a new server: $link",
-                    ]))->send();
-
-                    $this->redirect("details/".$seo);
-                    exit;
-                }
+                $create->is_online = $success;
+                $create->ping = $success ? $res['ping'] : -1;
+                $create->save();
             }
-        }
 
-        $this->set("page_title", "Add Server");
-        $revisions = Revisions::where('visible', 1)->get();
-        $this->set("revisions", $revisions);
+            $seo  = Functions::friendlyTitle($create->id.'-'.$create->title);
+            $link = "[{$data['title']}](https://playzanaris.com/details/{$seo})";
+
+            (new DiscordMessage([
+                'channel_id' => '607320502268330016',
+                'title'      => 'New Server!',
+                'message'    => "{$this->user->username} has listed a new server: $link",
+            ]))->send();
+
+            $this->redirect("details/".$seo);
+            exit;
+        }
+    }
+}
+
+$this->set("page_title", "Add Server");
+$revisions = Revisions::where('visible', 1)->get();
+$setting_ironman = Servers::select('setting_ironman')->distinct()->get();
+
+$this->set("revisions", $revisions);
+$this->set("setting_ironman", $setting_ironman);
     	return true;
     }
 
