@@ -36,7 +36,14 @@ class VoteController extends Controller {
         $id        = $this->request->getPost("server_id", "int");
         $token     = $this->request->getPost("token");
         $incentive = $this->request->getPost("incentive", "string");
+        $recaptcha = $this->verifyReCaptcha($token);
 
+        if (!$recaptcha['success']) {
+            return [
+                'success' => false,
+                'message' => $recaptcha['error-codes'][0]
+            ];
+        }
 
         $server = Servers::getServer($id);
 
