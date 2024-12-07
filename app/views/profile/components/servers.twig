@@ -1,96 +1,64 @@
 <div class="card border-0 shadow-sm overflow-hidden mb-3" style="position:relative;">
     <div class="card-header bg-transparent">
         <div class="d-flex align-items-center">
+            <!-- Server Title -->
             <div class="flex-fill">
                 <a class="text-default" href="{{ url('details/'~server.id) }}">
-                    #{{ server.id}} {{ server.title }}
+                    #{{ server.id }} {{ server.title }}
                 </a>
             </div>
+            <!-- Action Icons -->
             <div class="flex-fill text-right">
-                <a href="#" id="showdetails" class="px-2">
-                    {{ icon('info-circle')}}
+                <a href="#" id="showdetails" class="px-2" title="Show Details">
+                    {{ icon('info-circle') }}
                 </a>
-                <a href="{{ url('servers/edit/'~seo) }}" class="px-2">
-                    {{ icon('pencil')}}
+                <a href="{{ url('servers/edit/'~seo) }}" class="px-2" title="Edit Server">
+                    {{ icon('pencil') }}
                 </a>
-                <a href="{{ url('profile/delete/'~seo) }}" class="px-2">
-                    {{ icon('trash')}}
+                <a href="{{ url('profile/delete/'~seo) }}" class="px-2" title="Delete Server">
+                    {{ icon('trash') }}
                 </a>
             </div>
         </div>
     </div>
 
     <div class="card-body">
+        <!-- Server Details -->
         <div id="details" class="text-center">
             <div class="d-flex">
-                <div class="flex-fill w-100">
-                    <p class="mb-0 text-{{ server.ping > -1 ? "success" : "danger" }}">
+                <!-- Server Status -->
+                <div class="flex-fill">
+                    <p class="mb-0 text-{{ server.ping > -1 ? 'success' : 'danger' }}">
                         {{ server.ping > -1 ? 'Online' : 'Offline' }}
                     </p>
-                    <p class="small mb-0">
-                        Status
-                    </p>
+                    <p class="small mb-0">Status</p>
                 </div>
-                <div class="flex-fill w-100">
-                    <p class="mb-0 text-default">
-                        {% if server.premium_expires > time() %}
-                            <span class="text-success">
-                                {{ timeLeft(server.premium_expires, true)}}
-                            </span>
-                        {% elseif server.premium_expires < time() and server.premium_expires != -1 %}
-                            <span class="text-danger">
-                                Expired
-                            </span>
-                        {% else %}
-                            n/a
-                        {% endif %}
-                    </p>
-
-                    <p class="small mb-0">
-                        Premium Exp.
-                    </p>
-                </div>
-                <div class="flex-fill w-100">
+                <!-- Server Created Date -->
+                <div class="flex-fill">
                     <p class="mb-0 text-default">
                         {{ server.date_created|date("m.d.y") }}
                     </p>
-                    <p class="small mb-0">
-                        Created
-                    </p>
+                    <p class="small mb-0">Created</p>
                 </div>
-                <div class="flex-fill w-100">
+                <!-- Server Revision -->
+                <div class="flex-fill">
                     <p class="mb-0 text-default">
-                        {{ server.revision ? server.revision : 'n/a'}}
+                        {{ server.revision ? server.revision : 'n/a' }}
                     </p>
-                    <p class="small mb-0">
-                        Revision
-                    </p>
+                    <p class="small mb-0">Revision</p>
                 </div>
             </div>
         </div>
 
-        <div id="statistics" class="text-center" style="display:none;">
+        <!-- Server Statistics -->
+        <div id="statistics" class="text-center d-none">
             <div class="d-flex">
-                <div class="flex-fill w-100">
-                    <p class="mb-0 text-default">{{ server.votes|number_format }}</p>
-                    <p class="small text-muted mb-0">Current</p>
+                {% for period, label in {'votes': 'Current', '60days': '60 Days', '30days': '30 Days', '7days': '7 Days', '1day': '1 Day'} %}
+                <div class="flex-fill">
+                    <p class="mb-0 text-default">{{ voteData[server.id][period]|number_format }}</p>
+                    <p class="small text-muted mb-0">{{ label }}</p>
                 </div>
-                <div class="flex-fill w-100">
-                    <p class="mb-0 text-default">{{ voteData[server.id]['60days']|number_format }}</p>
-                    <p class="small text-muted mb-0">60 Days</p>
-                </div>
-                <div class="flex-fill w-100">
-                    <p class="mb-0 text-default">{{ voteData[server.id]['30days']|number_format }}</p>
-                    <p class="small text-muted mb-0">30 Days</p>
-                </div>
-                <div class="flex-fill w-100">
-                    <p class="mb-0 text-default">{{ voteData[server.id]['7days']|number_format }}</p>
-                    <p class="small text-muted mb-0">7 Days</p>
-                </div>
-                <div class="flex-fill w-100">
-                    <p class="mb-0 text-default">{{ voteData[server.id]['1day']|number_format }}</p>
-                    <p class="small text-muted mb-0">1 Day</p>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
