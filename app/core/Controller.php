@@ -168,15 +168,15 @@ class Controller {
             ],
             'profile' => [
                 'index' => [
-                    'title' => 'My Profile | RuneScape Private Server Toplist | RSPS List',
-                     'meta'  => 'Edit and add a new server, view payment history, stats, and more on RuneAd. RuneAd is the best 2021 RuneScape Private Server Toplist!'
+                    'title' => 'My Profile',
+                     'meta'  => 'Edit and add a new server'
                 ],
                 'payments' => [
                     'title'  => 'My Payments | RuneScape Private Server Toplist | RSPS List',
                      'meta'  => 'View your payment history for RuneAd. RuneAd is the best 2021 RuneScape Private Server Toplist!'
                 ],
                 'add' => [
-                    'title'  => 'Add Server | RuneScape Private Server Toplist | RSPS List',
+                    'title'  => 'Add Server | The only Toplist for Jagex approved Community Servers | Project Zanaris',
                      'meta'  => 'Add a new server to the RuneAd toplist. RuneAd is the best 2021 RuneScape Private Server Toplist!'
                 ],
                 'edit' => [
@@ -265,7 +265,7 @@ class Controller {
                 ],
 				 'add' => [
                     'title' => 'Blog | Add Post | RuneScape Private Server Toplist | RSPS List',
-                    'meta' => 'An easy to use modern RuneScape Private Server Blog. Browse our free collection of amazing blog posts & more!'                
+                    'meta' => 'An easy to use modern RuneScape Private Server Blog. Browse our free collection of amazing blog posts & more!'
                 ],
             ]
         ];
@@ -278,8 +278,8 @@ class Controller {
         }
 
         return [
-            'title' => 'RSPS Toplist | RuneScape Private Servers',
-            'meta'  => 'Looking for the best Runescape Private Servers 2021? Come get involved in our RSPS Toplist, and increase your website traffic and attract your players today!'
+            'title' => 'PlayZanaris | The only Toplist for Jagex approved Community Servers | Project Zanaris',
+            'meta'  => 'Discover PlayZanaris, the ultimate toplist for Jagex-approved Community Servers! Explore Project Zanaris, where players host and control their own Jagex-supported OSRS servers. Build, play, and join the community today!'
         ];
     }
 
@@ -303,10 +303,10 @@ class Controller {
             $template = $loader->load($this->view);
             echo $template->render($this->viewVars);
         } catch (Exception $e) {
-            
+
         }
     }
-    
+
     /**
      * Gets the name of the action
      * @return mixed
@@ -347,7 +347,7 @@ class Controller {
 	public function setView($view) {
 		$this->view = $view;
     }
-    
+
     public function getView() {
         return $this->view;
     }
@@ -437,7 +437,7 @@ class Controller {
     }
 
     public function getPurifier() {
-        
+
         $allowed_html = [
             'div[class]',
             'span[style]',
