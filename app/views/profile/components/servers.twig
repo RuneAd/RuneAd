@@ -9,9 +9,9 @@
             </div>
             <!-- Action Icons -->
             <div class="flex-fill text-right">
-                <a href="{{ url('vote/'~server.id~'/'~server.title|replace({' ': '-'}) ) }}" class="btn btn-success btn-md" title="Share Vote link">
+                <button class="btn btn-success btn-md" title="Share Vote link" onclick="copyToClipboard('{{ url('vote/'~server.id~'/'~server.title|replace({' ': '-'}) ) }}')">
                     {{ icon('share') }} Share
-                </a>
+                </button>
             </div>
         </div>
     </div>
@@ -20,14 +20,19 @@
         <!-- Server Details -->
         <div id="details" class="text-center">
             <div class="d-flex">
+                <!-- Server Created Date -->
                 <div class="flex-fill">
-                        <a href="{{ url('details/' ~ server_url) }}" class="d-block mt-1" style="max-width:468px;">
-                            <img
-                                src="{{ server.banner_url ? banner(server.banner_url) : url('public/img/banner-loading.png') }}"
-                                alt="PlayZanaris - Jagex Community Servers - {{ server.title }} | RSPS List"
-                                class="rounded w-100" width="468" height="60"
-                            />
-                        </a>
+                    <p class="mb-0 text-default">
+                        {{ server.date_created|date("m.d.y") }}
+                    </p>
+                    <p class="small mb-0">Created</p>
+                </div>
+                <!-- Server Revision -->
+                <div class="flex-fill">
+                    <p class="mb-0 text-default">
+                        {{ server.revision ? server.revision : 'n/a' }}
+                    </p>
+                    <p class="small mb-0">Revision</p>
                 </div>
             </div>
         </div>
@@ -45,3 +50,13 @@
         </div>
     </div>
 </div>
+
+<script>
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(function() {
+            alert('Voting Link copied to clipboard');
+        }, function(err) {
+            console.error('Could not copy text: ', err);
+        });
+    }
+</script>
