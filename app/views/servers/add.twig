@@ -43,7 +43,7 @@
     <div class="col-lg-3">
         <label>Ultimate Ironman?</label>
         <select name="settings_add" class="form-control {{ errors['settings_add'] is defined ? 'border-danger' : '' }}" disabled>
-            {% for revision in revisions %}
+            {% for settings_add in settings_add %}
             <option value="{{ settings_add.settings_add }}">{{ settings_add.settings_add }}</option>
             {% endfor %}
         </select>
