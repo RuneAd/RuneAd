@@ -26,8 +26,8 @@ class Servers extends Model {
                 }
             }],
 'title'        => 'required|min:4|max:150',
-'server_port'  => 'numeric|min:0|max:65535|sometimes',
-'server_ip'    => 'ipv4|sometimes',
+'server_port'  => 'numeric|min:0|max:65535',
+'server_ip'    => 'ipv4',
 'website'      => 'url:http,https|max:255',
 'callback_url' => 'url:http,https|max:255',
 'discord_link' => 'url:https|max:255',
