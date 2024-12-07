@@ -15,7 +15,7 @@ class App {
         try {
             $this->router->route();
         } catch (\Router\RouteNotFoundException $e) {
-            $this->router->setRoute("errors", "show404");
+            $this->router->setRoute("/");
         }
 
         $controller  = $this->router->getController(true);
