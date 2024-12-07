@@ -42,9 +42,9 @@
 <div class="form-row form-group">
     <div class="col-lg-3">
         <label>Ultimate Ironman?</label>
-        <select name="setting_ironman" class="form-control {{ errors['setting_ironman'] is defined ? 'border-danger' : '' }}" disabled>
+        <select name="settings_add" class="form-control {{ errors['settings_add'] is defined ? 'border-danger' : '' }}" disabled>
             {% for revision in revisions %}
-            <option value="{{ setting_ironman.setting_ironman }}">{{ setting_ironman.setting_ironman }}</option>
+            <option value="{{ settings_add.settings_add }}">{{ settings_add.settings_add }}</option>
             {% endfor %}
         </select>
     </div>
