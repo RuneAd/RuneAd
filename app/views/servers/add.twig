@@ -40,14 +40,15 @@
 
     <label>Server Settings & Features (Not required, but helpful for players looking for a specific server)</label>
 <div class="form-row form-group">
-      <div class="col-lg-3">
-          <label>Ultimate Ironman?</label>
-          <select name="setting_ironman" class="form-control {{ errors['setting_ironman'] is defined ? 'border-danger' : '' }}">
-              {% for setting in settings %}
-              <option value="{{ setting_ironman.setting_ironman }}">{{ setting_ironman.setting_ironman }}</option>
-              {% endfor %}
-          </select>
-      </div>
+    <label>Server Settings & Features</label>
+    <div class="col-lg-3">
+        <label>Ultimate Ironman?</label>
+        <select name="setting_ironman" class="form-control {{ errors['setting_ironman'] is defined ? 'border-danger' : '' }}">
+            {% for ironman in setting_ironman %}
+            <option value="{{ ironman.setting_ironman }}">{{ ironman.setting_ironman }}</option>
+            {% endfor %}
+        </select>
+    </div>
     <div class="col-lg-3">
         <label>PVP World?</label>
         <select name="revision" class="form-control {{ errors['revision'] is defined ? 'border-danger' : '' }}" disabled>
@@ -56,6 +57,7 @@
             {% endfor %}
         </select>
     </div>
+</div>
         <div class="col-lg-3">
             <label>Spawn Items?</label>
             <select name="revision" class="form-control {{ errors['revision'] is defined ? 'border-danger' : '' }}" disabled>
