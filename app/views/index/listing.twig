@@ -29,7 +29,7 @@
                 {% set isPremium = server.premium_expires > time() %}
                 {% set class = isPremium ? 'bg-premium' : '' %}
 
-                <tr class="{{ class }}">
+                <tr class="{{ class }} border-primary">
                     <td class="text-center small pr-1">
                         <h4 class="mb-1">#{{ start_rank }}</h4>
                     </td>
