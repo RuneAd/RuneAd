@@ -116,157 +116,87 @@ class Controller {
 
     public function getPageMeta($controller, $action) {
         $pages = [
-            'premium' => [
-                'index' => [
-                    'title' => 'Premium | RuneScape Private Server Toplist | RSPS List',
-                    'meta'  => 'Buy premium on RuneAd to give your server a nice boost, which will increase traffic and visibility for your server!'
-                ]
-            ],
             'index' => [
                 'index' => [
-                    'title' => 'PlayZanaris | The only Toplist for Jagex approved Community Servers | Project Zanaris',
-                    'meta'  => 'Discover PlayZanaris, the ultimate toplist for Jagex-approved Community Servers! Explore Project Zanaris, where players host and control their own Jagex-supported OSRS servers. Build, play, and join the community today!'
+                    'title' => 'PlayZanaris | The Ultimate Toplist for Project Zanaris Community Servers',
+                    'meta'  => 'Discover PlayZanaris, the leading toplist dedicated to Jagex-hosted Project Zanaris servers. Explore and join unique, player-hosted OSRS community servers today!'
                 ]
             ],
             'pages' => [
                 'docs' => [
-                    'title' => 'Documentation | RuneScape Private Server Toplist | RSPS List',
-                    'meta'  => 'Integrate your RSPS server with our service, receive voting callback, and more! RuneAd is the best 2021 RuneScape Private Server Toplist!'
+                    'title' => 'Documentation | PlayZanaris | Jagex Community Server Toplist',
+                    'meta'  => 'Learn how to integrate your community server with PlayZanaris. Get started with Project Zanaris today!'
                 ],
                 'updates' => [
-                    'title' => 'Update Log | RuneScape Private Server Toplist | RSPS List',
-                    'meta'  => 'All updates that have been pushed for the toplist, and a list of contributors. RuneAd is the best 2021 RuneScape Private Server Toplist!'
+                    'title' => 'Update Log | PlayZanaris | Community Server Toplist',
+                    'meta'  => 'Stay informed with the latest updates and improvements for PlayZanaris, your go-to community server toplist.'
                 ],
                 'sitemap' => [
-                    'title' => 'Sitemap | RuneScape Private Server Toplist | RSPS List',
-                    'meta'  => 'A full sitemap of RuneAd RSPS Toplist displaying RSPS servers, tools, and more! RuneAd is the best 2021 RuneScape Private Server Toplist!'
+                    'title' => 'Sitemap | PlayZanaris | Community Server Directory',
+                    'meta'  => 'Navigate PlayZanaris with ease. View the full directory of Project Zanaris community servers and resources.'
                 ],
                 'stats' => [
-                    'title' => 'Voting Stats | RuneScape Private Server Toplist | RSPS List',
-                    'meta'  => 'Global statistics on RuneAd showing votes, user, and server counts. RuneAd is the best 2021 RuneScape Private Server Toplist!'
+                    'title' => 'Voting Stats | PlayZanaris | Community Server Toplist',
+                    'meta'  => 'View global statistics of PlayZanaris, including votes, users, and server counts.'
                 ],
                 'terms' => [
-                    'title' => 'Terms of Service | RuneScape Private Server Toplist | RSPS List',
-                    'meta'  => 'RuneAd Terms Of Service. Preview the Terms of Service for RuneAd RSPS Toplist! RuneAd is the best 2021 RuneScape Private Server Toplist!'
+                    'title' => 'Terms of Service | PlayZanaris | Community Server Toplist',
+                    'meta'  => 'Review the Terms of Service for PlayZanaris, the leading toplist for Jagex-hosted community servers.'
                 ],
-				'contact' => [
-                    'title' => 'Contact Us | RuneScape Private Server Toplist | RSPS List',
-                    'meta'  => 'Contact RuneAd support and get help on anything related to RuneAd RSPS Toplist. RuneAd is the best 2021 RuneScape Private Server Toplist!'
+                'contact' => [
+                    'title' => 'Contact Us | PlayZanaris | Community Server Support',
+                    'meta'  => 'Reach out to PlayZanaris support for assistance with your Project Zanaris community server listing.'
                 ],
                 'privacy' => [
-                    'title' => 'Privacy Policy | RuneScape Private Server Toplist | RSPS List',
-                    'meta'  => 'RuneAd Privacy Policy. Review the Privacy Policy for RuneAd RSPS Toplist! RuneAd is the best 2021 RuneScape Private Server Toplist!'
+                    'title' => 'Privacy Policy | PlayZanaris | Community Server Toplist',
+                    'meta'  => 'Understand how PlayZanaris protects your data. Review our privacy policy for more details.'
                 ],
                 'faq' => [
-                    'title' => 'FAQ | RuneScape Private Server Toplist | RSPS List',
-                    'meta'  => 'Frequently Asked Questions! Browse RuneAds FAQs to find out more about RuneAd RSPS Toplist! RuneAd is the best 2021 RuneScape Private Server Toplist!'
-                ],
-				'ads' => [
-                    'title' => 'Store | RuneScape Private Server Toplist | RSPS List',
-                    'meta'  => 'Infomation about Advertisements on RuneAd. RuneAd is the best 2021 RuneScape Private Server Toplist!'
+                    'title' => 'FAQ | PlayZanaris | Community Server Toplist',
+                    'meta'  => 'Find answers to common questions about PlayZanaris and hosting Project Zanaris community servers.'
                 ]
             ],
             'profile' => [
                 'index' => [
-                    'title' => 'My Profile',
-                     'meta'  => 'Edit and add a new server'
-                ],
-                'payments' => [
-                    'title'  => 'My Payments | RuneScape Private Server Toplist | RSPS List',
-                     'meta'  => 'View your payment history for RuneAd. RuneAd is the best 2021 RuneScape Private Server Toplist!'
+                    'title' => 'My Profile | PlayZanaris',
+                    'meta'  => 'Manage your PlayZanaris profile and server listings with ease.'
                 ],
                 'add' => [
-                    'title'  => 'Add Server | The only Toplist for Jagex approved Community Servers | Project Zanaris',
-                     'meta'  => 'Discover PlayZanaris, the ultimate toplist for Jagex-approved Community Servers! Explore Project Zanaris, where players host and control their own Jagex-supported OSRS servers. Build, play, and join the community today!'
+                    'title'  => 'Add Server | PlayZanaris | Jagex Community Server Toplist',
+                    'meta'  => 'List your Jagex-hosted community server on PlayZanaris and join the ultimate Project Zanaris directory.'
                 ],
                 'edit' => [
-                    'title'  => 'Edit Server | RuneScape Private Server Toplist | RSPS List',
-                     'meta'  => 'Edit an existing server on the RuneAd toplist. RuneAd is the best 2021 RuneScape Private Server Toplist!'
-                ]
-            ],
-            'sponsor' => [
-                'index' => [
-                    'title' => 'Sponsored Ads | RuneScape Private Server Toplist | RSPS List',
-                    'meta' => 'Purchase sponsored ad spots on RuneAd to give your server a boost! RuneAd is the best 2021 RuneScape Private Server Toplist!'
-                ]
-            ],
-            'tools' => [
-                'index' => [
-                    'title' => 'Tools | RuneScape Private Server Toplist | RSPS List',
-                    'meta' => 'The best RSPS, OSRS & Runescape tools that\'s always up to date. RuneAd is the best 2021 RuneScape Private Server Toplist!'
-                ],
-                'itemdb' => [
-                    'title' => 'OSRS Item DB | RuneScape Private Server Toplist | RSPS List',
-                    'meta' => 'An easy to use oldschool runescape item db that\'s always up to date. RuneAd is the best 2021 RuneScape Private Server Toplist!'
-                ],
-				 'map' => [
-                    'title' => 'OSRS Interactive Map | RuneScape Private Server Toplist | RSPS List',
-                    'meta'  => 'An easy to use oldschool runescape map that\'s always up to date. RuneAd is the best 2021 RuneScape Private Server Toplist!'
-                ],
-                'xptable' => [
-                    'title' => 'OSRS Experience Table | RuneScape Private Server Toplist | RSPS List',
-                    'meta'  => 'An easy to use oldschool runescape Experience Table. RuneAd is the best 2021 RuneScape Private Server Toplist!'
-                ],
-            ],
-            'downloads' => [
-                'index' => [
-                    'title' => 'RSPS Tool Downloads | RuneScape Private Server Toplist | RSPS List',
-                    'meta' => 'Downloads for RSPS Tools on RuneAd. Browse our free collection of Runescape Private Server Downloads & more!'
-                ],
-				 'rsps' => [
-                    'title' => 'RSPS Downloads | RuneScape Private Server Toplist | RSPS List',
-                    'meta'  => 'Downloads for RSPS Sources and Clients on RuneAd. Browse our free collection of Runescape Private Server Downloads & more!'
-                ],
-                'web' => [
-                    'title' => 'RSPS Web Downloads | RuneScape Private Server Toplist | RSPS List',
-                    'meta'  => 'Downloads for RSPS Web-templates. Browse our free collection of Runescape Private Server Downloads & more!'
-                ],
-                'project51rev180' => [
-                    'title' => 'Project51 Rev180 RSPS Downloads',
-                    'meta'  => 'Downloads for RSPS tools, sources, clients, web-templates & more! Browse our free collection of Runescape Private Server Downloads & more!'
-                ],
-            ],
-            'commands' => [
-                'index' => [
-                    'title' => 'RSPS Commands | RuneScape Private Server Toplist | RSPS List',
-                    'meta' => 'Common and wildy used RSPS Commands with Java code on how to use them! Check them out at RuneAd RSPS List | RuneScape Private Servers'
-                ],
-                'owner' => [
-                    'title' => 'Owner RSPS Commands | RuneScape Private Server Toplist | RSPS List',
-                    'meta' => 'Common and wildy used RSPS Commands with Java code on how to use them! Check them out at RuneAd RSPS List | RuneScape Private Servers'
-                ],
-                'admin' => [
-                    'title' => 'Admin RSPS Commands | RuneScape Private Server Toplist | RSPS List',
-                    'meta' => 'Common and wildy used RSPS Commands with Java code on how to use them! Check them out at RuneAd RSPS List | RuneScape Private Servers'
-                ],
-                'moderator' => [
-                    'title' => 'Moderator RSPS Commands | RuneScape Private Server Toplist | RSPS List',
-                    'meta' => 'Common and wildy used RSPS Commands with Java code on how to use them! Check them out at RuneAd RSPS List | RuneScape Private Servers'
-                ],
-                'donator' => [
-                    'title' => 'Donator RSPS Commands | RuneScape Private Server Toplist | RSPS List',
-                    'meta' => 'Common and wildy used RSPS Commands with Java code on how to use them! Check them out at RuneAd RSPS List | RuneScape Private Servers'
-                ],
-                'player' => [
-                    'title' => 'Player RSPS Commands | RuneScape Private Server Toplist | RSPS List',
-                    'meta' => 'Common and wildy used RSPS Commands with Java code on how to use them! Check them out at RuneAd RSPS List | RuneScape Private Servers'
-                ],
-            ],
-            'videos' => [
-                'index' => [
-                    'title' => 'Videos | RuneScape Private Server Toplist | RSPS List',
-                    'meta' => 'Videos brought you to by RuneAd! Browse our free collection of Runescape Private Server Videos & more!'
+                    'title' => 'Edit Server | PlayZanaris | Community Server Toplist',
+                    'meta'  => 'Update your server details on PlayZanaris. Keep your community server listing accurate and up-to-date.'
                 ]
             ],
             'blog' => [
                 'index' => [
-                    'title' => 'Blog | RuneScape Private Server Toplist | RSPS List',
-                    'meta' => 'An easy to use modern RuneScape Private Server Blog. Browse our free collection of amazing blog posts & more!'
+                    'title' => 'Blog | PlayZanaris | Community Server News',
+                    'meta'  => 'Read the latest news, tips, and updates about Jagex-hosted community servers on the PlayZanaris blog.'
                 ],
-				 'add' => [
-                    'title' => 'Blog | Add Post | RuneScape Private Server Toplist | RSPS List',
-                    'meta' => 'An easy to use modern RuneScape Private Server Blog. Browse our free collection of amazing blog posts & more!'
+                'add' => [
+                    'title' => 'Add Blog Post | PlayZanaris | Community Server News',
+                    'meta'  => 'Share your insights and stories about Project Zanaris community servers. Create a blog post on PlayZanaris.'
+                ]
+            ],
+            'tools' => [
+                'index' => [
+                    'title' => 'Tools | PlayZanaris | Community Server Resources',
+                    'meta' => 'Access tools and resources to enhance your Jagex-hosted community server experience on PlayZanaris.'
                 ],
+                'itemdb' => [
+                    'title' => 'OSRS Item Database | PlayZanaris | Community Server Tools',
+                    'meta'  => 'Find detailed information on OSRS items with the PlayZanaris Item Database, tailored for community servers.'
+                ],
+                'map' => [
+                    'title' => 'Interactive OSRS Map | PlayZanaris | Community Server Tools',
+                    'meta'  => 'Explore the OSRS world with the interactive map on PlayZanaris, perfect for Project Zanaris servers.'
+                ],
+                'xptable' => [
+                    'title' => 'Experience Table | PlayZanaris | Community Server Tools',
+                    'meta'  => 'Use the OSRS Experience Table on PlayZanaris to plan your leveling goals on Project Zanaris servers.'
+                ]
             ]
         ];
 
@@ -278,11 +208,12 @@ class Controller {
         }
 
         return [
-            'title' => 'PlayZanaris | The only Toplist for Jagex approved Community Servers | Project Zanaris',
-            'meta'  => 'Discover PlayZanaris, the ultimate toplist for Jagex-approved Community Servers! Explore Project Zanaris, where players host and control their own Jagex-supported OSRS servers. Build, play, and join the community today!'
+            'title' => 'PlayZanaris | The Ultimate Toplist for Project Zanaris Community Servers',
+            'meta'  => 'Discover PlayZanaris, the leading toplist dedicated to Jagex-hosted Project Zanaris servers. Explore and join unique, player-hosted OSRS community servers today!'
         ];
     }
 
+}
 
    /**
      * Displays the necessary template using Twig

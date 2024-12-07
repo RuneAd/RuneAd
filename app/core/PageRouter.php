@@ -25,10 +25,6 @@ class PageRouter extends Router {
             return $this->setRoute('index', 'index');
         });
 
-        $this->all('errors', function() {
-            return $this->redirect('/');
-        });
-
         $this->all('servers/add', function() {
             return $this->setRoute('servers', 'add');
         });
@@ -56,7 +52,6 @@ class PageRouter extends Router {
         $this->all('staffpanel', function() {
             return $this->setRoute('index', 'staffpanel');
         });
-
 
         /**
          * Pages
