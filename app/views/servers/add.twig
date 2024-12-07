@@ -41,7 +41,7 @@
     <label>Server Settings & Features (Not required, but helpful for players looking for a specific server)</label>
 <div class="form-row form-group">
     <div class="col-lg-3">
-        <label>Everyone Ultimate Ironman?</label>
+        <label>Ultimate Ironman?</label>
         <select name="revision" class="form-control {{ errors['revision'] is defined ? 'border-danger' : '' }}" disabled>
             {% for revision in revisions %}
             <option value="{{ revision.revision }}">{{ revision.revision }}</option>

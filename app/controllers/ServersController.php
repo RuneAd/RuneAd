@@ -12,6 +12,12 @@ class ServersController extends Controller {
             $data = [
                 'owner'         => $this->user->user_id,
                 'revision'      => $this->request->getPost("revision", "string"),
+                //Below are server settings set when adding a server
+                'setting_ironman'      => $this->request->getPost("setting_ironman", "string"), //Settings
+                'setting_pvp'      => $this->request->getPost("setting_pvp", "string"), //Settings
+                'setting_spawn'      => $this->request->getPost("setting_spawn", "string"), //Settings
+                'setting_npcx'      => $this->request->getPost("setting_npcx", "string"), //Settings
+                //End of Server Settings
                 'title'         => $this->request->getPost("title", "string"),
                 'server_port'   => $this->request->getPost("server_port", "int"),
                 'server_ip'     => $this->request->getPost("server_ip", "string"),
