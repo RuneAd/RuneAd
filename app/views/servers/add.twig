@@ -44,7 +44,7 @@
         <label>Ultimate Ironman?</label>
         <select name="settings_add" class="form-control {{ errors['settings_add'] is defined ? 'border-danger' : '' }}" disabled>
             {% for settings_add in settings_add %}
-            <option value="{{ settings_add.settings_add }}">{{ settings_add.settings_add }}</option>
+            <option value="{{ settings_add.setting }}">{{ settings_add.setting }}</option>
             {% endfor %}
         </select>
     </div>
