@@ -44,6 +44,7 @@ class Security {
             'videos'   => ['add', 'edit', 'delete'],
             'premium'  => ['index', 'add', 'edit', 'delete'],
             'users'    => ['index', 'banned'],
+            'blog'    => ['index', 'add'],
             'servers'  => ['index', 'info', 'edit', 'delete'],
             'tools'    => ['servers']
         ];
