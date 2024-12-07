@@ -112,7 +112,7 @@ class PageRouter extends Router {
         /**
          * Premium
          */
-        $this->all('premium', function() {
+/*         $this->all('premium', function() {
             return $this->setRoute('premium', 'index');
         });
 
@@ -130,12 +130,12 @@ class PageRouter extends Router {
 
         $this->all('premium/verify', function() {
             return $this->setRoute('premium', 'verify');
-        });
+        }); */
 
         /**
          * Turbo Boost
          */
-        $this->all('turbo', function() {
+/*         $this->all('turbo', function() {
             return $this->setRoute('turbo', 'index');
         });
 
@@ -153,7 +153,7 @@ class PageRouter extends Router {
 
         $this->all('turbo/verify', function() {
             return $this->setRoute('turbo', 'verify');
-        });
+        }); */
 
         /**
          * Report
@@ -314,7 +314,7 @@ class PageRouter extends Router {
         /**
          * Sponsor Spots
          */
-        $this->get("sponsor", function() {
+/*          $this->get("sponsor", function() {
             return $this->setRoute('sponsor', 'index');
         });
         $this->all('sponsor/button', function() {
@@ -327,7 +327,7 @@ class PageRouter extends Router {
 
         $this->all('sponsor/verify', function() {
             return $this->setRoute('sponsor', 'verify');
-        });
+        });  */
 
         /**
          * Tools
@@ -406,7 +406,7 @@ class PageRouter extends Router {
         /**
          * Downloads Page
          */
-        $this->get("downloads", function() {
+/*         $this->get("downloads", function() {
             return $this->setRoute('downloads', 'index');
         });
 
@@ -420,7 +420,7 @@ class PageRouter extends Router {
 
         $this->get("downloads/project51rev180", function() {
             return $this->setRoute('downloads', 'project51rev180');
-        });
+        }); */
         /**
          * Commands Page
          */
