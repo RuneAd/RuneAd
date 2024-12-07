@@ -8,26 +8,26 @@ class ServersController extends Controller {
     public function add() {
         $client = new GuzzleHttp\Client();
 
-        if ($this->request->isPost()) {
-            $data = [
-                'owner'         => $this->user->user_id,
-                'revision'      => $this->request->getPost("revision", "string"),
-                //Below are server settings set when adding a server
-                'settings'      => $this->request->getPost("setting", "string"), //Settings
-                'setting_ironman'      => $this->request->getPost("setting_ironman", "string"),
-                //End of Server Settings
-                'title'         => $this->request->getPost("title", "string"),
-                'server_port'   => $this->request->getPost("server_port", "int"),
-                'server_ip'     => $this->request->getPost("server_ip", "string"),
-                'website'       => $this->request->getPost("website", "url"),
-                'callback_url'  => $this->request->getPost("callback_url", "url"),
-                'discord_link'  => $this->request->getPost("discord_link", "url"),
-                'banner_url'    => $this->request->getPost("banner_url", "string"),
-                'meta_tags'     => explode(",", $this->request->getPost("meta_tags", 'string')),
-                'meta_info'     => $this->request->getPost("meta_info", "string"),
-                'description'   => $this->purify($this->request->getPost("info")),
-                'date_created'  => time()
-            ];
+if ($this->request->isPost()) {
+    $data = [
+        'owner'         => $this->user->user_id,
+        'revision'      => $this->request->getPost("revision", "string"),
+        // Below are server settings set when adding a server
+        'settings'      => $this->request->getPost("setting", "string"), // Settings
+        'setting_ironman' => $this->request->getPost("setting_ironman", "string"),
+        // End of Server Settings
+        'title'         => $this->request->getPost("title", "string"),
+        'server_port'   => $this->request->getPost("server_port", "int"),
+        'server_ip'     => $this->request->getPost("server_ip", "string"),
+        'website'       => $this->request->getPost("website", "url"),
+        'callback_url'  => $this->request->getPost("callback_url", "url"),
+        'discord_link'  => $this->request->getPost("discord_link", "url"),
+        'banner_url'    => $this->request->getPost("banner_url", "string"),
+        'meta_tags'     => explode(",", $this->request->getPost("meta_tags", 'string')),
+        'meta_info'     => $this->request->getPost("meta_info", "string"),
+        'description'   => $this->purify($this->request->getPost("info")),
+        'date_created'  => time()
+    ];
 
             $validation = Servers::validate($data);
 
