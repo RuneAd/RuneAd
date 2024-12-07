@@ -23,24 +23,8 @@ class VoteController extends Controller {
             })
             ->whereRaw(time()." - voted_on < 43000")
             ->first();
-
-
-            $turbos = Turbos::select([
-                'turbos.id',
-                'servers.title',
-                'servers.website',
-                'servers.discord_link',
-                'servers.banner_url'
-            ])
-            ->where('expires', '>', time())
-            ->where('servers.banner_url', '!=', null)
-            ->where('servers.website', '!=', null)
-            ->leftJoin("servers", "servers.id", "=", "turbos.server_id")
-            ->orderBy("started", "ASC")
-            ->get();
     
-            
-        $this->set("turbos", $turbos);
+
         $this->set("incentive", $incentive);
         $this->set("vote", $vote);
         $this->set("server", $server);
