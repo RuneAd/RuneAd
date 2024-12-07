@@ -14,7 +14,7 @@ body {
 }
 
 .Header-BG-Top {
-    background: linear-gradient(180deg, rgb(60, 48, 34), rgb(83, 67, 49), rgb(37, 29, 19));
+    background: linear-gradient(180deg, rgb(24, 33, 72), rgb(85, 85, 85));
     color: white; /* Ensures text is visible on the dark gradient */
 }
 
