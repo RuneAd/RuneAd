@@ -23,14 +23,14 @@
                     {% endif %}
                     <form method="post" action="{{ url('servers/add') }}" id="postform">
                         <div class="form-row form-group">
-                            <div class="col-lg-2">
+/*                             <div class="col-lg-2">
                                 <label>Revision</label>
                                 <select name="revision" class="form-control {{ errors['revision'] is defined ? 'border-danger' : '' }}">
                                     {% for revision in revisions %}
                                     <option value="{{ revision.revision }}">{{ revision.revision }}</option>
                                     {% endfor %}
                                 </select>
-                            </div>
+                            </div> */
                             <div class="col">
                                 <label>Server Name*</label>
                                 <input type="text" class="form-control {{ errors['title'] is defined ? 'border-danger' : '' }}" name="title">
