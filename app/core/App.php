@@ -25,7 +25,7 @@ class App {
 
         /** Redirects to 404 is method doesn't exist. */
         if (!method_exists($this->controller, $this->router->getMethod())) {
-            $this->router->setRoute("errors", "show404");
+            $this->router->setRoute("/");
 
             $controller  = $this->router->getController(true);
             $this->controller = new $controller;
