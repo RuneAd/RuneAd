@@ -1,31 +1,27 @@
-{%  extends 'layout.twig' %}
+{% extends 'layout.twig' %}
 
 {% block content %}
-
 <div class="container" style="margin-top:-50px;">
     <div class="row">
         <div class="col-sm-12">
             {% include 'index/headnav.twig' %}
 
-            <p>{{ content|raw }}</p>
-
-            <!--- {% include 'index/sponsors.twig' %} ---->
-
-            <div class="text-center card-body py-3">
-                <div class="container">
-
-                </div>
+            <div class="content-section py-4">
+                <p>{{ content|raw }}</p>
             </div>
 
-        </div>
-            
-            <div class="col-sm-12 d-flex w-100">
-                <div class="flex-fill w-100">
-                    {% include 'index/listing.twig' %}
+            <div class="text-center py-3">
+                <div class="container">
+                    <!-- Placeholder for additional content or actions -->
                 </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 d-flex w-100">
+            <div class="flex-fill w-100">
+                {% include 'index/listing.twig' %}
             </div>
         </div>
     </div>
 </div>
-        
-{%  endblock %}
+{% endblock %}

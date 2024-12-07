@@ -8,9 +8,7 @@
         <div class="modal-content">
 
             <div class="alert-box">
-                <div class="alert mb-0" id="notice">
-                    &nbsp;
-                </div>
+                <div class="alert mb-0" id="notice">&nbsp;</div>
             </div>
 
             <div class="modal-body text-center pt-5 py-3">
@@ -22,7 +20,9 @@
                     Click below to log in using your Discord Account.<br>Registration is not required.
                 </p>
 
-                <p><a href="" class="btn btn-default rounded-pill px-5 mb-4" id="discord">Continue</a></p>
+                <p>
+                    <a href="#" class="btn btn-default rounded-pill px-5 mb-4" id="discord">Continue</a>
+                </p>
 
                 <p class="small text-muted mb-0">
                     By signing in and using our service you agree to our<br>
@@ -30,7 +30,7 @@
                     <a href="{{ url('privacy') }}" target="_blank">Privacy Policy</a>.
                 </p>
                 <p class="small text-muted mb-0">
-                    Discords TOS & Privacy Policy<br>
+                    Discord's TOS & Privacy Policy<br>
                     <a href="https://discord.com/terms" target="_blank">Terms of Service</a> and
                     <a href="https://discord.com/privacy" target="_blank">Privacy Policy</a>.
                 </p>
@@ -40,20 +40,21 @@
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function( event) {
+document.addEventListener('DOMContentLoaded', function() {
     $('#discord').on("click", function(event) {
         event.preventDefault();
 
-        let button = $(this);
+        const button = $(this);
         button.html('{{ icon("three-dots", 18, 18) }}');
         button.addClass("disabled");
+
         $.post("{{ url('discord') }}", function(data) {
             console.log(data);
-            let success = data.success;
+
+            const success = data.success;
             if (success) {
-                setTimeout(function() {
-                    let loc = data.message;
-                    window.location = loc;
+                setTimeout(() => {
+                    window.location = data.message;
                 }, 800);
             }
         });

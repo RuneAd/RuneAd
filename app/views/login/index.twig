@@ -1,20 +1,17 @@
-{%  extends 'layout.twig' %}
+{% extends 'layout.twig' %}
 
 {% block content %}
-
 <div class="container" style="margin-top:-30px;">
     <div class="row">
         <div class="col-sm-12">
-
             <div class="card border-0 shadow-sm">
                 <div class="card-body py-5 text-center">
                     <p id="icon" class="text-muted">
                         {{ icon("shield", 128, 128) }}
                     </p>
-
                     <i class="fi-xnsrsl-loading"></i>
                     <h3 class="mb-0" id="state">Checking Token</h3>
-                    <p id="message">Please wait while we fetch your discord data.</p>
+                    <p id="message">Please wait while we fetch your Discord data.</p>
                 </div>
             </div>
         </div>
@@ -22,49 +19,46 @@
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function(event) {
-    let hash = window.location.hash.substr(1);
+document.addEventListener('DOMContentLoaded', function() {
+    const hash = window.location.hash.substr(1);
     if (hash) {
-        let access_token = getUrlParam('access_token', hash);
-        setTimeout(function() {
-            $.post('{{ url("discord/auth") }}', {
-                access_token: access_token
-            }, function(data) {
+        const access_token = getUrlParam('access_token', hash);
+
+        setTimeout(() => {
+            $.post('{{ url("discord/auth") }}', { access_token }, function(data) {
                 console.log(data);
 
-                let success = data.success;
+                const success = data.success;
 
-                $('#icon').removeClass("text-muted")
+                $('#icon')
+                    .removeClass("text-muted")
                     .html(success
-                         ? '{{ icon("shield-check", 128, 128) }}'
-                         : '{{ icon("shield-exclamation", 128, 128) }}')
+                        ? '{{ icon("shield-check", 128, 128) }}'
+                        : '{{ icon("shield-exclamation", 128, 128) }}'
+                    )
                     .addClass(success ? 'text-success' : 'text-danger');
 
-                $('#state').html(success ? data.message : 'An Error Occured');
-                $('#message').html(success ? 'Please wait while you are redirected' : 'An Error Occured');
+                $('#state').text(success ? data.message : 'An Error Occurred');
+                $('#message').text(success ? 'Please wait while you are redirected' : 'An Error Occurred');
 
                 if (success) {
-                   setTimeout(function() {
+                    setTimeout(() => {
                         window.location = "{{ constant('web_root') }}";
                     }, 1500);
                 }
             });
         }, 1000);
-
     }
+
     function getUrlParam(name, url) {
-        if (!url)
-            url = window.location.href;
+        if (!url) url = window.location.href;
         name = name.replace(/[\[\]]/g, '\\$&');
-        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-            results = regex.exec(url);
-        if (!results)
-            return null;
-        if (!results[2])
-            return '';
+        const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+        const results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
         return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
 });
 </script>
-
-{%  endblock %}
+{% endblock %}
