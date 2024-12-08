@@ -9,7 +9,7 @@
             {% include 'commands/components/sidebar_nav.twig' %}
         </div>
         <div class="col-sm-12 col-lg-10">
-            <table class="table" style="background-color: #ffffff;">
+            <table class="table sortable" style="background-color: #ffffff;">
                 <thead>
                     <tr>
                         <th scope="col">Type</th>
@@ -88,4 +88,30 @@
 
     {{ content|raw }}
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const getCellValue = (row, index) => row.children[index].textContent.trim();
+
+        const comparer = (index, asc) => (a, b) => {
+            const valA = getCellValue(asc ? a : b, index);
+            const valB = getCellValue(asc ? b : a, index);
+            return valA.localeCompare(valB);
+        };
+
+        document.querySelectorAll('.sortable th').forEach(th => {
+            th.addEventListener('click', () => {
+                const table = th.closest('table');
+                const index = Array.from(th.parentNode.children).indexOf(th);
+                const asc = !th.classList.contains('asc');
+                Array.from(table.querySelector('tbody').children)
+                    .sort(comparer(index, asc))
+                    .forEach(tr => table.querySelector('tbody').appendChild(tr));
+
+                th.classList.toggle('asc', asc);
+                th.classList.toggle('desc', !asc);
+            });
+        });
+    });
+</script>
 {% endblock %}
