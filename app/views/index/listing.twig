@@ -26,18 +26,12 @@
         <tbody>
             {% for server in servers.items() %}
                 {% set server_url = friendlyTitle(server.id ~ ' ' ~ server.title) %}
-                {% set isPremium = server.premium_expires > time() %}
-                {% set class = isPremium ? 'bg-premium' : '' %}
 
                 <tr class="{{ class }}">
-                    <td class="text-center small pr-1">
+                    <td class="text-center small">
                         <h4 class="mb-1">#{{ start_rank }}</h4>
                     </td>
-                    <td class="text-quicksand py-3">
-                        {% if server.revision %}
-                            <span class="badge badge-primary">{{ server.revision }}</span>
-                        {% endif %}
-
+                    <td class="text-quicksand py-1">
                         <a href="{{ url('details/' ~ server_url) }}">
                             {{ server.title|length > 40 ? server.title|slice(0, 40) ~ '...' : server.title }}
                         </a>
