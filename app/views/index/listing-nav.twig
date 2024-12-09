@@ -7,11 +7,37 @@
         </div>
     </div>
 
-    <table class="table mb-0 border-primary" style="line-height:1em; background-color: rgba(233, 220, 178, 0.9);">
-        <tbody>
-         Test
-        </tbody>
-    </table>
+<table class="table mb-0 border-primary" style="line-height:1em; background-color: rgba(233, 220, 178, 0.9);">
+    <tbody>
+        <tr style="border-bottom: 1px solid #ccc;">
+            <td>Server 1</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ccc;">
+            <td>Server 2</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ccc;">
+            <td>Server 3</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ccc;">
+            <<td>Server 4</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ccc;">
+            <td>Server 5</td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+    document.querySelectorAll('table tbody tr').forEach(row => {
+        row.addEventListener('mouseenter', () => {
+            row.style.backgroundColor = 'rgba(200, 200, 200, 0.5)';
+        });
+        row.addEventListener('mouseleave', () => {
+            row.style.backgroundColor = '';
+        });
+    });
+</script>
+
 </div>
 
 
