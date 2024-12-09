@@ -27,10 +27,10 @@ body {
 .custom-container::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: -30px; /* Extend further to the left */
-    right: -30px; /* Extend further to the right */
-    bottom: 0;
+    top: -110px; /* Extend further to the top */
+    left: -110px; /* Extend further to the left */
+    right: -110px; /* Extend further to the right */
+    bottom: -110px; /* Extend further to the bottom */
     background: rgba(0, 0, 0, 0.7); /* Darker transparent background */
     z-index: -1; /* Place it behind the container content */
     border-radius: 15px; /* Optional: rounded edges */
@@ -40,13 +40,21 @@ body {
 /* Add the fading effect */
 .custom-container::before {
     background: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0) 0%, /* Start fully transparent */
+        to bottom,
+        rgba(0, 0, 0, 0) 0%, /* Start fully transparent at top */
         rgba(0, 0, 0, 0.7) 20%, /* Gradual transition to darker solid */
         rgba(0, 0, 0, 0.7) 80%, /* Dark solid continues */
-        rgba(0, 0, 0, 0) 100% /* Gradual fade back to transparent */
+        rgba(0, 0, 0, 0) 100% /* Gradual fade back to transparent at bottom */
+    ),
+    linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0) 0%, /* Start fully transparent at left */
+        rgba(0, 0, 0, 0.7) 20%, /* Gradual transition to darker solid */
+        rgba(0, 0, 0, 0.7) 80%, /* Dark solid continues */
+        rgba(0, 0, 0, 0) 100% /* Gradual fade back to transparent at right */
     );
 }
+
 
 .Header-BG-Top {
     background: linear-gradient(180deg, rgb(24, 33, 72), rgb(85, 85, 85));
