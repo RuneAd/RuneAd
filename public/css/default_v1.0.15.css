@@ -26,7 +26,7 @@ body {
 
 .listing-header {
     margin-bottom: 0;
-    background-color: rgb(0 0 0 / 42%);
+    background-color: #75675d;
     border-bottom: solid rgb(255 255 255);
     color: #88ad6e !important;
 }
