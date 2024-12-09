@@ -3,25 +3,29 @@
         <h5 class="text-quicksand text-white mb-0">Explore</h5>
     </div>
 
-     {% set start_rank = servers.firstItem() %}
+    {% set start_rank = servers.firstItem() %}
 
     <table class="table mb-0 border-primary" style="line-height: 1em; background-color: rgba(233, 220, 178, 0.9);">
         <tbody>
-         {% for server in servers.items() %}
-                        {% set server_url = friendlyTitle(server.id ~ ' ' ~ server.title) %}
+            {% set row_count = 0 %} <!-- Initialize row counter -->
+            {% for server in servers.items() if row_count < 5 %}
+                {% set server_url = friendlyTitle(server.id ~ ' ' ~ server.title) %}
 
-
-            <tr style="border-bottom: 1px solid #ccc;">
-                <td>                        <a href="{{ url('details/' ~ server_url) }}">
-                                                {{ server.title|length > 40 ? server.title|slice(0, 40) ~ '...' : server.title }}
-                                            </a>
-                                       </td>
-            </tr>
-                        {% else %}
-                            <tr>
-                                <td colspan="3" class="p-4">Nothing to see here.</td>
-                            </tr>
-                        {% endfor %}
+                <tr style="border-bottom: 1px solid #ccc;">
+                    <td>
+                        <a href="{{ url('details/' ~ server_url) }}">
+                            {{ server.title|length > 40 ? server.title|slice(0, 40) ~ '...' : server.title }}
+                        </a>
+                    </td>
+                </tr>
+                {% set row_count = row_count + 1 %} <!-- Increment row counter -->
+            {% else %}
+                {% if row_count == 0 %} <!-- Handle case where there are no servers -->
+                    <tr>
+                        <td colspan="3" class="p-4">Nothing to see here.</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
         </tbody>
     </table>
 
