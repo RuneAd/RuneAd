@@ -19,15 +19,13 @@ body {
 
 /* Apply styles to the specific dark container */
 .custom-container {
-       padding: 30px;
+       padding: 20px;
     background: #000000c7;
     border-radius: 9px;
     box-shadow: 0px 0px 20px 20px #000000c7;
-    margin-left: 0px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     z-index: 0;
-
 }
 
 
