@@ -8,7 +8,7 @@
     <table class="table mb-0 border-primary" style="line-height: 1em; background-color: rgba(233, 220, 178, 0.9);">
         <tbody>
             {% set row_count = 0 %} <!-- Initialize row counter -->
-            {% for server in servers.items()|sort((a, b) => b.date_created <=> a.date_created) if row_count < 5 %}
+            {% for server in servers.items|sort(attribute='date_created', direction='desc') if row_count < 5 %}
                 {% set server_url = friendlyTitle(server.id ~ ' ' ~ server.title) %}
 
                 <tr style="border-bottom: 1px solid #ccc;">
