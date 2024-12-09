@@ -17,14 +17,14 @@ body {
     font-family: "OpenSans-Regular" !important;
 }
 
-/* Apply styles to the specific container */
-.container {
+/* Apply styles to the specific dark container */
+.custom-container {
     position: relative;
     z-index: 1; /* Ensure it's above other content */
 }
 
 /* Create the dark transparent background with fading edges */
-.container::before {
+.custom-container::before {
     content: '';
     position: absolute;
     top: 0;
@@ -38,7 +38,7 @@ body {
 }
 
 /* Add the fading effect */
-.container::before {
+.custom-container::before {
     background: linear-gradient(
         to right,
         rgba(0, 0, 0, 0.5) 0%, /* Start transparent */
