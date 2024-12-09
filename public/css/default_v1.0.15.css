@@ -28,10 +28,10 @@ body {
     content: '';
     position: absolute;
     top: 0;
-    left: -20px; /* Extend further to the left */
-    right: -20px; /* Extend further to the right */
+    left: -30px; /* Extend further to the left */
+    right: -30px; /* Extend further to the right */
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5); /* Dark transparent background */
+    background: rgba(0, 0, 0, 0.7); /* Darker transparent background */
     z-index: -1; /* Place it behind the container content */
     border-radius: 15px; /* Optional: rounded edges */
     pointer-events: none; /* Allow interaction with the container content */
@@ -41,12 +41,13 @@ body {
 .custom-container::before {
     background: linear-gradient(
         to right,
-        rgba(0, 0, 0, 0) 0%, /* Start fade in from transparent */
-        rgba(0, 0, 0, 0.5) 10%, /* Transition to solid dark */
-        rgba(0, 0, 0, 0.5) 90%, /* Solid dark continues */
-        rgba(0, 0, 0, 0) 100% /* Fade out to transparent */
+        rgba(0, 0, 0, 0.2) 0%, /* Start fade in slightly darker */
+        rgba(0, 0, 0, 0.7) 15%, /* Transition to darker solid */
+        rgba(0, 0, 0, 0.7) 85%, /* Dark solid continues */
+        rgba(0, 0, 0, 0.2) 100% /* Fade out slightly darker */
     );
 }
+
 
 .Header-BG-Top {
     background: linear-gradient(180deg, rgb(24, 33, 72), rgb(85, 85, 85));
