@@ -9,7 +9,7 @@
 
 body {
     background-color: rgb(60, 48, 34); /* Fallback color */
-    background-image: url('https://PlayZanaris.com/img/xmasbg.webp'); /* Background image */
+    background-image: url('https://PlayZanaris.com/public/img/xmasbg.webp'); /* Background image */
     background-size: cover; /* Ensures the image covers the entire background */
     background-repeat: no-repeat; /* Prevents the image from repeating */
     background-position: center; /* Centers the image */
