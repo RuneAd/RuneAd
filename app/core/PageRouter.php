@@ -491,9 +491,9 @@ class PageRouter extends Router {
             return $this->setRoute('servers', 'index', [ 'page' => $page ]);
         });
 
-        $this->all('admin/servers/info/([0-9]+)'servers', 'info', [ 'sid' =>, function($sid) {
-            return $this->setRoute(' $sid ]);
-        });
+$this->all('admin/servers/info/([0-9]+)', 'servers', 'info', [ 'sid' => function($sid) {
+    return $this->setRoute([ 'sid' => $sid ]);
+}]);
 
         $this->all('admin/servers/edit/([0-9]+)', function($sid) {
             return $this->setRoute('servers', 'edit', [ 'sid' => $sid ]);
