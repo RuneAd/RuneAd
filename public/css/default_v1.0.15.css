@@ -28,8 +28,8 @@ body {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
+    left: -20px; /* Extend further to the left */
+    right: -20px; /* Extend further to the right */
     bottom: 0;
     background: rgba(0, 0, 0, 0.5); /* Dark transparent background */
     z-index: -1; /* Place it behind the container content */
@@ -41,9 +41,9 @@ body {
 .custom-container::before {
     background: linear-gradient(
         to right,
-        rgba(0, 0, 0, 0.5) 0%, /* Start transparent */
-        rgba(0, 0, 0, 0.5) 20%, /* Solid dark */
-        rgba(0, 0, 0, 0.5) 80%, /* Solid dark */
+        rgba(0, 0, 0, 0) 0%, /* Start fade in from transparent */
+        rgba(0, 0, 0, 0.5) 10%, /* Transition to solid dark */
+        rgba(0, 0, 0, 0.5) 90%, /* Solid dark continues */
         rgba(0, 0, 0, 0) 100% /* Fade out to transparent */
     );
 }
