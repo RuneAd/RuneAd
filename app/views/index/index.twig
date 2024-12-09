@@ -11,11 +11,16 @@
             </div>
         </div>
 
-        <div class="col-sm-12 d-flex w-100">
-            <div class="flex-fill w-100">
-                {% include 'index/listing.twig' %}
-            </div>
+<div class="row d-flex w-100">
+    <div class="col-sm-9">
+        <div class="flex-fill w-100">
+            {% include 'index/listing.twig' %}
         </div>
+    </div>
+    <div class="col-sm-3">
+        {% include 'index/listing-nav.twig' %}
+    </div>
+</div>
     </div>
 </div>
 
