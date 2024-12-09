@@ -27,13 +27,12 @@ body {
 .custom-container::before {
     content: '';
     position: absolute;
-    top: -40px; /* Extend further to the top */
+    top: -30px; /* Reduced top extension */
     left: -110px; /* Extend further to the left */
     right: -110px; /* Extend further to the right */
-    bottom: -40px; /* Extend further to the bottom */
+    bottom: -50px; /* Smaller bottom extension */
     background: rgba(0, 0, 0, 0.7); /* Darker transparent background */
     z-index: -1; /* Place it behind the container content */
-    border-radius: 15px; /* Optional: rounded edges */
     pointer-events: none; /* Allow interaction with the container content */
 }
 
@@ -49,8 +48,8 @@ body {
     linear-gradient(
         to right,
         rgba(0, 0, 0, 0) 0%, /* Start fully transparent at left */
-        rgba(0, 0, 0, 0.7) 20%, /* Gradual transition to darker solid */
-        rgba(0, 0, 0, 0.7) 80%, /* Dark solid continues */
+        rgba(0, 0, 0, 0.7) 10%, /* Gradual transition to darker solid */
+        rgba(0, 0, 0, 0.7) 90%, /* Dark solid continues */
         rgba(0, 0, 0, 0) 100% /* Gradual fade back to transparent at right */
     );
 }
