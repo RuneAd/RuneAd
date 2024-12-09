@@ -19,36 +19,15 @@ body {
 
 /* Apply styles to the specific dark container */
 .custom-container {
-    position: relative;
-    z-index: 1; /* Ensure it's above other content */
-}
+       padding: 30px;
+    background: #000000c7;
+    border-radius: 9px;
+    box-shadow: 0px 0px 20px 20px #000000c7;
+    margin-left: 0px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    z-index: 0;
 
-/* Create the dark transparent background with fading edges */
-.custom-container::before {
-    content: '';
-    position: absolute;
-    top: 50px; /* Adjusted top extension */
-    left: -110px; /* Extend further to the left */
-    right: -110px; /* Extend further to the right */
-    bottom: -50px; /* Smaller bottom extension */
-    z-index: -1; /* Place it behind the container content */
-    pointer-events: none; /* Allow interaction with the container content */
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0) 0%, /* Start fully transparent at top */
-        rgba(0, 0, 0, 0.7) 20%, /* Gradual transition to darker solid */
-        rgba(0, 0, 0, 0.7) 80%, /* Dark solid continues */
-        rgba(0, 0, 0, 0) 100% /* Gradual fade back to transparent at bottom */
-    ),
-    linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0) 0%, /* Start fully transparent at left */
-        rgba(0, 0, 0, 0.7) 20%, /* Gradual transition to darker solid */
-        rgba(0, 0, 0, 0.7) 80%, /* Dark solid continues */
-        rgba(0, 0, 0, 0) 100% /* Gradual fade back to transparent at right */
-    );
-    mask-image: radial-gradient(circle, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0) 100%);
-    mask-repeat: no-repeat;
 }
 
 
