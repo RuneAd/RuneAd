@@ -17,6 +17,37 @@ body {
     font-family: "OpenSans-Regular" !important;
 }
 
+/* Apply styles to the specific container */
+.container {
+    position: relative;
+    z-index: 1; /* Ensure it's above other content */
+}
+
+/* Create the dark transparent background with fading edges */
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Dark transparent background */
+    z-index: -1; /* Place it behind the container content */
+    border-radius: 15px; /* Optional: rounded edges */
+    pointer-events: none; /* Allow interaction with the container content */
+}
+
+/* Add the fading effect */
+.container::before {
+    background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.5) 0%, /* Start transparent */
+        rgba(0, 0, 0, 0.5) 20%, /* Solid dark */
+        rgba(0, 0, 0, 0.5) 80%, /* Solid dark */
+        rgba(0, 0, 0, 0) 100% /* Fade out to transparent */
+    );
+}
+
 .Header-BG-Top {
     background: linear-gradient(180deg, rgb(24, 33, 72), rgb(85, 85, 85));
     color: white; /* Ensures text is visible on the dark gradient */
