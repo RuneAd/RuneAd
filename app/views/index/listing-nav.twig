@@ -1,25 +1,27 @@
 <div class="card border-0 shadow-sm overflow-hidden mb-2">
     <div class="card-header py-2 text-white listing-header">
-        <h5 class="text-quicksand mb-0">Explore New Servers</h5>
+        <h5 class="text-quicksand text-white mb-0">Explore</h5>
     </div>
+
+     {% set start_rank = servers.firstItem() %}
 
     <table class="table mb-0 border-primary" style="line-height: 1em; background-color: rgba(233, 220, 178, 0.9);">
         <tbody>
+         {% for server in servers.items() %}
+                        {% set server_url = friendlyTitle(server.id ~ ' ' ~ server.title) %}
+
+
             <tr style="border-bottom: 1px solid #ccc;">
-                <td>Server 1</td>
+                <td>                        <a href="{{ url('details/' ~ server_url) }}">
+                                                {{ server.title|length > 40 ? server.title|slice(0, 40) ~ '...' : server.title }}
+                                            </a>
+                                       </td>
             </tr>
-            <tr style="border-bottom: 1px solid #ccc;">
-                <td>Server 2</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #ccc;">
-                <td>Server 3</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #ccc;">
-                <td>Server 4</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #ccc;">
-                <td>Server 5</td>
-            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="3" class="p-4">Nothing to see here.</td>
+                            </tr>
+                        {% endfor %}
         </tbody>
     </table>
 
