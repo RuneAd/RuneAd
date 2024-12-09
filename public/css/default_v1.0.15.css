@@ -27,10 +27,9 @@ body {
 .custom-container::before {
     content: '';
     position: absolute;
-    top: -110px; /* Extend further to the top */
     left: -110px; /* Extend further to the left */
     right: -110px; /* Extend further to the right */
-    bottom: -110px; /* Extend further to the bottom */
+    bottom: -40px; /* Extend further to the bottom */
     background: rgba(0, 0, 0, 0.7); /* Darker transparent background */
     z-index: -1; /* Place it behind the container content */
     border-radius: 15px; /* Optional: rounded edges */
