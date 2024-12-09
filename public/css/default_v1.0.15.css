@@ -27,6 +27,7 @@ body {
 .custom-container::before {
     content: '';
     position: absolute;
+    top: -40px; /* Extend further to the top */
     left: -110px; /* Extend further to the left */
     right: -110px; /* Extend further to the right */
     bottom: -40px; /* Extend further to the bottom */
