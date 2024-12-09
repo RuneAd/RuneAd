@@ -41,13 +41,12 @@ body {
 .custom-container::before {
     background: linear-gradient(
         to right,
-        rgba(0, 0, 0, 0.2) 0%, /* Start fade in slightly darker */
-        rgba(0, 0, 0, 0.7) 15%, /* Transition to darker solid */
-        rgba(0, 0, 0, 0.7) 85%, /* Dark solid continues */
-        rgba(0, 0, 0, 0.2) 100% /* Fade out slightly darker */
+        rgba(0, 0, 0, 0) 0%, /* Start fully transparent */
+        rgba(0, 0, 0, 0.7) 20%, /* Gradual transition to darker solid */
+        rgba(0, 0, 0, 0.7) 80%, /* Dark solid continues */
+        rgba(0, 0, 0, 0) 100% /* Gradual fade back to transparent */
     );
 }
-
 
 .Header-BG-Top {
     background: linear-gradient(180deg, rgb(24, 33, 72), rgb(85, 85, 85));
