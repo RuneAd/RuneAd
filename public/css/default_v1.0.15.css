@@ -18,7 +18,7 @@ body {
 }
 
 .underlogo-container {
-    background-color: #433527e3 !important;
+    background-color: solid rgb(38 32 26) !important;
     border-bottom: 3px solid #75675d;
     border-top: 3px solid #75675d;
     box-shadow: 0px 5px 20px 20px #000000bd;
