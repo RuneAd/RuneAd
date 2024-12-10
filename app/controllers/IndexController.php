@@ -9,16 +9,6 @@ class IndexController extends Controller {
 
     public function index($rev = null, $page = 1) {
 
-     $data = [
-                'users' => [
-                    'total' => Users::count(),
-                ],
-                'servers' => [
-                    'total' => Servers::count(),
-                ]
-            ];
-
-
         $revisions = Revisions::where('visible', 1)->get();
 
         if ($rev) {
@@ -38,6 +28,7 @@ class IndexController extends Controller {
         }
 
         $data = ['servers' => ['total' => Servers::count()]];
+        $data1 = ['users' => ['total' => Users::count()]];
 
         $sponsors = Sponsors::select([
                 'sponsors.id',
