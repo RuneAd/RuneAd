@@ -8,6 +8,17 @@ use Illuminate\Database\Capsule\Manager as DB;
 class IndexController extends Controller {
 
     public function index($rev = null, $page = 1) {
+
+     $data = [
+                'users' => [
+                    'total' => Users::count(),
+                ],
+                'servers' => [
+                    'total' => Servers::count(),
+                ]
+            ];
+
+
         $revisions = Revisions::where('visible', 1)->get();
 
         if ($rev) {
