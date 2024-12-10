@@ -35,12 +35,12 @@
 
                         </div>
 
-    <label>World Settings, Rules, and modes (Not required, but helpful for players looking for a specific server)</label>
+    <label>World Settings, and modes (Not required, but helpful for players looking for a specific server)</label>
     <label class="text-danger">Note: These can be changed at anytime after listing in your World edit settings via PlayZanaris World Panel</label>
 
 <div class="form-row form-group">
     <div class="col-lg-3">
-        <label>Ultimate Ironman?</label>
+        <label>Play Style?</label>
             <select name="revision" class="form-control {{ errors['revision'] is defined ? 'border-danger' : '' }}" disabled>
                 {% for revision in revisions %}
                 <option value="{{ revision.revision }}">{{ revision.revision }}</option>
@@ -75,30 +75,46 @@
                 {% endfor %}
             </select>
     </div>
+        <div class="col-lg-3">
+                <label>Rule3</label>
+                <select name="revision" class="form-control {{ errors['revision'] is defined ? 'border-danger' : '' }}" disabled>
+                    {% for revision in revisions %}
+                    <option value="{{ revision.revision }}">{{ revision.revision }}</option>
+                    {% endfor %}
+                </select>
+        </div>
+            <div class="col-lg-3">
+                    <label>Rule4</label>
+                    <select name="revision" class="form-control {{ errors['revision'] is defined ? 'border-danger' : '' }}" disabled>
+                        {% for revision in revisions %}
+                        <option value="{{ revision.revision }}">{{ revision.revision }}</option>
+                        {% endfor %}
+                    </select>
+            </div>
 </div>
 
 
                         <hr>
 
                         <div class="form-group">
-                            <label>Project Zanaris Server Link*</label>
+                            <label>Project Zanaris World Link*</label>
                             <input type="text" class="form-control {{ errors['website'] is defined ? 'border-danger' : '' }}" name="website" maxlength="255">
                             <span class="text-muted small">
-                                After creating your server on Project Zanaris, you should be given a link to share your server, please put that here.
+                                After creating your world on Project Zanaris, you should be given a link to share your world, please put that here.
                             </span>
                         </div>
 
                         <div class="form-group">
                             <label>Callback URL (Optional)</label>
                             <input type="text" class="form-control {{ errors['callback_url'] is defined ? 'border-danger' : '' }}" name="callback_url" disabled maxlength="255">
-                            <span class="text-muted small">We're not sure if Project Zanaris Servers will use a callback system. We have disabled this setting until we get more information.</span>
+                            <span class="text-muted small">We're not sure if Project Zanaris worlds will use a callback system. We have disabled this setting until we get more information.</span>
                         </div>
 
                         <div class="form-group">
                             <label>Discord Link (Optional)</label>
                             <input type="text" class="form-control {{ errors['discord_link'] is defined ? 'border-danger' : '' }}" name="discord_link" maxlength="255">
                             <span class="text-muted small">
-                                A quick join link to your Project Zanaris Servers Discord.
+                                A quick join link to your Project Zanaris world Discord.
                             </span>
                         </div>
 
@@ -124,6 +140,7 @@
                         <hr>
 
                         <div class="form-group mb-0">
+                         <label>World Banner (Optional but suggested)</label>
                             <div class="banner-holder rounded border-0 mb-2 text-dark" id="bannerimg">
                                 Click to Upload Banner
                             </div>
