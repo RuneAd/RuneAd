@@ -27,8 +27,14 @@ class IndexController extends Controller {
             $servers = Servers::getAll($page);
         }
 
-        $data = ['servers' => ['total' => Servers::count()]];
-        $data = ['users' => ['total' => Users::count()]];
+ $data = [
+            'users' => [
+                'total' => Users::count(),
+            ],
+            'servers' => [
+                'total' => Servers::count(),
+            ]
+        ];
 
         $sponsors = Sponsors::select([
                 'sponsors.id',
