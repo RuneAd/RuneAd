@@ -60,6 +60,12 @@
     <div class="card-body stats-body">
         <div class="row">
             <div class="col-8 text-left mb-3">
+                <span class="small">Total Worlds</span>
+            </div>
+            <div class="col-4 text-right">
+                <span class="badge badge-dark text-white">{{ server_count }}</span>
+            </div>
+            <div class="col-8 text-left mb-3">
                 <span class="small">Total Votes</span>
             </div>
             <div class="col-4 text-right">
@@ -69,7 +75,7 @@
                 <span class="small">Active Members</span>
             </div>
             <div class="col-4 text-right">
-                <span class="badge badge-dark text-white">{{ data1['users']['total']|number_format }}</span>
+                <span class="badge badge-dark text-white">{{ user_count }}</span>
             </div>
         </div>
     </div>
