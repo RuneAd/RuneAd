@@ -33,6 +33,10 @@ body {
     color: #fff;
 }
 
+.runeGreen {
+    color: #88ad6e;
+}
+
 .add-server {
     background-color: #433527e3 !important;
     border-bottom: 3px solid #75675d;
