@@ -33,7 +33,14 @@ class IndexController extends Controller {
             ],
             'servers' => [
                 'total' => Servers::count(),
-            ]
+            ],
+             'votes' => [
+             'total' => Votes::count(),
+              'month' => Votes::where("voted_on", ">=", $thisMonth)->count(),
+              'lastmonth' => Votes::where("voted_on", ">=", $lastMonth)->count(),
+              'week' => Votes::where("voted_on", ">=", $lastWeek)->count(),
+              'day' => Votes::where("voted_on", ">=", $day)->count(),
+              'hour' => Votes::where("voted_on", ">=", $hour)->count()
         ];
 
         $this->set("data", $data);
