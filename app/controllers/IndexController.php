@@ -36,20 +36,6 @@ class IndexController extends Controller {
             ]
         ];
 
-        $sponsors = Sponsors::select([
-                'sponsors.id',
-                'servers.title',
-                'servers.website',
-                'servers.discord_link',
-                'servers.banner_url'
-            ])
-            ->where('expires', '>', time())
-            ->whereNotNull('servers.banner_url')
-            ->whereNotNull('servers.website')
-            ->leftJoin("servers", "servers.id", "=", "sponsors.server_id")
-            ->orderBy("started", "ASC")
-            ->get();
-
         $this->set("data", $data);
         $this->set("servers", $servers);
         $this->set("revisions", $revisions);
