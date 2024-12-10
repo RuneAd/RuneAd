@@ -40,7 +40,6 @@ class IndexController extends Controller {
         $this->set("servers", $servers);
         $this->set("revisions", $revisions);
         $this->set("server_count", $servers->total());
-
         return true;
     }
 
