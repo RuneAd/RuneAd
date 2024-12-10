@@ -36,8 +36,6 @@ $data = [
     ],
     'votes' => [
         'total' => Votes::count(),
-        'month' => Votes::where("voted_on", ">=", $thisMonth)->count(),
-        'lastmonth' => Votes::where("voted_on", ">=", $lastMonth)->count(),
     ],
 ];
 
