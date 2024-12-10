@@ -28,6 +28,11 @@ body {
     color: #fff;
 }
 
+.listing-body {
+    background-color: #4f4235 !important;
+    color: #fff;
+}
+
 .add-server {
     background-color: #433527e3 !important;
     border-bottom: 3px solid #75675d;
