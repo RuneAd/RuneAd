@@ -48,6 +48,7 @@ class IndexController extends Controller {
         $this->set("revisions", $revisions);
         $this->set("sponsors", $sponsors);
         $this->set("server_count", $servers->total());
+        $this->set("user_count", $users->total());
         return true;
     }
 
