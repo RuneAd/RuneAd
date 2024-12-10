@@ -7,13 +7,13 @@
         <div class="col-sm-12">
             <div class="card border-0 shadow-sm mb-3">
                 <div class="card-header bg-primary">
-                    <h5 class="mb-0 text-white">Create Listing</h5>
+                    <h5 class="mb-0 text-white">Create World Listing</h5>
                     <p class="mb-0 text-white">Use the form below to create a listing for your community server on our toplist!</p>
                 </div>
                 <div class="card-body">
                     {% if errors is defined %}
                         <div class="alert alert-danger">
-                            <p class="mb-2">Errors were encountered when posting you server:</p>
+                            <p class="mb-2">Errors were encountered when posting you world:</p>
                             <ul class="mb-0 pl-3">
                                 {% for key, value in errors %}
                                 <li>&bull; {{ value }}</li>
@@ -24,12 +24,20 @@
                     <form method="post" action="{{ url('servers/add') }}" id="postform">
                         <div class="form-row form-group">
                             <div class="col">
-                                <label>Server Name*</label>
+                                <label>World Name*</label>
                                 <input type="text" class="form-control {{ errors['title'] is defined ? 'border-danger' : '' }}" name="title">
                             </div>
+                            <div class="col">
+                                <label>World ID*</label>
+                                <input type="text" class="form-control {{ errors['title'] is defined ? 'border-danger' : '' }}" disabled">
+                                <p class="text-muted small text-center">We're not sure if Project Zanaris Worlds will World ID's. We have disabled this setting until we get more information.</p>
+                            </div>
+
                         </div>
 
-    <label>Server Settings & Features (Not required, but helpful for players looking for a specific server)</label>
+    <label>World Settings, Rules, and modes (Not required, but helpful for players looking for a specific server)</label>
+    <label class="text-danger">Note: These can be changed at anytime after listing in your World edit settings via PlayZanaris World Panel</label>
+
 <div class="form-row form-group">
     <div class="col-lg-3">
         <label>Ultimate Ironman?</label>
@@ -48,21 +56,27 @@
             </select>
     </div>
 </div>
-
-<div class="form-row form-group mb-0">
-    <div class="col">
-        <label>Server Port*</label>
-        <input type="number" class="form-control {{ errors['server_port'] is defined ? 'border-danger' : '' }}"
-            name="server_port" min="0" max="65535" disabled>
+    <label>World Rules</label>
+    <label class="text-danger">Test Rules for backend data. Will update when Project Zanaris has more public information.</label>
+<div class="form-row form-group">
+    <div class="col-lg-3">
+        <label>Rule1</label>
+            <select name="revision" class="form-control {{ errors['revision'] is defined ? 'border-danger' : '' }}" disabled>
+                {% for revision in revisions %}
+                <option value="{{ revision.revision }}">{{ revision.revision }}</option>
+                {% endfor %}
+            </select>
     </div>
-    <div class="col">
-        <label>Server IP*</label>
-        <input type="text" class="form-control {{ errors['server_ip'] is defined ? 'border-danger' : '' }}"
-            name="server_ip" disabled>
+    <div class="col-lg-3">
+            <label>Rule2</label>
+            <select name="revision" class="form-control {{ errors['revision'] is defined ? 'border-danger' : '' }}" disabled>
+                {% for revision in revisions %}
+                <option value="{{ revision.revision }}">{{ revision.revision }}</option>
+                {% endfor %}
+            </select>
     </div>
 </div>
 
-                       <p class="text-muted small text-center">We're not sure if Project Zanaris Servers will use Port & IP. We have disabled this setting until we get more information.</p>
 
                         <hr>
 
