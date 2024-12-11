@@ -47,7 +47,7 @@ class Security {
             'users'    => ['index', 'banned'],
             'blog'    => ['index', 'add'],
             'servers'  => ['index', 'info', 'edit', 'delete'],
-            'tools'    => ['servers']
+            'tools'    => ['servers'],
         ];
 
         $mod = [
