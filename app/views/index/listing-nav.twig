@@ -12,29 +12,30 @@
 
     {% set start_rank = servers.firstItem() %}
 
-    <table class="table mb-0 border-primary" style="line-height: 1em; background-color: rgba(233, 220, 178, 0.9);">
-        <tbody>
-            {% set row_count = 0 %} <!-- Initialize row counter -->
-            {% for server in servers.items()|sort((a, b) => b.date_created <=> a.date_created) if row_count < 5 %}
-                {% set server_url = friendlyTitle(server.id ~ ' ' ~ server.title) %}
+<table class="table mb-0 border-primary" style="line-height: 1em; background-color: rgba(233, 220, 178, 0.9); text-align: center;">
+    <tbody>
+        {% set row_count = 0 %} <!-- Initialize row counter -->
+        {% for server in servers.items()|sort((a, b) => b.date_created <=> a.date_created) if row_count < 5 %}
+            {% set server_url = friendlyTitle(server.id ~ ' ' ~ server.title) %}
 
-                <tr style="border-bottom: 1px solid #ccc;">
-                    <td>
-                        <a href="{{ url('details/' ~ server_url) }}">
-                            {{ server.title|length > 40 ? server.title|slice(0, 40) ~ '...' : server.title }}
-                        </a>
-                    </td>
+            <tr style="border-bottom: 1px solid #ccc; text-align: center;">
+                <td>
+                    <a href="{{ url('details/' ~ server_url) }}">
+                        {{ server.title|length > 40 ? server.title|slice(0, 40) ~ '...' : server.title }}
+                    </a>
+                </td>
+            </tr>
+            {% set row_count = row_count + 1 %} <!-- Increment row counter -->
+        {% else %}
+            {% if row_count == 0 %} <!-- Handle case where there are no servers -->
+                <tr>
+                    <td colspan="3" class="p-4" style="text-align: center;">Nothing to see here.</td>
                 </tr>
-                {% set row_count = row_count + 1 %} <!-- Increment row counter -->
-            {% else %}
-                {% if row_count == 0 %} <!-- Handle case where there are no servers -->
-                    <tr>
-                        <td colspan="3" class="p-4">Nothing to see here.</td>
-                    </tr>
-                {% endif %}
-            {% endfor %}
-        </tbody>
-    </table>
+            {% endif %}
+        {% endfor %}
+    </tbody>
+</table>
+
 
     <script>
         document.querySelectorAll('table tbody tr').forEach(row => {
