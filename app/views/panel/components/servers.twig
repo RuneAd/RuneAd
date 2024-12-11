@@ -1,0 +1,67 @@
+<div class="card border-0 shadow-sm overflow-hidden mb-3" style="position:relative;">
+    <div class="card-header bg-transparent">
+        <div class="d-flex align-items-center">
+            <!-- Server Title -->
+            <div class="flex-fill">
+                <a class="text-default" href="{{ url('details/'~server.id) }}">
+                    #{{ server.id }} {{ server.title }}
+                </a>
+            </div>
+            <!-- Action Icons -->
+            <div class="flex-fill text-right">
+                <button class="btn btn-success btn-md" title="Share Vote link" onclick="copyToClipboardWithMessage('https://PlayZanaris.com{{ url('vote/'~server.id~'/'~server.title|replace({' ': '-'}) ) }}', this)">
+                    {{ icon('share') }} Share
+                </button>
+                <div class="mt-2 text-success d-none" id="clipboard-message">Voting Link copied to clipboard</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <!-- Server Details -->
+        <div id="details" class="text-center">
+            <div class="d-flex">
+                <!-- Server Created Date -->
+                <div class="flex-fill">
+                    <p class="mb-0 text-default">
+                        {{ server.date_created|date("m.d.y") }}
+                    </p>
+                    <p class="small mb-0">Created</p>
+                </div>
+                <!-- Server Revision -->
+                <div class="flex-fill">
+                    <p class="mb-0 text-default">
+                        {{ server.revision ? server.revision : 'n/a' }}
+                    </p>
+                    <p class="small mb-0">Revision</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Server Statistics -->
+        <div id="statistics" class="text-center d-none">
+            <div class="d-flex">
+                {% for period, label in {'votes': 'Current', '60days': '60 Days', '30days': '30 Days', '7days': '7 Days', '1day': '1 Day'} %}
+                <div class="flex-fill">
+                    <p class="mb-0 text-default">{{ voteData[server.id][period]|number_format }}</p>
+                    <p class="small text-muted mb-0">{{ label }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function copyToClipboardWithMessage(text, buttonElement) {
+        navigator.clipboard.writeText(text).then(function() {
+            const message = buttonElement.nextElementSibling;
+            message.classList.remove('d-none');
+            setTimeout(() => {
+                message.classList.add('d-none');
+            }, 3000);
+        }, function(err) {
+            console.error('Could not copy text: ', err);
+        });
+    }
+</script>

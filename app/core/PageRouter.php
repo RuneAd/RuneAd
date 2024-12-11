@@ -54,6 +54,13 @@ class PageRouter extends Router {
         });
 
         /**
+         * Server Panel
+         */
+         $this->all('panel', function() {
+            return $this->setRoute('panel', 'index');
+        });
+
+        /**
          * Pages
          */
         $this->all('stats', function() {
