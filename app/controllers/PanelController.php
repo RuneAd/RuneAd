@@ -1,5 +1,5 @@
 <?php
-class SponsorController extends Controller {
+class PanelController extends Controller {
 
     private static $disabled = false;
 
