@@ -35,6 +35,7 @@ class Security {
             'servers' => ['add', 'edit', 'delete'],
             'profile' => ['index', 'stats', 'payments'],
             'dashboard' => ['index', 'stats', 'payments']
+            'panel' => ['index']
         ];
 
         $admin = [
