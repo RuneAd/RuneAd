@@ -34,7 +34,7 @@ class Security {
         $private = [
             'servers' => ['add', 'edit', 'delete'],
             'profile' => ['index', 'stats', 'payments'],
-            'dashboard' => ['index', 'stats', 'payments']
+            'dashboard' => ['index', 'stats', 'payments'],
             'panel' => ['index']
         ];
 
@@ -47,7 +47,7 @@ class Security {
             'users'    => ['index', 'banned'],
             'blog'    => ['index', 'add'],
             'servers'  => ['index', 'info', 'edit', 'delete'],
-            'tools'    => ['servers'],
+            'tools'    => ['servers']
         ];
 
         $mod = [
