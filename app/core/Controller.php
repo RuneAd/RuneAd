@@ -180,6 +180,12 @@ class Controller {
                     'meta'  => 'Share your insights and stories about Project Zanaris community servers. Create a blog post on PlayZanaris.'
                 ]
             ],
+            'panel' => [
+                'index' => [
+                    'title' => 'Your World Panel',
+                    'meta'  => 'Discover PlayZanaris, the leading toplist dedicated to Jagex-hosted Project Zanaris worlds. Explore and join unique, player-hosted OSRS community worlds today!'
+                ]
+            ],
             'tools' => [
                 'index' => [
                     'title' => 'Tools | PlayZanaris | Community Server Resources',
