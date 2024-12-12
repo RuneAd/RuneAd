@@ -6,35 +6,43 @@
     {% else %}
     <title>PlayZanaris | Find OldSchool Runescape Community Servers</title>
     {% endif %}
-
     <link rel="canonical" href="{{ route }}">
-
     {% if meta_tags is defined and meta_tags is not empty %}
-    <meta name="keywords" content="{{ meta_tags }}">
+    <meta name="keywords" content="{{ meta_tags }} - OldSchool RuneScape servers, OSRS community servers, Project Zanaris toplist, OSRS private server list, Jagex community servers, Play Zanaris, RuneScape server rankings, OSRS server hosting, Zanaris community servers, Top OSRS servers, Vote for OSRS servers, Join top Zanaris servers, Rank your OSRS server, Host your OSRS server, Start an OSRS community server, Promote RuneScape servers">
     {% else %}
     <meta name="keywords" content="OldSchool RuneScape servers, OSRS community servers, Project Zanaris toplist, OSRS private server list, Jagex community servers, Play Zanaris, RuneScape server rankings, OSRS server hosting, Zanaris community servers, Top OSRS servers, Vote for OSRS servers, Join top Zanaris servers, Rank your OSRS server, Host your OSRS server, Start an OSRS community server, Promote RuneScape servers">
     {% endif %}
-
     {% if meta_info is defined and meta_info is not empty %}
     <meta name="description" content="{{ meta_info }}">
     {% else %}
     <meta name="description" content="PlayZanaris is the ultimate toplist for OldSchool RuneScape community servers. Discover, vote, and join the best OSRS community servers with ease.">
     {% endif %}
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-
-    <!-- Preload fonts and styles -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" as="style">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap">
-
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" as="style">
+    <link rel="shortcut icon" type="image/png" href="https://playzanaris.com/public/img/icons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://playzanaris.com/public/img/icons/apple-touch-icon.png">
+    <link rel="icon" sizes="32x32" href="https://playzanaris.com/public/img/icons/favicon-32x32.png">
+    <link rel="icon" sizes="16x16" href="https://playzanaris.com/public/img/icons/favicon-16x16.png">
+    <link rel="manifest" href="https://playzanaris.com/public/img/icons/site.webmanifest"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=0.87, shrink-to-fit=no">
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WF6TZBR');</script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookie-consent-box@2.4.0/dist/cookie-consent-box.min.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/cookie-consent-box@2.4.0/dist/cookie-consent-box.min.js"></script>
 
-    <link rel="preload" href="https://www.playzanaris.com/public/css/argon.min.css" as="style">
-    <link rel="stylesheet" href="https://www.playzanaris.com/public/css/argon.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ stylesheet('argon.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ stylesheet('quill.snow.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ stylesheet('default_v1.0.15.css') }}" />
 
-    <link rel="shortcut icon" href="https://playzanaris.com/public/img/icons/favicon.ico" type="image/x-icon">
+    <link rel="preload" href="../img/headerbg.webp" as="image">
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js" defer></script>
 </head>
+
 <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WF6TZBR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
@@ -42,7 +50,6 @@
         {% include 'global/navbar.twig' %}
         {% include 'global/header.twig' %}
     </div>
-
     {% block content %}
     {% endblock %}
 
@@ -51,12 +58,34 @@
     {% endif %}
     {% include 'global/footer.twig' %}
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163957784-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-163957784-1');
-    </script>
+<script>CookieBoxConfig = { cookiesDomain: 'playzanaris.com', backgroundColor: '#0275d8', linkTarget: '_self', cookieExpireInDays: '365', url: '/privacy' }</script>
 </body>
+<script defer type="text/javascript" src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+<script defer type="text/javascript" src="{{ javascript('jquery-3.3.1.min.js') }}"></script>
+<script defer type="text/javascript" src="{{ javascript('bootstrap.bundle.min.js') }}"></script>
+<script defer type="text/javascript" src="{{ javascript('rsfacts.js') }}"></script>
+<script defer type="text/javascript" src="{{ javascript('custom.js') }}"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163957784-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-163957784-1');
+</script>
+<script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Organization",
+      "name" : "PlayZanaris | Project Zanaris Toplist",
+     "url" : "https://playzanaris.com",
+     "sameAs" : [
+       "https://playzanaris.com",
+       "https://playzanaris.com",
+       "https://playzanaris.com"
+       ]
+    }
+    </script>
 </html>
