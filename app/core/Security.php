@@ -23,12 +23,10 @@ class Security {
             'report'  => ['index'],
             'login'   => ['index', 'discord', 'auth', 'dauth'],
             'errors'  => ['show404', 'show500', 'show401', 'missing'],
-            'pages'   => ['docs', 'stats', 'terms', 'privacy', 'contact', 'faq', 'sitemap'],
-            'tools'   => ['index', 'itemdb', 'search', 'map', 'xptable', 'servers'],
+            'pages'   => ['stats', 'terms', 'privacy','faq', 'sitemap'],
+            'tools'   => ['index', 'search', 'map', 'xptable', 'servers'],
             'blog'    => ['index', 'post'],
-            'downloads'   => ['index', 'rsps', 'web'],
-            'commands'  => ['index', 'owner', 'admin', 'moderator', 'donator', 'player'],
-            'videos'  => ['index', 'post']
+            'commands'  => ['index'],
         ];
 
         $private = [
