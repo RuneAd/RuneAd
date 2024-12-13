@@ -8,7 +8,7 @@
         <div class="col-sm-12">
             <div class="card border border-light shadow-sm mb-2">
                 <div class="card-body">
-                    <div id="factBox" class="d-flex align-items-center" style="height:50px;">
+                    <div id="factBox" class="d-flex align-items-center"style="height:50px;">
                         <div class="w-100">
                             <p class="small text-muted mb-0">Did you know? Fact #<span id="factNum"></span></p>
                             <p id="factTxt" class="mb-0"></p>
@@ -19,31 +19,29 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-lg-8 col-md-12 col-sm-12">
+        <div class="row">
+            <div class="col-lg-8 col-md-12 col-sm-12">
             <div class="card border-info shadow mb-3">
                 <div class="card-body text-center">
                     <p class="small text-muted mb-0">Vote for</p>
                     <h4 class="text-quicksand mb-4">{{ server.title }}</h4>
 
                     <div class="mb-5">
-                        {% if server.banner_url %}
+                    {% if server.banner_url %}
                         <a href="{{ url('details/'~server_url) }}" class="banner-img mx-auto">
-                            <img src="{{ banner(server.banner_url) }}"
+                            <img data-src="{{ banner(server.banner_url) }}"
                                 id="banner"
-                                alt="{{ server.title }} banner"
                                 style="margin-top:14px;"
-                                class="img-fluid rounded">
+                                class="img-fluid rounded lazy">
                         </a>
                         {% else %}
                         <a href="{{ url('details/'~server_url) }}" class="banner-img mx-auto">
-                            <img src="{{ url('public/img/banner-loading.png') }}"
+                            <img data-src="{{ url('public/img/banner-loading.png') }}"
                                 id="banner"
-                                alt="Banner loading placeholder"
                                 style="margin-top:14px;"
-                                class="img-fluid rounded">
+                                class="img-fluid rounded lazy">
                         </a>
-                        {% endif %}
+                    {% endif %}
                     </div>
                     <p id="status" class="{{ vote is null ? '' : 'text-danger' }}">
                         {% if vote is not null %}
@@ -56,24 +54,24 @@
                     {% set disabled = vote is null ? '' : 'disabled' %}
 
                     <div class="mb-4">
-                        <div class="card px-4 py-3 question-container hidden">
-                            <h5>Answer the following question to vote:</h5>
-                            <p class="question"></p>
-                            <form class="question-form d-flex justify-content-center">
-                                <div class="form-group m-0">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="answer"
-                                        aria-describedby="answer"
-                                    />
-                                </div>
-                                <button type="submit" class="btn btn-primary ml-2">Answer</button>
-                            </form>
+                        <div class="card px-4 py-3  question-container hidden">
+                        <h5>Answer the following question to vote:</h5>
+                        <p class="question"></p>
+                        <form class="question-form d-flex justify-content-center">
+                            <div class="form-group m-0">
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="answer"
+                                aria-describedby="answer"
+                            />
+                            </div>
+                            <button type="submit" class="btn btn-primary ml-2">Answer</button>
+                        </form>
                         </div>
                         <p class="verdict mb-0"></p>
 
-                        <a href="#" class="text-quicksand btn btn-lg btn-primary vote" data-id="{{ server.id }}">
+                        <a href="" class="text-quicksand btn btn-lg btn-primary vote" data-id="{{ server.id }}">
                             Vote Now
                         </a>
 
@@ -101,48 +99,45 @@
                 <h4 class="text-center card shadow text-white p-3 bg-info">
                     <span class="fa fa-vote-yea" aria-hidden="true">&ensp;VOTES</span>
                 </h4>
-                <div class="text-center mt-0">
-                    <h4 class="mb-0 text-white">{{ server.votes }}</h4>
-                </div>
+                    <div class="text-center mt-0">
+                        <h4 class="mb-0 text-white">{{ server.votes }}</h4>
+                    </div>
             </div>
 
             <div class="card shadow-sm mb-3 my-card bg-warning">
                 <h4 class="text-center card shadow text-white p-3 bg-warning">
                     <span class="fa fa-user-shield" aria-hidden="true">&ensp;OWNER</span>
                 </h4>
-                <div class="text-center mt-0">
-                    <h4 class="mb-0 text-white">
-                        <a href="https://discord.com/users/{{ server.user_id }}" target="_blank" rel="noopener noreferrer">
-                            {{ server.username }}#{{ server.discriminator }}
-                        </a>
-                    </h4>
-                </div>
+                    <div class="text-center mt-0">
+                        <h4 class="mb-0 text-white"><a href="https://discord.com/users/{{ server.user_id }}" target="_blank">{{ server.username }}#{{ server.discriminator }}</a></h4>
+                    </div>
             </div>
 
             <div class="card shadow-sm mb-3 my-card bg-primary">
                 <h4 class="text-center card shadow text-white p-3 bg-primary">
                     <span class="fa fa-link" aria-hidden="true">&ensp;Links</span>
                 </h4>
-                <div class="text-center mt-0">
-                    <h6 class="mb-2 text-white">
+                    <div class="text-center mt-0">
+                        <h6 class="mb-2 text-white">
 
-                        {% if server.discord_link and server.discord_link != "" %}
-                        <a href="{{ server.discord_link }}" class="btn btn-primary btn-sm py-1 text-uppercase mr-0"
-                            style="font-size:9px;"
-                            target="_blank" rel="noopener noreferrer">
-                            {{ icon('discord') }} DISCORD
-                        </a>
-                        {% endif %}
-                        {% if server.website and server.website != "" %}
-                        <a href="{{ server.website }}" class="btn btn-primary btn-sm py-1 text-uppercase"
-                            style="font-size:9px;"
-                            rel="sponsored noopener noreferrer" target="_blank">
-                            {{ icon('link-45deg') }} WEBSITE
-                        </a>
-                        {% endif %}
+                            {% if server.discord_link and server.discord_link != "" %}
+                            <a href="{{ server.discord_link }}" class="btn btn-primary btn-sm py-1 text-uppercase mr-0"
+                                style="font-size:9px;"
+                                target="_blank">
+                                {{ icon('discord') }} DISCORD
+                            </a>
+                            {% endif %}
+                            {% if server.website and server.website != "" %}
+                            <a href="{{ server.website }}" class="btn btn-primary btn-sm py-1 text-uppercase"
+                                style="font-size:9px;"
+                                rel="sponsored" target="_blank">
+                                {{ icon('link-45deg') }} WEBSITE
+                            </a>
+                            {% endif %}
 
-                    </h6>
-                </div>
+
+                        </h6>
+                    </div>
             </div>
 
         </div>
@@ -154,91 +149,110 @@
 <script defer type="text/javascript" src="{{ url('public/js/rsfacts.js')}}"></script>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const voteBtn = document.querySelectorAll('.vote');
-    const questionEl = document.querySelector('.question');
-    const questionFormContainer = document.querySelector('.question-container');
-    const questionForm = document.querySelector('.question-form');
-    const verdict = document.querySelector('.verdict');
-    let correctAnswer;
-    let unAttempted = true;
-    let isAbot;
+document.addEventListener('DOMContentLoaded', function( event) {
+      const voteBtn = $('.vote');
+      const questionEl = $('.question');
+      const questionFormContainer = $('.question-container');
+      const questionForm = $('.question-form');
+      const verdict = $('.verdict');
+      let correctAnswer;
+      let unAttempted = true;
+      let isAbot;
 
-    voteBtn.forEach(btn => {
-        btn.addEventListener('click', function(event) {
-            event.preventDefault();
+    $('.vote').click(function(event) {
+        event.preventDefault();
 
-            if (unAttempted) {
-                askRandomMathQuestion();
-            } else if (isAbot) {
-                verdict.textContent = 'Unable to vote, please try again!';
-                verdict.classList.add('text-danger');
-                askRandomMathQuestion();
-            } else {
-                // Allow voting here
-                verdict.textContent = '';
-                let id = this.dataset.id;
-                let status = document.querySelector('#status');
-                this.innerHTML = '{{ icon("three-dots", 18, 18) }}';
-                this.classList.add("disabled");
-
-                grecaptcha.ready(function() {
-                    grecaptcha.execute("{{ recaptcha_key }}", {
-                        action: 'homepage'
-                    }).then(function(token) {
-                        fetch('{{ url("servers/addvote") }}', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                server_id: id,
-                                token: token,
-                                incentive: '{{ incentive }}'
-                            })
-                        }).then(response => response.json())
-                          .then(json => {
-                              status.classList.toggle("text-success", json.success);
-                              status.classList.toggle("text-danger", !json.success);
-                              status.textContent = json.message;
-                              setTimeout(() => {
-                                  btn.classList.remove("disabled");
-                                  btn.textContent = "Vote Now";
-                              }, 700);
-                          }).catch(err => console.error(err));
+        if (unAttempted) {
+          return askRandomMathQuesiton();
+        } else if (isAbot) {
+          verdict.text('Unable to vote, please try again!') ;
+          verdict.addClass('text-danger');
+          return askRandomMathQuesiton();
+        } else {
+          // Allow voting here
+            verdict.text('') ;
+            let btn = $(this);
+            let txt = $(this).text();
+            let id  = $(this).data("id");
+            let status = $('#status');
+            btn.html('{{ icon("three-dots", 18, 18) }}');
+            btn.addClass("disabled");
+            btn.removeClass("btn-success btn-danger").addClass("btn-primary");
+            status.html("&nbsp;").removeClass("text-danger text-success");
+            grecaptcha.ready(function() {
+                grecaptcha.execute("{{ recaptcha_key }}", {
+                    action: 'homepage'
+                }).then(function(token) {
+                    $.ajaxq('VoteQueue', {
+                        url: '{{ url("servers/addvote") }}',
+                        data: {
+                            server_id: id,
+                            token: token,
+                            incentive: '{{ incentive }}'
+                        },
+                        type: 'POST',
+                        complete: function (data) {
+                        },
+                        success: function (json) {
+                            console.log(json);
+                            $('#status').removeClass("text-danger text-success")
+                                .addClass(json.success ? "text-success" : "text-danger")
+                                .html(json.message);
+                            btn.removeClass("btn-primary btn-danger btn-success")
+                                .addClass("btn-"+(json.success ? 'success' : 'danger'));
+                            btn.html(json.success ? '{{ icon("check", 18, 18) }}' : '{{ icon("x", 18, 18) }}');
+                            setTimeout(function() {
+                                btn.removeClass("btn-success btn-danger disabled")
+                                    .addClass("btn-primary");
+                                btn.html("Vote Now");
+                            }, 700);
+                        },
+                        error: function(data) {
+                            console.log(data.responseText);
+                        }
                     });
                 });
-            }
-        });
+            });
+        }
+
     });
 
-    const arthematicOperations = ['+', '-'];
-    function askRandomMathQuestion() {
-        unAttempted = false;
-        const n1 = Math.floor(Math.random() * 10 + 1);
-        const n2 = Math.floor(Math.random() * 10 + 1);
-        const operation = arthematicOperations[Math.floor(Math.random() * 2)];
-        const question = `${n1} ${operation} ${n2}`;
 
-        questionEl.textContent = `What is ${question} equal to?`;
-        questionFormContainer.classList.remove('hidden');
-        correctAnswer = eval(`${n1} ${operation} ${n2}`);
+    let arthematicOperations = ['+', '-'];
+    function askRandomMathQuesiton() {
+    unAttempted = false;
+    const n1 = Math.floor(Math.random() * 10 + 1);
+    const n2 = Math.floor(Math.random() * 10 + 1);
+    const operation = arthematicOperations[Math.floor(Math.random() * 2)];
+    const question = n1 + ' ' + operation + ' ' + n2;
+
+    questionEl.text('What is ' + question + ' equal to?');
+    questionFormContainer.removeClass('hidden');
+    voteBtn.addClass('d-none');
+    correctAnswer = Math.round(eval(n1 + operation + n2));
     }
 
-    questionForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const userAnswer = parseInt(document.querySelector('#answer').value, 10);
+    questionForm.submit( function (e) {
+    e.preventDefault();
+    const userAnswer = Math.round(
+        parseInt($('#answer').val())
+    );
+    if (isNaN(userAnswer) || userAnswer !== correctAnswer) {
+        isAbot = true;
 
-        if (isNaN(userAnswer) || userAnswer !== correctAnswer) {
-            isAbot = true;
-        } else {
-            isAbot = false;
-            voteBtn.forEach(btn => btn.classList.remove('d-none'));
-            questionFormContainer.classList.add('hidden');
-        }
-        this.reset();
+    } else {
+        isAbot = false;
+        voteBtn.removeClass('d-none');
+        questionFormContainer.addClass('hidden');
+        this.addClass('d-none');
+
+    }
+    voteBtn.trigger('click');
+    this.reset();
     });
+
 });
+
 </script>
 
 {%  endblock %}
