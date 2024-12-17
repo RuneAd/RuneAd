@@ -79,8 +79,9 @@ body {
 
 
 .custom-header {
-    /*background-image: linear-gradient(to right bottom, #2327a0, #05c6b1);*/
-    background: url('../img/headerbg.webp') top center no-repeat #6a8bbe;
+    background: url('../img/headerbg.webp') top center repeat-x #6a8bbe;
+    background-size: auto 100%; /* Ensures height fits, repeats horizontally */
+}
 }
 .custom-header .navbar .nav-link {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
