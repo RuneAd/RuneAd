@@ -12,7 +12,6 @@ class Request {
     public static function getInstance() {
         if (!self::$instance) {
             self::$instance = new Request();
-            return self::$instance;
         }
         return self::$instance;
     }
@@ -30,7 +29,7 @@ class Request {
      * @return bool
      */
     public function isPost() {
-        return $_SERVER['REQUEST_METHOD'] == "POST";
+        return $_SERVER['REQUEST_METHOD'] === "POST";
     }
 
     /**
@@ -43,8 +42,8 @@ class Request {
     }
 
     /**
-     * Returns if a key is set in $_QUERY
-     * @param $key
+     * Returns if a key is set in $_GET
+     * @param string $key
      * @return bool
      */
     public function hasQuery($key) {
@@ -53,19 +52,16 @@ class Request {
 
     /**
      * Returns a value from $_GET
-     * @param $key
+     * @param string|null $key
      * @return mixed
      */
     public function getQuery($key = null) {
-        if ($key != null && !$this->hasQuery($key)) {
-            return null;
-        }
-        return $key == null ? $_GET : $_GET[$key];
+        return $key === null ? $_GET : ($_GET[$key] ?? null);
     }
 
     /**
      * Returns if a key is set in $_POST
-     * @param $key
+     * @param string $key
      * @return bool
      */
     public function hasPost($key) {
@@ -74,34 +70,27 @@ class Request {
 
     /**
      * Returns a value from $_POST
-     * @param $key
-     * @param $filter
+     * @param string|null $key
+     * @param string|null $filter
      * @return mixed
      */
     public function getPost($key = null, $filter = null) {
-        if ($key == null) {
-            return $_POST;
-        }
-        if ($key != null && !$this->hasPost($key)) {
-            return null;
-        }
+        $value = $key === null ? $_POST : ($_POST[$key] ?? null);
 
-        $value = $key == null ? $_POST : $_POST[$key];
-
-        if ($filter != null) {
-            if ($filter == 'string') {
-                $value = htmlspecialchars(filter_var($value, FILTER_SANITIZE_STRING,
-                    FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH));
-            }
-            if ($filter == "int") {
-                $value = filter_var($value, FILTER_SANITIZE_NUMBER_INT,
-                    FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH);
-            }
-            if ($filter == "email") {
-                $value = filter_var($value, FILTER_SANITIZE_EMAIL);
-            }
-            if ($filter == "url") {
-                $value = filter_var($value, FILTER_SANITIZE_URL);
+        if ($filter !== null && $value !== null) {
+            switch ($filter) {
+                case 'string':
+                    $value = htmlspecialchars(filter_var($value, FILTER_SANITIZE_STRING));
+                    break;
+                case 'int':
+                    $value = filter_var($value, FILTER_SANITIZE_NUMBER_INT);
+                    break;
+                case 'email':
+                    $value = filter_var($value, FILTER_SANITIZE_EMAIL);
+                    break;
+                case 'url':
+                    $value = filter_var($value, FILTER_SANITIZE_URL);
+                    break;
             }
         }
 
@@ -110,7 +99,7 @@ class Request {
 
     /**
      * Returns if a key is set in $_REQUEST
-     * @param $key
+     * @param string $key
      * @return bool
      */
     public function hasRequest($key) {
@@ -119,11 +108,11 @@ class Request {
 
     /**
      * Returns a value from $_REQUEST
-     * @param $key
+     * @param string|null $key
      * @return mixed
      */
     public function getRequest($key = null) {
-        return $key ? $_REQUEST[$key] : $_REQUEST;
+        return $key === null ? $_REQUEST : ($_REQUEST[$key] ?? null);
     }
 
     /**
@@ -135,81 +124,73 @@ class Request {
             $_SERVER['HTTP_CLIENT_IP'] = $_SERVER["HTTP_CF_CONNECTING_IP"];
         }
 
-        $client  = @$_SERVER['HTTP_CLIENT_IP'];
-        $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
-        $remote  = $_SERVER['REMOTE_ADDR'];
+        $client  = $_SERVER['HTTP_CLIENT_IP'] ?? null;
+        $forward = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? null;
+        $remote  = $_SERVER['REMOTE_ADDR'] ?? null;
 
-        if(filter_var($client, FILTER_VALIDATE_IP)) {
-            $ip = $client;
-        } else if(filter_var($forward, FILTER_VALIDATE_IP)) {
-            $ip = $forward;
+        if (filter_var($client, FILTER_VALIDATE_IP)) {
+            return $client;
+        } elseif (filter_var($forward, FILTER_VALIDATE_IP)) {
+            return $forward;
         } else {
-            $ip = $remote;
+            return $remote;
         }
-
-        return $ip;
     }
 
     /**
-     * Redirects to give url within application
-     * @param $url String
-     * @param $internal bool
+     * Redirects to given URL within application
+     * @param string $url
+     * @param bool $internal
      */
     public function redirect($url, $internal = true) {
-        header("Location: ".($internal ? web_root.$url : $url));
+        header("Location: " . ($internal ? web_root . $url : $url));
+        exit;
     }
 
     /**
-     * Redirects to a URL with after a delay in seconds.
-     * @param $url
-     * @param $time
+     * Redirects to a URL after a delay in seconds.
+     * @param string $url
+     * @param int $time
      * @param bool $internal
      */
     public function delayedRedirect($url, $time, $internal = false) {
-        header("refresh:{$time}; url=".($internal ? web_root.$url : $url));
+        header("refresh:{$time}; url=" . ($internal ? web_root . $url : $url));
+        exit;
     }
 
     /**
-     * get access token from header
+     * Verifies the access token
+     * @return bool
      */
     public function verifyToken() {
-        return $this->getBearerToken() == api_key;
+        return $this->getBearerToken() === api_key;
     }
 
     /**
-     * get access token from header
+     * Retrieves the bearer token from the authorization header
+     * @return string|null
      */
     public function getBearerToken() {
         $headers = $this->getAuthorizationHeader();
-        if (!empty($headers)) {
-            if (preg_match('/Bearer\s(\S+)/', $headers, $matches)) {
-                return $matches[1];
-            }
+        if (!empty($headers) && preg_match('/Bearer\s(\S+)/', $headers, $matches)) {
+            return $matches[1];
         }
         return null;
     }
 
     /**
-     * Gets the authorization header.
+     * Gets the authorization header
      * @return string|null
      */
     public function getAuthorizationHeader() {
-        $headers = null;
-
         if (isset($_SERVER['Authorization'])) {
-            $headers = trim($_SERVER["Authorization"]);
-        } else if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
-            $headers = trim($_SERVER["HTTP_AUTHORIZATION"]);
+            return trim($_SERVER['Authorization']);
+        } elseif (isset($_SERVER['HTTP_AUTHORIZATION'])) {
+            return trim($_SERVER['HTTP_AUTHORIZATION']);
         } elseif (function_exists('apache_request_headers')) {
             $requestHeaders = apache_request_headers();
-            $requestHeaders = array_combine(
-                array_map('ucwords', array_keys($requestHeaders)),
-                array_values($requestHeaders)
-            );
-            if (isset($requestHeaders['Authorization'])) {
-                $headers = trim($requestHeaders['Authorization']);
-            }
+            return $requestHeaders['Authorization'] ?? null;
         }
-        return $headers;
+        return null;
     }
 }
